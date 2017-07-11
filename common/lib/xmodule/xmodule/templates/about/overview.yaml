@@ -1,0 +1,85 @@
+---
+metadata:
+    display_name: overview
+
+data: |
+  <div class="course_about_atp">
+  <h2><img src="/static/atp/images/description.svg" class="svg"> <span>Module's description:"</span></h2>
+  <p>De Finibus Bonorum et Malorum De Finibus Bonorum et Malorum De Finibus Bonorum et Malorum De Finibus Bonorum et Malorum De Finibus Bonorum et Malorum De Finibus Bonorum et Malorum De Finibus Bonorum et Malorum</p>
+  </div>
+
+  <div class="course_about_atp">
+  <h2><img src="/static/atp/images/alissue.svg" class="svg"> <span>After this module, you will be able to:</span></h2>
+  <ul>
+   <li><span>De Finibus Bonorum et Malorum</span></li>
+   <li><span>De Finibus Bonorum et Malorum</span></li>
+   <li><span>De Finibus Bonorum et Malorum</span></li>
+   <li><span>De Finibus Bonorum et Malorum</span></li>
+  </ul>
+  </div>
+
+  <div class="course_about_atp_special">
+  <h2><img src="/static/atp/images/plandumodule.svg" class="svg"> <span>After this module, you will be able to:</span></h2>
+  <div class="special_block">
+   <div class="up_block">
+    <h4 class="border_atp_course_about">titre 1 <span class="arrow_course_about arrow-bottom"></span><span style="display:block;clear:right;"></span></h4>
+   </div>
+   <div class="down_block" style="display:block;">
+    <ul>
+     <li><span>De Finibus Bonorum et Malorum</span></li>
+     <li><span>De Finibus Bonorum et Malorum</span></li>
+     <li><span>De Finibus Bonorum et Malorum</span></li>
+     <li><span>De Finibus Bonorum et Malorum</span></li>
+    </ul>
+   </div>
+  </div>
+
+  <div class="special_block">
+   <div class="up_block">
+    <h4>titre 2 <span class="arrow-right arrow_course_about"></span><span style="display:block;clear:right;"></span></h4>
+   </div>
+   <div class="down_block">
+    <ul>
+     <li><span>De Finibus Bonorum et Malorum</span></li>
+     <li><span>De Finibus Bonorum et Malorum</span></li>
+     <li><span>De Finibus Bonorum et Malorum</span></li>
+     <li><span>De Finibus Bonorum et Malorum</span></li>
+    </ul>
+   </div>
+  </div>
+
+  <div class="special_block">
+   <div class="up_block">
+    <h4>titre 3 <span class="arrow-right arrow_course_about"></span><span style="display:block;clear:right;"></span></h4>
+   </div>
+   <div class="down_block">
+    <ul>
+     <li><span>De Finibus Bonorum et Malorum</span></li>
+     <li><span>De Finibus Bonorum et Malorum</span></li>
+     <li><span>De Finibus Bonorum et Malorum</span></li>
+     <li><span>De Finibus Bonorum et Malorum</span></li>
+    </ul>
+   </div>
+  </div>
+
+  <div class="special_block">
+   <div class="up_block">
+    <h4>titre 4 <span class="arrow-right arrow_course_about"></span><span style="display:block;clear:right;"></span></h4>
+   </div>
+   <div class="down_block">
+    <ul>
+     <li><span>De Finibus Bonorum et Malorum</span></li>
+     <li><span>De Finibus Bonorum et Malorum</span></li>
+     <li><span>De Finibus Bonorum et Malorum</span></li>
+     <li><span>De Finibus Bonorum et Malorum</span></li>
+    </ul>
+   </div>
+  </div>
+
+  </div>
+
+  <div class="course_about_atp_special">
+  <h2><img src="/static/atp/images/plusdinfos.svg" class="svg" /> <span>further information</span></h2>
+  <p>Ce module n'est pas sujet à une certification</p>
+  </div>
+

@@ -1,0 +1,37 @@
+## mako
+<%page expression_filter="h"/>
+<%!
+  from django.core.urlresolvers import reverse
+  from django.utils.translation import ugettext as _
+  from branding.api import get_footer
+%>
+<% footer = get_footer(is_secure=is_secure) %>
+<%namespace name='static' file='static_content.html'/>
+<!-- GEOFFREY -->
+<!-- import custom css script -->
+<%
+footer = static.get_value('css_overrides_footer')
+%>
+% if not footer:
+  <link rel="stylesheet" type="text/css" href="${static.url('css/footer.css')}">
+% else:
+  <link rel="stylesheet" type="text/css" href="${static.url(footer)}" />
+% endif
+
+<!-- import custom js script -->
+<section id="footer_atp">
+  <%
+  logo_url = static.get_value('logo')
+  %>
+  % if not logo_url:
+  <img src="${static.url('images/logo.png')}" />
+  % else:
+  <img src="${logo_url}" />
+  % endif
+ <ul>
+  <li><a href="">${_("Contact")}</a></li>
+  <li><a href="">${_("Legal notices")}</a></li>
+  <span style="display:block;clear:both;"></span>
+ </ul>
+ <span style="display:block;clear:both;"></span>
+</section>
