@@ -176,66 +176,35 @@ course_factory = CourseGradeFactory().create(request.user, course)
  </div>
 </section>
 </section>
-<style>
-.course_about_atp ul li, .course_about_atp_special ul li {
-  position: relative;
-}
-.course_about_atp ul li .puce_li_about, .course_about_atp_special ul li .puce_li_about {
-  position: absolute;
-  z-index: 1;
-  border-radius: 50%;
-  width: 10px;
-  height: 10px;
-  background-color: #31aeee;
-  top: 50%;
-  margin-top: -5px;
-  left: -20px;
-}
-.course_about_atp_special ul,.course_about_atp ul {
-  color: transparent;
-}
-.course_about_atp h2,.course_about_atp_special h2 {
-  position: relative;
-}
-.course_about_atp h2 svg, .course_about_atp_special h2 svg {
-  position: absolute;
-  z-index: 1;
-  top: 50%;
-  left: 0;
-  margin-top: -25px;
-}
-.course_about_atp h2 span, .course_about_atp_special h2 span {
-  margin-left: 60px;
-}
-#atp_about_course_card ul {
-  margin-left: 20px;
-}
-#certiticate {
-  color: #31aeee;
-  border-bottom: 1px solid #31aeee;
-}
-#certiticate:hover {
-  border-bottom: 1px solid transparent;
-}
-#certiticate svg {
-  width: 20px;
-  height: 20px;
-  fill: #31aeee;
-}
-@media(max-width:768px) {
-  #atp_about_course_card ul {
-    margin-left: 0;
+<script>
+$(document).scroll(function(){
+  var scroll_h = $(this).scrollTop();
+  if(scroll_h >= 90) {
+    $('.atp_course_info').hide();
+    $('.atp_course_picto').hide();
+    $('.atp_course_image').slideUp(1000);
+    $('.atp_course_title').css('padding-top','10px');
+    $('.atp_course_title').css('padding-bottom','10px');
+  }else{
+    $('.atp_course_info').show();
+    $('.atp_course_picto').show();
+    $('.atp_course_image').slideDown(1000);
+    $('.atp_course_title').attr('style','');
   }
-}
-@media(max-width:450px) {
-  .course_about_atp ul {
-    width: calc(100% - 85px);
-    margin-right: 0;
-    margin-left: 85px;
-  }
-  .special_block {
-    width: calc(100% - 60px);
-    margin-right: 0;
-  }
-}
-</style>
+})
+% if course_factory.passed:
+$('#certiticate').click(function(e){
+  e.preventDefault();
+  var course_id = '${course.id}';
+  var url = '/api/atp/check/certificate/${course.id}/';
+  $.ajax({
+    url:url,
+    type:'GET',
+    dataType:'json',
+    success:function(data){
+      window.open(data.certificate_url,'_self');
+    }
+  })
+})
+% endif
+</script>

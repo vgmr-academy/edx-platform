@@ -17,6 +17,8 @@ from course_progress.helpers import get_overall_progress
 from lms.djangoapps.grades.new.course_grade import CourseGradeFactory
 import random
 
+from django.utils.translation import LANGUAGE_SESSION_KEY
+
 from courseware.courses import (
     get_course_by_id,
 )
@@ -110,33 +112,59 @@ url_array.append('images/4environement.jpg')
 url_image = random.choice(url_array)
 %>
 <style>
-#dashboard_header_atp {
-  background-image: url('${static.url(url_image)}');
+@media(min-width:1600px) {
+  #dashboard_header_atp {
+    background-image: url('${static.url(url_image)}');
+  }
+  /* course cards actions */
+  #dashboard_tma #tuto_module_1 p {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  .atp_course_item {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  /* all margins */
+  #dashboard_course_in_progress_atp .atp_course_item,#dashboard_course_to_do .atp_course_item,#dashboard_course_finished .atp_course_item{
+    margin-right: calc((100% - 1508px) / 6);
+    margin-left: calc((100% - 1508px) / 6);
+  }
+
+  #dashboard_course_in_progress_atp .atp_course_item:nth-child(4n),#dashboard_course_to_do .atp_course_item:nth-child(4n),#dashboard_course_finished .atp_course_item:nth-child(4n){
+    margin-left: calc((100% - 1508px) / 6);
+    margin-right: 0;
+  }
+  #dashboard_course_in_progress_atp .atp_course_item:first-child,#dashboard_course_to_do .atp_course_item:first-child,#dashboard_course_finished .atp_course_item:first-child,#dashboard_course_in_progress_atp .atp_course_item:nth-child(4n+1),#dashboard_course_to_do .atp_course_item:nth-child(4n+1),#dashboard_course_finished .atp_course_item:nth-child(4n+1){
+    margin-right: calc((100% - 1508px) / 6);
+    margin-left: 0;
+  }
+  .atp_course_item:nth-child(4) {
+    display:block;
+  }
 }
-#dashboard_tma #tuto_module_1 p {
-  margin-bottom: 0;
-  margin-top: 0;
+@media(max-width:1600px) {
+  .atp_course_item:nth-child(4) {
+    display:none;
+  }
 }
-.atp_course_item {
-  margin-left: 0;
-  margin-right: 0;
-}
-/* all margins */
-#dashboard_course_in_progress_atp .atp_course_item,#dashboard_course_to_do .atp_course_item,#dashboard_course_finished .atp_course_item{
-  margin-right: calc((((100% - 1131px) / 2) / 3) * 2);
-  margin-left: calc((((100% - 1131px) / 2) / 3) * 2);
-}
-#dashboard_course_in_progress_atp .atp_course_item:nth-child(3n),#dashboard_course_to_do .atp_course_item:nth-child(3n),#dashboard_course_finished .atp_course_item:nth-child(3n){
-  margin-left: calc(((100% - 1131px) / 2) / 3);
-  margin-right: 0;
-}
-#dashboard_course_in_progress_atp .atp_course_item:nth-child(3n+1),#dashboard_course_to_do .atp_course_item:nth-child(3n+1),#dashboard_course_finished .atp_course_item:nth-child(3n+1){
-  margin-right: calc(((100% - 1131px) / 2) / 3);
-  margin-left: 0;
-}
-#dashboard_course_in_progress_atp .atp_course_item:first-child,#dashboard_course_to_do .atp_course_item:first-child,#dashboard_course_finished .atp_course_item:first-child{
-  margin-right: calc(((100% - 1131px) / 2) / 3);
-  margin-left: 0;
+@media screen and (min-width:1196px) and (max-width:1600px) {
+  #dashboard_course_in_progress_atp .atp_course_item,#dashboard_course_to_do .atp_course_item,#dashboard_course_finished .atp_course_item{
+    margin-right: calc((((100% - 1131px) / 2) / 3) * 2);
+    margin-left: calc((((100% - 1131px) / 2) / 3) * 2);
+  }
+  #dashboard_course_in_progress_atp .atp_course_item:nth-child(3n),#dashboard_course_to_do .atp_course_item:nth-child(3n),#dashboard_course_finished .atp_course_item:nth-child(3n){
+    margin-left: calc(((100% - 1131px) / 2) / 3);
+    margin-right: 0;
+  }
+  #dashboard_course_in_progress_atp .atp_course_item:nth-child(3n+1),#dashboard_course_to_do .atp_course_item:nth-child(3n+1),#dashboard_course_finished .atp_course_item:nth-child(3n+1){
+    margin-right: calc(((100% - 1131px) / 2) / 3);
+    margin-left: 0;
+  }
+  #dashboard_course_in_progress_atp .atp_course_item:first-child,#dashboard_course_to_do .atp_course_item:first-child,#dashboard_course_finished .atp_course_item:first-child{
+    margin-right: calc(((100% - 1131px) / 2) / 3);
+    margin-left: 0;
+  }
 }
 /* responsive */
 @media(max-width:1196px) {
@@ -277,7 +305,7 @@ url_image = random.choice(url_array)
 				<span>${_("training")}</span>
 				<span>${_("platform")}</span>
 			</h1>
-			<p>Développer vos connaissances et vos compétences sur la gestion d'actifs: culture financière et produits & offres commercialisés</p>
+			<p>${_("Develop your knowledge and skills on asset management: financial culture and products and offers marketed")}</p>
 			<button class="tuto_action">${_("Show more")}</button> <span id="atp_tuto_arrow_up" class="arrow-right"></span>
 		</div>
 	</section>
@@ -285,47 +313,47 @@ url_image = random.choice(url_array)
 	<section id="dashboard_tuto_atp">
 		<!-- module 1 -->
 		<div class="dashboard_tuto_atp" id="tuto_module_1">
-			<p>Pour suivre un module de formation, séléctionnez la vignette de votre choix !</p>
-			<p style="margin-top: 0;margin-bottom: 0;">Chaque module de formation appartient à une catégorie et peu prendre</p>
-			<p>différents formats.</p>
+			<p>${_("To follow a training module, select the course cover of your choice")}</p>
+			<p style="margin-top: 0;margin-bottom: 0;">${_("Each training module belongs to a category and can take")}</p>
+			<p>${_("different formats")}.</p>
 		</div>
 		<!-- module 2 -->
                 <div class="dashboard_tuto_atp">
-			<h3>les modules</h3>
-			<p style="margin-bottom:5px;">Retrouvez toutes les informations liées à la formation sur les vignettes ci dessous. Vous pourrez ainsi voir le temps</p>
-			<p style="margin-top:5px;">que la formation vous prendra, si elle est obligatoire et les différents types de contenus qui la compose.</p>
+			<h3>${_("modules")}</h3>
+			<p style="margin-bottom:5px;">${_("Find all the information related to the training on the thumbnails below")}. ${_("You will be able to see the time")}</p>
+			<p style="margin-top:5px;">${_("that training will take you")}, ${_("if it is compulsory and the different types of content")}.</p>
 			<img src="${static.url('images/cartes.png')}" id="img_dashboard_tuto_cartes"/>
                 </div>
 		<!-- module 3 -->
                 <div class="dashboard_tuto_atp">
-			<h3>catégories des modules de formation</h3>
-			<p>Vos modules de formation sont classés en 4 catégories:</p>
+			<h3>${_("categories of training modules")}</h3>
+			<p>${_("Your training modules are classified into 4 categories")}:</p>
 			<ul>
 				<li id="dashboard_tuto_atp_1">
-					<h4>fodamentaux:</h4>
-					<p>Connaitre les essentiels de la gestion d'actifs</p>
+					<h4>${_("fundamental")}:</h4>
+					<p>${("know the essentials of asset management")}</p>
 				</li>
                                 <li id="dashboard_tuto_atp_2">
-                                        <h4>démarche commerciale:</h4>
-                                        <p>Améliorer vos compétences personnelles</p>
+                                        <h4>${_("Sales approach")}:</h4>
+                                        <p>${_("Improve your personal skills")}</p>
                                 </li>
 				<span style="clear:left; display: block;width:100%;height:0;padding:0;margin:0;"></span>
                                 <li id="dashboard_tuto_atp_3">
-                                        <h4>nos solutions:</h4>
-                                        <p>Découvrir les produits et les offres commercialités</p>
+                                        <h4>${_("our solutions")}:</h4>
+                                        <p>${_("discover products and commercial offers")}</p>
                                 </li>
                                 <li id="dashboard_tuto_atp_4">
-                                        <h4>règlementaire:</h4>
-                                        <p>Appréhender les décisions règlementaires</p>
+                                        <h4>${_("regulatory")}:</h4>
+                                        <p>${_("Understanding regulatory decisions")}</p>
                                 </li>
 				<span style="clear:left; display: block;width:100%;height:0;padding:0;margin:0;"></span>
 			</ul>
                 </div>
 		<!-- module 4 -->
                 <div class="dashboard_tuto_atp last_tuto_atp" style="border-bottom: none;">
-			<h3>format des modules</h3>
-			<p>Chaque module est composé de différents formats interactifs :</p>
-			<p>textes & illustrations, vidéos pédagogiques, quiz, etc.</p>
+			<h3>${_("format of modules")}</h3>
+			<p>${_("Each module is composed of different interactive formats")} :</p>
+			<p>${_("texts & illustrations")}, ${_("educational videos")}, ${_("quiz")}, ${_("etc")}.</p>
 			<div class="dashboard_picto_tuto_tma">
 				<div><img src="${static.url('images/video.svg')}" class="svg"/><span>${_("video")}</span></div>
 				<div><img src="${static.url('images/quiz.svg')}" class="svg"/><span>${_("quiz")}</span></div>
@@ -343,8 +371,8 @@ url_image = random.choice(url_array)
 	</section>
 	<!-- module en cours -->
 	<section  id="dashboard_course_in_progress_atp">
-        	<h2><img src="${static.url('images/encours.svg')}" class="svg"/><span>${_("Course covers in progress ")}</span></h2>
-		<p class="first_p">Vous avez commencé le module de formation.Pour compléter votre parcours, vous pouvez cliquer sur " Continuer ".</p>
+        	<h2><img src="${static.url('images/encours.svg')}" class="svg"/><span>${_("Course covers in progress")}</span></h2>
+		<p class="first_p">${_("You have started the training module")}. ${_("To complete your course")}, ${_("you can click on")} " ${_("Continue")} ".</p>
         <!-- course listing -->
 <% compteur = 0 %>
 % if len(course_enrollments) > 0:
@@ -357,7 +385,7 @@ url_image = random.choice(url_array)
     <% course_tma = get_course_by_id(enrollment.course_id) %>
     <% passed = CourseGradeFactory().create(request.user, course_tma).passed %>
     <% course_progression = get_overall_progress(user_id,course_id) %>
-    % if course_progression > 0 and passed == False:
+    % if course_progression > 0 and course_progression < 100 and passed == False:
       <% compteur = compteur + 1 %>
       <% atp_rank = "cours" %>
       <% course_about = 0 %>
@@ -394,7 +422,7 @@ url_image = random.choice(url_array)
 	<!-- module a realiser -->
 	<section id="dashboard_course_to_do">
         	<h2><img src="${static.url('images/arealiser.svg')}" class="svg"/><span>${_("Course covers to do")}</span></h2>
-		<p class="first_p">Vous n'avez pas encore commencé le module de formation. Cliquer sur " En savoir + " pour découvrir le module.</p>
+		<p class="first_p">${_("You have not yet started the training course cover")}. ${_("Click on")} " ${_("Show more")} + " ${_("to discover the course cover")}.</p>
 	<!-- course listing -->
 <% compteur = 0 %>
 % if len(course_enrollments) > 0:
@@ -442,7 +470,7 @@ url_image = random.choice(url_array)
 	<!-- module termine -->
 	<section id="dashboard_course_finished">
 		<h2><img src="${static.url('images/termine.svg')}" class="svg gradient"/><span>${_("Course covers finished")}</span></h2>
-		<p class="first_p">Vous avez complété le module de formation. Cliquer sur " En savoir + " pour accéder à votre résultat.</p>
+		<p class="first_p">${_("You have completed the training course cover")}.  ${_("Click on")} " ${_("Show more")} + " ${_("to access your result")}.</p>
 	<!-- course listing -->
 <% compteur = 0 %>
 % if len(course_enrollments) > 0:
@@ -490,13 +518,3 @@ url_image = random.choice(url_array)
 % endif
 	</section>
 </section>
-<script>
-
-</script>
-<style>
-.progress_bar_status_up {
-  width: 100%;
-  height: 5px;
-  background-color: #c8c8c8;
-}
-</style>

@@ -1032,3 +1032,19 @@ urlpatterns += (
         name='atp_change_lang'
     ),
 )
+
+#generate certificates
+
+urlpatterns += (
+    url(
+        r'^api/atp/check/certificate/(?P<course_id>[^/]*)/$',
+        'atp_certificates.views.atp_check_certificate',
+        name='atp_check_certiticate'
+    ),
+    url(
+        r'^api/atp/generate/certificate/(?P<course_id>[^/]*)/$',
+        'atp_certificates.views.atp_generate_certificate',
+        name='atp_generate_certiticate'
+    ),
+)
+

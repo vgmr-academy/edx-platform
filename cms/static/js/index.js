@@ -1,9 +1,7 @@
-  GNU nano 2.5.3                                                        File: index.js                                                                                                                      
-
-define(["domReady", "jquery", "underscore", "js/utils/cancel_on_escape", "js/views/utils/create_course_utils", "js/views/utils/create_microsite_utils",
-    "js/views/utils/create_library_utils", "common/js/components/utils/view_utils"],
-    function (domReady, $, _, CancelOnEscape, CreateCourseUtilsFactory, CreateMicrositeUtilsFactory, CreateLibraryUtilsFactory,  ViewUtils) {
-        "use strict";
+define(['domReady', 'jquery', 'underscore', 'js/utils/cancel_on_escape', 'js/views/utils/create_course_utils',
+    'js/views/utils/create_library_utils', 'common/js/components/utils/view_utils'],
+    function(domReady, $, _, CancelOnEscape, CreateCourseUtilsFactory, CreateLibraryUtilsFactory, ViewUtils) {
+        'use strict';
         var CreateCourseUtils = new CreateCourseUtilsFactory({
             name: '.new-course-name',
             org: '.new-course-org',
@@ -41,26 +39,7 @@ define(["domReady", "jquery", "underscore", "js/utils/cancel_on_escape", "js/vie
             error: 'error'
         });
 
-        var CreateMicrositeUtils = new CreateMicrositeUtilsFactory({
-            name: '.new-microsite-name',
-            logo: '.new-microsite-logo',
-            color: '.new-microsite-color',
-            language: '.new-microsite-language',
-            save: '.new-microsite-save',
-            errorWrapper: '.create-microsite .wrap-error',
-            errorMessage: '#microsite_creation_error',
-            tipError: '.create-microsite span.tip-error',
-            error: '.create-microsite .error',
-            allowUnicode: '.allow-unicode-course-id'
-        }, {
-            shown: 'is-shown',
-            showing: 'is-showing',
-            hiding: 'is-hiding',
-            disabled: 'is-disabled',
-            error: 'error'
-        });
-
-        var saveNewCourse = function (e) {
+        var saveNewCourse = function(e) {
             e.preventDefault();
 
             if (CreateCourseUtils.hasInvalidRequiredFields()) {
@@ -81,77 +60,63 @@ define(["domReady", "jquery", "underscore", "js/utils/cancel_on_escape", "js/vie
             };
 
             analytics.track('Created a Course', course_info);
-            CreateCourseUtils.create(course_info, function (errorMessage) {
+            CreateCourseUtils.create(course_info, function(errorMessage) {
                 $('.create-course .wrap-error').addClass('is-shown');
                 $('#course_creation_error').html('<p>' + errorMessage + '</p>');
                 $('.new-course-save').addClass('is-disabled').attr('aria-disabled', true);
             });
         };
 
-        var makeCancelHandler = function (addType) {
+        var rtlTextDirection = function() {
+            var Selectors = {
+                new_course_run: '#new-course-run'
+            };
+
+            if ($('body').hasClass('rtl')) {
+                $(Selectors.new_course_run).addClass('course-run-text-direction placeholder-text-direction');
+                $(Selectors.new_course_run).on('input', function() {
+                    if (this.value === '') {
+                        $(Selectors.new_course_run).addClass('placeholder-text-direction');
+                    } else {
+                        $(Selectors.new_course_run).removeClass('placeholder-text-direction');
+                    }
+                });
+            }
+        };
+
+        var makeCancelHandler = function(addType) {
             return function(e) {
                 e.preventDefault();
-                $('.new-'+addType+'-button').removeClass('is-disabled').attr('aria-disabled', false);
-                $('.wrapper-create-'+addType).removeClass('is-shown');
+                $('.new-' + addType + '-button').removeClass('is-disabled').attr('aria-disabled', false);
+                $('.wrapper-create-' + addType).removeClass('is-shown');
                 // Clear out existing fields and errors
-                $('#create-'+addType+'-form input[type=text]').val('');
-                $('#'+addType+'_creation_error').html('');
-                $('.create-'+addType+' .wrap-error').removeClass('is-shown');
-                $('.new-'+addType+'-save').off('click');
+                $('#create-' + addType + '-form input[type=text]').val('');
+                $('#' + addType + '_creation_error').html('');
+                $('.create-' + addType + ' .wrap-error').removeClass('is-shown');
+                $('.new-' + addType + '-save').off('click');
             };
         };
 
-        var addNewCourse = function (e) {
+        var addNewCourse = function(e) {
+            var $newCourse,
+                $cancelButton,
+                $courseName;
             e.preventDefault();
             $('.new-course-button').addClass('is-disabled').attr('aria-disabled', true);
             $('.new-course-save').addClass('is-disabled').attr('aria-disabled', true);
-            var $newCourse = $('.wrapper-create-course').addClass('is-shown');
-            var $cancelButton = $newCourse.find('.new-course-cancel');
-            var $courseName = $('.new-course-name');
+            $newCourse = $('.wrapper-create-course').addClass('is-shown');
+            $cancelButton = $newCourse.find('.new-course-cancel');
+            $courseName = $('.new-course-name');
             $courseName.focus().select();
             $('.new-course-save').on('click', saveNewCourse);
             $cancelButton.bind('click', makeCancelHandler('course'));
             CancelOnEscape($cancelButton);
             CreateCourseUtils.setupOrgAutocomplete();
             CreateCourseUtils.configureHandlers();
+            rtlTextDirection();
         };
 
-        var addNewMicrosite = function(e){
-            e.preventDefault();
-            $('.new-microsite-button').addClass('is-disabled').attr('aria-disabled', true);
-            var $newMicrosite = $('.wrapper-create-microsite').addClass('is-shown');
-            var $cancelButton = $newMicrosite.find('.new-microsite-cancel');
-            var $micrositeName = $('.new-microsite-name');
-            $micrositeName.focus().select();
-            $('.new-microsite-save').on('click', saveNewMicrosite);
-            $cancelButton.bind('click', makeCancelHandler('microsite'));
-            CancelOnEscape($cancelButton);
-            CreateCourseUtils.configureHandlers();
-        };
-
-        var saveNewMicrosite = function(e){
-             e.preventDefault();
-
-            var newsData = new FormData();
-            var $newMicrositeForm = $(this).closest('#create-microsite-form');
-            var display_name = $newMicrositeForm.find('.new-microsite-name').val();
-            var logo = $newMicrositeForm.find('#new-microsite-logo').prop("files")[0];
-            var color = $newMicrositeForm.find('.new-microsite-color').val();
-            var language = $newMicrositeForm.find('.new-microsite-language').val();
-
-            newsData.append('display_name', display_name)
-            newsData.append('logo', logo)
-            newsData.append('color', color)
-            newsData.append('language', language)
-
-            analytics.track('Created a Microsite', newsData);
-            CreateMicrositeUtils.create(newsData, function (errorMessage) {
-                $('.create-microsite .wrap-error').addClass('is-shown');
-                $('#microsite_creation_error').html('<p>' + errorMessage + '</p>');
-                $('.new-microsite-save').addClass('is-disabled').attr('aria-disabled', true);
-            });
-        };
-        var saveNewLibrary = function (e) {
+        var saveNewLibrary = function(e) {
             e.preventDefault();
 
             if (CreateLibraryUtils.hasInvalidRequiredFields()) {
@@ -166,17 +131,18 @@ define(["domReady", "jquery", "underscore", "js/utils/cancel_on_escape", "js/vie
             var lib_info = {
                 org: org,
                 number: number,
-                display_name: display_name,
+                display_name: display_name
             };
 
             analytics.track('Created a Library', lib_info);
-            CreateLibraryUtils.create(lib_info, function (errorMessage) {
+            CreateLibraryUtils.create(lib_info, function(errorMessage) {
                 $('.create-library .wrap-error').addClass('is-shown');
                 $('#library_creation_error').html('<p>' + errorMessage + '</p>');
                 $('.new-library-save').addClass('is-disabled').attr('aria-disabled', true);
             });
         };
-        var addNewLibrary = function (e) {
+
+        var addNewLibrary = function(e) {
             e.preventDefault();
             $('.new-library-button').addClass('is-disabled').attr('aria-disabled', true);
             $('.new-library-save').addClass('is-disabled').attr('aria-disabled', true);
@@ -190,24 +156,24 @@ define(["domReady", "jquery", "underscore", "js/utils/cancel_on_escape", "js/vie
 
             CreateLibraryUtils.configureHandlers();
         };
+
         var showTab = function(tab) {
-          return function(e) {
-            e.preventDefault();
-            $('.courses-tab').toggleClass('active', tab === 'courses');
-            $('.libraries-tab').toggleClass('active', tab === 'libraries');
-            $('.programs-tab').toggleClass('active', tab === 'programs');
-            $('.microsite-tab').toggleClass('active', tab === 'microsite');
+            return function(e) {
+                e.preventDefault();
+                $('.courses-tab').toggleClass('active', tab === 'courses');
+                $('.libraries-tab').toggleClass('active', tab === 'libraries');
+                $('.programs-tab').toggleClass('active', tab === 'programs');
 
             // Also toggle this course-related notice shown below the course tab, if it is present:
-            $('.wrapper-creationrights').toggleClass('is-hidden', tab !== 'courses');
-          };
+                $('.wrapper-creationrights').toggleClass('is-hidden', tab !== 'courses');
+            };
         };
-        var onReady = function () {
+
+        var onReady = function() {
             $('.new-course-button').bind('click', addNewCourse);
             $('.new-library-button').bind('click', addNewLibrary);
-            $('.new-microsite-button').bind('click',addNewMicrosite)
 
-            $('.dismiss-button').bind('click', ViewUtils.deleteNotificationHandler(function () {
+            $('.dismiss-button').bind('click', ViewUtils.deleteNotificationHandler(function() {
                 ViewUtils.reload();
             }));
 
@@ -216,7 +182,6 @@ define(["domReady", "jquery", "underscore", "js/utils/cancel_on_escape", "js/vie
             $('#course-index-tabs .courses-tab').bind('click', showTab('courses'));
             $('#course-index-tabs .libraries-tab').bind('click', showTab('libraries'));
             $('#course-index-tabs .programs-tab').bind('click', showTab('programs'));
-            $('#course-index-tabs .microsite-tab').bind('click', showTab('microsite'));
         };
 
         domReady(onReady);

@@ -15,6 +15,7 @@ from branding import api as branding_api
 # app that handles site status messages
 from status.status import get_site_status_msg
 from util.enterprise_helpers import get_enterprise_customer_logo_url
+
 %>
 
 ## Provide a hook for themes to inject branding on top.
@@ -51,8 +52,8 @@ site_status_msg = get_site_status_msg(course_id)
 <%
 nav = static.get_value('css_overrides_nav')
 %>
-% if not nav:
-  <link rel="stylesheet" type="text/css" href="${static.url('css/navigation.css')}">
+% if not nav or nav == '':
+  <link rel="stylesheet" type="text/css" href="${static.url('css/nav.css')}">
 % else:
   <link rel="stylesheet" type="text/css" href="${static.url(nav)}" />
 % endif
@@ -60,6 +61,7 @@ nav = static.get_value('css_overrides_nav')
 <!-- import custom js script -->
 <script src="${static.url('js/navigation_atp.js')}"></script>
 <section id="tma_nav">
+<!--
 <section id="up_apt_nav">
 % if user.is_authenticated():
 <a href="/u/${request.user.username}">${_("My account")}</a>
@@ -67,6 +69,7 @@ nav = static.get_value('css_overrides_nav')
 <a href="">${_("My account")}</a>
 % endif
 </section>
+-->
 <section id="down_apt_nav">
 <%
 logo_url = static.get_value('logo')
@@ -86,9 +89,11 @@ logo_url = static.get_value('logo')
  <button data-location="dashboard_course_in_progress_atp">${_("In progress")}</button>
  <button data-location="dashboard_course_to_do">${_("To do")}</button>
  <button data-location="dashboard_course_finished">${_("Finished")}</button>
+ <!--
+ <button id="cat_all" data-location="all">${_("All")}</button>
+ -->
 </div>
 <button class="sub_menu" data-location="menu_cat_apt" id="nav_replace_before">${_("Categories")} <span class="arrow_button"></span></button>
-<span style="display:block;clear:both;" id="nav_replace_after"></span>
 <div id="menu_cat_apt">
  <button id="cat_fond" data-location="fundamental">${_("Fundamental")}</button>
  <button id="cat_solu" data-location="oursolutions">${_("Our solutions")}</button>
@@ -96,11 +101,23 @@ logo_url = static.get_value('logo')
  <button id="cat_reg" data-location="regulatory">${_("Regulatory")}</button>
  <button id="cat_all" data-location="all">${_("All")}</button>
 </div>
+  % if user.is_authenticated():
+  <a href="/u/${request.user.username}">${_("My account")}</a>
+  % else:
+  <a href="">${_("My account")}</a>
+  % endif
+<span style="display:block;clear:both;" id="nav_replace_after"></span>
 % endif
 </div>
 % if not "/dashboard" in request.path:
-<a href="/dashboard" class="sub_picto sub_other_menu" id="sub_to_dashboard" style="width: 260px;border-left: 1px solid #fff;height: 90%;
-margin-top: 5px; margin-bottom: 5px;"><img src="${static.url('images/home.png')}" style="height:40px; margin-top: 20px;"/></a>
+<a
+  % if user.is_authenticated():
+    href="/u/${request.user.username}"
+  % else:
+    href=""
+  % endif
+id="sub_to_dashboard_account">${_("My account")}</a>
+<a href="/dashboard" class="sub_picto sub_other_menu" id="sub_to_dashboard" ><img src="${static.url('images/home.png')}" style="height:40px; margin-top: 20px;"/></a>
 % endif
 <span style="display:block;clear:both;"></span>
 </section>

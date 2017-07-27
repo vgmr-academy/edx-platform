@@ -104,7 +104,7 @@ class DarkLangView(View):
         """
         message = None
         show_refresh_message = False
-
+        #microsite
         preview_lang = request.POST.get(LANGUAGE_INPUT_FIELD, '')
         if not preview_lang.strip():
             message = _('Language code not provided')

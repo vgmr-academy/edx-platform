@@ -44,6 +44,7 @@ from social.apps.django_app import utils as social_utils
 from social.backends import oauth as social_oauth
 from social.exceptions import AuthException, AuthAlreadyAssociated
 
+
 from edxmako.shortcuts import render_to_response, render_to_string
 
 from util.enterprise_helpers import data_sharing_consent_requirement_at_login
@@ -755,7 +756,6 @@ def dashboard(request):
         )
     else:
         redirect_message = ''
-
     context = {
         'enrollment_message': enrollment_message,
         'redirect_message': redirect_message,
@@ -788,7 +788,7 @@ def dashboard(request):
         'programs_by_run': programs_by_run,
         'show_program_listing': ProgramsApiConfig.current().show_program_listing,
         'disable_courseware_js': True,
-        'display_course_modes_on_dashboard': enable_verified_certificates and display_course_modes_on_dashboard,
+        'display_course_modes_on_dashboard': enable_verified_certificates and display_course_modes_on_dashboard
     }
 
     ecommerce_service = EcommerceService()

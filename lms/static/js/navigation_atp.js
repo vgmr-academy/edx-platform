@@ -2,8 +2,20 @@ function toggleNav() {
  $('.sub_menu').click(function(){
   var This = $(this);
   var data = This.data('location');
+  var other_location = $('.sub_menu').not(this).data('location');
+  $('#'+other_location).attr('style','');
   $('#'+data).toggle();
  })
+
+ $(document).bind('click', function(e) {
+   if(!$(e.target).is('.sub_menu')) {
+     $('.sub_menu').each(function(){
+       var This = $(this);
+       var data = This.data('location');
+       $('#'+data).attr('style','');
+     })
+   }
+ });
  $('#menu_module_apt').find('button').click(function(){
   var This = $(this);
   var data = This.data('location');
@@ -94,7 +106,7 @@ function toggleNav() {
 function navChange() {
  var width = $(window).width();
  width = parseInt(width);
- if(width <= 640) {
+ if(width <= 926) {
   $('#atp_menu_mobile').click(function(){
     $('#sub_menu').toggle();
   })

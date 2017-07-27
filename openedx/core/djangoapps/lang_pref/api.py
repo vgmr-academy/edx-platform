@@ -7,7 +7,6 @@ from django.conf import settings
 from django.utils.translation import ugettext as _
 from openedx.core.djangoapps.dark_lang.models import DarkLangConfig
 
-
 # Named tuples can be referenced using object-like variable
 # deferencing, making the use of tuples more readable by
 # eliminating the need to see the context of the tuple packing.
@@ -30,6 +29,7 @@ def released_languages():
         [Language(code='en', name=u'English'), Language(code='fr', name=u'Français')]
 
     """
+
     released_language_codes = DarkLangConfig.current().released_languages_list
     default_language_code = settings.LANGUAGE_CODE
 

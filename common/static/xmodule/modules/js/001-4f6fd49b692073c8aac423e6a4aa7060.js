@@ -198,9 +198,6 @@
 
                 // For embedded circuit simulator exercises in 6.002x
                 window.update_schematics();
-                //$('#course-content').hide()
-                $('.course-wrapper').css('overflow','hidden');
-                $('#course-content').css('margin-left','-100%');
                 this.position = newPosition;
                 this.toggleArrows();
                 this.hookUpContentStateChangeEvent();
@@ -209,17 +206,25 @@
                 sequenceLinks.click(this.goto);
                 this.path.text(this.el.find('.nav-item.active').data('path'));
                 this.sr_container.focus();
-                //$('#course-content').fadeIn(1500);
-                /*
-                $('#course-content').slideUp(function(){
-                 $('#course-content').slideDown(2000);
-                })
-                */
-                var animate_tma = $('#course-content').animate({'marginLeft':'75px'},1500);
-                $.when(animate_tma).then(function( data, textStatus, jqXHR ) {
-                  $('.course-wrapper').attr('style','');
-	          $('#course-content').attr('style','');
-                });
+                // TMA ATP COURSE SLIDE
+                var accordion = $('.course-index');
+                var course_content = $('#course-content');
+                var wrapper = $('.course-wrapper');
+                var h_a = accordion.height();
+                var h_c = course_content.height() + 91;
+                var dif_h = h_c - h_a;
+                wrapper.css('overflow-x','hidden');
+                if(dif_h > 0) {
+                 accordion.css('margin-bottom',dif_h+'px');
+                }
+                course_content.css('position','absolute');
+                course_content.css('right','-100%');
+  		course_content.animate({'right':'0'},1500,function(){
+    		 course_content.attr('style','');
+    		 accordion.attr('style','');
+    		 wrapper.attr('style','');
+  	        });
+	        // TMA ATP COURSE SLIDE
             }
         };
 

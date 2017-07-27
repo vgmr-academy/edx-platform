@@ -2122,7 +2122,7 @@ msgstr "Fermé"
 
 #: common/lib/xmodule/xmodule/capa_base.py
 msgid "Finished"
-msgstr "Terminé"
+msgstr "Terminés"
 
 #: common/lib/xmodule/xmodule/capa_base.py
 msgid "Correct or Past Due"
@@ -5348,7 +5348,7 @@ msgstr "Pourcentage des étudiants"
 
 #: lms/djangoapps/class_dashboard/dashboard_data.py
 msgid "Score"
-msgstr "Note"
+msgstr "Score"
 
 #: lms/djangoapps/class_dashboard/dashboard_data.py
 msgid "problems"
@@ -22124,3 +22124,225 @@ msgid ""
 msgstr ""
 "Une nouvelle révision a été créée : Fusion entre la révision #%(r1)d et la "
 "révision #%(r2)d"
+
+#ATP TMA
+msgid "MY ACCOUNT"
+msgstr "MON COMPTE"
+
+msgid "My account"
+msgstr "Mon compte"
+
+msgid "my account"
+msgstr "mon compte"
+
+msgid "MY COURSE COVERS"
+msgstr "MES MODULES"
+
+msgid "my course covers"
+msgstr "mes modules"
+
+msgid "My course covers"
+msgstr "Mes modules"
+
+msgid "IN PROGRESS"
+msgstr "EN COURS"
+
+msgid "in progress"
+msgstr "en cours"
+
+msgid "In progress"
+msgstr "En cours"
+
+msgid "TO DO"
+msgstr "À RÉALISER"
+
+msgid "to do"
+msgstr "à réaliser"
+
+msgid "To do"
+msgstr "À réaliser"
+
+msgid "CATEGORIES"
+msgstr "CATÉGORIES"
+
+msgid "Categories"
+msgstr "Catégories"
+
+msgid "categories"
+msgstr "catégories"
+
+msgid "FUNDAMENTAL"
+msgstr "FONDAMENTAUX"
+
+msgid "Fundamental"
+msgstr "Fondamentaux"
+
+msgid "fundamental"
+msgstr "fondamentaux"
+
+msgid "OUR SOLUTIONS"
+msgstr "NOS SOLUTIONS"
+
+msgid "Our solutions"
+msgstr "Nos solutions"
+
+msgid "our solutions"
+msgstr "nos solutions"
+
+msgid "SALES APPROACH"
+msgstr "DÉMARCHE COMMERCIALE"
+
+msgid "Sales approach"
+msgstr "Démarche commerciale"
+
+msgid "sale approach"
+msgstr "démarche commerciale"
+
+msgid "REGULATORY"
+msgstr "RÈGLEMENTAIRE"
+
+msgid "Regulatory"
+msgstr "Règlementaire"
+
+msgid "regulatory"
+msgstr "règlementaire"
+
+msgid "Develop your knowledge and skills on asset management: financial culture and products and offers marketed"
+msgstr "Développer vos connaissances et vos compétences sur la gestion d'actifs: culture financière et produits & offres commercialisés"
+
+msgid "To follow a training module, select the course cover of your choice"
+msgstr "Pour suivre un module de formation, séléctionnez la vignette de votre choix !"
+
+msgid "Each training module belongs to a category and can take"
+msgstr "Chaque module de formation appartient à une catégorie et peu prendre"
+
+msgid "different formats"
+msgstr "différents formats"
+
+msgid "modules"
+msgstr "les modules"
+
+msgid "Find all the information related to the training on the thumbnails below"
+msgstr "Retrouvez toutes les informations liées à la formation sur les vignettes ci dessous"
+
+msgid "You will be able to see the time"
+msgstr "Vous pourrez ainsi voir le temps"
+
+msgid "that training will take you"
+msgstr "que la formation vous prendra"
+
+msgid "if it is compulsory and the different types of content"
+msgstr "si elle est obligatoire et les différents types de contenus qui la compose"
+
+msgid "categories of training modules"
+msgstr "catégories des modules de formation"
+
+msgid "Your training modules are classified into 4 categories"
+msgstr "Vos modules de formation sont classés en 4 catégories"
+
+msgid "know the essentials of asset management"
+msgstr "connaitre les essentiels de la gestion d'actifs"
+
+msgid "Improve your personal skills"
+msgstr "Améliorer vos compétences personnelles"
+
+msgid "discover products and commercial offers"
+msgstr "découvrir les produits et les offres commercialités"
+
+msgid "Understanding regulatory decisions"
+msgstr "Appréhender les décisions règlementaires"
+
+msgid "format of modules"
+msgstr "format des modules"
+
+msgid "Each module is composed of different interactive formats"
+msgstr "Chaque module est composé de différents formats interactifs"
+
+msgid "texts & illustrations"
+msgstr "textes & illustrations"
+
+msgid "educational videos"
+msgstr "vidéos pédagogiques"
+
+msgid "Course covers in progress"
+msgstr "modules en cours"
+
+msgid "Course covers to do"
+msgstr "modules à réaliser"
+
+msgid "You have started the training module"
+msgstr "Vous avez commencé le module de formation"
+
+msgid "To complete your course"
+msgstr "Pour compléter votre parcours"
+
+msgid "you can click on"
+msgstr "vous pouvez cliquer sur"
+
+msgid "More course covers"
+msgstr "Plus de modules"
+
+msgid "You have not yet started the training course cover"
+msgstr "Vous n'avez pas encore commencé le module de formation"
+
+msgid "Click on"
+msgstr "Cliquer sur"
+
+msgid "Show more"
+msgstr "En savoir plus"
+
+msgid "to discover the course cover"
+msgstr "pour découvrir le module"
+
+msgid "Course covers finished"
+msgstr "Modules terminés"
+
+msgid "You have completed the training course cover"
+msgstr "Vous avez complété le module de formation"
+
+msgid "to access your result"
+msgstr "pour accéder à votre résultat"
+
+msgid "welcome to"
+msgstr "bienvenue sur votre"
+
+msgid "Restart"
+msgstr "En savoir +"
+
+msgid "Download the certificate"
+msgstr "Télécharger le certificat"
+
+msgid "To start"
+msgstr "Commencer"
+
+msgid "Starting date"
+msgstr "Date de début"
+
+msgid "Ending date"
+msgstr "Date de fin"
+
+
+msgid "Legal notices"
+msgstr "Mentions légales"
+
+msgid "Results"
+msgstr "Résultats"
+
+msgid "Back to course about page"
+msgstr "Retour à la fiche du module"
+
+msgid "To end this course and get your score, you must first finish all the units."
+msgstr "Pour clore ce module et accéder à votre résultat, vous devez compléter chacune des parties du plan"
+
+msgid "You have start the course "
+msgstr "Vous avez commencé le module"
+
+msgid "Congratulation"
+msgstr "Félicitations"
+
+msgid "You have acomplished the course "
+msgstr "Vous avez complété le module de formation "
+
+msgid "Your total score :"
+msgstr "Votre score est de :"
+

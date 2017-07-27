@@ -155,20 +155,6 @@ courseware = static.get_value('css_overrides_courseware')
 % else:
   <link rel="stylesheet" type="text/css" href="${static.url(courseware)}" />
 % endif
-<style>
-.wrap-instructor-info {
-  margin: 0;
-}
-.wrap-instructor-info .instructor-info-action:hover,.wrap-instructor-info .instructor-info-action,.wrap-instructor-info .instructor-info-action:focus {
-  color: #fff;
-  background-color: transparent;
-  float: none;
-  text-align: left;
-  margin-left: 0;
-  padding-left: 0;
-  padding-bottom: 0;
-}
-</style>
 <div id="tma_course_top">
   <div id="tma_course_ariane">
     <a href="/courses/${course.id}/about">< Retour à la fiche du module</a>
@@ -326,10 +312,9 @@ var picto = '<div id="score_picto"><img src="" class="svg"/></div>';
 var first_par = '<div id="score_first_para">${_("You have acomplished the course ")}<br>« ${course.display_name_with_default} ».</div>';
 var second_par = '<div id="second_par_score">${_("Sadly you have not achieved the minimum score wanted for this course")}</div>';
 var score_div = '<div id="score_div_info"><span>${_("Your total score :")}</span><span id="insert_score"></span></div>';
-var button = '<div id="score_button"><button>${_("Restart the course")}</button></div>';
+var button = '<div id="score_button"><button>${_("Download the certificate")}</button></div>';
 
 function insert_info_score() {
-  $('#course-content').hide();
   $('#course-content').html('');
   $('#course-content').append(template_and_title);
   $('#final_score').append(picto);
@@ -338,6 +323,18 @@ function insert_info_score() {
   $('#final_score').append(second_par);
   $('#final_score').append(score_div);
   $('#final_score').append(button);
+  $('#score_button').find('button').click(function(){
+    var course_id = '${course_id}';
+    var url = '/api/atp/check/certificate/${course_id}/';
+    $.ajax({
+      url:url,
+      type:'GET',
+      dataType:'json',
+      success:function(data){
+        window.open(data.certificate_url,'_self');
+      }
+    })
+  })
 }
 
 function returnScore() {
@@ -456,7 +453,13 @@ $('#holding-section-result').click(function(){
   insert_info_score();
 })
 % endif
-
-/* transfrom svg to img */
-
+function ariane_height() {
+  var h1_h = $('#tma_course_top').find('h1').height();
+  $('#tma_course_top').css('height',h1_h+'px');
+  $('#tma_course_top').find('h1').css('margin-top','-'+(h1_h/2)+'px');
+}
+ariane_height();
+$(window).resize(function(){
+  ariane_height();
+})
 </script>
