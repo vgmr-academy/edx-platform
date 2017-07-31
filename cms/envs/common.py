@@ -1008,7 +1008,7 @@ INSTALLED_APPS = (
     'database_fixups',
 
     # Microsite manager
-    'microsite_manager',
+    #'microsite_manager',
 )
 
 
