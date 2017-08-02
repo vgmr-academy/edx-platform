@@ -62,9 +62,11 @@ class MicrositeDetail(TimeStampedModel):
             return {'data': '',
                     'error_msg':'The requested Microsite does not exist.'}
 
+"""
 class MongoMicrosites(Document):
     microsite_id = StringField(required=True, unique=True)
     privacy = StringField(required=False)
     faq = StringField(required=False)
     tos = StringField(required=False)
     honor = StringField(required=False)
+"""
