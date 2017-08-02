@@ -23,7 +23,7 @@ from microsite_configuration.models import (
     MicrositeTemplate
 )
 
-from .models import MicrositeDetail, MongoMicrosites
+from .models import MicrositeDetail
 
 
 @login_required
@@ -429,7 +429,7 @@ def validate_data(microsite_details):
         return True
     else:
         return False
-
+"""
 def static_content(request,microsite_id):
     if len(MongoMicrosites.objects.filter(microsite_id=microsite_id)) != 0:
         microsite = MongoMicrosites.objects.get(microsite_id=microsite_id)
@@ -459,3 +459,4 @@ def add_microsite_content(request):
     setattr(microsite, page, page_content)
     microsite.save()
     return JsonResponse({'content':getattr(microsite, page)})
+"""
