@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 from django.db import models
 #from mongoengine import *
 from model_utils.models import TimeStampedModel
-connect('edxapp')
+#connect('edxapp')
 
 class MicrositeDetail(TimeStampedModel):
     name = models.CharField(max_length=250,unique=True)
