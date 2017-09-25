@@ -25,7 +25,7 @@ from microsite_configuration.models import (
     MicrositeTemplate
 )
 
-from .models import MicrositeDetail, MongoMicrosites, MicrositeAdminManager
+from .models import MicrositeDetail, MicrositeAdminManager
 
 from django.http import QueryDict
 
@@ -453,36 +453,6 @@ def validate_data(microsite_details):
         return True
     else:
         return False
-
-def static_content(request,microsite_id):
-    if len(MongoMicrosites.objects.filter(microsite_id=microsite_id)) != 0:
-        microsite = MongoMicrosites.objects.get(microsite_id=microsite_id)
-        return {'faq': microsite.faq,
-                'tos': microsite.tos,
-                'privacy':microsite.privacy,
-                'honor': microsite.honor}
-    else:
-        return {'faq': 'Coming Soon',
-                'tos': 'Coming Soon',
-                'privacy':'Coming Soon',
-                'honor': 'Coming Soon'}
-
-
-@csrf_exempt
-@require_POST
-def add_microsite_content(request):
-    microsite_id = request.POST['microsite_id']
-    page_content = request.POST['microsite_content']
-    page = request.POST['page']
-
-    if len(MongoMicrosites.objects.filter(microsite_id=microsite_id)) != 0:
-        microsite = MongoMicrosites.objects.get(microsite_id=microsite_id)
-    else:
-        microsite = MongoMicrosites(microsite_id=microsite_id)
-
-    setattr(microsite, page, page_content)
-    microsite.save()
-    return JsonResponse({'content':getattr(microsite, page)})
 
 def get_microsite_admin_manager(microsite):
     context = {}

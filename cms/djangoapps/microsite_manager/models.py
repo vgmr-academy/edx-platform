@@ -1,6 +1,5 @@
 from __future__ import unicode_literals
 from django.db import models
-from mongoengine import *
 from model_utils.models import TimeStampedModel
 from django.contrib.auth.models import User
 from microsite_configuration.models import (
