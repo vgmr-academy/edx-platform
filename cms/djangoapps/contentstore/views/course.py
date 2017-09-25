@@ -104,6 +104,20 @@ from xmodule.tabs import CourseTab, CourseTabList, InvalidTabsException
 
 # GEOFFREY
 from microsite_manager.models import MicrositeDetail
+from lms.djangoapps.instructor.enrollment import enroll_email,get_email_params
+from lms.djangoapps.instructor.views.api import students_update_enrollment_cms,students_update_enrollment
+from lms.djangoapps.courseware.courses import get_course_by_id
+from openedx.core.djangoapps.content.course_overviews.models import CourseOverview
+from student.models import UserPreprofile,CourseEnrollment,User
+from opaque_keys.edx.locations import SlashSeparatedCourseKey
+import csv
+import io
+from microsite_configuration.models import (
+    Microsite,
+    MicrositeOrganizationMapping,
+    MicrositeTemplate
+)
+from microsite_manager.models import MicrositeAdminManager
 #GEOFFREY
 log = logging.getLogger(__name__)
 
@@ -1124,14 +1138,6 @@ def settings_handler(request, course_key_string):
 @require_http_methods(("GET", "PUT", "POST"))
 @expect_json
 def create_handler(request, course_key_string):
-    from openedx.core.djangoapps.content.course_overviews.models import CourseOverview
-    from lms.djangoapps.courseware.courses import get_course_by_id
-    from microsite_manager.models import MicrositeAdminManager
-    from microsite_configuration.models import (
-        Microsite,
-        MicrositeOrganizationMapping,
-        MicrositeTemplate
-    )
     check_admin_microsite = True
     user_org = ''
     try:
@@ -1166,8 +1172,7 @@ def create_handler(request, course_key_string):
 @expect_json
 def about_handler(request, course_key_string):
     # appel de bibliotheque
-    from openedx.core.djangoapps.content.course_overviews.models import CourseOverview
-    from lms.djangoapps.courseware.courses import get_course_by_id
+
     # GET course_key from course_key_string
     course_key = CourseKey.from_string(course_key_string)
     overview = CourseOverview.get_from_id(course_key)
@@ -1186,8 +1191,6 @@ def about_handler(request, course_key_string):
 def manage_handler(request, course_key_string):
     if request.method == "GET":
         # appel de bibliotheque
-        from openedx.core.djangoapps.content.course_overviews.models import CourseOverview
-        from lms.djangoapps.courseware.courses import get_course_by_id
         # GET course_key from course_key_string
         course_key = CourseKey.from_string(course_key_string)
         overview = CourseOverview.get_from_id(course_key)
@@ -1206,6 +1209,7 @@ def manage_handler(request, course_key_string):
 
 def session_manager_handler(msg,emails,org):
     grant_type = 'client_credentials'
+    # TODO : Remove all hardcoded and try except when SEM is finalized
     """
     credentials = {
         'dev':{
@@ -1214,7 +1218,7 @@ def session_manager_handler(msg,emails,org):
         }
     }
     """
-    credentials = settings.FEATURES.get('credentials')
+    credentials = settings.FEATURES.get('SEM_CREDENTIALS')
     prod = settings.FEATURES.get('VM_STATUS')
     try:
         client_id = credentials.get(prod).get(org).get('client_id')
@@ -1222,7 +1226,10 @@ def session_manager_handler(msg,emails,org):
     except:
         client_id = '76db53b7-e23e-40f5-9b75-d472d48dbc70'
         client_secret = '066cdb10-a092-4327-b9be-f2b4fb95ca1e'
-    urls = ['https://ppr-session-manager.amundi.com/v2/token','https://ppr-session-manager.amundi.com/v2/api/import','https://ppr-session-manager.amundi.com/v2/api/users/import']
+    try:
+        urls = settings.FEATURES.get('SEM_ENDPOINTS')
+    except:
+        urls = ["https://ppr-session-manager.amundi.com/v2/token","https://ppr-session-manager.amundi.com/v2/api/import","https://ppr-session-manager.amundi.com/v2/api/users/import"]
 
     redirect_uri = 'http://'
     msg = 'lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore lorem ipsum dolor sit amet consectetur adipisci elit'
@@ -1260,16 +1267,6 @@ def session_manager_handler(msg,emails,org):
 @require_http_methods(("GET", "PUT", "POST"))
 @expect_json
 def invite_handler(request, course_key_string):
-    # appel de bibliotheque
-    from lms.djangoapps.instructor.enrollment import enroll_email,get_email_params
-    from lms.djangoapps.instructor.views.api import students_update_enrollment_cms,students_update_enrollment
-    from lms.djangoapps.courseware.courses import get_course_by_id
-    from openedx.core.djangoapps.content.course_overviews.models import CourseOverview
-    from student.models import UserPreprofile,CourseEnrollment,User
-    from opaque_keys.edx.locations import SlashSeparatedCourseKey
-    import csv
-    import io
-    # if GET
     if request.method == "GET":
         #GET COURSE KEY
         course_key = CourseKey.from_string(course_key_string)

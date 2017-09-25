@@ -54,9 +54,9 @@
   var _clone = _.clone;
   var _each = _.each;
   var _pick = _.pick;
-  var _contains = _.contains;
+  var _contains = _.includes;
   var _isEmpty = _.isEmpty;
-  var _pairs = _.pairs;
+  var _pairs = _.pairs || _.toPairs;
   var _invert = _.invert;
   var _isArray = _.isArray;
   var _isFunction = _.isFunction;
@@ -208,13 +208,13 @@
        You can override the default state by extending this class or specifying
        them in `options.queryParams` object hash to the constructor.
 
-       @property {string} currentPage = "page"
-       @property {string} pageSize = "per_page"
-       @property {string} totalPages = "total_pages"
-       @property {string} totalRecords = "total_entries"
-       @property {string} sortKey = "sort_by"
-       @property {string} order = "order"
-       @property {string} directions = {"-1": "asc", "1": "desc"} - A map for
+       @property {string|function():string} currentPage = "page"
+       @property {string|function():string} pageSize = "per_page"
+       @property {string|function():string} totalPages = "total_pages"
+       @property {string|function():string} totalRecords = "total_entries"
+       @property {string|function():string} sortKey = "sort_by"
+       @property {string|function():string} order = "order"
+       @property {Object} directions = {"-1": "asc", "1": "desc"} - A map for
        translating a PageableCollection#state.order constant to the ones your
        server API accepts.
     */
@@ -312,7 +312,9 @@
       models = models.slice();
 
       if (mode != "server" && state.totalRecords == null && !_isEmpty(models)) {
-        state.totalRecords = models.length;
+        // Can't use models.length naively here because Backbone.Collection will
+        // dedupe by `idAttribute`
+        state.totalRecords = this.length;
       }
 
       this.switchMode(mode, _extend({fetch: false,
@@ -338,9 +340,7 @@
         // make sure the models in the current page and full collection have the
         // same references
         if (!_isEmpty(models)) {
-          this.reset(models, _extend({silent: true}, options));
           this.getPage(state.currentPage);
-          models.splice.apply(models, [0, models.length].concat(this.models));
         }
       }
 
@@ -602,7 +602,7 @@
         state.lastPage = firstPage === 0 ? max(0, totalPages - 1) : totalPages || firstPage;
 
         if (mode == "infinite") {
-          if (!links[currentPage + '']) {
+          if (!links[currentPage]) {
             throw new RangeError("No link found for page " + currentPage);
           }
         }
@@ -933,7 +933,7 @@
       if (offset < 0) {
         throw new RangeError("`offset must be > 0`");
       }
-      offset = finiteInt(offset);
+      offset = finiteInt(offset, "offset");
 
       var page = floor(offset / this.state.pageSize);
       if (this.state.firstPage !== 0) page++;
@@ -1037,6 +1037,8 @@
        new code is encouraged to overridePageableCollection#parseState
        andPageableCollection#parseRecords instead.
 
+       @fires PageableCollection#pageable:state:change
+
        @param {Object} resp The deserialized response data from the server.
        @param {Object} the options for the ajax request
 
@@ -1044,7 +1046,10 @@
     */
     parse: function (resp, options) {
       var newState = this.parseState(resp, _clone(this.queryParams), _clone(this.state), options);
-      if (newState) this.state = this._checkState(_extend({}, this.state, newState));
+      if (newState) {
+        this.state = this._checkState(_extend({}, this.state, newState));
+        if (!(options || {}).silent) this.trigger("pageable:state:change", this.state);
+      }
       return this.parseRecords(resp, options);
     },
 
@@ -1170,47 +1175,49 @@
       options.url = url;
       options.data = data;
 
-      // map params except directions
+      // pick the appropriate query param keys to map according to the mode
       var queryParams = this.mode == "client" ?
-        _pick(this.queryParams, "sortKey", "order") :
-        _omit(_pick(this.queryParams, _keys(PageableProto.queryParams)),
-              "directions");
+          _pick(this.queryParams, "sortKey") :
+          _omit(_pick(this.queryParams, _keys(PageableProto.queryParams)),
+                "order", "directions", "totalPages", "totalRecords");
 
-      var thisCopy = _.clone(this);
-      _.each(queryParams, function (v, k) {
-        v = _isFunction(v) ? v.call(thisCopy) : v;
+      // map the query params to the data object used by the underlying ajax lib
+      // to construct the query string
+      _each(queryParams, function (v, k) {
+        v = _isFunction(v) ? v.call(this) : v;
         if (state[k] != null && v != null && _.isUndefined(data[v])) {
           data[v] = state[k];
         }
       }, this);
 
-      // fix up sorting parameters
-      var i;
-      if (state.sortKey && state.order) {
-        var o = _isFunction(queryParams.order) ?
-          queryParams.order.call(thisCopy) :
-          queryParams.order;
-          if (!_isArray(state.order)) {
-              data[o] = this.queryParams.directions[state.order + ""];
+      var sortKey = _isFunction(this.queryParams.sortKey) ?
+          this.queryParams.sortKey.call(this) :
+          this.queryParams.sortKey;
+
+      var order = _isFunction(this.queryParams.order) ?
+          this.queryParams.order.call(this) :
+          this.queryParams.order;
+
+      if (sortKey != null && state.sortKey != null &&
+          order != null && state.order != null) {
+        if (_isArray(state.order)) {
+          data[order] = [];
+          for (var i = 0; i < state.order.length; i++) {
+            data[order].push(this.queryParams.directions[state.order[i]]);
           }
-          else {
-              data[o] = [];
-              for (i = 0; i < state.order.length; i += 1) {
-                  data[o].push(this.queryParams.directions[state.order[i]]);
-              }
-          }
+        }
+        else {
+          data[order] = this.queryParams.directions[state.order + ""];
+        }
       }
-      else if (!state.sortKey) delete data[queryParams.order];
 
       // map extra query parameters
       var extraKvps = _pairs(_omit(this.queryParams,
-                                   _keys(PageableProto.queryParams))),
-          kvp,
-          v;
-      for (i = 0; i < extraKvps.length; i++) {
-        kvp = extraKvps[i];
-        v = kvp[1];
-        v = _isFunction(v) ? v.call(thisCopy) : v;
+                                   _keys(PageableProto.queryParams)));
+      for (var i = 0; i < extraKvps.length; i++) {
+        var kvp = extraKvps[i];
+        var v = kvp[1];
+        v = _isFunction(v) ? v.call(this) : v;
         if (v != null) data[kvp[0]] = v;
       }
 
