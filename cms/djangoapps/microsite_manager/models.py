@@ -8,7 +8,6 @@ from microsite_configuration.models import (
     MicrositeOrganizationMapping,
     MicrositeTemplate
 )
-connect('edxapp')
 
 class MicrositeDetail(TimeStampedModel):
     name = models.CharField(max_length=250,unique=True)
@@ -75,9 +74,3 @@ class MicrositeAdminManager(TimeStampedModel):
     user = models.ForeignKey(User)
     microsite = models.ForeignKey(Microsite)
 
-class MongoMicrosites(Document):
-    microsite_id = StringField(required=True, unique=True)
-    privacy = StringField(required=False)
-    faq = StringField(required=False)
-    tos = StringField(required=False)
-    honor = StringField(required=False)
