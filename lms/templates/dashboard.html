@@ -30,6 +30,14 @@ from courseware.courses import (
   cert_name_long = settings.CERT_NAME_LONG
 %>
 
+<!--MODIF AURELIEN-->
+<style>
+#dashboard_header_content h1 span:last-child, #dashboard_header_content h1 span:first-child{
+font-size:50px !important;
+}
+</style>
+
+
 
 <%block name="pagetitle">${_("Dashboard")}</%block>
 <%block name="bodyclass">view-dashboard is-authenticated</%block>
@@ -112,10 +120,10 @@ url_array.append('images/4environement.jpg')
 url_image = random.choice(url_array)
 %>
 <style>
+#dashboard_header_atp {
+  background-image: url('${static.url(url_image)}');
+}
 @media(min-width:1600px) {
-  #dashboard_header_atp {
-    background-image: url('${static.url(url_image)}');
-  }
   /* course cards actions */
   #dashboard_tma #tuto_module_1 p {
     margin-bottom: 0;
@@ -300,47 +308,47 @@ url_image = random.choice(url_array)
 	<!-- baniere  -->
 	<section id="dashboard_header_atp">
 		<div id="dashboard_header_content">
-			<p>${_("welcome to")}</p>
-			<h1>
+			<p>${_("Welcome on your")}</p>
+			<h1 style="">
 				<span>${_("training")}</span>
 				<span>${_("platform")}</span>
 			</h1>
-			<p>${_("Develop your knowledge and skills on asset management: financial culture and products and offers marketed")}</p>
-			<button class="tuto_action">${_("Show more")}</button> <span id="atp_tuto_arrow_up" class="arrow-right"></span>
+			<p>${_("Develop your knowledge and skills on asset management: financial culture and offers.")}</p>
+			<button class="tuto_action">${_("More")} <span id="atp_tuto_arrow_up" class="arrow-right"></span></button>
 		</div>
 	</section>
         <!-- tuto  -->
 	<section id="dashboard_tuto_atp">
 		<!-- module 1 -->
 		<div class="dashboard_tuto_atp" id="tuto_module_1">
-			<p>${_("To follow a training module, select the course cover of your choice")}</p>
+			<p>${_("To follow a training module, select the thumbnail of your choice!")}</p>
 			<p style="margin-top: 0;margin-bottom: 0;">${_("Each training module belongs to a category and can take")}</p>
 			<p>${_("different formats")}.</p>
 		</div>
 		<!-- module 2 -->
                 <div class="dashboard_tuto_atp">
-			<h3>${_("modules")}</h3>
-			<p style="margin-bottom:5px;">${_("Find all the information related to the training on the thumbnails below")}. ${_("You will be able to see the time")}</p>
-			<p style="margin-top:5px;">${_("that training will take you")}, ${_("if it is compulsory and the different types of content")}.</p>
+			<h3>${_("Training modules")}</h3>
+			<p style="margin-bottom:5px;">${_("Find all the information related to the training on the thumbnails below")}: ${_("timing of the module")},</p>
+			<p style="margin-top:5px;">${_("if the module is mandatory or not and formats of the module")}.</p>
 			<img src="${static.url('images/cartes.png')}" id="img_dashboard_tuto_cartes"/>
                 </div>
 		<!-- module 3 -->
                 <div class="dashboard_tuto_atp">
-			<h3>${_("categories of training modules")}</h3>
+			<h3>${_("TRAINING MODULES CATEGORIES")}</h3>
 			<p>${_("Your training modules are classified into 4 categories")}:</p>
 			<ul>
 				<li id="dashboard_tuto_atp_1">
-					<h4>${_("fundamental")}:</h4>
-					<p>${("know the essentials of asset management")}</p>
+					<h4>${_("fundamentals")}:</h4>
+					<p>${_("Know the essentials of financial markets")}</p>
 				</li>
                                 <li id="dashboard_tuto_atp_2">
-                                        <h4>${_("Sales approach")}:</h4>
-                                        <p>${_("Improve your personal skills")}</p>
+                                        <h4>${_("Business approach")}:</h4>
+                                        <p>${_("Improve your soft skills")}</p>
                                 </li>
 				<span style="clear:left; display: block;width:100%;height:0;padding:0;margin:0;"></span>
                                 <li id="dashboard_tuto_atp_3">
                                         <h4>${_("our solutions")}:</h4>
-                                        <p>${_("discover products and commercial offers")}</p>
+                                        <p>${_("Learn about products and offers that are sold")}</p>
                                 </li>
                                 <li id="dashboard_tuto_atp_4">
                                         <h4>${_("regulatory")}:</h4>
@@ -351,29 +359,33 @@ url_image = random.choice(url_array)
                 </div>
 		<!-- module 4 -->
                 <div class="dashboard_tuto_atp last_tuto_atp" style="border-bottom: none;">
-			<h3>${_("format of modules")}</h3>
-			<p>${_("Each module is composed of different interactive formats")} :</p>
-			<p>${_("texts & illustrations")}, ${_("educational videos")}, ${_("quiz")}, ${_("etc")}.</p>
+			<h3>${_("Modules format")}</h3>
+			<p>${_("Each module is composed of different interactive formats:")}</p>
+			<p>${_("texts & images")}, ${_("pedagogical videos")}, ${_("quizzes")}, ${_("pdf")}, ${_("etc")}.</p>
 			<div class="dashboard_picto_tuto_tma">
 				<div><img src="${static.url('images/video.svg')}" class="svg"/><span>${_("video")}</span></div>
 				<div><img src="${static.url('images/quiz.svg')}" class="svg"/><span>${_("quiz")}</span></div>
                                 <div><img src="${static.url('images/webzine.svg')}" class="svg"/><span>${_("webzine")}</span></div>
                                 <div><img src="${static.url('images/seriousgame.svg')}" class="svg"/><span>${_("serious game")}</span></div>
-                                <div><img src="${static.url('images/pdf.svg')}" class="svg"/><span>${_("document pdf")}</span></div>
-                                <div><img src="${static.url('images/testes&images.svg')}" class="svg"/><span>${_("textes & images")}</span></div>
+                                <div><img src="${static.url('images/pdf.svg')}" class="svg"/><span>${_("pdf")}</span></div>
+                                <div><img src="${static.url('images/testes&images.svg')}" class="svg"/><span>${_("texts & images")}</span></div>
 				<span style="display:block;clear:left;"></span>
 			</div>
                 </div>
 		<!-- button close -->
                 <div class="dashboard_tuto_atp">
-			<button class="tuto_action"><span>${_("Close")}</span></button> <span class="arrow-top"></span>
+			<button class="tuto_action"><span>${_("Close")}</span> <span class="arrow-top"></span></button>
                 </div>
 	</section>
 	<!-- module en cours -->
 	<section  id="dashboard_course_in_progress_atp">
-        	<h2><img src="${static.url('images/encours.svg')}" class="svg"/><span>${_("Course covers in progress")}</span></h2>
-		<p class="first_p">${_("You have started the training module")}. ${_("To complete your course")}, ${_("you can click on")} " ${_("Continue")} ".</p>
+        	<h2><img src="${static.url('images/encours.svg')}" class="svg"/><span>${_("IN PROGRESS TRAINING MODULES")}</span></h2>
+		<p class="first_p">${_("You have started but haven't completed yet the following training modules. To go on, please click on")} &laquo; ${_("Proceed")} &raquo;.</p>
         <!-- course listing -->
+<script>
+console.log('nombres de cours');
+console.log(${len(course_enrollments)});
+</script>
 <% compteur = 0 %>
 % if len(course_enrollments) > 0:
   <ul class="atp_course_listing">
@@ -416,13 +428,13 @@ url_image = random.choice(url_array)
 </div>
 % endif
 % if compteur > 3:
-		<a class="atp_dashboard_active_course">+ ${_("More course covers")}</a>
+		<a class="atp_dashboard_active_course">+ ${_("More modules")}</a>
 % endif
 	</section>
 	<!-- module a realiser -->
 	<section id="dashboard_course_to_do">
-        	<h2><img src="${static.url('images/arealiser.svg')}" class="svg"/><span>${_("Course covers to do")}</span></h2>
-		<p class="first_p">${_("You have not yet started the training course cover")}. ${_("Click on")} " ${_("Show more")} + " ${_("to discover the course cover")}.</p>
+        	<h2><img src="${static.url('images/arealiser.svg')}" class="svg"/><span>${_("TO DO TRAINING MODULES")}</span></h2>
+		<p class="first_p">${_("You haven't started yet the following training modules. Click on")} &laquo; ${_("More information")} &raquo; ${_("to access the training module description")}.</p>
 	<!-- course listing -->
 <% compteur = 0 %>
 % if len(course_enrollments) > 0:
@@ -464,13 +476,13 @@ url_image = random.choice(url_array)
 </div>
 % endif
 % if compteur > 3:
-		<a class="atp_dashboard_active_course">+ ${_("More course covers")}</a>
+		<a class="atp_dashboard_active_course">+ ${_("More modules")}</a>
 % endif
 	</section>
 	<!-- module termine -->
 	<section id="dashboard_course_finished">
-		<h2><img src="${static.url('images/termine.svg')}" class="svg gradient"/><span>${_("Course covers finished")}</span></h2>
-		<p class="first_p">${_("You have completed the training course cover")}.  ${_("Click on")} " ${_("Show more")} + " ${_("to access your result")}.</p>
+		<h2><img src="${static.url('images/termine.svg')}" class="svg gradient"/><span>${_("COMPLETED TRAINING MODULES")}</span></h2>
+		<p class="first_p">${_("You have completed the following training modules. Click on")} &laquo; ${_("More information")} &raquo; ${_("to access your results and scores")}.</p>
 	<!-- course listing -->
 <% compteur = 0 %>
 % if len(course_enrollments) > 0:
@@ -514,7 +526,7 @@ url_image = random.choice(url_array)
 </div>
 % endif
 % if compteur > 3:
-		<a class="atp_dashboard_active_course">+ ${_("More course covers")}</a>
+  <a class="atp_dashboard_active_course">+ ${_("More modules")}</a>
 % endif
 	</section>
 </section>

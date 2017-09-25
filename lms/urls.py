@@ -469,7 +469,7 @@ urlpatterns += (
     ),
     # return list of username for search input of stat_dashboard page
     url(
-        r'^courses/{}/stat_dashboard/get_user/(?P<username>[^/]*)/$'.format(
+        r'^courses/{}/atp/stat_dashboard/get_user/(?P<username>[^/]*)/$'.format(
             settings.COURSE_ID_PATTERN,
         ),
         'lms.djangoapps.instructor.views.instructor_dashboard.get_dashboard_username',

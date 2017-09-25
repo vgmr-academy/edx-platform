@@ -737,12 +737,14 @@ def stat_dashboard(request, course_id):
     user_finished = 0
     #course_structure
     course_structure = get_course_structure(request,course_id)
+    course_usage_key = modulestore().make_course_usage_key(course_key)
+    blocks = get_blocks(request,course_usage_key,depth='all',requested_fields=['display_name','children'])
     for n in row:
         user_id = n.user_id
         users = User.objects.get(pk=user_id)
         username = users.username
         course_progression = get_overall_progress(user_id,course_key)
-        get_persisted = CourseGradeFactory().get_persisted(users, course)
+        get_persisted = CourseGradeFactory().create(users, course)
         if get_persisted:
             num_passed = num_passed + 1
             user_finished = user_finished + 1
@@ -767,9 +769,8 @@ def stat_dashboard(request, course_id):
 
     return render_to_response('courseware/stat.html', context)
 
-@ensure_csrf_cookie
+
 @login_required
-@require_GET
 def get_dashboard_username(request,course_id,username):
     course_key = SlashSeparatedCourseKey.from_deprecated_string(course_id)
     row = CourseEnrollment.objects.all().filter(course_id=course_key)
@@ -785,9 +786,8 @@ def get_dashboard_username(request,course_id,username):
 
     return response
 
-@ensure_csrf_cookie
+
 @login_required
-@require_GET
 def stat_dashboard_username(request, course_id, username):
     try:
         # get users info
@@ -889,40 +889,42 @@ def get_course_structure(request, course_id):
     blocks = get_blocks(request,course_usage_key,depth='all',requested_fields=['display_name','children'])
     root = blocks['root']
     blocks_overviews = []
-    children = blocks['blocks'][root]['children']
-    for z in children:
-        q = {}
-        child = blocks['blocks'][z]
-        q['display_name'] = child['display_name']
-        q['id'] = child['id']
-        try:
-            sub_section = child['children']
-            q['children'] = []
-            for s in sub_section:
-                sub_ = blocks['blocks'][s]
-                a = {}
-                a['id'] = sub_['id']
-                a['display_name'] = sub_['display_name']
-                vertical = sub_['children']
-                try:
-                    a['children'] = []
-                    for v in vertical:
-                        unit = blocks['blocks'][v]
-                        w = {}
-                        w['id'] = unit['id']
-                        w['display_name'] = unit['display_name']
-                        try:
-                            w['children'] = unit['children']
-                        except:
-                            w['children'] = []
-                        a['children'].append(w)
-                except:
-                    a['children'] = []
-                q['children'].append(a)
-        except:
-            q['children'] = []
-        blocks_overviews.append(q)
-
+    try:
+        children = blocks['blocks'][root]['children']
+        for z in children:
+            q = {}
+            child = blocks['blocks'][z]
+            q['display_name'] = child['display_name']
+            q['id'] = child['id']
+            try:
+                sub_section = child['children']
+                q['children'] = []
+                for s in sub_section:
+                    sub_ = blocks['blocks'][s]
+                    a = {}
+                    a['id'] = sub_['id']
+                    a['display_name'] = sub_['display_name']
+                    vertical = sub_['children']
+                    try:
+                        a['children'] = []
+                        for v in vertical:
+                            unit = blocks['blocks'][v]
+                            w = {}
+                            w['id'] = unit['id']
+                            w['display_name'] = unit['display_name']
+                            try:
+                                w['children'] = unit['children']
+                            except:
+                                w['children'] = []
+                            a['children'].append(w)
+                    except:
+                        a['children'] = []
+                    q['children'].append(a)
+            except:
+                q['children'] = []
+            blocks_overviews.append(q)
+    except:
+        children = ''
     return blocks_overviews
 
 @login_required

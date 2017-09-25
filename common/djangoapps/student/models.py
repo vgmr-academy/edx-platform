@@ -2381,6 +2381,9 @@ class UserPreprofile(models.Model):
         db_table = "auth_user_preprofile"
 
     email = models.CharField(blank=True, max_length=255, db_index=True)
+    first_name = models.CharField(blank=True, max_length=255, db_index=True)
+    last_name = models.CharField(blank=True, max_length=255, db_index=True)
+    uuid = models.CharField(blank=True, max_length=255, db_index=True)
     level_1 = models.CharField(blank=True, max_length=255, db_index=True)
     level_2 = models.CharField(blank=True, max_length=255, db_index=True)
     level_3 = models.CharField(blank=True, max_length=255, db_index=True)

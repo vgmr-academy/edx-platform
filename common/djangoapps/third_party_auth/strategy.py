@@ -7,6 +7,10 @@ from .pipeline import AUTH_ENTRY_CUSTOM
 from social.backends.oauth import OAuthAuth
 from social.strategies.django_strategy import DjangoStrategy
 
+#MODIF HERE
+import logging
+log = logging.getLogger(__name__)
+
 
 class ConfigurationModelStrategy(DjangoStrategy):
     """

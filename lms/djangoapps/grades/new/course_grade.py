@@ -422,6 +422,35 @@ class CourseGradeFactory(object):
         """
         return len(course_structure) > 0
 
+    def tma_load_persisted_grade(cls, user, course, course_structure):
+
+        """
+        Initializes a CourseGrade object, filling its members with persisted values from the database.
+
+        If the grading policy is out of date, recomputes the grade.
+
+        If no persisted values are found, returns None.
+        """
+        try:
+            persistent_grade = PersistentCourseGrade.read_course_grade(user.id, course.id)
+        except PersistentCourseGrade.DoesNotExist:
+            return None
+        course_grade = CourseGrade(user, course, course_structure)
+
+        current_grading_policy_hash = course_grade.get_grading_policy_hash(course.location, course_structure)
+        if current_grading_policy_hash != persistent_grade.grading_policy_hash:
+            return None
+        else:
+            course_grade._percent = persistent_grade.percent_grade  # pylint: disable=protected-access
+            course_grade._letter_grade = persistent_grade.letter_grade  # pylint: disable=protected-access
+            course_grade.course_version = persistent_grade.course_version
+            course_grade.course_edited_timestamp = persistent_grade.course_edited_timestamp
+
+        course_grade._log_event(log.info, u"load_persisted_grade")  # pylint: disable=protected-access
+
+        return course_grade
+
+
     def get_dict(self):
         # return a dict
 	dict = self.__dict__

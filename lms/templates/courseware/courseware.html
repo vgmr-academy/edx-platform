@@ -157,7 +157,7 @@ courseware = static.get_value('css_overrides_courseware')
 % endif
 <div id="tma_course_top">
   <div id="tma_course_ariane">
-    <a href="/courses/${course.id}/about">< Retour à la fiche du module</a>
+    <a href="/courses/${course.id}/about">< ${_("Back to training module description")}</a>
     % if staff_access and studio_url is not None:
     <br>
     <a class="instructor-info-action studio-view" href="https://${settings.CMS_BASE}/home/">< ${_("Go to studio")}</a>
@@ -406,8 +406,8 @@ var picto_url_inprogress = "${static.url('images/encours.svg')}";
 /* generate results page */
 var template_and_title = '<div id="final_score"><div id="title_result">${_("Results")}</div></div>';
 var picto = '<div id="score_picto"><img src="'+picto_url_inprogress+'" class="svg inprogress"/></div>';
-var first_par = '<div id="score_first_para">${_("You have start the course ")}<br>« ${course.display_name_with_default} ».</div>';
-var second_par = '<div id="second_par_score">${_("To end this course and get your score, you must first finish all the units.")}</div>';
+var first_par = '<div id="score_first_para">${_("You started the training module ")}<br>« ${course.display_name_with_default} ».</div>';
+var second_par = '<div id="second_par_score">${_("To end this training module, you have to access every chapters and finish the validation knowledge test.")}</div>';
 
 function insert_info_score() {
   $('#course-content').hide();
@@ -454,12 +454,47 @@ $('#holding-section-result').click(function(){
 })
 % endif
 function ariane_height() {
-  var h1_h = $('#tma_course_top').find('h1').height();
-  $('#tma_course_top').css('height',h1_h+'px');
-  $('#tma_course_top').find('h1').css('margin-top','-'+(h1_h/2)+'px');
+  var width = $(window).width();
+  if(width > 899) {
+    var h1_h = $('#tma_course_top').find('h1').height();
+    $('#tma_course_top').css('height',h1_h+'px');
+    $('#tma_course_top').find('h1').css('margin-top','-'+(h1_h/2)+'px');
+  }else{
+    $('#tma_course_top').attr('style','');
+    $('#tma_course_top').find('h1').attr('style','');
+  }
 }
 ariane_height();
 $(window).resize(function(){
   ariane_height();
 })
 </script>
+<style>
+#tma_course_ariane span, #tma_course_ariane a, #tma_course_ariane a:hover, #tma_course_ariane a:focus {
+  font-weight: bold;
+}
+@media(max-width:1288px) {
+  #tma_course_top h1 {
+    left: calc(95% - 300px);
+    right: 0;
+  }
+}
+@media(max-width:955px) {
+  #tma_course_top h1 {
+    left: calc(100% - 300px);
+    right: 0;
+  }
+}
+@media(max-width:899px) {
+  #tma_course_top h1 {
+    position: relative;
+    width: 100%;
+    left: 0;
+    right: 0;
+    margin: 0;
+  }
+  #tma_course_ariane {
+    position: relative;
+  }
+}
+</style>

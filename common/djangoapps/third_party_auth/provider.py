@@ -9,6 +9,9 @@ from .models import (
     _PSA_OAUTH2_BACKENDS, _PSA_SAML_BACKENDS, _LTI_BACKENDS,
 )
 
+#MODIF HERE
+import logging
+log = logging.getLogger(__name__)
 
 class Registry(object):
     """
@@ -22,10 +25,17 @@ class Registry(object):
         Helper method that returns a generator used to iterate over all providers
         of the current site.
         """
+        #log.info("call _enabled_providers")
         for backend_name in _PSA_OAUTH2_BACKENDS:
+            #providers = OAuth2ProviderConfig.current_providers(backend_name)
+            #Support several provider for the same backend_name
+            #for provider in providers:
+            #    if provider.enabled_for_current_site:
+            #        yield provider
             provider = OAuth2ProviderConfig.current(backend_name)
             if provider.enabled_for_current_site:
                 yield provider
+
         if SAMLConfiguration.is_enabled(Site.objects.get_current(get_current_request())):
             idp_slugs = SAMLProviderConfig.key_values('idp_slug', flat=True)
             for idp_slug in idp_slugs:

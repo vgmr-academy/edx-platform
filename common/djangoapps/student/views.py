@@ -298,10 +298,15 @@ def get_course_enrollments(user, org_to_include, orgs_to_exclude):
         generator[CourseEnrollment]: a sequence of enrollments to be displayed
         on the user's dashboard.
     """
-    for enrollment in CourseEnrollment.enrollments_for_user(user):
+    #log.info DEBUG AURELIEN
+    #log.info(u"CourseEnrollment.enrollments_for_user(user): %s",str(len(CourseEnrollment.enrollments_for_user(user))))
+    #log.info(u"org_to_include: %s",str(org_to_include))
+    #log.info(u"orgs_to_exclude: %s",str(len(orgs_to_exclude)))
 
+    for enrollment in CourseEnrollment.enrollments_for_user(user):
         # If the course is missing or broken, log an error and skip it.
         course_overview = enrollment.course_overview
+        #log.info(u"course_overview.location.org %s",str(course_overview.location.org))
         if not course_overview:
             log.error(
                 "User %s enrolled in broken or non-existent course %s",
@@ -601,7 +606,7 @@ def dashboard(request):
     # we want to filter and only show enrollments for courses within
     # the 'ORG' defined in configuration.
     course_org_filter = configuration_helpers.get_value('course_org_filter')
-
+    log.info(u"configuration_helpers.get_value('course_org_filter') sent to get_course_enrollments: %s",str(course_org_filter)) 
     # Let's filter out any courses in an "org" that has been declared to be
     # in a configuration
     org_filter_out_set = configuration_helpers.get_all_orgs()

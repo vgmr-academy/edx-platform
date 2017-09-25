@@ -3,6 +3,7 @@ Views related to operations on course objects
 """
 import copy
 import json
+import requests
 import logging
 import random
 import string  # pylint: disable=deprecated-module
@@ -11,7 +12,7 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
-from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseNotFound, Http404
+from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseNotFound, Http404, HttpResponsePermanentRedirect
 from django.shortcuts import redirect
 import django.utils
 from django.utils.translation import ugettext as _
@@ -1125,7 +1126,22 @@ def settings_handler(request, course_key_string):
 def create_handler(request, course_key_string):
     from openedx.core.djangoapps.content.course_overviews.models import CourseOverview
     from lms.djangoapps.courseware.courses import get_course_by_id
-    if request.method == "GET":
+    from microsite_manager.models import MicrositeAdminManager
+    from microsite_configuration.models import (
+        Microsite,
+        MicrositeOrganizationMapping,
+        MicrositeTemplate
+    )
+    check_admin_microsite = True
+    user_org = ''
+    try:
+        microsite_key = MicrositeAdminManager.objects.get(user=request.user).microsite_id
+        user_org = microsite = Microsite.objects.get(pk=microsite_key).key
+
+    except:
+        check_admin_microsite = False
+
+    if request.method == "GET" and check_admin_microsite:
         course_key = CourseKey.from_string(course_key_string)
         overview = CourseOverview.get_from_id(course_key)
         course = get_course_by_id(course_key)
@@ -1136,9 +1152,12 @@ def create_handler(request, course_key_string):
             'course':course,
             'overview':overview,
             'details':details,
-            'module_store':module_store
+            'module_store':module_store,
+            'user_org':user_org
         }
         return render_to_response('create_course.html', context)
+    else:
+        return HttpResponsePermanentRedirect('/')
 
 
 @login_required
@@ -1184,6 +1203,58 @@ def manage_handler(request, course_key_string):
         retour = {'course-key_string':context}
         return render_to_response('manage_course.html', context)
 
+
+def session_manager_handler(msg,emails,org):
+    grant_type = 'client_credentials'
+    """
+    credentials = {
+        'dev':{
+            'amundi':{'client_id':'adc1a487-086d-41a9-b8fc-13b7918dc0e2','secret':'95bb895b-9917-4d67-a594-7b332129c394'},
+            'crelan':{'client_id':'4b911d1c-73a9-4a1e-8893-231592e8c770','secret':'a7a8514a-9518-450f-ba95-2030c1f76d2a'}
+        }
+    }
+    """
+    credentials = settings.FEATURES.get('credentials')
+    prod = settings.FEATURES.get('VM_STATUS')
+    try:
+        client_id = credentials.get(prod).get(org).get('client_id')
+        client_secret = credentials.get(prod).get(org).get('secret')
+    except:
+        client_id = '76db53b7-e23e-40f5-9b75-d472d48dbc70'
+        client_secret = '066cdb10-a092-4327-b9be-f2b4fb95ca1e'
+    urls = ['https://ppr-session-manager.amundi.com/v2/token','https://ppr-session-manager.amundi.com/v2/api/import','https://ppr-session-manager.amundi.com/v2/api/users/import']
+
+    redirect_uri = 'http://'
+    msg = 'lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore lorem ipsum dolor sit amet consectetur adipisci elit'
+    lang = 'fr'
+
+    data = {"grant_type" : grant_type, "client_id" : client_id, "client_secret" : client_secret}
+    request_token = requests.post(urls[0], data=data,headers = {'content-type':'application/x-www-form-urlencoded'},verify=False )
+    request_token = json.loads(request_token.text)
+    token = request_token.get('access_token')
+
+    q = {}
+    i = 1
+    array_pull = []
+    array_push = []
+    for n in emails:
+        array_push.append(n)
+        i = i + 1
+        if i%200 == 0 or i == len(emails):
+            data_email = {"redirect_uri":redirect_uri, "msg":msg, "lang":lang,"users":array_push}
+            request_email = requests.post(urls[2], json=data_email , headers = {'content-type':'application/json','Authorization':'Bearer '+token},verify=False)
+            json_parse = json.loads(request_email.text)
+            json_parse_success = json_parse.get(u'success')
+            for n in json_parse_success:
+                q = {}
+                q['uuid'] = n.get(u'uuid')
+                q['email'] = n.get(u'email')
+                array_pull.append(q)
+            array_push = []
+
+    return array_pull
+
+
 @login_required
 @ensure_csrf_cookie
 @require_http_methods(("GET", "PUT", "POST"))
@@ -1206,6 +1277,7 @@ def invite_handler(request, course_key_string):
         overview = CourseOverview.get_from_id(course_key)
         #GET COURSE DETAILS
         details = CourseDetails.fetch(course_key)
+
         #GET COURSE LOGS
         course = get_course_by_id(course_key)
         #GET MODULE STORE
@@ -1239,46 +1311,84 @@ def invite_handler(request, course_key_string):
             request_type = False
         # IF NEED ONLY TO PRE REGISTER USERS FROM AN ADRESS MAIL
         if request_type == 'register_only':
+            #get microsite prefix
+            org = course.org
             try:
                 csv_file = request.FILES['file']
                 saved_column = []
                 decoded_file = csv_file.read().decode('utf-8')
                 io_string = io.StringIO(decoded_file)
-
                 array = []
                 # OPEN CSV FILE
+                csv_infos = []
+                list_email = []
                 for line in csv.reader(io_string, delimiter=','):
                     # GET ALL VALUES
                     email = line[0]
-                    level_1 = line[1]
-                    level_2 = line[2]
-                    level_3 = line[2]
-                    level_4 = line[4]
-                    # CHECK IF WE ARE AT THE FIRST LINE
-                    if email != 'email' and level_1 != 'level_1' and level_2 != 'level_2' and level_3 != 'level_3' and level_4 != 'level_4' :
-                        q = {}
+                    first_name = line[1]
+                    last_name = line[2]
+                    level_1 = line[3]
+                    level_2 = line[4]
+                    level_3 = line[5]
+                    level_4 = line[6]
+                    q = {}
+                    if email != 'email' and first_name != 'first_name' and last_name != 'last_name' and level_1 != 'level_1' and level_2 != 'level_2' and level_3 != 'level_3' and level_4 != 'level_4' :
                         q['email'] = email
+                        q['first_name'] = first_name
+                        q['last_name'] = last_name
+                        q['level_1'] = level_1
+                        q['level_2'] = level_2
+                        q['level_3'] = level_3
+                        q['level_4'] = level_4
+                        list_email.append(email)
+                        csv_infos.append(q)
+                    # CHECK IF WE ARE AT THE FIRST LINE
+                msg = 'hello world'
+                session_manager = session_manager_handler(msg,list_email,org)
+
+                for n in session_manager:
+                    email_session_manager = n['email']
+                    uuid_session_manager = n['uuid']
+                    level_1 = ''
+                    level_2 = ''
+                    level_3 = ''
+                    level_4 = ''
+                    first_name = ''
+                    last_name = ''
+                    for get in csv_infos:
+                        if get['email'] == email_session_manager:
+                            level_1 = get['level_1']
+                            level_2 = get['level_2']
+                            level_3 = get['level_3']
+                            level_4 = get['level_4']
+                            first_name = get['first_name']
+                            last_name = get['last_name']
+                    q = {}
+                    q['email'] = email_session_manager
+                    try:
+                        # ALL INSERT
+                        # FIRST INSERT AT THE FIRST LINE
                         try:
-                            # ALL INSERT
-                            # FIRST INSERT AT THE FIRST LINE
-                            try:
-                                UserPreprofile.objects.get(email=email)
-                            except:
-                                s = UserPreprofile(email=email,level_1=level_1,level_2=level_2,level_3=level_3,level_4=level_4)
-                                s.save()
-                            # CREATE A REQUEST PARAM
-                            request.POST['action'] = 'enroll'
-                            request.POST['auto_enroll'] = True
-                            request.POST['email_students'] = False
-                            request.POST['identifiers'] = email
-                            students_update_enrollment_cms(request,course_key_string)
-                            q['status'] = True
+                            UserPreprofile.objects.get(email=email)
                         except:
-                            q['status'] = False
-                        array.append(q)
-                        response = {'message':array}
+                            s = UserPreprofile(email=email_session_manager,first_name=first_name,last_name=last_name,level_1=level_1,level_2=level_2,level_3=level_3,level_4=level_4,uuid=uuid_session_manager)
+                            s.save()
+                        # CREATE A REQUEST PARAM
+                        request.POST['action'] = 'enroll'
+                        request.POST['auto_enroll'] = True
+                        request.POST['email_students'] = False
+                        request.POST['identifiers'] = email
+                        students_update_enrollment_cms(request,course_key_string)
+                        q['status'] = True
+                    except:
+                        q['status'] = False
+
+                    array.append(q)
+                response = {'message':array}
+
             except:
                 response = {'response':request_type}
+
             return JsonResponse(response)
         elif request_type == 'send_mail':
             response = '';

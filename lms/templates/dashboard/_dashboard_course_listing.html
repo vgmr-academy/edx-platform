@@ -66,7 +66,7 @@ else:
   % else:
   <li class="atp_course_item atp_hide_cards" data-categ="${categ.lower().replace(' ','')}">
   % endif
-   <div class="atp_course_image"><span class="cateogry_text">${categ}</span>
+   <div class="atp_course_image"><span class="cateogry_text">${_(categ)}</span>
           <a href="/courses/${course_overview.id}/courseware/">
                   <img src="${course_overview.image_urls['small']}" />
                   <div class="img_${categ.lower().replace(' ','')}"></div>
@@ -107,7 +107,7 @@ else:
      % endif
    </div>
    <div class="atp_course_link">
-          <a href="/courses/${course_overview.id}/courseware/">${_("Continue")}</a>
+          <a href="/courses/${course_overview.id}/courseware/">${_("Proceed")}</a>
    </div>
   </li>
 % elif atp_rank == 'invite' and course_about == 0:
@@ -116,7 +116,7 @@ else:
   % else:
   <li class="atp_course_item atp_hide_cards" data-categ="${categ.lower().replace(' ','')}">
   % endif
-   <div class="atp_course_image"><span class="cateogry_text">${categ}</span>
+   <div class="atp_course_image"><span class="cateogry_text">${_(categ)}</span>
           <a href="/courses/${course_overview.id}/courseware/">
                   <img src="${course_overview.image_urls['small']}" />
                   <div class="img_${categ.lower().replace(' ','')}"></div>
@@ -157,7 +157,7 @@ else:
      % endif
    </div>
    <div class="atp_course_link">
-          <a href="/courses/${course_overview.id}/about">${_("Show more")}</a>
+          <a href="/courses/${course_overview.id}/about">${_("More information")}</a>
    </div>
   </li>
 % elif atp_rank == 'finish' and course_about == 0:
@@ -166,7 +166,7 @@ else:
   % else:
   <li class="atp_course_item atp_hide_cards" data-categ="${categ.lower().replace(' ','')}">
   % endif
-   <div class="atp_course_image"><span class="cateogry_text">${categ}</span>
+   <div class="atp_course_image"><span class="cateogry_text">${_(categ)}</span>
           <a href="/courses/${course_overview.id}/courseware/">
                   <img src="${course_overview.image_urls['small']}" />
                   <div class="img_${categ.lower().replace(' ','')}"></div>
@@ -207,7 +207,7 @@ else:
     % endif
    </div>
    <div class="atp_course_link">
-          <a href="/courses/${course_overview.id}/about">${_("Restart")}</a>
+          <a href="/courses/${course_overview.id}/about">${_("More information")}</a>
    </div>
   </li>
 % elif atp_rank == 'invite' and course_about == 1:
@@ -216,7 +216,7 @@ else:
   % else:
   <li class="atp_course_item atp_hide_cards" data-categ="${categ.lower().replace(' ','')}">
   % endif
-   <div class="atp_course_image"><span class="cateogry_text">${categ}</span>
+   <div class="atp_course_image"><span class="cateogry_text">${_(categ)}</span>
           <a href="/courses/${course_overview.id}/courseware/">
                   <img src="${course_about_img}" />
                   <div class="img_${categ.lower().replace(' ','')}"></div>
@@ -266,7 +266,7 @@ else:
   % else:
   <li class="atp_course_item atp_hide_cards" data-categ="${categ.lower().replace(' ','')}">
   % endif
-   <div class="atp_course_image"><span class="cateogry_text">${categ}</span>
+   <div class="atp_course_image"><span class="cateogry_text">${_(categ)}</span>
           <a href="/courses/${course_overview.id}/courseware/">
                   <img src="${course_about_img}" />
                   <div class="img_${categ.lower().replace(' ','')}"></div>
@@ -307,7 +307,7 @@ else:
      % endif
    </div>
    <div class="atp_course_link">
-          <a href="/courses/${course_about_id}/courseware/">${_("Continue")}</a>
+          <a href="/courses/${course_about_id}/courseware/">${_("Proceed")}</a>
    </div>
   </li>
 % elif atp_rank == 'finish' and course_about == 1:
@@ -316,7 +316,7 @@ else:
   % else:
   <li class="atp_course_item atp_hide_cards" data-categ="${categ.lower().replace(' ','')}">
   % endif
-   <div class="atp_course_image"><span class="cateogry_text">${categ}</span>
+   <div class="atp_course_image"><span class="cateogry_text">${_(categ)}</span>
           <a href="/courses/${course_overview.id}/courseware/">
                   <img src="${course_about_img}" />
                   <div class="img_${categ.lower().replace(' ','')}"></div>
@@ -357,7 +357,7 @@ else:
      % endif
    </div>
    <div class="atp_course_link">
-          <a href="/courses/${course_about_id}/courseware/">${_("Restart")}</a>
+          <a href="/courses/${course_about_id}/courseware/">${_("More information")}</a>
    </div>
   </li>
 % endif

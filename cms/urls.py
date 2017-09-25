@@ -220,6 +220,8 @@ urlpatterns += (
 urlpatterns += (
     url(r'^create-microsite/?$','microsite_manager.views.create_microsite', name='create-microsite'),
     url(r'^add_microsite_static_content/$','microsite_manager.views.add_microsite_content', name="get_microsite_content"),
-    url(r'^update-microsite/(?P<microsite_id>[0-9]+)/$','microsite_manager.views.update_microsite', name='create-microsite')
+    url(r'^update-microsite/(?P<microsite_id>[0-9]+)/$','microsite_manager.views.update_microsite', name='create-microsite'),
+    url(r'^admin-microsite/(?P<microsite_id>[0-9]+)/$','microsite_manager.views.admin_microsite', name='admin-microsite'),
+    url(r'^add_microsite_admin/(?P<microsite_key>[A-Za-z0-9]+)/$','microsite_manager.views.microsite_admin_manager', name='microsite_admin_manager'),
 )
 

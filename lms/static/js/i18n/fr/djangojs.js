@@ -33,6 +33,14 @@
     "%(cohort_name)s (%(user_count)s)": "%(cohort_name)s (%(user_count)s)", 
     "%(comments_count)s %(span_sr_open)scomments %(span_close)s": "%(comments_count)s %(span_sr_open)scommentaires %(span_close)s", 
     "%(comments_count)s %(span_sr_open)scomments (%(unread_comments_count)s unread comments)%(span_close)s": "%(comments_count)s %(span_sr_open)scommentaires (%(unread_comments_count)s commentaires non lus)%(span_close)s", 
+    "%(earned)s/%(possible)s point (graded)": [
+      "%(earned)s/%(possible)s point", 
+      "%(earned)s/%(possible)s points"
+    ], 
+    "%(earned)s/%(possible)s point (ungraded)": [
+      "%(earned)s/%(possible)s point", 
+      "%(earned)s/%(possible)s points"
+    ], 
     "%(errorCount)s error found in form.": [
       "%(errorCount)s erreur trouv\u00e9e dans le formulaire.", 
       "%(errorCount)s erreurs trouv\u00e9es dans le formulaire."
@@ -42,6 +50,14 @@
     "%(memberCount)s / %(maxMemberCount)s Member": [
       "%(memberCount)s / %(maxMemberCount)s membre", 
       "%(memberCount)s / %(maxMemberCount)s membres"
+    ], 
+    "%(num_points)s point possible (graded)": [
+      "%(num_points)s point possible", 
+      "%(num_points)s points possibles"
+    ], 
+    "%(num_points)s point possible (ungraded)": [
+      "%(num_points)s point possible", 
+      "%(num_points)s points possibles"
     ], 
     "%(num_questions)s question": [
       "%(num_questions)s question", 
@@ -1313,7 +1329,6 @@
     "Undo Changes": "Annuler les modifications", 
     "Unendorse": "Ne plus approuver", 
     "Unfollow": "Ne plus suivre", 
-    "Ungraded": "Non not\u00e9", 
     "Unit": "Unit\u00e9", 
     "Unknown": "Inconnu", 
     "Unknown Error Occurred.": "Une erreur d'origine inconnue s'est produite.", 

@@ -323,6 +323,7 @@ msgstr "Vidéo ID"
 #: cms/djangoapps/contentstore/views/videos.py
 #: lms/djangoapps/shoppingcart/reports.py
 #: lms/templates/shoppingcart/receipt.html
+#: lms/templates/courseware/course_about.html
 msgid "Status"
 msgstr "Statut"
 
@@ -1709,7 +1710,7 @@ msgid "{programming_language} editor"
 msgstr ""
 
 #: common/lib/capa/capa/inputtypes.py
-msgid "Press ESC then TAB or click outside of the code editor to exit"
+msgid "Press ESC then TAB or click outside of the code editor to sudo /edx/bin/supervisorctl restart edxapp:exit"
 msgstr ""
 
 #: common/lib/capa/capa/inputtypes.py
@@ -6325,6 +6326,7 @@ msgstr "Email"
 
 #: lms/djangoapps/instructor/views/api.py
 #: lms/djangoapps/instructor_task/tasks_helper.py
+#: lms/templates/courseware/course_about.html
 msgid "Language"
 msgstr "Langue"
 
@@ -7486,10 +7488,6 @@ msgstr ""
 
 #: lms/djangoapps/shoppingcart/pdf.py
 msgid "Billing Address"
-msgstr ""
-
-#: lms/djangoapps/shoppingcart/pdf.py
-msgid "Disclaimer"
 msgstr ""
 
 #: lms/djangoapps/shoppingcart/pdf.py
@@ -22135,13 +22133,10 @@ msgstr "Mon compte"
 msgid "my account"
 msgstr "mon compte"
 
-msgid "MY COURSE COVERS"
-msgstr "MES MODULES"
-
-msgid "my course covers"
+msgid "my modules"
 msgstr "mes modules"
 
-msgid "My course covers"
+msgid "My modules"
 msgstr "Mes modules"
 
 msgid "IN PROGRESS"
@@ -22162,22 +22157,22 @@ msgstr "à réaliser"
 msgid "To do"
 msgstr "À réaliser"
 
-msgid "CATEGORIES"
-msgstr "CATÉGORIES"
+msgid "MY CATEGORIES"
+msgstr "MES CATÉGORIES"
 
-msgid "Categories"
-msgstr "Catégories"
+msgid "My Categories"
+msgstr "Mes Catégories"
 
 msgid "categories"
 msgstr "catégories"
 
-msgid "FUNDAMENTAL"
+msgid "FUNDAMENTALS"
 msgstr "FONDAMENTAUX"
 
-msgid "Fundamental"
+msgid "Fundamentals"
 msgstr "Fondamentaux"
 
-msgid "fundamental"
+msgid "fundamentals"
 msgstr "fondamentaux"
 
 msgid "OUR SOLUTIONS"
@@ -22189,14 +22184,17 @@ msgstr "Nos solutions"
 msgid "our solutions"
 msgstr "nos solutions"
 
-msgid "SALES APPROACH"
+msgid "BUSINESS APPROACH"
 msgstr "DÉMARCHE COMMERCIALE"
+
+msgid "Business approach"
+msgstr "Démarche commerciale"
+
+msgid "SALES APPROACH"
+msgstr "DEMARCHE COMMERCIALE"
 
 msgid "Sales approach"
 msgstr "Démarche commerciale"
-
-msgid "sale approach"
-msgstr "démarche commerciale"
 
 msgid "REGULATORY"
 msgstr "RÈGLEMENTAIRE"
@@ -22210,65 +22208,75 @@ msgstr "règlementaire"
 msgid "Develop your knowledge and skills on asset management: financial culture and products and offers marketed"
 msgstr "Développer vos connaissances et vos compétences sur la gestion d'actifs: culture financière et produits & offres commercialisés"
 
-msgid "To follow a training module, select the course cover of your choice"
-msgstr "Pour suivre un module de formation, séléctionnez la vignette de votre choix !"
+#: lms/templates/dashboard.html
+msgid "To follow a training module, select the thumbnail of your choice!"
+msgstr "Pour suivre un module de formation, sélectionnez la vignette de votre choix !"
 
+#: lms/templates/dashboard.html
 msgid "Each training module belongs to a category and can take"
-msgstr "Chaque module de formation appartient à une catégorie et peu prendre"
+msgstr "Chaque module de formation appartient à une catégorie et peut prendre"
 
 msgid "different formats"
 msgstr "différents formats"
 
-msgid "modules"
-msgstr "les modules"
+msgid "Training modules"
+msgstr "Les modules"
 
 msgid "Find all the information related to the training on the thumbnails below"
-msgstr "Retrouvez toutes les informations liées à la formation sur les vignettes ci dessous"
+msgstr "Retrouvez toutes les informations liées à la formation sur les vignettes ci-dessous"
 
-msgid "You will be able to see the time"
-msgstr "Vous pourrez ainsi voir le temps"
+msgid "timing of the module"
+msgstr "Vous pourrez ainsi voir le temps que le module vous prendra"
 
-msgid "that training will take you"
-msgstr "que la formation vous prendra"
+msgid "if the module is mandatory or not and formats of the module"
+msgstr "s’il est obligatoire ou facultatif et les différents contenus qui le composent"
 
-msgid "if it is compulsory and the different types of content"
-msgstr "si elle est obligatoire et les différents types de contenus qui la compose"
+msgid "TRAINING MODULES CATEGORIES"
+msgstr "CATÉGORIES DES MODULES DE FORMATION"
 
-msgid "categories of training modules"
-msgstr "catégories des modules de formation"
-
+#: lms/templates/dashboard.html
 msgid "Your training modules are classified into 4 categories"
 msgstr "Vos modules de formation sont classés en 4 catégories"
 
-msgid "know the essentials of asset management"
-msgstr "connaitre les essentiels de la gestion d'actifs"
+#: lms/templates/dashboard.html
+msgid "Know the essentials of financial markets"
+msgstr "Connaitre les essentiels sur les marchés financiers"
 
-msgid "Improve your personal skills"
+#: lms/templates/dashboard.html
+msgid "Improve your soft skills"
 msgstr "Améliorer vos compétences personnelles"
 
-msgid "discover products and commercial offers"
-msgstr "découvrir les produits et les offres commercialités"
+#: lms/templates/dashboard.html
+msgid "Learn about products and offers that are sold"
+msgstr "Découvrir les produits et les offres commercialisées"
 
+#: lms/templates/dashboard.html
 msgid "Understanding regulatory decisions"
 msgstr "Appréhender les décisions règlementaires"
 
-msgid "format of modules"
-msgstr "format des modules"
+#: lms/templates/dashboard.html
+msgid "MODULES FORMAT"
+msgstr "FORMAT DES MODULES"
 
-msgid "Each module is composed of different interactive formats"
-msgstr "Chaque module est composé de différents formats interactifs"
+#: lms/templates/dashboard.html
+msgid "Each module is composed of different interactive formats:"
+msgstr "Chaque module est composé de différents formats interactifs :"
 
-msgid "texts & illustrations"
-msgstr "textes & illustrations"
+#: lms/templates/dashboard.html
+msgid "texts & images"
+msgstr "textes & images"
 
-msgid "educational videos"
+#: lms/templates/dashboard.html
+msgid "pedagogical videos"
 msgstr "vidéos pédagogiques"
 
-msgid "Course covers in progress"
-msgstr "modules en cours"
+#: lms/templates/dashboard.html
+msgid "quizzes"
+msgstr "quiz"
 
-msgid "Course covers to do"
-msgstr "modules à réaliser"
+#: lms/templates/dashboard.html
+msgid "pdf"
+msgstr "document pdf"
 
 msgid "You have started the training module"
 msgstr "Vous avez commencé le module de formation"
@@ -22294,8 +22302,11 @@ msgstr "En savoir plus"
 msgid "to discover the course cover"
 msgstr "pour découvrir le module"
 
-msgid "Course covers finished"
+msgid "Course covers completed"
 msgstr "Modules terminés"
+
+msgid "Completed"
+msgstr "Terminés"
 
 msgid "You have completed the training course cover"
 msgstr "Vous avez complété le module de formation"
@@ -22321,20 +22332,19 @@ msgstr "Date de début"
 msgid "Ending date"
 msgstr "Date de fin"
 
-
-msgid "Legal notices"
+msgid "Disclaimer"
 msgstr "Mentions légales"
 
-msgid "Results"
+msgid 	"Results"
 msgstr "Résultats"
 
 msgid "Back to course about page"
 msgstr "Retour à la fiche du module"
 
-msgid "To end this course and get your score, you must first finish all the units."
+msgid "To end this training module, you have to access every chapters and finish the validation knowledge test."
 msgstr "Pour clore ce module et accéder à votre résultat, vous devez compléter chacune des parties du plan"
 
-msgid "You have start the course "
+msgid "You started the training module "
 msgstr "Vous avez commencé le module"
 
 msgid "Congratulation"
@@ -22346,3 +22356,384 @@ msgstr "Vous avez complété le module de formation "
 msgid "Your total score :"
 msgstr "Votre score est de :"
 
+#: lms/templates/dashboard.html
+msgid "TO DO TRAINING MODULES"
+msgstr "MODULES À RÉALISER"
+
+#: lms/templates/dashboard.html
+msgid "You haven't started yet the following training modules. Click on"
+msgstr "Vous n’avez pas encore commencé les modules de formation suivants. Cliquez sur"
+
+#: lms/templates/dashboard.html
+#: lms/templates/dashboard/_dashboard_course_listing.html
+msgid "More information"
+msgstr "En savoir +"
+
+#: lms/templates/dashboard.html
+msgid "to access the training module description"
+msgstr "pour découvrir le module"
+
+#: lms/templates/dashboard.html
+msgid "IN PROGRESS TRAINING MODULES"
+msgstr "MODULES EN COURS"
+
+#: lms/templates/dashboard.html
+msgid "You have started but haven't completed yet the following training modules. To go on, please click on"
+msgstr "Vous avez commencé les modules de formations suivants. Pour compléter votre parcours, cliquez sur"
+
+#: lms/templates/dashboard.html
+#: lms/templates/dashboard/_dashboard_course_listing.html
+msgid "Proceed"
+msgstr "Continuer"
+
+#: lms/templates/dashboard.html
+msgid "COMPLETED TRAINING MODULES"
+msgstr "MODULES TERMINÉS"
+
+#: lms/templates/dashboard.html
+msgid "You have completed the following training modules. Click on"
+msgstr "Vous avez complété les modules de formation suivants. Cliquez sur"
+
+#: lms/templates/dashboard.html
+msgid "to access your results and scores"
+msgstr "pour accéder à votre résultat"
+
+#: lms/templates/dashboard.html
+msgid "More modules"
+msgstr "Plus de modules"
+
+#: lms/templates/dashboard.html
+msgid "Welcome on your"
+msgstr "Bienvenue sur votre"
+
+#: lms/templates/dashboard.html
+msgid "Develop your knowledge and skills on asset management: financial culture and offers."
+msgstr "Développer vos connaissances et vos compétences sur la gestion d’actifs : culture financière et offres commercialisées."
+
+#: lms/templates/dashboard.html
+msgid "More"
+msgstr "En savoir plus"
+
+#: lms/templates/navigation.html
+msgid "All"
+msgstr "Tout"
+
+#: lms/templates/courseware/course_about.html
+msgid "Download certificate"
+msgstr "Télécharger le certificat"
+
+#: lms/templates/courseware/courseware.html
+msgid "Back to training module description"
+msgstr "RETOUR À LA FICHE DU MODULE"
+
+#: lms/templates/courseware/courseware.html
+msgid "Go to studio"
+msgstr "Voir dans studio"
+
+#: cms/templates/index.html
+msgid "No training campaign has been set"
+msgstr "Aucune campagne de formation n'a été paramétrée"
+
+#: cms/templates/index.html
+msgid "To launch a training campaign"
+msgstr "Pour lancer une campagne de formation"
+
+#: cms/templates/index.html
+msgid "select a training module in"
+msgstr "sélectionnez un module de formation dans l'onglet"
+
+#: cms/templates/index.html
+msgid "then click on"
+msgstr "puis cliquez sur"
+
+#: cms/templates/index.html
+msgid "Launch my campaign"
+msgstr "Lancer ma campagne"
+
+#: cms/templates/index.html
+msgid "My Modules"
+msgstr "Mes Modules"
+
+#: cms/templates/index.html
+msgid "WELCOME TO YOUR TRAINING MODULES MANAGEMENT INTERFACE"
+msgstr "BIENVENUE DANS VOTRE INTERFACE DE GESTION DES MODULES DE FORMATION"
+
+#: cms/templates/index.html
+msgid "You can browse within two separate universes"
+msgstr "Vous pouvez naviguer au sein de deux univers distincts"
+
+#: cms/templates/index.html
+msgid "MY CAMPAIGNS"
+msgstr "MES CAMPAGNES"
+
+#: cms/templates/index.html
+msgid "MY MODULES"
+msgstr "MES MODULES"
+
+#: cms/templates/index.html
+msgid "MICRO SITES"
+msgstr "MINI SITES"
+
+#: cms/templates/index.html
+msgid "SCHEDULED TRAINING CAMPAIGNS"
+msgstr "CAMPAGNES PROGRAMMEES" 
+
+#: cms/templates/index.html
+msgid "Manage my campaign" 
+msgstr "Administrer ma campagne"
+
+#: cms/templates/index.html
+msgid "To add new participants, please click on"
+msgstr "Pour ajouter de nouveaux participants, veuillez cliquer sur"
+
+#: cms/templates/index.html
+msgid "Invite participants"
+msgstr "Inviter des participants"
+
+#: cms/templates/index.html
+msgid "IN PROGRESS TRAINING CAMPAIGNS"
+msgstr "CAMPAGNES EN COURS" 
+
+#: cms/templates/index.html
+msgid "To access statistics, please click on"
+msgstr "Pour accéder aux statistiques, veuillez cliquer sur"
+
+#: cms/templates/index.html
+msgid "COMPLETED TRAINING CAMPAIGNS" 
+msgstr "CAMPAGNES TERMINÉES"
+
+#: cms/templates/index.html
+msgid "The following training campaigns have not been launched yet (starting date not exceeded).To modify starting/ending date, please click on" 
+msgstr "Les campagnes de formation suivantes n’ont pas encore été lancées (date de début non dépassée). Pour modifier les dates de début/fin, veuillez cliquer sur"
+
+#: cms/templates/index.html
+msgid "The following training campaigns have not been launched yet (starting date not exceeded). To modify ending date, please click on" 
+msgstr "Les campagnes de formation suivantes ont été lancées. Pour modifier la date de fin, veuillez cliquer sur" 
+
+#: cms/templates/index.html
+msgid "The following training campaigns are completed (ending date is exceeded).To access statistics, please click on"
+msgstr "Les campagnes de formation suivantes sont terminées. Pour accéder aux statistiques des campagnes de formation passées, cliquez sur"
+
+#: cms/templates/index.html
+msgid "Statistics"
+msgstr "Statistiques"
+
+#: cms/templates/index.html
+msgid "About the training module"
+msgstr "A propos du module"
+
+#: cms/templates/index.html
+msgid "My campaigns"
+msgstr "Mes campagnes"
+
+#: cms/templates/index.html
+msgid "You have at your disposal a library of training modules made available by Amundi. Select the module of your choice and launch the associated training campaign."
+msgstr "Vous avez à votre diposition une bibliothèque de modules de formation mis a disposition par Amundi. Sélectionnez le module de votre choix et lancez la campagne de formation associée."
+
+#: cms/templates/manage_course.html
+msgid "Provide all the information required to launch your training campaign: starting/ending date, minimum percentage of success required, and campaign type."
+msgstr "Indiquez toutes les informations nécessaires au lancement de votre campagne de formation : date de début/fin, pourcentage de réussite minimum requis et type de campagne."
+
+#: cms/templates/manage_course.html
+msgid "campaign id"
+msgstr "identifiant de votre campagne"
+
+#: cms/templates/manage_course.html
+msgid "Create your campagne id"
+msgstr "Créez un identifiant"
+
+#: cms/templates/manage_course.html
+msgid "This id is indicated in statistic reports."
+msgstr "Cet identifiant est remonté dans les tableaux de bord statistique."
+
+#: cms/templates/manage_course.html
+msgid "Precise your target and/or campaign period."
+msgstr "Cela vous permet de préciser la cible et/ou la période de formation."
+
+#: cms/templates/manage_course.html
+msgid "Your id"
+msgstr "Votre identifiant"
+
+#: cms/templates/manage_course.html
+msgid "Rules to create your campaign id: no space, no  punctuation mark"
+msgstr "Règles à respecter pour le choix de l’identifiant de la campagne : pas d’espace, pas de ponctuation"
+
+#: cms/templates/manage_course.html
+msgid "PERIOD OF THE TRAINING CAMPAIGN"
+msgstr "DUREE DE LA CAMPAGNE"
+
+#: cms/templates/manage_course.html
+msgid "Schedule your training campaign"
+msgstr "Programmez votre campagne"
+
+#: cms/templates/manage_course.html
+msgid "Time for email invitation dispatch UTC"
+msgstr "Heure d’envoi des invitations UTC"
+
+#: cms/templates/manage_course.html
+msgid "The day the first invitations are dispatched when launching the training campaign"
+msgstr "Le jour où les premières invitations sont lancée pour la campagne de formation"
+
+#: cms/templates/manage_course.html
+msgid "Ending time UTC"
+msgstr "Heure de fin UTC"
+
+#: cms/templates/manage_course.html
+msgid "Starting and ending dates of the training campaign"
+msgstr "Dates de début et de fin de la campagne de formation"
+
+#: cms/templates/manage_course.html
+msgid "Closing day of the training campaign"
+msgstr "Le jour de la clôture de la campagne de formation."
+
+#: cms/templates/manage_course.html
+msgid "MINIMUM PERCENTAGE OF SUCCESS REQUIRED"
+msgstr "POURCENTAGE DE REUSSITE MINIMUM REQUIS"
+
+#: cms/templates/manage_course.html
+msgid "Define the minimum score required to validate the training module"
+msgstr "Définissez le score minimum requis"
+
+#: cms/templates/manage_course.html
+msgid "Minimum score required to validate the training module and receive the certificate of achievement"
+msgstr "Score minimum requis pour valider le module de formation et recevoir le certificat de réussite"
+
+#: cms/templates/manage_course.html
+msgid "CAMPAIGN TYPE"
+msgstr "TYPE DE CAMPAGNE"
+
+#: cms/templates/manage_course.html
+msgid "Specify whether the training campaign is mandatory or optional"
+msgstr "Précisez si la campagne de formation est obligatoire ou facultative"
+
+#: cms/templates/manage_course.html
+msgid "mandatory"
+msgstr "obligatoire"
+
+#: cms/templates/manage_course.html
+msgid "optional"
+msgstr "facultative"
+
+#: cms/templates/manage_course.html
+msgid "Add participants to your training campaign and customize the invitation email"
+msgstr "Ajoutez des participants à votre campagne de formation et personnalisez le mail d’invitation"
+
+#: cms/templates/manage_course.html
+msgid "PARTICIPANTS"
+msgstr "PARTICIPANTS"
+
+#: cms/templates/manage_course.html
+msgid "Invite participants to your training campaign"
+msgstr "Invitez des participants à votre campagne de formation"
+
+#: cms/templates/manage_course.html
+msgid "Upload participants list"
+msgstr "Charger la liste des participants"
+
+#: cms/templates/manage_course.html
+msgid "INVITATION EMAIL"
+msgstr "EMAIL D’INVITATION"
+
+#: cms/templates/manage_course.html
+msgid "Edit and send the invitation email to participants of your choice."
+msgstr "Editez et envoyez le mail d’invitation à la liste de destinataires de votre choix."
+
+#: cms/templates/manage_course.html
+msgid "Send the invitation email to :"
+msgstr "Envoyer le mail d’invitation à :"
+
+#: cms/templates/manage_course.html
+msgid "Admin Team"
+msgstr "Equipe et administrateur"
+
+#: cms/templates/manage_course.html
+msgid "Every participants"
+msgstr "Tous les participants"
+
+#: cms/templates/manage_course.html
+msgid "Customized list of participants"
+msgstr "Liste de destinataires personnalisée"
+
+#: cms/templates/manage_course.html
+msgid "If you want to send the invitation email to the training campaign to a customized list of participants, please copy/paste the email recipients above. Remember that invitation emails can be sent only to the participants who have been invited to participate to the training campaign in the section 1/2 PARTICIPANTS."
+msgstr "Si vous souhaitez envoyer le mail d’invitation à la campagne de formation à une liste de destinataires personnalisée, veuillez copier/coller les adresses emails des destinataires ci-dessus. A noter que les mails d’invitation sont envoyés uniquement aux participants ayant été invités dans la section 1/2 PARTICIPANTS"
+
+#: cms/templates/manage_course.html
+msgid "Object"
+msgstr "Objet"
+
+#: cms/templates/manage_course.html
+msgid "128 characters maximum"
+msgstr "128 caractères maximum"
+
+#: cms/templates/manage_course.html
+msgid "Contenu du mail"
+msgstr "Body"
+
+#: cms/templates/manage_course.html
+msgid "WARNING : Don’t hesitate to validate the email invitation by sending a test invitation to yourself. It will allow you to validate content and links included in the email invitation."
+msgstr "ATTENTION : Avant de cliquer sur « Envoyer », relisez bien votre email et testez l’invitation en vous envoyant un mail à vous-même. Cela vous permettra de valider que le contenu et le lien contenus dans l’email d’invitation sont corrects."
+
+#: cms/templates/manage_course.html
+msgid "CTA : Send"
+msgstr "CTA : Envoyer"
+
+#: cms/templates/manage_course.html
+msgid "Don't hesitate to validate the email invitation by sending a test invitation to yourself. It will allow you to validate content and links included in the email invitation."
+msgstr "Avant de cliquer sur « Envoyer », relisez bien votre email et testez l’invitation en vous envoyant un mail à vous-même. Cela vous permettra de valider que le contenu et le lien contenus dans l’email d’invitation sont corrects."
+
+#: cms/templates/index.html
+msgid "WHAT YOU CAN DO"
+msgstr "CE QUE VOUS POUVEZ FAIRE"
+
+#: cms/templates/index.html
+msgid "Schedules training campaigns:"
+msgstr "Dans mes campagnes programmées:"
+
+#: cms/templates/index.html
+msgid "Update your settings: starting/ending dates, minimum percentage of success"
+msgstr "Modifiez les paramétrages réalisés: les dates de début / fin, le pourcentage de réussite minimum requis"
+
+#: cms/templates/index.html
+msgid "Add new participants"
+msgstr "Ajoutez de nouveaux participants"
+
+#: cms/templates/index.html
+msgid "Update the text of the email invitation and test your email invitation"
+msgstr "Modifiez le texte et testez l'envoi du mail d'invitation"
+
+#: cms/templates/index.html
+msgid "In progress training campaigns:"
+msgstr "Dans mes campagnes en cours:"
+
+#: cms/templates/index.html
+msgid "Update ending date"
+msgstr "Modifiez la date de fin"
+
+#: cms/templates/index.html
+msgid "Access statistics: participation rate, success by participant, etc."
+msgstr "Accédez aux statistiques de la campagne : taux de participation, résultats par participant, etc."
+
+#: cms/templates/index.html
+msgid "Completed training campaigns:"
+msgstr "Dans mes campagnes terminées:"
+
+#: cms/templates/index.html
+msgid "Access a training modules library provided by Amundi"
+msgstr "Accédez à la blibliothèque de modules de formation mise à disposition par Amundi"
+
+#: cms/templates/index.html
+msgid "Launch a training campaign"
+msgstr "Lancez une campagne de formation"
+
+#: cms/templates/index.html
+msgid "My modules:"
+msgstr "Dans mes modules:"
+
+#log
+msgid "logout"
+msgstr "déconnexion"
+
+#log
+msgid "login"
+msgstr "connexion"

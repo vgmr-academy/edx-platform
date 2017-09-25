@@ -45,6 +45,7 @@
                     headers: headers,
                     success: function() {
                         model.trigger('sync');
+			console.log('geoffrey');
                     },
                     error: function(error) {
                         model.trigger('error', error);

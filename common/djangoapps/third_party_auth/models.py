@@ -26,7 +26,7 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
 from openedx.core.djangoapps.theming.helpers import get_current_request
 
 log = logging.getLogger(__name__)
-
+from pprint import pformat
 
 # A dictionary of {name: class} entries for each python-social-auth backend available.
 # Because this setting can specify arbitrary code to load and execute, it is set via
@@ -243,8 +243,8 @@ class ProviderConfig(ConfigurationModel):
         """
         Determines if the provider is able to be used with the current site.
         """
-        return self.enabled and self.site == Site.objects.get_current(get_current_request())
-
+        #MODIF HERE WE BY PASS THE VERIFICATION IF THE BACKEND IS AMUNDI
+        return (self.enabled and self.site == Site.objects.get_current(get_current_request())) or (self.enabled and "amundi" in self.backend_name)
 
 class OAuth2ProviderConfig(ProviderConfig):
     """
@@ -304,6 +304,40 @@ class OAuth2ProviderConfig(ProviderConfig):
             assert isinstance(other_settings, dict), "other_settings should be a JSON object (dictionary)"
             return other_settings[name]
         raise KeyError
+
+    @classmethod
+    def current_providers(cls, *args):
+        """
+        Return the active configuration entry, either from cache,
+        from the database, or by creating a new empty entry (which is not
+        persisted).
+        """
+        #Disable cache
+        #TODO : restore caching with both backend_name and idp_slug
+        #cached = cache.get(cls.cache_key_name(*args))
+        #if cached is not None:
+        #    return cached
+
+        # We removed KEY_FIELDS because we search on backend_name and not idp_slug (which is in KEY_FIELDS)
+        key_dict = dict(zip(('backend_name',), args))
+        try:
+            known_provider_slugs = ['']
+            for provider in cls.objects.filter(**key_dict).order_by('-change_date'):
+                # We take only the latest config by provider_slug
+                if provider.provider_slug not in known_provider_slugs:
+                    known_provider_slugs.append(provider.provider_slug)
+                    yield provider
+        except IndexError:
+            current = cls(**key_dict)
+            yield current
+
+        #try:
+        #    current = cls.objects.filter(**key_dict).order_by('-change_date')[0]
+        #except IndexError:
+        #    current = cls(**key_dict)
+
+        #cache.set(cls.cache_key_name(*args), current, cls.cache_timeout)
+        #return current
 
 
 class SAMLProviderConfig(ProviderConfig):

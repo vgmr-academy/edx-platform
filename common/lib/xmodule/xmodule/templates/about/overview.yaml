@@ -19,12 +19,12 @@ data: |
   </div>
 
   <div class="course_about_atp_special">
-  <h2><img src="/static/atp/images/plandumodule.svg" class="svg"> <span>After this module, you will be able to:</span></h2>
+  <h2><img src="/static/atp/images/plandumodule.svg" class="svg"> <span>MODULE'S AGENDA:</span></h2>
   <div class="special_block">
    <div class="up_block">
-    <h4 class="border_atp_course_about">titre 1 <span class="arrow_course_about arrow-bottom"></span><span style="display:block;clear:right;"></span></h4>
+    <h4>titre 1 <span class="arrow_course_about arrow-right"></span><span style="display:block;clear:right;"></span></h4>
    </div>
-   <div class="down_block" style="display:block;">
+   <div class="down_block">
     <ul>
      <li><span>De Finibus Bonorum et Malorum</span></li>
      <li><span>De Finibus Bonorum et Malorum</span></li>

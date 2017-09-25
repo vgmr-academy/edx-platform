@@ -39,10 +39,21 @@ course_about = static.get_value('css_overrides_course_about')
 % endif
 
 <script src="${static.url('js/course_about_atp.js')}"></script>
+
+
+<!--MODIF AURELIEN-->
+<style>
+.course_about_atp, .course_about_atp_special {
+margin-top: 30px !important;
+}
+</style>
+
+
 <section id="course_about_contenair">
 <section id="course_about_up_content">
 <section id="atp_ariane_about">
-	<span>${_("Explore courses")}</span><span> > ${_(categ)}</span>
+<!--MODIF AURELIEN-->
+	<span id="atp_ariane_about_dashboard" >${_("Explore courses")}</span><span> > ${course.display_name_with_default_escaped}</span>
 </section>
 <section id="atp_about_course_card">
 <ul class="atp_course_listing">
@@ -100,21 +111,21 @@ course_factory = CourseGradeFactory().create(request.user, course)
   </span></li>
  </ul>
  <ul id="course_about_ul">
-  <li><span>${_("Langue")} :</span> <span id="${course_details.language}">${course_details.language}</span></li>
-  <li><span>${_("Statut")} :</span> <span>
+  <li><span>${_("Language")} :</span> <span id="${course_details.language}">${course_details.language}</span></li>
+  <li><span>${_("Status")} :</span> <span>
 % if atp_rank == 'invite':
-    ${_("To start")}
+    ${_("To do")}
 % elif atp_rank == 'cours':
     ${_("In progress")}
 % else:
-    ${_("Finished")}
+    ${_("Completed")}
 % endif
 </span></li>
  </ul>
 % if course_factory.passed:
 <ul id="course_about_ul">
  <li><span>${_("Score")} :</span> <span id="${course_details.language}">${str(course_factory.percent * 100)+'%'}</span></li>
- <li><a href="#" id="certiticate"><img src="${static.url('images/pdf.svg')}" class="svg"/> ${_('Download the certificate')}</a></li>
+ <li><a href="#" id="certiticate"><img src="${static.url('images/pdf.svg')}" class="svg"/> ${_("Download certificate")}</a></li>
 </ul>
 % endif
  <span style="clear:left;display:block;"></span>
@@ -133,13 +144,13 @@ course_factory = CourseGradeFactory().create(request.user, course)
 </section>
 <section id="course_about_atp_end">
  <img src="${static.url('images/pdf.svg')}" id="encoche_course_about"/>
- <h2>${_("Format Modules")}</h2>
+ <h2>${_("Module's format")}</h2>
  <div id="picto_course_about">
    <div class="atp_course_picto">
 % if content_data.get('document_pdf'):
 <div class="dashboard_picto_tuto_tma">
 <img src="${static.url('images/pdf.svg')}" class="svg"/>
-<span>${_("document pdf")}</span>
+<span>${_("PDF")}</span>
 </div>
 % endif
 % if content_data.get('webzine'):

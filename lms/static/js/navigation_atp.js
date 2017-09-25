@@ -1,4 +1,7 @@
 function toggleNav() {
+  $('#logo_atp_redirect').click(function(){
+    window.location.href = '/';
+  })
  $('.sub_menu').click(function(){
   var This = $(this);
   var data = This.data('location');
@@ -16,6 +19,7 @@ function toggleNav() {
      })
    }
  });
+
  $('#menu_module_apt').find('button').click(function(){
   var This = $(this);
   var data = This.data('location');
@@ -24,6 +28,7 @@ function toggleNav() {
   $('html, body').animate( { scrollTop: $('#'+data).offset().top -= 148 }, speed );
   return false;
  })
+
  $('#menu_cat_apt').find('button').click(function(){
    var This = $(this);
    This.parent().hide();
@@ -106,7 +111,7 @@ function toggleNav() {
 function navChange() {
  var width = $(window).width();
  width = parseInt(width);
- if(width <= 926) {
+ if(width <= 1022) {
   $('#atp_menu_mobile').click(function(){
     $('#sub_menu').toggle();
   })
@@ -114,11 +119,19 @@ function navChange() {
   $('#sub_menu').attr('style','');
  }
 }
+function replace_log() {
+  var width = $(window).width();
+  if(width < 1022) {
+    $( "#atp_menu_mobile" ).before( $("#log_user_action") );
+  }
+}
 $(document).ready(function(){
  toggleNav();
  navChange();
+ replace_log();
 })
 
 $(window).resize(function(){
  navChange();
+ replace_log();
 })
