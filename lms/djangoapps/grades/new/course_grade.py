@@ -19,6 +19,8 @@ from ..models import PersistentCourseGrade
 from .subsection_grade import SubsectionGradeFactory
 from ..transformer import GradesTransformer
 
+#TMA GRADE TRACKING LIB
+from lms.djangoapps.tma_grade_tracking.models import dashboardStats
 
 log = getLogger(__name__)
 
@@ -237,6 +239,18 @@ class CourseGrade(object):
             course_grade._letter_grade = persistent_grade.letter_grade  # pylint: disable=protected-access
             course_grade.course_version = persistent_grade.course_version
             course_grade.course_edited_timestamp = persistent_grade.course_edited_timestamp
+        #TMA GRADE TRACKING UPDATE
+        mongo_persist = dashboardStats()
+        collection = mongo_persist.connect('ip-172-31-8-30.eu-west-1.compute.internal',27017)
+        add_user = {}
+        add_user['user_id'] = user.id
+        add_user['username'] = user.username
+        add_user['passed'] = course_grade.passed
+        add_user['percent'] = course_grade.percent
+        add_user['summary'] = course_grade.summary
+        mongo_persist.add_user_grade_info(collection,str(course.id),add_user)
+        log.info('mongo_tracking_insert')
+        # END TMA GRADE TRACKING UPDATE
 
         course_grade._log_event(log.info, u"load_persisted_grade")  # pylint: disable=protected-access
 
@@ -259,6 +273,7 @@ class CourseGrade(object):
             course_grade._letter_grade = persistent_grade.letter_grade  # pylint: disable=protected-access
             course_grade.course_version = persistent_grade.course_version
             course_grade.course_edited_timestamp = persistent_grade.course_edited_timestamp
+
             return course_grade
 
     @staticmethod
@@ -412,6 +427,18 @@ class CourseGradeFactory(object):
         """
         course_grade = CourseGrade(student, course, course_structure)
         course_grade.compute_and_update(read_only)
+        # END TMA GRADE TRACKING UPDATE
+        mongo_persist = dashboardStats()
+        collection = mongo_persist.connect('ip-172-31-8-30.eu-west-1.compute.internal',27017)
+        add_user = {}
+        add_user['user_id'] = student.id
+        add_user['username'] = student.username
+        add_user['passed'] = course_grade.passed
+        add_user['percent'] = course_grade.percent
+        add_user['summary'] = course_grade.summary
+        mongo_persist.add_user_grade_info(collection,str(course.id),add_user)
+        log.info('mongo_tracking_insert')
+        # END TMA GRADE TRACKING UPDATE
         return course_grade
 
     def _user_has_access_to_course(self, course_structure):

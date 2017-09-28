@@ -131,6 +131,13 @@ from openedx.core.djangoapps.user_api.preferences import api as preferences_api
 from openedx.core.djangoapps.catalog.utils import get_programs_data
 
 
+# TMA ADD
+from courseware.courses import (
+    get_course_by_id,
+)
+from course_progress.helpers import get_overall_progress
+from openedx.core.djangoapps.models.course_details import CourseDetails
+
 log = logging.getLogger("edx.student")
 AUDIT_LOG = logging.getLogger("audit")
 ReverifyInfo = namedtuple('ReverifyInfo', 'course_id course_name course_number date status display')  # pylint: disable=invalid-name
@@ -606,7 +613,7 @@ def dashboard(request):
     # we want to filter and only show enrollments for courses within
     # the 'ORG' defined in configuration.
     course_org_filter = configuration_helpers.get_value('course_org_filter')
-    log.info(u"configuration_helpers.get_value('course_org_filter') sent to get_course_enrollments: %s",str(course_org_filter)) 
+    log.info(u"configuration_helpers.get_value('course_org_filter') sent to get_course_enrollments: %s",str(course_org_filter))
     # Let's filter out any courses in an "org" that has been declared to be
     # in a configuration
     org_filter_out_set = configuration_helpers.get_all_orgs()
@@ -761,7 +768,58 @@ def dashboard(request):
         )
     else:
         redirect_message = ''
+
+    #ATP dashboard reorg
+    compteur_progress = 0
+    compteur_finish = 0
+    progress_courses = []
+    finish_courses = []
+    if len(course_enrollments) > 0:
+      for dashboard_index, enrollment in enumerate(course_enrollments):
+        course_id = enrollment.course_overview.id
+        user_id = request.user.id
+        course_tma = get_course_by_id(enrollment.course_id)
+        passed = CourseGradeFactory().create(request.user, course_tma).passed
+        course_progression = get_overall_progress(user_id,course_id)
+
+        q={}
+        q['atp_rank'] = "cours"
+        q['course_about'] = 0
+        q['show_courseware_link'] = (enrollment.course_id in show_courseware_links_for)
+        q['cert_status'] = cert_statuses.get(enrollment.course_id)
+        q['can_unenroll'] = (not q['cert_status']) or q['cert_status'].get('can_unenroll')
+        q['credit_status'] = _credit_statuses(user, course_enrollments).get(enrollment.course_id)
+        q['show_email_settings'] = (enrollment.course_id in show_email_settings_for)
+        q['course_mode_info'] = course_mode_info.get(enrollment.course_id)
+        q['show_refund_option'] = (enrollment.course_id in show_refund_option_for)
+        q['is_paid_course'] = (enrollment.course_id in enrolled_courses_either_paid)
+        q['is_course_blocked'] = (enrollment.course_id in block_courses)
+        q['course_verification_status'] = verify_status_by_course.get(enrollment.course_id, {})
+        q['course_requirements'] = courses_requirements_not_met.get(enrollment.course_id)
+        q['course_key'] = enrollment.course_id
+        q['duration'] = CourseDetails.fetch(q['course_key']).effort
+        q['required'] = course_tma.is_required_atp
+        q['content_data'] = course_tma.content_data
+        q['category'] = course_tma.categ
+        q['course_overview'] = enrollment.course_overview
+        q['enrollment'] = enrollment
+        q['course_progression'] = course_progression
+        q['dashboard_index'] = dashboard_index
+
+        if course_progression > 0 and course_progression < 100 and passed == False:
+          compteur_progress = compteur_progress + 1
+          q['compteur'] = compteur_progress
+          progress_courses.append(q)
+        elif course_progression == 100 or passed:
+          compteur_finish = compteur_finish + 1
+          q['compteur'] = compteur_finish
+          finish_courses.append(q)
+
     context = {
+        #ATP add
+        'progress_courses': progress_courses,
+        'finish_courses': finish_courses,
+        #END ATP add
         'enrollment_message': enrollment_message,
         'redirect_message': redirect_message,
         'course_enrollments': course_enrollments,

@@ -2158,6 +2158,8 @@ INSTALLED_APPS = (
     # Unusual migrations
     'database_fixups',
     'course_progress',
+    #tma
+    'tma_grade_tracking',
 )
 
 # Migrations which are not in the standard module "migrations"

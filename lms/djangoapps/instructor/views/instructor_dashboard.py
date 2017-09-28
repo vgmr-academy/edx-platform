@@ -68,7 +68,7 @@ from courseware.models import StudentModule
 from course_api.blocks.api import get_blocks
 from course_api.blocks.views import BlocksInCourseView,BlocksView
 
-
+from lms.djangoapps.tma_grade_tracking.models import dashboardStats
 
 #GEOFFREY
 log = logging.getLogger(__name__)
@@ -720,6 +720,8 @@ def stat_dashboard(request, course_id):
     course_key_modulestore = CourseKey.from_string(course_id)
     #course_module
     course_module = modulestore().get_course(course_key, depth=0)
+    #course cutoff
+    course_cutoff = course_module.grade_cutoffs['Pass']
     #GET COURSE
     course = get_course_by_id(course_key)
     #Get all course-enrollment
@@ -739,8 +741,15 @@ def stat_dashboard(request, course_id):
     course_structure = get_course_structure(request,course_id)
     course_usage_key = modulestore().make_course_usage_key(course_key)
     blocks = get_blocks(request,course_usage_key,depth='all',requested_fields=['display_name','children'])
+    # connect mongodb return values:
+    mongo_persist = dashboardStats()
+    collection = mongo_persist.connect('ip-172-31-8-30.eu-west-1.compute.internal',27017)
+    find_mongo_persist_course = mongo_persist.find_by_course_id(collection,course_id)
+    users_info = find_mongo_persist_course['users_info']
     for n in row:
         user_id = n.user_id
+        users = User.objects.get(pk=user_id)
+	"""
         users = User.objects.get(pk=user_id)
         username = users.username
         course_progression = get_overall_progress(user_id,course_key)
@@ -751,6 +760,19 @@ def stat_dashboard(request, course_id):
             course_average_grade = course_average_grade + (get_persisted.percent * 100)
         if course_progression > 0:
             user_course_started = user_course_started + 1
+        """
+        try:
+	    users_status = users_info[str(users.id)]
+            _passed = users_status['passed']
+            _percent = users_status['percent']
+            user_course_started = user_course_started + 1
+            if _passed:
+                course_average_grade = course_average_grade + (_percent * 100)
+                user_finished = user_finished + 1
+                if _percent > course_cutoff:
+                    num_passed = num_passed + 1
+        except:
+	    pass
     #return context
     if user_finished != 0:
         course_average_grade = course_average_grade / user_finished

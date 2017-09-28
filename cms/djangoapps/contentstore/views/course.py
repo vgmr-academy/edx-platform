@@ -8,6 +8,7 @@ import logging
 import random
 import string  # pylint: disable=deprecated-module
 
+
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
@@ -1246,19 +1247,40 @@ def session_manager_handler(msg,emails,org):
     array_push = []
     for n in emails:
         array_push.append(n)
-        i = i + 1
         if i%200 == 0 or i == len(emails):
             data_email = {"redirect_uri":redirect_uri, "msg":msg, "lang":lang,"users":array_push}
             request_email = requests.post(urls[2], json=data_email , headers = {'content-type':'application/json','Authorization':'Bearer '+token},verify=False)
+            log.info("Donnee retour session_manager: "+str(request_email.text))
             json_parse = json.loads(request_email.text)
-            json_parse_success = json_parse.get(u'success')
-            for n in json_parse_success:
-                q = {}
-                q['uuid'] = n.get(u'uuid')
-                q['email'] = n.get(u'email')
-                array_pull.append(q)
+            try:
+                json_parse_success = json_parse.get(u'success')
+                for n in json_parse_success:
+                    q = {}
+                    q['uuid'] = n.get(u'uuid')
+                    q['email'] = n.get(u'email')
+                    array_pull.append(q)
+            except:
+                pass
+            try:
+                json_parse_error = json_parse.get(u'error')
+                for n in json_parse_error:
+                    q = {}
+                    q['uuid'] = n.get(u'uuid')
+                    q['email'] = n.get(u'email')
+                    array_pull.append(q)
+            except:
+                pass
+            try:
+                json_parse_list = json_parse.get(u'list')
+                for n in json_parse_list:
+                    q = {}
+                    q['uuid'] = n.get(u'uuid')
+                    q['email'] = n.get(u'user')
+                    array_pull.append(q)
+            except:
+                pass
             array_push = []
-
+        i = i + 1
     return array_pull
 
 
@@ -1310,6 +1332,7 @@ def invite_handler(request, course_key_string):
         if request_type == 'register_only':
             #get microsite prefix
             org = course.org
+	    list_return = []
             try:
                 csv_file = request.FILES['file']
                 saved_column = []
@@ -1341,50 +1364,68 @@ def invite_handler(request, course_key_string):
                         csv_infos.append(q)
                     # CHECK IF WE ARE AT THE FIRST LINE
                 msg = 'hello world'
-                session_manager = session_manager_handler(msg,list_email,org)
-
-                for n in session_manager:
-                    email_session_manager = n['email']
-                    uuid_session_manager = n['uuid']
-                    level_1 = ''
-                    level_2 = ''
-                    level_3 = ''
-                    level_4 = ''
-                    first_name = ''
-                    last_name = ''
-                    for get in csv_infos:
-                        if get['email'] == email_session_manager:
-                            level_1 = get['level_1']
-                            level_2 = get['level_2']
-                            level_3 = get['level_3']
-                            level_4 = get['level_4']
-                            first_name = get['first_name']
-                            last_name = get['last_name']
-                    q = {}
-                    q['email'] = email_session_manager
-                    try:
-                        # ALL INSERT
-                        # FIRST INSERT AT THE FIRST LINE
+                list_return = list_email
+                try:
+                    session_manager = session_manager_handler(msg,list_email,org)
+                    for n in session_manager:
+                        email_session_manager = n['email']
+                        uuid_session_manager = n['uuid']
+                        level_1 = ''
+                        level_2 = ''
+                        level_3 = ''
+                        level_4 = ''
+                        first_name = ''
+                        last_name = ''
+                        for get in csv_infos:
+                            if get['email'] == email_session_manager:
+                                level_1 = get['level_1']
+                                level_2 = get['level_2']
+                                level_3 = get['level_3']
+                                level_4 = get['level_4']
+                                first_name = get['first_name']
+                                last_name = get['last_name']
+                        q = {}
+                        q['email'] = email_session_manager
                         try:
-                            UserPreprofile.objects.get(email=email)
+                            # ALL INSERT
+                            # FIRST INSERT AT THE FIRST LINE
+                            try:
+                                UserPreprofile.objects.get(email=email)
+                            except:
+                                s = UserPreprofile(email=email_session_manager,first_name=first_name,last_name=last_name,level_1=level_1,level_2=level_2,level_3=level_3,level_4=level_4,uuid=uuid_session_manager)
+                                s.save()
+                            # CREATE A REQUEST PARAM
+                            request.POST['action'] = 'enroll'
+                            request.POST['auto_enroll'] = True
+                            request.POST['email_students'] = False
+                            request.POST['identifiers'] = email
+                            students_update_enrollment_cms(request,course_key_string)
+                            q['status'] = True
                         except:
-                            s = UserPreprofile(email=email_session_manager,first_name=first_name,last_name=last_name,level_1=level_1,level_2=level_2,level_3=level_3,level_4=level_4,uuid=uuid_session_manager)
-                            s.save()
-                        # CREATE A REQUEST PARAM
-                        request.POST['action'] = 'enroll'
-                        request.POST['auto_enroll'] = True
-                        request.POST['email_students'] = False
-                        request.POST['identifiers'] = email
-                        students_update_enrollment_cms(request,course_key_string)
-                        q['status'] = True
-                    except:
-                        q['status'] = False
+                            q['status'] = False
 
-                    array.append(q)
-                response = {'message':array}
+                        array.append(q)
+                    for n in list_email:
+                        if not n in array:
+                            q = {}
+                            q['email'] = n
+                            array.append(q)
+                    response = {'message':array}
+                except:
+                    retour = []
+                    for n in list_return:
+                        q={}
+                        q['email']=n
+                        retour.append(n);
+                    response = {'response':request_type,'message':retour}
 
             except:
-                response = {'response':request_type}
+                retour = []
+                for n in list_return:
+                    q={}
+                    q['email']=n
+                    retour.append(n);
+                response = {'response':request_type,'message':retour}
 
             return JsonResponse(response)
         elif request_type == 'send_mail':
