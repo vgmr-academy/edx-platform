@@ -745,7 +745,6 @@ def stat_dashboard(request, course_id):
     mongo_persist = dashboardStats()
     collection = mongo_persist.connect('ip-172-31-8-30.eu-west-1.compute.internal',27017)
     find_mongo_persist_course = mongo_persist.find_by_course_id(collection,course_id)
-    users_info = find_mongo_persist_course['users_info']
     for n in row:
         user_id = n.user_id
         users = User.objects.get(pk=user_id)
@@ -762,6 +761,7 @@ def stat_dashboard(request, course_id):
             user_course_started = user_course_started + 1
         """
         try:
+	    users_info = find_mongo_persist_course['users_info']
 	    users_status = users_info[str(users.id)]
             _passed = users_status['passed']
             _percent = users_status['percent']
