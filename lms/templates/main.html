@@ -129,7 +129,7 @@ img.svg {
 <body class="${static.dir_rtl()} <%block name='bodyclass'/> lang_${LANGUAGE_CODE}">
 <%
 try:
-    atp_domain_prefix = get_value('domain_prefix').lower()
+    atp_domain_prefix = static.get_value('domain_prefix').lower()
 except:
     atp_domain_prefix = ''
 %>

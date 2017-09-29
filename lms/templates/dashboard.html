@@ -386,13 +386,13 @@ url_image = random.choice(url_array)
 console.log('nombres de cours');
 console.log(${len(course_enrollments)});
 </script>
-
+<% compteur = 0 %>
 % if len(progress_courses) > 0:
   <ul class="atp_course_listing">
   <% share_settings = getattr(settings, 'SOCIAL_SHARING_SETTINGS', {}) %>
   <% compteur = 0 %>
   % for q in progress_courses:
-    <% compteur = q['compteur'] %>
+    <% compteur = compteur + 1 %>
     <% atp_rank = q['atp_rank'] %>
     <% course_about = q['course_about'] %>
     <% show_courseware_link = q['show_courseware_link'] %>
@@ -483,7 +483,7 @@ console.log(${len(course_enrollments)});
   <% share_settings = getattr(settings, 'SOCIAL_SHARING_SETTINGS', {}) %>
   <% compteur = 0 %>
   % for q in finish_courses:
-    <% compteur = q['compteur'] %>
+    <% compteur = compteur + 1 %>
     <% atp_rank = q['atp_rank'] %>
     <% course_about = q['course_about'] %>
     <% show_courseware_link = q['show_courseware_link'] %>
