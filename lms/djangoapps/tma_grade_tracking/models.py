@@ -1,11 +1,16 @@
 from pymongo import MongoClient
-
+from django.conf import settings
 
 class dashboardStats():
     def __init__(self):
         self.course_id = None
 
-    def connect(self,host,port,user=None,password=None):
+    def connect(self,user=None,password=None):
+        option = settings.MODULESTORE.get("default").get('OPTIONS')
+        stores = option.get('stores')
+        doc_config = stores[0].get('DOC_STORE_CONFIG')
+        host = doc_config.get('host')[0]
+        port = doc_config.get('port')
         client = MongoClient(host, port)
         db = client['stat_dashboard']
         collection = db["courses"]

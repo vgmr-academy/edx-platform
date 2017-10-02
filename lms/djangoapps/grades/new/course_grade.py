@@ -241,7 +241,7 @@ class CourseGrade(object):
             course_grade.course_edited_timestamp = persistent_grade.course_edited_timestamp
         #TMA GRADE TRACKING UPDATE
         mongo_persist = dashboardStats()
-        collection = mongo_persist.connect('ip-172-31-8-30.eu-west-1.compute.internal',27017)
+        collection = mongo_persist.connect()
         add_user = {}
         add_user['user_id'] = user.id
         add_user['username'] = user.username
@@ -429,7 +429,7 @@ class CourseGradeFactory(object):
         course_grade.compute_and_update(read_only)
         # END TMA GRADE TRACKING UPDATE
         mongo_persist = dashboardStats()
-        collection = mongo_persist.connect('ip-172-31-8-30.eu-west-1.compute.internal',27017)
+        collection = mongo_persist.connect()
         add_user = {}
         add_user['user_id'] = student.id
         add_user['username'] = student.username

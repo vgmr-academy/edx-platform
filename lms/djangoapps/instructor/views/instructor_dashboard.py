@@ -743,7 +743,7 @@ def stat_dashboard(request, course_id):
     blocks = get_blocks(request,course_usage_key,depth='all',requested_fields=['display_name','children'])
     # connect mongodb return values:
     mongo_persist = dashboardStats()
-    collection = mongo_persist.connect('ip-172-31-8-30.eu-west-1.compute.internal',27017)
+    collection = mongo_persist.connect()
     find_mongo_persist_course = mongo_persist.find_by_course_id(collection,course_id)
     for n in row:
         user_id = n.user_id
