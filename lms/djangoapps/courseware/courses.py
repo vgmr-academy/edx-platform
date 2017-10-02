@@ -366,15 +366,12 @@ def get_courses(user, org=None, filter_=None):
     filtered by org code (case-insensitive).
     """
     courses = branding.get_visible_courses(org=org, filter_=filter_)
-    log.exception(u"get_courses: %s",str(org))
-    log.exception(u"length of courses in get_courses: %s",str(len(courses)))
     permission_name = configuration_helpers.get_value(
         'COURSE_CATALOG_VISIBILITY_PERMISSION',
         settings.COURSE_CATALOG_VISIBILITY_PERMISSION
     )
 
     courses = [c for c in courses if has_access(user, permission_name, c)]
-    log.exception(u"length of courses in get_courses when access checked: %s",str(len(courses)))
     return courses
 
 

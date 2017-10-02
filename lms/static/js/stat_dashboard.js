@@ -74,7 +74,6 @@ $('#block_average').find('.section_box').find('h4').click(function(){
     $('html, body').animate({
         scrollTop: Parent_h4.offset().top -= 153
     }, 600);
-    console.log($(this).parent());
   })
 }else{
   $('#voile').delay(800).fadeOut();
