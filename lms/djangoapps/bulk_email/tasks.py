@@ -49,6 +49,8 @@ from lms.djangoapps.instructor_task.subtasks import (
 from util.date_utils import get_default_time_display
 from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 
+from pprint import pformat
+
 log = logging.getLogger('edx.celery.task')
 
 
@@ -373,7 +375,7 @@ def _get_source_address(course_id, course_title, truncate=True):
     # character appears.
     course_name = re.sub(r"[^\w.-]", '_', course_id.course)
 
-    from_addr_format = u'"{course_title}" Course Staff <{course_name}-{from_email}>'
+    from_addr_format = u'"{course_title}" <{from_email}>'
 
     def format_address(course_title_no_quotes):
         """
@@ -393,7 +395,6 @@ def _get_source_address(course_id, course_title, truncate=True):
         )
 
     from_addr = format_address(course_title_no_quotes)
-
     # If the encoded from_addr is longer than 320 characters, reformat,
     # but with the course name rather than course title.
     # Amazon SES's from address field appears to have a maximum length of 320.
@@ -404,7 +405,7 @@ def _get_source_address(course_id, course_title, truncate=True):
     escaped_encoded_from_addr = escape(encoded_from_addr)
     if len(escaped_encoded_from_addr) >= 320 and truncate:
         from_addr = format_address(course_name)
-
+    log.info("ADRESSE FROM: "+pformat(from_addr))
     return from_addr
 
 

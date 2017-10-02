@@ -7,7 +7,9 @@ import requests
 import logging
 import random
 import string  # pylint: disable=deprecated-module
-
+#GEOFFREY TMA ATP
+import datetime
+from student.roles import CourseInstructorRole,CourseStaffRole
 
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
@@ -121,6 +123,7 @@ from microsite_configuration.models import (
 from microsite_manager.models import MicrositeAdminManager
 #GEOFFREY
 log = logging.getLogger(__name__)
+
 
 __all__ = ['course_info_handler', 'course_handler', 'course_listing',
            'course_info_update_handler', 'course_search_index_handler',
@@ -537,8 +540,51 @@ def course_listing(request):
     #microsites
     microsites = MicrositeDetail.objects.all()
     #microsites
+    #update template tma atp
+    user_email = request.user.email
+    current_date = int(datetime.datetime.now().strftime("%s"))
+    course_scheduled = []
+    course_in_progress = []
+    course_completed = []
+    amundi_template = []
+    for course_info in sorted(courses, key=lambda s: s['display_name'].lower() if s['display_name'] is not None else ''):
+      q={}
+      q['course_key_id'] = CourseKey.from_string(course_info['course_key'])
+      is_true = False
+      q['staf_users'] = CourseStaffRole(q['course_key_id']).users_with_role()
+      for n in q['staf_users']:
+        if n.email == user_email or request.user.is_staff:
+           is_true = True
+      q['course_info'] = course_info
+      q['is_true'] = is_true
+      q['courses_overviews'] = CourseOverview.get_from_id(q['course_key_id'])
+      q['courses_stats'] = get_course_by_id(q['course_key_id'])
+      q['categories'] = q['courses_stats'].categ
+      q['course_img'] = q['courses_overviews'].image_urls
+      q['course_start'] = q['courses_overviews'].start.strftime('%d-%m-%Y')
+      q['course_end'] = ''
+      if q['courses_overviews'].end:
+        q['course_end'] = q['courses_overviews'].end.strftime('%d-%m-%Y')
+        q['course_end_compare'] = int(q['courses_overviews'].end.strftime("%s"))
+      else:
+        q['course_end_compare'] = current_date
+      q['course_start_compare'] = int(q['courses_overviews'].start.strftime("%s"))
+      q['duration'] = CourseDetails.fetch(q['course_key_id']).effort
+      if (not 'AMUNDI-GENERIC-TEMPLATE' in course_info['display_name']) and (current_date < q['course_start_compare']) and is_true and (not q['course_key_id'] in course_scheduled):
+           course_scheduled.append(q)
+      elif (not 'AMUNDI-GENERIC-TEMPLATE' in course_info['display_name']) and (current_date > q['course_start_compare'] and current_date <= q['course_end_compare']) and is_true and (not q['course_key_id'] in course_in_progress):
+           course_in_progress.append(q)
+      elif (not 'AMUNDI-GENERIC-TEMPLATE' in course_info['display_name']) and (current_date > q['course_end_compare']) and is_true and (not q['course_key_id'] in course_completed):
+           course_completed.append(q)
+      elif ('AMUNDI-GENERIC-TEMPLATE' in course_info['display_name']) and (not q['course_key_id'] in amundi_template):
+           amundi_template.append(q)
+
     return render_to_response('index.html', {
         'courses': courses,
+        'course_scheduled':course_scheduled,
+        'course_in_progress':course_in_progress,
+        'course_completed':course_completed,
+        'amundi_template':amundi_template,
         'in_process_course_actions': in_process_course_actions,
         'libraries_enabled': LIBRARIES_ENABLED,
         'libraries': [format_library_for_view(lib) for lib in libraries],
