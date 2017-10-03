@@ -43,7 +43,7 @@ $('#block_average').find('.section_box').find('h4').click(function(){
       dataType:'json',
       data:data,
       success:function(data) {
-        var obj = data.grades.course_grade;
+        var obj = data.course_grade;
         var keys = Object.keys(obj);
         var length = keys.length;
         var i = 0;
@@ -52,8 +52,8 @@ $('#block_average').find('.section_box').find('h4').click(function(){
           var dat = obj[keys[i]];
           var display_name = dat.display_name;
           var vertical_name = dat.vertical_name;
-          var grade = dat.grade;
-          var num_grade = dat.num_grade;
+          var grade = dat.moyenne;
+          var num_grade = dat.max_grade;
           var avg = (grade / num_grade) * 100;
           avg = Math.round(avg);
           var stat = 100 - avg;
@@ -175,7 +175,9 @@ function callUser(username,course_id) {
         })
         var avg = parseInt(earned / possible * 100);
         var div = '<div class="user_grade_cell"><div class="vertical_name">'+vertical_name+'</div><h6>'+name+'</h6><div class="bart_chat" ><div class="success_chart_bart" style="width:'+avg+'%;"></div></div><div class="score_line"><div class="chart_success">'+earned+'</div><div class="chart_fail">'+possible+'</div><span style="display:block;clear:both;"></span></div>';
-        cible.append(div);
+        if(cible != '') {
+          cible.append(div);
+        }
       }
       $('#content_participant').find('.problem_box').each(function(){
         $(this).append('<div style="clear:left"></div>');
@@ -212,7 +214,7 @@ $("#name_participant").on('keyup', function(event) {
   var val = This.val();
   if(val.length >= 3) {
     var course_id = $('#participant_search').data('courseid');
-    var url = '/courses/'+course_id+'/stat_dashboard/get_user/'+val;
+    var url = '/courses/'+course_id+'/stat_dashboard/get_user/'+val+'/';
     $.ajax({
       type:'GET',
       dataType:'json',

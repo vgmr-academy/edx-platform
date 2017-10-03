@@ -34,7 +34,7 @@ from courseware.courses import get_course_by_id, get_studio_url
 from django_comment_client.utils import has_forum_access
 from django_comment_common.models import FORUM_ROLE_ADMINISTRATOR
 from openedx.core.djangoapps.course_groups.cohorts import get_course_cohorts, is_course_cohorted, DEFAULT_COHORT_NAME
-from student.models import CourseEnrollment
+from student.models import CourseEnrollment,User,CourseEnrollment
 from shoppingcart.models import Coupon, PaidCourseRegistration, CourseRegCodeItem
 from course_modes.models import CourseMode, CourseModesArchive
 from student.roles import CourseFinanceAdminRole, CourseSalesAdminRole
@@ -60,7 +60,6 @@ from openedx.core.djangoapps.content.course_overviews.models import CourseOvervi
 from courseware.courses import get_course_by_id
 from django.db import connection,connections
 from opaque_keys.edx.locations import SlashSeparatedCourseKey
-from student.models import User,CourseEnrollment
 from course_progress.helpers import get_overall_progress
 from lms.djangoapps.grades.new.course_grade import CourseGradeFactory
 #GEOFFREY 2
@@ -748,31 +747,21 @@ def stat_dashboard(request, course_id):
     for n in row:
         user_id = n.user_id
         users = User.objects.get(pk=user_id)
-	"""
-        users = User.objects.get(pk=user_id)
-        username = users.username
-        course_progression = get_overall_progress(user_id,course_key)
-        get_persisted = CourseGradeFactory().create(users, course)
-        if get_persisted:
-            num_passed = num_passed + 1
-            user_finished = user_finished + 1
-            course_average_grade = course_average_grade + (get_persisted.percent * 100)
-        if course_progression > 0:
-            user_course_started = user_course_started + 1
-        """
-        try:
-	    users_info = find_mongo_persist_course['users_info']
-	    users_status = users_info[str(users.id)]
-            _passed = users_status['passed']
-            _percent = users_status['percent']
+
+    try:
+        users_info = find_mongo_persist_course['users_info']
+        for key, value in users_info.iteritems():
+            all_user = all_user + 1
+            _passed = value['passed']
+            _percent = value['percent']
             user_course_started = user_course_started + 1
             if _passed:
                 course_average_grade = course_average_grade + (_percent * 100)
                 user_finished = user_finished + 1
                 if _percent > course_cutoff:
                     num_passed = num_passed + 1
-        except:
-	    pass
+    except:
+        pass
     #return context
     if user_finished != 0:
         course_average_grade = course_average_grade / user_finished
@@ -791,29 +780,43 @@ def stat_dashboard(request, course_id):
 
     return render_to_response('courseware/stat.html', context)
 
-
+@ensure_csrf_cookie
 @login_required
 def get_dashboard_username(request,course_id,username):
     course_key = SlashSeparatedCourseKey.from_deprecated_string(course_id)
-    row = CourseEnrollment.objects.all().filter(course_id=course_key)
+    row = User.objects.raw('SELECT a.id,a.username FROM auth_user a,student_courseenrollment b WHERE a.id=b.user_id AND b.course_id=%s' ,[course_id])
     usernames = []
+    username = str(username).lower()
     for n in row:
-        user = User.objects.all().filter(pk=n.user_id,username__contains=username)
-        for z in user:
-            if username in z.username:
-                usernames.append(z.username)
+        low = str(n.username).lower()
+        if username in low:
+            usernames.append(n.username)
     response = JsonResponse({
             "usernames":usernames
         })
 
     return response
 
-
+@ensure_csrf_cookie
 @login_required
 def stat_dashboard_username(request, course_id, username):
     try:
         # get users info
         users = User.objects.get(username=username)
+        #user_email
+        user_email = users.email
+        lvl_1 = ''
+        lvl_2 = ''
+        lvl_3 = ''
+        lvl_4 = ''
+        try:
+            preprofile = UserPreprofile.objects.get(email=user_email)
+            lvl_1 = preprofile.level_1
+            lvl_2 = preprofile.level_2
+            lvl_3 = preprofile.level_3
+            lvl_4 = preprofile.level_4
+        except:
+            pass
         # get user id
         user_id= users.id
         # get course_key from url's param
@@ -832,10 +835,10 @@ def stat_dashboard_username(request, course_id, username):
         {'First_name':users.first_name},
         {'Last_name':users.last_name},
         {'Email':users.email},
-        {'Niveau_1':'lvl1'},
-        {'Niveau_2':'lvl2'},
-        {'Niveau_3':'lvl3'},
-        {'Niveau_4':'lvl4'}
+        {'Niveau_1':lvl_1},
+        {'Niveau_2':lvl_2},
+        {'Niveau_3':lvl_3},
+        {'Niveau_4':lvl_4}
         ]
         for n in course_block:
             q = {}
@@ -865,43 +868,6 @@ def stat_dashboard_username(request, course_id, username):
                 "user_info": '',
             })
 
-
-
-@login_required
-def get_average_blocks_grades(request, current_key):
-
-    try:
-        course_key = SlashSeparatedCourseKey.from_deprecated_string(course_id)
-        course_block = StudentModule.objects.filter(course_id=course_key,max_grade__isnull=False)
-        course_grade = {}
-        for n in course_block:
-            usage_key = n.module_state_key
-            block_view = BlocksView()
-            block_name = get_blocks(request,usage_key,depth='all',requested_fields=['display_name'])
-            root = block_name['root']
-            if not root in course_grade:
-                display_name = block_name['blocks'][root]['display_name']
-                course_grade[root] = {}
-                course_grade[root]['display_name'] = display_name
-                course_grade[root]['num_grade'] = 1
-                if n.grade == n.max_grade:
-                    course_grade[root]['grade'] = 1
-                else:
-                    course_grade[root]['grade'] = 0
-            else:
-                course_grade[root]['num_grade'] = course_grade[root]['num_grade'] + 1
-                if n.grade == n.max_grade:
-                    course_grade[root]['grade'] = course_grade[root]['grade'] + 1
-        response = JsonResponse({
-                "course_grade": course_grade
-            })
-
-    except:
-        response = JsonResponse({
-                "course_id":course_id,
-                "course_grade": {}
-            })
-    return response
 
 @login_required
 def get_course_structure(request, course_id):
@@ -949,44 +915,6 @@ def get_course_structure(request, course_id):
         children = ''
     return blocks_overviews
 
-@login_required
-def get_block_grade(request,current_key,course_id):
-
-    try:
-        course_key = CourseKey.from_string(course_id)
-        course_block = StudentModule.objects.filter(course_id=course_key,max_grade__isnull=False)
-        course_grade = {}
-        for n in course_block:
-            usage_key = n.module_state_key
-            block_view = BlocksView()
-            block_name = get_blocks(request,usage_key,depth='all',requested_fields=['display_name'])
-            root = block_name['root']
-            for z in current_key:
-                if root in z.get('id'):
-                    if not root in course_grade:
-                        display_name = block_name['blocks'][root]['display_name']
-                        course_grade[root] = {}
-                        course_grade[root]['display_name'] = display_name
-                        course_grade[root]['vertical_name'] = z.get('title')
-                        course_grade[root]['num_grade'] = 1
-                        if n.grade == n.max_grade:
-                            course_grade[root]['grade'] = 1
-                        else:
-                            course_grade[root]['grade'] = 0
-                    else:
-                        course_grade[root]['num_grade'] = course_grade[root]['num_grade'] + 1
-                        if n.grade == n.max_grade:
-                            course_grade[root]['grade'] = course_grade[root]['grade'] + 1
-
-        response = {
-                "course_grade": course_grade
-            }
-    except:
-        response = {
-                "course_grade": {}
-            }
-
-    return response
 
 @ensure_csrf_cookie
 @login_required
@@ -995,21 +923,29 @@ def get_course_blocks_grade(request,course_id):
 
     data = json.loads(request.body)
     data_id = data.get('data_id')
-    data_title = []
-    for n in data_id:
-        data_title.append(n.get('title'))
+    course_block = StudentModule.objects.raw("SELECT id,AVG(grade) AS moyenne,count(id) AS total,MAX(max_grade) AS max_grade,course_id,module_id FROM courseware_studentmodule WHERE course_id = %s AND max_grade IS NOT NULL AND grade <= max_grade GROUP BY module_id", [course_id])
+    course_grade = {}
+    for n in course_block:
+        usage_key = n.module_state_key
+        block_view = BlocksView()
+        try:
+            block_name = get_blocks(request,usage_key,depth='all',requested_fields=['display_name'])
+            root = block_name['root']
+            for z in data_id:
+                if root in z.get('id'):
+                    if not root in course_grade:
+                        course_grade[root] = {}
+                        course_grade[root]['moyenne'] = n.moyenne
+                        course_grade[root]['total'] = n.total
+                        course_grade[root]['max_grade'] = n.max_grade
+                        course_grade[root]['course_id'] = str(n.course_id)
+                        course_grade[root]['module_id'] = str(n.module_state_key)
+                        course_grade[root]['display_name'] = block_name['blocks'][root]['display_name']
+                        course_grade[root]['vertical_name'] = z.get('title')
 
-    ids = request.POST.getlist("id[]")
-    titles = request.POST.getlist("titles[]")
-    units = {'id':ids,'title':titles}
-
-
-    grade = get_block_grade(request,data_id,course_id)
-
-    response = JsonResponse({
-            'grades':grade
-        })
-    return response
+        except:
+            pass
+    return JsonResponse({'course_grade':course_grade})
 
 def get_result_page_info(request,course_id):
 
