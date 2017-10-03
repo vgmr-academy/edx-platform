@@ -1278,7 +1278,7 @@ def session_manager_handler(msg,emails,org):
     except:
         urls = ["https://ppr-session-manager.amundi.com/v2/token","https://ppr-session-manager.amundi.com/v2/api/import","https://ppr-session-manager.amundi.com/v2/api/users/import"]
 
-    redirect_uri = 'http://'
+    redirect_uri = 'https://'
     msg = 'lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore lorem ipsum dolor sit amet consectetur adipisci elit'
     lang = 'fr'
 
@@ -1294,7 +1294,7 @@ def session_manager_handler(msg,emails,org):
     for n in emails:
         array_push.append(n)
         if i%200 == 0 or i == len(emails):
-            data_email = {"redirect_uri":redirect_uri, "msg":msg, "lang":lang,"users":array_push}
+            data_email = {"referer":redirect_uri, "msg":msg, "lang":lang,"users":array_push}
             request_email = requests.post(urls[2], json=data_email , headers = {'content-type':'application/json','Authorization':'Bearer '+token},verify=False)
             log.info("Donnee retour session_manager: "+str(request_email.text))
             json_parse = json.loads(request_email.text)
