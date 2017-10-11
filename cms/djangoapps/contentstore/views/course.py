@@ -1255,7 +1255,7 @@ def manage_handler(request, course_key_string):
 
 
 def session_manager_handler(msg,emails,org):
-    
+
     grant_type = 'client_credentials'
     # TODO : Remove all hardcoded and try except when SEM is finalized
     """
@@ -1282,7 +1282,7 @@ def session_manager_handler(msg,emails,org):
         urls = ["https://ppr-session-manager.amundi.com/v2/token","https://ppr-session-manager.amundi.com/v2/api/import","https://ppr-session-manager.amundi.com/v2/api/users/import"]
 
     redirect_uri = 'https://'+str(org)+'.'+str(settings.LMS_BASE)+'/auth/login/amundi/?auth_entry=login&next=%2Fdashboard'
-    msg = 'lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore lorem ipsum dolor sit amet consectetur adipisci elit'
+    msg = msg
     lang = 'fr'
 
     data = {"grant_type" : grant_type, "client_id" : client_id, "client_secret" : client_secret}
@@ -1412,7 +1412,7 @@ def invite_handler(request, course_key_string):
                         list_email.append(email)
                         csv_infos.append(q)
                     # CHECK IF WE ARE AT THE FIRST LINE
-                msg = 'hello world'
+                msg = "La creation d'un compte est necessaire avant votre inscription au module "+course.display_name+". Une fois votre compte cree vous pourrez acceder au module via le lien disponible dans l'autre email qui vous a ete envoye."
                 list_return = list_email
                 try:
                     session_manager = session_manager_handler(msg,list_email,org)
