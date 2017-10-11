@@ -1255,6 +1255,7 @@ def manage_handler(request, course_key_string):
 
 
 def session_manager_handler(msg,emails,org):
+    
     grant_type = 'client_credentials'
     # TODO : Remove all hardcoded and try except when SEM is finalized
     """
@@ -1265,11 +1266,13 @@ def session_manager_handler(msg,emails,org):
         }
     }
     """
+    #lower course org
+    sem_org = org.lower()
     credentials = settings.FEATURES.get('SEM_CREDENTIALS')
     prod = settings.FEATURES.get('VM_STATUS')
     try:
-        client_id = credentials.get(prod).get(org).get('client_id')
-        client_secret = credentials.get(prod).get(org).get('secret')
+        client_id = credentials.get(prod).get(sem_org).get('client_id')
+        client_secret = credentials.get(prod).get(sem_org).get('secret')
     except:
         client_id = '76db53b7-e23e-40f5-9b75-d472d48dbc70'
         client_secret = '066cdb10-a092-4327-b9be-f2b4fb95ca1e'
