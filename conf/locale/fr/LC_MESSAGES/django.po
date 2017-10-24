@@ -22737,3 +22737,13 @@ msgstr "déconnexion"
 #log
 msgid "login"
 msgstr "connexion"
+
+#cms index.html
+
+msgid "No training campaign has been launched yet."
+msgstr "Aucune campagne de formation n'a été lancée."
+
+# lms dashboard.html
+
+msgid "No training modules available in this section."
+msgstr "Aucun module de formation n'est disponible dans cette section."

@@ -4,12 +4,12 @@ metadata:
 
 data: |
   <div class="course_about_atp">
-  <h2><img src="/static/atp/images/description.svg" class="svg"> <span>Module's description:"</span></h2>
+  <h2><img src="/media/svg/description.svg" class="svg"> <span>Module's description:"</span></h2>
   <p>De Finibus Bonorum et Malorum De Finibus Bonorum et Malorum De Finibus Bonorum et Malorum De Finibus Bonorum et Malorum De Finibus Bonorum et Malorum De Finibus Bonorum et Malorum De Finibus Bonorum et Malorum</p>
   </div>
 
   <div class="course_about_atp">
-  <h2><img src="/static/atp/images/alissue.svg" class="svg"> <span>After this module, you will be able to:</span></h2>
+  <h2><img src="/media/svg/alissue.svg" class="svg"> <span>After this module, you will be able to:</span></h2>
   <ul>
    <li><span>De Finibus Bonorum et Malorum</span></li>
    <li><span>De Finibus Bonorum et Malorum</span></li>
@@ -19,7 +19,7 @@ data: |
   </div>
 
   <div class="course_about_atp_special">
-  <h2><img src="/static/atp/images/plandumodule.svg" class="svg"> <span>MODULE'S AGENDA:</span></h2>
+  <h2><img src="/media/svg/plandumodule.svg" class="svg"> <span>MODULE'S AGENDA:</span></h2>
   <div class="special_block">
    <div class="up_block">
     <h4>titre 1 <span class="arrow_course_about arrow-right"></span><span style="display:block;clear:right;"></span></h4>
@@ -79,7 +79,7 @@ data: |
   </div>
 
   <div class="course_about_atp_special">
-  <h2><img src="/static/atp/images/plusdinfos.svg" class="svg" /> <span>further information</span></h2>
+  <h2><img src="/media/svg/plusdinfos.svg" class="svg" /> <span>further information</span></h2>
   <p>Ce module n'est pas sujet à une certification</p>
   </div>
 
