@@ -816,12 +816,13 @@ def dashboard(request):
           finish_courses.append(q)
     #new user popup
     is_new_user = False
-    now_datetime = int(datetime.datetime.now().strftime("%s")) - int(request.user.last_login.strftime("%s"))
+    now_datetime = int(datetime.datetime.now(UTC).strftime("%s")) - int(request.user.date_joined.strftime("%s"))
     if now_datetime <= 30:
         is_new_user = True
     first_course_name = ''
     context = {
         #ATP add
+        'now_datetime':now_datetime,
         'first_course_name':first_course_name,
         'is_new_user':is_new_user,
         'progress_courses': progress_courses,
