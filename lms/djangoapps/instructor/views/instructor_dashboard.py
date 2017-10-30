@@ -34,7 +34,7 @@ from courseware.courses import get_course_by_id, get_studio_url
 from django_comment_client.utils import has_forum_access
 from django_comment_common.models import FORUM_ROLE_ADMINISTRATOR
 from openedx.core.djangoapps.course_groups.cohorts import get_course_cohorts, is_course_cohorted, DEFAULT_COHORT_NAME
-from student.models import CourseEnrollment,User,CourseEnrollment
+from student.models import CourseEnrollment,User,CourseEnrollment,CourseEnrollmentAllowed,UserPreprofile
 from shoppingcart.models import Coupon, PaidCourseRegistration, CourseRegCodeItem
 from course_modes.models import CourseMode, CourseModesArchive
 from student.roles import CourseFinanceAdminRole, CourseSalesAdminRole
@@ -68,7 +68,8 @@ from course_api.blocks.api import get_blocks
 from course_api.blocks.views import BlocksInCourseView,BlocksView
 
 from lms.djangoapps.tma_grade_tracking.models import dashboardStats
-
+from xlwt import *
+import os
 #GEOFFREY
 log = logging.getLogger(__name__)
 #GEOFFREY BIS
@@ -724,10 +725,18 @@ def stat_dashboard(request, course_id):
     #GET COURSE
     course = get_course_by_id(course_key)
     #Get all course-enrollment
-    row = CourseEnrollment.objects.all().filter(course_id=course_key)
+    #row = CourseEnrollment.objects.all().filter(course_id=course_key)
     #Get all users started the course
     #number of user invited
-    all_user = row.count()
+    #invite = CourseEnrollmentAllowed.objects.all().filter(course_id=course_key)
+    row = User.objects.raw('SELECT a.id ,a.email FROM auth_user a,student_courseenrollment b WHERE a.id=b.user_id AND b.course_id=%s' ,[course_id])
+    invite = CourseEnrollmentAllowed.objects.all().filter(course_id=course_key)
+    all_user = 0
+    for _user in row:
+        all_user = all_user + 1
+    for _u in invite:
+        if not str(_u.email) in str(row):
+            all_user = all_user + 1
     #number of user who started the course
     user_course_started = 0
     #count passed
@@ -745,7 +754,7 @@ def stat_dashboard(request, course_id):
     collection = mongo_persist.connect()
     find_mongo_persist_course = mongo_persist.find_by_course_id(collection,course_id)
     for n in row:
-        user_id = n.user_id
+        user_id = n.id
         users = User.objects.get(pk=user_id)
 
     try:
@@ -953,4 +962,130 @@ def get_result_page_info(request,course_id):
       "course_id":course_id
     })
 
+    return response
+
+@ensure_csrf_cookie
+@login_required
+@require_GET
+def get_course_users(request,course_id):
+
+    #Get all course-enrollment
+    """
+    UserPreprofile
+    CourseEnrollment
+    CourseEnrollmentAllowed
+    """
+    course_key = SlashSeparatedCourseKey.from_deprecated_string(course_id)
+    invite = CourseEnrollmentAllowed.objects.all().filter(course_id=course_key)
+    enroll = CourseEnrollment.objects.all().filter(course_id=course_key)
+    users = []
+    for _ui in invite:
+        email = _ui.email
+        if not str(email) in str(users):
+            q = {}
+            q['email'] = email
+            q['statut'] = 'sent'
+            q['Nom'] = ''
+            q['Prenom'] = ''
+            q['Niveau 1'] = ''
+            q['Niveau 2'] = ''
+            q['Niveau 3'] = ''
+            q['Niveau 4'] = ''
+            users.append(q)
+
+    for _ue in enroll:
+        try:
+            email = User.objects.get(pk=_ue.user_id).email
+            if not str(email) in str(users):
+                q = {}
+                q['email'] = email
+                q['statut'] = 'accepted'
+                q['Nom'] = ''
+                q['Prenom'] = ''
+                q['Niveau 1'] = ''
+                q['Niveau 2'] = ''
+                q['Niveau 3'] = ''
+                q['Niveau 4'] = ''
+                users.append(q)
+            else:
+                for user in users:
+                    if user['email'] == email:
+                        user['status'] = 'accepted'
+        except:
+            pass
+
+    for user in users:
+        try:
+            email = user['email']
+            profile = UserPreprofile.objects.get(email=email)
+            user['Nom'] = profile.last_name
+            user['Prenom'] = profile.first_name
+            user['Niveau 1'] = profile.level_1
+            user['Niveau 2'] = profile.level_2
+            user['Niveau 3'] = profile.level_3
+            user['Niveau 4'] = profile.level_4
+        except:
+            pass
+
+    filename = '{}_registred_users.xls'.format(course_id).replace('+','_')
+    filepath = '/edx/var/edxapp/'+filename
+    HEADERS = (u"Nom",u"Prenom",u"Adresse email",u"Niveau 1",u"Niveau 2",u"Niveau 3",u"Niveau 4",u"Statut")
+    wb = Workbook(encoding='utf-8')
+    sheet = wb.add_sheet('Users')
+
+    for i, header in enumerate(HEADERS):
+        sheet.write(0, i, header)
+
+    j = 0
+    for i in range(len(users)):
+        j=j+1
+        try:
+            sheet.write(j, 0, users[i]['Nom'])
+        except:
+            sheet.write(j, 0, ' ')
+        try:
+            sheet.write(j, 1, users[i]['Prenom'])
+        except:
+            sheet.write(j, 1, ' ')
+        try:
+            sheet.write(j, 2, users[i]['email'])
+        except:
+            sheet.write(j, 2, ' ')
+        try:
+            sheet.write(j, 3, users[i]['Niveau 1'])
+        except:
+            sheet.write(j, 3, ' ')
+        try:
+            sheet.write(j, 4, users[i]['Niveau 2'])
+        except:
+            sheet.write(j, 4, ' ')
+        try:
+            sheet.write(j, 5, users[i]['Niveau 3'])
+        except:
+            sheet.write(j, 5, ' ')
+        try:
+            sheet.write(j, 6, users[i]['Niveau 4'])
+        except:
+            sheet.write(j, 6, ' ')
+        try:
+            sheet.write(j, 7, users[i]['statut'])
+        except:
+            sheet.write(j, 7, ' ')
+
+    wb.save(filepath)
+
+    context = {
+        'filename':filename,
+        'users':str(users)
+    }
+
+    return JsonResponse(context)
+
+def download_xls(request,filename):
+    full_path = '/edx/var/edxapp/'+filename
+    _file = open(full_path,'r')
+    _content = _file.read()
+    response = HttpResponse(_content, content_type="application/vnd.ms-excel")
+    response['Content-Disposition'] = "attachment; filename="+filename
+    os.remove(full_path)
     return response

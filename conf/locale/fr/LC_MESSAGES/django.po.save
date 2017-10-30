@@ -1,0 +1,1505 @@
+# #-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#
+# edX translation file.
+# Copyright (C) 2016 EdX
+# This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
+# 
+# Translators:
+# anaseha <anaselhadjamor@gmail.com>, 2014
+# anaseha <anaselhadjamor@gmail.com>, 2014
+# Bertrand Marron <bertrand.marron@gmail.com>, 2014-2015
+# Christopher Castermane <christopher.castermane@student.uclouvain.be>, 2014
+# Daniel Le Berre, 2014
+# Daniel Le Berre, 2014
+# Encolpe Degoute <inactive+encolpe@transifex.com>, 2013
+# Encolpe Degoute <inactive+encolpe@transifex.com>, 2013
+# Eric Fortin, 2014,2016
+# Eric Fortin, 2014,2016
+# fgerber <gerber.francois@gmail.com>, 2015
+# francoisedocq, 2014
+# Françoise Docq, 2014
+# Françoise Docq, 2014
+# Françoise Docq, 2014
+# Françoise Docq, 2014
+# Fredy Landry Ngono <lefredoo@yahoo.fr>, 2015
+# Gérard Vidal <Gerard.Vidal@ens-lyon.fr>, 2014
+# fgerber <gerber.francois@gmail.com>, 2015
+# INARES <contact@inares.org>, 2015
+# Isabelle Gonon <isabelle.gonon@cnam.fr>, 2013
+# Isabelle Gonon <isabelle.gonon@cnam.fr>, 2013
+# Jeremie Sicsic <jsicsic@gmail.com>, 2013
+# jmc <jmc@edx.org>, 2014
+# jmc <jmc@edx.org>, 2014
+# Julien Rolland <julien.rolland33@gmail.com>, 2013
+# jsa_edx <jsa@edx.org>, 2014
+# jsa_edx <jsa@edx.org>, 2014
+# Jeremie Sicsic <jsicsic@gmail.com>, 2013
+# Julien Colmonts <julien.colmonts@student.uclouvain.be>, 2014
+# Julien Rolland <julien.rolland33@gmail.com>, 2013
+# Justine Seran, 2015
+# Justine Seran, 2015
+# Kévin SEVERIN <kevin.severin@laposte.net>, 2015
+# Régis Millet <kulgar@ct2c.fr>, 2015
+# Laetitia Pfaender <l.pfaender@learning-tribes.com>, 2016
+# laurentFUN <laurent.at.fun@gmail.com>, 2014-2016
+# Linda B.A <siria242@gmail.com>, 2016
+# Marco Morales, 2014
+# Marco Morales, 2014
+# Matthieu Falce <falce.matthieu@gmail.com>, 2016
+# moocit-france <contact@moocit.fr>, 2014-2016
+# mtyaka <mtyaka@gmail.com>, 2015-2016
+# Nikolaos Maris, 2013
+# Nikolaos Maris, 2013
+# Olivier Marquez <oliviermarquez@gmail.com>, 2013
+# Olivier Marquez <oliviermarquez@gmail.com>, 2013-2015
+# Pedro Guimarães Martins <pedrogmartins7@gmail.com>, 2014
+# PETIT Yannick <yannick.petit@gmail.com>, 2013
+# Philippe Chiu <philippe.chiu@gmail.com>, 2013-2014
+# qcappart <quentin.c@swing.be>, 2014
+# qcappart <quentin.c@swing.be>, 2014
+# rafcha <raphael.chay@gmail.com>, 2014-2015
+# Régis Millet <kulgar@ct2c.fr>, 2015
+# Richard Moch <richard.moch@gmail.com>, 2014
+# Richard Moch <richard.moch@gmail.com>, 2014-2016
+# romain couturat <romain.couturat@fun-mooc.fr>, 2016
+# Sarina Canelake <sarina@edx.org>, 2014
+# Sebastien Vigneau <sebastien.vigneau@gmail.com>, 2015
+# SLOG90 <slog90@gmail.com>, 2014
+# SLOG90 <slog90@gmail.com>, 2014
+# Steven BERNARD <steven.bernard@u-paris2.fr>, 2013
+# Steven BERNARD <steven.bernard@u-paris2.fr>, 2013
+# Thomas Fradet <t.fradet8@gmail.com>, 2015
+# Thomas Sihapanya <sihapanya.thomas@gmail.com>, 2015
+# Toreador <torrent_lover@hotmail.com>, 2014
+# Toreador <torrent_lover@hotmail.com>, 2014
+# Xavier Antoviaque <xavier@antoviaque.org>, 2014-2015
+# PETIT Yannick <yannick.petit@gmail.com>, 2013
+# yepelboin <yves.epelboin@impmc.upmc.fr>, 2014-2015
+# #-#-#-#-#  django-studio.po (edx-platform)  #-#-#-#-#
+# edX translation file.
+# Copyright (C) 2016 EdX
+# This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
+# 
+# Translators:
+# Bertrand Marron <bertrand.marron@gmail.com>, 2014
+# Encolpe Degoute <inactive+encolpe@transifex.com>, 2013
+# Encolpe Degoute <inactive+encolpe@transifex.com>, 2013
+# Eric Fortin, 2016
+# Eric Fortin, 2016
+# francoisedocq, 2014
+# Françoise Docq, 2014
+# Françoise Docq, 2014
+# Françoise Docq, 2014
+# Gérard Vidal <Gerard.Vidal@ens-lyon.fr>, 2014-2015
+# INARES <contact@inares.org>, 2015
+# Isabelle Gonon <isabelle.gonon@cnam.fr>, 2013
+# Isabelle Gonon <isabelle.gonon@cnam.fr>, 2013
+# Jeremie Sicsic <jsicsic@gmail.com>, 2013
+# Julien Rolland <julien.rolland33@gmail.com>, 2013
+# Jeremie Sicsic <jsicsic@gmail.com>, 2013
+# Julien Colmonts <julien.colmonts@student.uclouvain.be>, 2014
+# Julien Rolland <julien.rolland33@gmail.com>, 2013
+# Matthieu Falce <falce.matthieu@gmail.com>, 2016
+# moocit-france <contact@moocit.fr>, 2015
+# Nikolaos Maris, 2013
+# Olivier Marquez <oliviermarquez@gmail.com>, 2013
+# PETIT Yannick <yannick.petit@gmail.com>, 2013
+# Pierre-Emmanuel Colas <pecolas44@gmail.com>, 2015
+# qcappart <quentin.c@swing.be>, 2014
+# qcappart <quentin.c@swing.be>, 2014
+# rafcha <raphael.chay@gmail.com>, 2014-2016
+# SLOG90 <slog90@gmail.com>, 2014
+# SLOG90 <slog90@gmail.com>, 2014
+# Steven BERNARD <steven.bernard@u-paris2.fr>, 2013
+# Steven BERNARD <steven.bernard@u-paris2.fr>, 2013
+# PETIT Yannick <yannick.petit@gmail.com>, 2013
+# yepelboin <yves.epelboin@impmc.upmc.fr>, 2015
+# ytabaa <ytabaa@uae.ac.ma>, 2014
+# ytabaa <ytabaa@uae.ac.ma>, 2014
+# yepelboin <yves.epelboin@impmc.upmc.fr>, 2015
+# #-#-#-#-#  mako.po (edx-platform)  #-#-#-#-#
+# edX translation file
+# Copyright (C) 2016 edX
+# This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
+# 
+# Translators:
+# SALHI Aissam <ais.salhy@gmail.com>, 2014
+# Bertrand Marron <bertrand.marron@gmail.com>, 2013-2015
+# Christopher Castermane <christopher.castermane@student.uclouvain.be>, 2014
+# ClaudeCoulombe <claude.coulombe@gmail.com>, 2014
+# ClaudeCoulombe <claude.coulombe@gmail.com>, 2014
+# Daniel Le Berre, 2015
+# Daniel Le Berre, 2015
+# derthy <derthiamj@gmail.com>, 2014
+# derthy <derthiamj@gmail.com>, 2014
+# eddy01 <ngwa.edwin@yahoo.com>, 2014
+# Emmanuel Olégine <olegine@gmail.com>, 2015
+# Encolpe Degoute <inactive+encolpe@transifex.com>, 2013
+# Encolpe Degoute <inactive+encolpe@transifex.com>, 2013
+# Eric Fortin, 2014
+# Eric Fortin, 2014
+# Françoise Docq, 2014
+# Françoise Docq, 2014
+# Gérard Vidal <Gerard.Vidal@ens-lyon.fr>, 2013-2014
+# Gilles Langevin <langevin.net@gmail.com>, 2013
+# Gilles Langevin <langevin.net@gmail.com>, 2013
+# jmc <jmc@edx.org>, 2014
+# jmc <jmc@edx.org>, 2014
+# Julien Rolland <julien.rolland33@gmail.com>, 2013
+# Julien Colmonts <julien.colmonts@student.uclouvain.be>, 2014
+# Julien Rolland <julien.rolland33@gmail.com>, 2013
+# Justine Seran, 2015
+# Justine Seran, 2015
+# Kévin SEVERIN <kevin.severin@laposte.net>, 2015
+# Régis Millet <kulgar@ct2c.fr>, 2015
+# Laetitia Pfaender <l.pfaender@learning-tribes.com>, 2016
+# laurentFUN <laurent.at.fun@gmail.com>, 2014,2016
+# laurentFUN <laurent.at.fun@gmail.com>, 2014
+# Leslie Bordonné <inactive+lbordonne@transifex.com>, 2015
+# Leslie Bordonné <inactive+lbordonne@transifex.com>, 2015
+# madmarsu <madmarsu@gmail.com>, 2014
+# madmarsu <madmarsu@gmail.com>, 2014
+# Maghjina <Maghjina@gmail.com>, 2014
+# mamby, 2014
+# mamby, 2014
+# Manjari <mringuet@gmail.com>, 2014
+# Matthieu Falce <falce.matthieu@gmail.com>, 2016
+# Emmanuel Olégine <olegine@gmail.com>, 2015
+# moocit-france <contact@moocit.fr>, 2015-2016
+# Manjari <mringuet@gmail.com>, 2014
+# Ramarohetra Malalatiana <mtiana8@gmail.com>, 2014
+# eddy01 <ngwa.edwin@yahoo.com>, 2014
+# Olivier Marquez <oliviermarquez@gmail.com>, 2013
+# Olivier Marquez <oliviermarquez@gmail.com>, 2013
+# PETIT Yannick <yannick.petit@gmail.com>, 2013
+# Philippe Chiu <philippe.chiu@gmail.com>, 2013-2014
+# qcappart <quentin.c@swing.be>, 2014
+# qcappart <quentin.c@swing.be>, 2014
+# Ramarohetra Malalatiana <mtiana8@gmail.com>, 2014
+# rafcha <raphael.chay@gmail.com>, 2014-2016
+# Régis Millet <kulgar@ct2c.fr>, 2015
+# Richard Moch <richard.moch@gmail.com>, 2016
+# romain couturat <romain.couturat@fun-mooc.fr>, 2016
+# SALHI Aissam <ais.salhy@gmail.com>, 2014
+# Sarina Canelake <sarina@edx.org>, 2014
+# Steven BERNARD <steven.bernard@u-paris2.fr>, 2014
+# Xavier Antoviaque <xavier@antoviaque.org>, 2014
+# PETIT Yannick <yannick.petit@gmail.com>, 2013
+# yepelboin <yves.epelboin@impmc.upmc.fr>, 2015
+# yepelboin <yves.epelboin@impmc.upmc.fr>, 2015
+# Андрей Поляков <polyakov.andrey@gmail.com>, 2016
+# #-#-#-#-#  mako-studio.po (edx-platform)  #-#-#-#-#
+# edX translation file
+# Copyright (C) 2016 edX
+# This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
+# 
+# Translators:
+# Alexandre Armougom <aav974@hotmail.fr>, 2016
+# Bertrand Marron <bertrand.marron@gmail.com>, 2013-2015
+# Christopher Castermane <christopher.castermane@student.uclouvain.be>, 2014
+# Daniel Le Berre, 2014
+# Daniel Le Berre, 2014
+# Delattre <mdelattre78@laposte.net>, 2015
+# Encolpe Degoute <inactive+encolpe@transifex.com>, 2013
+# Encolpe Degoute <inactive+encolpe@transifex.com>, 2013
+# Eric Fortin, 2014
+# Eric Fortin, 2014
+# Françoise Docq, 2014
+# Françoise Docq, 2014
+# Gérard Vidal <Gerard.Vidal@ens-lyon.fr>, 2013-2015
+# Gilles Langevin <langevin.net@gmail.com>, 2013
+# Gilles Langevin <langevin.net@gmail.com>, 2013
+# Julien Rolland <julien.rolland33@gmail.com>, 2013
+# Julien Colmonts <julien.colmonts@student.uclouvain.be>, 2014
+# Julien Rolland <julien.rolland33@gmail.com>, 2013
+# Régis Millet <kulgar@ct2c.fr>, 2015
+# Laetitia Pfaender <l.pfaender@learning-tribes.com>, 2016
+# laurentFUN <laurent.at.fun@gmail.com>, 2014
+# laurentFUN <laurent.at.fun@gmail.com>, 2014
+# madmarsu <madmarsu@gmail.com>, 2014
+# madmarsu <madmarsu@gmail.com>, 2014
+# Matthieu Falce <falce.matthieu@gmail.com>, 2016
+# moocit-france <contact@moocit.fr>, 2015
+# Olivier Marquez <oliviermarquez@gmail.com>, 2013
+# PETIT Yannick <yannick.petit@gmail.com>, 2013
+# qcappart <quentin.c@swing.be>, 2014
+# qcappart <quentin.c@swing.be>, 2014
+# rafcha <raphael.chay@gmail.com>, 2014-2016
+# Régis Millet <kulgar@ct2c.fr>, 2015
+# Richard Moch <richard.moch@gmail.com>, 2016
+# romain couturat <romain.couturat@fun-mooc.fr>, 2016
+# Sarina Canelake <sarina@edx.org>, 2014
+# Sebastien Vigneau <sebastien.vigneau@gmail.com>, 2015
+# SLOG90 <slog90@gmail.com>, 2014
+# SLOG90 <slog90@gmail.com>, 2014
+# Steven BERNARD <steven.bernard@u-paris2.fr>, 2014
+# PETIT Yannick <yannick.petit@gmail.com>, 2013
+# #-#-#-#-#  wiki.po (edx-platform)  #-#-#-#-#
+# edX translation file
+# Copyright (C) 2016 edX
+# This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
+# 
+# Translators:
+# Bertrand Marron <bertrand.marron@gmail.com>, 2014
+# Christopher Castermane <christopher.castermane@student.uclouvain.be>, 2014
+# Françoise Docq, 2014
+# qcappart <quentin.c@swing.be>, 2014
+# Richard Moch <richard.moch@gmail.com>, 2016
+# Sarina Canelake <sarina@edx.org>, 2014
+msgid ""
+msgstr ""
+"Project-Id-Version: edx-platform\n"
+"Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
+"POT-Creation-Date: 2016-12-08 18:46+0000\n"
+"PO-Revision-Date: 2016-08-30 15:36+0000\n"
+"Last-Translator: Matthieu Falce <falce.matthieu@gmail.com>\n"
+"Language-Team: French (http://www.transifex.com/open-edx/edx-platform/language/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 1.3\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. #-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#
+#. Translators: 'Discussion' refers to the tab in the courseware that leads to
+#. the discussion forums
+#: cms/djangoapps/contentstore/views/component.py
+#: lms/djangoapps/courseware/tabs.py lms/djangoapps/discussion/plugins.py
+#: openedx/core/lib/xblock_builtin/xblock_discussion/xblock_discussion.py
+#: lms/djangoapps/discussion/templates/discussion/discussion_profile_page.html
+msgid "Discussion"
+msgstr "Discussion"
+
+#: cms/djangoapps/contentstore/views/component.py
+#: lms/djangoapps/class_dashboard/dashboard_data.py
+msgid "Problem"
+msgstr "Exercice"
+
+#: cms/djangoapps/contentstore/views/component.py
+#: common/lib/xmodule/xmodule/video_module/video_module.py
+msgid "Advanced"
+msgstr "Avancé"
+
+#: cms/djangoapps/contentstore/views/entrance_exam.py
+#: lms/djangoapps/courseware/tabs.py cms/templates/settings.html
+msgid "Entrance Exam"
+msgstr "Examen d'entrée"
+
+#: cms/djangoapps/contentstore/views/helpers.py
+#: lms/djangoapps/class_dashboard/dashboard_data.py
+#: cms/templates/course_outline.html lms/templates/seq_module.html
+#: lms/templates/ccx/schedule.html
+#: lms/templates/instructor/instructor_dashboard_2/metrics.html
+msgid "Section"
+msgstr "Section"
+
+#: cms/djangoapps/contentstore/views/helpers.py
+#: lms/djangoapps/class_dashboard/dashboard_data.py
+#: lms/templates/ccx/schedule.html
+msgid "Subsection"
+msgstr "Sous-section"
+
+#: cms/djangoapps/contentstore/views/helpers.py
+#: lms/djangoapps/instructor/views/tools.py lms/templates/seq_module.html
+#: lms/templates/ccx/schedule.html
+msgid "Unit"
+msgstr "Unité"
+
+#: cms/djangoapps/contentstore/views/videos.py
+#: lms/djangoapps/class_dashboard/dashboard_data.py
+#: lms/djangoapps/instructor/views/api.py lms/templates/help_modal.html
+#: lms/templates/instructor/instructor_dashboard_2/generate_registarion_codes_modal.html
+#: lms/templates/instructor/instructor_dashboard_2/metrics.html
+#: lms/templates/shoppingcart/billing_details.html
+#: lms/templates/shoppingcart/receipt.html
+msgid "Name"
+msgstr "Nom"
+
+#: cms/djangoapps/contentstore/views/videos.py
+#: common/lib/xmodule/xmodule/video_module/video_xfields.py
+msgid "Video ID"
+msgstr "Vidéo ID"
+
+#: cms/djangoapps/contentstore/views/videos.py
+#: lms/djangoapps/shoppingcart/reports.py
+#: lms/templates/shoppingcart/receipt.html
+#: lms/templates/courseware/course_about.html
+msgid "Status"
+msgstr "Statut"
+
+#. #-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#
+#. Translators: This is listed as the duration for a video that has not
+#. yet reached the point in its processing by the servers where its
+#. duration is determined.
+#: cms/djangoapps/contentstore/views/videos.py
+#: openedx/core/djangoapps/api_admin/models.py cms/templates/index.html
+msgid "Pending"
+msgstr "En attente"
+
+#: common/djangoapps/course_modes/admin.py
+#: common/djangoapps/course_modes/models.py
+#: common/lib/xmodule/xmodule/library_content_module.py
+msgid "Mode"
+msgstr "Mode"
+
+#: common/djangoapps/course_modes/admin.py
+#: lms/djangoapps/courseware/date_summary.py
+msgid "Verification Deadline"
+msgstr "Date limite de vérification"
+
+#: common/djangoapps/course_modes/admin.py
+msgid ""
+"OPTIONAL: After this date/time, users will no longer be able to submit "
+"photos for verification.  This appies ONLY to modes that require "
+"verification."
+msgstr ""
+"OPTIONNEL : Après cette date / heure, les utilisateurs ne seront plus en "
+"mesure de soumettre de photos pour vérification. Ceci ne s’applique "
+"UNIQUEMENT aux modes qui nécessitent une vérification."
+
+#: common/djangoapps/course_modes/helpers.py
+msgid "Your verification is pending"
+msgstr "Votre vérification est en attente."
+
+#: common/djangoapps/course_modes/helpers.py
+msgid "Verified: Pending Verification"
+msgstr "Vérifié : en cours de vérification"
+
+#: common/djangoapps/course_modes/helpers.py
+msgid "ID verification pending"
+msgstr "En attente de vérification d'identité"
+
+#: common/djangoapps/course_modes/helpers.py
+msgid "You're enrolled as a verified student"
+msgstr "Vous êtes inscrit comme étudiant vérifié"
+
+#: common/djangoapps/course_modes/helpers.py
+#: lms/templates/instructor/instructor_dashboard_2/course_info.html
+msgid "Verified"
+msgstr "Vérifié"
+
+#: common/djangoapps/course_modes/helpers.py
+msgid "ID Verified Ribbon/Badge"
+msgstr "Ruban/Badge d'identité vérifié"
+
+#: common/djangoapps/course_modes/helpers.py
+msgid "You're enrolled as an honor code student"
+msgstr ""
+"Vous êtes inscrit/e en tant qu'étudiant/e ayant signé le code d'honneur"
+
+#: common/djangoapps/course_modes/helpers.py lms/djangoapps/branding/api.py
+#: openedx/core/djangoapps/user_api/views.py
+#: lms/templates/static_templates/honor.html
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/tos.html
+msgid "Honor Code"
+msgstr "Code d'honneur"
+
+#: common/djangoapps/course_modes/helpers.py
+msgid "You're enrolled as a professional education student"
+msgstr "Vous êtes inscrit en tant qu'étudiant professionnel de l'éducation"
+
+#: common/djangoapps/course_modes/helpers.py
+msgid "Professional Ed"
+msgstr "Professionnel de l'éducation"
+
+#: common/djangoapps/course_modes/models.py common/lib/xmodule/xmodule/tabs.py
+#: lms/djangoapps/courseware/tabs.py lms/djangoapps/courseware/views/views.py
+#: lms/djangoapps/shoppingcart/reports.py cms/templates/widgets/header.html
+#: lms/templates/courseware/courseware.html
+msgid "Course"
+msgstr "Cours"
+
+#: common/djangoapps/course_modes/models.py
+#: common/lib/xmodule/xmodule/annotatable_module.py
+#: common/lib/xmodule/xmodule/capa_base.py
+#: common/lib/xmodule/xmodule/conditional_module.py
+#: common/lib/xmodule/xmodule/html_module.py
+#: common/lib/xmodule/xmodule/imageannotation_module.py
+#: common/lib/xmodule/xmodule/library_content_module.py
+#: common/lib/xmodule/xmodule/lti_module.py
+#: common/lib/xmodule/xmodule/split_test_module.py
+#: common/lib/xmodule/xmodule/textannotation_module.py
+#: common/lib/xmodule/xmodule/videoannotation_module.py
+#: common/lib/xmodule/xmodule/word_cloud_module.py
+#: openedx/core/lib/xblock_builtin/xblock_discussion/xblock_discussion.py
+#: cms/templates/container.html cms/templates/library.html
+msgid "Display Name"
+msgstr "Nom d'affichage"
+
+#: common/djangoapps/course_modes/models.py
+#: lms/templates/courseware/course_about.html
+msgid "Price"
+msgstr "Prix"
+
+#: common/djangoapps/course_modes/models.py
+msgid "Upgrade Deadline"
+msgstr ""
+
+#: common/djangoapps/course_modes/models.py
+msgid ""
+"OPTIONAL: After this date/time, users will no longer be able to enroll in "
+"this mode. Leave this blank if users can enroll in this mode until "
+"enrollment closes for the course."
+msgstr ""
+"OPTIONNEL : Après cette date / heure, les utilisateurs ne seront plus en "
+"mesure de s'inscrire dans ce mode. Laissez vide si les utilisateurs peuvent "
+"s'inscrire dans ce mode jusqu'à ce que les inscription au cours soient "
+"fermées."
+
+#: common/djangoapps/course_modes/models.py
+msgid ""
+"OPTIONAL: This is the SKU (stock keeping unit) of this mode in the external "
+"ecommerce service.  Leave this blank if the course has not yet been migrated"
+" to the ecommerce service."
+msgstr ""
+"OPTIONNEL : Ceci est le SKU (stock keeping unit) de ce mode pour le service "
+"externe de commerce électronique. Laisser vide si le cours n'a pas encore "
+"été migré sur le service de commerce électronique."
+
+#: common/djangoapps/course_modes/models.py
+msgid ""
+"This is the bulk SKU (stock keeping unit) of this mode in the external "
+"ecommerce service."
+msgstr ""
+"Ceci est le SKU (stock keeping unit) de ce mode dans le service externe de "
+"ecommerce."
+
+#: common/djangoapps/course_modes/models.py
+#: lms/templates/instructor/instructor_dashboard_2/course_info.html
+msgid "Audit"
+msgstr "Audit"
+
+#: common/djangoapps/course_modes/models.py
+#: lms/templates/instructor/instructor_dashboard_2/course_info.html
+msgid "Honor"
+msgstr "Honneur"
+
+#: common/djangoapps/course_modes/models.py
+msgid ""
+"Professional education modes are not allowed to have expiration_datetime "
+"set."
+msgstr ""
+"Les modes de formation professionnelle ne peuvent avoir une date "
+"d'expiration définie."
+
+#: common/djangoapps/course_modes/models.py
+msgid "Verified modes cannot be free."
+msgstr "Les modes vérifiés ne peuvent être gratuit."
+
+#: common/djangoapps/course_modes/models.py
+msgid ""
+"The time period before a course ends in which a course mode will expire"
+msgstr ""
+"Période de temps avant la fin d'un cours à partir de la quelle le mode cours"
+" expire."
+
+#: common/djangoapps/course_modes/views.py
+msgid "Enrollment is closed"
+msgstr "Inscriptions closes"
+
+#: common/djangoapps/course_modes/views.py
+msgid "Enrollment mode not supported"
+msgstr "Mode d'inscription non supporté"
+
+#: common/djangoapps/course_modes/views.py
+msgid "Invalid amount selected."
+msgstr "Montant sélectionné invalide"
+
+#: common/djangoapps/course_modes/views.py
+msgid "No selected price or selected price is too low."
+msgstr "Aucun prix sélectionné ou prix sélectionné trop faible."
+
+#: common/djangoapps/django_comment_common/models.py
+msgid "Administrator"
+msgstr "Administrateur"
+
+#: common/djangoapps/django_comment_common/models.py
+msgid "Moderator"
+msgstr "Modérateur"
+
+#: common/djangoapps/django_comment_common/models.py
+msgid "Community TA"
+msgstr "Assistant"
+
+#: common/djangoapps/django_comment_common/models.py
+#: lms/djangoapps/instructor/paidcourse_enrollment_report.py
+#: lms/templates/courseware/course_navigation.html
+msgid "Student"
+msgstr "Étudiant"
+
+#: common/djangoapps/student/admin.py
+msgid "User profile"
+msgstr "Profil utilisateur"
+
+#: common/djangoapps/student/forms.py
+msgid ""
+"That e-mail address doesn't have an associated user account. Are you sure "
+"you've registered?"
+msgstr ""
+"Cette adresse de courriel n'est pas associée à un compte utilisateur. Êtes-"
+"vous sûr de vous être enregistrés ?"
+
+#: common/djangoapps/student/forms.py
+msgid ""
+"The user account associated with this e-mail address cannot reset the "
+"password."
+msgstr ""
+"Le compte utilisateur associé à cette adresse e-mail ne peut pas "
+"réinitialiser le mot de passe."
+
+#: common/djangoapps/student/forms.py
+msgid "Username must be minimum of two characters long"
+msgstr "Le nom d'utilisateur doit contenir au-moins deux caractères"
+
+#: common/djangoapps/student/forms.py
+msgid "A properly formatted e-mail is required"
+msgstr "Une adresse e-mail valide est requise"
+
+#: common/djangoapps/student/forms.py
+msgid "A valid password is required"
+msgstr "Un mot de passe valide est requis"
+
+#: common/djangoapps/student/forms.py
+msgid "Your legal name must be a minimum of two characters long"
+msgstr "Votre nom complet doit contenir au minimum deux caractères"
+
+#: common/djangoapps/student/forms.py
+msgid ""
+"Usernames can only contain Roman letters, western numerals (0-9), "
+"underscores (_), and hyphens (-)."
+msgstr ""
+
+#: common/djangoapps/student/forms.py
+#, python-format
+msgid "Username cannot be more than %(limit_value)s characters long"
+msgstr ""
+"Le nom d'utilisateur ne peut pas avoir plus de %(limit_value)s caractères"
+
+#: common/djangoapps/student/forms.py
+#, python-format
+msgid "Email cannot be more than %(limit_value)s characters long"
+msgstr "L'e-mail ne peut pas contenir plus de %(limit_value)s caractères "
+
+#: common/djangoapps/student/forms.py
+msgid "You must accept the terms of service."
+msgstr "Vous devez accepter les conditions d'utilisation."
+
+#: common/djangoapps/student/forms.py
+msgid "A level of education is required"
+msgstr "Un niveau d'études est requis"
+
+#: common/djangoapps/student/forms.py
+msgid "Your gender is required"
+msgstr "Votre genre est requis"
+
+#: common/djangoapps/student/forms.py
+msgid "Your year of birth is required"
+msgstr "Votre année de naissance est requise"
+
+#: common/djangoapps/student/forms.py
+msgid "Your mailing address is required"
+msgstr "Votre adresse postale est requise"
+
+#: common/djangoapps/student/forms.py
+msgid "A description of your goals is required"
+msgstr "Une description de vos objectifs est requise"
+
+#: common/djangoapps/student/forms.py
+msgid "A city is required"
+msgstr "Une ville est requise"
+
+#: common/djangoapps/student/forms.py
+msgid "A country is required"
+msgstr "Un pays est requis"
+
+#: common/djangoapps/student/forms.py
+msgid "To enroll, you must follow the honor code."
+msgstr "Pour vous inscrire, vous devez accepter le code d'honneur."
+
+#: common/djangoapps/student/forms.py
+msgid "You are missing one or more required fields"
+msgstr "Il vous manque un ou plusieurs champs obligatoires"
+
+#: common/djangoapps/student/forms.py
+msgid "Username and password fields cannot match"
+msgstr ""
+"Le nom d'utilisateur et le mot de passe ne peuvent pas être identiques "
+
+#: common/djangoapps/student/forms.py common/djangoapps/student/views.py
+msgid "Password: "
+msgstr "Mot de passe : "
+
+#: common/djangoapps/student/forms.py
+msgid "Unauthorized email address."
+msgstr "Adresse email non autorisée."
+
+#: common/djangoapps/student/forms.py
+msgid ""
+"It looks like {email} belongs to an existing account. Try again with a "
+"different email address."
+msgstr ""
+"Il semblerait que {email} appartient à un compte existant. Réessayez avec "
+"une adresse email différente."
+
+#: common/djangoapps/student/management/commands/manage_group.py
+msgid "Removed group: \"{}\""
+msgstr "Groupe supprimé : \"{}\""
+
+#: common/djangoapps/student/management/commands/manage_group.py
+msgid "Did not find a group with name \"{}\" - skipping."
+msgstr "N'a pas trouvé un groupe avec le nom \"{}\" - on passe."
+
+#: common/djangoapps/student/management/commands/manage_group.py
+msgid "Invalid group name: \"{group_name}\". {messages}"
+msgstr "Nom de groupe invalide : \"{group_name}\". {messages}"
+
+#: common/djangoapps/student/management/commands/manage_group.py
+msgid "Created new group: \"{}\""
+msgstr "Nouveau groupe créé : \"{}\""
+
+#: common/djangoapps/student/management/commands/manage_group.py
+msgid "Found existing group: \"{}\""
+msgstr "Groupe existant trouvé : \"{}\""
+
+#: common/djangoapps/student/management/commands/manage_group.py
+msgid "Adding {codenames} permissions to group \"{group}\""
+msgstr "Ajout des permissions {codenames} au groupe \"{group}\""
+
+#: common/djangoapps/student/management/commands/manage_group.py
+msgid "Removing {codenames} permissions from group \"{group}\""
+msgstr "Retrait des permissions {codenames} au groupe \"{group}\""
+
+#: common/djangoapps/student/management/commands/manage_group.py
+msgid ""
+"Invalid permission option: \"{}\". Please specify permissions using the "
+"format: app_label:model_name:permission_codename."
+msgstr ""
+"Option de permission invalide : \"{}\". S'il vous plaît, indiquez les "
+"permissions en utilisant le format suivant : "
+"app_label:model_name:permission_codename."
+
+#: common/djangoapps/student/management/commands/manage_group.py
+msgid ""
+"Invalid permission codename: \"{codename}\".  No such permission exists for "
+"the model {module}.{model_name}."
+msgstr ""
+"Codename de permission invalide : \"{codename}\". Cette permission n'existe "
+"pas pour le modèle {module}.{model_name}."
+
+#: common/djangoapps/student/management/commands/manage_user.py
+msgid "Setting {attribute} for user \"{username}\" to \"{new_value}\""
+msgstr "Paramètre {attribute} pour l'utilisateur \"{username}\" à \"{new_value}\""
+
+#: common/djangoapps/student/management/commands/manage_user.py
+msgid ""
+"Skipping user \"{}\" because the specified and existing email addresses do "
+"not match."
+msgstr ""
+"Omission de l'utilisateur \"{}\" parce que les adresses email spécifiées et "
+"existante ne correspondent pas."
+
+#: common/djangoapps/student/management/commands/manage_user.py
+msgid "Did not find a user with username \"{}\" - skipping."
+msgstr "N'a pas trouvé un utilisateur avec le nom d'utilisateur \"{}\" - passe."
+
+#: common/djangoapps/student/management/commands/manage_user.py
+msgid "Removing user: \"{}\""
+msgstr "Suppression de l'utilisateur \"{}\""
+
+#: common/djangoapps/student/management/commands/manage_user.py
+msgid "Created new user: \"{}\""
+msgstr "Création du nouvel utilisateur : \"{}\""
+
+#: common/djangoapps/student/management/commands/manage_user.py
+msgid "Found existing user: \"{}\""
+msgstr "Utilisateur existant trouvé : \"{}\""
+
+#: common/djangoapps/student/management/commands/manage_user.py
+msgid "Setting unusable password for user \"{}\""
+msgstr ""
+
+#: common/djangoapps/student/management/commands/manage_user.py
+msgid "Created new profile for user: \"{}\""
+msgstr "Création du nouveau profil pour l'utilisateur : \"{}\""
+
+#: common/djangoapps/student/management/commands/manage_user.py
+msgid "Could not find a group named \"{}\" - skipping."
+msgstr "Ne peut trouver un groupe nommé \"{}\" - omission."
+
+#: common/djangoapps/student/management/commands/manage_user.py
+msgid "Adding user \"{username}\" to groups {group_names}"
+msgstr "Ajout de l'utilisateur \"{username}\" aux groupes {group_names}"
+
+#: common/djangoapps/student/management/commands/manage_user.py
+msgid "Removing user \"{username}\" from groups {group_names}"
+msgstr "Retrait de l'utilisateur \"{username}\" des groupes {group_names}"
+
+#: common/djangoapps/student/middleware.py
+msgid ""
+"Your account has been disabled. If you believe this was done in error, "
+"please contact us at {support_email}"
+msgstr ""
+"Votre compte a été désactivé. Si vous pensez que cela a été fait par erreur,"
+" veuillez nous contacter à {support_email}"
+
+#: common/djangoapps/student/middleware.py
+msgid "Disabled Account"
+msgstr "Compte désactivé"
+
+#: common/djangoapps/student/models.py
+msgid "Male"
+msgstr "Homme"
+
+#: common/djangoapps/student/models.py
+msgid "Female"
+msgstr "Femme"
+
+#. Translators: 'Other' refers to the student's gender
+#: common/djangoapps/student/models.py
+msgid "Other/Prefer Not to Say"
+msgstr "Autre/Préfère ne pas répondre"
+
+#: common/djangoapps/student/models.py
+msgid "Doctorate"
+msgstr "Doctorat"
+
+#: common/djangoapps/student/models.py
+msgid "Master's or professional degree"
+msgstr "Master ou diplôme professionnel"
+
+#: common/djangoapps/student/models.py
+msgid "Bachelor's degree"
+msgstr "Diplôme de premier cycle supérieur"
+
+#: common/djangoapps/student/models.py
+msgid "Associate degree"
+msgstr "Niveau associé"
+
+#: common/djangoapps/student/models.py
+msgid "Secondary/high school"
+msgstr "Lycée / enseignement secondaire"
+
+#: common/djangoapps/student/models.py
+msgid "Junior secondary/junior high/middle school"
+msgstr "Collège / enseignement secondaire inférieur"
+
+#: common/djangoapps/student/models.py
+msgid "Elementary/primary school"
+msgstr "Enseignement primaire"
+
+#. Translators: 'None' refers to the student's level of education
+#: common/djangoapps/student/models.py
+msgid "No formal education"
+msgstr ""
+
+#. Translators: 'Other' refers to the student's level of education
+#: common/djangoapps/student/models.py
+msgid "Other education"
+msgstr ""
+
+#: common/djangoapps/student/models.py
+msgid "{platform_name} Honor Code Certificate for {course_name}"
+msgstr "{platform_name} Certificat sur l'honneur pour {course_name}"
+
+#: common/djangoapps/student/models.py
+msgid "{platform_name} Verified Certificate for {course_name}"
+msgstr "{platform_name} Certificat Vérifié pour {course_name}"
+
+#: common/djangoapps/student/models.py
+msgid "{platform_name} Professional Certificate for {course_name}"
+msgstr "{platform_name} Certificat professionnel {course_name}"
+
+#: common/djangoapps/student/models.py
+msgid ""
+"The company identifier for the LinkedIn Add-to-Profile button e.g "
+"0_0dPSPyS070e0HsE9HNz_13_d11_"
+msgstr ""
+"Identifiant de l'entreprise pour le bouton Add-to-Profile de LinkedIn  "
+"exemple 0_0dPSPyS070e0HsE9HNz_13_d11_"
+
+#: common/djangoapps/student/models.py
+msgid ""
+"Short identifier for the LinkedIn partner used in the tracking code.  "
+"(Example: 'edx')  If no value is provided, tracking codes will not be sent "
+"to LinkedIn."
+msgstr ""
+"Identifiant court utilisé dans le code de traçage pour les partenaires "
+"LinkedIn. (Exemple: 'edx') S'il n'y a pas de valeurs renseignée, aucun code "
+"de traçage ne sera envoyé à LinkedIn."
+
+#: common/djangoapps/student/models.py
+msgid "{platform_name} Certificate for {course_name}"
+msgstr "{platform_name} Certificat pour {course_name}"
+
+#: common/djangoapps/student/models.py
+msgid "The ISO 639-1 language code for this language."
+msgstr "Le code linguistique ISO 639-1 pour cette langue."
+
+#: common/djangoapps/student/models.py
+msgid "Namespace of enrollment attribute"
+msgstr "Espace de nommage des attributs d'inscription"
+
+#: common/djangoapps/student/models.py
+msgid "Name of the enrollment attribute"
+msgstr "Nom des attributs d'inscription"
+
+#: common/djangoapps/student/models.py
+msgid "Value of the enrollment attribute"
+msgstr "Valeur des attributs d'inscription"
+
+#: common/djangoapps/student/models.py
+msgid ""
+"The window of time after enrolling during which users can be granted a "
+"refund, represented in microseconds. The default is 14 days."
+msgstr ""
+"Laps de temps après inscription pendant lequel les utilisateurs peuvent être"
+" remboursés, exprimé en millisecondes. La valeur par défaut est 14 jours."
+
+#: common/djangoapps/student/models.py
+msgid "Name of the UTM cookie"
+msgstr ""
+
+#: common/djangoapps/student/models.py
+msgid "Name of the affiliate cookie"
+msgstr ""
+
+#: common/djangoapps/student/models.py
+msgid "Name of this user attribute."
+msgstr "Nom de cet attribut utilisateur."
+
+#: common/djangoapps/student/models.py
+msgid "Value of this user attribute."
+msgstr "Valeur de cet attribut utilisateur"
+
+#: common/djangoapps/student/views.py
+msgid "The course you are looking for does not start until {date}."
+msgstr "Le cours que vous recherchez ne commence pas avant le {date}."
+
+#: common/djangoapps/student/views.py
+msgid "The course you are looking for is closed for enrollment as of {date}."
+msgstr "Les inscriptions au cours recherché sont fermées à dater du {date}."
+
+#: common/djangoapps/student/views.py
+msgid "Course id not specified"
+msgstr "Identifiant du cours non spécifié"
+
+#: common/djangoapps/student/views.py lms/djangoapps/support/views/refund.py
+msgid "Invalid course id"
+msgstr "Identifiant de cours invalide"
+
+#: common/djangoapps/student/views.py
+msgid "Course id is invalid"
+msgstr "Identifiant du cours invalide"
+
+#: common/djangoapps/student/views.py
+msgid "Could not enroll"
+msgstr "Inscription impossible"
+
+#: common/djangoapps/student/views.py
+msgid "You are not enrolled in this course"
+msgstr "Vous n'êtes pas inscrit à ce cours"
+
+#: common/djangoapps/student/views.py
+msgid "Your certificate prevents you from unenrolling from this course"
+msgstr "Votre certificat vous empêche de vous désinscrire de ce cours."
+
+#: common/djangoapps/student/views.py
+msgid "Enrollment action is invalid"
+msgstr "Action d'inscription invalide"
+
+#: common/djangoapps/student/views.py
+msgid ""
+"You've successfully logged into your {provider_name} account, but this "
+"account isn't linked with an {platform_name} account yet."
+msgstr ""
+"Vous êtes connecté avec succès à votre compte {provider_name}, mais ce "
+"compte n'est pas encore lié avec un compte {platform_name}."
+
+#: common/djangoapps/student/views.py
+msgid ""
+"Use your {platform_name} username and password to log into {platform_name} "
+"below, and then link your {platform_name} account with {provider_name} from "
+"your dashboard."
+msgstr ""
+"Utilisez votre nom d'utilisateur et mot de passe {platform_name} pour vous "
+"connecter à {platform_name} ci-dessous, puis liez votre compte "
+"{platform_name} avec {provider_name} à partir de votre tableau de bord."
+
+#: common/djangoapps/student/views.py
+msgid ""
+"If you don't have an {platform_name} account yet, click "
+"<strong>Register</strong> at the top of the page."
+msgstr ""
+"Si vous n'avez pas de compte sur la plateforme {platform_name}, cliquez sur "
+"<strong>Inscription</strong> en haut de la page."
+
+#: common/djangoapps/student/views.py
+msgid "There was an error receiving your login information. Please email us."
+msgstr ""
+"Il y a une erreur avec vos informations de connexion. Merci de nous envoyer "
+"un mail."
+
+#: common/djangoapps/student/views.py
+msgid ""
+"This account has been temporarily locked due to excessive login failures. "
+"Try again later."
+msgstr ""
+"Ce compte a été temporairement verrouillé à cause d'un nombre excessif "
+"d'échecs de connexion. Réessayer plus tard."
+
+#: common/djangoapps/student/views.py
+msgid ""
+"Your password has expired due to password policy on this account. You must "
+"reset your password before you can log in again. Please click the \"Forgot "
+"Password\" link on this page to reset your password before logging in again."
+msgstr ""
+"Votre mot de passe a expiré en raison de la politique de mot de passe sur ce"
+" compte. Vous devez réinitialiser votre mot de passe avant de pouvoir vous "
+"connecter à nouveau. Veuillez cliquer sur le lien \"Mot de passe oublié\" "
+"sur cette page pour réinitialiser votre mot de passe avant de vous connecter"
+" à nouveau."
+
+#: common/djangoapps/student/views.py
+msgid "Too many failed login attempts. Try again later."
+msgstr "Trop de tentatives de connexion échouées. Réessayez plus tard."
+
+#: common/djangoapps/student/views.py lms/templates/provider_login.html
+msgid "Email or password is incorrect."
+msgstr "Adresse mail ou mot de passe incorrect."
+
+#: common/djangoapps/student/views.py
+msgid ""
+"Before you sign in, you need to activate your account. We have sent you an "
+"email message with instructions for activating your account."
+msgstr ""
+"Avant de vous identifier, vous devez activer votre compte. Un email "
+"contenant les instructions pour activer votre compte vous a été envoyé."
+
+#: common/djangoapps/student/views.py
+msgid "Please enter a username"
+msgstr "Veuillez saisir votre nom d'utilisateur"
+
+#: common/djangoapps/student/views.py
+msgid "Please choose an option"
+msgstr "Veuillez choisir une option, s'il vous plaît"
+
+#: common/djangoapps/student/views.py
+msgid "User with username {} does not exist"
+msgstr "L'utilisateur avec le nom d'utilisateur {} n'existe pas"
+
+#: common/djangoapps/student/views.py
+msgid "Successfully disabled {}'s account"
+msgstr "Désactivation du compte {} réussie"
+
+#: common/djangoapps/student/views.py
+msgid "Successfully reenabled {}'s account"
+msgstr "Réactivation du compte {} réussie"
+
+#: common/djangoapps/student/views.py
+msgid "Unexpected account status"
+msgstr "Statut du compte inattendu"
+
+#: common/djangoapps/student/views.py
+msgid "An account with the Public Username '{username}' already exists."
+msgstr "Un compte avec le même nom d'utilisateur '{username}' existe déjà."
+
+#: common/djangoapps/student/views.py
+msgid "An account with the Email '{email}' already exists."
+msgstr "Un compte avec l'adresse email '{email}' existe déjà."
+
+#: common/djangoapps/student/views.py
+msgid "An access_token is required when passing value ({}) for provider."
+msgstr ""
+"Un access_token est requis à l'envoi d'une valeur ({}) pour le provider."
+
+#: common/djangoapps/student/views.py
+msgid "The provided access_token is already associated with another user."
+msgstr "L'access_token fourni est déjà associé à un autre utilisateur."
+
+#: common/djangoapps/student/views.py
+msgid "The provided access_token is not valid."
+msgstr "L'access_token fourni n'est pas valide."
+
+#: common/djangoapps/student/views.py
+msgid "Unknown error. Please e-mail us to let us know how it happened."
+msgstr ""
+"Erreur inconnue. Merci de nous envoyer un email pour nous indiquer les "
+"circonstances du problème rencontré."
+
+#: common/djangoapps/student/views.py
+msgid ""
+"You are re-using a password that you have used recently. You must have {num}"
+" distinct password before reusing a previous password."
+msgid_plural ""
+"You are re-using a password that you have used recently. You must have {num}"
+" distinct passwords before reusing a previous password."
+msgstr[0] ""
+"Vous tentez de réutiliser un mot de passe que vous avez employé récemment. "
+"Vous devez définir un {num} mot de passe différent avant de pouvoir "
+"réutiliser un ancien mot de passe."
+msgstr[1] ""
+"Vous tentez de réutiliser un mot de passe que vous avez employé récemment. "
+"Vous devez définir {num} mots de passe différents avant de pouvoir "
+"réutiliser un ancien mot de passe."
+
+#: common/djangoapps/student/views.py
+msgid ""
+"You are resetting passwords too frequently. Due to security policies, {num} "
+"day must elapse between password resets."
+msgid_plural ""
+"You are resetting passwords too frequently. Due to security policies, {num} "
+"days must elapse between password resets."
+msgstr[0] ""
+"Vous réinitialisez votre mot de passe trop souvent. En raison de politiques "
+"de sécurité, {num} jour doivent s'écouler entre les réinitialisations de mot"
+" de passe."
+msgstr[1] ""
+"Vous réinitialisez votre mot de passe trop souvent. En raison de politiques "
+"de sécurité, {num} jours doivent s'écouler entre les réinitialisations de "
+"mot de passe."
+
+#: common/djangoapps/student/views.py
+msgid "Password reset unsuccessful"
+msgstr "La réinitialisation du mot de passe a échoué."
+
+#: common/djangoapps/student/views.py
+msgid "Error in resetting your password. Please try again."
+msgstr ""
+
+#: common/djangoapps/student/views.py
+msgid "No inactive user with this e-mail exists"
+msgstr "Pas d'utilisateur inactif avec cette adresse email"
+
+#: common/djangoapps/student/views.py
+msgid "Unable to send reactivation email"
+msgstr "Impossible d'envoyer le mail de réactivation"
+
+#: common/djangoapps/student/views.py
+msgid "Valid e-mail address required."
+msgstr "Une adresse courriel valide est requise."
+
+#: common/djangoapps/student/views.py
+msgid "Old email is the same as the new email."
+msgstr "Le nouvel email est identique à l'ancien."
+
+#: common/djangoapps/student/views.py
+msgid "An account with this e-mail already exists."
+msgstr "Un compte avec cette adresse email existe déjà."
+
+#: common/djangoapps/student/views.py
+msgid "Unable to send email activation link. Please try again later."
+msgstr ""
+"Impossible d'envoyer l'email contenant le lien d'activation. Veuillez "
+"réessayer plus tard, s'il vous plaît."
+
+#: common/djangoapps/third_party_auth/models.py
+msgid "Authentication with {} is currently unavailable."
+msgstr "L'authentification via {} est actuellement indisponible."
+
+#: common/djangoapps/third_party_auth/models.py
+msgid ""
+"Secondary providers are displayed less prominently, in a separate list of "
+"\"Institution\" login providers."
+msgstr ""
+"Les fournisseurs secondaires sont affichés avec moindre évidence, dans une "
+"liste séparée des fournisseurs de connexion \"Institutionnel\"."
+
+#: common/djangoapps/third_party_auth/models.py
+msgid "The Site that this provider configuration belongs to."
+msgstr ""
+
+#: common/djangoapps/third_party_auth/models.py
+msgid ""
+"If this option is enabled, users will not be asked to confirm their details "
+"(name, email, etc.) during the registration process. Only select this option"
+" for trusted providers that are known to provide accurate user information."
+msgstr ""
+"Si cette option est activée, les utilisateurs n'auront pas à confirmer leurs"
+" informations (nom, email, etc.) lors de l'inscription. Sélectionner cette "
+"option uniquement pour des fournisseurs de confiance connus pour fournir des"
+" informations utilisateur exactes."
+
+#: common/djangoapps/third_party_auth/models.py
+msgid ""
+"If this option is selected, users will not be required to confirm their "
+"email, and their account will be activated immediately upon registration."
+msgstr ""
+"Si cette option est sélectionnée, les utilisateurs n'auront pas à confirmer "
+"leur adresse mail, et leur compte sera activé immédiatement après "
+"inscription."
+
+#: common/djangoapps/third_party_auth/models.py
+msgid ""
+"If this option is not selected, users will not be presented with the "
+"provider as an option to authenticate with on the login screen, but manual "
+"authentication using the correct link is still possible."
+msgstr ""
+
+#: common/djangoapps/third_party_auth/models.py
+msgid "The Site that this SAML configuration belongs to."
+msgstr ""
+
+#: common/djangoapps/third_party_auth/templates/third_party_auth/post_custom_auth_entry.html
+#: lms/templates/student_account/finish_auth.html
+msgid "Please wait"
+msgstr "Veuillez patienter s'il vous plaît"
+
+#. Translators: the translation for "LONG_DATE_FORMAT" must be a format
+#. string for formatting dates in a long form.  For example, the
+#. American English form is "%A, %B %d %Y".
+#. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgid "LONG_DATE_FORMAT"
+msgstr "%A %d %B %Y"
+
+#. Translators: the translation for "DATE_TIME_FORMAT" must be a format
+#. string for formatting dates with times.  For example, the American
+#. English form is "%b %d, %Y at %H:%M".
+#. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgid "DATE_TIME_FORMAT"
+msgstr "%d %b %Y, à %H:%M"
+
+#. Translators: the translation for "SHORT_DATE_FORMAT" must be a
+#. format string for formatting dates in a brief form.  For example,
+#. the American English form is "%b %d %Y".
+#. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgid "SHORT_DATE_FORMAT"
+msgstr "%d %b %Y"
+
+#. Translators: the translation for "TIME_FORMAT" must be a format
+#. string for formatting times.  For example, the American English
+#. form is "%H:%M:%S". See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgid "TIME_FORMAT"
+msgstr "%H:%M:%S"
+
+#. Translators: This is an AM/PM indicator for displaying times.  It is
+#. used for the %p directive in date-time formats. See http://strftime.org
+#. for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "am/pm indicator"
+msgid "AM"
+msgstr "AM"
+
+#. Translators: This is an AM/PM indicator for displaying times.  It is
+#. used for the %p directive in date-time formats. See http://strftime.org
+#. for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "am/pm indicator"
+msgid "PM"
+msgstr "PM"
+
+#. Translators: this is a weekday name that will be used when displaying
+#. dates, as in "Monday Februrary 10, 2014". It is used for the %A
+#. directive in date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "weekday name"
+msgid "Monday"
+msgstr "lundi"
+
+#. Translators: this is a weekday name that will be used when displaying
+#. dates, as in "Tuesday Februrary 11, 2014". It is used for the %A
+#. directive in date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "weekday name"
+msgid "Tuesday"
+msgstr "mardi"
+
+#. Translators: this is a weekday name that will be used when displaying
+#. dates, as in "Wednesday Februrary 12, 2014". It is used for the %A
+#. directive in date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "weekday name"
+msgid "Wednesday"
+msgstr "mercredi"
+
+#. Translators: this is a weekday name that will be used when displaying
+#. dates, as in "Thursday Februrary 13, 2014". It is used for the %A
+#. directive in date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "weekday name"
+msgid "Thursday"
+msgstr "jeudi"
+
+#. Translators: this is a weekday name that will be used when displaying
+#. dates, as in "Friday Februrary 14, 2014". It is used for the %A
+#. directive in date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "weekday name"
+msgid "Friday"
+msgstr "vendredi"
+
+#. Translators: this is a weekday name that will be used when displaying
+#. dates, as in "Saturday Februrary 15, 2014". It is used for the %A
+#. directive in date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "weekday name"
+msgid "Saturday"
+msgstr "samedi"
+
+#. Translators: this is a weekday name that will be used when displaying
+#. dates, as in "Sunday Februrary 16, 2014". It is used for the %A
+#. directive in date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "weekday name"
+msgid "Sunday"
+msgstr "dimanche"
+
+#. Translators: this is an abbreviated weekday name that will be used when
+#. displaying dates, as in "Mon Feb 10, 2014". It is used for the %a
+#. directive in date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "abbreviated weekday name"
+msgid "Mon"
+msgstr "lun"
+
+#. Translators: this is an abbreviated weekday name that will be used when
+#. displaying dates, as in "Tue Feb 11, 2014". It is used for the %a
+#. directive in date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "abbreviated weekday name"
+msgid "Tue"
+msgstr "mar"
+
+#. Translators: this is an abbreviated weekday name that will be used when
+#. displaying dates, as in "Wed Feb 12, 2014". It is used for the %a
+#. directive in date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "abbreviated weekday name"
+msgid "Wed"
+msgstr "mer"
+
+#. Translators: this is an abbreviated weekday name that will be used when
+#. displaying dates, as in "Thu Feb 13, 2014". It is used for the %a
+#. directive in date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "abbreviated weekday name"
+msgid "Thu"
+msgstr "jeu"
+
+#. Translators: this is an abbreviated weekday name that will be used when
+#. displaying dates, as in "Fri Feb 14, 2014". It is used for the %a
+#. directive in date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "abbreviated weekday name"
+msgid "Fri"
+msgstr "ven"
+
+#. Translators: this is an abbreviated weekday name that will be used when
+#. displaying dates, as in "Sat Feb 15, 2014". It is used for the %a
+#. directive in date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "abbreviated weekday name"
+msgid "Sat"
+msgstr "sam"
+
+#. Translators: this is an abbreviated weekday name that will be used when
+#. displaying dates, as in "Sun Feb 16, 2014". It is used for the %a
+#. directive in date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "abbreviated weekday name"
+msgid "Sun"
+msgstr "dim"
+
+#. Translators: this is an abbreviated month name that will be used when
+#. displaying dates, as in "Jan 10, 2014". It is used for the %b
+#. directive in date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "abbreviated month name"
+msgid "Jan"
+msgstr "janv"
+
+#. Translators: this is an abbreviated month name that will be used when
+#. displaying dates, as in "Feb 10, 2014". It is used for the %b
+#. directive in date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "abbreviated month name"
+msgid "Feb"
+msgstr "févr"
+
+#. Translators: this is an abbreviated month name that will be used when
+#. displaying dates, as in "Mar 10, 2014". It is used for the %b
+#. directive in date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "abbreviated month name"
+msgid "Mar"
+msgstr "mars"
+
+#. Translators: this is an abbreviated month name that will be used when
+#. displaying dates, as in "Apr 10, 2014". It is used for the %b
+#. directive in date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "abbreviated month name"
+msgid "Apr"
+msgstr "avr"
+
+#. Translators: this is an abbreviated month name that will be used when
+#. displaying dates, as in "May 10, 2014". It is used for the %b
+#. directive in date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "abbreviated month name"
+msgid "May"
+msgstr "mai"
+
+#. Translators: this is an abbreviated month name that will be used when
+#. displaying dates, as in "Jun 10, 2014". It is used for the %b
+#. directive in date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "abbreviated month name"
+msgid "Jun"
+msgstr "juin"
+
+#. Translators: this is an abbreviated month name that will be used when
+#. displaying dates, as in "Jul 10, 2014". It is used for the %b
+#. directive in date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "abbreviated month name"
+msgid "Jul"
+msgstr "juil"
+
+#. Translators: this is an abbreviated month name that will be used when
+#. displaying dates, as in "Aug 10, 2014". It is used for the %b
+#. directive in date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "abbreviated month name"
+msgid "Aug"
+msgstr "août"
+
+#. Translators: this is an abbreviated month name that will be used when
+#. displaying dates, as in "Sep 10, 2014". It is used for the %b
+#. directive in date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "abbreviated month name"
+msgid "Sep"
+msgstr "sept"
+
+#. Translators: this is an abbreviated month name that will be used when
+#. displaying dates, as in "Oct 10, 2014". It is used for the %b
+#. directive in date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "abbreviated month name"
+msgid "Oct"
+msgstr "oct"
+
+#. Translators: this is an abbreviated month name that will be used when
+#. displaying dates, as in "Nov 10, 2014". It is used for the %b
+#. directive in date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "abbreviated month name"
+msgid "Nov"
+msgstr "nov"
+
+#. Translators: this is an abbreviated month name that will be used when
+#. displaying dates, as in "Dec 10, 2014". It is used for the %b
+#. directive in date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "abbreviated month name"
+msgid "Dec"
+msgstr "déc"
+
+#. Translators: this is a month name that will be used when displaying
+#. dates, as in "January 10, 2014". It is used for the %B directive in
+#. date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "month name"
+msgid "January"
+msgstr "janvier"
+
+#. Translators: this is a month name that will be used when displaying
+#. dates, as in "February 10, 2014". It is used for the %B directive in
+#. date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "month name"
+msgid "February"
+msgstr "février"
+
+#. Translators: this is a month name that will be used when displaying
+#. dates, as in "March 10, 2014". It is used for the %B directive in
+#. date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "month name"
+msgid "March"
+msgstr "mars"
+
+#. Translators: this is a month name that will be used when displaying
+#. dates, as in "April 10, 2014". It is used for the %B directive in
+#. date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "month name"
+msgid "April"
+msgstr "avril"
+
+#. Translators: this is a month name that will be used when displaying
+#. dates, as in "May 10, 2014". It is used for the %B directive in
+#. date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "month name"
+msgid "May"
+msgstr "mai"
+
+#. Translators: this is a month name that will be used when displaying
+#. dates, as in "June 10, 2014". It is used for the %B directive in
+#. date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "month name"
+msgid "June"
+msgstr "juin"
+
+#. Translators: this is a month name that will be used when displaying
+#. dates, as in "July 10, 2014". It is used for the %B directive in
+#. date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "month name"
+msgid "July"
+msgstr "juillet"
+
+#. Translators: this is a month name that will be used when displaying
+#. dates, as in "August 10, 2014". It is used for the %B directive in
+#. date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "month name"
+msgid "August"
+msgstr "août"
+
+#. Translators: this is a month name that will be used when displaying
+#. dates, as in "September 10, 2014". It is used for the %B directive in
+#. date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "month name"
+msgid "September"
+msgstr "septembre"
+
+#. Translators: this is a month name that will be used when displaying
+#. dates, as in "October 10, 2014". It is used for the %B directive in
+#. date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "month name"
+msgid "October"
+msgstr "octobre"
+
+#. Translators: this is a month name that will be used when displaying
+#. dates, as in "November 10, 2014". It is used for the %B directive in
+#. date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "month name"
+msgid "November"
+msgstr "novembre"
+
+#. Translators: this is a month name that will be used when displaying
+#. dates, as in "December 10, 2014". It is used for the %B directive in
+#. date-time formats. See http://strftime.org for details.
+#: common/djangoapps/util/date_utils.py
+msgctxt "month name"
+msgid "December"
+msgstr "décembre"
+
+#: common/djangoapps/util/file.py
+msgid "The file must end with the extension '{file_types}'."
+msgid_plural ""
+"The file must end with one of the following extensions: '{file_types}'."
+msgstr[0] ""
+"Le nom du fichier doit se terminer par l'une des extensions suivantes : "
+"'{file_types}'."

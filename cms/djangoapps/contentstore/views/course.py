@@ -121,7 +121,9 @@ from microsite_configuration.models import (
     MicrositeTemplate
 )
 from microsite_manager.models import MicrositeAdminManager
+
 #GEOFFREY
+from pprint import pformat
 log = logging.getLogger(__name__)
 
 
@@ -133,6 +135,7 @@ __all__ = ['course_info_handler', 'course_handler', 'course_listing',
            'create_handler',
            'manage_handler',
            'invite_handler',
+           'email_dashboard_handler',
            'grading_handler',
            'advanced_settings_handler',
            'course_notifications_handler',
@@ -568,10 +571,10 @@ def course_listing(request):
       q['courses_stats'] = get_course_by_id(q['course_key_id'])
       q['categories'] = q['courses_stats'].categ
       q['course_img'] = q['courses_overviews'].image_urls
-      q['course_start'] = q['courses_overviews'].start.strftime('%d-%m-%Y')
+      q['course_start'] = q['courses_overviews'].start.strftime('%m-%d-%Y')
       q['course_end'] = ''
       if q['courses_overviews'].end:
-        q['course_end'] = q['courses_overviews'].end.strftime('%d-%m-%Y')
+        q['course_end'] = q['courses_overviews'].end.strftime('%m-%d-%Y')
         q['course_end_compare'] = int(q['courses_overviews'].end.strftime("%s"))
       else:
         q['course_end_compare'] = current_date
@@ -1252,11 +1255,18 @@ def manage_handler(request, course_key_string):
         details = CourseDetails.fetch(course_key)
         course = get_course_by_id(course_key)
         module_store = modulestore().get_course(course_key, depth=0)
+        start_date = overview.start.strftime('%m-%d-%Y')
+        if overview.end is not None:
+            end_date = overview.end.strftime('%m-%d-%Y')
+        else:
+            end_date = ''
         context = {
             'course':course,
             'overview':overview,
             'details':details,
-            'module_store':module_store
+            'module_store':module_store,
+            'start_date':start_date,
+            'end_date':end_date
         }
         retour = {'course-key_string':context}
         return render_to_response('manage_course.html', context)
@@ -1309,22 +1319,27 @@ def session_manager_handler(msg,emails,org):
             request_email = requests.post(urls[2], json=data_email , headers = {'content-type':'application/json','Authorization':'Bearer '+token},verify=False)
             log.info("Donnee retour session_manager: "+str(request_email.text))
             json_parse = json.loads(request_email.text)
+            log.info("session_manager_handler return: "+pformat(json_parse))
             try:
                 json_parse_success = json_parse.get(u'success')
                 for n in json_parse_success:
                     q = {}
                     q['uuid'] = n.get(u'uuid')
                     q['email'] = n.get(u'email')
+                    q['status'] = 'success'
                     array_pull.append(q)
+                    log.info("session_manager_handler success: "+pformat(q))
             except:
                 pass
             try:
-                json_parse_error = json_parse.get(u'error')
+                json_parse_error = json_parse.get(u'errors')
                 for n in json_parse_error:
                     q = {}
                     q['uuid'] = n.get(u'uuid')
-                    q['email'] = n.get(u'email')
+                    q['email'] = n.get(u'user')
+                    q['status'] = 'error'
                     array_pull.append(q)
+                    log.info("session_manager_handler error: "+pformat(q))
             except:
                 pass
             try:
@@ -1333,7 +1348,9 @@ def session_manager_handler(msg,emails,org):
                     q = {}
                     q['uuid'] = n.get(u'uuid')
                     q['email'] = n.get(u'user')
+                    q['status'] = 'list'
                     array_pull.append(q)
+                    log.info("session_manager_handler list: "+pformat(q))
             except:
                 pass
             array_push = []
@@ -1341,11 +1358,105 @@ def session_manager_handler(msg,emails,org):
     return array_pull
 
 
+def send_enroll_mail(obj,course,overview,course_details,body,list_email):
+    try:
+        #MAIL 2 le retour
+        domain_override = ''
+        if not domain_override:
+            site_name = configuration_helpers.get_value(
+                'SITE_NAME',
+                settings.SITE_NAME
+            )
+        else:
+            site_name = domain_override
+
+        from django.core.mail import send_mail
+
+        subject = obj
+        subject = subject.replace('\n', '')
+        # mail template
+        template_name = 'microsite_manager/invite_mail_template.txt'
+        # LIST OF VARS
+        course_org = course.org.lower()
+        site_name = settings.SITE_NAME
+        microsite_link = 'https://'+course_org+'.'+site_name
+        course_title = course.display_name
+        category = course.categ
+        duration = course_details.effort
+        mode_required = course.is_required_atp
+        if mode_required:
+            mode = 'obligatoire'
+        else:
+            mode = 'facultatif'
+        microsite = Microsite.objects.get(key=course_org)
+        microsite_value = microsite.values
+        primary_color_key = 0
+        logo_key = 0
+        i = 0
+        for n in microsite_value:
+            if n == 'language_code':
+                lang_key = i
+            if n == 'logo':
+                logo_key = i
+            if n == 'primary_color':
+                primary_color_key = i
+            i = i + 1
+        link = microsite_link+'/courses/'+str(course.id)+'/about'
+        atp_primary_color = microsite_value.values()[primary_color_key]
+        microsite = Microsite.objects.get(key=course_org)
+        course_link_img = 'https://'+site_name+microsite_value.values()[logo_key]
+
+        course_image = overview.image_urls['raw']
+        end_date = ''
+
+        try:
+            end_date = overview.end.strftime("%d-%m-%Y")
+
+        except:
+            pass
+        from_email=configuration_helpers.get_value('email_from_address', settings.DEFAULT_FROM_EMAIL)
+
+        html_content = render_to_string(
+            template_name,
+            {
+               'course_title': course_title,
+               'category': category,
+               'duration': duration,
+               'mode': mode,
+               'content': body,
+               'link': link,
+               'atp_primary_color': atp_primary_color,
+               'course_link_img': course_link_img,
+               'end_date': end_date,
+            }
+        )
+        for i in range(len(list_email)):
+            if not domain_override:
+                site_name = configuration_helpers.get_value(
+                    'SITE_NAME',
+                    settings.SITE_NAME
+                )
+            else:
+                site_name = domain_override
+            email = html_content
+            info_email = {
+                'email':list_email[i]
+            }
+            log.info("send_enroll_mail: "+pformat(info_email))
+            send_mail(subject, email, from_email, [list_email[i]],html_message=email)
+            #END %MAIL SEND
+        return True
+
+    except:
+        return False
+
+
 @login_required
 @ensure_csrf_cookie
 @require_http_methods(("GET", "PUT", "POST"))
 @expect_json
-def invite_handler(request, course_key_string):
+def email_dashboard_handler(request, course_key_string):
+
     if request.method == "GET":
         #GET COURSE KEY
         course_key = CourseKey.from_string(course_key_string)
@@ -1368,7 +1479,8 @@ def invite_handler(request, course_key_string):
         # CREATE THE RETURN
         retour = {'course-key_string':context}
         #  RETURN VALUE AND RENDER INVITE PAGE
-        return render_to_response('invite_course.html', context)
+        return render_to_response('mail_course.html', context)
+
     # IF POST METHOD
     if request.method == 'POST':
         # FILE VAR
@@ -1389,106 +1501,7 @@ def invite_handler(request, course_key_string):
         except:
             request_type = False
         # IF NEED ONLY TO PRE REGISTER USERS FROM AN ADRESS MAIL
-        if request_type == 'register_only':
-            #get microsite prefix
-            org = course.org
-	    list_return = []
-            try:
-                csv_file = request.FILES['file']
-                saved_column = []
-                decoded_file = csv_file.read().decode('utf-8')
-                io_string = io.StringIO(decoded_file)
-                array = []
-                # OPEN CSV FILE
-                csv_infos = []
-                list_email = []
-                for line in csv.reader(io_string, delimiter=','):
-                    # GET ALL VALUES
-                    email = line[0]
-                    first_name = line[1]
-                    last_name = line[2]
-                    level_1 = line[3]
-                    level_2 = line[4]
-                    level_3 = line[5]
-                    level_4 = line[6]
-                    q = {}
-                    if email != 'email' and first_name != 'first_name' and last_name != 'last_name' and level_1 != 'level_1' and level_2 != 'level_2' and level_3 != 'level_3' and level_4 != 'level_4' :
-                        q['email'] = email
-                        q['first_name'] = first_name
-                        q['last_name'] = last_name
-                        q['level_1'] = level_1
-                        q['level_2'] = level_2
-                        q['level_3'] = level_3
-                        q['level_4'] = level_4
-                        list_email.append(email)
-                        csv_infos.append(q)
-                    # CHECK IF WE ARE AT THE FIRST LINE
-                msg = "La creation d'un compte est necessaire avant votre inscription au module "+course.display_name+". Une fois votre compte cree vous pourrez acceder au module via le lien disponible dans l'autre email qui vous a ete envoye."
-                list_return = list_email
-                try:
-                    session_manager = session_manager_handler(msg,list_email,org)
-                    for n in session_manager:
-                        email_session_manager = n['email']
-                        uuid_session_manager = n['uuid']
-                        level_1 = ''
-                        level_2 = ''
-                        level_3 = ''
-                        level_4 = ''
-                        first_name = ''
-                        last_name = ''
-                        for get in csv_infos:
-                            if get['email'] == email_session_manager:
-                                level_1 = get['level_1']
-                                level_2 = get['level_2']
-                                level_3 = get['level_3']
-                                level_4 = get['level_4']
-                                first_name = get['first_name']
-                                last_name = get['last_name']
-                        q = {}
-                        q['email'] = email_session_manager
-                        try:
-                            # ALL INSERT
-                            # FIRST INSERT AT THE FIRST LINE
-                            try:
-                                UserPreprofile.objects.get(email=email)
-                            except:
-                                s = UserPreprofile(email=email_session_manager,first_name=first_name,last_name=last_name,level_1=level_1,level_2=level_2,level_3=level_3,level_4=level_4,uuid=uuid_session_manager)
-                                s.save()
-                            # CREATE A REQUEST PARAM
-                            request.POST['action'] = 'enroll'
-                            request.POST['auto_enroll'] = True
-                            request.POST['email_students'] = False
-                            request.POST['identifiers'] = email
-                            students_update_enrollment_cms(request,course_key_string)
-                            q['status'] = True
-                        except:
-                            q['status'] = False
-
-                        array.append(q)
-                    for n in list_email:
-                        if not n in array:
-                            q = {}
-                            q['email'] = n
-                            array.append(q)
-                    response = {'message':array}
-                except:
-                    retour = []
-                    for n in list_return:
-                        q={}
-                        q['email']=n
-                        retour.append(n);
-                    response = {'response':request_type,'message':retour}
-
-            except:
-                retour = []
-                for n in list_return:
-                    q={}
-                    q['email']=n
-                    retour.append(n);
-                response = {'response':request_type,'message':retour}
-
-            return JsonResponse(response)
-        elif request_type == 'send_mail':
+        if request_type == 'send_mail':
             response = '';
             list_email = [];
             try:
@@ -1528,91 +1541,175 @@ def invite_handler(request, course_key_string):
                         ALL = False
             except:
                 list_email = False
-            mail_send = True
-            try:
-                #MAIL 2 le retour
-                domain_override = ''
-                if not domain_override:
-                    site_name = configuration_helpers.get_value(
-                        'SITE_NAME',
-                        settings.SITE_NAME
-                    )
-                else:
-                    site_name = domain_override
 
-                from django.core.mail import send_mail
-		subject = obj
-                subject = subject.replace('\n', '')
-                # mail template
-                template_name = 'microsite_manager/invite_mail_template.txt'
-                # LIST OF VARS
-                course_org = course.org.lower()
-                site_name = settings.SITE_NAME
-                microsite_link = 'https://'+course_org+'.'+site_name
-                course_title = course.display_name
-                category = course.categ
-                duration = course_details.effort
-                mode_required = course.is_required_atp
-                if mode_required:
-                    mode = 'obligatoire'
-                else:
-                    mode = 'facultatif'
-                microsite = Microsite.objects.get(key=course_org)
-                microsite_value = microsite.values
-                primary_color_key = 0
-                logo_key = 0
-                i = 0
-                for n in microsite_value:
-                    if n == 'language_code':
-                        lang_key = i
-                    if n == 'logo':
-                        logo_key = i
-                    if n == 'primary_color':
-                        primary_color_key = i
-                    i = i + 1
-                link = microsite_link+'/courses/'+str(course.id)+'/about'
-                atp_primary_color = microsite_value.values()[primary_color_key]
-                microsite = Microsite.objects.get(key=course_org)
-                course_link_img = 'https://'+site_name+microsite_value.values()[logo_key]
-		course_image = overview.image_urls['raw']
-                end_date = ''
-                try:
-                    end_date = overview.end.strftime("%d-%m-%Y")
-                except:
-                    pass
-                from_email=configuration_helpers.get_value('email_from_address', settings.DEFAULT_FROM_EMAIL)
-                html_content = render_to_string(
-                    template_name,
-                    {
-                       'course_title': course_title,
-                       'category': category,
-                       'duration': duration,
-                       'mode': mode,
-                       'content': body,
-                       'link': link,
-                       'atp_primary_color': atp_primary_color,
-                       'course_link_img': course_link_img,
-                       'end_date': end_date,
-                    }
-                )
-                for i in range(len(list_email)):
-                    if not domain_override:
-                        site_name = configuration_helpers.get_value(
-                            'SITE_NAME',
-                            settings.SITE_NAME
-                        )
-                    else:
-                        site_name = domain_override
-                    email = html_content
-                    send_mail(subject, email, from_email, [list_email[i]],html_message=email)
-                    #END %MAIL SEND
-
-            except:
-                mail_send = False
+            mail_send = send_enroll_mail(obj,course,overview,course_details,body,list_email)
 
             return JsonResponse({'mail_send':mail_send})
         # if not request_type in POST request body
-        elif not request_type:
+        else:
+            response = {'error':'no request_type'}
+            return JsonResponse(response)
+
+@login_required
+@ensure_csrf_cookie
+@require_http_methods(("GET", "PUT", "POST"))
+@expect_json
+def invite_handler(request, course_key_string):
+    # GET COURSE_KEY
+    course_key = CourseKey.from_string(course_key_string)
+    # GET COURSE_PARAM
+    course = get_course_by_id(course_key)
+    #course details
+    course_details = CourseDetails.fetch(course_key)
+    #GET COURSE OVERVIEW
+    overview = CourseOverview.get_from_id(course_key)
+    #GET MODULE STORE
+    module_store = modulestore().get_course(course_key, depth=0)
+    if request.method == "GET":
+        # CREATE A CONTEXT
+        context = {
+            'course':course,
+            'overview':overview,
+            'details':course_details,
+            'module_store':module_store
+        }
+        # CREATE THE RETURN
+        retour = {'course-key_string':context}
+        #  RETURN VALUE AND RENDER INVITE PAGE
+        return render_to_response('invite_course.html', context)
+    # IF POST METHOD
+    if request.method == 'POST':
+        # FILE VAR
+        files = '';
+        # GET REQUEST_TYPE
+        request_type = ''
+        try:
+            request_type = request.POST['request_type']
+        except:
+            request_type = False
+        # IF NEED ONLY TO PRE REGISTER USERS FROM AN ADRESS MAIL
+        if request_type == 'register_only':
+            #get microsite prefix
+            org = course.org
+	    list_return = []
+            try:
+                csv_file = request.FILES['file']
+                saved_column = []
+                decoded_file = csv_file.read().decode('utf-8')
+                io_string = io.StringIO(decoded_file)
+                array = []
+                # OPEN CSV FILE
+                csv_infos = []
+                list_email = []
+                for line in csv.reader(io_string, delimiter=','):
+                    # GET ALL VALUES
+                    email = line[0]
+                    first_name = line[1]
+                    last_name = line[2]
+                    level_1 = line[3]
+                    level_2 = line[4]
+                    level_3 = line[5]
+                    level_4 = line[6]
+                    q = {}
+                    if email != 'email' and first_name != 'first_name' and last_name != 'last_name' and level_1 != 'level_1' and level_2 != 'level_2' and level_3 != 'level_3' and level_4 != 'level_4' :
+                        q['email'] = email
+                        q['first_name'] = first_name
+                        q['last_name'] = last_name
+                        q['level_1'] = level_1
+                        q['level_2'] = level_2
+                        q['level_3'] = level_3
+                        q['level_4'] = level_4
+                        list_email.append(email)
+                        csv_infos.append(q)
+                    # CHECK IF WE ARE AT THE FIRST LINE
+                msg = "La creation d'un compte est necessaire avant votre inscription au module "+course.display_name+". Une fois votre compte cree vous pourrez acceder au module via le lien disponible dans l'autre email qui vous a ete envoye."
+                list_return = list_email
+                email_send = []
+                try:
+                    session_manager = session_manager_handler(msg,list_email,org)
+                    for n in session_manager:
+                        email_session_manager = n['email']
+                        uuid_session_manager = n['uuid']
+                        level_1 = ''
+                        level_2 = ''
+                        level_3 = ''
+                        level_4 = ''
+                        first_name = ''
+                        last_name = ''
+                        for get in csv_infos:
+                            if get['email'] == email_session_manager:
+                                level_1 = get['level_1']
+                                level_2 = get['level_2']
+                                level_3 = get['level_3']
+                                level_4 = get['level_4']
+                                first_name = get['first_name']
+                                last_name = get['last_name']
+                        q = {}
+                        q['email'] = email_session_manager
+                        try:
+                            # ALL INSERT
+                            # FIRST INSERT AT THE FIRST LINE
+                            try:
+                                UserPreprofile.objects.get(email=email)
+                            except:
+                                s = UserPreprofile(email=email_session_manager,first_name=first_name,last_name=last_name,level_1=level_1,level_2=level_2,level_3=level_3,level_4=level_4,uuid=uuid_session_manager)
+                                s.save()
+                            # CREATE A REQUEST PARAM
+                            request.POST['action'] = 'enroll'
+                            request.POST['auto_enroll'] = True
+                            request.POST['email_students'] = False
+                            request.POST['identifiers'] = email
+                            students_update_enrollment_cms(request,course_key_string)
+                            q['status'] = True
+                            log_dict = {
+                                "status": "enroll user to current course",
+                                "course_name": course.display_name,
+                                "microsite": str(course.org).lower(),
+                                "user_email": email_session_manager
+                            }
+                            log.info(pformat(log_dict))
+                            enroll_email(course_key, email_session_manager, auto_enroll=True, email_students=False, email_params=None, language=None)
+                        except:
+                            q['status'] = False
+
+
+                        array.append(q)
+                        # send email to user already enroll:
+                        if n['status'] == 'error':
+                            email_send.append(email_session_manager)
+
+                    #launch email for SEM existing users
+                    obj = 'atp send mail'
+                    body = ''
+                    log.info("invite_handler existing sem user list: "+pformat(email_send))
+                    user_email = send_enroll_mail(obj,course,overview,course_details,body,email_send)
+                    for n in list_email:
+                        if not n in array:
+                            q = {}
+                            q['email'] = n
+                            array.append(q)
+                    response = {'message':array}
+
+                except:
+                    retour = []
+                    for n in list_return:
+                        q={}
+                        q['email']=n
+                        retour.append(n);
+                    response = {'response':request_type,'message':retour}
+
+
+            except:
+                retour = []
+                for n in list_return:
+                    q={}
+                    q['email']=n
+                    retour.append(n);
+                response = {'response':request_type,'message':retour}
+
+            return JsonResponse(response)
+
+        else:
             response = {'error':'no request_type'}
             return JsonResponse(response)
 @ensure_csrf_cookie

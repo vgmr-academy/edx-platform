@@ -814,9 +814,16 @@ def dashboard(request):
           compteur_finish = compteur_finish + 1
           q['compteur'] = compteur_finish
           finish_courses.append(q)
-
+    #new user popup
+    is_new_user = False
+    now_datetime = int(datetime.datetime.now().strftime("%s")) - int(request.user.last_login.strftime("%s"))
+    if now_datetime <= 30:
+        is_new_user = True
+    first_course_name = ''
     context = {
         #ATP add
+        'first_course_name':first_course_name,
+        'is_new_user':is_new_user,
         'progress_courses': progress_courses,
         'finish_courses': finish_courses,
         #END ATP add

@@ -476,6 +476,23 @@ urlpatterns += (
         name='stat_dashboard_username_search',
     ),
     # stat_dashboard_average_test
+    # return list of username for search input of stat_dashboard page
+    url(
+        r'^courses/{}/stat_dashboard/generate_xls/'.format(
+            settings.COURSE_ID_PATTERN,
+        ),
+        'lms.djangoapps.instructor.views.instructor_dashboard.get_course_users',
+        name='generate xls',
+    ),
+    # return list of username for search input of stat_dashboard page
+    url(
+        r'^atp/download_xls/(?P<filename>[^/]*)/$'.format(
+            settings.COURSE_ID_PATTERN,
+        ),
+        'lms.djangoapps.instructor.views.instructor_dashboard.download_xls',
+        name='download xls',
+    ),
+
     # Geoffrey Stats
     url(
         r'^courses/{}/set_course_mode_price$'.format(

@@ -70,6 +70,7 @@ stat_dashboard = static.get_value('css_overrides_stat_dashboard')
       <!--
         <p>${_('launching date')} : <span></span></p>
       -->
+        <p><button id="generate_xls">${_("download")}</button></p>
         <p>${_('starting date')} : <span>${course.start.strftime('%d-%m-%Y')}</span></p>
         <p>${_('ending date')} : <span>
 % if course.end:
@@ -302,6 +303,28 @@ $(window).resize(function(){
   alignCells();
   info_p();
 })
+$('#generate_xls').click(function(){
+  var current_path = window.location.pathname;
+  var url = current_path+'/generate_xls/'
+  $.ajax({
+    type:'get',
+    url:url,
+    dataType:'json',
+    success:function(data) {
+      var filename = data.filename;
+      var xls_url = '/atp/download_xls/'+filename;
+      window.open(xls_url,'_self');
+    }
+  })
+
+})
 </script>
 <style>
+#generate_xls,#generate_xls:hover,#generate_xls:focus,#generate_xls:visited {
+  color: #fff;
+  border: none;
+  background-color: #cf9c49;
+  border-radius: 0;
+  text-shadow: none;
+}
 </style>
