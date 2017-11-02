@@ -1272,7 +1272,7 @@ def manage_handler(request, course_key_string):
         return render_to_response('manage_course.html', context)
 
 
-def session_manager_handler(msg,emails,org):
+def session_manager_handler(msg,emails,org,language):
 
     grant_type = 'client_credentials'
     # TODO : Remove all hardcoded and try except when SEM is finalized
@@ -1301,7 +1301,7 @@ def session_manager_handler(msg,emails,org):
 
     redirect_uri = 'https://'+str(org)+'.'+str(settings.LMS_BASE)+'/auth/login/amundi/?auth_entry=login&next=%2Fdashboard'
     msg = msg
-    lang = 'fr'
+    lang = language
 
     data = {"grant_type" : grant_type, "client_id" : client_id, "client_secret" : client_secret}
     request_token = requests.post(urls[0], data=data,headers = {'content-type':'application/x-www-form-urlencoded'},verify=False )
@@ -1626,7 +1626,10 @@ def invite_handler(request, course_key_string):
                 list_return = list_email
                 email_send = []
                 try:
-                    session_manager = session_manager_handler(msg,list_email,org)
+
+                    course_lang = course.language
+
+                    session_manager = session_manager_handler(msg,list_email,org,course_lang)
                     for n in session_manager:
                         email_session_manager = n['email']
                         uuid_session_manager = n['uuid']
