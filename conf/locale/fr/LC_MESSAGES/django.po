@@ -22975,3 +22975,6 @@ msgstr "Corps de l’email"
 
 msgid "We recommend sending only one message per week to learners. Before sending your e-mail, read your text carefully and send it to your email address. You will be able to verify that all the links work and that the content is good."
 msgstr ""
+
+msgid "legal notices"
+msgstr "mentions legales"

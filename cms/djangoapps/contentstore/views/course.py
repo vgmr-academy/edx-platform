@@ -577,10 +577,10 @@ def course_listing(request):
       q['courses_stats'] = get_course_by_id(q['course_key_id'])
       q['categories'] = q['courses_stats'].categ
       q['course_img'] = q['courses_overviews'].image_urls
-      q['course_start'] = q['courses_overviews'].start.strftime('%m-%d-%Y')
+      q['course_start'] = q['courses_overviews'].start.strftime('%Y-%m-%d')
       q['course_end'] = ''
       if q['courses_overviews'].end:
-        q['course_end'] = q['courses_overviews'].end.strftime('%m-%d-%Y')
+        q['course_end'] = q['courses_overviews'].end.strftime('%Y-%m-%d')
         q['course_end_compare'] = int(q['courses_overviews'].end.strftime("%s"))
       else:
         q['course_end_compare'] = current_date
@@ -1261,9 +1261,9 @@ def manage_handler(request, course_key_string):
         details = CourseDetails.fetch(course_key)
         course = get_course_by_id(course_key)
         module_store = modulestore().get_course(course_key, depth=0)
-        start_date = overview.start.strftime('%m-%d-%Y')
+        start_date = overview.start.strftime('%Y-%d-%m')
         if overview.end is not None:
-            end_date = overview.end.strftime('%m-%d-%Y')
+            end_date = overview.end.strftime('%Y-%d-%m')
         else:
             end_date = ''
         context = {

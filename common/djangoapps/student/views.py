@@ -820,8 +820,18 @@ def dashboard(request):
     if now_datetime <= 30:
         is_new_user = True
     first_course_name = ''
+    #ensure user is staff or instructor
+    _ensure_user_id = request.user.id
+    _ensure_user_status = User.objects.raw('SELECT b.id ,b.role FROM auth_user a,student_courseaccessrole b WHERE a.id=b.user_id AND b.user_id=%s' ,[_ensure_user_id])
+    a = 0
+    _ensure_status = False
+    for n in _ensure_user_status:
+        a = a + 1
+    if a > 0:
+        _ensure_status = True
     context = {
         #ATP add
+        '_ensure_status':_ensure_status,
         'now_datetime':now_datetime,
         'first_course_name':first_course_name,
         'is_new_user':is_new_user,
