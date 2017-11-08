@@ -22978,3 +22978,6 @@ msgstr ""
 
 msgid "legal notices"
 msgstr "mentions legales"
+
+msgid "File preview"
+msgstr "Prévisualisation du fichier"

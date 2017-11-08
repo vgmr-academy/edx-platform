@@ -6,6 +6,7 @@ import json
 import requests
 import logging
 import random
+import re
 import string  # pylint: disable=deprecated-module
 #GEOFFREY TMA ATP
 import datetime
@@ -1604,6 +1605,8 @@ def invite_handler(request, course_key_string):
                 decoded_file = csv_file.read().decode('utf-8')
                 io_string = io.StringIO(decoded_file)
                 array = []
+                #regex email
+                regex_email = r'\b[\w.-]+?@\w+?\.\w+?\b'
                 # OPEN CSV FILE
                 csv_infos = []
                 list_email = []
@@ -1617,7 +1620,9 @@ def invite_handler(request, course_key_string):
                     level_3 = line[5]
                     level_4 = line[6]
                     q = {}
-                    if email != 'email' and first_name != 'first_name' and last_name != 'last_name' and level_1 != 'level_1' and level_2 != 'level_2' and level_3 != 'level_3' and level_4 != 'level_4' :
+                    #cverifie que le mail est compatible avec le regex
+                    _ensure_email = re.search(regex_email,email)
+                    if email != 'email' and first_name != 'first_name' and last_name != 'last_name' and level_1 != 'level_1' and level_2 != 'level_2' and level_3 != 'level_3' and level_4 != 'level_4' and _ensure_email:
                         q['email'] = email
                         q['first_name'] = first_name
                         q['last_name'] = last_name
