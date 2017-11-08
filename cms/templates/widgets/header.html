@@ -15,7 +15,15 @@
           <img class="brand-image" src="${static.url('images/studio-logo.png')}" alt="${settings.STUDIO_NAME}" />
         </a>
       </h1>
-
+      <style>
+      #img_amundi_academy {
+        height: 49.75px;
+        width: 482.5px;
+        background-image: url('https://demo-atp.themoocagency.com/media/studio/logo-amundiacademy.png');
+        background-size: cover;
+      }
+      </style>
+      <div id="img_amundi_academy"></div>
       % if context_course:
       <%
             course_key = context_course.id

@@ -724,11 +724,9 @@ def stat_dashboard(request, course_id):
     course_cutoff = course_module.grade_cutoffs['Pass']
     #GET COURSE
     course = get_course_by_id(course_key)
+    #overview
+    overview = CourseOverview.get_from_id(course_key)
     #Get all course-enrollment
-    #row = CourseEnrollment.objects.all().filter(course_id=course_key)
-    #Get all users started the course
-    #number of user invited
-    #invite = CourseEnrollmentAllowed.objects.all().filter(course_id=course_key)
     row = User.objects.raw('SELECT a.id ,a.email FROM auth_user a,student_courseenrollment b WHERE a.id=b.user_id AND b.course_id=%s' ,[course_id])
     invite = CourseEnrollmentAllowed.objects.all().filter(course_id=course_key)
     all_user = 0
@@ -760,7 +758,6 @@ def stat_dashboard(request, course_id):
     try:
         users_info = find_mongo_persist_course['users_info']
         for key, value in users_info.iteritems():
-            all_user = all_user + 1
             _passed = value['passed']
             _percent = value['percent']
             user_course_started = user_course_started + 1
@@ -784,7 +781,8 @@ def stat_dashboard(request, course_id):
      "user_course_started":user_course_started,
      'course_average_grade':course_average_grade,
      'user_finished':user_finished,
-     'course_structure':course_structure
+     'course_structure':course_structure,
+     'overview':overview
     }
 
     return render_to_response('courseware/stat.html', context)
@@ -1082,6 +1080,113 @@ def get_course_users(request,course_id):
     return JsonResponse(context)
 
 def download_xls(request,filename):
+    full_path = '/edx/var/edxapp/'+filename
+    _file = open(full_path,'r')
+    _content = _file.read()
+    response = HttpResponse(_content, content_type="application/vnd.ms-excel")
+    response['Content-Disposition'] = "attachment; filename="+filename
+    os.remove(full_path)
+    return response
+
+#generate current_course grade reports
+
+@ensure_csrf_cookie
+@login_required
+@require_GET
+def get_course_users_grades(request,course_id):
+
+    # connect mongodb return values:
+    mongo_persist = dashboardStats()
+    collection = mongo_persist.connect()
+    find_mongo_persist_course = mongo_persist.find_by_course_id(collection,course_id)
+    # get users saved data
+    users_info = find_mongo_persist_course.get('users_info')
+    #get users id
+    users_id = users_info.keys()
+    q = {
+        'title': [
+            'email','first name','last name'
+        ],
+        'users': []
+    }
+
+    k = 0
+    for _user_id in users_id:
+        #try:
+        current = users_info[_user_id]
+        user = User.objects.get(pk=users_info[str(_user_id)]["user_id"])
+        percent = str(current["percent"] * 100)+'%'
+        summary = current["summary"]["section_breakdown"]
+        user_info = {
+            'email':user.email,
+            'first_name':user.first_name,
+            'last_name':user.last_name,
+            'percent': percent,
+            'grades':[]
+        }
+
+        for section in summary:
+            if k == 0:
+                if not section['label'] in q['title']:
+                    q['title'].append(section['label'])
+            _section = {
+                'label':section['label'],
+                'percent':str(section['percent'] * 100)+'%'
+            }
+            user_info['grades'].append(_section)
+        q['users'].append(user_info)
+
+        k = k + 1
+        """
+        except:
+            pass
+        """
+    if not 'final grade' in q['title']:
+        q['title'].append('final grade')
+    filename = '{}_grades_reports.xls'.format(course_id).replace('+','_')
+    filepath = '/edx/var/edxapp/'+filename
+    HEADERS = q['title']
+    wb = Workbook(encoding='utf-8')
+    sheet = wb.add_sheet('Grades')
+
+    for i, header in enumerate(HEADERS):
+        sheet.write(0, i, header)
+
+    j = 0
+    for i in range(len(q['users'])):
+        j=j+1
+        try:
+            sheet.write(j, 0, q['users'][i]['email'])
+        except:
+            sheet.write(j, 0, ' ')
+        try:
+            sheet.write(j, 1, q['users'][i]['first_name'])
+        except:
+            sheet.write(j, 1, ' ')
+        try:
+            sheet.write(j, 2, q['users'][i]['last_name'])
+        except:
+            sheet.write(j, 2, ' ')
+        d = 2
+        for grade in q['users'][i]['grades']:
+            d = d + 1
+            try:
+                sheet.write(j, d, grade['percent'])
+            except:
+                sheet.write(j, d, ' ')
+        d = d + 1
+        sheet.write(j, d, q['users'][i]['percent'])
+
+    wb.save(filepath)
+
+    context = {
+        'filename':filename,
+        'course_id':course_id
+    }
+
+    return JsonResponse(context)
+
+def download_grades(request,filename):
     full_path = '/edx/var/edxapp/'+filename
     _file = open(full_path,'r')
     _content = _file.read()

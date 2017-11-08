@@ -303,16 +303,25 @@ url_image = random.choice(url_array)
     display:block;
   }
 }
+#logo-amundiacademy {
+  width: 100%;
+  height: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+#logo-amundiacademy img {
+  width: 100%;
+  height: auto;
+}
 </style>
 <section id="dashboard_tma">
 	<!-- baniere  -->
 	<section id="dashboard_header_atp">
 		<div id="dashboard_header_content">
 			<p>${_("Welcome on your")}</p>
-			<h1 style="">
-				<span>${_("training")}</span>
-				<span>${_("platform")}</span>
-			</h1>
+      <div id="logo-amundiacademy">
+        <img src="${static.url('images/logo-amundiacademy.png')}" />
+      </div>
 			<p>${_("Develop your knowledge and skills on asset management: financial culture and offers.")}</p>
 			<button class="tuto_action">${_("More")} <span id="atp_tuto_arrow_up" class="arrow-right"></span></button>
 		</div>
@@ -377,6 +386,28 @@ url_image = random.choice(url_array)
 			<button class="tuto_action"><span>${_("Close")}</span> <span class="arrow-top"></span></button>
                 </div>
 	</section>
+  <style>
+  #ariane_dashboard {
+    width: calc(100% - 60px);
+    height: auto;
+    padding-bottom: 0 !important;
+    margin: 0;
+    text-align: left !important;
+    padding-top: 15px !important;
+  }
+  #ariane_dashboard a,#ariane_dashboard a:hover,#ariane_dashboard a:focus,#ariane_dashboard a:visited {
+    /* secondary color */
+    color: #31aeee;
+    text-decoration: none;
+    text-align: left !important;
+    display: inline !important;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+  }
+  </style>
+  <section id="ariane_dashboard">
+    <a href="${settings.CMS_BASE}">< ${_("Access Admin interface")}</a>
+  </section>
 	<!-- module en cours -->
 	<section  id="dashboard_course_in_progress_atp">
         	<h2><img src="${static.url('images/encours.svg')}" class="svg"/><span>${_("IN PROGRESS TRAINING MODULES")}</span></h2>

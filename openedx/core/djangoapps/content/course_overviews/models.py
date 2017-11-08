@@ -95,6 +95,7 @@ class CourseOverview(TimeStampedModel):
     content_data = TextField(default=content_data_data)
     is_graded = BooleanField(default=True)
     categ = TextField(default='None')
+    editor = TextField(default='None')
     # geoffrey
     max_student_enrollments_allowed = IntegerField(null=True)
 

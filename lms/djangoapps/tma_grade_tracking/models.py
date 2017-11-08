@@ -63,26 +63,30 @@ class dashboardStats():
     def add_user_grade_info(self,collection,course_id,row):
         q = {}
         user_id = ''
+        username = ''
         # check if course_id is present in current collection
         check = self.find_by_course_id(collection,course_id)
         if check is None:
             Dict = {'course_id':course_id,'users_info':{}}
             collection.insert(Dict)
-            check = True
+            check = self.find_by_course_id(collection,course_id)
         #if course_id exist or is already created insert user_info
         if check:
             for key, value in row.items():
-                if key == 'user_id':
-                    user_id = value
-            current = self.find_by_course_id(collection,course_id)
-            if current is not None and user_id != '':
-                users_info = current.get('users_info')
-                if not user_id in users_info:
-                    current.get('users_info')[str(user_id)] = row
-                else:
-                    current.get('users_info')[str(user_id)] = row
-                collection.save(current)
+                if value:
+                    if key == 'user_id':
+                        user_id = value
+                    elif key == 'username':
+                        username = value
+
+            if user_id and username:
+                ensure_user = 'users_info.'+str(user_id)+'.username'
+                query = {'course_id':course_id,ensure_user:username}
+                get_current = collection.find_one(query)
+                if get_current is None:
+                    get_current = check
+                get_current.get('users_info')[str(user_id)] = row
+                collection.save(get_current)
                 return True
             else:
                 return False
-

@@ -147,7 +147,17 @@ function callUser(username,course_id) {
       var td = '';
       for(var j=0;j<user_info.length;j++) {
         var keys_user_info = Object.keys(user_info[j]);
-        th = th+'<th>'+keys_user_info[0].replace('_',' ')+'</th>';
+        var _insert = '';
+        if(keys_user_info[0] == "First_name") {
+         _insert = stat_first;
+        }else if(keys_user_info[0] == "Last_name") {
+         _insert = stat_last;
+        }else if(keys_user_info[0] == "Grade") {
+         _insert = stat_grade;
+        }else{
+         _insert = keys_user_info[0].replace('_',' ');
+        }
+        th = th+'<th>'+_insert+'</th>';
         td = td+'<td id="'+keys_user_info[0].toLowerCase()+'">'+user_info[j][keys_user_info[0]]+'</td>';
       };
       th = '<thead><tr>'+th+'</tr></thead>';

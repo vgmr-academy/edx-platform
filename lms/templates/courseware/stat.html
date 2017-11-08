@@ -28,6 +28,11 @@ from xmodule.modulestore.django import modulestore
 <!-- css assets -->
 <%
 stat_dashboard = static.get_value('css_overrides_stat_dashboard')
+logo_url = static.get_value('logo')
+if logo_url is None:
+  logo_url = '/static/images/logo.png'
+
+target = course_id.split('+')
 %>
 % if not stat_dashboard:
   <link rel="stylesheet" type="text/css" href="${static.url('css/stat_dashboard.css')}">
@@ -50,12 +55,181 @@ stat_dashboard = static.get_value('css_overrides_stat_dashboard')
 #voile {
  position: fixed !important;
 }
+#title {
+  font-size: 15px !important;
+}
+#fil_ariane a,#fil_ariane a:hover,#fil_ariane a:focus,#fil_ariane a:visited {
+    color: #31aeee;
+    text-shadow: none;
+    text-decoration: none;
+}
+#header {
+  background-color: transparent;
+  text-align: left;
+  padding: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  width: calc(100% - 100px);
+}
+#title h1 {
+  font-size: 23px !important;
+  line-height: 23px;
+  text-transform: uppercase;
+  color: #05144d;
+  font-weight: bold;
+  font-family: "mywebfont";
+  text-align: left;
+}
+#cartouche {
+  width: calc(100% - 2px);
+  border: 1px solid #b2b2b2;
+  height: auto;
+  min-height: 151.5px;
+}
+#course_img {
+  width: 224px;
+  height:151px;
+  border-right: 1px solid #b2b2b2;
+  position: relative;
+}
+#course_img img {
+  width: 100%;
+  height: 100%;
+}
+#categorie_info {
+  position: absolute;
+  height: 25px;
+  line-height: 25px;
+  vertical-align: middle;
+  text-align: center;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  color: #fff;
+}
+#cartouche {
+  width: calc(100% - 2px);
+  border: 1px solid #b2b2b2;
+  height: auto;
+  min-height: 151.5px;
+  background-color: #fff;
+}
+#course_img {
+  width: 224px;
+  height:151px;
+  border-right: 1px solid #b2b2b2;
+  position: relative;
+}
+#course_img img {
+  width: 100%;
+  height: 100%;
+}
+#categorie_info {
+  position: absolute;
+  height: 25px;
+  line-height: 25px;
+  vertical-align: middle;
+  text-align: center;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  color: #fff;
+}
+.svg-class {
+  height: 20px;
+  width: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: block;
+  float: left;
+  margin-left: 5px;
+}
+.svg-class path {
+  fill: #dc9e29;
+  color: #dc9e29;
+}
+#course_img,#cartouche_info{
+  float: left;
+}
+#cartouche_info {
+  height: auto;
+  min-height: 151.5px;
+  position: relative;
+  width: auto;
+}
+#cartouche_info h3 {
+  font-weight: bold;
+  padding: 10px;
+  text-transform:uppercase;
+  /* primary color */
+  color: #05144d;
+  font-size: 30px;
+}
+#header p {
+  font-size: 15px;
+  /* primary color */
+  color: #05144d;
+  padding-left: 10px;
+  width: calc(100% - 10px);
+}
+#cartouche_info p {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+#cartouche_info p span {
+  font-weight: bold;
+}
+.duration_course {
+  position :absolute;
+  left: 10px;
+  bottom: 10px;
+  line-height: 40px;
+  vertical-align: middle;
+}
+.duration_course span {
+  margin-left: 5px;
+  color: #cf9c49;
+}
+#title {
+  height: auto;
+}
+#Calque_1 {
+  fill: red;
+}
 </style>
 <div id="contenair">
   <!-- header -->
   <div id="header">
-    <p>${_('Statistical training campaign')}</p>
-    <h1>${course.display_name_with_default_escaped}</h1>
+    <div id="fil_ariane"><a href="/">${_('My campaigns')} ></a></div>
+    <div id="title">
+      <h1>${_('Statistical training campaign')}</h1>
+    </div>
+    <div id="cartouche">
+      <div id="course_img">
+        <img src="${overview.image_urls['small']}" />
+        <div id="categorie_info">
+        </div>
+      </div>
+      <div id="cartouche_info">
+        <h3>${course.display_name_with_default_escaped}</h3>
+        <p><span>${_("Results on ")}</span>
+          % if course.end:
+            ${course.end.strftime('%d-%m-%Y')}
+          % endif
+        </p>
+        <div class="duration_course">
+          <object oa-reusable-svg
+          data="${static.url('images/duree.svg')}"
+          type="image/svg+xml"
+          class="svg-class"
+          data-class="timer_svg_color"
+          >
+          </object>
+          <span>${overview.effort}</span>
+        </div>
+      </div>
+    <span style="display:block;clear:left;"></span>
+    </div>
   </div>
   <!-- a rajouter -->
 
@@ -70,13 +244,15 @@ stat_dashboard = static.get_value('css_overrides_stat_dashboard')
       <!--
         <p>${_('launching date')} : <span></span></p>
       -->
-        <p><button id="generate_xls">${_("download")}</button></p>
+        <p><button id="generate_xls">${_("Download participants' list")}</button></p>
+        <p>${_("editor")} : <span>${course.editor}</span>
         <p>${_('starting date')} : <span>${course.start.strftime('%d-%m-%Y')}</span></p>
         <p>${_('ending date')} : <span>
 % if course.end:
   ${course.end.strftime('%d-%m-%Y')}
 % endif
       </span></p>
+      <p>${_("number of questions")} : <span id="question_num"></span>
       <p>${_('percentage for success')} : <span>${course_module.grade_cutoffs['Pass'] * 100} %</span></p>
       <p>${_('Mode')} : <span>
 % if course.is_required_atp:
@@ -102,11 +278,11 @@ stat_dashboard = static.get_value('css_overrides_stat_dashboard')
         <div id="cellule_stat">
           <div class="cellule_stat" id="cellule_stat_first">
             <p>${_('Network')}</p>
-            <img src="${static.url('images/logo.png')}" />
+            <img src="${logo_url}" />
           </div>
           <div class="cellule_stat">
             <p>${_('Target')}</p>
-            <p id="title">training<br>platform</p>
+            <p id="title">${target[1]}<br>${target[2]}</p>
           </div>
           <div class="cellule_stat">
             <p>${_('Guests')}</p>
@@ -202,11 +378,15 @@ stat_dashboard = static.get_value('css_overrides_stat_dashboard')
                 <div style="clear:left;"></div>
                 <div id="list_participant"></div>
               </div>
+              <button id="generate_grades">${_("Download users grade")}</button>
               <div id="table_participant">
               </div>
             </div>
             <div id="content_participant">
 <span id="inside_user_content">
+<%
+num_question = 0
+%>
 % for chapter in course_structure:
   % if 'problem' in str(chapter):
   <div class="chapter_box">
@@ -218,6 +398,11 @@ stat_dashboard = static.get_value('css_overrides_stat_dashboard')
         % for vertical in section['children']:
           % if 'problem' in str(vertical):
           <span data-children="${vertical['children']}" data-title="${vertical['display_name']}" class="data_content"></span>
+          <%
+          for n in vertical['children']:
+            if 'problem' in n:
+              num_question = num_question + 1
+          %>
           % endif
         % endfor
         <div class="problem_box"></div>
@@ -260,6 +445,12 @@ var course_key = "${course_usage_key}";
 // final
 var grade_img_success = "${static.url('images/user_grade_success.png')}";
 var grade_img_fail = "${static.url('images/user_grade_fail.png')}";
+// translate
+var stat_email = '${_("Email")}';
+var stat_grade = '${_("Grade")}';
+var stat_first = '${_("First name")}';
+var stat_last = '${_("Last name")}';
+console.log(stat_email+' '+stat_grade+' '+stat_first+' '+stat_last);
 </script>
 <script src="${static.url('js/stat_dashboard.js')}"></script>
 <!-- action sur le dom -->
@@ -297,6 +488,13 @@ function heightCelluleStat() {
 $(document).ready(function(){
   heightCelluleStat();
   info_p();
+  $('#question_num').text("${num_question}");
+  setInterval(function(){
+    $('.svg-class').each(function(){
+      $(this).contents().find('svg').attr('fill','#cf9c49');
+    })
+  },500);
+
 })
 $(window).resize(function(){
   heightCelluleStat();
@@ -318,13 +516,52 @@ $('#generate_xls').click(function(){
   })
 
 })
+$('#generate_grades').click(function(){
+  var current_path = window.location.pathname;
+  var url = current_path+'/generate_grades/'
+  $.ajax({
+    type:'get',
+    url:url,
+    dataType:'json',
+    success:function(data) {
+      var filename = data.filename;
+      var xls_url = '/atp/download_grades/'+filename;
+      window.open(xls_url,'_self');
+    }
+  })
+
+})
 </script>
 <style>
+#nav_participant {
+  position: relative;
+}
+#generate_grades,#generate_grades:hover,#generate_grades:focus,#generate_grades:visited {
+  border:none;
+  /* primary color */
+  box-shadow: none;
+  border-radius: 0;
+  text-shadow: none;
+  color: #31aeee;
+  position: absolute;
+  top: 55px;
+  text-decoration: underline;
+  right: 20px;
+  text-transform: lowercase;
+}
+@media(max-width:834px) {
+  #generate_grades,#generate_grades:hover,#generate_grades:focus,#generate_grades:visited {
+    top: 5px;
+    right: 0;
+    left: 25px;
+  }
+}
 #generate_xls,#generate_xls:hover,#generate_xls:focus,#generate_xls:visited {
   color: #fff;
   border: none;
   background-color: #cf9c49;
   border-radius: 0;
   text-shadow: none;
+  font-size: 18px;
 }
 </style>

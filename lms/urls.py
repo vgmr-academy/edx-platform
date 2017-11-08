@@ -441,7 +441,6 @@ urlpatterns += (
         'lms.djangoapps.instructor.views.instructor_dashboard.instructor_dashboard_2',
         name='instructor_dashboard',
     ),
-
     # Geoffrey Stats
     # stat_dashboard render url
     url(
@@ -469,7 +468,7 @@ urlpatterns += (
     ),
     # return list of username for search input of stat_dashboard page
     url(
-        r'^courses/{}/atp/stat_dashboard/get_user/(?P<username>[^/]*)/$'.format(
+        r'^courses/{}/stat_dashboard/get_user/(?P<username>[^/]*)/$'.format(
             settings.COURSE_ID_PATTERN,
         ),
         'lms.djangoapps.instructor.views.instructor_dashboard.get_dashboard_username',
@@ -492,7 +491,23 @@ urlpatterns += (
         'lms.djangoapps.instructor.views.instructor_dashboard.download_xls',
         name='download xls',
     ),
-
+    #grades reports
+    # generate grades reports
+    url(
+        r'^courses/{}/stat_dashboard/generate_grades/'.format(
+            settings.COURSE_ID_PATTERN,
+        ),
+        'lms.djangoapps.instructor.views.instructor_dashboard.get_course_users_grades',
+        name='generate grades',
+    ),
+    # return grades reports
+    url(
+        r'^atp/download_grades/(?P<filename>[^/]*)/$'.format(
+            settings.COURSE_ID_PATTERN,
+        ),
+        'lms.djangoapps.instructor.views.instructor_dashboard.download_grades',
+        name='download grades',
+    ),
     # Geoffrey Stats
     url(
         r'^courses/{}/set_course_mode_price$'.format(
@@ -1053,6 +1068,11 @@ urlpatterns += (
 #generate certificates
 
 urlpatterns += (
+    url(
+        r'^api/atp/couseware_certif/(?P<course_id>[^/]*)/$',
+        'lms.djangoapps.end_courses_atp.views.ensure_certif',
+        name='courseware_certif',
+    ),
     url(
         r'^api/atp/check/certificate/(?P<course_id>[^/]*)/$',
         'atp_certificates.views.atp_check_certificate',

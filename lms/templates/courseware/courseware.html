@@ -284,80 +284,147 @@ courseware = static.get_value('css_overrides_courseware')
 user_id = user.id
 username = user.username
 course_id = course.id
-progression = get_overall_progress(user_id,course_id)
-
-course_tma = get_course_by_id(course_id)
-is_graded = course_tma.is_graded
-grading_note =  CourseGradeFactory().create(user, course_tma).passed
 %>
-<script>
-/* get var from mako */
-var grading_note = "${grading_note}";
-var is_graded = "${is_graded}";
 
+<style>
+#tma_course_ariane span, #tma_course_ariane a, #tma_course_ariane a:hover, #tma_course_ariane a:focus {
+  font-weight: bold;
+}
+@media(max-width:1288px) {
+  #tma_course_top h1 {
+    left: calc(95% - 300px);
+    right: 0;
+  }
+}
+@media(max-width:955px) {
+  #tma_course_top h1 {
+    left: calc(100% - 300px);
+    right: 0;
+  }
+}
+@media(max-width:899px) {
+  #tma_course_top h1 {
+    position: relative;
+    width: 100%;
+    left: 0;
+    right: 0;
+    margin: 0;
+  }
+  #tma_course_ariane {
+    position: relative;
+  }
+}
+</style>
+
+
+<script>
 /* generate button result */
 var button_result = '<a href="#holding-section-child" role="button" class="button-chapter chapter" id="holding-section-result" aria-controls="holding-section-child" aria-expanded="false"><span class="group-heading" aria-label="holding section"><span class="icon fa fa-caret-right" aria-hidden="true"></span>${_("Results")}</span></a>';
 $('.course-navigation').append(button_result);
+/* api url */
+var url_score = '/api/atp/couseware_certif/${course.id}/';
+function picto() {
+  jQuery('img.svg').each(function(){
+      var $img = jQuery(this);
+      var imgID = $img.attr('id');
+      var imgClass = $img.attr('class');
+      var imgURL = $img.attr('src');
 
-% if grading_note:
+      jQuery.get(imgURL, function(data) {
+          // Get the SVG tag, ignore the rest
+          var $svg = jQuery(data).find('svg');
 
-var url = '/api/grades/v0/course_grade/${course_id}/users/?username=${username}';
+          // Add replaced image's ID to the new SVG
+          if(typeof imgID !== 'undefined') {
+              $svg = $svg.attr('id', imgID);
+          }
+          // Add replaced image's classes to the new SVG
+          if(typeof imgClass !== 'undefined') {
+              $svg = $svg.attr('class', imgClass+' replaced-svg');
+          }
 
+          // Remove any invalid XML tags as per http://validator.w3.org
+          $svg = $svg.removeAttr('xmlns:a');
+
+          // Replace image with new SVG
+          $img.replaceWith($svg);
+
+      }, 'xml');
+
+  });
+  $('img.svg').show();
+}
+/* generate certif */
+function generate_certif() {
+  var course_id = '${course_id}';
+  var url_certif = '/api/atp/check/certificate/${course_id}/';
+  $.ajax({
+    url:url_certif,
+    type:'GET',
+    dataType:'json',
+    success:function(data){
+      window.open(data.certificate_url,'_self');
+    }
+  })
+}
 /* generate results page */
+//finish
 var picto_success = "${static.url('images/trophy.svg')}";
 var picto_failed = "${static.url('images/refresh.svg')}";
 var template_and_title = '<div id="final_score"><div id="title_result">${_("Results")}</div></div>';
 var congrats = "<div id='congrats_score'>${_('Congratulation')} !</div>";
 var picto = '<div id="score_picto"><img src="" class="svg"/></div>';
-var first_par = '<div id="score_first_para">${_("You have acomplished the course ")}<br>« ${course.display_name_with_default} ».</div>';
-var second_par = '<div id="second_par_score">${_("Sadly you have not achieved the minimum score wanted for this course")}</div>';
+var first_par = ['<div id="score_first_para">${_("You have acomplished the course ")}<br>« ${course.display_name_with_default} ».</div>','<div id="score_first_para">${_("You started the training module ")}<br>« ${course.display_name_with_default} ».</div>'];
+var second_par = ['<div id="second_par_score">${_("Sadly you have not achieved the minimum score wanted for this course")}</div>','<div id="second_par_score">${_("To end this training module, you have to access every chapters and finish the validation knowledge test.")}</div>'];
 var score_div = '<div id="score_div_info"><span>${_("Your total score :")}</span><span id="insert_score"></span></div>';
 var button = '<div id="score_button"><button>${_("Download the certificate")}</button></div>';
+// in progress
+var picto_url_inprogress = "${static.url('images/encours.svg')}";
+var template_and_title = '<div id="final_score"><div id="title_result">${_("Results")}</div></div>';
+var picto = '<div id="score_picto"><img src="'+picto_url_inprogress+'" class="svg inprogress"/></div>';
 
-function insert_info_score() {
+function insert_info_score(value) {
   $('#course-content').html('');
   $('#course-content').append(template_and_title);
   $('#final_score').append(picto);
-  $('#final_score').append(congrats);
-  $('#final_score').append(first_par);
-  $('#final_score').append(second_par);
   $('#final_score').append(score_div);
-  $('#final_score').append(button);
-  $('#score_button').find('button').click(function(){
-    var course_id = '${course_id}';
-    var url = '/api/atp/check/certificate/${course_id}/';
-    $.ajax({
-      url:url,
-      type:'GET',
-      dataType:'json',
-      success:function(data){
-        window.open(data.certificate_url,'_self');
-      }
-    })
-  })
 }
 
 function returnScore() {
   $.ajax({
-    url:url,
+    url:url_score,
     type:'GET',
     dataType:'json',
     success:function(data) {
-      var score = data[0].percent;
+      var passed = data.passed;
+      var is_graded = data.is_graded;
+      var score = data.percent;
+      var grade_cutoffs = data.grade_cutoffs;
+      var overall_progress = data.overall_progress;
       score = score * 100;
       insert_info_score();
-      if(grading_note == 'True' && is_graded == 'True') {
-        $('#second_par_score').hide();
-        $('#insert_score').css('color','#dc9e29');
-        $('#score_picto').find('img').attr('src',picto_success);
-        $('#score_picto').find('img').attr('class','svg picto_add_success');
-      }else if(grading_note == 'False' && is_graded == 'True'){
-        $('#congrats_score').hide();
-        $('#insert_score').css('color','red');
-        $('#score_picto').find('img').attr('src',picto_failed);
-        $('#score_picto').find('img').attr('class','svg picto_add_failed');
+      if(overall_progress >= 93) {
+        if(passed && score >= grade_cutoffs) {
+          $('#second_par_score').hide();
+          $('#final_score').append(congrats);
+          $('#insert_score').css('color','#dc9e29');
+          $('#score_picto').find('img').attr('src',picto_success);
+          $('#score_picto').find('img').attr('class','svg picto_add_success');
+          $('#final_score').append(first_par[0]);
+          $('#final_score').append(button);
+          $('#score_button').find('button').click(function(){
+            generate_certif();
+          })
+        }else{
+          $('#final_score').append(first_par[0]);
+          $('#final_score').append(second_par[0]);
+          $('#insert_score').css('color','red');
+          $('#score_picto').find('img').attr('src',picto_failed);
+          $('#score_picto').find('img').attr('class','svg picto_add_failed');
+        }
       }else{
-        $('#second_par_score').hide();
+        $('#final_score').append(first_par[1]);
+        $('#final_score').append(second_par[1]);
         $('#score_div_info').hide();
       }
       $('#insert_score').text(score+'%');
@@ -401,58 +468,7 @@ $('#holding-section-result').click(function(){
   $('.course-wrapper').find('.course-content').css('padding-bottom','0px');
   returnScore();
 })
-% else:
-var picto_url_inprogress = "${static.url('images/encours.svg')}";
-/* generate results page */
-var template_and_title = '<div id="final_score"><div id="title_result">${_("Results")}</div></div>';
-var picto = '<div id="score_picto"><img src="'+picto_url_inprogress+'" class="svg inprogress"/></div>';
-var first_par = '<div id="score_first_para">${_("You started the training module ")}<br>« ${course.display_name_with_default} ».</div>';
-var second_par = '<div id="second_par_score">${_("To end this training module, you have to access every chapters and finish the validation knowledge test.")}</div>';
-
-function insert_info_score() {
-  $('#course-content').hide();
-  $('#course-content').html('');
-  $('#course-content').append(template_and_title);
-  $('#final_score').append(picto);
-  $('#final_score').append(first_par);
-  $('#final_score').append(second_par);
-  jQuery('img.svg').each(function(){
-      var $img = jQuery(this);
-      var imgID = $img.attr('id');
-      var imgClass = $img.attr('class');
-      var imgURL = $img.attr('src');
-
-      jQuery.get(imgURL, function(data) {
-          // Get the SVG tag, ignore the rest
-          var $svg = jQuery(data).find('svg');
-
-          // Add replaced image's ID to the new SVG
-          if(typeof imgID !== 'undefined') {
-              $svg = $svg.attr('id', imgID);
-          }
-          // Add replaced image's classes to the new SVG
-          if(typeof imgClass !== 'undefined') {
-              $svg = $svg.attr('class', imgClass+' replaced-svg');
-          }
-
-          // Remove any invalid XML tags as per http://validator.w3.org
-          $svg = $svg.removeAttr('xmlns:a');
-
-          // Replace image with new SVG
-          $img.replaceWith($svg);
-
-      }, 'xml');
-
-  });
-  $('img.svg').show();
-  $('#course-content').show();
-}
-$('#holding-section-result').click(function(){
-  $(this).find('span').css('color','#fff');
-  $(this).css('background-color','#dc9e29');
-  insert_info_score();
-})
-% endif
+// other
 function ariane_height() {
   var width = $(window).width();
   if(width > 899) {
@@ -469,32 +485,3 @@ $(window).resize(function(){
   ariane_height();
 })
 </script>
-<style>
-#tma_course_ariane span, #tma_course_ariane a, #tma_course_ariane a:hover, #tma_course_ariane a:focus {
-  font-weight: bold;
-}
-@media(max-width:1288px) {
-  #tma_course_top h1 {
-    left: calc(95% - 300px);
-    right: 0;
-  }
-}
-@media(max-width:955px) {
-  #tma_course_top h1 {
-    left: calc(100% - 300px);
-    right: 0;
-  }
-}
-@media(max-width:899px) {
-  #tma_course_top h1 {
-    position: relative;
-    width: 100%;
-    left: 0;
-    right: 0;
-    margin: 0;
-  }
-  #tma_course_ariane {
-    position: relative;
-  }
-}
-</style>

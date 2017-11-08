@@ -22604,7 +22604,7 @@ msgstr "TYPE DE CAMPAGNE"
 
 #: cms/templates/manage_course.html
 msgid "Specify whether the training campaign is mandatory or optional"
-msgstr "Précisez si la campagne de formation est obligatoire ou facultative"
+msgstr "Pour cette campagne, préciser à votre cible si le module de formation est obligatoire ou facultatif"
 
 #: cms/templates/manage_course.html
 msgid "mandatory"
@@ -22747,3 +22747,231 @@ msgstr "Aucune campagne de formation n'a été lancée."
 
 msgid "No training modules available in this section."
 msgstr "Aucun module de formation n'est disponible dans cette section."
+
+# lms dashboard.html
+
+msgid "Welcome on Amundi Academy platform"
+msgstr "Bienvenue sur la plateforme Amundi Academy "
+
+# lms dashboard.html
+
+msgid "You successfully registered"
+msgstr "Votre inscription est confirmée"
+
+# lms dashboard.html
+
+msgid "The training module"
+msgstr "Le module de formation"
+
+# lms dashboard.html
+
+msgid "is available in the section"
+msgstr "est accessible dans la partie"
+
+# cms index.html
+
+msgid "Send email to participants"
+msgstr "Envoyer un email aux participants"
+
+#cms send email
+
+msgid "Send"
+msgstr "Envoyer"
+
+msgid "You can send a new email or go back to the page MY CAMPAIGNS"
+msgstr "Vous pouvez envoyer un nouvel email ou retourner sur la page MES CAMPAGNES"
+
+msgid "Your email was sent"
+msgstr "Votre email a bien été envoyé aux destinataires"
+
+#cms index.html
+msgid "Access Trainee interface"
+msgstr "Accès Apprenant"
+
+#lms dashboard.html
+msgid "Access Admin interface"
+msgstr "Accès interface d'administration"
+
+#lms stat.html
+msgid "editor"
+msgstr "editeur"
+
+#lms stat.html
+msgid "Results on "
+msgstr "Résultats au "
+
+#lms stat.html
+msgid "Statistical training campaign"
+msgstr "Statistiques"
+
+#lms stat.html
+msgid "training campaign info"
+msgstr "informations générales"
+
+#lms stat.html
+msgid "Download participants' list"
+msgstr "Télécharger la liste des invités"
+
+#lms stat.html
+msgid "starting date"
+msgstr "Date de début"
+
+#lms stat.html
+msgid "ending date"
+msgstr "Date de fin"
+
+#lms stat.html
+msgid "number of questions"
+msgstr "Nombre de questions"
+
+#lms stat.html
+msgid "percentage for success"
+msgstr "Pourcentage de reussite"
+
+
+#lms stat.html
+msgid "users stats"
+msgstr "à propos des participants"
+
+#lms stat.html
+msgid "Network"
+msgstr "reseau"
+
+#lms stat.html
+msgid "Target"
+msgstr "identifiant de campagne"
+
+#lms stat.html
+msgid "Guests"
+msgstr "invités"
+
+#lms stat.html
+msgid "Certified"
+msgstr "nombre de participant ayant obtenue leur certification"
+
+#lms stat.html
+msgid "Average result"
+msgstr "résultat moyen par participant"
+
+#lms stat.html
+msgid "Average score"
+msgstr "score moyen"
+
+#lms stat.html
+msgid "per question"
+msgstr "par question"
+
+#lms stat.html
+msgid "per participant"
+msgstr "par participant"
+
+#lms stat.html
+msgid "Download users grade"
+msgstr "Télécharger les résultats de tous les participants"
+
+#lms stat.html
+msgid "First name"
+msgstr "Prénom"
+
+#lms stat.html
+msgid "Last name"
+msgstr "Nom"
+
+
+#cms create_course.html
+msgid "LAUNCH MY CAMPAIGN"
+msgstr "LANCER MA CAMPAGNE"
+
+#cms create_course.html
+msgid "To launch your training campaign, you have to specify an unique ID and the target of your training campaign. Please, note that the target wording will be indicated in the statistics of this training campaign."
+msgstr "Pour lancer votre campagne de formation, vous devez préciser un identifiant unique et la cible de cette campagne de formation. Veuillez noter que le libellé de la cible sera indiqué dans les statistiques de cette campagne."
+
+#cms create_course.html
+msgid "Specify unique ID and target"
+msgstr "Préciser l’identifiant unique et la cible"
+
+#cms create_course.html
+msgid "Unique ID"
+msgstr "Identifiant unique"
+
+#cms create_course.html
+msgid "Rules for unique ID and target : no space, no punctuation, no special characters"
+msgstr "Règles de saisie de l’identifiant unique et de la cible : pas d’espace, pas de ponctuation, pas de caractère spécial"
+
+#cms create_course.html
+msgid "Create an identifier"
+msgstr ""
+
+#cms create_course.html
+msgid "This identifier is reflected in the statistical dashboards"
+msgstr "cet identifiant est remonté dans les tableaux de bord statistiques"
+
+#cms create_course.html
+msgid "This allows you to specify the target and / or training period"
+msgstr "Cela vous permet de préciser la cible et/ou la période de formation"
+
+#cms create_course.html
+msgid "identifying your campaign"
+msgstr "identifiant de votre campagne"
+
+#cms create_course.html
+msgid "Rules for unique ID and target"
+msgstr "Règles de saisie de l’identifiant unique et de la cible"
+
+#cms create_course.html
+msgid "no space, no punctuation, no special characters"
+msgstr "pas d’espace, pas de ponctuation, pas de caractère spécial"
+
+#cms invite.html
+msgid "INVITE PARTICIPANTS"
+msgstr "INVITER DES PARTICIPANTS"
+
+#cms invite.html
+msgid "In order to invite participants to your training campaign, it is imperative that starting date of the training session is set before the current date."
+msgstr "Pour inviter des participants à votre campagne de formation, il faut impérativement que la date de début de la campagne de formation paramétrée soit antérieure à la date du jour."
+
+#cms mail.html
+msgid "SEND EMAIL TO PARTICIPANTS"
+msgstr "ENVOYER UN EMAIL AUX PARTICIPANTS"
+
+#cms mail.html
+msgid "During the training campaign, you can send a personalized e-mail to your participants or to targeted receivers."
+msgstr "A tout moment, lors de votre campagne de formation, vous pouvez envoyer un email personnalisé à vos participants ou à une liste de destinataires que vous aurez choisi."
+
+#cms mail.html
+msgid "It can be an email to remind them the training campaign will end soon, the training campaign is mandatory, etc"
+msgstr "Ce peut être un email de relance pour rappeler à vos participants que la campagne de formation touche bientôt à sa fin, un email pour leur formuler que la campagne de formation est obligatoire, etc."
+
+#cms mail.html
+msgid "Send email to:"
+msgstr "Envoyer l’email à :"
+
+#cms mail.html
+msgid "Team and administrator"
+msgstr "Equipe et administrateur"
+
+#cms mail.html
+msgid "All participants (invited and accepted)"
+msgstr "Tous les participants (invités et inscrits)"
+
+#cms mail.html
+msgid "Customized mailing list"
+msgstr "Liste de destinataires personnalisée"
+
+#cms mail.html
+msgid "If you want to send an email to a customized mailing list, please copy/paste email addresses above. Emails will only be sent to receivers that have been invited to participate to the training campaign in the section 'Invite participants'."
+msgstr "Si vous souhaitez envoyer un email à une liste de destinataires personnalisée, veuillez copier/coller les adresses emails des destinataires ci-dessus. A noter que ces emails sont envoyés uniquement aux destinataires qui ont été invités à participer à la campagne de formation dans la section « Inviter des participants »."
+
+#cms mail.html
+msgid "Object of the email"
+msgstr "Objet de l’email "
+
+#cms mail.html
+msgid "WARNING : Before clicking on 'Send', please read your text carefully and send an email to yourself. This will allow you to validate text and links are correct."
+msgstr "AVERTISSEMENT : Avant de cliquer sur « Envoyer », relisez bien votre email et testez le mail en vous l’envoyant à vous-même. Cela vous permettra de valider que le contenu et liens sont corrects."
+
+msgid "Body of the email"
+msgstr "Corps de l’email"
+
+msgid "We recommend sending only one message per week to learners. Before sending your e-mail, read your text carefully and send it to your email address. You will be able to verify that all the links work and that the content is good."
+msgstr ""

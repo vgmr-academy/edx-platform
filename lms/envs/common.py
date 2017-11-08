@@ -2160,6 +2160,7 @@ INSTALLED_APPS = (
     'course_progress',
     #tma
     'tma_grade_tracking',
+    'end_courses_atp'
 )
 
 # Migrations which are not in the standard module "migrations"

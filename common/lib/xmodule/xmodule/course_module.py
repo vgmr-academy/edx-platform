@@ -664,6 +664,15 @@ class CourseFields(object):
         scope=Scope.settings
     )
 
+    editor = String(
+        display_name=_("Editor"),
+        help=_(
+            "Course editor",
+        ),
+        default='None',
+        scope=Scope.settings
+    )
+
     # GEOFFREY
     course_survey_name = String(
         display_name=_("Pre-Course Survey Name"),

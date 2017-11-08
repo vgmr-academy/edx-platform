@@ -128,10 +128,10 @@ function replace_log() {
 $(document).ready(function(){
  toggleNav();
  navChange();
- replace_log();
+ //replace_log();
 })
 
 $(window).resize(function(){
  navChange();
- replace_log();
+ //replace_log();
 })

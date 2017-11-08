@@ -72,6 +72,9 @@ margin-top: 30px !important;
 .img_regulatory {
     background-image: url("/static/images/reglementaire.png")
 }
+#course_about_accroche {
+  font-style: italic;
+}
 </style>
 
 
@@ -219,6 +222,7 @@ $(document).scroll(function(){
   if(scroll_h >= 90) {
     $('.atp_course_info').hide();
     $('.atp_course_picto').hide();
+    $('#picto_course_about').find('.atp_course_picto').show();
     $('.atp_course_image').slideUp(1000);
     $('.atp_course_title').css('padding-top','10px');
     $('.atp_course_title').css('padding-bottom','10px');

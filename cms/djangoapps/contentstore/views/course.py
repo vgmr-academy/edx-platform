@@ -286,7 +286,10 @@ def course_handler(request, course_key_string=None):
                 course_key = CourseKey.from_string(course_key_string)
                 with modulestore().bulk_operations(course_key):
                     course_module = get_course_and_check_access(course_key, request.user, depth=None)
-                    return JsonResponse(_course_outline_json(request, course_module))
+                    if request.user.is_staff:
+                        return JsonResponse(_course_outline_json(request, course_module))
+                    else:
+                        return HttpResponsePermanentRedirect('/')
             elif request.method == 'POST':  # not sure if this is only post. If one will have ids, it goes after access
                 return _create_or_rerun_course(request)
             elif not has_studio_write_access(request.user, CourseKey.from_string(course_key_string)):
@@ -301,7 +304,10 @@ def course_handler(request, course_key_string=None):
             if course_key_string is None:
                 return redirect(reverse("home"))
             else:
-                return course_index(request, CourseKey.from_string(course_key_string))
+                if request.user.is_staff:
+                    return course_index(request, CourseKey.from_string(course_key_string))
+                else:
+                    return HttpResponsePermanentRedirect('/')
         else:
             return HttpResponseNotFound()
     except InvalidKeyError:
@@ -1183,11 +1189,11 @@ def settings_handler(request, course_key_string):
                         delete_entrance_exam(request, course_key)
 
                 # Perform the normal update workflow for the CourseDetails model
+
                 return JsonResponse(
                     CourseDetails.update_from_json(course_key, request.json, request.user),
                     encoder=CourseSettingsEncoder
                 )
-
 
 #GEOFFREY
 
@@ -1836,7 +1842,9 @@ def advanced_settings_handler(request, course_key_string):
             })
         elif 'application/json' in request.META.get('HTTP_ACCEPT', ''):
             if request.method == 'GET':
+
                 return JsonResponse(CourseMetadata.fetch(course_module))
+
             else:
                 try:
                     # validate data formats and update the course module.

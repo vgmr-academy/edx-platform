@@ -79,6 +79,11 @@ logo_url = static.get_value('logo')
 <img id="logo_atp_redirect" src="${logo_url}" />
 % endif
 <img id="atp_menu_mobile" src="${static.url('images/menu_mobile.png')}" class="sub_picto" id="sub_mobile_img"/>
+% if user.is_authenticated():
+  <a id="log_user_action" href="/logout"><img src="${static.url('images/shut-down-icon.svg')}" class="svg"/><span><div id="log_user_action_array"></div>${_('logout')}</span></a>
+% else:
+  <a id="log_user_action" href="/login"><img src="${static.url('images/shut-down-icon.svg')}" class="svg"/><span><div id="log_user_action_array"></div>${_('login')}</span></a>
+% endif
 <div id="sub_menu">
 % if "/dashboard" in request.path:
 <button class="sub_menu" data-location="menu_module_apt" id="my_course_covers">${_("My modules")} <span class="arrow_button"></span></button>
@@ -99,20 +104,13 @@ logo_url = static.get_value('logo')
  <button id="cat_all" data-location="all">${_("All")}</button>
 </div>
   % if user.is_authenticated():
-  <a id="log_user_action" href="/logout"><img src="${static.url('images/shut-down-icon.svg')}" class="svg"/><span><div id="log_user_action_array"></div>${_('logout')}</span></a>
   <a href="/u/${request.user.username}">${_("My account")}</a>
   % else:
-  <a id="log_user_action" href="/login"><img src="${static.url('images/shut-down-icon.svg')}" class="svg"/><span><div id="log_user_action_array"></div>${_('login')}</span></a>
   <a href="">${_("My account")}</a>
   % endif
 <span style="display:block;clear:both;" id="nav_replace_after"></span>
 % endif
 % if not "/dashboard" in request.path:
-  % if user.is_authenticated():
-    <a id="log_user_action" href="/logout"><img src="${static.url('images/shut-down-icon.svg')}" class="svg"/><span><div id="log_user_action_array"></div>${_('logout')}</span></a>
-  % else:
-    <a id="log_user_action" href="/login"><img src="${static.url('images/shut-down-icon.svg')}" class="svg"/><span><div id="log_user_action_array"></div>${_('login')}</span></a>
-  % endif
 <a
   % if user.is_authenticated():
     href="/u/${request.user.username}"
