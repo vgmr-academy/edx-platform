@@ -22981,3 +22981,7 @@ msgstr "mentions legales"
 
 msgid "File preview"
 msgstr "Prévisualisation du fichier"
+
+msgid "Access Trainee Interface"
+msgstr "Access interface apprenant"
+

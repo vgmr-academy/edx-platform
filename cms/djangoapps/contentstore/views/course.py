@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Views related to operations on course objects
 """
@@ -1366,9 +1367,107 @@ def session_manager_handler(msg,emails,org,language):
 
 
 def send_enroll_mail(obj,course,overview,course_details,body,list_email):
+    #try:
+    #MAIL 2 le retour
+    domain_override = ''
+    if not domain_override:
+        site_name = configuration_helpers.get_value(
+            'SITE_NAME',
+            settings.SITE_NAME
+        )
+    else:
+        site_name = domain_override
+
+    from django.core.mail import send_mail
+
+    subject = obj
+    subject = subject.replace('\n', '')
+    # mail template
+    template_name = 'microsite_manager/invite_mail_template.txt'
+    # LIST OF VARS
+    course_org = course.org.lower()
+    site_name = settings.SITE_NAME
+    microsite_link = 'https://'+course_org+'.'+site_name
+    course_title = course.display_name
+    category = course.categ
+    duration = course_details.effort
+    mode_required = course.is_required_atp
+    #static images
+    org_image = microsite_link+'/static/images/mail_logo.png'
+    platform_image = microsite_link+'/static/images/platform_logo.png'
+    #static images
+    microsite = Microsite.objects.get(key=course_org)
+    microsite_value = microsite.values
+    primary_color_key = 0
+    secondary_color_key = 0
+    logo_key = 0
+    i = 0
+    for n in microsite_value:
+        if n == 'language_code':
+            lang_key = i
+        if n == 'logo':
+            logo_key = i
+        if n == 'primary_color':
+            primary_color_key = i
+        if n == "secondary_color":
+            secondary_color_key = i
+        i = i + 1
+    link = microsite_link+'/courses/'+str(course.id)+'/about'
+    atp_primary_color = microsite_value.values()[primary_color_key]
+    atp_secondary_color = microsite_value.values()[secondary_color_key]
+    microsite = Microsite.objects.get(key=course_org)
+    course_link_img = 'https://'+site_name+microsite_value.values()[logo_key]
+
+    course_image = overview.image_urls['raw']
+    end_date = ''
+
     try:
-        #MAIL 2 le retour
-        domain_override = ''
+        end_date = overview.end.strftime("%Y-%m-%d")
+
+    except:
+        pass
+    from_email=configuration_helpers.get_value('email_from_address', settings.DEFAULT_FROM_EMAIL)
+    #wording mail
+    current_lang = course.language
+    if current_lang == 'fr':
+        title_mail = [
+            'Catégorie','Durée','Mode','Date de fin'
+        ]
+        if mode_required:
+            mode = 'obligatoire'
+        else:
+            mode = 'facultatif'
+    else:
+        title_mail = [
+            'Category','Duration','Mode','Ending date'
+        ]
+        if mode_required:
+            mode = 'mandatory'
+        else:
+            mode = 'optional'
+
+    html_content = render_to_string(
+        template_name,
+        {
+           'org_image':org_image,
+           'platform_image':platform_image,
+           'title_categorie':title_mail[0],
+           'title_duration':title_mail[1],
+           'title_mode':title_mail[2],
+           'title_date':title_mail[3],
+           'course_title': course_title,
+           'category': category,
+           'duration': duration,
+           'mode': mode,
+           'content': body,
+           'link': link,
+           'atp_primary_color': atp_primary_color,
+           'atp_secondary_color': atp_secondary_color,
+           'course_link_img': course_link_img,
+           'end_date': end_date,
+        }
+    )
+    for i in range(len(list_email)):
         if not domain_override:
             site_name = configuration_helpers.get_value(
                 'SITE_NAME',
@@ -1376,87 +1475,18 @@ def send_enroll_mail(obj,course,overview,course_details,body,list_email):
             )
         else:
             site_name = domain_override
-
-        from django.core.mail import send_mail
-
-        subject = obj
-        subject = subject.replace('\n', '')
-        # mail template
-        template_name = 'microsite_manager/invite_mail_template.txt'
-        # LIST OF VARS
-        course_org = course.org.lower()
-        site_name = settings.SITE_NAME
-        microsite_link = 'https://'+course_org+'.'+site_name
-        course_title = course.display_name
-        category = course.categ
-        duration = course_details.effort
-        mode_required = course.is_required_atp
-        if mode_required:
-            mode = 'obligatoire'
-        else:
-            mode = 'facultatif'
-        microsite = Microsite.objects.get(key=course_org)
-        microsite_value = microsite.values
-        primary_color_key = 0
-        logo_key = 0
-        i = 0
-        for n in microsite_value:
-            if n == 'language_code':
-                lang_key = i
-            if n == 'logo':
-                logo_key = i
-            if n == 'primary_color':
-                primary_color_key = i
-            i = i + 1
-        link = microsite_link+'/courses/'+str(course.id)+'/about'
-        atp_primary_color = microsite_value.values()[primary_color_key]
-        microsite = Microsite.objects.get(key=course_org)
-        course_link_img = 'https://'+site_name+microsite_value.values()[logo_key]
-
-        course_image = overview.image_urls['raw']
-        end_date = ''
-
-        try:
-            end_date = overview.end.strftime("%d-%m-%Y")
-
-        except:
-            pass
-        from_email=configuration_helpers.get_value('email_from_address', settings.DEFAULT_FROM_EMAIL)
-
-        html_content = render_to_string(
-            template_name,
-            {
-               'course_title': course_title,
-               'category': category,
-               'duration': duration,
-               'mode': mode,
-               'content': body,
-               'link': link,
-               'atp_primary_color': atp_primary_color,
-               'course_link_img': course_link_img,
-               'end_date': end_date,
-            }
-        )
-        for i in range(len(list_email)):
-            if not domain_override:
-                site_name = configuration_helpers.get_value(
-                    'SITE_NAME',
-                    settings.SITE_NAME
-                )
-            else:
-                site_name = domain_override
-            email = html_content
-            info_email = {
-                'email':list_email[i]
-            }
-            log.info("send_enroll_mail: "+pformat(info_email))
-            send_mail(subject, email, from_email, [list_email[i]],html_message=email)
-            #END %MAIL SEND
-        return True
-
+        email = html_content
+        info_email = {
+            'email':list_email[i]
+        }
+        log.info("send_enroll_mail: "+pformat(info_email))
+        send_mail(subject, email, from_email, [list_email[i]],html_message=email)
+        #END %MAIL SEND
+    return True
+    """
     except:
         return False
-
+    """
 
 @login_required
 @ensure_csrf_cookie

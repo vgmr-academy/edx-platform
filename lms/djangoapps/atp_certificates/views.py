@@ -17,16 +17,21 @@ from student.models import User,CourseEnrollment
 from django.http import JsonResponse,HttpResponse
 from microsite_configuration.microsite import is_request_in_microsite,get_all_orgs
 from utils import generate_html
+import datetime
+
+import logging
+log = logging.getLogger(__name__)
 
 @login_required
 def atp_check_certificate(request,course_id):
+    log.info("atp_check_certificate start: "+str(datetime.datetime.now().strftime("%s")))
     context = {}
     try:
         user = request.user
         username = user.username
         course_key = SlashSeparatedCourseKey.from_deprecated_string(course_id)
         course = get_course_by_id(course_key)
-        is_passed = CourseGradeFactory().get_persisted(user, course).passed
+        is_passed = CourseGradeFactory().create(user, course).passed
         if is_passed:
             certificate_url = '/api/atp/generate/certificate/'+course_id+'/'
         else:
@@ -37,14 +42,17 @@ def atp_check_certificate(request,course_id):
         context['certificate_url'] = certificate_url
         context['microsite'] = is_request_in_microsite()
         context['status'] = True
+
     except:
         context['status'] = False
         context['message'] = 'Error'
 
+    log.info("atp_check_certificate end: "+str(datetime.datetime.now().strftime("%s")))
     return JsonResponse(context)
 
 @login_required
 def atp_generate_certificate(request,course_id):
+    log.info("atp_generate_certificate start: "+str(datetime.datetime.now().strftime("%s")))
     context = {}
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename="certificate.pdf"'
@@ -59,13 +67,18 @@ def atp_generate_certificate(request,course_id):
     course_title = courseoverview.display_name_with_default
     score = str(course_factory.percent * 100)+'%'
     url = 'https://'+settings.FEATURES['LMS_BASE']
-    logo_path = '/edx/var/edxapp/media/certificates/images/header.jpg'
+    logo_path = url+'/media/certificates/images/logo-amundi.jpg'
+    theme_path = url+'/media/certificates/images/logo-amundi-academy.jpg'
     course_img_path = courseoverview.image_urls['raw']
     course_img_path = url+course_img_path
     template_path = '/certificates/template.html'
-    certif_img_path = '/edx/var/edxapp/media/certificates/images/tampon.gif'
+    certif_img_path = url+'/media/certificates/images/tampon.jpg'
 
 
     #return HttpResponse(pdf)
-    return generate_html(username,score,course_img_path,template_path,course_title,categorie)
+    return generate_html(
+        username,score,course_img_path,template_path,
+        course_title,categorie,certif_img_path,
+        logo_path,theme_path
+    )
     #return response
