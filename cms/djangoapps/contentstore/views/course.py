@@ -126,6 +126,7 @@ from microsite_manager.models import MicrositeAdminManager
 
 #GEOFFREY
 from pprint import pformat
+from django.views.decorators.csrf import csrf_exempt
 log = logging.getLogger(__name__)
 
 
@@ -1366,7 +1367,7 @@ def session_manager_handler(msg,emails,org,language):
     return array_pull
 
 
-def send_enroll_mail(obj,course,overview,course_details,body,list_email):
+def send_enroll_mail(obj,course,overview,course_details,body,list_email,module_store):
     #try:
     #MAIL 2 le retour
     domain_override = ''
@@ -1465,6 +1466,7 @@ def send_enroll_mail(obj,course,overview,course_details,body,list_email):
            'atp_secondary_color': atp_secondary_color,
            'course_link_img': course_link_img,
            'end_date': end_date,
+	   'grade_cutoff':str(module_store.grade_cutoffs['Pass'] * 100)+' %'
         }
     )
     for i in range(len(list_email)):
@@ -1475,12 +1477,12 @@ def send_enroll_mail(obj,course,overview,course_details,body,list_email):
             )
         else:
             site_name = domain_override
-        email = html_content
+        email = html_content.replace('$first_name',list_email[i]['first_name']).replace('$last_name',list_email[i]['last_name'])
         info_email = {
             'email':list_email[i]
         }
         log.info("send_enroll_mail: "+pformat(info_email))
-        send_mail(subject, email, from_email, [list_email[i]],html_message=email)
+        send_mail(subject, email, from_email, [list_email[i]['email']],html_message=email)
         #END %MAIL SEND
     return True
     """
@@ -1489,8 +1491,8 @@ def send_enroll_mail(obj,course,overview,course_details,body,list_email):
     """
 
 @login_required
-@ensure_csrf_cookie
 @require_http_methods(("GET", "PUT", "POST"))
+@csrf_exempt
 @expect_json
 def email_dashboard_handler(request, course_key_string):
 
@@ -1534,6 +1536,8 @@ def email_dashboard_handler(request, course_key_string):
             course_details = CourseDetails.fetch(course_key)
             #GET COURSE OVERVIEW
             overview = CourseOverview.get_from_id(course_key)
+            #GET MODULE STORE
+            module_store = modulestore().get_course(course_key, depth=0)
 
         except:
             request_type = False
@@ -1552,18 +1556,37 @@ def email_dashboard_handler(request, course_key_string):
                 body = request.POST['body']
                 course_key = CourseKey.from_string(course_key_string)
                 if myself == 'true':
-                    self_email = request.user.email
-                    list_email.append(self_email)
+                    q = {}
+		    q['email'] = request.user.email
+                    q['first_name'] = request.user.first_name
+                    q['last_name'] = request.user.last_name
+                    list_email.append(q)
                 if staff == 'true':
                     staf_users = CourseInstructorRole(course_key).users_with_role()
                     for n in staf_users:
                         if not n.email in list_email:
-                            list_email.append(n.email)
+		            try:
+			        _staf_user = User.objects.get(email=n.email)
+			        q = {}
+			        q['email'] = n.email
+                                q['first_name'] = _staf_user.first_name
+                                q['last_name'] = _staf_user.last_name
+                                list_email.append(q)
+			    except:
+		                pass
                 if custom == 'true':
                     adress = adress.split(',')
                     for n in adress:
                         if not n in list_email:
-                            list_email.append(n)
+			    try:
+				q = {}
+				_user_custom = User.objects.get(email=n)
+				q['email'] = n
+				q['first_name'] = _user_custom.first_name
+				q['last_name'] = _user_custom.last_name
+                                list_email.append(q)
+			    except:
+				pass
                 if all_users == 'true':
                     user_id = []
                     try:
@@ -1572,14 +1595,18 @@ def email_dashboard_handler(request, course_key_string):
                         for n in row:
                             email = User.objects.all().filter(pk=n.user_id)
                             for v in email:
-                                if not v.email in list_email:
-                                    list_email.append(v.email)
+                                if not str(v.email) in str(list_email):
+                                    q = {}
+				    q['email'] = v.email
+				    q['first_name'] = v.first_name
+				    q['last_name'] = v.last_name
+                                    list_email.append(q)
                     except:
                         ALL = False
             except:
                 list_email = False
 
-            mail_send = send_enroll_mail(obj,course,overview,course_details,body,list_email)
+            mail_send = send_enroll_mail(obj,course,overview,course_details,body,list_email,module_store)
 
             return JsonResponse({'mail_send':mail_send})
         # if not request_type in POST request body
@@ -1720,13 +1747,18 @@ def invite_handler(request, course_key_string):
                         array.append(q)
                         # send email to user already enroll:
                         if n['status'] == 'error':
-                            email_send.append(email_session_manager)
+			    send_dict = {
+				"email":email_session_manager,
+				"first_name":firsr_name,
+				"last_name":last_name
+                            }
+                            email_send.append(send_dict)
 
                     #launch email for SEM existing users
                     obj = 'atp send mail'
                     body = ''
                     log.info("invite_handler existing sem user list: "+pformat(email_send))
-                    user_email = send_enroll_mail(obj,course,overview,course_details,body,email_send)
+                    user_email = send_enroll_mail(obj,course,overview,course_details,body,email_send,module_store)
                     for n in list_email:
                         if not n in array:
                             q = {}

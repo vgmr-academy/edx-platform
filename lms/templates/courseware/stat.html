@@ -34,7 +34,6 @@ if logo_url is None:
 
 target = course_id.split('+')
 %>
-
 <div id="contenair">
   <!-- header -->
   <div id="header">
@@ -46,7 +45,9 @@ target = course_id.split('+')
       <div id="course_img">
         <img src="${overview.image_urls['small']}" />
         <div id="categorie_info">
+          ${_(course.categ)}
         </div>
+        <div class="img_${course.categ.lower().replace(' ','')}"></div>
       </div>
       <div id="cartouche_info">
         <h3>${course.display_name_with_default_escaped}</h3>
@@ -375,3 +376,80 @@ $('#generate_grades').click(function(){
 % else:
   <link rel="stylesheet" type="text/css" href="${static.url(stat_dashboard)}" />
 % endif
+<style>
+#list_participant {width: auto !important;}
+#categorie_info {
+  position: absolute;
+  bottom:0;
+  left: 0;
+  width: 100%;
+  text-align: right;
+  z-index: 20;
+}
+#course_img {
+  position: relative;
+}
+#cartouche_info h3 {
+  font-size: 22px;
+}
+.img_regulatory, .img_fundamental, .img_oursolutions, .img_salesapproach {
+ position: absolute;
+ bottom: 0;
+ right: 0;
+ width: 70%;
+ height: 120px;
+ z-index: 2;
+ background-position: center;
+ background-repeat: no-repeat;
+ background-size: cover;
+}
+.img_fundamental {
+ background-image: url('/static/images/fondamentaux.png');
+}
+.img_fundamentals {
+ background-image: url('/static/images/fondamentaux.png');
+}
+.img_oursolutions {
+ background-image: url('/static/images/nos_solutions.png');
+}
+.img_salesapproach {
+ background-image: url('/static/images/zdemarche_comm.png');
+}
+.img_regulatory {
+ background-image: url('/static/images/reglementaire.png');
+}
+.cell_result {
+ width: calc((100%/2) - 32px);
+}
+@media(max-width:1266px){
+ .cell_result{
+  width: 90%;
+  margin-left: 5% !important;
+  margin-right: 5% !important;
+  float: none;
+ }
+}
+</style>
+<script>
+function cell_result_h(){
+ $('.cell_result').attr('style','');
+ var height = 0;
+ $('.cell_result').each(function(){
+  var h = $(this).height();
+  if(h > height){
+    height = h;
+   }
+ })
+ $('.cell_result').css('min-height',height+'px');
+ $('.cell_result').css('height','auto');
+}
+$(document).ready(function(){
+ cell_result_h();
+})
+$(window).resize(function(){
+ cell_result_h();
+})
+var info = $("#categorie_info").text();
+console.log(info);
+</script>
+

@@ -789,27 +789,31 @@ def stat_dashboard(request, course_id):
 
 @ensure_csrf_cookie
 @login_required
-def get_dashboard_username(request,course_id,username):
+def get_dashboard_username(request,course_id,email):
     course_key = SlashSeparatedCourseKey.from_deprecated_string(course_id)
-    row = User.objects.raw('SELECT a.id,a.username FROM auth_user a,student_courseenrollment b WHERE a.id=b.user_id AND b.course_id=%s' ,[course_id])
-    usernames = []
-    username = str(username).lower()
+    row = User.objects.raw('SELECT a.id,a.email FROM auth_user a,student_courseenrollment b WHERE a.id=b.user_id AND b.course_id=%s' ,[course_id])
+    emails = []
+    email = str(email).lower()
+    return_ = []
     for n in row:
-        low = str(n.username).lower()
-        if username in low:
-            usernames.append(n.username)
+        return_.append(n.email)
+        low = str(n.email).lower()
+        if email in low:
+            emails.append(n.email)
     response = JsonResponse({
-            "usernames":usernames
+            "usernames":emails,
+            "email":email,
+            "row":str(return_)
         })
 
     return response
 
 @ensure_csrf_cookie
 @login_required
-def stat_dashboard_username(request, course_id, username):
+def stat_dashboard_username(request, course_id, email):
     try:
         # get users info
-        users = User.objects.get(username=username)
+        users = User.objects.get(email=email)
         #user_email
         user_email = users.email
         lvl_1 = ''
@@ -861,7 +865,7 @@ def stat_dashboard_username(request, course_id, username):
             course_grade.append(q)
         return JsonResponse({
                 "course_id":course_id,
-        		"username":username,
+        		"email":email,
                 "user_id":user_id,
                 "course_grade": course_grade,
                 "user_info": user_info,

@@ -22175,15 +22175,6 @@ msgstr "Fondamentaux"
 msgid "fundamentals"
 msgstr "fondamentaux"
 
-msgid "OUR SOLUTIONS"
-msgstr "NOS SOLUTIONS"
-
-msgid "Our solutions"
-msgstr "Nos solutions"
-
-msgid "our solutions"
-msgstr "nos solutions"
-
 msgid "BUSINESS APPROACH"
 msgstr "DÉMARCHE COMMERCIALE"
 
@@ -22403,8 +22394,8 @@ msgid "More modules"
 msgstr "Plus de modules"
 
 #: lms/templates/dashboard.html
-msgid "Welcome on your"
-msgstr "Bienvenue sur votre"
+msgid "Welcome on"
+msgstr "Bienvenue sur"
 
 #: lms/templates/dashboard.html
 msgid "Develop your knowledge and skills on asset management: financial culture and offers."
@@ -22428,7 +22419,7 @@ msgstr "RETOUR À LA FICHE DU MODULE"
 
 #: lms/templates/courseware/courseware.html
 msgid "Go to studio"
-msgstr "Voir dans studio"
+msgstr "Administrer ma campagne"
 
 #: cms/templates/index.html
 msgid "No training campaign has been set"
@@ -22612,7 +22603,7 @@ msgstr "obligatoire"
 
 #: cms/templates/manage_course.html
 msgid "optional"
-msgstr "facultative"
+msgstr "facultatif"
 
 #: cms/templates/manage_course.html
 msgid "Add participants to your training campaign and customize the invitation email"
@@ -22631,8 +22622,8 @@ msgid "Upload participants list"
 msgstr "Charger la liste des participants"
 
 #: cms/templates/manage_course.html
-msgid "INVITATION EMAIL"
-msgstr "EMAIL D’INVITATION"
+msgid "EMAIL TO PARTICIPANTS"
+msgstr "EMAIL AUX PARTICIPANTS"
 
 #: cms/templates/manage_course.html
 msgid "Edit and send the invitation email to participants of your choice."
@@ -22794,7 +22785,7 @@ msgstr "Accès interface d'administration"
 
 #lms stat.html
 msgid "editor"
-msgstr "editeur"
+msgstr "Editeur"
 
 #lms stat.html
 msgid "Results on "
@@ -22835,23 +22826,23 @@ msgstr "à propos des participants"
 
 #lms stat.html
 msgid "Network"
-msgstr "reseau"
+msgstr "Reseau"
 
 #lms stat.html
 msgid "Target"
-msgstr "identifiant de campagne"
+msgstr "Cible"
 
 #lms stat.html
 msgid "Guests"
-msgstr "invités"
+msgstr "Invités"
 
 #lms stat.html
 msgid "Certified"
-msgstr "nombre de participant ayant obtenue leur certification"
+msgstr "Nombre de participant ayant obtenue leur certification"
 
 #lms stat.html
 msgid "Average result"
-msgstr "résultat moyen par participant"
+msgstr "Résultat moyen par participant"
 
 #lms stat.html
 msgid "Average score"
@@ -22983,5 +22974,29 @@ msgid "File preview"
 msgstr "Prévisualisation du fichier"
 
 msgid "Access Trainee Interface"
-msgstr "Access interface apprenant"
+msgstr "Accès interface apprenant"
+
+msgid "The participants' list is successfully uploaded."
+msgstr "La liste des participants est chargée avec succès."
+
+msgid "An email invitation to participate to the training module has been sent to the participants."
+msgstr "Une invitation par email pour participer au module de formation a bien été envoyée aux participants."
+
+msgid "OUR SOLUTIONS"
+msgstr "NOS SOLUTIONS"
+
+msgid "Our solutions"
+msgstr "Nos solutions"
+
+msgid "our solutions"
+msgstr "nos solutions"
+
+msgid "OUR SOLUTION"
+msgstr "NOS SOLUTION"
+
+msgid "Our solution"
+msgstr "Nos solution"
+
+msgid "our solution"
+msgstr "nos solution"
 

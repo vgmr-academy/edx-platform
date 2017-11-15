@@ -160,7 +160,7 @@ courseware = static.get_value('css_overrides_courseware')
     <a href="/courses/${course.id}/about">< ${_("Back to training module description")}</a>
     % if staff_access and studio_url is not None:
     <br>
-    <a class="instructor-info-action studio-view" href="https://${settings.CMS_BASE}/home/">< ${_("Go to studio")}</a>
+    <a class="instructor-info-action studio-view" href="https://${settings.CMS_BASE}/settings/manage/${course.id}">< ${_("Go to studio")}</a>
     % endif
   </div>
   <h1>${course.display_name_with_default}</h1>

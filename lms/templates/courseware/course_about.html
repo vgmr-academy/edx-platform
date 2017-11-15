@@ -37,14 +37,42 @@ course_about = static.get_value('css_overrides_course_about')
 % else:
   <link rel="stylesheet" type="text/css" href="${static.url(course_about)}" />
 % endif
+<style>
+.course_about_atp_special p {
+ width: calc(100% - 100px) !important;
+ margin-left: 60px !important;
+ margin-right: 40px !important;
+}
+.special_block {
+ margin-left: 30px !important;
+ margin-right: 70px !important;
+}
+.course_about_atp_special p {
+ margin-left: 30px !important;
+ margin-right: 70px !important;
 
+}
+
+/*
+.course_about_atp_special .special_block{
+ border-color: transparent !important;
+}
+.course_about_atp_special .special_block .up_block .special_block {
+ border-color: #c6c6c6 !important;
+}
+*/
+.course_about_atp_special .special_block .up_block h4 {
+ margin-left: 5px !important;
+ width: 95% !important;
+}
+</style>
 <script src="${static.url('js/course_about_atp.js')}"></script>
 
 <section id="course_about_contenair">
 <section id="course_about_up_content">
 <section id="atp_ariane_about">
 <!--MODIF AURELIEN-->
-	<span id="atp_ariane_about_dashboard" >${_("Explore courses")}</span><span> > ${course.display_name_with_default_escaped}</span>
+	<span id="atp_ariane_about_dashboard" >${_("Home")}</span><span> > ${course.display_name_with_default_escaped}</span>
 </section>
 <section id="atp_about_course_card">
 <ul class="atp_course_listing">
@@ -63,7 +91,7 @@ course_factory = CourseGradeFactory().create(request.user, course)
 <% course_about_name = course.display_name_with_default_escaped %>
 <% course_about_link = '/courses/'+str(course.id)+'/' %>
 <% course_about_id = str(course.id) %>
-<% course_about_img = str(course_image_urls['large']) %>
+<% course_about_img = course_image_urls['large'] %>
 <% course_progression = status %>
 <% compteur = 0 %>
 <% can_unenroll = False %>
@@ -124,7 +152,7 @@ course_factory = CourseGradeFactory().create(request.user, course)
 <div class="details">
 % if staff_access and studio_url is not None:
  <div class="wrap-instructor-info studio-view">
-  <a class="instructor-info-action" href="${studio_url}">${_("View About Page in studio")}</a>
+  <a class="instructor-info-action" href="https://${settings.CMS_BASE}/settings/manage/${course.id}">${_("View About Page in studio")}</a>
  </div>
 % endif
  <div class="inner-wrapper">

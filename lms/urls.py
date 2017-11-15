@@ -452,7 +452,7 @@ urlpatterns += (
     ),
     # return the score per users
     url(
-        r'^courses/{}/stat_dashboard/get_grade/(?P<username>[^/]*)/$'.format(
+        r'^courses/{}/stat_dashboard/get_grade/(?P<email>[^/]*)/$'.format(
             settings.COURSE_ID_PATTERN,
         ),
         'lms.djangoapps.instructor.views.instructor_dashboard.stat_dashboard_username',
@@ -468,7 +468,7 @@ urlpatterns += (
     ),
     # return list of username for search input of stat_dashboard page
     url(
-        r'^courses/{}/stat_dashboard/get_user/(?P<username>[^/]*)/$'.format(
+        r'^courses/{}/stat_dashboard/get_user/(?P<email>[^/]*)/$'.format(
             settings.COURSE_ID_PATTERN,
         ),
         'lms.djangoapps.instructor.views.instructor_dashboard.get_dashboard_username',
