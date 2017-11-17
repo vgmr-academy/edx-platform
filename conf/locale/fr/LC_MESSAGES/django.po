@@ -22246,7 +22246,7 @@ msgid "Understanding regulatory decisions"
 msgstr "Appréhender les décisions règlementaires"
 
 #: lms/templates/dashboard.html
-msgid "MODULES FORMAT"
+msgid "FORMATS"
 msgstr "FORMAT DES MODULES"
 
 #: lms/templates/dashboard.html
@@ -22391,7 +22391,7 @@ msgstr "pour accéder à votre résultat"
 
 #: lms/templates/dashboard.html
 msgid "More modules"
-msgstr "Plus de modules"
+msgstr "de modules"
 
 #: lms/templates/dashboard.html
 msgid "Welcome on"
@@ -22419,15 +22419,15 @@ msgstr "RETOUR À LA FICHE DU MODULE"
 
 #: lms/templates/courseware/courseware.html
 msgid "Go to studio"
-msgstr "Administrer ma campagne"
+msgstr "Accès interface d'administration"
 
 #: cms/templates/index.html
 msgid "No training campaign has been set"
 msgstr "Aucune campagne de formation n'a été paramétrée"
 
 #: cms/templates/index.html
-msgid "To launch a training campaign"
-msgstr "Pour lancer une campagne de formation"
+msgid "To create a training campaign"
+msgstr "Pour créer une campagne de formation"
 
 #: cms/templates/index.html
 msgid "select a training module in"
@@ -22438,8 +22438,8 @@ msgid "then click on"
 msgstr "puis cliquez sur"
 
 #: cms/templates/index.html
-msgid "Launch my campaign"
-msgstr "Lancer ma campagne"
+msgid "Create my campaign"
+msgstr "Créer ma campagne"
 
 #: cms/templates/index.html
 msgid "My Modules"
@@ -22447,7 +22447,7 @@ msgstr "Mes Modules"
 
 #: cms/templates/index.html
 msgid "WELCOME TO YOUR TRAINING MODULES MANAGEMENT INTERFACE"
-msgstr "BIENVENUE DANS VOTRE INTERFACE DE GESTION DES MODULES DE FORMATION"
+msgstr "BIENVENUE SUR VOTRE INTERFACE DE GESTION DES MODULES DE FORMATION"
 
 #: cms/templates/index.html
 msgid "You can browse within two separate universes"
@@ -22812,12 +22812,12 @@ msgid "ending date"
 msgstr "Date de fin"
 
 #lms stat.html
-msgid "number of questions"
+msgid "Number of questions"
 msgstr "Nombre de questions"
 
 #lms stat.html
-msgid "percentage for success"
-msgstr "Pourcentage de reussite"
+msgid "Percentage for success"
+msgstr "Pourcentage de réussite"
 
 
 #lms stat.html
@@ -22826,7 +22826,7 @@ msgstr "à propos des participants"
 
 #lms stat.html
 msgid "Network"
-msgstr "Reseau"
+msgstr "Réseau"
 
 #lms stat.html
 msgid "Target"
@@ -22838,7 +22838,7 @@ msgstr "Invités"
 
 #lms stat.html
 msgid "Certified"
-msgstr "Nombre de participant ayant obtenue leur certification"
+msgstr "Nombre de participants ayant obtenus leur certification"
 
 #lms stat.html
 msgid "Average result"
@@ -22857,7 +22857,7 @@ msgid "per participant"
 msgstr "par participant"
 
 #lms stat.html
-msgid "Download users grade"
+msgid "Download all participants' detailled results"
 msgstr "Télécharger les résultats de tous les participants"
 
 #lms stat.html
@@ -22870,8 +22870,8 @@ msgstr "Nom"
 
 
 #cms create_course.html
-msgid "LAUNCH MY CAMPAIGN"
-msgstr "LANCER MA CAMPAGNE"
+msgid "create my campaign"
+msgstr "créer ma campagne"
 
 #cms create_course.html
 msgid "To launch your training campaign, you have to specify an unique ID and the target of your training campaign. Please, note that the target wording will be indicated in the statistics of this training campaign."
@@ -22999,4 +22999,10 @@ msgstr "Nos solution"
 
 msgid "our solution"
 msgstr "nos solution"
+
+msgid "To create your training campaign, you have to specify an unique ID and the target of your training campaign. Please, note that the target wording will be indicated in the statistics of this training campaign."
+msgstr "Pour créer votre campagne de formation, vous devez préciser un identifiant unique et la cible de cette campagne de formation. Veuillez noter que ces données seront indiquées  dans les statistiques de cette campagne"
+
+msgid "created training campaigns"
+msgstr "campagnes crées"
 

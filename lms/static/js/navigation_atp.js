@@ -47,7 +47,11 @@ function toggleNav() {
        }else{
          $(this).hide();
        }
+
        $('.atp_dashboard_active_course').hide();
+       if(data == 'fundamental' && data_li == 'fundamentals') {
+         $(this).show();
+       }
      })
      $('html, body').animate( { scrollTop: $('#dashboard_course_in_progress_atp').offset().top -= 148 }, 750 );
      return false;

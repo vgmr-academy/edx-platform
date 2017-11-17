@@ -12,7 +12,12 @@ function tma_show_more() {
   }else{
    $('#dashboard_header_atp').removeClass('border_atp_head');
   }
-  $('#dashboard_tuto_atp').slideToggle(1800);
+  var speed = 1800;
+  $('#dashboard_tuto_atp').slideToggle(speed);
+
+  if($(this).find('.arrow-top').length != 0) {
+    $('html, body').animate( { scrollTop: $('#dashboard_header_atp').offset().top -= 148 }, speed );
+  }
  })
  $('.atp_dashboard_active_course').click(function(){
   $(this).parent().find('.atp_course_item').each(function(){
@@ -24,6 +29,13 @@ function tma_show_more() {
       That.show();
     }
   })
+  var text = $(this).text();
+  if(text.indexOf('+') != -1) {
+    text = text.replace('+','-');
+  }else{
+    text = text.replace('-','+');
+  }
+  $(this).text(text);
   intervalDetectHeight();
  })
 }

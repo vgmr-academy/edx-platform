@@ -772,8 +772,10 @@ def dashboard(request):
     #ATP dashboard reorg
     compteur_progress = 0
     compteur_finish = 0
+    compteur_start = 0
     progress_courses = []
     finish_courses = []
+    start_course = []
     if len(course_enrollments) > 0:
       for dashboard_index, enrollment in enumerate(course_enrollments):
         course_id = enrollment.course_overview.id
@@ -814,6 +816,10 @@ def dashboard(request):
           compteur_finish = compteur_finish + 1
           q['compteur'] = compteur_finish
           finish_courses.append(q)
+        elif course_progression == 0:
+          compteur_start = compteur_start + 1
+          q['compteur'] = compteur_start
+          start_course.append(q)
     #new user popup
     is_new_user = False
     now_datetime = int(datetime.datetime.now(UTC).strftime("%s")) - int(request.user.date_joined.strftime("%s"))
@@ -837,6 +843,7 @@ def dashboard(request):
         'is_new_user':is_new_user,
         'progress_courses': progress_courses,
         'finish_courses': finish_courses,
+        'start_course':start_course,
         #END ATP add
         'enrollment_message': enrollment_message,
         'redirect_message': redirect_message,

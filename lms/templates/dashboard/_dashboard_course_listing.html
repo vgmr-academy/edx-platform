@@ -60,32 +60,9 @@ else:
     required = "optional"
 
 %>
-<style>
-#dashboard_tma section a .img_fundamentals {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 70%;
-  height: 191px;
-  z-index: 2;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.img_fundamentals {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 70%;
-    height: 191px;
-    z-index: 2;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover
-}
-</style>
+
 % if atp_rank == "cours" and course_about == 0:
-  % if compteur < 4:
+  % if compteur < 5:
   <li class="atp_course_item" data-categ="${categ.lower().replace(' ','')}">
   % else:
   <li class="atp_course_item atp_hide_cards" data-categ="${categ.lower().replace(' ','')}">
@@ -135,7 +112,7 @@ else:
    </div>
   </li>
 % elif atp_rank == 'invite' and course_about == 0:
-  % if compteur < 4:
+  % if compteur < 5:
   <li class="atp_course_item" data-categ="${categ.lower().replace(' ','')}">
   % else:
   <li class="atp_course_item atp_hide_cards" data-categ="${categ.lower().replace(' ','')}">
@@ -185,7 +162,7 @@ else:
    </div>
   </li>
 % elif atp_rank == 'finish' and course_about == 0:
-  % if compteur < 4:
+  % if compteur < 5:
   <li class="atp_course_item" data-categ="${categ.lower().replace(' ','')}">
   % else:
   <li class="atp_course_item atp_hide_cards" data-categ="${categ.lower().replace(' ','')}">
@@ -235,7 +212,7 @@ else:
    </div>
   </li>
 % elif atp_rank == 'invite' and course_about == 1:
-  % if compteur < 4:
+  % if compteur < 5:
   <li class="atp_course_item" data-categ="${categ.lower().replace(' ','')}">
   % else:
   <li class="atp_course_item atp_hide_cards" data-categ="${categ.lower().replace(' ','')}">
@@ -285,7 +262,7 @@ else:
    </div>
   </li>
 % elif atp_rank == 'cours' and course_about == 1:
-  % if compteur < 4:
+  % if compteur < 5:
   <li class="atp_course_item" data-categ="${categ.lower().replace(' ','')}">
   % else:
   <li class="atp_course_item atp_hide_cards" data-categ="${categ.lower().replace(' ','')}">
@@ -335,7 +312,7 @@ else:
    </div>
   </li>
 % elif atp_rank == 'finish' and course_about == 1:
-  % if compteur < 4:
+  % if compteur < 5:
   <li class="atp_course_item" data-categ="${categ.lower().replace(' ','')}">
   % else:
   <li class="atp_course_item atp_hide_cards" data-categ="${categ.lower().replace(' ','')}">

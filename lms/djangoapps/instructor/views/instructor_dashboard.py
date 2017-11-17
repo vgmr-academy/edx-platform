@@ -842,7 +842,7 @@ def stat_dashboard_username(request, course_id, email):
         course_user_info = CourseGradeFactory().create(users, course)
         # user info responses
         user_info = [
-        {'Grade':str(course_user_info.percent * 100)+'%'},
+        {'Score':str(course_user_info.percent * 100)+'%'},
         {'First_name':users.first_name},
         {'Last_name':users.last_name},
         {'Email':users.email},

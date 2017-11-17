@@ -84,15 +84,15 @@ target = course_id.split('+')
         <p>${_('launching date')} : <span></span></p>
       -->
         <p><button id="generate_xls">${_("Download participants' list")}</button></p>
-        <p>${_("editor")} : <span>${course.editor}</span>
-        <p>${_('starting date')} : <span>${course.start.strftime('%Y-%m-%d')}</span></p>
-        <p>${_('ending date')} : <span>
+        <p>${_("Editor")} : <span>${course.editor}</span>
+        <p>${_('Starting date')} : <span>${course.start.strftime('%Y-%m-%d')}</span></p>
+        <p>${_('Ending date')} : <span>
 % if course.end:
   ${course.end.strftime('%Y-%m-%d')}
 % endif
       </span></p>
-      <p>${_("number of questions")} : <span id="question_num"></span>
-      <p>${_('percentage for success')} : <span>${course_module.grade_cutoffs['Pass'] * 100} %</span></p>
+      <p>${_("Number of questions")} : <span id="question_num"></span>
+      <p>${_('Percentage for success')} : <span>${course_module.grade_cutoffs['Pass'] * 100} %</span></p>
       <p>${_('Mode')} : <span>
 % if course.is_required_atp:
   ${_('mandatory')}
@@ -217,7 +217,7 @@ target = course_id.split('+')
                 <div style="clear:left;"></div>
                 <div id="list_participant"></div>
               </div>
-              <button id="generate_grades">${_("Download users grade")}</button>
+              <button id="generate_grades">${_("Download all participants' detailled results")}</button>
               <div id="table_participant">
               </div>
             </div>
@@ -452,4 +452,3 @@ $(window).resize(function(){
 var info = $("#categorie_info").text();
 console.log(info);
 </script>
-

@@ -15,6 +15,7 @@ from branding import api as branding_api
 # app that handles site status messages
 from status.status import get_site_status_msg
 from util.enterprise_helpers import get_enterprise_customer_logo_url
+from student.models import User
 %>
 
 ## Provide a hook for themes to inject branding on top.
@@ -37,6 +38,21 @@ except:
     # can't figure out a better way to get at a possibly-defined course var
     course_id = None
 site_status_msg = get_site_status_msg(course_id)
+%>
+<%
+_ensure_status = False
+try:
+  #ensure user is staff or instructor
+  _ensure_user_id = request.user.id
+  _ensure_user_status = User.objects.raw('SELECT b.id ,b.role FROM auth_user a,student_courseaccessrole b WHERE a.id=b.user_id AND b.user_id=%s' ,[_ensure_user_id])
+  a = 0
+  _ensure_status = False
+  for n in _ensure_user_status:
+      a = a + 1
+  if a > 0:
+      _ensure_status = True
+except:
+  pass
 %>
 % if site_status_msg:
 <div class="site-status">
@@ -86,6 +102,7 @@ logo_url = static.get_value('logo')
 <img id="atp_menu_mobile" src="${static.url('images/menu_mobile.png')}" class="sub_picto" id="sub_mobile_img"/>
 % if user.is_authenticated():
   <a id="log_user_action" href="/logout"><img src="${static.url('images/shut-down-icon.svg')}" class="svg"/><span><div id="log_user_action_array"></div>${_('logout')}</span></a>
+  <a href="/u/${request.user.username}" id="sub_to_dashboard_account"><img src="${static.url('images/man-user.png')}" class="svg"/><span><div id="account_user_action_array"></div>${_('My account')}</span></a>
 % else:
   <a id="log_user_action" href="/login"><img src="${static.url('images/shut-down-icon.svg')}" class="svg"/><span><div id="log_user_action_array"></div>${_('login')}</span></a>
 % endif
@@ -109,30 +126,135 @@ logo_url = static.get_value('logo')
  <button id="cat_all" data-location="all">${_("All")}</button>
 </div>
   % if user.is_authenticated():
-  <a href="/u/${request.user.username}">${_("My account")}</a>
+    % if _ensure_status:
+      <a href="https://${settings.CMS_BASE}" id="to_lms">${_("Access admin interface")}</a>
+    % endif
   % else:
   <a href="">${_("My account")}</a>
   % endif
 <span style="display:block;clear:both;" id="nav_replace_after"></span>
 % endif
 % if not "/dashboard" in request.path:
+<!--
 <a
   % if user.is_authenticated():
     href="/u/${request.user.username}"
   % else:
     href=""
   % endif
-id="sub_to_dashboard_account">${_("My account")}</a>
+id="sub_to_dashboard_account"><img src="${static.url('images/man-user.png')}" class="svg"/><span><div id="account_user_action_array"></div>${_('My account')}</span></a>
+-->
+
 <a href="/dashboard" class="sub_picto sub_other_menu" id="sub_to_dashboard" >
 <!--
   <img src="${static.url('images/home.png')}" style="height:40px; margin-top: 20px;"/>
 -->
 <span>${_("Home")}</span>
 </a>
+% if _ensure_status:
+  <a href="https://${settings.CMS_BASE}" id="to_lms">${_("Access admin interface")}</a>
+% endif
 </div>
 % endif
 <span style="display:block;clear:both;"></span>
 </section>
 </section>
+<style>
+#to_lms {
+  width: 169px !important;
+  height: 90px !important;
+  min-width: 169px !important;
+  line-height: 45px !important;
+}
+#sub_to_dashboard_account:hover span {
+    display: block;
+}
+#account_user_action_array {
+    display: block;
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    margin-left: -5px;
+    width: 0px;
+    height: 0px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    font-family: "mywebfont";
+    border-bottom: 5px solid #05144d;
+}
+#sub_to_dashboard_account span {
+    position: absolute;
+    left: 0;
+    display: none;
+    width: calc(100% - 8px);
+    text-align: center;
+    top: 96px;
+    border: 1px solid #05144d;
+    font-size: 10px;
+    line-height: 10px;
+    vertical-align: middle;
+    padding: 3px;
+    height: auto;
+    color: #05144d;
+    background-color: #fff;
+}
+#down_apt_nav #sub_to_dashboard_account{
+  width: 90px !important;
+  height: 90px !important;
+  min-width: 90px;
+  text-align: center;
+  line-height: 90px;
+  vertical-align: middle;
+  position: relative;
+}
+#sub_to_dashboard_account img{
+  width: 30px;
+  height: 30px;
+  margin-left: 0;
+}
+@media(max-width:1022px) {
+  #to_lms{
+    width: 100% !important;
+    height: 54px !important;
+    line-height: 54px !important;
+  }
+  #sub_to_dashboard {
+    height: 54px !important;
+    line-height: 54px !important;
+    border-top: 1px solid #fff !important;
+    border-bottom: 1px solid #fff !important;
+  }
+  #down_apt_nav #atp_menu_mobile {
+    right: 210px !important;
+  }
+  #sub_to_dashboard_account {
+    border-left: 1px solid #fff !important;
+  }
+  #my_course_covers,#nav_replace_before,#to_lms {
+    border-bottom: 1px solid #fff !important;
+  }
+}
+@media(max-width:408px) {
+  #down_apt_nav,#tma_nav {
+    height: 60px;
+  }
+  #log_user_action,#down_apt_nav #sub_to_dashboard_account {
+    width: 60px !important;
+    height: 60px !important;
+    line-height: 60px !important;
+    min-width: 40px !important;
+  }
+  #logo_atp_redirect {
+    margin-left: 10px !important;
+    margin-top: -30px !important;
+  }
+  #down_apt_nav #atp_menu_mobile {
+    right: 140px !important;
+  }
+  #sub_menu {
+    top: 60px;
+  }
+}
+</style>
 </%block>
 <%include file="help_modal.html"/>

@@ -65,6 +65,12 @@ course_about = static.get_value('css_overrides_course_about')
  margin-left: 5px !important;
  width: 95% !important;
 }
+#atp_ariane_about {
+  display: none;
+}
+#course_about_up_content {
+  padding-top: 50px;
+}
 </style>
 <script src="${static.url('js/course_about_atp.js')}"></script>
 
@@ -163,7 +169,7 @@ course_factory = CourseGradeFactory().create(request.user, course)
 </section>
 <section id="course_about_atp_end">
  <img src="${static.url('images/pdf.svg')}" id="encoche_course_about"/>
- <h2>${_("Module's format")}</h2>
+ <h2>${_("FORMATS")}</h2>
  <div id="picto_course_about">
    <div class="atp_course_picto">
 % if content_data.get('document_pdf'):
@@ -239,3 +245,27 @@ $('#certiticate').click(function(e){
 })
 % endif
 </script>
+<style>
+#dashboard_tma section a .img_fundamentals {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 70%;
+  height: 191px;
+  z-index: 2;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.img_fundamentals {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 70%;
+    height: 191px;
+    z-index: 2;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover
+}
+</style>
