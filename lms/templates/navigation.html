@@ -127,7 +127,7 @@ logo_url = static.get_value('logo')
 </div>
   % if user.is_authenticated():
     % if _ensure_status:
-      <a href="https://${settings.CMS_BASE}" id="to_lms">${_("Access admin interface")}</a>
+      <a href="https://${settings.CMS_BASE}" id="to_lms">${_("Access Admin interface")}</a>
     % endif
   % else:
   <a href="">${_("My account")}</a>
@@ -152,7 +152,7 @@ id="sub_to_dashboard_account"><img src="${static.url('images/man-user.png')}" cl
 <span>${_("Home")}</span>
 </a>
 % if _ensure_status:
-  <a href="https://${settings.CMS_BASE}" id="to_lms">${_("Access admin interface")}</a>
+  <a href="https://${settings.CMS_BASE}" id="to_lms">${_("Access Admin interface")}</a>
 % endif
 </div>
 % endif

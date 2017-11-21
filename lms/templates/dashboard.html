@@ -547,10 +547,10 @@ url_image = random.choice(url_array)
 </section>
 % if is_new_user:
 <div id="pop_up">
-  <p>${_("Welcome on Amundi Academy platform")}!</p>
-  <p>${_("You successfully registered")}.</p>
-  <p>${_("The training module")} ${first_course_name} ${_("is available in the section")}</p>
-  <p>${_("TO DO TRAINING MODULES")}</p>
+  <p>${_("Welcome on Amundi Academy platform")}!
+  ${_("You successfully registered")}.
+  ${_("The training module")} ${first_course_name} ${_("is available in the section")}
+  ${_("TO DO TRAINING MODULES")}.</p>
   <button id="close_pop_up">${_("Close")}</button>
 </div>
 <script>
@@ -592,3 +592,4 @@ $('#close_pop_up').click(function(){
   margin-top: 10px;
 }
 </style>
+
