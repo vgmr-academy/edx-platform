@@ -11,7 +11,8 @@ from opaque_keys.edx.locations import SlashSeparatedCourseKey
 from courseware.courses import (
     get_course_by_id,
 )
-
+import datetime
+_now = int(datetime.datetime.now().strftime('%s'))
 %>
 
 <%inherit file="../main.html" />
@@ -135,7 +136,7 @@ course_factory = CourseGradeFactory().create(request.user, course)
 %endif
   </span></li>
  </ul>
- <ul id="course_about_ul">
+ <ul id="course_about_ul" class="infos">
   <li><span>${_("Language")} :</span> <span id="${course_details.language}">${course_details.language}</span></li>
   <li><span>${_("Status")} :</span> <span>
 % if atp_rank == 'invite':
@@ -148,9 +149,20 @@ course_factory = CourseGradeFactory().create(request.user, course)
 </span></li>
  </ul>
 % if course_factory.passed:
-<ul id="course_about_ul">
+<ul id="course_about_ul" class="about_score">
  <li><span>${_("Score")} :</span> <span id="${course_details.language}">${str(course_factory.percent * 100)+'%'}</span></li>
  <li><a href="#" id="certiticate"><img src="${static.url('images/pdf.svg')}" class="svg"/> ${_("Download certificate")}</a></li>
+</ul>
+% endif
+<%
+try:
+  _end = int(course.end.strftime('%s'))
+except:
+  _end = 0
+%>
+% if _now > _end:
+<ul id="course_about_ul" class="over_campaign">
+   <li><span></span> <span>${_("The training campaign is over.")}</span></li>
 </ul>
 % endif
  <span style="clear:left;display:block;"></span>
@@ -267,5 +279,61 @@ $('#certiticate').click(function(e){
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover
+}
+@media(max-width:1686px) {
+  #course_about_details .over_campaign {
+    margin-left: 0 !important;
+  }
+}
+@media(max-width:1655px) {
+  #course_about_details .over_campaign {
+    margin-top: 20px;
+  }
+}
+@media(max-width:1223px) {
+  .about_score {
+    margin-left: 0 !important;
+    margin-top: 20px !important;
+  }
+  #course_about_details .over_campaign {
+    margin-left: 25px !important;
+  }
+}
+@media(max-width:951px) {
+  #course_about_details .over_campaign {
+    margin-left: 0 !important;
+  }
+}
+@media(max-width:859px) {
+  .infos {
+    margin-left: 0 !important;
+    margin-top: 20px !important;
+  }
+}
+@media(max-width:768px) {
+  .infos,.about_score {
+    margin-left: 25px !important;
+    margin-top: 0 !important;
+  }
+}
+@media(max-width:674px) {
+  .about_score {
+    margin-left: 0 !important;
+    margin-top: 20px !important;
+  }
+  #course_about_details .over_campaign {
+    margin-left: 25px !important;
+  }
+}
+@media(max-width:504px) {
+  #course_about_details .over_campaign {
+    margin-left: 0 !important;
+  }
+}
+@media(max-width:432px) {
+  .about_score,.infos {
+    margin-left: 0 !important;
+    margin-top: 20px !important;
+  }
 }
 </style>

@@ -1384,7 +1384,7 @@ def send_enroll_mail(obj,course,overview,course_details,body,list_email,module_s
     subject = obj
     subject = subject.replace('\n', '')
     # mail template
-    template_name = 'microsite_manager/invite_mail_template.txt'
+    template_name = 'microsite_manager/invite_mail_template_'+course.language+'.txt'
     # LIST OF VARS
     course_org = course.org.lower()
     site_name = settings.SITE_NAME
@@ -1445,17 +1445,13 @@ def send_enroll_mail(obj,course,overview,course_details,body,list_email,module_s
         if mode_required:
             mode = 'mandatory'
         else:
-            mode = 'optional'
+            mode = 'facultative'
 
     html_content = render_to_string(
         template_name,
         {
            'org_image':org_image,
            'platform_image':platform_image,
-           'title_categorie':title_mail[0],
-           'title_duration':title_mail[1],
-           'title_mode':title_mail[2],
-           'title_date':title_mail[3],
            'course_title': course_title,
            'category': category,
            'duration': duration,
@@ -1689,7 +1685,7 @@ def invite_handler(request, course_key_string):
                         q['level_4'] = level_4
                         list_email.append(email)
                         csv_infos.append(q)
-                    # CHECK IF WE ARE AT THE FIRST LINE
+
                 msg = "La creation d'un compte est necessaire avant votre inscription au module "+course.display_name+". Une fois votre compte cree vous pourrez acceder au module via le lien disponible dans l'autre email qui vous a ete envoye."
                 list_return = list_email
                 email_send = []
@@ -1717,32 +1713,33 @@ def invite_handler(request, course_key_string):
                                 last_name = get['last_name']
                         q = {}
                         q['email'] = email_session_manager
+                        #try:
+                        # ALL INSERT
+                        # FIRST INSERT AT THE FIRST LINE
                         try:
-                            # ALL INSERT
-                            # FIRST INSERT AT THE FIRST LINE
-                            try:
-                                UserPreprofile.objects.get(email=email)
-                            except:
-                                s = UserPreprofile(email=email_session_manager,first_name=first_name,last_name=last_name,level_1=level_1,level_2=level_2,level_3=level_3,level_4=level_4,uuid=uuid_session_manager)
-                                s.save()
-                            # CREATE A REQUEST PARAM
-                            request.POST['action'] = 'enroll'
-                            request.POST['auto_enroll'] = True
-                            request.POST['email_students'] = False
-                            request.POST['identifiers'] = email
-                            students_update_enrollment_cms(request,course_key_string)
-                            q['status'] = True
-                            log_dict = {
-                                "status": "enroll user to current course",
-                                "course_name": course.display_name,
-                                "microsite": str(course.org).lower(),
-                                "user_email": email_session_manager
-                            }
-                            log.info(pformat(log_dict))
-                            enroll_email(course_key, email_session_manager, auto_enroll=True, email_students=False, email_params=None, language=None)
+                            UserPreprofile.objects.get(email=email)
+                        except:
+                            s = UserPreprofile(email=email_session_manager,first_name=first_name,last_name=last_name,language=course_lang,level_1=level_1,level_2=level_2,level_3=level_3,level_4=level_4,uuid=uuid_session_manager)
+                            s.save()
+                        # CREATE A REQUEST PARAM
+                        request.POST['action'] = 'enroll'
+                        request.POST['auto_enroll'] = True
+                        request.POST['email_students'] = False
+                        request.POST['identifiers'] = email
+                        students_update_enrollment_cms(request,course_key_string)
+                        q['status'] = True
+                        log_dict = {
+                            "status": "enroll user to current course",
+                            "course_name": course.display_name,
+                            "microsite": str(course.org).lower(),
+                            "user_email": email_session_manager
+                        }
+                        log.info(pformat(log_dict))
+                        enroll_email(course_key, email_session_manager, auto_enroll=True, email_students=False, email_params=None, language=None)
+                        """
                         except:
                             q['status'] = False
-
+                        """
 
                         array.append(q)
                         # send email to user already enroll:

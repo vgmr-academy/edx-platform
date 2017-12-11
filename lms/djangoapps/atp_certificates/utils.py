@@ -15,10 +15,10 @@ import datetime
 import logging
 log = logging.getLogger(__name__)
 
-def generate_html(user,score,course_img_path,template_path,course_title,categorie,certif_img_path,logo_path,theme_path):
+def generate_html(user,score,course_img_path,template_path,course_title,categorie,certif_img_path,logo_path,theme_path,lang):
     log.info("generate_html start: "+str(datetime.datetime.now().strftime("%s")))
     date = str(datetime.datetime.today().strftime('%d/%m/%Y'))
-    rendered_html = open('/edx/var/edxapp/media/certificates/template.html','r').read()
+    rendered_html = open('/edx/var/edxapp/media/certificates/template_'+lang+'.html','r').read()
     log.info("generate_html theme_path: "+course_img_path)
     rendered_html = rendered_html.replace("'+course_img_path+'",course_img_path.encode('utf-8'))
     rendered_html = rendered_html.replace("'+date+'",date.encode('utf-8'))

@@ -23006,3 +23006,15 @@ msgstr "Pour créer votre campagne de formation, vous devez préciser un identif
 msgid "created training campaigns"
 msgstr "campagnes crées"
 
+msgid "The training campaign is over."
+msgstr "La campagne de formation est terminée."
+
+msgid "Starting time UTC"
+msgstr "Heure de début UTC"
+
+msgid "Define the minimum score required to validate the training module and receive the certificate of achievement"
+msgstr "Définissez le score minimum requis pour valider le module de formation et recevoir le certificat de réussite"
+
+#cms:index.html
+msgid "To launch a training campaign"
+msgstr "Pour créer une campagne de formation"

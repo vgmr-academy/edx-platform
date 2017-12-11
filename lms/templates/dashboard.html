@@ -153,6 +153,9 @@ url_image = random.choice(url_array)
   }
 }
 */
+.display_button {
+  display: none !important;
+}
 @media(min-width:1600px) {
   /* course cards actions */
   #dashboard_tma #tuto_module_1 p {
@@ -337,76 +340,147 @@ url_image = random.choice(url_array)
 
 <section id="dashboard_tma">
 	<!-- baniere  -->
+% if LANGUAGE_CODE == 'fr':
+<section id="dashboard_header_atp">
+  <div id="dashboard_header_content">
+    <p>BIENVENUE SUR</p>
+    <div id="logo-amundiacademy">
+      <img src="${static.url('images/logo-amundiacademy.png')}" />
+    </div>
+    <p>Développer vos connaissances et vos compétences sur la gestion d’actifs : culture financière et offres commercialisées.</p>
+    <button class="tuto_action">En savoir plus <span id="atp_tuto_arrow_up" class="arrow-right"></span></button>
+  </div>
+</section>
+      <!-- tuto  -->
+<section id="dashboard_tuto_atp">
+  <!-- module 1 -->
+  <div class="dashboard_tuto_atp" id="tuto_module_1">
+    <p>Pour suivre un module pédagogique, sélectionnez la vignette de votre choix !</p>
+    <p style="margin-top: 0;margin-bottom: 0;">Chaque module pédagogique est classé dans une catégorie. Il est composé d’un ou plusieurs formats digitaux qui combinés composent un parcours de formation interactif.</p>
+  </div>
+  <!-- module 2 -->
+              <div class="dashboard_tuto_atp">
+    <h3>LES MODULES PEDAGOGIQUES</h3>
+    <p style="margin-bottom:5px;">Retrouvez toutes les informations liées à vos modules pédagogiques sur les vignettes ci-dessous.</p>
+    <p style="margin-top:5px;">Chaque vignette précise : le titre du module, le temps nécessaire pour compléter le module, si le module est obligatoire ou facultatif et les formats digitaux qui le composent.</p>
+    <img src="${static.url('images/cartes.png')}" id="img_dashboard_tuto_cartes"/>
+              </div>
+  <!-- module 3 -->
+              <div class="dashboard_tuto_atp">
+    <h3>CATEGORIES DES MODULES PEDAGOGIQUES</h3>
+    <p>Vos modules de formation sont classés en 4 catégories:</p>
+    <ul>
+      <li id="dashboard_tuto_atp_1">
+        <h4>FONDAMENTAUX:</h4>
+        <p>Connaitre les essentiels sur les marchés financiers</p>
+      </li>
+      <li id="dashboard_tuto_atp_2">
+        <h4>DÉMARCHE COMMERCIALE:</h4>
+        <p>Améliorer vos compétences personnelles</p>
+      </li>
+      <span style="clear:left; display: block;width:100%;height:0;padding:0;margin:0;"></span>
+      <li id="dashboard_tuto_atp_3">
+        <h4>NOS SOLUTIONS:</h4>
+        <p>Découvrir les produits et les offres commercialisées</p>
+      </li>
+      <li id="dashboard_tuto_atp_4">
+        <h4>RÈGLEMENTAIRE:</h4>
+        <p>Appréhender les décisions règlementaires</p>
+      </li>
+      <span style="clear:left; display: block;width:100%;height:0;padding:0;margin:0;"></span>
+    </ul>
+              </div>
+  <!-- module 4 -->
+              <div class="dashboard_tuto_atp last_tuto_atp" style="border-bottom: none;">
+    <h3>FORMATS DES MODULES PEDAGOGIQUES</h3>
+    <p>Chaque module pédagogique est composé d’un ou plusieurs formats digitaux et complémentaires. Au sein du module, ces formats combinés composent un parcours de formation interactif.</p>
+    <div class="dashboard_picto_tuto_tma">
+      <div><img src="${static.url('images/video.svg')}" class="svg"/><span>video</span></div>
+      <div><img src="${static.url('images/quiz.svg')}" class="svg"/><span>quiz</span></div>
+                              <div><img src="${static.url('images/webzine.svg')}" class="svg"/><span>webzine</span></div>
+                              <div><img src="${static.url('images/seriousgame.svg')}" class="svg"/><span>serious game</span></div>
+                              <div><img src="${static.url('images/pdf.svg')}" class="svg"/><span>pdf</span></div>
+                              <div><img src="${static.url('images/testes&images.svg')}" class="svg"/><span>texts & images</span></div>
+      <span style="display:block;clear:left;"></span>
+    </div>
+              </div>
+  <!-- button close -->
+              <div class="dashboard_tuto_atp">
+    <button class="tuto_action"><span>Fermer</span> <span class="arrow-top"></span></button>
+              </div>
+</section>
+%else:
 	<section id="dashboard_header_atp">
 		<div id="dashboard_header_content">
-			<p>${_("Welcome on")}</p>
+			<p>Welcome on</p>
       <div id="logo-amundiacademy">
         <img src="${static.url('images/logo-amundiacademy.png')}" />
       </div>
-			<p>${_("Develop your knowledge and skills on asset management: financial culture and offers.")}</p>
-			<button class="tuto_action">${_("More")} <span id="atp_tuto_arrow_up" class="arrow-right"></span></button>
+			<p>Develop your knowledge and skills on asset management: financial culture and offers.</p>
+			<button class="tuto_action">More <span id="atp_tuto_arrow_up" class="arrow-right"></span></button>
 		</div>
 	</section>
         <!-- tuto  -->
 	<section id="dashboard_tuto_atp">
 		<!-- module 1 -->
 		<div class="dashboard_tuto_atp" id="tuto_module_1">
-			<p>${_("To follow a training module, select the thumbnail of your choice!")}</p>
-			<p style="margin-top: 0;margin-bottom: 0;">${_("Each training module belongs to a category and can take")}</p>
-			<p>${_("different formats")}.</p>
+			<p>To follow a training module, select the thumbnail of your choice!</p>
+			<p style="margin-top: 0;margin-bottom: 0;">Each training module belongs to a category and can take</p>
+			<p>different formats.</p>
 		</div>
 		<!-- module 2 -->
                 <div class="dashboard_tuto_atp">
-			<h3>${_("Training modules")}</h3>
-			<p style="margin-bottom:5px;">${_("Find all the information related to the training on the thumbnails below")}: ${_("timing of the module")},</p>
-			<p style="margin-top:5px;">${_("if the module is mandatory or not and formats of the module")}.</p>
+			<h3>Training modules</h3>
+			<p style="margin-bottom:5px;">Find all the information related to the training on the thumbnails below: timing of the module,</p>
+			<p style="margin-top:5px;">if the module is mandatory or not and formats of the module.</p>
 			<img src="${static.url('images/cartes.png')}" id="img_dashboard_tuto_cartes"/>
                 </div>
 		<!-- module 3 -->
                 <div class="dashboard_tuto_atp">
-			<h3>${_("TRAINING MODULES CATEGORIES")}</h3>
-			<p>${_("Your training modules are classified into 4 categories")}:</p>
+			<h3>TRAINING MODULES CATEGORIES</h3>
+			<p>Your training modules are classified into 4 categories:</p>
 			<ul>
 				<li id="dashboard_tuto_atp_1">
-					<h4>${_("fundamentals")}:</h4>
-					<p>${_("Know the essentials of financial markets")}</p>
+					<h4>fundamentals:</h4>
+					<p>Know the essentials of financial markets</p>
 				</li>
                                 <li id="dashboard_tuto_atp_2">
-                                        <h4>${_("Business approach")}:</h4>
-                                        <p>${_("Improve your soft skills")}</p>
+                                        <h4>Business approach:</h4>
+                                        <p>Improve your soft skills</p>
                                 </li>
 				<span style="clear:left; display: block;width:100%;height:0;padding:0;margin:0;"></span>
                                 <li id="dashboard_tuto_atp_3">
-                                        <h4>${_("our solutions")}:</h4>
-                                        <p>${_("Learn about products and offers that are sold")}</p>
+                                        <h4>our solutions:</h4>
+                                        <p>Learn about products and offers that are sold</p>
                                 </li>
                                 <li id="dashboard_tuto_atp_4">
-                                        <h4>${_("regulatory")}:</h4>
-                                        <p>${_("Understanding regulatory decisions")}</p>
+                                        <h4>regulatory:</h4>
+                                        <p>Understanding regulatory decisions</p>
                                 </li>
 				<span style="clear:left; display: block;width:100%;height:0;padding:0;margin:0;"></span>
 			</ul>
                 </div>
 		<!-- module 4 -->
                 <div class="dashboard_tuto_atp last_tuto_atp" style="border-bottom: none;">
-			<h3>${_("Modules format")}</h3>
-			<p>${_("Each module is composed of different interactive formats:")}</p>
-			<p>${_("texts & images")}, ${_("pedagogical videos")}, ${_("quizzes")}, ${_("pdf")}, ${_("etc")}.</p>
+			<h3>Modules format</h3>
+			<p>Each module is composed of different interactive formats:</p>
+			<p>texts & images, pedagogical videos, quizzes, pdf, etc.</p>
 			<div class="dashboard_picto_tuto_tma">
-				<div><img src="${static.url('images/video.svg')}" class="svg"/><span>${_("video")}</span></div>
-				<div><img src="${static.url('images/quiz.svg')}" class="svg"/><span>${_("quiz")}</span></div>
-                                <div><img src="${static.url('images/webzine.svg')}" class="svg"/><span>${_("webzine")}</span></div>
-                                <div><img src="${static.url('images/seriousgame.svg')}" class="svg"/><span>${_("serious game")}</span></div>
-                                <div><img src="${static.url('images/pdf.svg')}" class="svg"/><span>${_("pdf")}</span></div>
-                                <div><img src="${static.url('images/testes&images.svg')}" class="svg"/><span>${_("texts & images")}</span></div>
+				<div><img src="${static.url('images/video.svg')}" class="svg"/><span>video</span></div>
+				<div><img src="${static.url('images/quiz.svg')}" class="svg"/><span>quiz</span></div>
+                                <div><img src="${static.url('images/webzine.svg')}" class="svg"/><span>webzine</span></div>
+                                <div><img src="${static.url('images/seriousgame.svg')}" class="svg"/><span>serious game</span></div>
+                                <div><img src="${static.url('images/pdf.svg')}" class="svg"/><span>pdf</span></div>
+                                <div><img src="${static.url('images/testes&images.svg')}" class="svg"/><span>texts & images</span></div>
 				<span style="display:block;clear:left;"></span>
 			</div>
                 </div>
 		<!-- button close -->
                 <div class="dashboard_tuto_atp">
-			<button class="tuto_action"><span>${_("Close")}</span> <span class="arrow-top"></span></button>
+			<button class="tuto_action"><span>Close</span> <span class="arrow-top"></span></button>
                 </div>
 	</section>
+% endif
 <!--
   % if _ensure_status:
   <section id="ariane_dashboard">
@@ -454,8 +528,8 @@ url_image = random.choice(url_array)
     <p>${_("No training modules available in this section.")}</p>
 </div>
 % endif
-% if compteur > 3:
-		<a class="atp_dashboard_active_course">+ ${_("More modules")}</a>
+% if compteur > 1:
+		<a class="atp_dashboard_active_course" data-number="${compteur}">+ ${_("More modules")}</a>
 % endif
 	</section>
 	<!-- module a realiser -->
@@ -470,7 +544,7 @@ url_image = random.choice(url_array)
     <% compteur = 0 %>
     % for q in start_course:
       <% compteur = compteur + 1 %>
-      <% atp_rank = q['atp_rank'] %>
+      <% atp_rank = 'invite' %>
       <% course_about = q['course_about'] %>
       <% show_courseware_link = q['show_courseware_link'] %>
       <% cert_status = q['cert_status'] %>
@@ -497,8 +571,8 @@ url_image = random.choice(url_array)
     <p>${_("No training modules available in this section.")}</p>
 </div>
 % endif
-% if compteur > 3:
-		<a class="atp_dashboard_active_course">+ ${_("More modules")}</a>
+% if compteur > 1:
+		<a class="atp_dashboard_active_course" data-number="${compteur}">+ ${_("More modules")}</a>
 % endif
 	</section>
 	<!-- module termine -->
@@ -513,7 +587,7 @@ url_image = random.choice(url_array)
   <% compteur = 0 %>
   % for q in finish_courses:
     <% compteur = compteur + 1 %>
-    <% atp_rank = q['atp_rank'] %>
+    <% atp_rank = 'finish' %>
     <% course_about = q['course_about'] %>
     <% show_courseware_link = q['show_courseware_link'] %>
     <% cert_status = q['cert_status'] %>
@@ -540,8 +614,8 @@ url_image = random.choice(url_array)
     <p>${_("No training modules available in this section.")}</p>
 </div>
 % endif
-% if compteur > 3:
-  <a class="atp_dashboard_active_course">+ ${_("More modules")}</a>
+% if compteur > 1:
+  <a class="atp_dashboard_active_course" data-number="${compteur}">+ ${_("More modules")}</a>
 % endif
 	</section>
 </section>
@@ -592,4 +666,44 @@ $('#close_pop_up').click(function(){
   margin-top: 10px;
 }
 </style>
+<script>
 
+function button_views() {
+  $('.atp_dashboard_active_course').each(function(){
+
+    var Width = window.screen.width;
+
+    var devices = [
+      {min_width:0,max_width:814,number:1},
+      {min_width:814,max_width:1196,number:2},
+      {min_width:1196,max_width:1600,number:3},
+      {min_width:1600,max_width:100000,number:4}
+    ];
+
+    var _number = $(this).data('number');
+
+    for(i=0;i<3;i++) {
+
+      var min_width = devices[i].min_width;
+      var max_width = devices[i].max_width;
+      var number = devices[i].number;
+
+      if(Width >= min_width && Width < max_width) {
+        if(_number <= number) {
+          $(this).addClass('display_button');
+        }else{
+          $(this).removeClass('display_button');
+        }
+      }
+    };
+  });
+}
+
+$(document).ready(function(){
+  button_views();
+})
+$(window).resize(function(){
+  button_views();
+})
+
+</script>

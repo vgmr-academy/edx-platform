@@ -776,6 +776,7 @@ def dashboard(request):
     progress_courses = []
     finish_courses = []
     start_course = []
+    _now = int(datetime.datetime.now().strftime("%s"))
     if len(course_enrollments) > 0:
       for dashboard_index, enrollment in enumerate(course_enrollments):
         course_id = enrollment.course_overview.id
@@ -783,8 +784,15 @@ def dashboard(request):
         course_tma = get_course_by_id(enrollment.course_id)
         passed = CourseGradeFactory().create(request.user, course_tma).passed
         course_progression = get_overall_progress(user_id,course_id)
-
+        #_start = int(enrollment.course_overview.start.strftime("%s"))
+        try:
+            _end = int(enrollment.course_overview.end.strftime("%s"))
+        except:
+            _end = 0
         q={}
+        _progress = True
+        if _end > 0 and _end < _now:
+            _progress = False
         q['atp_rank'] = "cours"
         q['course_about'] = 0
         q['show_courseware_link'] = (enrollment.course_id in show_courseware_links_for)
@@ -808,15 +816,15 @@ def dashboard(request):
         q['course_progression'] = course_progression
         q['dashboard_index'] = dashboard_index
 
-        if course_progression > 0 and course_progression < 100 and passed == False:
+        if course_progression > 0 and course_progression < 100 and passed == False and _progress == True:
           compteur_progress = compteur_progress + 1
           q['compteur'] = compteur_progress
           progress_courses.append(q)
-        elif course_progression == 100 or passed:
+        elif course_progression == 100 or passed or _progress == False:
           compteur_finish = compteur_finish + 1
           q['compteur'] = compteur_finish
           finish_courses.append(q)
-        elif course_progression == 0:
+        elif course_progression == 0 and _progress == True:
           compteur_start = compteur_start + 1
           q['compteur'] = compteur_start
           start_course.append(q)

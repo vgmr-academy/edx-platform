@@ -60,9 +60,6 @@ img.svg {
   <%
     jsi18n_path = "js/i18n/{language}/djangojs.js".format(language=LANGUAGE_CODE)
   %>
-  <script>
-    console.log('LANGUAGE_CODE : ${settings.STATIC_URL_BASE}');
-  </script>
   <script type="text/javascript" src="${static.url(jsi18n_path)}"></script>
 
   <link rel="icon" type="image/x-icon" href="${static.url(static.get_value('favicon_path', settings.FAVICON_PATH))}" />

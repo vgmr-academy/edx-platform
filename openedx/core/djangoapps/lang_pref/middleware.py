@@ -18,6 +18,9 @@ from openedx.core.djangoapps.lang_pref import LANGUAGE_KEY
 from openedx.core.djangoapps.lang_pref.api import released_languages
 from openedx.core.djangoapps.user_api.preferences.api import get_user_preference, delete_user_preference
 from microsite_configuration.microsite import is_request_in_microsite
+
+from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
+
 class LanguagePreferenceMiddleware(object):
     """
     Middleware for user preferences.
@@ -27,46 +30,28 @@ class LanguagePreferenceMiddleware(object):
     """
 
     def process_request(self, request):
-        """
-        If a user's UserPreference contains a language preference, use the user's preference.
-        """
-        check = False
-        if is_request_in_microsite():
+        
+        languages = released_languages()
+        system_released_languages = [seq[0] for seq in languages]
 
-            all_microsite_org = get_all_config()
-
-            for n in all_microsite_org:
-
-                if request.META['HTTP_HOST'].split('.')[0] == n:
-                    microsite = Microsite.objects.get(key=n)
-                    microsite_value = microsite.values
-                    lang_key = 0
-                    i = 0
-                    for n in microsite_value:
-                        if n == 'language_code':
-                            lang_key = i
-                        i = i + 1
-                    language_code = microsite_value.values()[lang_key]
-                    if language_code or language_code != '':
-                        Language = namedtuple('Language', 'code name')
-                        request.session[LANGUAGE_SESSION_KEY] = unicode(language_code)
-                        check = True
-
-        if not check:
-            languages = released_languages()
-            system_released_languages = [seq[0] for seq in languages]
-
-            # If the user is logged in, check for their language preference
-            if request.user.is_authenticated():
-                # Get the user's language preference
-                user_pref = get_user_preference(request.user, LANGUAGE_KEY)
-                # Set it to the LANGUAGE_SESSION_KEY (Django-specific session setting governing language pref)
-                if user_pref:
-                    if user_pref in system_released_languages:
-                        request.session[LANGUAGE_SESSION_KEY] = user_pref
-                    else:
-                        delete_user_preference(request.user, LANGUAGE_KEY)
-            else:
+        # If the user is logged in, check for their language preference
+        if request.user.is_authenticated():
+            # Get the user's language preference
+            user_pref = get_user_preference(request.user, LANGUAGE_KEY)
+            # Set it to the LANGUAGE_SESSION_KEY (Django-specific session setting governing language pref)
+            if user_pref:
+                if user_pref in system_released_languages:
+                    request.session[LANGUAGE_SESSION_KEY] = user_pref
+                else:
+                    delete_user_preference(request.user, LANGUAGE_KEY)
+        else:
+            check = False
+            current_microsite = configuration_helpers.get_value('language_code')
+            if current_microsite or current_microsite != '':
+                Language = namedtuple('Language', 'code name')
+                request.session[LANGUAGE_SESSION_KEY] = unicode(current_microsite)
+                check = True
+            if not check:
                 preferred_language = request.META.get('HTTP_ACCEPT_LANGUAGE', '')
                 lang_headers = [seq[0] for seq in parse_accept_lang_header(preferred_language)]
 

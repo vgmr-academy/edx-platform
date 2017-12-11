@@ -72,13 +72,13 @@ def atp_generate_certificate(request,course_id):
     course_img_path = courseoverview.image_urls['raw']
     course_img_path = url+course_img_path
     template_path = '/certificates/template.html'
-    certif_img_path = url+'/media/certificates/images/tampon.jpg'
+    certif_img_path = url+'/media/certificates/images/tampon.png'
 
 
     #return HttpResponse(pdf)
     return generate_html(
         username,score,course_img_path,template_path,
         course_title,categorie,certif_img_path,
-        logo_path,theme_path
+        logo_path,theme_path,course.language
     )
     #return response
