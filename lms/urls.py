@@ -1085,3 +1085,23 @@ urlpatterns += (
     ),
 )
 
+
+#task genereta grades reports
+
+urlpatterns += (
+    url(
+        r'api/atp/task/grades/(?P<course_id>[^/]*)/$',
+        'lms.djangoapps.atp_task.views.calculate_grades_xls',
+        name='calculate_grades_xls',
+    ),
+    url(
+        r'api/atp/check/grades/(?P<course_id>[^/]*)/$',
+        'lms.djangoapps.atp_task.views.get_xls',
+        name='check_grades_xls',
+    ),
+    url(
+        r'api/atp/download/grades/(?P<course_id>[^/]*)/(?P<filename>[^/]*)/$',
+        'lms.djangoapps.atp_task.views.download_xls',
+        name='download_grades_xls',
+    ),
+)

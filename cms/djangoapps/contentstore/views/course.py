@@ -1282,7 +1282,7 @@ def manage_handler(request, course_key_string):
 
 
 def session_manager_handler(msg,emails,org,language):
-
+    log.info("session_manager_handler: start")
     grant_type = 'client_credentials'
     # TODO : Remove all hardcoded and try except when SEM is finalized
     """
@@ -1364,6 +1364,7 @@ def session_manager_handler(msg,emails,org,language):
                 pass
             array_push = []
         i = i + 1
+    log.info("session_manager_handler: end")
     return array_pull
 
 
@@ -1659,7 +1660,7 @@ def invite_handler(request, course_key_string):
                 io_string = io.StringIO(decoded_file)
                 array = []
                 #regex email
-                regex_email = r'\b[\w.-]+?@\w+?\.\w+?\b'
+                regex_email = r'[\w\.-]+@[\w\.-]+(\.[\w]+)+'
                 # OPEN CSV FILE
                 csv_infos = []
                 list_email = []
@@ -1685,15 +1686,17 @@ def invite_handler(request, course_key_string):
                         q['level_4'] = level_4
                         list_email.append(email)
                         csv_infos.append(q)
-
+			log.info("session_manager_handler: "+str(email))
                 msg = "La creation d'un compte est necessaire avant votre inscription au module "+course.display_name+". Une fois votre compte cree vous pourrez acceder au module via le lien disponible dans l'autre email qui vous a ete envoye."
                 list_return = list_email
                 email_send = []
                 try:
 
                     course_lang = course.language
-
+		    log.info("session_manager_handler: call")
+		    log.info("session_manager_handler: emails : "+pformat(list_email))
                     session_manager = session_manager_handler(msg,list_email,org,course_lang)
+		    log.info("session_manager_handler: return : "+pformat(session_manager))
                     for n in session_manager:
                         email_session_manager = n['email']
                         uuid_session_manager = n['uuid']

@@ -217,7 +217,10 @@ target = course_id.split('+')
                 <div style="clear:left;"></div>
                 <div id="list_participant"></div>
               </div>
+            <!--
               <button id="generate_grades">${_("Download all participants' detailled results")}</button>
+            -->
+              <button id="generate_grades_task">${_("Download all participants' detailled results")}</button>
               <div id="table_participant">
               </div>
             </div>
@@ -278,7 +281,54 @@ num_question = 0
 course_key = CourseKey.from_string(course_id)
 course_usage_key = modulestore().make_course_usage_key(course_key)
 %>
+<style>
+#generate_grades_task,#generate_grades_task:visited,#generate_grades_task:hover {
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  text-shadow: none;
+  color: #00A0E3;
+  position: absolute;
+  top: 55px;
+  text-decoration: underline;
+  right: 20px;
+  text-transform: lowercase; 
+  background-color: transparent !important;
+}
+</style>
 <script>
+
+$('#generate_grades_task').click(function(){
+  var url = "/api/atp/task/grades/${course_key}/";
+  $.ajax({
+    url:url,
+    type:"POST",
+    dataType:"json",
+    success:function(data) {
+
+    }
+  })
+})
+
+// check values
+
+function intervalcheck() {
+  var url = "/api/atp/check/grades/${course_key}/";
+  $.ajax({
+    type:"GET",
+    dataType:"json",
+    url:url,
+    success:function(data) {
+      console.log(data);
+      setTimeout(function(){
+        intervalcheck();
+      },8000);
+    }
+  })
+}
+
+//intervalcheck();
+
 // test
 var course_key = "${course_usage_key}";
 // final
