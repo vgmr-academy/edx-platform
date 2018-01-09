@@ -2704,6 +2704,18 @@ class LogoutView(TemplateView):
 
         logout(request)
 
+	#atp access role for logout redirection
+	atp_access = User.objects.raw("SELECT id FROM student_courseaccessrole WHERE user_id = %s",[request.user.id])
+	n = 0
+
+	for i in atp_access:
+	    n = n + 1
+
+	if n > 0:
+	    self.target = "https://digital.amundi.com/training/amundiacademy/index.html#/fr/administrateur"
+        else:
+	    self.target = "https://digital.amundi.com/training/amundiacademy/index.html#/fr/apprenant"
+
         # If we don't need to deal with OIDC logouts, just redirect the user.
         if LogoutViewConfiguration.current().enabled and self.oauth_client_ids:
             response = super(LogoutView, self).dispatch(request, *args, **kwargs)

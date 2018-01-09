@@ -21,6 +21,8 @@ from courseware.courses import get_course_by_id
 from student.models import *
 from django.contrib.auth.models import User
 
+from student.models import UserPreprofile
+
 from django.core.mail import EmailMessage
 
 from lms.djangoapps.grades.new.course_grade import CourseGradeFactory
@@ -133,7 +135,7 @@ class course_grade():
 
 		#prepare xls
 		header = [
-			"id","email","first name","last name"
+			"id","email","first name","last name","level 1","level 2","level 3","level 4"
 		]
 
 		title = self.get_titles()
@@ -165,6 +167,12 @@ class course_grade():
 			first_name = user.first_name
 			last_name = user.last_name
 
+			try:
+				pre = UserPreprofile.objects.get(email=email)
+				_lvl = [pre.level_1,pre.level_2,pre.level_3,pre.level_4]
+			except:
+				_lvl = ["","","",""]
+
 			final_grade = course_grade.percent * 100
 
 			_user_blocks = self._user(user_id)
@@ -173,8 +181,12 @@ class course_grade():
 			sheet.write(j, 1, email)
 			sheet.write(j, 2, first_name)
 			sheet.write(j, 3, last_name)
+			sheet.write(j, 4, _lvl[0])
+			sheet.write(j, 5, _lvl[1])
+			sheet.write(j, 6, _lvl[2])
+			sheet.write(j, 7, _lvl[3])
 
-			k = 4
+			k = 8
 
 			for val in title:
 				_grade = 0

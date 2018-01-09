@@ -1369,6 +1369,7 @@ def session_manager_handler(msg,emails,org,language):
 
 
 def send_enroll_mail(obj,course,overview,course_details,body,list_email,module_store):
+    log.info("send_enroll_mail start_sending")
     #try:
     #MAIL 2 le retour
     domain_override = ''
@@ -1404,6 +1405,7 @@ def send_enroll_mail(obj,course,overview,course_details,body,list_email,module_s
     secondary_color_key = 0
     logo_key = 0
     i = 0
+    log.info("send_enroll_mail list_email: "+pformat(list_email))
     for n in microsite_value:
         if n == 'language_code':
             lang_key = i
@@ -1687,7 +1689,10 @@ def invite_handler(request, course_key_string):
                         list_email.append(email)
                         csv_infos.append(q)
 			log.info("session_manager_handler: "+str(email))
-                msg = "La creation d'un compte est necessaire avant votre inscription au module "+course.display_name+". Une fois votre compte cree vous pourrez acceder au module via le lien disponible dans l'autre email qui vous a ete envoye."
+                if course.language == "fr":
+                    msg = "La creation d'un compte est necessaire avant votre inscription au module "+course.display_name+". Une fois votre compte cree vous pourrez acceder au module via le lien disponible dans l'autre email qui vous a ete envoye."
+		elif course.language == "en":
+                    msg = "The creation of an account is required before your registration module "+course.display_name+".Once your account is created you can access the module via the link disponibe in another email that was sent to you"
                 list_return = list_email
                 email_send = []
                 try:
@@ -1722,43 +1727,72 @@ def invite_handler(request, course_key_string):
                         try:
                             UserPreprofile.objects.get(email=email)
                         except:
+			    log.info("UserPreprofile saved values")
                             s = UserPreprofile(email=email_session_manager,first_name=first_name,last_name=last_name,language=course_lang,level_1=level_1,level_2=level_2,level_3=level_3,level_4=level_4,uuid=uuid_session_manager)
                             s.save()
                         # CREATE A REQUEST PARAM
+		        log.info("Create a request params")
                         request.POST['action'] = 'enroll'
                         request.POST['auto_enroll'] = True
                         request.POST['email_students'] = False
                         request.POST['identifiers'] = email
+			log.info("students_update_enrollment_cms")
                         students_update_enrollment_cms(request,course_key_string)
                         q['status'] = True
+                        # GET COURSE_KEY
+                        course_key = CourseKey.from_string(course_key_string)
+                        # GET COURSE_PARAM
+                        course = get_course_by_id(course_key)
+                        #course details
+                        course_details = CourseDetails.fetch(course_key)
+                        #GET COURSE OVERVIEW
+                        overview = CourseOverview.get_from_id(course_key)
+                        #GET MODULE STORE
+                        module_store = modulestore().get_course(course_key, depth=0)
+			log.info("log_dict")
+			"""
                         log_dict = {
                             "status": "enroll user to current course",
                             "course_name": course.display_name,
                             "microsite": str(course.org).lower(),
                             "user_email": email_session_manager
                         }
-                        log.info(pformat(log_dict))
+		        """
+                        #log.info(pformat('log_dict : '+log_dict))
+			log.info("enroll_email")
                         enroll_email(course_key, email_session_manager, auto_enroll=True, email_students=False, email_params=None, language=None)
-                        """
-                        except:
-                            q['status'] = False
-                        """
 
                         array.append(q)
                         # send email to user already enroll:
-                        if n['status'] == 'error':
-			    send_dict = {
-				"email":email_session_manager,
-				"first_name":firsr_name,
-				"last_name":last_name
-                            }
-                            email_send.append(send_dict)
-
-                    #launch email for SEM existing users
-                    obj = 'atp send mail'
-                    body = ''
-                    log.info("invite_handler existing sem user list: "+pformat(email_send))
-                    user_email = send_enroll_mail(obj,course,overview,course_details,body,email_send,module_store)
+                        #if n['status'] == 'error':
+                        _send_values = [
+                                {
+                                 "first_name":first_name,
+                                 "last_name":last_name,
+                                 "email":email_session_manager
+                                }
+                        ]
+                        obj = 'atp send mail'
+                        body = ''
+                        log.info("invite_handler START sem user dict: "+pformat(_send_values))
+                        log.info("course: "+pformat(course))
+                        log.info("overview: "+pformat(overview))
+                        log.info("course_details: "+pformat(course_details))
+                        log.info("body: "+pformat(body))
+                        log.info("_send_values: "+pformat(_send_values))
+                        log.info("module_store: "+pformat(module_store))
+                        log.info("course_lang: "+course.language)
+                        if course.language == "fr":
+                            obj = "invitation cours {} amundiacademy.com".format(course.display_name)
+                        elif course.language == "en":
+                            obj = "enroll cours {} amundiacademy.com".format(course.display_name)
+                        try:
+                            user_email = send_enroll_mail(obj,course,overview,course_details,body,_send_values,module_store)
+                            log.info("invite_handler END sem user dict: "+pformat(_send_values))
+			    log.info("invite_handler user_email result : "+pformat(user_email))
+                        except:
+                            log.info("ERROR invite_handler END sem user dict: ")
+			reponse['session_manager_return'] = session_manager
                     for n in list_email:
                         if not n in array:
                             q = {}
