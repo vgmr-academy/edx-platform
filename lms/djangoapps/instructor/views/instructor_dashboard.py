@@ -67,6 +67,8 @@ from courseware.models import StudentModule
 from course_api.blocks.api import get_blocks
 from course_api.blocks.views import BlocksInCourseView,BlocksView
 
+from django.db.models import Q
+
 from lms.djangoapps.tma_grade_tracking.models import dashboardStats
 from xlwt import *
 import os
@@ -791,19 +793,28 @@ def stat_dashboard(request, course_id):
 @login_required
 def get_dashboard_username(request,course_id,email):
     course_key = SlashSeparatedCourseKey.from_deprecated_string(course_id)
-    row = User.objects.raw('SELECT a.id,a.email FROM auth_user a,student_courseenrollment b WHERE a.id=b.user_id AND b.course_id=%s' ,[course_id])
+    row = User.objects.raw('SELECT a.id,a.email,a.first_name,a.last_name FROM auth_user a,student_courseenrollment b WHERE a.id=b.user_id AND b.course_id=%s' ,[course_id])
     emails = []
     email = str(email).lower()
-    return_ = []
     for n in row:
-        return_.append(n.email)
-        low = str(n.email).lower()
-        if email in low:
-            emails.append(n.email)
+        low = [
+            str(n.email).lower(),
+            str(n.first_name).lower(),
+            str(n.last_name).lower()
+        ]
+        if email in str(low).lower():
+            q = {
+                "values" : [
+                    n.email,
+                    n.first_name,
+                    n.last_name
+                ],
+                "id":n.email
+            }
+            emails.append(q)
     response = JsonResponse({
             "usernames":emails,
-            "email":email,
-            "row":str(return_)
+            "email":email
         })
 
     return response

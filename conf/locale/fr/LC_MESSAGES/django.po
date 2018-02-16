@@ -23018,3 +23018,10 @@ msgstr "Définissez le score minimum requis pour valider le module de formation 
 #cms:index.html
 msgid "To launch a training campaign"
 msgstr "Pour créer une campagne de formation"
+
+#validate translate
+msgid "Validated"
+msgstr "Validé"
+
+msgid "Not validated"
+msgstr "Non validé"

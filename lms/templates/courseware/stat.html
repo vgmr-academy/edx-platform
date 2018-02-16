@@ -19,6 +19,7 @@ from lms.djangoapps.course_blocks.api import get_course_blocks_tma
 from openedx.core.djangoapps.bookmarks.api import get_bookmark,get_bookmarks
 from opaque_keys.edx.locations import SlashSeparatedCourseKey
 from xmodule.modulestore.django import modulestore
+from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 
 %>
 <%block name="pagetitle">${_("Dashboard")}</%block>
@@ -28,13 +29,16 @@ from xmodule.modulestore.django import modulestore
 <!-- css assets -->
 <%
 stat_dashboard = static.get_value('css_overrides_stat_dashboard')
-logo_url = static.get_value('logo')
+
+logo_url=configuration_helpers.get_value('logo_couleur')
 if logo_url is None:
   logo_url = '/static/images/logo.png'
 
 target = course_id.split('+')
 %>
+
 <style>
+
 #nav_block_stat_question {
   position: relative;
 }
@@ -71,12 +75,80 @@ target = course_id.split('+')
   #nav_block_stat_question {
       width: calc(100% - 40px);
       margin-top: 130px;
-  } 
+  }
 }
 .pop_up_show {
   display: block !important;
 }
+
+#generate_grades_task,#generate_grades_task:visited,#generate_grades_task:hover {
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  text-shadow: none;
+  color: #00A0E3;
+  position: absolute;
+  top: 55px;
+  text-decoration: underline;
+  right: 20px;
+  text-transform: lowercase;
+  background-color: transparent !important;
+}
+
+#list_participant {width: auto !important;}
+#categorie_info {
+  position: absolute;
+  bottom:0;
+  left: 0;
+  width: 100%;
+  text-align: right;
+  z-index: 20;
+}
+#course_img {
+  position: relative;
+}
+#cartouche_info h3 {
+  font-size: 22px;
+}
+.img_regulatory, .img_fundamental, .img_oursolutions, .img_salesapproach {
+ position: absolute;
+ bottom: 0;
+ right: 0;
+ width: 70%;
+ height: 120px;
+ z-index: 2;
+ background-position: center;
+ background-repeat: no-repeat;
+ background-size: cover;
+}
+.img_fundamental {
+ background-image: url('/static/images/fondamentaux.png');
+}
+.img_fundamentals {
+ background-image: url('/static/images/fondamentaux.png');
+}
+.img_oursolutions {
+ background-image: url('/static/images/nos_solutions.png');
+}
+.img_salesapproach {
+ background-image: url('/static/images/zdemarche_comm.png');
+}
+.img_regulatory {
+ background-image: url('/static/images/reglementaire.png');
+}
+.cell_result {
+ width: calc((100%/2) - 32px);
+}
+@media(max-width:1266px){
+ .cell_result{
+  width: 90%;
+  margin-left: 5% !important;
+  margin-right: 5% !important;
+  float: none;
+ }
+}
 </style>
+
 <div id="contenair">
   <!-- header -->
   <div id="header">
@@ -333,21 +405,7 @@ num_question = 0
 course_key = CourseKey.from_string(course_id)
 course_usage_key = modulestore().make_course_usage_key(course_key)
 %>
-<style>
-#generate_grades_task,#generate_grades_task:visited,#generate_grades_task:hover {
-  border: none;
-  box-shadow: none;
-  border-radius: 0;
-  text-shadow: none;
-  color: #00A0E3;
-  position: absolute;
-  top: 55px;
-  text-decoration: underline;
-  right: 20px;
-  text-transform: lowercase; 
-  background-color: transparent !important;
-}
-</style>
+
 <script>
 
 $('#generate_grades_task').click(function(){
@@ -393,7 +451,10 @@ var stat_first = '${_("First name")}';
 var stat_last = '${_("Last name")}';
 console.log(stat_email+' '+stat_grade+' '+stat_first+' '+stat_last);
 </script>
+<!--
 <script src="${static.url('js/stat_dashboard.js')}"></script>
+-->
+<script src="/media/stat/stat_dashboard.js"></script>
 <!-- action sur le dom -->
 <script>
 function info_p() {
@@ -474,64 +535,11 @@ $('#generate_grades').click(function(){
 })
 </script>
 % if not stat_dashboard:
-  <link rel="stylesheet" type="text/css" href="${static.url('css/stat_dashboard.css')}">
+<link rel="stylesheet" type="text/css" href="${static.url('css/stat_dashboard.css')}">
 % else:
   <link rel="stylesheet" type="text/css" href="${static.url(stat_dashboard)}" />
 % endif
-<style>
-#list_participant {width: auto !important;}
-#categorie_info {
-  position: absolute;
-  bottom:0;
-  left: 0;
-  width: 100%;
-  text-align: right;
-  z-index: 20;
-}
-#course_img {
-  position: relative;
-}
-#cartouche_info h3 {
-  font-size: 22px;
-}
-.img_regulatory, .img_fundamental, .img_oursolutions, .img_salesapproach {
- position: absolute;
- bottom: 0;
- right: 0;
- width: 70%;
- height: 120px;
- z-index: 2;
- background-position: center;
- background-repeat: no-repeat;
- background-size: cover;
-}
-.img_fundamental {
- background-image: url('/static/images/fondamentaux.png');
-}
-.img_fundamentals {
- background-image: url('/static/images/fondamentaux.png');
-}
-.img_oursolutions {
- background-image: url('/static/images/nos_solutions.png');
-}
-.img_salesapproach {
- background-image: url('/static/images/zdemarche_comm.png');
-}
-.img_regulatory {
- background-image: url('/static/images/reglementaire.png');
-}
-.cell_result {
- width: calc((100%/2) - 32px);
-}
-@media(max-width:1266px){
- .cell_result{
-  width: 90%;
-  margin-left: 5% !important;
-  margin-right: 5% !important;
-  float: none;
- }
-}
-</style>
+
 <script>
 function cell_result_h(){
  $('.cell_result').attr('style','');

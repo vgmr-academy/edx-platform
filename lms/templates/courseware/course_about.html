@@ -39,6 +39,14 @@ course_about = static.get_value('css_overrides_course_about')
   <link rel="stylesheet" type="text/css" href="${static.url(course_about)}" />
 % endif
 <style>
+#course_about_details ul li:first-child {
+  height: auto;
+  min-height: 23px;
+}
+#certiticate {
+  display: inline-block;
+  margin-top: -5px;
+}
 .course_about_atp_special p {
  width: calc(100% - 100px) !important;
  margin-left: 60px !important;
@@ -53,7 +61,24 @@ course_about = static.get_value('css_overrides_course_about')
  margin-right: 70px !important;
 
 }
-
+.validate {
+  font-weight: normal !important;
+  font-size: 14px;
+}
+.is_red {
+  color: red !important;
+}
+.is_green {
+  color: green !important;
+}
+.is_primary {
+  /* primary */
+  color: #05144d !important;
+}
+.validate_img {
+  height: 18px;
+  margin-right: 4px;
+}
 /*
 .course_about_atp_special .special_block{
  border-color: transparent !important;
@@ -114,7 +139,7 @@ course_factory = CourseGradeFactory().create(request.user, course)
 <% duration = get_course_about_section(request, course, "effort")  %>
 <% course_tma = get_course_by_id(course.id) %>
 <% content_data = course_tma.content_data %>
-<%include file='../dashboard/_dashboard_course_listing.html' args='categ=categ,content_data=content_data,required=required,duration=duration,course_about_link=course_about_link,course_about_id=course_about_id,course_about_img=course_about_img,course_about_name = course_about_name,course_about = course_about,course_progression = course_progression,compteur=compteur,atp_rank=atp_rank,course_overview=course_tma, enrollment=False, show_courseware_link=False, cert_status=False, can_unenroll=can_unenroll, credit_status=credit_status, show_email_settings=show_email_settings, course_mode_info=course_mode_info, show_refund_option=show_refund_option, is_paid_course=is_paid_course, is_course_blocked=is_course_blocked, verification_status=False, course_requirements=False, dashboard_index=False, share_settings=False, user=user, related_programs=False, display_course_modes_on_dashboard=True' />
+<%include file='../dashboard/_dashboard_course_listing.html' args='percent=course_factory.percent,passed=course_factory.passed,categ=categ,content_data=content_data,required=required,duration=duration,course_about_link=course_about_link,course_about_id=course_about_id,course_about_img=course_about_img,course_about_name = course_about_name,course_about = course_about,course_progression = course_progression,compteur=compteur,atp_rank=atp_rank,course_overview=course_tma, enrollment=False, show_courseware_link=False, cert_status=False, can_unenroll=can_unenroll, credit_status=credit_status, show_email_settings=show_email_settings, course_mode_info=course_mode_info, show_refund_option=show_refund_option, is_paid_course=is_paid_course, is_course_blocked=is_course_blocked, verification_status=False, course_requirements=False, dashboard_index=False, share_settings=False, user=user, related_programs=False, display_course_modes_on_dashboard=True' />
 <span style="display:block;clear:left;"></span>
 </ul>
 </section>
@@ -148,23 +173,33 @@ course_factory = CourseGradeFactory().create(request.user, course)
 % endif
 </span></li>
  </ul>
-% if course_factory.passed:
+
 <ul id="course_about_ul" class="about_score">
+% if status >= 99:
  <li><span>${_("Score")} :</span> <span id="${course_details.language}">${str(course_factory.percent * 100)+'%'}</span></li>
- <li><a href="#" id="certiticate"><img src="${static.url('images/pdf.svg')}" class="svg"/> ${_("Download certificate")}</a></li>
-</ul>
+ % if course_factory.passed:
+<li><img src="${static.url('images/success.png')}" class="validate_img"/><span class="is_green validate">${_("Validated")}</span></li>
+ %else:
+ <li><img src="${static.url('images/error.png')}" class="validate_img"/><span class="is_red validate">${_("Not validated")}</span></li>
+ % endif
 % endif
+</ul>
 <%
 try:
   _end = int(course.end.strftime('%s'))
 except:
   _end = 0
 %>
-% if _now > _end:
 <ul id="course_about_ul" class="over_campaign">
-   <li><span></span> <span>${_("The training campaign is over.")}</span></li>
-</ul>
+% if course_factory.passed:
+  <li><a href="#" id="certiticate"><img src="${static.url('images/pdf.svg')}" class="svg"/> ${_("Download certificate")}</a></li>
+% else:
+  <li></li>
 % endif
+% if _now > _end:
+   <li><span></span> <span class="validate is_primary">${_("The training campaign is over.")}</span></li>
+% endif
+</ul>
  <span style="clear:left;display:block;"></span>
 </div>
 <div class="details">

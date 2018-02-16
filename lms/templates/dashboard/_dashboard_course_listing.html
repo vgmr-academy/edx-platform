@@ -1,4 +1,4 @@
-<%page args="categ,content_data,required,duration,course_about_name,course_about_link,course_about_id,course_about_img,course_about,compteur, atp_rank, course_overview, enrollment, show_courseware_link, cert_status, can_unenroll, credit_status, show_email_settings, course_mode_info, show_refund_option, is_paid_course, is_course_blocked, verification_status, course_requirements, dashboard_index, share_settings, display_course_modes_on_dashboard" expression_filter="h"/>
+<%page args="percent,passed,categ,content_data,required,duration,course_about_name,course_about_link,course_about_id,course_about_img,course_about,compteur, atp_rank, course_overview, enrollment, show_courseware_link, cert_status, can_unenroll, credit_status, show_email_settings, course_mode_info, show_refund_option, is_paid_course, is_course_blocked, verification_status, course_requirements, dashboard_index, share_settings, display_course_modes_on_dashboard" expression_filter="h"/>
 
 <%!
 import urllib
@@ -60,7 +60,6 @@ else:
     required = "optional"
 
 %>
-
 % if atp_rank == "cours" and course_about == 0:
   % if compteur < 5:
   <li class="atp_course_item" data-categ="${categ.lower().replace(' ','')}">
@@ -187,6 +186,18 @@ else:
    <div class="atp_course_title">
           <span>${course_overview.display_name_with_default}</span>
    </div>
+   <!-- idicatif success -->
+   <!-- idicatif success -->
+   <div class="atp_course_progress">
+     % if passed:
+     <img src="${static.url('images/success.png')}" class="validate_img"/><span class="is_green validate">${_("Validated")} ${percent * 100}%</span>
+     % else:
+     <img src="${static.url('images/error.png')}" class="validate_img"/><span class="is_red validate">${_("Not validated")} ${percent * 100}%</span>
+     % endif
+   </div>
+   <!-- idicatif success -->
+   <!-- idicatif success -->
+   <!-- idicatif success -->
    <div class="atp_course_picto">
     % if content_data.get('document_pdf'):
     <img src="${static.url('images/pdf.svg')}" class="svg"/>
@@ -336,6 +347,13 @@ else:
    </div>
    <div class="atp_course_title">
           <span>${course_about_name}</span>
+   </div>
+   <div class="atp_course_progress">
+     % if passed:
+     <img src="${static.url('images/success.png')}" class="validate_img"/><span class="is_green validate">${_("Validated")}</span>
+     % else:
+     <img src="${static.url('images/error.png')}" class="validate_img"/><span class="is_red validate">${_("Validated")}</span>
+     % endif
    </div>
    <div class="atp_course_picto">
      % if content_data.get('document_pdf'):

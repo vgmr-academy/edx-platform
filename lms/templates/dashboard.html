@@ -44,7 +44,7 @@ font-size:50px !important;
  border-left-color: rgb(230,50,94) !important;
 }
 
-#dashboard_tuto_atp_3,#sub_menu #cat_solu { 
+#dashboard_tuto_atp_3,#sub_menu #cat_solu {
  border-left-color: rgb(193,145,53) !important;
 }
 
@@ -55,7 +55,114 @@ font-size:50px !important;
 </style>
 
 
-
+<style>
+.atp_course_progress .validate {
+  font-weight: normal !important;
+  font-size: 25px;
+}
+.atp_course_progress .is_red {
+  color: red !important;
+}
+.atp_course_progress .is_green {
+  color: green !important;
+}
+.atp_course_progress .is_primary {
+  /* primary */
+  color: #05144d !important;
+}
+.atp_course_progress .validate_img {
+  height: 30px;
+  width: 30px;
+  margin-top: -10px;
+  margin-right: 4px;
+}
+.atp_course_progress {
+  text-align: center;
+  position: relative;
+  height: auto;
+  line-height: 30px;
+  vertical-align: middle;
+}
+</style>
+<!-- styles more modules -->
+<!-- styles more modules -->
+<!-- styles more modules -->
+<style>
+.is_none_more {
+  display: none !important;
+}
+@media(min-width:1600px) {
+% if len(progress_courses) > 4:
+#more_1 {
+  display: block !important;
+}
+% endif
+% if len(start_course) > 4:
+#more_2 {
+  display: block !important;
+}
+% endif
+% if len(finish_courses) > 4:
+#more_3 {
+  display: block !important;
+}
+% endif
+}
+@media(max-width:1600px) {
+  % if len(progress_courses) > 3:
+  #more_1 {
+    display: block !important;
+  }
+  % endif
+  % if len(start_course) > 3:
+  #more_2 {
+    display: block !important;
+  }
+  % endif
+  % if len(finish_courses) > 3:
+  #more_3 {
+    display: block !important;
+  }
+  % endif
+}
+@media(max-width:1196px) {
+  % if len(progress_courses) > 2:
+  #more_1 {
+    display: block !important;
+  }
+  % endif
+  % if len(start_course) > 2:
+  #more_2 {
+    display: block !important;
+  }
+  % endif
+  % if len(finish_courses) > 2:
+  #more_3 {
+    display: block !important;
+  }
+  % endif
+}
+@media(max-width:814px) {
+  % if len(progress_courses) > 1:
+  #more_1 {
+    display: block !important;
+  }
+  % endif
+  % if len(start_course) > 1:
+  #more_2 {
+    display: block !important;
+  }
+  % endif
+  % if len(finish_courses) > 1:
+  #more_3 {
+    display: block !important;
+  }
+  % endif
+}
+</style>
+<!-- styles more modules -->
+<!-- styles more modules -->
+<!-- styles more modules -->
 <%block name="pagetitle">${_("Dashboard")}</%block>
 <%block name="bodyclass">view-dashboard is-authenticated</%block>
 
@@ -352,17 +459,59 @@ url_image = random.choice(url_array)
     display:block;
   }
 }
+
+/* Category management */
+#cat_fond, #cat_solu, #cat_dem_com, #cat_reg {
+  display: none;
+}
+.modules-subtext{
+  margin-bottom: 10px!important;
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-top: 10px;
+  padding-bottom: 20px!important;
+}
 </style>
+
+% for category in list_category :
+  %if category =="Fundamental" :
+    <style>
+      #cat_fond{
+        display: block;
+      }
+    </style>
+  %elif category =="Our solutions" :
+    <style>
+      #cat_solu{
+        display: block;
+      }
+    </style>
+ %elif category =="Sales approach" :
+   <style>
+     #cat_dem_com{
+       display: block;
+     }
+   </style>
+ %elif category =="Regulatory" :
+   <style>
+     #cat_reg{
+       display: block;
+     }
+   </style>
+  %endif
+%endfor
 
 <section id="dashboard_tma">
 	<!-- baniere  -->
 % if LANGUAGE_CODE == 'fr':
 <section id="dashboard_header_atp">
   <div id="dashboard_header_content">
-    <p>BIENVENUE SUR</p>
+    <p>BIENVENUE</p>
+    <!--
     <div id="logo-amundiacademy">
       <img src="${static.url('images/logo-amundiacademy.png')}" />
     </div>
+    -->
     <p>Développer vos connaissances et vos compétences sur la gestion d’actifs : culture financière et offres commercialisées.</p>
     <button class="tuto_action">En savoir plus <span id="atp_tuto_arrow_up" class="arrow-right"></span></button>
   </div>
@@ -372,13 +521,12 @@ url_image = random.choice(url_array)
   <!-- module 1 -->
   <div class="dashboard_tuto_atp" id="tuto_module_1">
     <p>Pour suivre un module pédagogique, sélectionnez la vignette de votre choix !</p>
-    <p style="margin-top: 0;margin-bottom: 0;">Chaque module pédagogique est classé dans une catégorie. Il est composé d’un ou plusieurs formats digitaux qui combinés composent un parcours de formation interactif.</p>
+    <p style="margin-top: 0;margin-bottom: 0;">Chaque module pédagogique est classé dans une catégorie et peut prendre différents formats.</p>
   </div>
   <!-- module 2 -->
               <div class="dashboard_tuto_atp">
     <h3>LES MODULES PEDAGOGIQUES</h3>
-    <p style="margin-bottom:5px;">Retrouvez toutes les informations liées à vos modules pédagogiques sur les vignettes ci-dessous.</p>
-    <p style="margin-top:5px;">Chaque vignette précise : le titre du module, le temps nécessaire pour compléter le module, si le module est obligatoire ou facultatif et les formats digitaux qui le composent.</p>
+    <p class="modules-subtext">Retrouvez toutes les informations liées aux modules pédagogiques sur les vignettes ci-dessous : titre du module, sa catégorie, temps nécessaire à sa réalisation, s’il est obligatoire ou facultatif et les formats qui le composent.</p>
     <img src="${static.url('images/cartes.png')}" id="img_dashboard_tuto_cartes"/>
               </div>
   <!-- module 3 -->
@@ -388,20 +536,20 @@ url_image = random.choice(url_array)
     <ul>
       <li id="dashboard_tuto_atp_1">
         <h4>FONDAMENTAUX:</h4>
-        <p>Connaitre les essentiels sur les marchés financiers</p>
+        <p>Zoom sur les marchés financiers, l’économie et l’investissement.</p>
       </li>
-      <li id="dashboard_tuto_atp_2">
-        <h4>DÉMARCHE COMMERCIALE:</h4>
-        <p>Améliorer vos compétences personnelles</p>
-      </li>
-      <span style="clear:left; display: block;width:100%;height:0;padding:0;margin:0;"></span>
       <li id="dashboard_tuto_atp_3">
         <h4>NOS SOLUTIONS:</h4>
-        <p>Découvrir les produits et les offres commercialisées</p>
+        <p>Zoom sur les produits et les offres.</p>
+      </li>
+      <span style="clear:left; display: block;width:100%;height:0;padding:0;margin:0;"></span>
+      <li id="dashboard_tuto_atp_2">
+        <h4>DÉMARCHE COMMERCIALE:</h4>
+        <p>Zoom sur l’accompagnement des clients et les techniques commerciales.</p>
       </li>
       <li id="dashboard_tuto_atp_4">
         <h4>RÈGLEMENTAIRE:</h4>
-        <p>Appréhender les décisions règlementaires</p>
+        <p>Zoom sur le cadre légal et règlementaire.</p>
       </li>
       <span style="clear:left; display: block;width:100%;height:0;padding:0;margin:0;"></span>
     </ul>
@@ -409,7 +557,7 @@ url_image = random.choice(url_array)
   <!-- module 4 -->
               <div class="dashboard_tuto_atp last_tuto_atp" style="border-bottom: none;">
     <h3>FORMATS DES MODULES PEDAGOGIQUES</h3>
-    <p>Chaque module pédagogique est composé d’un ou plusieurs formats digitaux et complémentaires. Au sein du module, ces formats combinés composent un parcours de formation interactif.</p>
+    <p class="modules-subtext">Chaque module pédagogique est composé d’un ou plusieurs formats interactifs et complémentaires : vidéo, quiz de validation des connaissances, serious game, outil de simulation d’investissement en temps réel, documentation commerciale ou publication et infographies.</p>
     <div class="dashboard_picto_tuto_tma">
       <div><img src="${static.url('images/video.svg')}" class="svg"/><span>video</span></div>
       <div><img src="${static.url('images/quiz.svg')}" class="svg"/><span>quiz</span></div>
@@ -428,10 +576,12 @@ url_image = random.choice(url_array)
 %else:
 	<section id="dashboard_header_atp">
 		<div id="dashboard_header_content">
-			<p>Welcome on</p>
+			<p>Welcome on your training platform</p>
+      <!--
       <div id="logo-amundiacademy">
         <img src="${static.url('images/logo-amundiacademy.png')}" />
       </div>
+      -->
 			<p>Develop your knowledge and skills on asset management: financial culture and offers.</p>
 			<button class="tuto_action">More <span id="atp_tuto_arrow_up" class="arrow-right"></span></button>
 		</div>
@@ -440,47 +590,44 @@ url_image = random.choice(url_array)
 	<section id="dashboard_tuto_atp">
 		<!-- module 1 -->
 		<div class="dashboard_tuto_atp" id="tuto_module_1">
-			<p>To follow a training module, select the thumbnail of your choice!</p>
-			<p style="margin-top: 0;margin-bottom: 0;">Each training module belongs to a category and can take</p>
-			<p>different formats.</p>
+			<p>To follow a training module, select the card of your choice!</p>
+			<p style="margin-top: 0;margin-bottom: 0;">Each training module is classified into a category and may take different formats.</p>
 		</div>
 		<!-- module 2 -->
                 <div class="dashboard_tuto_atp">
-			<h3>Training modules</h3>
-			<p style="margin-bottom:5px;">Find all the information related to the training on the thumbnails below: timing of the module,</p>
-			<p style="margin-top:5px;">if the module is mandatory or not and formats of the module.</p>
+			<h3>THE TRAINING MODULES</h3>
+			<p class="modules-subtext">Find all the information related to training modules on the cards below: title of the module, category, timing to fulfill the module, if it is mandatory or not and its digital formats.</p>
 			<img src="${static.url('images/cartes.png')}" id="img_dashboard_tuto_cartes"/>
                 </div>
 		<!-- module 3 -->
                 <div class="dashboard_tuto_atp">
-			<h3>TRAINING MODULES CATEGORIES</h3>
+			<h3>CATEGORIES OF THE TRAINING MODULES</h3>
 			<p>Your training modules are classified into 4 categories:</p>
 			<ul>
 				<li id="dashboard_tuto_atp_1">
 					<h4>fundamentals:</h4>
-					<p>Know the essentials of financial markets</p>
+					<p>Focus on financial markets, economics and investment</p>
 				</li>
-                                <li id="dashboard_tuto_atp_2">
-                                        <h4>Business approach:</h4>
-                                        <p>Improve your soft skills</p>
-                                </li>
+        <li id="dashboard_tuto_atp_3">
+          <h4>our solutions:</h4>
+          <p>Focus on expertises: products and offers</p>
+        </li>
 				<span style="clear:left; display: block;width:100%;height:0;padding:0;margin:0;"></span>
-                                <li id="dashboard_tuto_atp_3">
-                                        <h4>our solutions:</h4>
-                                        <p>Learn about products and offers that are sold</p>
-                                </li>
-                                <li id="dashboard_tuto_atp_4">
-                                        <h4>regulatory:</h4>
-                                        <p>Understanding regulatory decisions</p>
-                                </li>
+        <li id="dashboard_tuto_atp_2">
+          <h4>Business approach:</h4>
+          <p>Focus on customer support and sales techniques</p>
+        </li>
+        <li id="dashboard_tuto_atp_4">
+          <h4>regulatory:</h4>
+          <p>Focus on legal and regulatory frameworks</p>
+        </li>
 				<span style="clear:left; display: block;width:100%;height:0;padding:0;margin:0;"></span>
 			</ul>
                 </div>
 		<!-- module 4 -->
                 <div class="dashboard_tuto_atp last_tuto_atp" style="border-bottom: none;">
-			<h3>Modules format</h3>
-			<p>Each module is composed of different interactive formats:</p>
-			<p>texts & images, pedagogical videos, quizzes, pdf, etc.</p>
+			<h3>FORMATS OF THE TRAINING MODULES</h3>
+      <p class="modules-subtext">Each training module is composed of one or more digital formats. Within the module, these formats are combined : video, quiz, serious game, investment game, sales documentation, infography, etc.</p>
 			<div class="dashboard_picto_tuto_tma">
 				<div><img src="${static.url('images/video.svg')}" class="svg"/><span>video</span></div>
 				<div><img src="${static.url('images/quiz.svg')}" class="svg"/><span>quiz</span></div>
@@ -535,7 +682,7 @@ url_image = random.choice(url_array)
     <% required = q['required'] %>
     <% content_data = q['content_data'] %>
     <% category = q['category'] %>
-    <%include file='dashboard/_dashboard_course_listing.html' args='categ=category,content_data=content_data,required=required,course_about_name=False,duration=duration,course_about_link=False,course_about_id=False,course_about_img=False,course_about=course_about,course_progression=q["course_progression"],compteur=compteur,atp_rank=atp_rank,course_overview=q["course_overview"], enrollment=q["enrollment"], show_courseware_link=show_courseware_link, cert_status=cert_status, can_unenroll=can_unenroll, credit_status=credit_status, show_email_settings=show_email_settings, course_mode_info=course_mode_info, show_refund_option=show_refund_option, is_paid_course=is_paid_course, is_course_blocked=is_course_blocked, verification_status=course_verification_status, course_requirements=course_requirements, dashboard_index=q["dashboard_index"], share_settings=share_settings, user=user, display_course_modes_on_dashboard=display_course_modes_on_dashboard' />
+    <%include file='dashboard/_dashboard_course_listing.html' args='percent=q["percent"],passed=q["passed"],categ=category,content_data=content_data,required=required,course_about_name=False,duration=duration,course_about_link=False,course_about_id=False,course_about_img=False,course_about=course_about,course_progression=q["course_progression"],compteur=compteur,atp_rank=atp_rank,course_overview=q["course_overview"], enrollment=q["enrollment"], show_courseware_link=show_courseware_link, cert_status=cert_status, can_unenroll=can_unenroll, credit_status=credit_status, show_email_settings=show_email_settings, course_mode_info=course_mode_info, show_refund_option=show_refund_option, is_paid_course=is_paid_course, is_course_blocked=is_course_blocked, verification_status=course_verification_status, course_requirements=course_requirements, dashboard_index=q["dashboard_index"], share_settings=share_settings, user=user, display_course_modes_on_dashboard=display_course_modes_on_dashboard' />
   % endfor
     <span style="display:block;clear:left"></span>
   </ul>
@@ -544,9 +691,7 @@ url_image = random.choice(url_array)
     <p>${_("No training modules available in this section.")}</p>
 </div>
 % endif
-% if compteur > 1:
-		<a class="atp_dashboard_active_course" data-number="${compteur}">+ ${_("More modules")}</a>
-% endif
+		<a class="atp_dashboard_active_course is_none_more" data-number="${compteur}" id="more_1">+ ${_("More modules")}</a>
 	</section>
 	<!-- module a realiser -->
 	<section id="dashboard_course_to_do">
@@ -578,7 +723,7 @@ url_image = random.choice(url_array)
       <% required = q['required'] %>
       <% content_data = q['content_data'] %>
       <% category = q['category'] %>
-      <%include file='dashboard/_dashboard_course_listing.html' args='categ=category,content_data=content_data,required=required,course_about_name=False,duration=duration,course_about_link=False,course_about_id=False,course_about_img=False,course_about=course_about,course_progression=q["course_progression"],compteur=compteur,atp_rank=atp_rank,course_overview=q["course_overview"], enrollment=q["enrollment"], show_courseware_link=show_courseware_link, cert_status=cert_status, can_unenroll=can_unenroll, credit_status=credit_status, show_email_settings=show_email_settings, course_mode_info=course_mode_info, show_refund_option=show_refund_option, is_paid_course=is_paid_course, is_course_blocked=is_course_blocked, verification_status=course_verification_status, course_requirements=course_requirements, dashboard_index=q["dashboard_index"], share_settings=share_settings, user=user, display_course_modes_on_dashboard=display_course_modes_on_dashboard' />
+      <%include file='dashboard/_dashboard_course_listing.html' args='percent=q["percent"],passed=q["passed"],categ=category,content_data=content_data,required=required,course_about_name=False,duration=duration,course_about_link=False,course_about_id=False,course_about_img=False,course_about=course_about,course_progression=q["course_progression"],compteur=compteur,atp_rank=atp_rank,course_overview=q["course_overview"], enrollment=q["enrollment"], show_courseware_link=show_courseware_link, cert_status=cert_status, can_unenroll=can_unenroll, credit_status=credit_status, show_email_settings=show_email_settings, course_mode_info=course_mode_info, show_refund_option=show_refund_option, is_paid_course=is_paid_course, is_course_blocked=is_course_blocked, verification_status=course_verification_status, course_requirements=course_requirements, dashboard_index=q["dashboard_index"], share_settings=share_settings, user=user, display_course_modes_on_dashboard=display_course_modes_on_dashboard' />
     % endfor
     <span style="display:block;clear:left"></span>
   </ul>
@@ -587,9 +732,7 @@ url_image = random.choice(url_array)
     <p>${_("No training modules available in this section.")}</p>
 </div>
 % endif
-% if compteur > 1:
-		<a class="atp_dashboard_active_course" data-number="${compteur}">+ ${_("More modules")}</a>
-% endif
+<a class="atp_dashboard_active_course is_none_more" data-number="${compteur}" id="more_2">+ ${_("More modules")}</a>
 	</section>
 	<!-- module termine -->
 	<section id="dashboard_course_finished">
@@ -621,7 +764,7 @@ url_image = random.choice(url_array)
     <% required = q['required'] %>
     <% content_data = q['content_data'] %>
     <% category = q['category'] %>
-    <%include file='dashboard/_dashboard_course_listing.html' args='categ=category,content_data=content_data,required=required,course_about_name=False,duration=duration,course_about_link=False,course_about_id=False,course_about_img=False,course_about=course_about,course_progression=q["course_progression"],compteur=compteur,atp_rank=atp_rank,course_overview=q["course_overview"], enrollment=q["enrollment"], show_courseware_link=show_courseware_link, cert_status=cert_status, can_unenroll=can_unenroll, credit_status=credit_status, show_email_settings=show_email_settings, course_mode_info=course_mode_info, show_refund_option=show_refund_option, is_paid_course=is_paid_course, is_course_blocked=is_course_blocked, verification_status=course_verification_status, course_requirements=course_requirements, dashboard_index=q["dashboard_index"], share_settings=share_settings, user=user, display_course_modes_on_dashboard=display_course_modes_on_dashboard' />
+    <%include file='dashboard/_dashboard_course_listing.html' args='percent=q["percent"],passed=q["passed"],categ=category,content_data=content_data,required=required,course_about_name=False,duration=duration,course_about_link=False,course_about_id=False,course_about_img=False,course_about=course_about,course_progression=q["course_progression"],compteur=compteur,atp_rank=atp_rank,course_overview=q["course_overview"], enrollment=q["enrollment"], show_courseware_link=show_courseware_link, cert_status=cert_status, can_unenroll=can_unenroll, credit_status=credit_status, show_email_settings=show_email_settings, course_mode_info=course_mode_info, show_refund_option=show_refund_option, is_paid_course=is_paid_course, is_course_blocked=is_course_blocked, verification_status=course_verification_status, course_requirements=course_requirements, dashboard_index=q["dashboard_index"], share_settings=share_settings, user=user, display_course_modes_on_dashboard=display_course_modes_on_dashboard' />
   % endfor
     <span style="display:block;clear:left"></span>
   </ul>
@@ -630,10 +773,10 @@ url_image = random.choice(url_array)
     <p>${_("No training modules available in this section.")}</p>
 </div>
 % endif
-% if compteur > 1:
-  <a class="atp_dashboard_active_course" data-number="${compteur}">+ ${_("More modules")}</a>
-% endif
+<a class="atp_dashboard_active_course is_none_more" data-number="${compteur}" id="more_3">+ ${_("More modules")}</a>
 	</section>
+
+
 </section>
 % if is_new_user:
 <div id="pop_up">
@@ -680,6 +823,12 @@ $('#close_pop_up').click(function(){
 }
 #logo-amundiacademy {
   margin-top: 10px;
+}
+.center-text{
+  text-align: center;
+}
+#dashboard_tma #dashboard_header_atp{
+  min-height: 200px!important;
 }
 </style>
 <script>

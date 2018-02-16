@@ -10,6 +10,9 @@ import random
 import re
 import string  # pylint: disable=deprecated-module
 #GEOFFREY TMA ATP
+
+
+
 import datetime
 from student.roles import CourseInstructorRole,CourseStaffRole
 
@@ -555,10 +558,10 @@ def course_listing(request):
     #update template tma atp
     user_email = request.user.email
     current_date = int(datetime.datetime.now().strftime("%s"))
-    course_scheduled = []
-    course_in_progress = []
-    course_completed = []
-    amundi_template = []
+    course_scheduled = [[],[],[],[],[]]
+    course_in_progress = [[],[],[],[],[]]
+    course_completed = [[],[],[],[],[]]
+    amundi_template = [[],[],[],[],[]]
     check_admin_microsite = False
     try:
         microsite_key = MicrositeAdminManager.objects.get(user=request.user).microsite_id
@@ -566,6 +569,7 @@ def course_listing(request):
 	check_admin_microsite = True
     except:
         pass
+    _active_camp = False
     for course_info in sorted(courses, key=lambda s: s['display_name'].lower() if s['display_name'] is not None else ''):
       q={}
       q['course_key_id'] = CourseKey.from_string(course_info['course_key'])
@@ -589,14 +593,33 @@ def course_listing(request):
         q['course_end_compare'] = current_date
       q['course_start_compare'] = int(q['courses_overviews'].start.strftime("%s"))
       q['duration'] = CourseDetails.fetch(q['course_key_id']).effort
+
+      #indice
+      sorted_indices = {
+        "fundamentals":0,
+        "fundamental":0,
+        "oursolutions":1,
+        "regulatory":2,
+        "salesapproach":3,
+        "none":4
+      }
+      if q['categories'] is not None:
+          cur_indice = sorted_indices[q['categories'].lower().replace(' ','')]
+      else:
+          cur_indice = 4
+
+      #sort by arrays
       if (not 'AMUNDI-GENERIC-TEMPLATE' in course_info['display_name']) and (current_date < q['course_start_compare']) and is_true and (not q['course_key_id'] in course_scheduled):
-           course_scheduled.append(q)
+           course_scheduled[cur_indice].append(q)
+           _active_camp = True
       elif (not 'AMUNDI-GENERIC-TEMPLATE' in course_info['display_name']) and (current_date > q['course_start_compare'] and current_date <= q['course_end_compare']) and is_true and (not q['course_key_id'] in course_in_progress):
-           course_in_progress.append(q)
+           course_in_progress[cur_indice].append(q)
+           _active_camp = True
       elif (not 'AMUNDI-GENERIC-TEMPLATE' in course_info['display_name']) and (current_date > q['course_end_compare']) and is_true and (not q['course_key_id'] in course_completed):
-           course_completed.append(q)
+           course_completed[cur_indice].append(q)
+           _active_camp = True
       elif ('AMUNDI-GENERIC-TEMPLATE' in course_info['display_name']) and (not q['course_key_id'] in amundi_template):
-           amundi_template.append(q)
+           amundi_template[cur_indice].append(q)
 
     return render_to_response('index.html', {
         'check_admin_microsite':check_admin_microsite,
@@ -605,6 +628,7 @@ def course_listing(request):
         'course_in_progress':course_in_progress,
         'course_completed':course_completed,
         'amundi_template':amundi_template,
+        'active_campaign':_active_camp,
         'in_process_course_actions': in_process_course_actions,
         'libraries_enabled': LIBRARIES_ENABLED,
         'libraries': [format_library_for_view(lib) for lib in libraries],

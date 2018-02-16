@@ -776,13 +776,16 @@ def dashboard(request):
     progress_courses = []
     finish_courses = []
     start_course = []
+    list_category = []
     _now = int(datetime.datetime.now().strftime("%s"))
     if len(course_enrollments) > 0:
       for dashboard_index, enrollment in enumerate(course_enrollments):
         course_id = enrollment.course_overview.id
         user_id = request.user.id
         course_tma = get_course_by_id(enrollment.course_id)
-        passed = CourseGradeFactory().create(request.user, course_tma).passed
+	course_grade_factory = CourseGradeFactory().create(request.user, course_tma)
+        passed = course_grade_factory.passed
+        percent = course_grade_factory.percent
         course_progression = get_overall_progress(user_id,course_id)
         #_start = int(enrollment.course_overview.start.strftime("%s"))
         try:
@@ -793,6 +796,8 @@ def dashboard(request):
         _progress = True
         if _end > 0 and _end < _now:
             _progress = False
+	q['passed'] = passed
+	q['percent'] = percent 
         q['atp_rank'] = "cours"
         q['course_about'] = 0
         q['show_courseware_link'] = (enrollment.course_id in show_courseware_links_for)
@@ -815,7 +820,10 @@ def dashboard(request):
         q['enrollment'] = enrollment
         q['course_progression'] = course_progression
         q['dashboard_index'] = dashboard_index
-
+	#list category
+	if not course_tma.categ in list_category:
+	    list_category.append(course_tma.categ)
+	#end list category
         if course_progression > 0 and course_progression < 100 and passed == False and _progress == True:
           compteur_progress = compteur_progress + 1
           q['compteur'] = compteur_progress
@@ -852,6 +860,7 @@ def dashboard(request):
         'progress_courses': progress_courses,
         'finish_courses': finish_courses,
         'start_course':start_course,
+	'list_category':list_category,
         #END ATP add
         'enrollment_message': enrollment_message,
         'redirect_message': redirect_message,

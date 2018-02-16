@@ -16,6 +16,7 @@ from branding import api as branding_api
 from status.status import get_site_status_msg
 from util.enterprise_helpers import get_enterprise_customer_logo_url
 from student.models import User
+from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 %>
 
 ## Provide a hook for themes to inject branding on top.
@@ -67,6 +68,9 @@ except:
 #atp_menu_mobile {
  cursor: pointer;
 }
+.logo-amundi-academy{
+  height: 22px!important;
+}
 </style>
 <!-- import custom css script -->
 <%
@@ -77,6 +81,9 @@ nav = static.get_value('css_overrides_nav')
 % else:
   <link rel="stylesheet" type="text/css" href="${static.url(nav)}" />
 % endif
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+
 
 <!-- import custom js script -->
 <script src="${static.url('js/navigation_atp.js')}"></script>
@@ -99,39 +106,76 @@ logo_url = static.get_value('logo')
 % else:
 <img id="logo_atp_redirect" src="${logo_url}" />
 % endif
+<%
+amundi_brand=configuration_helpers.get_value('amundi_brand')
+%>
+%if amundi_brand :
+<div id="amundi-brand-container">
+    <span class="trait-separation"></span>
+    <img src="/static/images/logo-amundiacademy.eae4f86cff13.png" alt="" class="logo-amundi-academy">
+</div>
+%endif
 <img id="atp_menu_mobile" src="${static.url('images/menu_mobile.png')}" class="sub_picto" id="sub_mobile_img"/>
+
+
+
+<div id="right-menu">
 % if user.is_authenticated():
-  <a id="log_user_action" href="/logout"><img src="${static.url('images/shut-down-icon.svg')}" class="svg"/><span><div id="log_user_action_array"></div>${_('logout')}</span></a>
-  <a href="/u/${request.user.username}" id="sub_to_dashboard_account"><img src="${static.url('images/man-user.png')}" class="svg"/><span><div id="account_user_action_array"></div>${_('My account')}</span></a>
+  <div id="profile_menu" class="menu-item-atp">
+    <!--<img class="vignette" src="${static.url('images/man-user.png')}" class="svg"/>-->
+    <div id="user-icone">
+      <i class="far fa-user"></i>
+    </div>
+    <div id="profile-submenu">
+      <div class="user-account-atp">
+        <a class="class-submenu profile-name-atp" href="/u/${request.user.username}">
+          <p class="name-atp-user">${request.user.first_name} ${request.user.last_name}</p>
+          <p class="email-atp-user">${user.email}</p>
+        </a>
+      </div>
+        % if _ensure_status:
+        <div class="access-back-atp">
+          <a class="class-submenu" href="https://${settings.CMS_BASE}">${_("Access Admin interface")}</a>
+        </div>
+        % endif
+      <div class="boutton-deconnexion">
+        <a class="" href="/logout">
+          <i class="fas fa-power-off"></i>
+          ${_('logout')}
+        </a>
+      </div>
+
+    </div>
+  </div>
 % else:
   <a id="log_user_action" href="/login"><img src="${static.url('images/shut-down-icon.svg')}" class="svg"/><span><div id="log_user_action_array"></div>${_('login')}</span></a>
 % endif
-<div id="sub_menu">
+
+
+
 % if "/dashboard" in request.path:
-<button class="sub_menu" data-location="menu_module_apt" id="my_course_covers">${_("My modules")} <span class="arrow_button"></span></button>
-<div id="menu_module_apt">
- <button data-location="dashboard_course_in_progress_atp">${_("In progress")}</button>
- <button data-location="dashboard_course_to_do">${_("To do")}</button>
- <button data-location="dashboard_course_finished">${_("Completed")}</button>
- <!--
- <button id="cat_all" data-location="all">${_("All")}</button>
- -->
+<div id="menu-modules" class="menu-item-atp" data-location="menu_module_apt">${_("My modules")} <span class="arrow_button"></span>
+  <div id="menu_module_apt">
+   <button data-location="dashboard_course_in_progress_atp">${_("In progress")}</button>
+   <button data-location="dashboard_course_to_do">${_("To do")}</button>
+   <button data-location="dashboard_course_finished">${_("Completed")}</button>
+   <!--
+   <button id="cat_all" data-location="all">${_("All")}</button>
+   -->
+  </div>
 </div>
-<button class="sub_menu" data-location="menu_cat_apt" id="nav_replace_before">${_("My Categories")} <span class="arrow_button"></span></button>
-<div id="menu_cat_apt">
- <button id="cat_fond" data-location="fundamental">${_("Fundamentals")}</button>
- <button id="cat_solu" data-location="oursolutions">${_("Our solutions")}</button>
- <button id="cat_dem_com" data-location="salesapproach">${_("Business approach")}</button>
- <button id="cat_reg" data-location="regulatory">${_("Regulatory")}</button>
- <button id="cat_all" data-location="all">${_("All")}</button>
+
+<div id="menu-categories" class="menu-item-atp" data-location="menu_cat_apt">${_("My Categories")} <span class="arrow_button"></span>
+  <div id="menu_cat_apt">
+   <button id="cat_fond" data-location="fundamental">${_("Fundamentals")}</button>
+   <button id="cat_solu" data-location="oursolutions">${_("Our solutions")}</button>
+   <button id="cat_dem_com" data-location="salesapproach">${_("Business approach")}</button>
+   <button id="cat_reg" data-location="regulatory">${_("Regulatory")}</button>
+   <button id="cat_all" data-location="all">${_("All")}</button>
+  </div>
 </div>
-  % if user.is_authenticated():
-    % if _ensure_status:
-      <a href="https://${settings.CMS_BASE}" id="to_lms">${_("Access Admin interface")}</a>
-    % endif
-  % else:
-  <a href="">${_("My account")}</a>
-  % endif
+
+
 <span style="display:block;clear:both;" id="nav_replace_after"></span>
 % endif
 % if not "/dashboard" in request.path:
@@ -151,110 +195,66 @@ id="sub_to_dashboard_account"><img src="${static.url('images/man-user.png')}" cl
 -->
 <span>${_("Home")}</span>
 </a>
-% if _ensure_status:
-  <a href="https://${settings.CMS_BASE}" id="to_lms">${_("Access Admin interface")}</a>
-% endif
 </div>
 % endif
 <span style="display:block;clear:both;"></span>
 </section>
 </section>
-<style>
-#to_lms {
-  width: 169px !important;
-  height: 90px !important;
-  min-width: 169px !important;
-  line-height: 45px !important;
-}
-#sub_to_dashboard_account:hover span {
-    display: block;
-}
-#account_user_action_array {
-    display: block;
-    position: absolute;
-    top: -5px;
-    left: 50%;
-    margin-left: -5px;
-    width: 0px;
-    height: 0px;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    font-family: "mywebfont";
-    border-bottom: 5px solid #05144d;
-}
-#sub_to_dashboard_account span {
-    position: absolute;
-    left: 0;
-    display: none;
-    width: calc(100% - 8px);
-    text-align: center;
-    top: 96px;
-    border: 1px solid #05144d;
-    font-size: 10px;
-    line-height: 10px;
-    vertical-align: middle;
-    padding: 3px;
-    height: auto;
-    color: #05144d;
-    background-color: #fff;
-}
-#down_apt_nav #sub_to_dashboard_account{
-  width: 90px !important;
-  height: 90px !important;
-  min-width: 90px;
-  text-align: center;
-  line-height: 90px;
-  vertical-align: middle;
-  position: relative;
-}
-#sub_to_dashboard_account img{
-  width: 30px;
-  height: 30px;
-  margin-left: 0;
-}
-@media(max-width:1022px) {
-  #to_lms{
-    width: 100% !important;
-    height: 54px !important;
-    line-height: 54px !important;
-  }
-  #sub_to_dashboard {
-    height: 54px !important;
-    line-height: 54px !important;
-    border-top: 1px solid #fff !important;
-    border-bottom: 1px solid #fff !important;
-  }
-  #down_apt_nav #atp_menu_mobile {
-    right: 210px !important;
-  }
-  #sub_to_dashboard_account {
-    border-left: 1px solid #fff !important;
-  }
-  #my_course_covers,#nav_replace_before,#to_lms {
-    border-bottom: 1px solid #fff !important;
-  }
-}
-@media(max-width:408px) {
-  #down_apt_nav,#tma_nav {
-    height: 60px;
-  }
-  #log_user_action,#down_apt_nav #sub_to_dashboard_account {
-    width: 60px !important;
-    height: 60px !important;
-    line-height: 60px !important;
-    min-width: 40px !important;
-  }
-  #logo_atp_redirect {
-    margin-left: 10px !important;
-    margin-top: -30px !important;
-  }
-  #down_apt_nav #atp_menu_mobile {
-    right: 140px !important;
-  }
-  #sub_menu {
-    top: 60px;
-  }
-}
-</style>
+<script type="text/javascript">
+  $('#profile_button').click(function(){
+    $('#menu_cat_apt').addClass('hide');
+    $('#menu_module_apt').addClass('hide');
+    $("#profile-submenu").toggleClass('hide');
+  })
+  $('#nav_replace_before').click(function(){
+    $('#profile-submenu').addClass('hide');
+    $('#my_course_covers').addClass('hide');
+    $("#menu_cat_apt").toggleClass('hide');
+  })
+  $('#my_course_covers').click(function(){
+    $('#nav_replace_before').addClass('hide');
+    $('#profile-submenu').addClass('hide');
+    $("#menu_module_apt").toggleClass('hide');
+  })
+
+</script>
+
+<script>
+
+/* Gestion du responsive sur la nav */
+  $('#atp_menu_mobile').click(function(){
+    if($("#right-menu").hasClass('block')){
+      $("#profile-submenu, #menu_module_apt, #menu_cat_apt").removeClass('block');
+    }
+    $("#right-menu").toggleClass('block');
+  })
+
+  $('#profile_menu').click(function(){
+    if($(window).width() < 1022){
+      $("#profile-submenu").toggleClass('block');
+    }
+  })
+  $('#menu-modules').click(function(){
+   if($(window).width() < 1022){
+      $("#menu_module_apt").toggleClass('block');
+    }
+  })
+  $('#menu-categories').click(function(){
+   if($(window).width() < 1022){
+      $("#menu_cat_apt").toggleClass('block');
+    }
+  })
+
+  $("html").click(function(event) {
+    if ($(event.target).closest('#right-menu, #atp_menu_mobile, #down_apt_nav').length === 0) {
+      $("#profile-submenu, #menu_module_apt, #menu_cat_apt").removeClass('block');
+      $("#right-menu").removeClass('block');
+    }
+  });
+
+
+
+
+</script>
 </%block>
 <%include file="help_modal.html"/>

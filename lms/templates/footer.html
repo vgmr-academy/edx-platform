@@ -4,6 +4,7 @@
   from django.core.urlresolvers import reverse
   from django.utils.translation import ugettext as _
   from branding.api import get_footer
+  from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 %>
 <% footer = get_footer(is_secure=is_secure) %>
 <%namespace name='static' file='static_content.html'/>
@@ -63,90 +64,30 @@ This website is handled by Amundi Asset Management, French joint stock company (
     </a>
   </div>
 </div>
-<style>
-  .modal-close {
-    text-align: center;
-    height: auto;
-    min-height: 80px;
-    line-height: 80px;
-    vertical-align: middle;
-  }
-  .btn,.btn:hover,.btn:focus,.btn:visited {
-    background-color: #dc9f0d;
-    border: none;
-    padding: 10px 30px;
-    width: 150px;
-    font-weight: 600;
-    color: #fff;
-    border-radius: 15px;
-    margin-left: auto;
-    margin-right: auto;
-    cursor:pointer;
-  }
-  .pop_up_atp p{
-    text-align: justify;
-    text-justify: inter-word;
-    color: #000;
-    font-size: 12px;
-    line-height: 12px;
-  }
-  .pop_up_atp {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: #fff;
-      background-clip: padding-box;
-      border: 1px solid #999;
-      border: 1px solid rgba(0,0,0,.2);
-      border-radius: 6px;
-      outline: 0;
-      box-shadow: 0 3px 9px rgba(0,0,0,.5);
-      z-index: 10000000000000;
-      padding: 10px 60px 30px;
-  }
-  #atp_footer_nav {
-    float: right;
-  }
-  #atp_footer_nav button,#atp_footer_nav button:hover,#atp_footer_nav button:focus,#atp_footer_nav button:visited,#atp_footer_nav a,#atp_footer_nav a:hover,#atp_footer_nav a:focus,#atp_footer_nav button:visited{
-    color: #fff !important;
-    background-color: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    text-shadow: !important;
-    text-transform: uppercase;
-    outline: none;
-    font-weight: 600;
-  }
-  .legal_is_display {
-    display: block !important;
-  }
-#atp_footer_nav button:hover, #atp_footer_nav a:hover {
-color: #dda000 !important;
-text-decoration: none !important;
-font-weight: 600;
-}
-</style>
 <section id="footer_atp">
   <%
   logo_url = static.get_value('logo')
   %>
   % if not logo_url:
-  <img src="${static.url('images/logo.png')}" />
+  <!--<img src="${static.url('images/logo.png')}" />-->
   % else:
-  <img src="${logo_url}" />
+  <!--<img src="${logo_url}" /-->
   % endif
   <%
-    mailto = ''
+  if configuration_helpers.get_value('contact_address') :
+    mailto = "mailto:"+configuration_helpers.get_value('contact_address')
+  else :
     if settings.FEATURES['VM_STATUS'] == 'preprod':
         mailto = "mailto:amundiacademy-ppr@amundi.com"
     elif settings.FEATURES['VM_STATUS'] == 'prod':
         mailto = "mailto:amundiacademy@amundi.com"
+
+
   %>
  <ul>
-  <li><a href="${mailto}">${_("Contact")}</a></li>
   <li><a href="" id="legal_notice">${_("Disclaimer")}</a></li>
+  <li><a href="${mailto}">Contact</a></li>
+  <li>© Amundi 2018</li>
   <span style="display:block;clear:both;"></span>
  </ul>
  <span style="display:block;clear:both;"></span>
