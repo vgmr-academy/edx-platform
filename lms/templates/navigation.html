@@ -64,6 +64,14 @@ except:
 </div>
 % endif
 <!-- GEOFFREY -->
+
+<%
+if configuration_helpers.get_value('secondary_color') :
+  secondary_color = configuration_helpers.get_value('secondary_color')
+else:
+  secondary_color='rgb(255,255,255)'
+%>
+
 <style>
 #atp_menu_mobile {
  cursor: pointer;
@@ -71,6 +79,61 @@ except:
 .logo-amundi-academy{
   height: 22px!important;
 }
+#profile_menu{
+  min-width: 70px;
+}
+#profile-submenu{
+  right: 0;
+}
+.profile-name-atp{
+  text-align: left!important;
+}
+.access-back-atp a{
+  text-align: left!important;
+  text-transform: initial!important;
+}
+#user-icone svg{
+  background-color: ${secondary_color} !important;
+  border: 1px solid ${secondary_color} !important;
+}
+#user-icone{
+  color:white!important;
+}
+#down_apt_nav img{
+  width: initial;
+}
+#amundi-brand-container{
+  min-width: 250px!important;
+}
+#logo_atp_redirect{
+  cursor: pointer!important;
+}
+
+
+/* responsive mon compte */
+
+@media (max-width: 1022px){
+  #profile_menu{
+    width: auto!important;
+    position: absolute!important;
+    right: 0!important;
+    top: 15px!important;
+    background-color: transparent!important;
+  }
+  #profile-submenu{
+    width: 250px!important;
+    position: absolute!important;
+    right: 0!important;
+    top: 55px!important;
+  }
+  #down_apt_nav #atp_menu_mobile{
+    right: 75px!important;
+    top:60%!important;
+    height: 30px;
+  }
+}
+
+
 </style>
 <!-- import custom css script -->
 <%
@@ -109,94 +172,93 @@ logo_url = static.get_value('logo')
 <%
 amundi_brand=configuration_helpers.get_value('amundi_brand')
 %>
-%if amundi_brand :
+%if amundi_brand=="true" :
 <div id="amundi-brand-container">
     <span class="trait-separation"></span>
-    <img src="/static/images/logo-amundiacademy.eae4f86cff13.png" alt="" class="logo-amundi-academy">
+    <img src="/media/logo-amundiacademy_blanc.png" alt="amundi_academy" class="logo-amundi-academy">
 </div>
 %endif
 <img id="atp_menu_mobile" src="${static.url('images/menu_mobile.png')}" class="sub_picto" id="sub_mobile_img"/>
 
 
 
-<div id="right-menu">
-% if user.is_authenticated():
-  <div id="profile_menu" class="menu-item-atp">
-    <!--<img class="vignette" src="${static.url('images/man-user.png')}" class="svg"/>-->
-    <div id="user-icone">
-      <i class="far fa-user"></i>
-    </div>
-    <div id="profile-submenu">
-      <div class="user-account-atp">
-        <a class="class-submenu profile-name-atp" href="/u/${request.user.username}">
-          <p class="name-atp-user">${request.user.first_name} ${request.user.last_name}</p>
-          <p class="email-atp-user">${user.email}</p>
-        </a>
-      </div>
-        % if _ensure_status:
-        <div class="access-back-atp">
-          <a class="class-submenu" href="https://${settings.CMS_BASE}">${_("Access Admin interface")}</a>
-        </div>
-        % endif
-      <div class="boutton-deconnexion">
-        <a class="" href="/logout">
-          <i class="fas fa-power-off"></i>
-          ${_('logout')}
-        </a>
-      </div>
 
+<div id="right-menu">
+  % if "/dashboard" in request.path:
+  <div id="menu-categories" class="menu-item-atp" data-location="menu_cat_apt">${_("My Categories")} <span class="arrow_button"></span>
+    <div id="menu_cat_apt">
+     <button id="cat_fond" data-location="fundamental">${_("Fundamentals")}</button>
+     <button id="cat_solu" data-location="oursolutions">${_("Our solutions")}</button>
+     <button id="cat_dem_com" data-location="salesapproach">${_("Business approach")}</button>
+     <button id="cat_reg" data-location="regulatory">${_("Regulatory")}</button>
+     <button id="cat_all" data-location="all">${_("All")}</button>
     </div>
   </div>
+  <div id="menu-modules" class="menu-item-atp" data-location="menu_module_apt">${_("My modules")} <span class="arrow_button"></span>
+    <div id="menu_module_apt">
+     <button data-location="dashboard_course_in_progress_atp">${_("In progress")}</button>
+     <button data-location="dashboard_course_to_do">${_("To do")}</button>
+     <button data-location="dashboard_course_finished">${_("Completed")}</button>
+     <!--
+     <button id="cat_all" data-location="all">${_("All")}</button>
+     -->
+    </div>
+  </div>
+  <span style="display:block;clear:both;" id="nav_replace_after"></span>
+  % endif
+  % if not "/dashboard" in request.path:
+  <!--
+  <a
+    % if user.is_authenticated():
+      href="/u/${request.user.username}"
+    % else:
+      href=""
+    % endif
+  id="sub_to_dashboard_account"><img src="${static.url('images/man-user.png')}" class="svg"/><span><div id="account_user_action_array"></div>${_('My account')}</span></a>
+  -->
+
+  <a href="/dashboard" class="sub_picto sub_other_menu" id="sub_to_dashboard" >
+  <!--
+    <img src="${static.url('images/home.png')}" style="height:40px; margin-top: 20px;"/>
+  -->
+  <span>${_("Home")}</span>
+  </a>
+  % endif
+</div>
+
+% if user.is_authenticated():
+<div id="profile_menu" class="menu-item-atp">
+  <!--<img class="vignette" src="${static.url('images/man-user.png')}" class="svg"/>-->
+  <div id="user-icone">
+    <i class="far fa-user"></i>
+  </div>
+  <div id="profile-submenu">
+    <div class="user-account-atp">
+      <a class="class-submenu profile-name-atp" href="/u/${request.user.username}">
+        <p class="name-atp-user">${request.user.first_name} ${request.user.last_name}</p>
+        <p class="email-atp-user">${user.email}</p>
+      </a>
+    </div>
+      % if _ensure_status:
+      <div class="access-back-atp">
+        <a class="class-submenu" href="https://${settings.CMS_BASE}">${_("Access admin interface")}</a>
+      </div>
+      % endif
+    <div class="boutton-deconnexion">
+      <a class="" href="/logout">
+        <i class="fas fa-power-off"></i>
+        ${_('logout')}
+      </a>
+    </div>
+
+  </div>
+</div>
 % else:
   <a id="log_user_action" href="/login"><img src="${static.url('images/shut-down-icon.svg')}" class="svg"/><span><div id="log_user_action_array"></div>${_('login')}</span></a>
 % endif
 
 
 
-% if "/dashboard" in request.path:
-<div id="menu-modules" class="menu-item-atp" data-location="menu_module_apt">${_("My modules")} <span class="arrow_button"></span>
-  <div id="menu_module_apt">
-   <button data-location="dashboard_course_in_progress_atp">${_("In progress")}</button>
-   <button data-location="dashboard_course_to_do">${_("To do")}</button>
-   <button data-location="dashboard_course_finished">${_("Completed")}</button>
-   <!--
-   <button id="cat_all" data-location="all">${_("All")}</button>
-   -->
-  </div>
-</div>
-
-<div id="menu-categories" class="menu-item-atp" data-location="menu_cat_apt">${_("My Categories")} <span class="arrow_button"></span>
-  <div id="menu_cat_apt">
-   <button id="cat_fond" data-location="fundamental">${_("Fundamentals")}</button>
-   <button id="cat_solu" data-location="oursolutions">${_("Our solutions")}</button>
-   <button id="cat_dem_com" data-location="salesapproach">${_("Business approach")}</button>
-   <button id="cat_reg" data-location="regulatory">${_("Regulatory")}</button>
-   <button id="cat_all" data-location="all">${_("All")}</button>
-  </div>
-</div>
-
-
-<span style="display:block;clear:both;" id="nav_replace_after"></span>
-% endif
-% if not "/dashboard" in request.path:
-<!--
-<a
-  % if user.is_authenticated():
-    href="/u/${request.user.username}"
-  % else:
-    href=""
-  % endif
-id="sub_to_dashboard_account"><img src="${static.url('images/man-user.png')}" class="svg"/><span><div id="account_user_action_array"></div>${_('My account')}</span></a>
--->
-
-<a href="/dashboard" class="sub_picto sub_other_menu" id="sub_to_dashboard" >
-<!--
-  <img src="${static.url('images/home.png')}" style="height:40px; margin-top: 20px;"/>
--->
-<span>${_("Home")}</span>
-</a>
-</div>
-% endif
 <span style="display:block;clear:both;"></span>
 </section>
 </section>
@@ -224,14 +286,17 @@ id="sub_to_dashboard_account"><img src="${static.url('images/man-user.png')}" cl
 /* Gestion du responsive sur la nav */
   $('#atp_menu_mobile').click(function(){
     if($("#right-menu").hasClass('block')){
-      $("#profile-submenu, #menu_module_apt, #menu_cat_apt").removeClass('block');
+      $("#menu_module_apt, #menu_cat_apt").removeClass('block');
     }
     $("#right-menu").toggleClass('block');
+    $('#profile-submenu').removeClass('block');
   })
 
   $('#profile_menu').click(function(){
     if($(window).width() < 1022){
       $("#profile-submenu").toggleClass('block');
+      $("#right-menu").removeClass('block');
+      $("#menu_module_apt, #menu_cat_apt").removeClass('block');
     }
   })
   $('#menu-modules').click(function(){

@@ -30,15 +30,29 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
 <%
 stat_dashboard = static.get_value('css_overrides_stat_dashboard')
 
-logo_url=configuration_helpers.get_value('logo_couleur')
-if logo_url is None:
-  logo_url = '/static/images/logo.png'
+if configuration_helpers.get_value('logo_couleur'):
+  logo_url=configuration_helpers.get_value('logo_couleur')
+else:
+  if configuration_helpers.get_value('logo'):
+    configuration_helpers.get_value('logo')
+  else:
+    logo_url = '/static/images/logo.png'
 
 target = course_id.split('+')
 %>
 
 <style>
-
+.img_fundamentals {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 70%;
+  height: 120px;
+  z-index: 2;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 #nav_block_stat_question {
   position: relative;
 }
@@ -147,6 +161,20 @@ target = course_id.split('+')
   float: none;
  }
 }
+#logo-container-stat{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  height: 100px;
+}
+#logo-container-stat img{
+  max-width: 100%!important;
+  max-height: 100%!important;
+  margin: 0px!important;
+  height: auto!important;
+  width: auto!important;
+}
 </style>
 
 <div id="contenair">
@@ -160,7 +188,7 @@ target = course_id.split('+')
       <div id="course_img">
         <img src="${overview.image_urls['small']}" />
         <div id="categorie_info">
-          ${_(course.categ)}
+          ${_(course.categ.replace(" ",""))}
         </div>
         <div class="img_${course.categ.lower().replace(' ','')}"></div>
       </div>
@@ -232,7 +260,9 @@ target = course_id.split('+')
         <div id="cellule_stat">
           <div class="cellule_stat" id="cellule_stat_first">
             <p>${_('Network')}</p>
-            <img src="${logo_url}" />
+            <div id="logo-container-stat">
+              <img src="${logo_url}" />
+            </div>
           </div>
           <div class="cellule_stat">
             <p>${_('Target')}</p>
@@ -451,10 +481,10 @@ var stat_first = '${_("First name")}';
 var stat_last = '${_("Last name")}';
 console.log(stat_email+' '+stat_grade+' '+stat_first+' '+stat_last);
 </script>
-<!--
 <script src="${static.url('js/stat_dashboard.js')}"></script>
--->
+<!--
 <script src="/media/stat/stat_dashboard.js"></script>
+-->
 <!-- action sur le dom -->
 <script>
 function info_p() {

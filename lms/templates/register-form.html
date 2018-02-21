@@ -5,6 +5,19 @@ from django.utils.translation import ugettext as _
 from django_countries import countries
 from student.models import UserProfile
 %>
+<!-- HIDDING FORM FOR AUTO SUBMIT -->
+<div class="overlay"></div>
+<style>
+.overlay{
+    background-color:white;
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0px;
+    left:0px;
+    z-index:1000;
+}
+</style>
 
 <input type="hidden" name="csrfmiddlewaretoken" value="${ csrf_token }">
 

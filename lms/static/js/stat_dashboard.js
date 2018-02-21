@@ -131,7 +131,9 @@ function alignCells() {
 /* function call ajax recuperation de données utilisateur */
 function callUser(username,course_id) {
   $('#inside_user_content').hide();
-  var url = '/courses/'+course_id+'/stat_dashboard/get_grade/'+username;
+  var url = window.location.href;
+  url = url+'/get_grade/'+username+'/';
+  console.log(url);
   $.ajax({
     type: 'GET',
     dataType:'json',
@@ -235,8 +237,17 @@ $("#name_participant").on('keyup', function(event) {
         var length = all_user.length;
         var array_save = [];
         for(i;i<length;i++) {
-          if(all_user[i].indexOf(val) != -1) {
-            array_save.push(all_user[i]);
+          var _user = all_user[i];
+          var _array = _user.values
+          var _id = _user.id
+          for(var c=0;c<_array.length;c++) {
+            if(_array[c].indexOf(val) != -1) {
+              var q = {
+                id: _array[0],
+                value:_array[1]+' - '+_array[2]+' - '+_array[0]
+              }
+              array_save.push(q);
+            }
           }
         }
         var j = 0;
@@ -244,7 +255,8 @@ $("#name_participant").on('keyup', function(event) {
         if(array_length < 11 && array_length > 0) {
           $('#list_participant').html('');
           for(j;j<array_length;j++) {
-            $('#list_participant').append('<span data-username="'+array_save[j]+'">'+array_save[j]+'</span>');
+            console.log(array_save[j]);
+            $('#list_participant').append('<span data-id="'+array_save[j].id+'" >'+array_save[j].value+'</span>');
           }
           $('#list_participant').show();
         }else{
@@ -253,11 +265,11 @@ $("#name_participant").on('keyup', function(event) {
         $('#list_participant').find('span').click(function(){
           var This = $(this);
           var course_id = $('#participant_search').data('courseid');
-          var username = This.data('username');
-          $('#name_participant').attr('value',username);
+          var id = This.data('id');
+          $('#name_participant').attr('value',id);
           $('#list_participant').html('');
           $('#list_participant').attr('style','');
-          callUser(username,course_id);
+          callUser(id,course_id);
         })
       }
     });

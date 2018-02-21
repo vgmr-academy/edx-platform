@@ -22175,6 +22175,15 @@ msgstr "Fondamentaux"
 msgid "fundamentals"
 msgstr "fondamentaux"
 
+msgid "FUNDAMENTAL"
+msgstr "FONDAMENTAUX"
+
+msgid "Fundamental"
+msgstr "Fondamentaux"
+
+msgid "fundamental"
+msgstr "fondamentaux"
+
 msgid "BUSINESS APPROACH"
 msgstr "DÉMARCHE COMMERCIALE"
 
@@ -23025,3 +23034,27 @@ msgstr "Validé"
 
 msgid "Not validated"
 msgstr "Non validé"
+
+msgid "SEARCH IN MY MODULES"
+msgstr "RECHERCHER DANS MES MODULES"
+
+msgid "Search in a module"
+msgstr "Rechercher un module"
+
+msgid "SEARCH IN MY CAMPAIGNS"
+msgstr "RECHERCHER DANS MES CAMPAGNES"
+
+msgid "Search for a campaign"
+msgstr "Rechercher une campagne"
+
+msgid "No match! Please, try a new search"
+msgstr "Aucun résultat ! Veuillez effectuer une nouvelle recherche"
+
+msgid "New search"
+msgstr "Nouvelle recherche"
+
+msgid "results found in your modules"
+msgstr "résultats trouvés parmi vos modules"
+
+msgid "results found in your campaigns"
+msgstr "résultats trouvés parmi vos campagnes"

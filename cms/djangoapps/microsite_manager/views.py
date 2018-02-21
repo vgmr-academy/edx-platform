@@ -74,3 +74,9 @@ def update_microsite(request, microsite_id=None):
         return microsite_manager().manage_microsite_data(request, microsite_id)
     elif request.method == 'POST':
         return microsite_manager().update_microsite_data(request, microsite_id)
+
+@login_required
+@ensure_csrf_cookie
+@require_global_staff
+def disclaimer_microsite(request, microsite_key):
+    return microsite_manager().microsite_disclaimer_update(request, microsite_key)

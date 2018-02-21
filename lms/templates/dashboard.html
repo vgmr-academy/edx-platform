@@ -474,25 +474,25 @@ url_image = random.choice(url_array)
 </style>
 
 % for category in list_category :
-  %if category =="Fundamental" :
+  %if category.lower() =="fundamentals":
     <style>
       #cat_fond{
         display: block;
       }
     </style>
-  %elif category =="Our solutions" :
+  %elif category.lower() =="our solutions" :
     <style>
       #cat_solu{
         display: block;
       }
     </style>
- %elif category =="Sales approach" :
+ %elif category.lower() =="sales approach" :
    <style>
      #cat_dem_com{
        display: block;
      }
    </style>
- %elif category =="Regulatory" :
+ %elif category.lower() =="regulatory" :
    <style>
      #cat_reg{
        display: block;
@@ -525,13 +525,13 @@ url_image = random.choice(url_array)
   </div>
   <!-- module 2 -->
               <div class="dashboard_tuto_atp">
-    <h3>LES MODULES PEDAGOGIQUES</h3>
+    <h3>LES MODULES PÉDAGOGIQUES</h3>
     <p class="modules-subtext">Retrouvez toutes les informations liées aux modules pédagogiques sur les vignettes ci-dessous : titre du module, sa catégorie, temps nécessaire à sa réalisation, s’il est obligatoire ou facultatif et les formats qui le composent.</p>
     <img src="${static.url('images/cartes.png')}" id="img_dashboard_tuto_cartes"/>
               </div>
   <!-- module 3 -->
               <div class="dashboard_tuto_atp">
-    <h3>CATEGORIES DES MODULES PEDAGOGIQUES</h3>
+    <h3>CATÉGORIES DES MODULES PÉDAGOGIQUES</h3>
     <p>Vos modules de formation sont classés en 4 catégories:</p>
     <ul>
       <li id="dashboard_tuto_atp_1">
@@ -548,7 +548,7 @@ url_image = random.choice(url_array)
         <p>Zoom sur l’accompagnement des clients et les techniques commerciales.</p>
       </li>
       <li id="dashboard_tuto_atp_4">
-        <h4>RÈGLEMENTAIRE:</h4>
+        <h4>RÉGLEMENTAIRE:</h4>
         <p>Zoom sur le cadre légal et règlementaire.</p>
       </li>
       <span style="clear:left; display: block;width:100%;height:0;padding:0;margin:0;"></span>
@@ -828,11 +828,45 @@ $('#close_pop_up').click(function(){
   text-align: center;
 }
 #dashboard_tma #dashboard_header_atp{
-  min-height: 200px!important;
+  height: 200px!important;
+  box-sizing: border-box!important;
+  width: 100%!important;
+}
+#dashboard_tuto_atp_1, #dashboard_tuto_atp_2,#dashboard_tuto_atp_3,#dashboard_tuto_atp_4{
+  margin: 0!important;
+  width: 50%!important;
+  float: left!important;
+  box-sizing: border-box!important;
+  margin-bottom: 10px!important;
 }
 </style>
 <script>
-
+function add_class() {
+  var Width = window.screen.width;
+  if(Width <= 1600) {
+    $( ".atp_course_item:nth-child(4)" ).addClass('atp_hide_cards');
+  }else{
+    $( ".atp_course_item:nth-child(4)" ).removeClass('atp_hide_cards');
+  }
+  if(Width <= 1196) {
+    $( ".atp_course_item:nth-child(3)" ).addClass('atp_hide_cards');
+  }else{
+    $( ".atp_course_item:nth-child(3)" ).removeClass('atp_hide_cards');
+  }
+  if(Width <= 814) {
+    $( ".atp_course_item:nth-child(2)" ).addClass('atp_hide_cards');
+  }else{
+    $( ".atp_course_item:nth-child(2)" ).removeClass('atp_hide_cards');
+  }
+  $('.atp_dashboard_active_course').each(function(){
+      var _s = $(this).text().substring(0,1);
+      if(_s == '-') {
+        $(this).parent().find('.atp_hide_cards').show();
+      }else{
+        $(this).parent().find('.atp_hide_cards').attr('style','');
+      }
+  })
+}
 function button_views() {
   $('.atp_dashboard_active_course').each(function(){
 
@@ -863,12 +897,13 @@ function button_views() {
     };
   });
 }
-
 $(document).ready(function(){
   button_views();
+  add_class()
 })
 $(window).resize(function(){
   button_views();
+  add_class()
 })
 
 </script>

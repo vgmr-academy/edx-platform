@@ -225,4 +225,3 @@ urlpatterns += (
     url(r'^admin-microsite/(?P<microsite_id>[0-9]+)/$','microsite_manager.views.admin_microsite', name='admin-microsite'),
     url(r'^add_microsite_admin/(?P<microsite_key>[A-Za-z0-9]+)/$','microsite_manager.views.microsite_admin_manager', name='microsite_admin_manager'),
 )
-
