@@ -210,6 +210,74 @@ courseware = static.get_value('css_overrides_courseware')
       text-align: left;
     }
   }
+/* quiz customisation */
+.wrap-instructor-info {
+  display: none;
+}
+.xblock .xblock h3.unit-title {
+  text-align:center;
+  font-weight:bold;
+  font-size: 40px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+}
+.problem-header {
+  cursor: pointer;
+}
+.sequence #seq_content .is_overflow {
+  height: 25px;
+  overflow: hidden;
+  padding-bottom: 0;
+}
+.problem-action-buttons-wrapper,.problem-progress {
+  display: none !important;
+}
+.position_atp {
+  position: relative;
+}
+.dropdown_atp {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 10;
+  color: blue;
+  text-align: right;
+  width: 20px;
+}
+.arrow-bottom,.arrow-up {
+  display: inline-block;
+
+}
+.arrow-bottom:before, .arrow-up:before {
+    position: relative;
+    content: "";
+    display: inline-block;
+    width: 0.4em;
+    height: 0.4em;
+    border-right: 0.2em solid #05144d;
+    border-top: 0.2em solid #05144d;
+    margin-right: 0.5em;
+    margin-bottom: 5px;
+    transform: rotate(315deg);
+}
+.arrow-bottom:before {
+    transform: rotate(135deg);
+}
+.xblock .xblock h3{
+  text-transform: capitalize;
+  font-size: 23px;
+}
+.indicator-container,.explanation-title {
+  display: none !important;
+}
+.xmodule_display.xmodule_CapaModule div.problem .action .submit-attempt-container .submit,.xmodule_display.xmodule_CapaModule div.problem .action .submit-attempt-container .submit:hover,.xmodule_display.xmodule_CapaModule div.problem .action .submit-attempt-container .submit:focus {
+  padding-top: 2px;
+  padding-bottom:2px;
+  border-radius: 11px;
+  color: #fff;
+  background-color: #05144d;
+  border-color: #05144d !important;
+}
 </style>
 <div id="tma_course_top">
     <div id="tma_course_ariane">
@@ -512,3 +580,81 @@ $(window).resize(function(){
   ariane_height();
 })
 </script>
+
+<!-- bouton de nav -->
+<style>
+#sub_nav {
+  width: auto;
+  height: auto;
+  position: fixed;
+  right: 10px;
+  bottom: 35px;
+  display: inline-block;
+  background-color: #0C1C49;
+}
+#nav_button,#sub_context {
+  display: inline-block;
+}
+.full_width {
+  width: 100% !important;
+}
+.is_none_atp {
+  display: none !important;
+}
+.is_hidden {
+  visibility: hidden;
+}
+.border_radius_left {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+.border_radius_right {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.sequence-bottom {
+  visibility: hidden;
+}
+#sub_nav button,#sub_nav button:hover,#sub_nav button:focus {
+  color: #fff !important;
+  background-color: transparent;
+  border: none;
+  border-radius: 0px;
+  text-shadow: none !important;
+  box-shadow: none;
+  font-size: 18px;
+  height: 37px;
+  line-height: 23px;
+  vertical-align: middle;
+  outline: none !important;
+}
+#nav_button button,#zoom {
+  min-width: 80px;
+}
+#sub_nav button:hover {
+  color: rgb(49, 174, 238) !important;
+}
+.previous_title_nav span {
+  margin-left: 15px;
+}
+.next_title_nav span {
+  margin-right: 15px;
+}
+#separator {
+  min-width: 2px !important;
+  width: 2px !important;
+  padding: 0;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  height: 23px !important;
+  display: inline-block;
+  background-color: rgb(49, 174, 238) !important;
+}
+.svg-inline--fa.fa-w-16{
+  height: 23px !important;
+}
+#full {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+</style>

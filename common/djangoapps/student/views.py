@@ -783,9 +783,13 @@ def dashboard(request):
         course_id = enrollment.course_overview.id
         user_id = request.user.id
         course_tma = get_course_by_id(enrollment.course_id)
-	course_grade_factory = CourseGradeFactory().create(request.user, course_tma)
-        passed = course_grade_factory.passed
-        percent = course_grade_factory.percent
+	try:
+	    course_grade_factory = CourseGradeFactory().create(request.user, course_tma)
+            passed = course_grade_factory.passed
+            percent = course_grade_factory.percent
+	except:
+	    passed = False
+	    percent = 0
         course_progression = get_overall_progress(user_id,course_id)
         #_start = int(enrollment.course_overview.start.strftime("%s"))
         try:
@@ -797,44 +801,24 @@ def dashboard(request):
         if _end > 0 and _end < _now:
             _progress = False
 	q['passed'] = passed
-	q['percent'] = percent 
-        q['atp_rank'] = "cours"
-        q['course_about'] = 0
-        q['show_courseware_link'] = (enrollment.course_id in show_courseware_links_for)
-        q['cert_status'] = cert_statuses.get(enrollment.course_id)
-        q['can_unenroll'] = (not q['cert_status']) or q['cert_status'].get('can_unenroll')
-        q['credit_status'] = _credit_statuses(user, course_enrollments).get(enrollment.course_id)
-        q['show_email_settings'] = (enrollment.course_id in show_email_settings_for)
-        q['course_mode_info'] = course_mode_info.get(enrollment.course_id)
-        q['show_refund_option'] = (enrollment.course_id in show_refund_option_for)
-        q['is_paid_course'] = (enrollment.course_id in enrolled_courses_either_paid)
-        q['is_course_blocked'] = (enrollment.course_id in block_courses)
-        q['course_verification_status'] = verify_status_by_course.get(enrollment.course_id, {})
-        q['course_requirements'] = courses_requirements_not_met.get(enrollment.course_id)
-        q['course_key'] = enrollment.course_id
-        q['duration'] = CourseDetails.fetch(q['course_key']).effort
+	q['percent'] = percent * 100
+        q['course_id'] = str(enrollment.course_id)
+        q['duration'] = CourseDetails.fetch(enrollment.course_id).effort
         q['required'] = course_tma.is_required_atp
         q['content_data'] = course_tma.content_data
         q['category'] = course_tma.categ
-        q['course_overview'] = enrollment.course_overview
-        q['enrollment'] = enrollment
+	q['course_img'] = enrollment.course_overview.image_urls['small']
+	q['display_name_with_default'] = enrollment.course_overview.display_name_with_default
         q['course_progression'] = course_progression
-        q['dashboard_index'] = dashboard_index
 	#list category
 	if not course_tma.categ in list_category:
 	    list_category.append(course_tma.categ)
 	#end list category
         if course_progression > 0 and course_progression < 100 and passed == False and _progress == True:
-          compteur_progress = compteur_progress + 1
-          q['compteur'] = compteur_progress
           progress_courses.append(q)
         elif course_progression == 100 or passed or _progress == False:
-          compteur_finish = compteur_finish + 1
-          q['compteur'] = compteur_finish
           finish_courses.append(q)
         elif course_progression == 0 and _progress == True:
-          compteur_start = compteur_start + 1
-          q['compteur'] = compteur_start
           start_course.append(q)
     #new user popup
     is_new_user = False

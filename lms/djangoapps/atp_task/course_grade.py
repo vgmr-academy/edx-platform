@@ -4,6 +4,7 @@ import os.path
 import os
 import time
 import base64
+from io import BytesIO
 
 from opaque_keys.edx.keys import CourseKey
 
@@ -39,7 +40,7 @@ class course_grade():
 		self.course_id = course_id
 		self.course_key = course_key
 		self.request = request
-		
+
 	def get_titles(self):
 
 		if self.course_key is None:
@@ -80,7 +81,7 @@ class course_grade():
 			pass
 
 		studentmodule = StudentModule.objects.raw("SELECT id,course_id,module_id FROM courseware_studentmodule WHERE course_id = %s AND max_grade IS NOT NULL AND grade <= max_grade GROUP BY module_id ORDER BY created", [self.course_id])
-		
+
 		title = []
 
 		for n in studentmodule:
@@ -88,7 +89,7 @@ class course_grade():
 			usage_key = n.module_state_key
 			_current = get_blocks(self.request,usage_key,depth='all',requested_fields=['display_name'])
 			root = _current['root']
-				
+
 			unit_name = ''
 
 			for over in blocks_overviews:
@@ -131,7 +132,7 @@ class course_grade():
 		log.warning("Start Task grade reports course_id : "+str(self.course_id) )
 		course_key = CourseKey.from_string(self.course_id)
 		course = get_course_by_id(course_key)
-		course_enrollement = CourseEnrollment.objects.filter(course_id=course_key) 
+		course_enrollement = CourseEnrollment.objects.filter(course_id=course_key)
 
 		#prepare xls
 		header = [
@@ -146,7 +147,7 @@ class course_grade():
 		header.append('total grade (in %)')
 
 		filename = '{}_grades_reports.xls'.format(self.course_id).replace('+','_')
-		filepath = '/edx/var/edxapp/grades/'+filename
+
 		wb = Workbook(encoding='utf-8')
 		sheet = wb.add_sheet('Users')
 
@@ -202,32 +203,33 @@ class course_grade():
 
 			sheet.write(j, k, final_grade)
 
-		wb.save(filepath)
+		output = BytesIO()
+		wb.save(output)
+		_files_values = output.getvalue()
 
-		log.warning("filepath grade reports course_id : "+str(filepath))
 		log.warning("End Task grade reports course_id : "+str(self.course_id))
 
 
 		#sending mail
-		log.warning("send grade reports course_id : "+str(filepath))
+		log.warning("send grade reports course_id : "+str(filename))
 		log.warning("email : "+str(sended_email))
 		subject = "{} grades report".format(course.display_name_with_default_escaped)
 		text_content = "Attached, {} grades reports in xls.".format(course.display_name_with_default_escaped)
 		from_email=configuration_helpers.get_value('email_from_address', settings.DEFAULT_FROM_EMAIL)
 		to = sended_email
-		mimetype='application/vnd.ms-excel' 
+		mimetype='application/vnd.ms-excel'
 		fail_silently=False
-		_data = open(filepath, 'r').read()
-		#_encoded = base64.b64encode(wb) 
+		_data = _files_values
+		#_encoded = base64.b64encode(wb)
 
 		_email = EmailMessage(subject, text_content, from_email, [to])
 		_email.attach(filename, _data, mimetype=mimetype)
 		_email.send(fail_silently=fail_silently)
 
-		log.warning("end send grade reports course_id : "+str(filepath))
+		log.warning("end send grade reports course_id : "+str(filename))
 
 		context = {
-			"filepath" : filepath
+			"filename" : filename
 		}
 
 		return context
@@ -260,10 +262,4 @@ class course_grade():
 		response = HttpResponse(_content, content_type="application/vnd.ms-excel")
 		response['Content-Disposition'] = "attachment; filename="+filename
 		os.remove(full_path)
-		return response			
-
-
-
-
-	 
-			
+		return response

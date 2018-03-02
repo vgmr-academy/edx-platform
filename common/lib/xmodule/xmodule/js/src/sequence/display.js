@@ -219,11 +219,11 @@
                 }
                 course_content.css('position','absolute');
                 course_content.css('right','-100%');
-  		course_content.animate({'right':'0'},1500,function(){
-    		 course_content.attr('style','');
-    		 accordion.attr('style','');
-    		 wrapper.attr('style','');
-  	        });
+  		          course_content.animate({'right':'0'},1500,function(){
+              		 course_content.attr('style','');
+              		 accordion.attr('style','');
+              		 wrapper.attr('style','');
+  	            });
 	        // TMA ATP COURSE SLIDE
             }
         };

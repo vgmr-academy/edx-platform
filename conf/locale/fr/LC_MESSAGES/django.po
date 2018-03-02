@@ -2,7 +2,7 @@
 # edX translation file.
 # Copyright (C) 2016 EdX
 # This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
-# 
+#
 # Translators:
 # anaseha <anaselhadjamor@gmail.com>, 2014
 # anaseha <anaselhadjamor@gmail.com>, 2014
@@ -78,7 +78,7 @@
 # edX translation file.
 # Copyright (C) 2016 EdX
 # This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
-# 
+#
 # Translators:
 # Bertrand Marron <bertrand.marron@gmail.com>, 2014
 # Encolpe Degoute <inactive+encolpe@transifex.com>, 2013
@@ -120,7 +120,7 @@
 # edX translation file
 # Copyright (C) 2016 edX
 # This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
-# 
+#
 # Translators:
 # SALHI Aissam <ais.salhy@gmail.com>, 2014
 # Bertrand Marron <bertrand.marron@gmail.com>, 2013-2015
@@ -191,7 +191,7 @@
 # edX translation file
 # Copyright (C) 2016 edX
 # This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
-# 
+#
 # Translators:
 # Alexandre Armougom <aav974@hotmail.fr>, 2016
 # Bertrand Marron <bertrand.marron@gmail.com>, 2013-2015
@@ -237,7 +237,7 @@
 # edX translation file
 # Copyright (C) 2016 edX
 # This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
-# 
+#
 # Translators:
 # Bertrand Marron <bertrand.marron@gmail.com>, 2014
 # Christopher Castermane <christopher.castermane@student.uclouvain.be>, 2014
@@ -6327,6 +6327,7 @@ msgstr "Email"
 #: lms/djangoapps/instructor/views/api.py
 #: lms/djangoapps/instructor_task/tasks_helper.py
 #: lms/templates/courseware/course_about.html
+#: cms/templates/index.html
 msgid "Language"
 msgstr "Langue"
 
@@ -19797,6 +19798,14 @@ msgid "New Library"
 msgstr "Nouvelle Bibliothèque"
 
 #: cms/templates/index.html
+msgid "New module"
+msgstr "Nouveau module"
+
+#: cms/templates/index.html
+msgid "New microsite"
+msgstr "Nouveau microsite"
+
+#: cms/templates/index.html
 msgid "New Program"
 msgstr ""
 
@@ -22455,8 +22464,8 @@ msgid "My Modules"
 msgstr "Mes Modules"
 
 #: cms/templates/index.html
-msgid "WELCOME TO YOUR TRAINING MODULES MANAGEMENT INTERFACE"
-msgstr "BIENVENUE SUR VOTRE INTERFACE DE GESTION DES MODULES DE FORMATION"
+msgid "Welcome to your training modules management interface"
+msgstr "Bienvenue sur votre interface de gestion des modules de formation"
 
 #: cms/templates/index.html
 msgid "You can browse within two separate universes"
@@ -22476,10 +22485,10 @@ msgstr "MINI SITES"
 
 #: cms/templates/index.html
 msgid "SCHEDULED TRAINING CAMPAIGNS"
-msgstr "CAMPAGNES PROGRAMMEES" 
+msgstr "CAMPAGNES PROGRAMMEES"
 
 #: cms/templates/index.html
-msgid "Manage my campaign" 
+msgid "Manage my campaign"
 msgstr "Administrer ma campagne"
 
 #: cms/templates/index.html
@@ -22491,30 +22500,60 @@ msgid "Invite participants"
 msgstr "Inviter des participants"
 
 #: cms/templates/index.html
-msgid "IN PROGRESS TRAINING CAMPAIGNS"
-msgstr "CAMPAGNES EN COURS" 
+msgid "In progress training campaigns"
+msgstr "Campagnes en cours"
 
 #: cms/templates/index.html
 msgid "To access statistics, please click on"
 msgstr "Pour accéder aux statistiques, veuillez cliquer sur"
 
 #: cms/templates/index.html
-msgid "COMPLETED TRAINING CAMPAIGNS" 
+msgid "COMPLETED TRAINING CAMPAIGNS"
 msgstr "CAMPAGNES TERMINÉES"
 
 #: cms/templates/index.html
-msgid "The following training campaigns have not been launched yet (starting date not exceeded).To modify starting/ending date, please click on" 
+msgid "The following training campaigns have not been launched yet (starting date not exceeded).To modify starting/ending date, please click on"
 msgstr "Les campagnes de formation suivantes n’ont pas encore été lancées (date de début non dépassée). Pour modifier les dates de début/fin, veuillez cliquer sur"
 
 #: cms/templates/index.html
-msgid "The following training campaigns have not been launched yet (starting date not exceeded). To modify ending date, please click on" 
-msgstr "Les campagnes de formation suivantes ont été lancées. Pour modifier la date de fin, veuillez cliquer sur" 
+msgid "The following training campaigns have not been launched yet (starting date not exceeded). To modify ending date, please click on"
+msgstr "Les campagnes de formation suivantes ont été lancées. Pour modifier la date de fin, veuillez cliquer sur"
 
 #: cms/templates/index.html
 msgid "The following training campaigns are completed (ending date is exceeded).To access statistics, please click on"
 msgstr "Les campagnes de formation suivantes sont terminées. Pour accéder aux statistiques des campagnes de formation passées, cliquez sur"
 
 #: cms/templates/index.html
+msgid "The following training campaigns have not been launched yet (starting date not exceeded)."
+msgstr "Les campagnes de formation suivantes n’ont pas encore été lancées (date de début non dépassée)."
+
+#: cms/templates/index.html
+msgid "To launch your campaign, please click on "
+msgstr "Pour lancer la campagne de formation, veuillez cliquer sur "
+
+#: cms/templates/index.html
+msgid "and set up starting date at today."
+msgstr " et configurer la date de début à ce jour."
+
+
+#: cms/templates/index.html
+msgid "To modify starting/ending date, please click on"
+msgstr "Pour modifier la date de début ou de fin, veuillez cliquer sur"
+
+#: cms/templates/index.html
+msgid "To modify ending date, please click on"
+msgstr "Pour modifier la date de fin, veuillez cliquer sur"
+
+#: cms/templates/index.html
+msgid "To access statistics, please click on."
+msgstr "Pour accéder aux statistiques des campagnes de formation passées, cliquez sur"
+
+#: cms/templates/index.html
+msgid "The following training campaigns are completed (ending date is exceeded)."
+msgstr "Les campagnes de formation suivantes sont terminées."
+
+#: cms/templates/index.html
+#lms stat.html
 msgid "Statistics"
 msgstr "Statistiques"
 
@@ -22528,7 +22567,7 @@ msgstr "Mes campagnes"
 
 #: cms/templates/index.html
 msgid "You have at your disposal a library of training modules made available by Amundi. Select the module of your choice and launch the associated training campaign."
-msgstr "Vous avez à votre diposition une bibliothèque de modules de formation mis a disposition par Amundi. Sélectionnez le module de votre choix et lancez la campagne de formation associée."
+msgstr "Vous avez à votre disposition une bibliothèque de modules de formation mis a disposition par Amundi. Sélectionnez le module de votre choix et lancez la campagne de formation associée."
 
 #: cms/templates/manage_course.html
 msgid "Provide all the information required to launch your training campaign: starting/ending date, minimum percentage of success required, and campaign type."
@@ -22719,6 +22758,10 @@ msgid "Completed training campaigns:"
 msgstr "Dans mes campagnes terminées:"
 
 #: cms/templates/index.html
+msgid "Completed training campaigns"
+msgstr "Campagnes terminées"
+
+#: cms/templates/index.html
 msgid "Access a training modules library provided by Amundi"
 msgstr "Accédez à la blibliothèque de modules de formation mise à disposition par Amundi"
 
@@ -22891,8 +22934,16 @@ msgid "Specify unique ID and target"
 msgstr "Préciser l’identifiant unique et la cible"
 
 #cms create_course.html
+msgid "Specify an unique campaign title as long as a target for your training campaign"
+msgstr "Indiquer un intitulé ainsi que la cible de cette campagne de formation"
+
+#cms create_course.html
 msgid "Unique ID"
 msgstr "Identifiant unique"
+
+#cms create_course.html
+msgid "Campaign title (unique id)"
+msgstr "Intitulé de la campagne (identifiant unique)"
 
 #cms create_course.html
 msgid "Rules for unique ID and target : no space, no punctuation, no special characters"
@@ -23012,8 +23063,14 @@ msgstr "nos solution"
 msgid "To create your training campaign, you have to specify an unique ID and the target of your training campaign. Please, note that the target wording will be indicated in the statistics of this training campaign."
 msgstr "Pour créer votre campagne de formation, vous devez préciser un identifiant unique et la cible de cette campagne de formation. Veuillez noter que ces données seront indiquées  dans les statistiques de cette campagne"
 
-msgid "created training campaigns"
-msgstr "campagnes crées"
+msgid "To create your training campaign, you have to specify an unique campaign title as long as a target for your training campaign."
+msgstr "Pour créer votre campagne de formation, vous devez indiquer un intitulé de campagne unique ainsi que la cible de cette campagne de formation."
+
+msgid "Please, note that these will be indicated in the statistics dashboard of this training campaign."
+msgstr "Veuillez noter que ces données seront indiquées dans les statistiques de cette campagne."
+
+msgid "Created training campaigns"
+msgstr "Campagnes créées"
 
 msgid "The training campaign is over."
 msgstr "La campagne de formation est terminée."

@@ -15,6 +15,7 @@ from opaque_keys.edx.keys import CourseKey
 from openedx.core.djangoapps.models.course_details import CourseDetails
 from course_progress.helpers import get_overall_progress
 from lms.djangoapps.grades.new.course_grade import CourseGradeFactory
+from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 import random
 
 from django.utils.translation import LANGUAGE_SESSION_KEY
@@ -32,6 +33,11 @@ first_course_name = ''
 
 <!--MODIF AURELIEN-->
 <style>
+/*
+#down_apt_nav {
+  display: none !important;
+}
+*/
 #dashboard_header_content h1 span:last-child, #dashboard_header_content h1 span:first-child{
 font-size:50px !important;
 }
@@ -54,39 +60,562 @@ font-size:50px !important;
 
 </style>
 
+<!-- styles more modules -->
+<!-- styles more modules -->
+<!-- styles more modules -->
+<!-- styles more modules -->
+<!-- styles more modules -->
+<!-- styles more modules -->
+<%block name="pagetitle">${_("Dashboard")}</%block>
+<%block name="bodyclass">view-dashboard is-authenticated</%block>
 
+<%block name="header_extras">
+
+% for template_name in ["donation"]:
+<script type="text/template" id="${template_name}-tpl">
+  <%static:include path="dashboard/${template_name}.underscore" />
+</script>
+% endfor
+
+% for template_name in ["dashboard_search_item", "dashboard_search_results", "search_loading", "search_error"]:
+<script type="text/template" id="${template_name}-tpl">
+    <%static:include path="search/${template_name}.underscore" />
+</script>
+% endfor
+</%block>
+
+<%block name="js_extra">
+  <script src="${static.url('js/commerce/credit.js')}"></script>
+  <%static:js group='dashboard'/>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      edx.dashboard.legacy.init({
+        dashboard: "${reverse('dashboard') | n, js_escaped_string}",
+        signInUser: "${reverse('signin_user') | n, js_escaped_string}",
+        changeEmailSettings: "${reverse('change_email_settings') | n, js_escaped_string}"
+      });
+    });
+  </script>
+  % if settings.FEATURES.get('ENABLE_DASHBOARD_SEARCH'):
+    <%static:require_module module_name="js/search/dashboard/dashboard_search_factory" class_name="DashboardSearchFactory">
+        DashboardSearchFactory();
+    </%static:require_module>
+  % endif
+  % if redirect_message:
+    <%static:require_module module_name="js/views/message_banner" class_name="MessageBannerView">
+        var banner = new MessageBannerView({urgency: 'low', type: 'warning'});
+        $('#content').prepend(banner.$el);
+        banner.showMessage(${redirect_message | n, dump_js_escaped_json})
+    </%static:require_module>
+  % endif
+</%block>
+<!-- GEOFFREY -->
+<!-- import custom css script -->
+<%
+dashboard = static.get_value('css_overrides_dashboard')
+%>
+% if not dashboard:
+  <link rel="stylesheet" type="text/css" href="${static.url('css/dashboard.css')}">
+% else:
+  <link rel="stylesheet" type="text/css" href="${static.url(dashboard)}" />
+% endif
+<!-- import custom js script -->
+<script>
+// load courses values
+var courses_atp = {
+   start_courses:${dump_js_escaped_json(start_course) | n, decode.utf8},
+   progress_courses:${dump_js_escaped_json(progress_courses) | n, decode.utf8},
+   end_courses:${dump_js_escaped_json(finish_courses) | n, decode.utf8}
+}
+// load course status
+var course_status = {
+  start_courses:false,
+  progress_courses:false,
+  end_courses:false
+}
+
+var course_category = '';
+</script>
+<!--
+<script src="/media/studio/dashboard_atp.js"></script>
+-->
+<script src="${static.url('js/dashboard_atp.js')}"></script>
+<!-- platform messages html script -->
+<div class="dashboard-notifications" tabindex="-1">
+    %if message:
+        <div class="dashboard-banner">
+            ${message | n, decode.utf8}
+        </div>
+    %endif
+
+    %if enrollment_message:
+        <div class="dashboard-banner">
+            ${enrollment_message | n,  decode.utf8}
+        </div>
+    %endif
+</div>
+<!-- end -->
+<!-- custom html script -->
+<%
+url_array = []
+url_array.append('images/1collaboration.jpg')
+url_array.append('images/2centrefinancier.jpg')
+url_array.append('images/3connaissance.jpg')
+url_array.append('images/4environement.jpg')
+url_image = random.choice(url_array)
+
+primary_color=configuration_helpers.get_value('primary_color')
+%>
 <style>
-.atp_course_progress .validate {
-  font-weight: normal !important;
-  font-size: 25px;
+#dashboard_header_content button:hover, #dashboard_header_content button{
+  border: none;
+  text-shadow: none;
+  border-radius: 25px;
+  text-transform: uppercase;
+  transition: all .1s linear;
+  box-shadow: 0 0 10px rgba(13,28,76,.1);
+  font-weight: 600;
+  padding: 3px 30px;
+  min-width: 130px;
+  color:white;
+  background-color: ${primary_color};
+  font-size:15px;
 }
-.atp_course_progress .is_red {
-  color: red !important;
-}
-.atp_course_progress .is_green {
-  color: green !important;
-}
-.atp_course_progress .is_primary {
-  /* primary */
-  color: #05144d !important;
-}
-.atp_course_progress .validate_img {
-  height: 30px;
-  width: 30px;
-  margin-top: -10px;
-  margin-right: 4px;
-}
-.atp_course_progress {
-  text-align: center;
-  position: relative;
-  height: auto;
-  line-height: 30px;
-  vertical-align: middle;
+
+#dashboard_header_atp {
+  background-image: url('${static.url(url_image)}');
 }
 </style>
-<!-- styles more modules -->
-<!-- styles more modules -->
-<!-- styles more modules -->
+<!-- course cards css -->
+<!--
+<link rel="stylesheet" type="text/css" href="/media/studio/course_cards.css" />
+-->
+<link rel="stylesheet" type="text/css" href="${static.url('css/course_cards.css')}" />
+
+% for category in list_category :
+  %if category.lower() =="fundamentals":
+    <style>
+      #cat_fond{
+        display: block;
+      }
+    </style>
+  %elif category.lower() =="our solutions" :
+    <style>
+      #cat_solu{
+        display: block;
+      }
+    </style>
+ %elif category.lower() =="sales approach" :
+   <style>
+     #cat_dem_com{
+       display: block;
+     }
+   </style>
+ %elif category.lower() =="regulatory" :
+   <style>
+     #cat_reg{
+       display: block;
+     }
+   </style>
+  %endif
+%endfor
+
+<section id="dashboard_tma">
+	<!-- baniere  -->
+% if LANGUAGE_CODE == 'fr':
+<section id="dashboard_header_atp">
+  <div id="dashboard_header_content">
+    <p>BIENVENUE</p>
+    <!--
+    <div id="logo-amundiacademy">
+      <img src="${static.url('images/logo-amundiacademy.png')}" />
+    </div>
+    -->
+    <p>Accéder à vos modules pédagogiques.</p>
+    <button class="more-boutton tuto_action">En savoir plus</button>
+  </div>
+</section>
+      <!-- tuto  -->
+<section id="dashboard_tuto_atp">
+  <!-- module 1 -->
+  <div class="dashboard_tuto_atp" id="tuto_module_1">
+    <p>Pour suivre un module pédagogique, sélectionnez la vignette de votre choix !</p>
+    <p style="margin-top: 0;margin-bottom: 0;">Chaque module pédagogique est classé dans une catégorie et peut prendre différents formats.</p>
+  </div>
+  <!-- module 2 -->
+              <div class="dashboard_tuto_atp">
+    <h3>LES MODULES PÉDAGOGIQUES</h3>
+    <p class="modules-subtext">Retrouvez toutes les informations liées aux modules pédagogiques sur les vignettes ci-dessous : titre du module, sa catégorie, temps nécessaire à sa réalisation, s’il est obligatoire ou facultatif et les formats qui le composent.</p>
+    <img src="${static.url('images/cartes.png')}" id="img_dashboard_tuto_cartes"/>
+              </div>
+  <!-- module 3 -->
+              <div class="dashboard_tuto_atp">
+    <h3>CATÉGORIES DES MODULES PÉDAGOGIQUES</h3>
+    <p>Vos modules de formation sont classés en 4 catégories:</p>
+    <ul>
+      <li id="dashboard_tuto_atp_1">
+        <h4>FONDAMENTAUX:</h4>
+        <p>Zoom sur les marchés financiers, l’économie et l’investissement.</p>
+      </li>
+      <li id="dashboard_tuto_atp_3">
+        <h4>NOS SOLUTIONS:</h4>
+        <p>Zoom sur les produits et les offres.</p>
+      </li>
+      <span style="clear:left; display: block;width:100%;height:0;padding:0;margin:0;"></span>
+      <li id="dashboard_tuto_atp_2">
+        <h4>DÉMARCHE COMMERCIALE:</h4>
+        <p>Zoom sur l’accompagnement des clients et les techniques commerciales.</p>
+      </li>
+      <li id="dashboard_tuto_atp_4">
+        <h4>RÉGLEMENTAIRE:</h4>
+        <p>Zoom sur le cadre légal et règlementaire.</p>
+      </li>
+      <span style="clear:left; display: block;width:100%;height:0;padding:0;margin:0;"></span>
+    </ul>
+              </div>
+  <!-- module 4 -->
+              <div class="dashboard_tuto_atp last_tuto_atp" style="border-bottom: none;">
+    <h3>FORMATS DES MODULES PEDAGOGIQUES</h3>
+    <p class="modules-subtext">Chaque module pédagogique est composé d’un ou plusieurs formats interactifs et complémentaires : vidéo, quiz de validation des connaissances, serious game, outil de simulation d’investissement en temps réel, documentation commerciale ou publication et infographies.</p>
+    <div class="dashboard_picto_tuto_tma">
+      <div><img src="${static.url('images/video.svg')}" class="svg"/><span>video</span></div>
+      <div><img src="${static.url('images/quiz.svg')}" class="svg"/><span>quiz</span></div>
+      <div><img src="${static.url('images/seriousgame.svg')}" class="svg"/><span>serious game</span></div>
+      <div><img src="${static.url('images/webzine.svg')}" class="svg"/><span>simulation d'investissement</span></div>
+      <div><img src="${static.url('images/pdf.svg')}" class="svg"/><span>pdf</span></div>
+      <div><img src="${static.url('images/testes&images.svg')}" class="svg"/><span>texts & images</span></div>
+      <span style="display:block;clear:left;"></span>
+    </div>
+              </div>
+  <!-- button close -->
+              <div class="dashboard_tuto_atp">
+    <button class="tuto_action"><span>Fermer</span> <span class="arrow-top"></span></button>
+              </div>
+</section>
+%else:
+	<section id="dashboard_header_atp">
+		<div id="dashboard_header_content">
+			<p>Welcome on your training platform</p>
+      <!--
+      <div id="logo-amundiacademy">
+        <img src="${static.url('images/logo-amundiacademy.png')}" />
+      </div>
+      -->
+			<p>Access your training modules</p>
+			<button class="more-boutton tuto_action">More</button>
+		</div>
+	</section>
+        <!-- tuto  -->
+	<section id="dashboard_tuto_atp">
+		<!-- module 1 -->
+		<div class="dashboard_tuto_atp" id="tuto_module_1">
+			<p>To follow a training module, select the card of your choice!</p>
+			<p style="margin-top: 0;margin-bottom: 0;">Each training module is classified into a category and may take different formats.</p>
+		</div>
+		<!-- module 2 -->
+                <div class="dashboard_tuto_atp">
+			<h3>THE TRAINING MODULES</h3>
+			<p class="modules-subtext">Find all the information related to training modules on the cards below: title of the module, category, timing to fulfill the module, if it is mandatory or not and its digital formats.</p>
+			<img src="${static.url('images/cartes.png')}" id="img_dashboard_tuto_cartes"/>
+                </div>
+		<!-- module 3 -->
+                <div class="dashboard_tuto_atp">
+			<h3>CATEGORIES OF THE TRAINING MODULES</h3>
+			<p>Your training modules are classified into 4 categories:</p>
+			<ul>
+				<li id="dashboard_tuto_atp_1">
+					<h4>fundamentals:</h4>
+					<p>Focus on financial markets, economics and investment</p>
+				</li>
+        <li id="dashboard_tuto_atp_3">
+          <h4>our solutions:</h4>
+          <p>Focus on expertise: products and offers</p>
+        </li>
+				<span style="clear:left; display: block;width:100%;height:0;padding:0;margin:0;"></span>
+        <li id="dashboard_tuto_atp_2">
+          <h4>Business approach:</h4>
+          <p>Focus on customer support and sales techniques</p>
+        </li>
+        <li id="dashboard_tuto_atp_4">
+          <h4>regulatory:</h4>
+          <p>Focus on legal and regulatory frameworks</p>
+        </li>
+				<span style="clear:left; display: block;width:100%;height:0;padding:0;margin:0;"></span>
+			</ul>
+                </div>
+		<!-- module 4 -->
+                <div class="dashboard_tuto_atp last_tuto_atp" style="border-bottom: none;">
+			<h3>FORMATS OF THE TRAINING MODULES</h3>
+      <p class="modules-subtext">Each training module is composed of one or more digital formats. Within the module, these formats are combined : video, quiz, serious game, investment game, sales documentation, infography, etc.</p>
+			<div class="dashboard_picto_tuto_tma">
+				<div><img src="${static.url('images/video.svg')}" class="svg"/><span>video</span></div>
+				<div><img src="${static.url('images/quiz.svg')}" class="svg"/><span>quiz</span></div>
+        <div><img src="${static.url('images/seriousgame.svg')}" class="svg"/><span>serious game</span></div>
+        <div><img src="${static.url('images/webzine.svg')}" class="svg"/><span>investment game</span></div>
+        <div><img src="${static.url('images/pdf.svg')}" class="svg"/><span>documentation</span></div>
+        <div><img src="${static.url('images/testes&images.svg')}" class="svg"/><span>infography</span></div>
+				<span style="display:block;clear:left;"></span>
+			</div>
+                </div>
+		<!-- button close -->
+                <div class="dashboard_tuto_atp">
+			<button class="tuto_action"><span>Close</span> <span class="arrow-top"></span></button>
+                </div>
+	</section>
+% endif
+<!--
+  % if _ensure_status:
+  <section id="ariane_dashboard">
+    <a href="https://${settings.CMS_BASE}">< ${_("Access Admin interface")}</a>
+  </section>
+  % endif
+-->
+	<!-- module en cours -->
+	<section  id="dashboard_course_in_progress_atp">
+        	<h2 style="margin-bottom:0px;"><img src="${static.url('images/encours.svg')}" class="svg"/><span>${_("IN PROGRESS TRAINING MODULES")}</span></h2>
+          <div id="ancre-in-progress"></div>
+		<p class="first_p">${_("You have started but haven't completed yet the following training modules. To go on, please click on")} &laquo; ${_("Proceed")} &raquo;.</p>
+        <!-- course listing -->
+<% compteur = 0 %>
+<% first_course_name = '' %>
+% if len(progress_courses) > 0:
+  <ul class="atp_course_listing" id="progress_courses_atp">
+
+  </ul>
+% else:
+  <div class="empty-dashboard-message">
+    <p>${_("No training modules available in this section.")}</p>
+</div>
+% endif
+		<a class="atp_dashboard_active_course is_none_more" data-number="${compteur}" id="more_1" data-cible="progress_courses_atp" data-status="cours">+ ${_("More modules")}</a>
+	</section>
+	<!-- module a realiser -->
+	<section id="dashboard_course_to_do">
+        	<h2 style="margin-bottom:0px;"><img src="${static.url('images/arealiser.svg')}" class="svg"/><span>${_("TO DO TRAINING MODULES")}</span></h2>
+          <div id="ancre-to-do"></div>
+		<p class="first_p" style="margin-top:35px;">${_("You haven't started yet the following training modules. Click on")} &laquo; ${_("More information")} &raquo; ${_("to access the training module description")}.</p>
+	<!-- course listing -->
+<% compteur = 0 %>
+% if len(start_course) > 0:
+  <ul class="atp_course_listing" id="start_courses_atp">
+
+  </ul>
+% else:
+  <div class="empty-dashboard-message">
+    <p>${_("No training modules available in this section.")}</p>
+</div>
+% endif
+<a class="atp_dashboard_active_course is_none_more" data-number="${compteur}" id="more_2" data-cible="start_courses_atp" data-status="invite">+ ${_("More modules")}</a>
+	</section>
+	<!-- module termine -->
+	<section id="dashboard_course_finished">
+		<h2 style="margin-bottom:0px;"><img src="${static.url('images/termine.svg')}" class="svg gradient"/><span>${_("COMPLETED TRAINING MODULES")}</span></h2>
+      <div id="ancre-finished"></div>
+		<p class="first_p" style="margin-top:35px;">${_("You have completed the following training modules. Click on")} &laquo; ${_("More information")} &raquo; ${_("to access your results and scores")}.</p>
+	<!-- course listing -->
+<% compteur = 0 %>
+% if len(finish_courses) > 0:
+  <ul class="atp_course_listing" id="end_courses_atp">
+
+  </ul>
+% else:
+  <div class="empty-dashboard-message">
+    <p>${_("No training modules available in this section.")}</p>
+</div>
+% endif
+<a class="atp_dashboard_active_course is_none_more" data-number="${compteur}" id="more_3" data-cible="end_courses_atp" data-status="finish">+ ${_("More modules")}</a>
+	</section>
+
+
+</section>
+% if is_new_user:
+<div id="pop_up">
+  <p>${_("Welcome on Amundi Academy platform")}!
+  ${_("You successfully registered")}.
+  ${_("The training module")} ${first_course_name} ${_("is available in the section")}
+  ${_("TO DO TRAINING MODULES")}.</p>
+  <button id="close_pop_up">${_("Close")}</button>
+</div>
+<script>
+$('#close_pop_up').click(function(){
+  $('#pop_up').addClass('is_hidden_tma');
+})
+</script>
+% endif
+<style>
+#dashboard_tma section a .img_fundamentals {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 70%;
+  height: 191px;
+  z-index: 2;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.img_fundamentals {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 70%;
+    height: 191px;
+    z-index: 2;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover
+}
+#pop_up p {
+  text-align: justify !important;
+}
+#dashboard_header_content p:first-child {
+  margin-bottom: 3px;
+  font-size: 24px;
+}
+#logo-amundiacademy {
+  margin-top: 10px;
+}
+.center-text{
+  text-align: center;
+}
+#dashboard_tma #dashboard_header_atp{
+  height: 200px!important;
+  box-sizing: border-box!important;
+  width: 100%!important;
+}
+#dashboard_tuto_atp_1, #dashboard_tuto_atp_2,#dashboard_tuto_atp_3,#dashboard_tuto_atp_4{
+  margin: 0!important;
+  width: 50%!important;
+  float: left!important;
+  box-sizing: border-box!important;
+  margin-bottom: 10px!important;
+}
+</style>
+<script>
+function add_class() {
+  var Width = window.screen.width;
+  if(Width <= 1600) {
+    $( ".atp_course_item:nth-child(4)" ).addClass('atp_hide_cards');
+  }else{
+    $( ".atp_course_item:nth-child(4)" ).removeClass('atp_hide_cards');
+  }
+  if(Width <= 1196) {
+    $( ".atp_course_item:nth-child(3)" ).addClass('atp_hide_cards');
+  }else{
+    $( ".atp_course_item:nth-child(3)" ).removeClass('atp_hide_cards');
+  }
+  if(Width <= 814) {
+    $( ".atp_course_item:nth-child(2)" ).addClass('atp_hide_cards');
+  }else{
+    $( ".atp_course_item:nth-child(2)" ).removeClass('atp_hide_cards');
+  }
+  $('.atp_dashboard_active_course').each(function(){
+      var _s = $(this).text().substring(0,1);
+      if(_s == '-') {
+        $(this).parent().find('.atp_hide_cards').show();
+      }else{
+        $(this).parent().find('.atp_hide_cards').attr('style','');
+      }
+  })
+}
+
+
+</script>
+
+<!-- generate courses cards -->
+<script>
+/* html and static templates */
+function template_course_card(atp_course_word,atp_course_link,img_src,course_id,categ_lower,categ,course_progression,picto_dure,duration,required,picto_obiligatoire,display_name_with_default,_end_add,_img_data) {
+  var template = '<li class="atp_course_item" data-categ="'+categ_lower+'"><div class="atp_course_image"><span class="cateogry_text">'+categ+'</span><a href="/courses/'+course_id+'/courseware/"><img src="'+img_src+'" /><div class="img_'+categ_lower+'"></div></a></div><div class="progress_bar_status_up"><div class="progress_bar_status" style="width:'+course_progression+'%;"></div></div><div class="atp_course_info"><div class="atp_course_duration"><div class="inside_atp_left"><img src="'+picto_dure+'" class="svg"/><span>'+duration+'</span><div style="display:block;clear:left;height:0px;"></div></div></div><div class="atp_course_dificulties"><div class="inside_atp"><span>'+required+'</span><img src="'+picto_obiligatoire+'" class="svg"/><div style="display:block;clear:left;height:0px;"></div></div></div></div><div class="atp_course_title"><span>'+display_name_with_default+'</span></div>'+_end_add+'<div class="atp_course_picto">'+_img_data+'</div><div class="atp_course_link"><a href="'+atp_course_link+'">'+atp_course_word+'</a></div></li>';
+  return template
+}
+
+var picto_dure = "${static.url('images/duree.svg')}";
+var picto_obiligatoire = "${static.url('images/obligatoire.svg')}";
+var picto_pdf = "${static.url('images/pdf.svg')}";
+var picto_webzine = "${static.url('images/quiz.svg')}";
+var picto_quiz = "${static.url('images/webzine.svg')}";
+var picto_video = "${static.url('images/video.svg')}";
+var picto_serious_game = "${static.url('images/seriousgame.svg')}";
+var picto_teste_images = "${static.url('images/testes&images.svg')}";
+var picto_success = "${static.url('images/success.png')}";
+var picto_error = "${static.url('images/error.png')}";
+/* end html and static templates */
+
+function course_card(categ,course_id,img_src,course_progression,duration,required,display_name_with_default,content_data,percent,passed,atp_rank,cible) {
+
+  var _img_data = "";
+  var _end_add = "";
+
+  if(content_data.document_pdf){
+    _img_data = _img_data+'<img src="'+picto_pdf+'" class="svg"/>'
+  }
+  if(content_data.webzine){
+    _img_data = _img_data+'<img src="'+picto_webzine+'" class="svg"/>'
+  }
+  if(content_data.quiz){
+    _img_data = _img_data+'<img src="'+picto_quiz+'" class="svg"/>'
+  }
+  if(content_data.video){
+    _img_data = _img_data+'<img src="'+picto_video+'" class="svg"/>'
+  }
+  if(content_data.serious_game){
+    _img_data = _img_data+'<img src="'+picto_serious_game+'" class="svg"/>'
+  }
+  if(content_data.text_image){
+    _img_data = _img_data+'<img src="'+picto_teste_images+'" class="svg"/>'
+  }
+
+  if(required) {
+    required = '${_("mandatory")}';
+  }else{
+    required = '${_("optional")}';
+  }
+
+  var categ_lower = categ.replace(/ /g,'').toLowerCase();
+  var atp_course_link = '';
+  var atp_course_word = '';
+
+  if(atp_rank == "cours") {
+     atp_course_link = '/courses/'+course_id+'/courseware/';
+     atp_course_word = '${_("Proceed")}';
+  }else if(atp_rank == "invite") {
+     atp_course_link = '/courses/'+course_id+'/about';
+     atp_course_word = '${_("More information")}';
+  }else if(atp_rank == "finish") {
+     atp_course_link = '/courses/'+course_id+'/about';
+     atp_course_word = '${_("More information")}';
+     if(passed) {
+      _end_add = '<div class="atp_course_progress"><img src="'+picto_success+'" class="validate_img"/><span class="is_green validate">${_("Validated")} '+percent+'%</span></div>';
+     }else{
+      _end_add = '<div class="atp_course_progress"><img src="'+picto_error+'" class="validate_img"/><span class="is_red validate">${_("Not validated")} '+percent+'%</span></div>';
+     }
+  }
+
+  var course_card_template = template_course_card(
+    atp_course_word,
+    atp_course_link,
+    img_src,
+    course_id,
+    categ_lower,
+    categ,course_progression,
+    picto_dure,duration,
+    required,picto_obiligatoire,
+    display_name_with_default,
+    _end_add,_img_data
+  );
+
+  $(cible).append(course_card_template);
+
+}
+
+</script>
+<!--
+<script src="/media/studio/course_cards.js"></script>
+-->
+<script src="${static.url('js/course_cards.js')}"></script>
+<!-- generate courses cards -->
+
 <style>
 .is_none_more {
   display: none !important;
@@ -160,750 +689,3 @@ font-size:50px !important;
   % endif
 }
 </style>
-<!-- styles more modules -->
-<!-- styles more modules -->
-<!-- styles more modules -->
-<%block name="pagetitle">${_("Dashboard")}</%block>
-<%block name="bodyclass">view-dashboard is-authenticated</%block>
-
-<%block name="header_extras">
-
-% for template_name in ["donation"]:
-<script type="text/template" id="${template_name}-tpl">
-  <%static:include path="dashboard/${template_name}.underscore" />
-</script>
-% endfor
-
-% for template_name in ["dashboard_search_item", "dashboard_search_results", "search_loading", "search_error"]:
-<script type="text/template" id="${template_name}-tpl">
-    <%static:include path="search/${template_name}.underscore" />
-</script>
-% endfor
-</%block>
-
-<%block name="js_extra">
-  <script src="${static.url('js/commerce/credit.js')}"></script>
-  <%static:js group='dashboard'/>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      edx.dashboard.legacy.init({
-        dashboard: "${reverse('dashboard') | n, js_escaped_string}",
-        signInUser: "${reverse('signin_user') | n, js_escaped_string}",
-        changeEmailSettings: "${reverse('change_email_settings') | n, js_escaped_string}"
-      });
-    });
-  </script>
-  % if settings.FEATURES.get('ENABLE_DASHBOARD_SEARCH'):
-    <%static:require_module module_name="js/search/dashboard/dashboard_search_factory" class_name="DashboardSearchFactory">
-        DashboardSearchFactory();
-    </%static:require_module>
-  % endif
-  % if redirect_message:
-    <%static:require_module module_name="js/views/message_banner" class_name="MessageBannerView">
-        var banner = new MessageBannerView({urgency: 'low', type: 'warning'});
-        $('#content').prepend(banner.$el);
-        banner.showMessage(${redirect_message | n, dump_js_escaped_json})
-    </%static:require_module>
-  % endif
-</%block>
-<!-- GEOFFREY -->
-<!-- import custom css script -->
-<%
-dashboard = static.get_value('css_overrides_dashboard')
-%>
-% if not dashboard:
-  <link rel="stylesheet" type="text/css" href="${static.url('css/dashboard.css')}">
-% else:
-  <link rel="stylesheet" type="text/css" href="${static.url(dashboard)}" />
-% endif
-<!-- import custom js script -->
-<script src="${static.url('js/dashboard_atp.js')}"></script>
-
-<!-- platform messages html script -->
-<div class="dashboard-notifications" tabindex="-1">
-    %if message:
-        <div class="dashboard-banner">
-            ${message | n, decode.utf8}
-        </div>
-    %endif
-
-    %if enrollment_message:
-        <div class="dashboard-banner">
-            ${enrollment_message | n,  decode.utf8}
-        </div>
-    %endif
-</div>
-<!-- end -->
-<!-- custom html script -->
-<%
-url_array = []
-url_array.append('images/1collaboration.jpg')
-url_array.append('images/2centrefinancier.jpg')
-url_array.append('images/3connaissance.jpg')
-url_array.append('images/4environement.jpg')
-url_image = random.choice(url_array)
-%>
-<style>
-#dashboard_header_atp {
-  background-image: url('${static.url(url_image)}');
-}
-</style>
-<style>
-/*
-.atp_course_item {
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-*/
-/*
-.atp_course_listing {
-  display: flex !important;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-.atp_course_item {
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-}
-@media(max-width:895px) {
-  .atp_course_listing {
-    flex-direction: column;
-  }
-  .atp_course_item {
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-}
-*/
-.display_button {
-  display: none !important;
-}
-@media(min-width:1600px) {
-  /* course cards actions */
-  #dashboard_tma #tuto_module_1 p {
-    margin-bottom: 0;
-    margin-top: 0;
-  }
-  .atp_course_item {
-    margin-left: 0;
-    margin-right: 0;
-  }
-  /* all margins */
-  #dashboard_course_in_progress_atp .atp_course_item,#dashboard_course_to_do .atp_course_item,#dashboard_course_finished .atp_course_item{
-    margin-right: calc((100% - 1508px) / 6);
-    margin-left: calc((100% - 1508px) / 6);
-  }
-
-  #dashboard_course_in_progress_atp .atp_course_item:nth-child(4n),#dashboard_course_to_do .atp_course_item:nth-child(4n),#dashboard_course_finished .atp_course_item:nth-child(4n){
-    margin-left: calc((100% - 1508px) / 6);
-    margin-right: 0;
-  }
-  #dashboard_course_in_progress_atp .atp_course_item:first-child,#dashboard_course_to_do .atp_course_item:first-child,#dashboard_course_finished .atp_course_item:first-child,#dashboard_course_in_progress_atp .atp_course_item:nth-child(4n+1),#dashboard_course_to_do .atp_course_item:nth-child(4n+1),#dashboard_course_finished .atp_course_item:nth-child(4n+1){
-    margin-right: calc((100% - 1508px) / 6);
-    margin-left: 0;
-  }
-  .atp_course_item:nth-child(4) {
-    display:block;
-  }
-}
-@media(max-width:1600px) {
-  .atp_course_item:nth-child(4) {
-    display:none;
-  }
-}
-@media screen and (min-width:1196px) and (max-width:1600px) {
-  #dashboard_course_in_progress_atp .atp_course_item,#dashboard_course_to_do .atp_course_item,#dashboard_course_finished .atp_course_item{
-    margin-right: calc((((100% - 1131px) / 2) / 3) * 2);
-    margin-left: calc((((100% - 1131px) / 2) / 3) * 2);
-  }
-  #dashboard_course_in_progress_atp .atp_course_item:nth-child(3n),#dashboard_course_to_do .atp_course_item:nth-child(3n),#dashboard_course_finished .atp_course_item:nth-child(3n){
-    margin-left: calc(((100% - 1131px) / 2) / 3);
-    margin-right: 0;
-  }
-  #dashboard_course_in_progress_atp .atp_course_item:nth-child(3n+1),#dashboard_course_to_do .atp_course_item:nth-child(3n+1),#dashboard_course_finished .atp_course_item:nth-child(3n+1){
-    margin-right: calc(((100% - 1131px) / 2) / 3);
-    margin-left: 0;
-  }
-  #dashboard_course_in_progress_atp .atp_course_item:first-child,#dashboard_course_to_do .atp_course_item:first-child,#dashboard_course_finished .atp_course_item:first-child{
-    margin-right: calc(((100% - 1131px) / 2) / 3);
-    margin-left: 0;
-  }
-}
-/* responsive */
-@media(max-width:1196px) {
-  /* reinit all margins */
-  #dashboard_course_in_progress_atp .atp_course_item,#dashboard_course_to_do .atp_course_item,#dashboard_course_finished .atp_course_item{
-    margin-right: 0;
-    margin-left: 0;
-  }
-  #dashboard_course_in_progress_atp .atp_course_item:nth-child(3n),#dashboard_course_to_do .atp_course_item:nth-child(3n),#dashboard_course_finished .atp_course_item:nth-child(3n){
-    margin-left: 0;
-    margin-right: 0;
-  }
-  #dashboard_course_in_progress_atp .atp_course_item:nth-child(3n+1),#dashboard_course_to_do .atp_course_item:nth-child(3n+1),#dashboard_course_finished .atp_course_item:nth-child(3n+1){
-    margin-right: 0;
-    margin-left: 0;
-  }
-  #dashboard_course_in_progress_atp .atp_course_item:first-child,#dashboard_course_to_do .atp_course_item:first-child,#dashboard_course_finished .atp_course_item:first-child{
-    margin-right: 0;
-    margin-left: 0;
-  }
-  /* new margins and actions */
-  #dashboard_course_in_progress_atp .atp_course_item,#dashboard_course_to_do .atp_course_item,#dashboard_course_finished .atp_course_item {
-    display: none;
-  }
-  #dashboard_course_in_progress_atp .atp_course_item:first-child,#dashboard_course_to_do .atp_course_item:first-child,#dashboard_course_finished .atp_course_item:first-child{
-    margin-right: calc((100% - 754px) / 2);
-    margin-left: 0;
-    display:block;
-  }
-  #dashboard_course_in_progress_atp .atp_course_item:nth-child(2),#dashboard_course_to_do .atp_course_item:nth-child(2),#dashboard_course_finished .atp_course_item:nth-child(2){
-    margin-left: calc((100% - 754px) / 2);
-    margin-right: 0;
-    display:block;
-  }
-  #dashboard_course_in_progress_atp .atp_course_item:nth-child(2n),#dashboard_course_to_do .atp_course_item:nth-child(2n),#dashboard_course_finished .atp_course_item:nth-child(2n){
-    margin-left: calc((100% - 754px) / 2);
-    margin-right: 0;
-  }
-  #dashboard_course_in_progress_atp .atp_course_item:nth-child(2n+1),#dashboard_course_to_do .atp_course_item:nth-child(2n+1),#dashboard_course_finished .atp_course_item:nth-child(2n+1){
-    margin-right: calc((100% - 754px) / 2);
-    margin-left: 0;
-  }
-}
-@media(max-width:814px) {
-  /* reinit all margins */
-  #dashboard_course_in_progress_atp .atp_course_item,#dashboard_course_to_do .atp_course_item,#dashboard_course_finished .atp_course_item{
-    margin-right: calc((100% - 377px) / 2);
-    margin-left: calc((100% - 377px) / 2);
-  }
-  #dashboard_course_in_progress_atp .atp_course_item:nth-child(3n),#dashboard_course_to_do .atp_course_item:nth-child(3n),#dashboard_course_finished .atp_course_item:nth-child(3n){
-    margin-right: calc((100% - 377px) / 2);
-    margin-left: calc((100% - 377px) / 2);
-  }
-  #dashboard_course_in_progress_atp .atp_course_item:nth-child(3n+1),#dashboard_course_to_do .atp_course_item:nth-child(3n+1),#dashboard_course_finished .atp_course_item:nth-child(3n+1){
-    margin-right: calc((100% - 377px) / 2);
-    margin-left: calc((100% - 377px) / 2);
-  }
-  /* new margins and actions */
-  #dashboard_course_in_progress_atp .atp_course_item,#dashboard_course_to_do .atp_course_item,#dashboard_course_finished .atp_course_item {
-    display: none;
-  }
-  #dashboard_course_in_progress_atp .atp_course_item:nth-child(2),#dashboard_course_to_do .atp_course_item:nth-child(2),#dashboard_course_finished .atp_course_item:nth-child(2){
-    margin-right: calc((100% - 377px) / 2);
-    margin-left: calc((100% - 377px) / 2);
-    display:none;
-  }
-  #dashboard_course_in_progress_atp .atp_course_item:nth-child(2n),#dashboard_course_to_do .atp_course_item:nth-child(2n),#dashboard_course_finished .atp_course_item:nth-child(2n){
-    margin-left: calc((100% - 377px) / 2);
-    margin-right: calc((100% - 377px) / 2);
-  }
-  #dashboard_course_in_progress_atp .atp_course_item:nth-child(2n+1),#dashboard_course_to_do .atp_course_item:nth-child(2n+1),#dashboard_course_finished .atp_course_item:nth-child(2n+1){
-    margin-right: calc((100% - 377px) / 2);
-    margin-left: calc((100% - 377px) / 2);
-  }
-  #dashboard_course_in_progress_atp .atp_course_item:first-child,#dashboard_course_to_do .atp_course_item:first-child,#dashboard_course_finished .atp_course_item:first-child{
-    margin-right: calc((100% - 377px) / 2);
-    margin-left: calc((100% - 377px) / 2);
-    display:block;
-  }
-}
-@media(max-width:377px) {
-  .atp_course_item {
-    width: 288px;
-    float: none;
-  }
-  .atp_course_duration span, .atp_course_dificulties span {
-    font-size: 12px;
-  }
-  .atp_course_image,.atp_course_image img {
-    height: 176.64px;
-  }
-  #dashboard_tma section a .img_regulatory,#dashboard_tma section a .img_fundamental,#dashboard_tma section a .img_oursolutions,#dashboard_tma section a .img_salesapproach {
-    height: 146.69px;
-  }
-  /* reinit all margins */
-  #dashboard_course_in_progress_atp .atp_course_item,#dashboard_course_to_do .atp_course_item,#dashboard_course_finished .atp_course_item{
-    margin-right: auto;
-    margin-left: auto;
-  }
-  #dashboard_course_in_progress_atp .atp_course_item:nth-child(3n),#dashboard_course_to_do .atp_course_item:nth-child(3n),#dashboard_course_finished .atp_course_item:nth-child(3n){
-    margin-right: auto;
-    margin-left: auto;
-  }
-  #dashboard_course_in_progress_atp .atp_course_item:nth-child(3n+1),#dashboard_course_to_do .atp_course_item:nth-child(3n+1),#dashboard_course_finished .atp_course_item:nth-child(3n+1){
-    margin-right: auto;
-    margin-left: auto;
-  }
-  /* new margins and actions */
-  #dashboard_course_in_progress_atp .atp_course_item,#dashboard_course_to_do .atp_course_item,#dashboard_course_finished .atp_course_item {
-    display: none;
-  }
-  #dashboard_course_in_progress_atp .atp_course_item:nth-child(2),#dashboard_course_to_do .atp_course_item:nth-child(2),#dashboard_course_finished .atp_course_item:nth-child(2){
-    margin-right: auto;
-    margin-left: auto;
-    display:none;
-  }
-  #dashboard_course_in_progress_atp .atp_course_item:nth-child(2n),#dashboard_course_to_do .atp_course_item:nth-child(2n),#dashboard_course_finished .atp_course_item:nth-child(2n){
-    margin-left: auto;
-    margin-right: auto;
-  }
-  #dashboard_course_in_progress_atp .atp_course_item:nth-child(2n+1),#dashboard_course_to_do .atp_course_item:nth-child(2n+1),#dashboard_course_finished .atp_course_item:nth-child(2n+1){
-    margin-right: auto;
-    margin-left: auto;
-  }
-  #dashboard_course_in_progress_atp .atp_course_item:first-child,#dashboard_course_to_do .atp_course_item:first-child,#dashboard_course_finished .atp_course_item:first-child{
-    margin-right: auto;
-    margin-left: auto;
-    display:block;
-  }
-}
-
-/* Category management */
-#cat_fond, #cat_solu, #cat_dem_com, #cat_reg {
-  display: none;
-}
-.modules-subtext{
-  margin-bottom: 10px!important;
-  max-width: 1000px;
-  margin: 0 auto;
-  margin-top: 10px;
-  padding-bottom: 20px!important;
-}
-</style>
-
-% for category in list_category :
-  %if category.lower() =="fundamentals":
-    <style>
-      #cat_fond{
-        display: block;
-      }
-    </style>
-  %elif category.lower() =="our solutions" :
-    <style>
-      #cat_solu{
-        display: block;
-      }
-    </style>
- %elif category.lower() =="sales approach" :
-   <style>
-     #cat_dem_com{
-       display: block;
-     }
-   </style>
- %elif category.lower() =="regulatory" :
-   <style>
-     #cat_reg{
-       display: block;
-     }
-   </style>
-  %endif
-%endfor
-
-<section id="dashboard_tma">
-	<!-- baniere  -->
-% if LANGUAGE_CODE == 'fr':
-<section id="dashboard_header_atp">
-  <div id="dashboard_header_content">
-    <p>BIENVENUE</p>
-    <!--
-    <div id="logo-amundiacademy">
-      <img src="${static.url('images/logo-amundiacademy.png')}" />
-    </div>
-    -->
-    <p>Développer vos connaissances et vos compétences sur la gestion d’actifs : culture financière et offres commercialisées.</p>
-    <button class="tuto_action">En savoir plus <span id="atp_tuto_arrow_up" class="arrow-right"></span></button>
-  </div>
-</section>
-      <!-- tuto  -->
-<section id="dashboard_tuto_atp">
-  <!-- module 1 -->
-  <div class="dashboard_tuto_atp" id="tuto_module_1">
-    <p>Pour suivre un module pédagogique, sélectionnez la vignette de votre choix !</p>
-    <p style="margin-top: 0;margin-bottom: 0;">Chaque module pédagogique est classé dans une catégorie et peut prendre différents formats.</p>
-  </div>
-  <!-- module 2 -->
-              <div class="dashboard_tuto_atp">
-    <h3>LES MODULES PÉDAGOGIQUES</h3>
-    <p class="modules-subtext">Retrouvez toutes les informations liées aux modules pédagogiques sur les vignettes ci-dessous : titre du module, sa catégorie, temps nécessaire à sa réalisation, s’il est obligatoire ou facultatif et les formats qui le composent.</p>
-    <img src="${static.url('images/cartes.png')}" id="img_dashboard_tuto_cartes"/>
-              </div>
-  <!-- module 3 -->
-              <div class="dashboard_tuto_atp">
-    <h3>CATÉGORIES DES MODULES PÉDAGOGIQUES</h3>
-    <p>Vos modules de formation sont classés en 4 catégories:</p>
-    <ul>
-      <li id="dashboard_tuto_atp_1">
-        <h4>FONDAMENTAUX:</h4>
-        <p>Zoom sur les marchés financiers, l’économie et l’investissement.</p>
-      </li>
-      <li id="dashboard_tuto_atp_3">
-        <h4>NOS SOLUTIONS:</h4>
-        <p>Zoom sur les produits et les offres.</p>
-      </li>
-      <span style="clear:left; display: block;width:100%;height:0;padding:0;margin:0;"></span>
-      <li id="dashboard_tuto_atp_2">
-        <h4>DÉMARCHE COMMERCIALE:</h4>
-        <p>Zoom sur l’accompagnement des clients et les techniques commerciales.</p>
-      </li>
-      <li id="dashboard_tuto_atp_4">
-        <h4>RÉGLEMENTAIRE:</h4>
-        <p>Zoom sur le cadre légal et règlementaire.</p>
-      </li>
-      <span style="clear:left; display: block;width:100%;height:0;padding:0;margin:0;"></span>
-    </ul>
-              </div>
-  <!-- module 4 -->
-              <div class="dashboard_tuto_atp last_tuto_atp" style="border-bottom: none;">
-    <h3>FORMATS DES MODULES PEDAGOGIQUES</h3>
-    <p class="modules-subtext">Chaque module pédagogique est composé d’un ou plusieurs formats interactifs et complémentaires : vidéo, quiz de validation des connaissances, serious game, outil de simulation d’investissement en temps réel, documentation commerciale ou publication et infographies.</p>
-    <div class="dashboard_picto_tuto_tma">
-      <div><img src="${static.url('images/video.svg')}" class="svg"/><span>video</span></div>
-      <div><img src="${static.url('images/quiz.svg')}" class="svg"/><span>quiz</span></div>
-                              <div><img src="${static.url('images/webzine.svg')}" class="svg"/><span>webzine</span></div>
-                              <div><img src="${static.url('images/seriousgame.svg')}" class="svg"/><span>serious game</span></div>
-                              <div><img src="${static.url('images/pdf.svg')}" class="svg"/><span>pdf</span></div>
-                              <div><img src="${static.url('images/testes&images.svg')}" class="svg"/><span>texts & images</span></div>
-      <span style="display:block;clear:left;"></span>
-    </div>
-              </div>
-  <!-- button close -->
-              <div class="dashboard_tuto_atp">
-    <button class="tuto_action"><span>Fermer</span> <span class="arrow-top"></span></button>
-              </div>
-</section>
-%else:
-	<section id="dashboard_header_atp">
-		<div id="dashboard_header_content">
-			<p>Welcome on your training platform</p>
-      <!--
-      <div id="logo-amundiacademy">
-        <img src="${static.url('images/logo-amundiacademy.png')}" />
-      </div>
-      -->
-			<p>Develop your knowledge and skills on asset management: financial culture and offers.</p>
-			<button class="tuto_action">More <span id="atp_tuto_arrow_up" class="arrow-right"></span></button>
-		</div>
-	</section>
-        <!-- tuto  -->
-	<section id="dashboard_tuto_atp">
-		<!-- module 1 -->
-		<div class="dashboard_tuto_atp" id="tuto_module_1">
-			<p>To follow a training module, select the card of your choice!</p>
-			<p style="margin-top: 0;margin-bottom: 0;">Each training module is classified into a category and may take different formats.</p>
-		</div>
-		<!-- module 2 -->
-                <div class="dashboard_tuto_atp">
-			<h3>THE TRAINING MODULES</h3>
-			<p class="modules-subtext">Find all the information related to training modules on the cards below: title of the module, category, timing to fulfill the module, if it is mandatory or not and its digital formats.</p>
-			<img src="${static.url('images/cartes.png')}" id="img_dashboard_tuto_cartes"/>
-                </div>
-		<!-- module 3 -->
-                <div class="dashboard_tuto_atp">
-			<h3>CATEGORIES OF THE TRAINING MODULES</h3>
-			<p>Your training modules are classified into 4 categories:</p>
-			<ul>
-				<li id="dashboard_tuto_atp_1">
-					<h4>fundamentals:</h4>
-					<p>Focus on financial markets, economics and investment</p>
-				</li>
-        <li id="dashboard_tuto_atp_3">
-          <h4>our solutions:</h4>
-          <p>Focus on expertises: products and offers</p>
-        </li>
-				<span style="clear:left; display: block;width:100%;height:0;padding:0;margin:0;"></span>
-        <li id="dashboard_tuto_atp_2">
-          <h4>Business approach:</h4>
-          <p>Focus on customer support and sales techniques</p>
-        </li>
-        <li id="dashboard_tuto_atp_4">
-          <h4>regulatory:</h4>
-          <p>Focus on legal and regulatory frameworks</p>
-        </li>
-				<span style="clear:left; display: block;width:100%;height:0;padding:0;margin:0;"></span>
-			</ul>
-                </div>
-		<!-- module 4 -->
-                <div class="dashboard_tuto_atp last_tuto_atp" style="border-bottom: none;">
-			<h3>FORMATS OF THE TRAINING MODULES</h3>
-      <p class="modules-subtext">Each training module is composed of one or more digital formats. Within the module, these formats are combined : video, quiz, serious game, investment game, sales documentation, infography, etc.</p>
-			<div class="dashboard_picto_tuto_tma">
-				<div><img src="${static.url('images/video.svg')}" class="svg"/><span>video</span></div>
-				<div><img src="${static.url('images/quiz.svg')}" class="svg"/><span>quiz</span></div>
-                                <div><img src="${static.url('images/webzine.svg')}" class="svg"/><span>webzine</span></div>
-                                <div><img src="${static.url('images/seriousgame.svg')}" class="svg"/><span>serious game</span></div>
-                                <div><img src="${static.url('images/pdf.svg')}" class="svg"/><span>pdf</span></div>
-                                <div><img src="${static.url('images/testes&images.svg')}" class="svg"/><span>texts & images</span></div>
-				<span style="display:block;clear:left;"></span>
-			</div>
-                </div>
-		<!-- button close -->
-                <div class="dashboard_tuto_atp">
-			<button class="tuto_action"><span>Close</span> <span class="arrow-top"></span></button>
-                </div>
-	</section>
-% endif
-<!--
-  % if _ensure_status:
-  <section id="ariane_dashboard">
-    <a href="https://${settings.CMS_BASE}">< ${_("Access Admin interface")}</a>
-  </section>
-  % endif
--->
-	<!-- module en cours -->
-	<section  id="dashboard_course_in_progress_atp">
-        	<h2><img src="${static.url('images/encours.svg')}" class="svg"/><span>${_("IN PROGRESS TRAINING MODULES")}</span></h2>
-		<p class="first_p">${_("You have started but haven't completed yet the following training modules. To go on, please click on")} &laquo; ${_("Proceed")} &raquo;.</p>
-        <!-- course listing -->
-<% compteur = 0 %>
-<% first_course_name = '' %>
-% if len(progress_courses) > 0:
-  <ul class="atp_course_listing">
-  <% share_settings = getattr(settings, 'SOCIAL_SHARING_SETTINGS', {}) %>
-  <% compteur = 0 %>
-  % for q in progress_courses:
-    <% compteur = compteur + 1 %>
-    <% atp_rank = q['atp_rank'] %>
-    <% course_about = q['course_about'] %>
-    <% show_courseware_link = q['show_courseware_link'] %>
-    <% cert_status = q['cert_status'] %>
-    <% can_unenroll = q['can_unenroll'] %>
-    <% credit_status = q['credit_status'] %>
-    <% show_email_settings = q['show_email_settings'] %>
-    <% course_mode_info = q['course_mode_info'] %>
-    <% show_refund_option = q['show_refund_option'] %>
-    <% is_paid_course = q['is_paid_course'] %>
-    <% is_course_blocked = q['is_course_blocked'] %>
-    <% course_verification_status = q['course_verification_status'] %>
-    <% course_requirements = q['course_requirements'] %>
-    <% course_key = q['course_key'] %>
-    <% duration = q['duration'] %>
-    <% required = q['required'] %>
-    <% content_data = q['content_data'] %>
-    <% category = q['category'] %>
-    <%include file='dashboard/_dashboard_course_listing.html' args='percent=q["percent"],passed=q["passed"],categ=category,content_data=content_data,required=required,course_about_name=False,duration=duration,course_about_link=False,course_about_id=False,course_about_img=False,course_about=course_about,course_progression=q["course_progression"],compteur=compteur,atp_rank=atp_rank,course_overview=q["course_overview"], enrollment=q["enrollment"], show_courseware_link=show_courseware_link, cert_status=cert_status, can_unenroll=can_unenroll, credit_status=credit_status, show_email_settings=show_email_settings, course_mode_info=course_mode_info, show_refund_option=show_refund_option, is_paid_course=is_paid_course, is_course_blocked=is_course_blocked, verification_status=course_verification_status, course_requirements=course_requirements, dashboard_index=q["dashboard_index"], share_settings=share_settings, user=user, display_course_modes_on_dashboard=display_course_modes_on_dashboard' />
-  % endfor
-    <span style="display:block;clear:left"></span>
-  </ul>
-% else:
-  <div class="empty-dashboard-message">
-    <p>${_("No training modules available in this section.")}</p>
-</div>
-% endif
-		<a class="atp_dashboard_active_course is_none_more" data-number="${compteur}" id="more_1">+ ${_("More modules")}</a>
-	</section>
-	<!-- module a realiser -->
-	<section id="dashboard_course_to_do">
-        	<h2><img src="${static.url('images/arealiser.svg')}" class="svg"/><span>${_("TO DO TRAINING MODULES")}</span></h2>
-		<p class="first_p">${_("You haven't started yet the following training modules. Click on")} &laquo; ${_("More information")} &raquo; ${_("to access the training module description")}.</p>
-	<!-- course listing -->
-<% compteur = 0 %>
-% if len(start_course) > 0:
-  <ul class="atp_course_listing">
-    <% share_settings = getattr(settings, 'SOCIAL_SHARING_SETTINGS', {}) %>
-    <% compteur = 0 %>
-    % for q in start_course:
-      <% compteur = compteur + 1 %>
-      <% atp_rank = 'invite' %>
-      <% course_about = q['course_about'] %>
-      <% show_courseware_link = q['show_courseware_link'] %>
-      <% cert_status = q['cert_status'] %>
-      <% can_unenroll = q['can_unenroll'] %>
-      <% credit_status = q['credit_status'] %>
-      <% show_email_settings = q['show_email_settings'] %>
-      <% course_mode_info = q['course_mode_info'] %>
-      <% show_refund_option = q['show_refund_option'] %>
-      <% is_paid_course = q['is_paid_course'] %>
-      <% is_course_blocked = q['is_course_blocked'] %>
-      <% course_verification_status = q['course_verification_status'] %>
-      <% course_requirements = q['course_requirements'] %>
-      <% course_key = q['course_key'] %>
-      <% duration = q['duration'] %>
-      <% required = q['required'] %>
-      <% content_data = q['content_data'] %>
-      <% category = q['category'] %>
-      <%include file='dashboard/_dashboard_course_listing.html' args='percent=q["percent"],passed=q["passed"],categ=category,content_data=content_data,required=required,course_about_name=False,duration=duration,course_about_link=False,course_about_id=False,course_about_img=False,course_about=course_about,course_progression=q["course_progression"],compteur=compteur,atp_rank=atp_rank,course_overview=q["course_overview"], enrollment=q["enrollment"], show_courseware_link=show_courseware_link, cert_status=cert_status, can_unenroll=can_unenroll, credit_status=credit_status, show_email_settings=show_email_settings, course_mode_info=course_mode_info, show_refund_option=show_refund_option, is_paid_course=is_paid_course, is_course_blocked=is_course_blocked, verification_status=course_verification_status, course_requirements=course_requirements, dashboard_index=q["dashboard_index"], share_settings=share_settings, user=user, display_course_modes_on_dashboard=display_course_modes_on_dashboard' />
-    % endfor
-    <span style="display:block;clear:left"></span>
-  </ul>
-% else:
-  <div class="empty-dashboard-message">
-    <p>${_("No training modules available in this section.")}</p>
-</div>
-% endif
-<a class="atp_dashboard_active_course is_none_more" data-number="${compteur}" id="more_2">+ ${_("More modules")}</a>
-	</section>
-	<!-- module termine -->
-	<section id="dashboard_course_finished">
-		<h2><img src="${static.url('images/termine.svg')}" class="svg gradient"/><span>${_("COMPLETED TRAINING MODULES")}</span></h2>
-		<p class="first_p">${_("You have completed the following training modules. Click on")} &laquo; ${_("More information")} &raquo; ${_("to access your results and scores")}.</p>
-	<!-- course listing -->
-<% compteur = 0 %>
-% if len(finish_courses) > 0:
-  <ul class="atp_course_listing">
-  <% share_settings = getattr(settings, 'SOCIAL_SHARING_SETTINGS', {}) %>
-  <% compteur = 0 %>
-  % for q in finish_courses:
-    <% compteur = compteur + 1 %>
-    <% atp_rank = 'finish' %>
-    <% course_about = q['course_about'] %>
-    <% show_courseware_link = q['show_courseware_link'] %>
-    <% cert_status = q['cert_status'] %>
-    <% can_unenroll = q['can_unenroll'] %>
-    <% credit_status = q['credit_status'] %>
-    <% show_email_settings = q['show_email_settings'] %>
-    <% course_mode_info = q['course_mode_info'] %>
-    <% show_refund_option = q['show_refund_option'] %>
-    <% is_paid_course = q['is_paid_course'] %>
-    <% is_course_blocked = q['is_course_blocked'] %>
-    <% course_verification_status = q['course_verification_status'] %>
-    <% course_requirements = q['course_requirements'] %>
-    <% course_key = q['course_key'] %>
-    <% duration = q['duration'] %>
-    <% required = q['required'] %>
-    <% content_data = q['content_data'] %>
-    <% category = q['category'] %>
-    <%include file='dashboard/_dashboard_course_listing.html' args='percent=q["percent"],passed=q["passed"],categ=category,content_data=content_data,required=required,course_about_name=False,duration=duration,course_about_link=False,course_about_id=False,course_about_img=False,course_about=course_about,course_progression=q["course_progression"],compteur=compteur,atp_rank=atp_rank,course_overview=q["course_overview"], enrollment=q["enrollment"], show_courseware_link=show_courseware_link, cert_status=cert_status, can_unenroll=can_unenroll, credit_status=credit_status, show_email_settings=show_email_settings, course_mode_info=course_mode_info, show_refund_option=show_refund_option, is_paid_course=is_paid_course, is_course_blocked=is_course_blocked, verification_status=course_verification_status, course_requirements=course_requirements, dashboard_index=q["dashboard_index"], share_settings=share_settings, user=user, display_course_modes_on_dashboard=display_course_modes_on_dashboard' />
-  % endfor
-    <span style="display:block;clear:left"></span>
-  </ul>
-% else:
-  <div class="empty-dashboard-message">
-    <p>${_("No training modules available in this section.")}</p>
-</div>
-% endif
-<a class="atp_dashboard_active_course is_none_more" data-number="${compteur}" id="more_3">+ ${_("More modules")}</a>
-	</section>
-
-
-</section>
-% if is_new_user:
-<div id="pop_up">
-  <p>${_("Welcome on Amundi Academy platform")}!
-  ${_("You successfully registered")}.
-  ${_("The training module")} ${first_course_name} ${_("is available in the section")}
-  ${_("TO DO TRAINING MODULES")}.</p>
-  <button id="close_pop_up">${_("Close")}</button>
-</div>
-<script>
-$('#close_pop_up').click(function(){
-  $('#pop_up').addClass('is_hidden_tma');
-})
-</script>
-% endif
-<style>
-#dashboard_tma section a .img_fundamentals {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 70%;
-  height: 191px;
-  z-index: 2;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.img_fundamentals {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 70%;
-    height: 191px;
-    z-index: 2;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover
-}
-#pop_up p {
-  text-align: justify !important;
-}
-#dashboard_header_content p:first-child {
-  margin-bottom: 3px;
-}
-#logo-amundiacademy {
-  margin-top: 10px;
-}
-.center-text{
-  text-align: center;
-}
-#dashboard_tma #dashboard_header_atp{
-  height: 200px!important;
-  box-sizing: border-box!important;
-  width: 100%!important;
-}
-#dashboard_tuto_atp_1, #dashboard_tuto_atp_2,#dashboard_tuto_atp_3,#dashboard_tuto_atp_4{
-  margin: 0!important;
-  width: 50%!important;
-  float: left!important;
-  box-sizing: border-box!important;
-  margin-bottom: 10px!important;
-}
-</style>
-<script>
-function add_class() {
-  var Width = window.screen.width;
-  if(Width <= 1600) {
-    $( ".atp_course_item:nth-child(4)" ).addClass('atp_hide_cards');
-  }else{
-    $( ".atp_course_item:nth-child(4)" ).removeClass('atp_hide_cards');
-  }
-  if(Width <= 1196) {
-    $( ".atp_course_item:nth-child(3)" ).addClass('atp_hide_cards');
-  }else{
-    $( ".atp_course_item:nth-child(3)" ).removeClass('atp_hide_cards');
-  }
-  if(Width <= 814) {
-    $( ".atp_course_item:nth-child(2)" ).addClass('atp_hide_cards');
-  }else{
-    $( ".atp_course_item:nth-child(2)" ).removeClass('atp_hide_cards');
-  }
-  $('.atp_dashboard_active_course').each(function(){
-      var _s = $(this).text().substring(0,1);
-      if(_s == '-') {
-        $(this).parent().find('.atp_hide_cards').show();
-      }else{
-        $(this).parent().find('.atp_hide_cards').attr('style','');
-      }
-  })
-}
-function button_views() {
-  $('.atp_dashboard_active_course').each(function(){
-
-    var Width = window.screen.width;
-
-    var devices = [
-      {min_width:0,max_width:814,number:1},
-      {min_width:814,max_width:1196,number:2},
-      {min_width:1196,max_width:1600,number:3},
-      {min_width:1600,max_width:100000,number:4}
-    ];
-
-    var _number = $(this).data('number');
-
-    for(i=0;i<3;i++) {
-
-      var min_width = devices[i].min_width;
-      var max_width = devices[i].max_width;
-      var number = devices[i].number;
-
-      if(Width >= min_width && Width < max_width) {
-        if(_number <= number) {
-          $(this).addClass('display_button');
-        }else{
-          $(this).removeClass('display_button');
-        }
-      }
-    };
-  });
-}
-$(document).ready(function(){
-  button_views();
-  add_class()
-})
-$(window).resize(function(){
-  button_views();
-  add_class()
-})
-
-</script>

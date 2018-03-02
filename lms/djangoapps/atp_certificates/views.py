@@ -17,6 +17,7 @@ from student.models import User,CourseEnrollment
 from django.http import JsonResponse,HttpResponse
 from microsite_configuration.microsite import is_request_in_microsite,get_all_orgs
 from utils import generate_html
+from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 import datetime
 
 import logging
@@ -67,8 +68,15 @@ def atp_generate_certificate(request,course_id):
     course_title = courseoverview.display_name_with_default
     score = str(course_factory.percent * 100)+'%'
     url = 'https://'+settings.FEATURES['LMS_BASE']
-    logo_path = url+'/media/certificates/images/logo-amundi.jpg'
-    theme_path = url+'/media/certificates/images/logo-amundi-academy.jpg'
+
+    if configuration_helpers.get_value('logo_couleur') :
+        logo_path = configuration_helpers.get_value('logo_couleur')
+    else:
+        logo_path = '/media/certificates/images/logo-amundi.jpg'
+    if configuration_helpers.get_value('amundi_brand') and configuration_helpers.get_value('amundi_brand')=="true":
+        amundi_academy = '/media/certificates/images/logo-amundi-academy.jpg'
+    else:
+        amundi_academy=''
     course_img_path = courseoverview.image_urls['raw']
     course_img_path = url+course_img_path
     template_path = '/certificates/template.html'
@@ -79,6 +87,6 @@ def atp_generate_certificate(request,course_id):
     return generate_html(
         username,score,course_img_path,template_path,
         course_title,categorie,certif_img_path,
-        logo_path,theme_path,course.language
+        logo_path,amundi_academy,course.language
     )
     #return response

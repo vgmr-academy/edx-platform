@@ -81,6 +81,8 @@ else:
 }
 #profile_menu{
   min-width: 70px;
+  margin-right: 30px;
+  margin-left: 15px;
 }
 #profile-submenu{
   right: 0;
@@ -107,6 +109,9 @@ else:
 }
 #logo_atp_redirect{
   cursor: pointer!important;
+}
+#menu-categories{
+  border-right: 1px solid white;
 }
 
 
@@ -140,7 +145,7 @@ else:
 nav = static.get_value('css_overrides_nav')
 %>
 % if not nav or nav == '':
-  <link rel="stylesheet" type="text/css" href="${static.url('css/nav.css')}">
+  <link rel="stylesheet" type="text/css" href="${static.url('css/navlo.css')}">
 % else:
   <link rel="stylesheet" type="text/css" href="${static.url(nav)}" />
 % endif
@@ -149,6 +154,9 @@ nav = static.get_value('css_overrides_nav')
 
 
 <!-- import custom js script -->
+<!--
+<script src="/media/studio/navigation_atp.js"></script>
+-->
 <script src="${static.url('js/navigation_atp.js')}"></script>
 <section id="tma_nav">
 <!--
@@ -196,9 +204,9 @@ amundi_brand=configuration_helpers.get_value('amundi_brand')
   </div>
   <div id="menu-modules" class="menu-item-atp" data-location="menu_module_apt">${_("My modules")} <span class="arrow_button"></span>
     <div id="menu_module_apt">
-     <button data-location="dashboard_course_in_progress_atp">${_("In progress")}</button>
-     <button data-location="dashboard_course_to_do">${_("To do")}</button>
-     <button data-location="dashboard_course_finished">${_("Completed")}</button>
+     <button data-location="ancre-in-progress">${_("In progress")}</button>
+     <button data-location="ancre-to-do">${_("To do")}</button>
+     <button data-location="ancre-finished">${_("Completed")}</button>
      <!--
      <button id="cat_all" data-location="all">${_("All")}</button>
      -->
@@ -206,24 +214,7 @@ amundi_brand=configuration_helpers.get_value('amundi_brand')
   </div>
   <span style="display:block;clear:both;" id="nav_replace_after"></span>
   % endif
-  % if not "/dashboard" in request.path:
-  <!--
-  <a
-    % if user.is_authenticated():
-      href="/u/${request.user.username}"
-    % else:
-      href=""
-    % endif
-  id="sub_to_dashboard_account"><img src="${static.url('images/man-user.png')}" class="svg"/><span><div id="account_user_action_array"></div>${_('My account')}</span></a>
-  -->
 
-  <a href="/dashboard" class="sub_picto sub_other_menu" id="sub_to_dashboard" >
-  <!--
-    <img src="${static.url('images/home.png')}" style="height:40px; margin-top: 20px;"/>
-  -->
-  <span>${_("Home")}</span>
-  </a>
-  % endif
 </div>
 
 % if user.is_authenticated():
@@ -239,6 +230,13 @@ amundi_brand=configuration_helpers.get_value('amundi_brand')
         <p class="email-atp-user">${user.email}</p>
       </a>
     </div>
+      % if not "/dashboard" in request.path:
+      <div class="access-back-atp">
+        <a href="/dashboard" class="class-submenu" >
+          <span>${_("Home")}</span>
+        </a>
+      </div>
+      % endif
       % if _ensure_status:
       <div class="access-back-atp">
         <a class="class-submenu" href="https://${settings.CMS_BASE}">${_("Access admin interface")}</a>

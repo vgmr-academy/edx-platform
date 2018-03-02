@@ -31,6 +31,7 @@ from microsite_configuration.models import (
 )
 from .models import MicrositeDetail , MicrositeAdminManager
 from .libs import copydirectorykut,microsite_staff
+import unicodedata
 
 
 
@@ -51,6 +52,10 @@ class microsite_manager():
         self.trademark=None
 
     #CHECK ALL ELEMENTS AND CREATE MICROSITE
+    def remove_accents(self, input_str):
+        nfkd_form = unicodedata.normalize('NFKD', input_str)
+        return u"".join([c for c in nfkd_form if not unicodedata.combining(c)])
+    
     def create(self,request):
         logo_couleur_ext = request.FILES.get('logo_couleur').name.split('.')[1]
 
@@ -191,6 +196,14 @@ class microsite_manager():
 
         valid_ext = ['jpg','jpeg','png']
         valid_ico = ['jpg','jpeg','png','ico']
+
+        #erase all accents and spaces in file names
+        if logo is not None:
+            logo.name=self.remove_accents(logo.name)
+            logo.name=logo.name.replace(' ', '_')
+        if logo_couleur is not None:
+            logo_couleur.name=self.remove_accents(logo_couleur.name)
+            logo_couleur.name=logo_couleur.name.replace(' ', '_')
 
         #ensure logo formatis valid
         if logo is not None:

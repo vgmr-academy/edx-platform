@@ -1,4 +1,4 @@
-<div id="problem_${element_id}" class="problems-wrapper" role="group"
+<div id="problem_${element_id}" class="problems-wrapper position_atp ${'answered' if attempts_used == 1 else ''}" role="group"
      aria-labelledby="${element_id}-problem-title"
      data-problem-id="${id}" data-url="${ajax_url}"
      data-problem-score="${current_score}"
@@ -7,3 +7,16 @@
      data-content="${content | h}"
      data-graded="${graded}">
 </div>
+<script>
+var answered = false;
+console.log('problem_${element_id}');
+$('.position_atp').addClass('is_overflow');
+
+$('.position_atp').each(function(){
+  if(!$(this).hasClass('answered') && !answered){
+    $(this).removeClass('is_overflow');
+    answered = true;
+  }
+})
+
+</script>

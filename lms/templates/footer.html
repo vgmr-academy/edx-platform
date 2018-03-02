@@ -14,7 +14,7 @@
 footer = static.get_value('css_overrides_footer')
 %>
 % if not footer:
-  <link rel="stylesheet" type="text/css" href="${static.url('css/footer.css')}">
+  <link rel="stylesheet" type="text/css" href="${static.url('css/footerlo.css')}">
 % else:
   <link rel="stylesheet" type="text/css" href="${static.url(footer)}" />
 % endif
@@ -39,6 +39,10 @@ footer = static.get_value('css_overrides_footer')
   }
   #footer_atp ul li{
     line-height: inherit!important;
+  }
+  #footer_atp ul{
+    padding: 0 25px;
+    height: 100%;
   }
 </style>
 <!-- import custom js script -->

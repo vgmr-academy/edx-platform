@@ -11,7 +11,8 @@ import re
 import string  # pylint: disable=deprecated-module
 #GEOFFREY TMA ATP
 
-
+#for verbose request
+import sys
 
 import datetime
 from student.roles import CourseInstructorRole,CourseStaffRole
@@ -1335,9 +1336,28 @@ def session_manager_handler(msg,emails,org,language):
     redirect_uri = 'https://'+str(org)+'.'+str(settings.LMS_BASE)+'/auth/login/amundi/?auth_entry=login&next=%2Fdashboard'
     msg = msg
     lang = language
-
+    #test false credentials
+    try:
+	log.info("start bad credentials test")
+	log.info("bad credentials")
+	log.info("bad data")
+	false_data = {"grant_type" : grant_type, "client_id" : "76db78b7-e234-sdg2-95425-d4474d22dbc45", "client_secret" : "078cdb23-a093-1234-b9be-f3b5fb94ca0e"}
+	bad_request_token = requests.post(urls[0], data=false_data,headers = {'content-type':'application/x-www-form-urlencoded'},verify=False )
+	log.info("token bad request status {}".format(bad_request_token.status_code))
+    except:
+        log.info("exception on bad credentials")
+    log.info("end bad credential test")
+    log.info("start good credential request")
+    #verbose request => http://docs.python-requests.org/en/v0.10.6/user/advanced/
+    #my_config = {'verbose': sys.stderr}
     data = {"grant_type" : grant_type, "client_id" : client_id, "client_secret" : client_secret}
-    request_token = requests.post(urls[0], data=data,headers = {'content-type':'application/x-www-form-urlencoded'},verify=False )
+    log.info("data request_token")
+    log.info(str(data))
+    log.info("url request_token")
+    log.info(urls[0])
+    log.info("request good credentials")
+    request_token = requests.post(urls[0], data=data,headers = {'content-type':'application/x-www-form-urlencoded'},verify=False, timeout=(1,1))
+    log.info("token request status {}".format(request_token.status_code))
     request_token = json.loads(request_token.text)
     token = request_token.get('access_token')
 
@@ -1349,7 +1369,7 @@ def session_manager_handler(msg,emails,org,language):
         array_push.append(n)
         if i%200 == 0 or i == len(emails):
             data_email = {"referer":redirect_uri, "msg":msg, "lang":lang,"users":array_push}
-            request_email = requests.post(urls[2], json=data_email , headers = {'content-type':'application/json','Authorization':'Bearer '+token},verify=False)
+            request_email = requests.post(urls[2], json=data_email , headers = {'content-type':'application/json','Authorization':'Bearer '+token},verify=False, timeout=(1,1))
             log.info("Donnee retour session_manager: "+str(request_email.text))
             json_parse = json.loads(request_email.text)
             log.info("session_manager_handler return: "+pformat(json_parse))

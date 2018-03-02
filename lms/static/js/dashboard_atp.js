@@ -20,25 +20,51 @@ function tma_show_more() {
   }
  })
  $('.atp_dashboard_active_course').click(function(){
-  $(this).parent().find('.atp_course_item').each(function(){
-    var That = $(this);
-    var style = That.attr('style');
-    if(style) {
-      That.attr('style','');
-    }else{
-      That.show();
-    }
-  })
   var text = $(this).text();
+  var cible = $(this).data('cible');
+  var key = cible.replace('_atp','');
+  var _status = $(this).data('status');
+  var _cible = '#'+cible;
+  var _courses = courses_atp[key];
+
   if(text.indexOf('+') != -1) {
+    // re render courses
+    course_status[key] = true;
+    render_course_cards(_courses,_cible,course_status[key],_status,course_category);
     text = text.replace('+','-');
   }else{
+    course_status[key] = false;
+    render_course_cards(_courses,_cible,course_status[key],_status,course_category);
     text = text.replace('-','+');
   }
   $(this).text(text);
-  intervalDetectHeight();
  })
 }
+
+$('#menu_cat_apt').find('button').click(function(){
+  var This = $(this);
+  This.parent().hide();
+  var data = This.data('location').replace(/ /g,'').toLowerCase();
+
+  if(data == 'all') {
+    course_category = '';
+    $('#menu_cat_apt').find('button').removeClass('display_button');
+  }else{
+    $('#menu_cat_apt').find('button').each(function(){
+      var That = $(this);
+      if(That.data('location') != 'all') {
+        That.addClass('display_button');
+      }
+    })
+    course_category = data;
+  }
+  render_course_cards(courses_atp.progress_courses,progress_cible,course_status.progress_courses,"cours",course_category);
+  render_course_cards(courses_atp.start_courses,start_cible,course_status.start_courses,"invite",course_category);
+  render_course_cards(courses_atp.end_courses,end_cible,course_status.end_courses,"finish",course_category);
+  $('html, body').animate( { scrollTop: $('#dashboard_course_in_progress_atp').offset().top -= 148 }, 750 );
+  return false;
+})
+
 function intervalDetectHeight() {
   var height = 0;
   $('.atp_course_title').attr('style','');

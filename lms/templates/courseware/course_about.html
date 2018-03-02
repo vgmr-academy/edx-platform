@@ -110,13 +110,19 @@ course_about = static.get_value('css_overrides_course_about')
 <ul class="atp_course_listing">
 
 <%
-course_factory = CourseGradeFactory().create(request.user, course)
+try:
+    course_factory = CourseGradeFactory().create(request.user, course)
+    pass_atp = course_factory.passed
+    percent_atp = course_factory.percent
+except:
+    pass_atp = False
+    percent_atp = 0
 %>
 % if status == 0:
     <% atp_rank = 'invite'  %>
-% elif status > 0 and course_factory.passed == False:
+% elif status > 0 and not pass_atp:
     <% atp_rank = 'cours' %>
-% elif status > 0 and course_factory.passed == True:
+% elif status > 0 and pass_atp:
     <% atp_rank = 'finish'  %>
 % endif
 <% course_about = 1 %>
@@ -139,7 +145,7 @@ course_factory = CourseGradeFactory().create(request.user, course)
 <% duration = get_course_about_section(request, course, "effort")  %>
 <% course_tma = get_course_by_id(course.id) %>
 <% content_data = course_tma.content_data %>
-<%include file='../dashboard/_dashboard_course_listing.html' args='percent=course_factory.percent,passed=course_factory.passed,categ=categ,content_data=content_data,required=required,duration=duration,course_about_link=course_about_link,course_about_id=course_about_id,course_about_img=course_about_img,course_about_name = course_about_name,course_about = course_about,course_progression = course_progression,compteur=compteur,atp_rank=atp_rank,course_overview=course_tma, enrollment=False, show_courseware_link=False, cert_status=False, can_unenroll=can_unenroll, credit_status=credit_status, show_email_settings=show_email_settings, course_mode_info=course_mode_info, show_refund_option=show_refund_option, is_paid_course=is_paid_course, is_course_blocked=is_course_blocked, verification_status=False, course_requirements=False, dashboard_index=False, share_settings=False, user=user, related_programs=False, display_course_modes_on_dashboard=True' />
+<%include file='../dashboard/_dashboard_course_listing.html' args='percent=percent_atp,passed=pass_atp,categ=categ,content_data=content_data,required=required,duration=duration,course_about_link=course_about_link,course_about_id=course_about_id,course_about_img=course_about_img,course_about_name = course_about_name,course_about = course_about,course_progression = course_progression,compteur=compteur,atp_rank=atp_rank,course_overview=course_tma, enrollment=False, show_courseware_link=False, cert_status=False, can_unenroll=can_unenroll, credit_status=credit_status, show_email_settings=show_email_settings, course_mode_info=course_mode_info, show_refund_option=show_refund_option, is_paid_course=is_paid_course, is_course_blocked=is_course_blocked, verification_status=False, course_requirements=False, dashboard_index=False, share_settings=False, user=user, related_programs=False, display_course_modes_on_dashboard=True' />
 <span style="display:block;clear:left;"></span>
 </ul>
 </section>
@@ -176,8 +182,8 @@ course_factory = CourseGradeFactory().create(request.user, course)
 
 <ul id="course_about_ul" class="about_score">
 % if status >= 99:
- <li><span>${_("Score")} :</span> <span id="${course_details.language}">${str(course_factory.percent * 100)+'%'}</span></li>
- % if course_factory.passed:
+ <li><span>${_("Score")} :</span> <span id="${course_details.language}">${str(percent_atp * 100)+'%'}</span></li>
+ % if pass_atp:
 <li><img src="${static.url('images/success.png')}" class="validate_img"/><span class="is_green validate">${_("Validated")}</span></li>
  %else:
  <li><img src="${static.url('images/error.png')}" class="validate_img"/><span class="is_red validate">${_("Not validated")}</span></li>
@@ -191,7 +197,7 @@ except:
   _end = 0
 %>
 <ul id="course_about_ul" class="over_campaign">
-% if course_factory.passed:
+% if pass_atp:
   <li><a href="#" id="certiticate"><img src="${static.url('images/pdf.svg')}" class="svg"/> ${_("Download certificate")}</a></li>
 % else:
   <li></li>
@@ -276,7 +282,7 @@ $(document).scroll(function(){
     $('.atp_course_title').attr('style','');
   }
 })
-% if course_factory.passed:
+% if pass_atp:
 $('#certiticate').click(function(e){
   e.preventDefault();
   var course_id = '${course.id}';

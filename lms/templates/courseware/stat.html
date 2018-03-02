@@ -175,14 +175,45 @@ target = course_id.split('+')
   height: auto!important;
   width: auto!important;
 }
+#title h1{
+  text-transform: initial!important;
+}
+#generate_xls{
+text-transform: lowercase;
+}
+.language_display{
+  font-size: 13px;
+  font-style: italic;
+  font-family: "mywebfont";
+  color: #05144d;
+  font-weight: 600;
+}
+.language_paragraph{
+  margin: 0;
+}
 </style>
+
+<%
+    if course.language=="fr":
+        if LANGUAGE_CODE == 'fr':
+          language_display="Français"
+        else :
+          language_display="French"
+    elif course.language=="en" :
+        if LANGUAGE_CODE == 'fr':
+          language_display="Anglais"
+        else :
+          language_display="English"
+    else :
+       language_display="Not defined"
+%>
 
 <div id="contenair">
   <!-- header -->
   <div id="header">
     <div id="fil_ariane"><a href="https://${settings.CMS_BASE}">${_('My campaigns')} ></a></div>
     <div id="title">
-      <h1>${_('Statistical training campaign')}</h1>
+      <h1>${_('Statistics')}</h1>
     </div>
     <div id="cartouche">
       <div id="course_img">
@@ -198,6 +229,13 @@ target = course_id.split('+')
           % if course.end:
             ${course.end.strftime('%Y-%m-%d')}
           % endif
+        </p>
+        <p class="language_paragraph">
+          %if LANGUAGE_CODE == 'fr':
+            <span class="language_display">Langue : ${language_display} </span>
+          %else :
+            <span class="language_display">Language : ${language_display} </span>
+          %endif
         </p>
         <div class="duration_course">
           <object oa-reusable-svg

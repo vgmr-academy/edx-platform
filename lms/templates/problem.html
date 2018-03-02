@@ -5,14 +5,26 @@ from openedx.core.djangolib.markup import HTML
 %>
 
 <%namespace name='static' file='static_content.html'/>
+<div class="dropdown_atp">
+  <span class="arrow-bottom"></span>
+</div>
 <h3 class="hd hd-2 problem-header" id="${ short_id }-problem-title" aria-describedby="${ id }-problem-progress" tabindex="-1">
   ${ problem['name'] }
 </h3>
-
 <div class="problem-progress" id="${ id }-problem-progress"></div>
 
 <div class="problem">
-  ${ HTML(problem['html']) }
+  <%
+  try:
+    problems = problem['html'].split('<span class="message"')
+    problem_upper = problems[0]+'</div>'
+    problem_down = '<span class="message"'+problems[1]
+  except:
+    problem_upper = problem['html']
+    problem_down = ""
+  %>
+  ${ HTML( problem['name'] ) }
+  % if answer_available:
   <div class="action">
     <input type="hidden" name="problem_id" value="${ problem['name'] }" />
     % if demand_hint_possible:
@@ -62,6 +74,7 @@ from openedx.core.djangolib.markup import HTML
       </div>
     </div>
   </div>
+  % endif
     <%include file="problem_notifications.html" args="
       notification_type='warning',
       notification_icon='fa-exclamation-circle',
@@ -104,4 +117,26 @@ from openedx.core.djangolib.markup import HTML
       notification_message=save_message,
       is_hidden=not has_saved_answers"
     />
+<!--
+${ HTML(problem_down) }
+-->
 </div>
+<script>
+$('#problem_${short_id}').find('h3').click(function(){
+  var This = $(this).parent();
+  var dropdown = This.find('.dropdown_atp');
+  if(This.hasClass('is_overflow')) {
+    This.removeClass('is_overflow');
+    dropdown.find('span').removeClass('arrow-bottom').addClass('arrow-up');
+  }else{
+    This.addClass('is_overflow');
+    dropdown.find('span').removeClass('arrow-up').addClass('arrow-bottom');
+  }
+})
+$('.position_atp').each(function(){
+  var span = $(this).find('.dropdown_atp').find('span');
+  if(!$(this).hasClass('is_overflow')) {
+    span.removeClass('arrow-bottom').addClass('arrow-up');
+  }
+})
+</script>
