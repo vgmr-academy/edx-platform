@@ -11,7 +11,7 @@ from django.http import HttpResponseForbidden
 def copydirectorykut(src, dst):
     os.chdir(dst)
     list=os.listdir(src)
-    nom= src+'.txt'
+    nom= src+'.css'
     fitx= open(nom, 'w')
 
     for item in list:
@@ -32,7 +32,7 @@ def copydirectorykut(src, dst):
     os.remove(nom)
     os.chdir('..')
 
-#decorator microsite access 
+#decorator microsite access
 def microsite_staff(func):
 
     def wrapper(*args):  # pylint: disable=missing-docstring
@@ -65,4 +65,3 @@ def microsite_staff(func):
         else:
             return HttpResponseForbidden()
     return wrapper
-    

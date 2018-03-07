@@ -23115,3 +23115,11 @@ msgstr "résultats trouvés parmi vos modules"
 
 msgid "results found in your campaigns"
 msgstr "résultats trouvés parmi vos campagnes"
+
+#fail cms invite.html
+msgid "The structure of the file loaded is incorrect. Please, modify your file and load it again"
+msgstr "Le format du fichier chargé est incorrect. Veuillez modifier votre fichier et le charger à nouveau"
+
+#cms manage.html
+msgid "You already have invited participants to this training campaign. Starting date can no longer be edited."
+msgstr "Vous avez déjà invités des participants à cette campagne de formation. La date de début ne peut plus être modifiée."

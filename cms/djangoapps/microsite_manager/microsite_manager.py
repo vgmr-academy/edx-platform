@@ -32,6 +32,7 @@ from microsite_configuration.models import (
 from .models import MicrositeDetail , MicrositeAdminManager
 from .libs import copydirectorykut,microsite_staff
 import unicodedata
+from distutils.dir_util import copy_tree
 
 
 
@@ -55,7 +56,7 @@ class microsite_manager():
     def remove_accents(self, input_str):
         nfkd_form = unicodedata.normalize('NFKD', input_str)
         return u"".join([c for c in nfkd_form if not unicodedata.combining(c)])
-    
+
     def create(self,request):
         logo_couleur_ext = request.FILES.get('logo_couleur').name.split('.')[1]
 
@@ -407,7 +408,7 @@ class microsite_manager():
 
         #where template css is stored
         microsite_path = "/edx/app/edxapp/themes/atp_theme/cms/templates/microsite_manager/"
-        css_template_path = microsite_path+'css'
+        css_template_path = microsite_path+'css/'
 
         #where microsite files will be stored
         static_path = "/edx/var/edxapp/media/microsite/{}/".format(self.microsite_name.lower())
@@ -446,11 +447,10 @@ class microsite_manager():
 
 
         #REPLACE COLORS IN CSS FILES
-        if (self.primary_color is not None and self.primary_color!='') or (self.secondary_color is not None and self.secondary_color!=''):
-            if self.primary_color=='' and _cur_microsite is not None:
-                self.primary_color=primary_color
-            if self.secondary_color=='' and _cur_microsite is not None:
-                self.secondary_color=secondary_color
+        if self.primary_color is None or self.primary_color=='':
+            self.primary_color=primary_color
+        if self.secondary_color is None or self.secondary_color=='':
+            self.secondary_color=secondary_color
 
             dict_change = {
                 '!atp_primary_color': self.primary_color,
@@ -462,7 +462,7 @@ class microsite_manager():
             if not os.path.exists(css_path):
                 os.makedirs(css_path)
             #copy template css file to static folder
-            copydirectorykut(css_template_path,css_path)
+            copy_tree(css_template_path,css_path)
             _css_files = os.listdir(css_path)
             #for each css file
             for n in _css_files:

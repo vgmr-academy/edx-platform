@@ -801,7 +801,7 @@ def dashboard(request):
         if _end > 0 and _end < _now:
             _progress = False
 	q['passed'] = passed
-	q['percent'] = percent * 100
+	q['percent'] = int(percent * 100)
         q['course_id'] = str(enrollment.course_id)
         q['duration'] = CourseDetails.fetch(enrollment.course_id).effort
         q['required'] = course_tma.is_required_atp

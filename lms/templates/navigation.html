@@ -69,7 +69,11 @@ except:
 if configuration_helpers.get_value('secondary_color') :
   secondary_color = configuration_helpers.get_value('secondary_color')
 else:
-  secondary_color='rgb(255,255,255)'
+  secondary_color='#00B6ED'
+if configuration_helpers.get_value('primary_color') :
+  primary_color = configuration_helpers.get_value('primary_color')
+else:
+  primary_color='#05144d'
 %>
 
 <style>
@@ -95,6 +99,10 @@ else:
   text-transform: initial!important;
 }
 #user-icone svg{
+  background-color: ${primary_color} !important;
+  border: 1px solid ${primary_color} !important;
+}
+#user-icone svg:hover{
   background-color: ${secondary_color} !important;
   border: 1px solid ${secondary_color} !important;
 }
@@ -106,6 +114,7 @@ else:
 }
 #amundi-brand-container{
   min-width: 250px!important;
+  padding:0!important;
 }
 #logo_atp_redirect{
   cursor: pointer!important;
@@ -113,11 +122,21 @@ else:
 #menu-categories{
   border-right: 1px solid white;
 }
-
+#menu-modules{
+  border-right: 1px solid rgba(255,255,255,0.5)!important;
+  border-left: 1px solid rgba(255,255,255,0.5)!important;
+}
+#menu-categories{
+  border-right: 1px solid rgba(255,255,255,0.5)!important;
+}
 
 /* responsive mon compte */
 
 @media (max-width: 1022px){
+  .is_flex {
+    display: flex !important;
+    flex-direction: column !important;
+  }
   #profile_menu{
     width: auto!important;
     position: absolute!important;
@@ -135,6 +154,21 @@ else:
     right: 75px!important;
     top:60%!important;
     height: 30px;
+  }
+  /* fix geoffrey */
+  #menu-modules {
+   order: 1; 
+  }
+  #menu-categories {
+   order: 2;
+  }
+  #menu_cat_apt {
+   min-height: 175px;
+   max-height: 175px;
+  }
+  #menu_module_apt {
+   min-height: 105px;
+   max-height: 105px;
   }
 }
 
@@ -180,7 +214,7 @@ logo_url = static.get_value('logo')
 <%
 amundi_brand=configuration_helpers.get_value('amundi_brand')
 %>
-%if amundi_brand=="true" :
+%if amundi_brand=="true" or amundi_brand is None:
 <div id="amundi-brand-container">
     <span class="trait-separation"></span>
     <img src="/media/logo-amundiacademy_blanc.png" alt="amundi_academy" class="logo-amundi-academy">
@@ -283,10 +317,10 @@ amundi_brand=configuration_helpers.get_value('amundi_brand')
 
 /* Gestion du responsive sur la nav */
   $('#atp_menu_mobile').click(function(){
-    if($("#right-menu").hasClass('block')){
+    if($("#right-menu").hasClass('is_flex')){
       $("#menu_module_apt, #menu_cat_apt").removeClass('block');
     }
-    $("#right-menu").toggleClass('block');
+    $("#right-menu").toggleClass('is_flex');
     $('#profile-submenu').removeClass('block');
   })
 

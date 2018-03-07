@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import json
 import logging
 import os.path
@@ -30,6 +31,9 @@ from lms.djangoapps.grades.new.course_grade import CourseGradeFactory
 
 from xlwt import *
 
+from django.conf import settings
+
+import sys
 
 log = logging.getLogger(__name__)
 
@@ -129,6 +133,9 @@ class course_grade():
 
 
 	def export(self,sended_email):
+                reload(sys)
+                sys.setdefaultencoding('utf8')
+
 		log.warning("Start Task grade reports course_id : "+str(self.course_id) )
 		course_key = CourseKey.from_string(self.course_id)
 		course = get_course_by_id(course_key)
@@ -213,8 +220,13 @@ class course_grade():
 		#sending mail
 		log.warning("send grade reports course_id : "+str(filename))
 		log.warning("email : "+str(sended_email))
-		subject = "{} grades report".format(course.display_name_with_default_escaped)
-		text_content = "Attached, {} grades reports in xls.".format(course.display_name_with_default_escaped)
+
+                if course.language == "fr":
+                    subject = "Résultats des participants du module {}".format(course.display_name_with_default_escaped)
+	            text_content = "Veuillez trouver en pièce attachée les résultats des participants pour le module{}.\n A noter que si votre campagne de formation est toujours en cours, ce fichier constitue un état statistique intermédiaire.".format(course.display_name_with_default_escaped)
+		if course.language == "en":
+		    subject = "grades report for {}".format(course.display_name_with_default_escaped)
+		    text_content = "Please, find attached the score report for {}.\n Remember that if your training campaign is still in progress, this file is an intermediate statistical status.".format(course.display_name_with_default_escaped)
 		from_email=configuration_helpers.get_value('email_from_address', settings.DEFAULT_FROM_EMAIL)
 		to = sended_email
 		mimetype='application/vnd.ms-excel'

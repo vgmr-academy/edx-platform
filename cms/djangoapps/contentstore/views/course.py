@@ -10,9 +10,9 @@ import random
 import re
 import string  # pylint: disable=deprecated-module
 #GEOFFREY TMA ATP
-
-#for verbose request
 import sys
+from django.core.mail import send_mail
+#for verbose request
 
 import datetime
 from student.roles import CourseInstructorRole,CourseStaffRole
@@ -1288,6 +1288,11 @@ def manage_handler(request, course_key_string):
         overview = CourseOverview.get_from_id(course_key)
         details = CourseDetails.fetch(course_key)
         course = get_course_by_id(course_key)
+	_ensure_user_status = list(CourseEnrollment.objects.raw('select a.id from student_courseenrollment a where not exists (select * from student_courseaccessrole b where a.user_id=b.user_id and a.course_id=b.course_id) and a.course_id=%s',[course_key_string]))
+	if len(_ensure_user_status) > 0:
+	    _enroll_start = True
+	else:
+	    _enroll_start = False
         module_store = modulestore().get_course(course_key, depth=0)
         start_date = overview.start.strftime('%Y-%d-%m')
         if overview.end is not None:
@@ -1296,6 +1301,7 @@ def manage_handler(request, course_key_string):
             end_date = ''
         context = {
             'course':course,
+	    'enroll_start':_enroll_start,
             'overview':overview,
             'details':details,
             'module_store':module_store,
@@ -1413,6 +1419,9 @@ def session_manager_handler(msg,emails,org,language):
 
 
 def send_enroll_mail(obj,course,overview,course_details,body,list_email,module_store):
+    reload(sys)
+    sys.setdefaultencoding('utf8')
+
     log.info("send_enroll_mail start_sending")
     #try:
     #MAIL 2 le retour
@@ -1425,12 +1434,13 @@ def send_enroll_mail(obj,course,overview,course_details,body,list_email,module_s
     else:
         site_name = domain_override
 
-    from django.core.mail import send_mail
 
     subject = obj
     subject = subject.replace('\n', '')
+    log.info("send_enroll_mail start_sending")
     # mail template
     template_name = 'microsite_manager/invite_mail_template_'+course.language+'.txt'
+    log.info("send_enroll_mail start_sending")
     # LIST OF VARS
     course_org = course.org.lower()
     site_name = settings.SITE_NAME
@@ -1439,16 +1449,20 @@ def send_enroll_mail(obj,course,overview,course_details,body,list_email,module_s
     category = course.categ
     duration = course_details.effort
     mode_required = course.is_required_atp
+    log.info("send_enroll_mail start_sending")
     #static images
     org_image = microsite_link+'/static/images/mail_logo.png'
     platform_image = microsite_link+'/static/images/platform_logo.png'
+    log.info("send_enroll_mail start_sending")
     #static images
     microsite = Microsite.objects.get(key=course_org)
+    log.info("send_enroll_mail start_sending")
     microsite_value = microsite.values
     primary_color_key = 0
     secondary_color_key = 0
     logo_key = 0
     i = 0
+    log.info("send_enroll_mail start_sending")
     log.info("send_enroll_mail list_email: "+pformat(list_email))
     for n in microsite_value:
         if n == 'language_code':
@@ -1460,11 +1474,17 @@ def send_enroll_mail(obj,course,overview,course_details,body,list_email,module_s
         if n == "secondary_color":
             secondary_color_key = i
         i = i + 1
+    log.info("send_enroll_mail start_sending")
     link = microsite_link+'/courses/'+str(course.id)+'/about'
     atp_primary_color = microsite_value.values()[primary_color_key]
     atp_secondary_color = microsite_value.values()[secondary_color_key]
     microsite = Microsite.objects.get(key=course_org)
+    log.info("send_enroll_mail start_sending")
+
     course_link_img = 'https://'+site_name+microsite_value.values()[logo_key]
+    log.info("send_enroll_mail start_sending")
+
+    log.info('send enroll email after microsites values')
 
     course_image = overview.image_urls['raw']
     end_date = ''
@@ -1686,8 +1706,11 @@ def invite_handler(request, course_key_string):
         return render_to_response('invite_course.html', context)
     # IF POST METHOD
     if request.method == 'POST':
+        #fuck da unicode
+        reload(sys)
+        sys.setdefaultencoding('utf8')
         # FILE VAR
-        files = '';
+        files = ''
         # GET REQUEST_TYPE
         request_type = ''
         try:
@@ -1830,12 +1853,14 @@ def invite_handler(request, course_key_string):
                             obj = "invitation cours {} amundiacademy.com".format(course.display_name)
                         elif course.language == "en":
                             obj = "enroll cours {} amundiacademy.com".format(course.display_name)
-                        try:
-                            user_email = send_enroll_mail(obj,course,overview,course_details,body,_send_values,module_store)
-                            log.info("invite_handler END sem user dict: "+pformat(_send_values))
-			    log.info("invite_handler user_email result : "+pformat(user_email))
+                        #try:
+                        user_email = send_enroll_mail(obj,course,overview,course_details,body,_send_values,module_store)
+                        log.info("invite_handler END sem user dict: "+pformat(_send_values))
+			log.info("invite_handler user_email result : "+pformat(user_email))
+		        """
                         except:
                             log.info("ERROR invite_handler END sem user dict: ")
+			"""
 			reponse['session_manager_return'] = session_manager
                     for n in list_email:
                         if not n in array:

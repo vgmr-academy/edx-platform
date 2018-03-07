@@ -22,6 +22,8 @@ import calendar
 
     /* Auto submit of form */
     var autoFormSubmit = setInterval(function(){
+      $('#tos-yes').attr('checked', true);
+      $('#honorcode-yes').attr('checked', true);
       $('#submit').click();
     }, 200);
 

@@ -12,6 +12,8 @@ from edxmako.shortcuts import render_to_response,render_to_string
 from django.views.generic import TemplateView
 import datetime
 
+import requests
+
 import logging
 log = logging.getLogger(__name__)
 
@@ -71,8 +73,15 @@ def generate_html(user,score,course_img_path,template_path,course_title,categori
     draw.text((px_course1, py_course1),course_title,second_color,font=font_big)
 
     #Image course
-    file_cours = cStringIO.StringIO(urllib.urlopen(course_img_path).read())
-    image_cours=Image.open(file_cours, 'r')
+
+    #file_cours = cStringIO.StringIO(urllib.urlopen(course_img_path).read())
+    #image_cours=Image.open(file_cours, 'r')
+    #use requests geoffrey fix
+    response_img = requests.get(course_img_path, stream=True)
+    response_img.raw.decode_content = True
+    log.info("atp_certificates.utils course_img get requests status code : ".format(response_img.status_code))
+    image_cours=Image.open(response_img.raw)
+
     image_cours=resizeimage.resize_width(image_cours, 300)
     imgc_largeur, imgc_hauteur= image_cours.size
     px_imgc=(background_largeur-imgc_largeur)/2

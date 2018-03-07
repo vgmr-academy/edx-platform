@@ -243,12 +243,12 @@ courseware = static.get_value('css_overrides_courseware')
   color: blue;
   text-align: right;
   width: 20px;
+  cursor:pointer;
 }
 .arrow-bottom,.arrow-up {
   display: inline-block;
-
 }
-.arrow-bottom:before, .arrow-up:before {
+.arrow-bottom:before, .arrow_atp:before {
     position: relative;
     content: "";
     display: inline-block;
@@ -258,14 +258,18 @@ courseware = static.get_value('css_overrides_courseware')
     border-top: 0.2em solid #05144d;
     margin-right: 0.5em;
     margin-bottom: 5px;
-    transform: rotate(315deg);
-}
-.arrow-bottom:before {
     transform: rotate(135deg);
+}
+.is_overflow .arrow_atp:before {
+    transform: rotate(315deg) !important;
+}
+.not_finished .arrow_atp:before {
+  border-right: 0.2em solid rgb(128, 128, 128) !important;
+  border-top: 0.2em solid rgb(128, 128, 128) !important;
 }
 .xblock .xblock h3{
   text-transform: capitalize;
-  font-size: 23px;
+  font-size: 18px;
 }
 .indicator-container,.explanation-title {
   display: none !important;
@@ -278,7 +282,86 @@ courseware = static.get_value('css_overrides_courseware')
   background-color: #05144d;
   border-color: #05144d !important;
 }
+.sequence #seq_content .not_finished {
+  height: 25px;
+  overflow: hidden;
+  padding-bottom: 0;
+}
+.finished .submit {
+  display: none;
+}
+.next_button {
+  padding-top: 2px;
+  padding-bottom:2px;
+  border-radius: 11px;
+  color: #fff !important;
+  outline: none;
+  cursor: inherit;
+}
+.not_finished .next_button,.next_button {
+  background-color: grey !important;
+  border-color: grey !important;
+}
+.finished .next_button {
+  background-color: #05144d !important;
+  border-color: #05144d !important;
+}
+.finished .field {
+  position: relative;
+}
+.finished_voile {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  background-color: transparent;
+  height: calc(100% + 2px);
+  width: calc(100% + 2px);
+  z-index: 2;
+}
+.position_atp button {
+  min-width: 115px !important;
+}
+/* modif cours */
+.xmodule_display.xmodule_CapaModule div.problem .action .submit-attempt-container {
+  display: block;
+  float: left;
+}
+.next {
+  display: block;
+  float: right;
+}
+.picto_sf {
+  width: 18px;
+  height: 18px;
+  background-size: cover;
+  background-position: center;
+  display: inline-block;
+  background-color: #0064AE;
+  border-radius: 50%;
+  margin-left: 15px;
+}
+.not_finished .picto_sf {
+  background-color: transparent;
+  border-radius: 0%;
+}
+.success_quiz_atp .picto_sf {
+  background-image: url('/media/checked.png');
+  background-color: transparent;
+  border-radius: 0%;
+}
+.fail_quiz_atp .picto_sf {
+  background-image: url('/media/cross-remove-sign.png');
+  background-color: transparent;
+  border-radius: 0%;
+}
+#module-over{
+  color:#c6c6c6;
+  font-style:italic;
+  text-align: center;
+  padding:20px;
+}
 </style>
+<div id="end-date" style="display:none;">${course.end}</div>
 <div id="tma_course_top">
     <div id="tma_course_ariane">
       <a href="/courses/${course.id}/about">< ${_("Back to training module description")}</a>
@@ -478,12 +561,33 @@ var picto_url_inprogress = "${static.url('images/encours.svg')}";
 var template_and_title = '<div id="final_score"><div id="title_result">${_("Results")}</div></div>';
 var picto = '<div id="score_picto"><img src="'+picto_url_inprogress+'" class="svg inprogress"/></div>';
 
+// Cours terminé
+var message_termine_fr="<div id='module-over'> La campagne est terminée. Vous pouvez continuer à accéder au contenu du module mais vous ne pouvez plus réaliser le quiz de validation des connaissances.</div>";
+var message_termine_en="<div id='module-over'>The training campaign is over. You can access the training module content. However, you can’t do the test to validate your knowledge.</div>";
+
+
 function insert_info_score(value) {
   $('#course-content').html('');
   $('#course-content').append(template_and_title);
   $('#final_score').append(picto);
   $('#final_score').append(score_div);
 }
+
+/* MESSAGE POUR LES COURS TERMINES */
+var end_date1=$('#end-date').html();
+var end_date2=new Date(end_date1);
+var today = new Date();
+console.log(end_date1);
+console.log(end_date2);
+console.log(today);
+
+if (today<end_date2){
+  var course_over=false;
+}
+else{
+  var course_over=true;
+}
+var langue=document.documentElement.lang;
 
 function returnScore() {
   $.ajax({
@@ -517,10 +621,26 @@ function returnScore() {
           $('#score_picto').find('img').attr('src',picto_failed);
           $('#score_picto').find('img').attr('class','svg picto_add_failed');
         }
+        if(course_over){
+          if (langue=="fr"){
+            $('#final_score').append(message_termine_fr);
+          }
+          else{
+            $('#final_score').append(message_termine_fr);
+          }
+        }
       }else{
         $('#final_score').append(first_par[1]);
         $('#final_score').append(second_par[1]);
         $('#score_div_info').hide();
+        if(course_over){
+          if (langue=="fr"){
+            $('#final_score').append(message_termine_fr);
+          }
+          else{
+            $('#final_score').append(message_termine_fr);
+          }
+        }
       }
       $('#insert_score').text(score+'%');
       jQuery('img.svg').each(function(){
@@ -658,3 +778,6 @@ $(window).resize(function(){
   padding-right: 10px !important;
 }
 </style>
+<!-- feed back -->
+<script>
+</script>
