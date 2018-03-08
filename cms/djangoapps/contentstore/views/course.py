@@ -507,6 +507,9 @@ def course_listing(request):
     """
     List all courses available to the logged in user
     """
+
+    log.info("timer 1 {}".format(datetime.datetime.now()))
+
     courses, in_process_course_actions = get_courses_accessible_to_user(request)
     libraries = _accessible_libraries_list(request.user) if LIBRARIES_ENABLED else []
 
@@ -550,7 +553,7 @@ def course_listing(request):
             'number': library.display_number_with_default,
             'can_edit': has_studio_write_access(request.user, library.location.library_key),
         }
-
+    log.info("timer 2 {}".format(datetime.datetime.now()))
     courses = _remove_in_process_courses(courses, in_process_course_actions)
     in_process_course_actions = [format_in_process_course_view(uca) for uca in in_process_course_actions]
     #microsites
@@ -621,7 +624,7 @@ def course_listing(request):
            _active_camp = True
       elif ('AMUNDI-GENERIC-TEMPLATE' in course_info['display_name']) and (not q['course_key_id'] in amundi_template):
            amundi_template[cur_indice].append(q)
-
+    log.info("timer 3 {}".format(datetime.datetime.now()))
     return render_to_response('index.html', {
         'check_admin_microsite':check_admin_microsite,
         'courses': courses,
@@ -1301,6 +1304,7 @@ def manage_handler(request, course_key_string):
             end_date = ''
         context = {
             'course':course,
+            'course_key':course_key_string,
 	    'enroll_start':_enroll_start,
             'overview':overview,
             'details':details,
@@ -1362,9 +1366,12 @@ def session_manager_handler(msg,emails,org,language):
     log.info("url request_token")
     log.info(urls[0])
     log.info("request good credentials")
-    request_token = requests.post(urls[0], data=data,headers = {'content-type':'application/x-www-form-urlencoded'},verify=False, timeout=(1,1))
+    request_token = requests.post(urls[0], data=data,headers = {'content-type':'application/x-www-form-urlencoded'},verify=False)
     log.info("token request status {}".format(request_token.status_code))
-    request_token = json.loads(request_token.text)
+    log.info("request token {}".format(request_token))
+    log.info("request token dict {}".format(request_token.__dict__))
+    request_token = request_token.json()
+    log.info("json {}".format(request_token))
     token = request_token.get('access_token')
 
     q = {}
@@ -1375,7 +1382,7 @@ def session_manager_handler(msg,emails,org,language):
         array_push.append(n)
         if i%200 == 0 or i == len(emails):
             data_email = {"referer":redirect_uri, "msg":msg, "lang":lang,"users":array_push}
-            request_email = requests.post(urls[2], json=data_email , headers = {'content-type':'application/json','Authorization':'Bearer '+token},verify=False, timeout=(1,1))
+            request_email = requests.post(urls[2], json=data_email , headers = {'content-type':'application/json','Authorization':'Bearer '+token},verify=False)
             log.info("Donnee retour session_manager: "+str(request_email.text))
             json_parse = json.loads(request_email.text)
             log.info("session_manager_handler return: "+pformat(json_parse))
@@ -1850,9 +1857,9 @@ def invite_handler(request, course_key_string):
                         log.info("module_store: "+pformat(module_store))
                         log.info("course_lang: "+course.language)
                         if course.language == "fr":
-                            obj = "invitation cours {} amundiacademy.com".format(course.display_name)
+                            obj = "Invitation pour accéder au module {}".format(course.display_name)
                         elif course.language == "en":
-                            obj = "enroll cours {} amundiacademy.com".format(course.display_name)
+                            obj = "Invitation to access {} training module".format(course.display_name)
                         #try:
                         user_email = send_enroll_mail(obj,course,overview,course_details,body,_send_values,module_store)
                         log.info("invite_handler END sem user dict: "+pformat(_send_values))

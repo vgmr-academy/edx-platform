@@ -162,9 +162,19 @@ $('.finished').find('.field').each(function(){
 
 $('#problem_${short_id}').find('.next_button').click(function(){
   var parent = $(this).parent().parent().parent();
-  if(parent.hasClass('finished')) {
-    parent.addClass('is_overflow');
-    $(this).parent().parent().parent().parent().parent().next().find('.position_atp').removeClass('is_overflow').removeClass('not_finished');
+  //fix checkboxes without feedback
+  console.log(parent.attr('class'));
+  if(parent.hasClass('problem')) {
+    parent = parent.parent();
+    if(parent.hasClass('finished')) {
+      parent.addClass('is_overflow');
+      $(this).parent().parent().parent().parent().parent().parent().next().find('.position_atp').removeClass('is_overflow').removeClass('not_finished');
+    }
+  }else{
+    if(parent.hasClass('finished')) {
+      parent.addClass('is_overflow');
+      $(this).parent().parent().parent().parent().parent().next().find('.position_atp').removeClass('is_overflow').removeClass('not_finished');
+    }
   }
 })
 

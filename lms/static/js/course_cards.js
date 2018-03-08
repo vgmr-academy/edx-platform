@@ -6,6 +6,7 @@ var end_cible = "#end_courses_atp";
 function render_course_cards(data,cible,status,action,category) {
   $(cible).html('');
   var rows = data.length;
+  var effective_rows = 0;
   if(!status) {
       rows = 4;
     var Width = window.screen.width;
@@ -41,6 +42,7 @@ function render_course_cards(data,cible,status,action,category) {
         action,
         cible
       );
+      effective_rows = data.length;
     }else{
       if(_cur.category.replace(/ /g,'').toLowerCase() == "fundamentals") {
         _cur.category = "fundamental";
@@ -58,6 +60,7 @@ function render_course_cards(data,cible,status,action,category) {
           _cur.percent,
           _cur.passed,action,cible
         );
+        effective_rows++;
       }
     }
   }
@@ -87,37 +90,35 @@ jQuery('img.svg').each(function(){
     }, 'xml');
 });
 
-//$('img.svg').show(); 
+//$('img.svg').show();
+// show module button
+button_views(effective_rows,cible);
+
 }
-function button_views() {
-  $('.atp_dashboard_active_course').each(function(){
 
-    var Width = window.screen.width;
-
-    var devices = [
-      {min_width:0,max_width:814,number:1},
-      {min_width:814,max_width:1196,number:2},
-      {min_width:1196,max_width:1600,number:3},
-      {min_width:1600,max_width:100000,number:4}
-    ];
-
-    var _number = $(this).data('number');
-
-    for(i=0;i<3;i++) {
-
-      var min_width = devices[i].min_width;
-      var max_width = devices[i].max_width;
-      var number = devices[i].number;
-
-      if(Width >= min_width && Width < max_width) {
-        if(_number <= number) {
-          $(this).addClass('display_button');
-        }else{
-          $(this).removeClass('display_button');
-        }
-      }
-    };
-  });
+function button_views(effective_rows,cible) {
+  if(typeof effective_rows === "undefined") {
+    effective_rows = 0;
+  }
+  var Width = window.screen.width;
+  var number = 0;
+  var devices = [
+    {min_width:0,max_width:814,number:1},
+    {min_width:814,max_width:1196,number:2},
+    {min_width:1196,max_width:1600,number:3},
+    {min_width:1600,max_width:100000,number:4}
+  ];
+  for(var i=0;i<devices.length;i++) {
+    if(Width > devices[i].min_width && Width <= devices[i].max_width) {
+      number = devices[i].number;
+    }
+  }
+  console.log(number+' '+cible+' '+effective_rows);
+  if(number < effective_rows) {
+    $(cible).parent().find('.atp_dashboard_active_course').removeClass('is_none_more');
+  }else{
+    $(cible).parent().find('.atp_dashboard_active_course').addClass('is_none_more');
+  }
 }
 
 $(document).ready(function(){

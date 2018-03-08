@@ -225,7 +225,7 @@ class course_grade():
                     subject = "Résultats des participants du module {}".format(course.display_name_with_default_escaped)
 	            text_content = "Veuillez trouver en pièce attachée les résultats des participants pour le module{}.\n A noter que si votre campagne de formation est toujours en cours, ce fichier constitue un état statistique intermédiaire.".format(course.display_name_with_default_escaped)
 		if course.language == "en":
-		    subject = "grades report for {}".format(course.display_name_with_default_escaped)
+		    subject = "Score report for {}".format(course.display_name_with_default_escaped)
 		    text_content = "Please, find attached the score report for {}.\n Remember that if your training campaign is still in progress, this file is an intermediate statistical status.".format(course.display_name_with_default_escaped)
 		from_email=configuration_helpers.get_value('email_from_address', settings.DEFAULT_FROM_EMAIL)
 		to = sended_email

@@ -57,6 +57,37 @@ font-size:50px !important;
 #dashboard_tuto_atp_4,#sub_menu #cat_reg {
  border-left-color: rgb(57,178,192) !important;
 }
+.bouton-more{
+  color: #05144d;
+  font-weight: 600;
+  font-size: 16px;
+}
+.bouton-more span{
+  font-size: 14px;
+}
+/* Responsive mobile header */
+.header-mobile{
+  display: none;
+}
+@media(max-width:830px) {
+  .header-mobile{
+    display: block;
+    height: 300px;
+  }
+  #dashboard_tma #dashboard_header_atp{
+    padding: 0;
+  }
+  #dashboard_header_content{
+    padding: 20px;
+    margin: 0;
+    margin-left: 10%!important;
+    margin-right: 10%;
+    width: 80%!important;
+  }
+  #dashboard_tma #dashboard_header_atp{
+    background-image: none;
+  }
+}
 
 </style>
 
@@ -185,6 +216,9 @@ else:
   background-color: ${primary_color};
   font-size:15px;
 }
+#dashboard_tma #dashboard_tuto_atp .dashboard_picto_tuto_tma div svg .cls-1{
+  fill: ${primary_color};
+}
 
 #dashboard_header_atp {
   background-image: url('${static.url(url_image)}');
@@ -238,6 +272,7 @@ else:
 	<!-- baniere  -->
 % if LANGUAGE_CODE == 'fr':
 <section id="dashboard_header_atp">
+  <img src="${static.url(url_image)}" alt="" class="header-mobile">
   <div id="dashboard_header_content">
     <p>BIENVENUE</p>
     <!--
@@ -245,11 +280,13 @@ else:
       <img src="${static.url('images/logo-amundiacademy.png')}" />
     </div>
     -->
-    <p>Accéder à vos modules pédagogiques.</p>
-    <button class="more-boutton tuto_action">En savoir plus</button>
+    <p>Accédez à vos modules pédagogiques</p>
+    <span class="tuto_action bouton-more">En savoir plus ▶</span>
   </div>
 </section>
       <!-- tuto  -->
+
+
 <section id="dashboard_tuto_atp">
   <!-- module 1 -->
   <div class="dashboard_tuto_atp" id="tuto_module_1">
@@ -295,9 +332,9 @@ else:
       <div><img src="${static.url('images/video.svg')}" class="svg"/><span>video</span></div>
       <div><img src="${static.url('images/quiz.svg')}" class="svg"/><span>quiz</span></div>
       <div><img src="${static.url('images/seriousgame.svg')}" class="svg"/><span>serious game</span></div>
-      <div><img src="${static.url('images/webzine.svg')}" class="svg"/><span>simulation d'investissement</span></div>
-      <div><img src="${static.url('images/pdf.svg')}" class="svg"/><span>pdf</span></div>
-      <div><img src="${static.url('images/testes&images.svg')}" class="svg"/><span>texts & images</span></div>
+      <div><img src="${static.url('images/simulationinv.svg')}" class="svg"/><span>simulation d'investissement</span></div>
+      <div><img src="${static.url('images/pdf.svg')}" class="svg"/><span>documentation</span></div>
+      <div><img src="${static.url('images/testes&images.svg')}" class="svg"/><span>infographie</span></div>
       <span style="display:block;clear:left;"></span>
     </div>
               </div>
@@ -308,6 +345,7 @@ else:
 </section>
 %else:
 	<section id="dashboard_header_atp">
+    <img src="${static.url(url_image)}" alt="" class="header-mobile">
 		<div id="dashboard_header_content">
 			<p>Welcome on your training platform</p>
       <!--
@@ -316,7 +354,7 @@ else:
       </div>
       -->
 			<p>Access your training modules</p>
-			<button class="more-boutton tuto_action">More</button>
+			<span class="tuto_action bouton-more">More <span>▶</span></span>
 		</div>
 	</section>
         <!-- tuto  -->
@@ -365,7 +403,7 @@ else:
 				<div><img src="${static.url('images/video.svg')}" class="svg"/><span>video</span></div>
 				<div><img src="${static.url('images/quiz.svg')}" class="svg"/><span>quiz</span></div>
         <div><img src="${static.url('images/seriousgame.svg')}" class="svg"/><span>serious game</span></div>
-        <div><img src="${static.url('images/webzine.svg')}" class="svg"/><span>investment game</span></div>
+        <div><img src="${static.url('images/simulationinv.svg')}" class="svg"/><span>investment game</span></div>
         <div><img src="${static.url('images/pdf.svg')}" class="svg"/><span>documentation</span></div>
         <div><img src="${static.url('images/testes&images.svg')}" class="svg"/><span>infography</span></div>
 				<span style="display:block;clear:left;"></span>
@@ -401,7 +439,7 @@ else:
     <p>${_("No training modules available in this section.")}</p>
 </div>
 % endif
-		<a class="atp_dashboard_active_course is_none_more" data-number="${compteur}" id="more_1" data-cible="progress_courses_atp" data-status="cours">+ ${_("More modules")}</a>
+		<a class="atp_dashboard_active_course" data-number="${compteur}" id="more_1" data-cible="progress_courses_atp" data-status="cours">+ ${_("More modules")}</a>
 	</section>
 	<!-- module a realiser -->
 	<section id="dashboard_course_to_do">
@@ -419,7 +457,7 @@ else:
     <p>${_("No training modules available in this section.")}</p>
 </div>
 % endif
-<a class="atp_dashboard_active_course is_none_more" data-number="${compteur}" id="more_2" data-cible="start_courses_atp" data-status="invite">+ ${_("More modules")}</a>
+<a class="atp_dashboard_active_course" data-number="${compteur}" id="more_2" data-cible="start_courses_atp" data-status="invite">+ ${_("More modules")}</a>
 	</section>
 	<!-- module termine -->
 	<section id="dashboard_course_finished">
@@ -437,7 +475,7 @@ else:
     <p>${_("No training modules available in this section.")}</p>
 </div>
 % endif
-<a class="atp_dashboard_active_course is_none_more" data-number="${compteur}" id="more_3" data-cible="end_courses_atp" data-status="finish">+ ${_("More modules")}</a>
+<a class="atp_dashboard_active_course" data-number="${compteur}" id="more_3" data-cible="end_courses_atp" data-status="finish">+ ${_("More modules")}</a>
 	</section>
 
 
@@ -484,7 +522,8 @@ $('#close_pop_up').click(function(){
 }
 #dashboard_header_content p:first-child {
   margin-bottom: 3px;
-  font-size: 24px;
+  font-size: 38px;
+  line-height: initial;
 }
 #logo-amundiacademy {
   margin-top: 10px;
@@ -493,9 +532,11 @@ $('#close_pop_up').click(function(){
   text-align: center;
 }
 #dashboard_tma #dashboard_header_atp{
-  height: 200px!important;
+  min-height: 256px!important;
   box-sizing: border-box!important;
   width: 100%!important;
+  background-color: #C6EAFB;
+  background-position: left;
 }
 #dashboard_tuto_atp_1, #dashboard_tuto_atp_2,#dashboard_tuto_atp_3,#dashboard_tuto_atp_4{
   margin: 0!important;
@@ -568,7 +609,7 @@ jQuery('img.svg').each(function(){
 
     }, 'xml');
 });
-$('img.svg').show(); 
+$('img.svg').show();
 }
 
 var picto_dure = "${static.url('images/duree.svg')}";
@@ -581,6 +622,7 @@ var picto_serious_game = "${static.url('images/seriousgame.svg')}";
 var picto_teste_images = "${static.url('images/testes&images.svg')}";
 var picto_success = "${static.url('images/success.png')}";
 var picto_error = "${static.url('images/error.png')}";
+var picto_simulation_inv = "${static.url('images/simulationinv.svg')}";
 /* end html and static templates */
 
 function course_card(categ,course_id,img_src,course_progression,duration,required,display_name_with_default,content_data,percent,passed,atp_rank,cible) {
@@ -605,6 +647,9 @@ function course_card(categ,course_id,img_src,course_progression,duration,require
   }
   if(content_data.text_image){
     _img_data = _img_data+'<img src="'+picto_teste_images+'" class="svg"/>'
+  }
+  if(content_data.simulation_investissement){
+    _img_data = _img_data+'<img src="'+picto_simulation_inv+'" class="svg"/>'
   }
 
   if(required) {
@@ -653,79 +698,13 @@ function course_card(categ,course_id,img_src,course_progression,duration,require
 <!--
 <script src="/media/studio/course_cards.js"></script>
 -->
+
 <script src="${static.url('js/course_cards.js')}"></script>
+
 <!-- generate courses cards -->
 
 <style>
 .is_none_more {
   display: none !important;
-}
-@media(min-width:1600px) {
-% if len(progress_courses) > 4:
-#more_1 {
-  display: block !important;
-}
-% endif
-% if len(start_course) > 4:
-#more_2 {
-  display: block !important;
-}
-% endif
-% if len(finish_courses) > 4:
-#more_3 {
-  display: block !important;
-}
-% endif
-}
-@media(max-width:1600px) {
-  % if len(progress_courses) > 3:
-  #more_1 {
-    display: block !important;
-  }
-  % endif
-  % if len(start_course) > 3:
-  #more_2 {
-    display: block !important;
-  }
-  % endif
-  % if len(finish_courses) > 3:
-  #more_3 {
-    display: block !important;
-  }
-  % endif
-}
-@media(max-width:1196px) {
-  % if len(progress_courses) > 2:
-  #more_1 {
-    display: block !important;
-  }
-  % endif
-  % if len(start_course) > 2:
-  #more_2 {
-    display: block !important;
-  }
-  % endif
-  % if len(finish_courses) > 2:
-  #more_3 {
-    display: block !important;
-  }
-  % endif
-}
-@media(max-width:814px) {
-  % if len(progress_courses) > 1:
-  #more_1 {
-    display: block !important;
-  }
-  % endif
-  % if len(start_course) > 1:
-  #more_2 {
-    display: block !important;
-  }
-  % endif
-  % if len(finish_courses) > 1:
-  #more_3 {
-    display: block !important;
-  }
-  % endif
 }
 </style>

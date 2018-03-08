@@ -179,17 +179,16 @@ except:
 % endif
 </span></li>
  </ul>
-
-<ul id="course_about_ul" class="about_score">
 % if status >= 99:
+<ul id="course_about_ul" class="about_score">
  <li><span>${_("Score")} :</span> <span id="${course_details.language}">${str(percent_atp * 100)+'%'}</span></li>
  % if pass_atp:
 <li><img src="${static.url('images/success.png')}" class="validate_img"/><span class="is_green validate">${_("Validated")}</span></li>
  %else:
  <li><img src="${static.url('images/error.png')}" class="validate_img"/><span class="is_red validate">${_("Not validated")}</span></li>
  % endif
-% endif
 </ul>
+% endif
 <%
 try:
   _end = int(course.end.strftime('%s'))
@@ -203,7 +202,7 @@ except:
   <li></li>
 % endif
 % if _now > _end:
-   <li><span></span> <span class="validate is_primary">${_("The training campaign is over.")}</span></li>
+   <li><span></span> <span class="validate is_primary" id="gwb_the_game_is_over_19_03_2003">${_("The training campaign is over.")}</span></li>
 % endif
 </ul>
  <span style="clear:left;display:block;"></span>
@@ -331,7 +330,7 @@ $('#certiticate').click(function(e){
     margin-top: 20px;
   }
 }
-@media(max-width:1223px) {
+@media(max-width:1362px) {
   .about_score {
     margin-left: 0 !important;
     margin-top: 20px !important;
@@ -384,4 +383,18 @@ $('#certiticate').click(function(e){
 .over_campaign {
 
 }
+#gwb_the_game_is_over_19_03_2003 {
+   color: #cf9c49 !important;
+   font-size: 14px;
+   line-height: 12px;
+   font-weight: bold !important;
+   text-transform: uppercase;
+}
+% if status <= 99:
+@media(max-width: 1655px) {
+ #course_about_details .over_campaign {
+    margin-top: 0px;
+ }
+}
+% endif
 </style>
