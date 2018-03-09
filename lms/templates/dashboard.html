@@ -57,15 +57,6 @@ font-size:50px !important;
 #dashboard_tuto_atp_4,#sub_menu #cat_reg {
  border-left-color: rgb(57,178,192) !important;
 }
-.bouton-more{
-  color: #05144d;
-  font-weight: 600;
-  font-size: 16px;
-  cursor: pointer;
-}
-.bouton-more span{
-  font-size: 14px;
-}
 /* Responsive mobile header */
 .header-mobile{
   display: none;
@@ -216,6 +207,16 @@ else:
   primary_color='#05144d'
 %>
 <style>
+.bouton-more{
+  color: ${primary_color};
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+}
+.bouton-more span{
+  font-size: 14px;
+}
+
 #dashboard_header_content button:hover, #dashboard_header_content button{
   border: none;
   text-shadow: none;
@@ -230,11 +231,13 @@ else:
   background-color: ${primary_color};
   font-size:15px;
 }
-div.atp_course_picto svg .cls-1{
+div.atp_course_picto svg path, div.atp_course_picto svg polygon{
   fill:#C5C5C5!important;
+  mask:none;
 }
-#dashboard_tuto_atp svg .cls-1{
+#dashboard_tuto_atp svg path, #dashboard_tuto_atp svg polygon{
   fill: ${primary_color}!important;
+  mask:none;
 }
 
 #dashboard_header_atp {
@@ -478,7 +481,7 @@ div.atp_course_picto svg .cls-1{
 	</section>
 	<!-- module termine -->
 	<section id="dashboard_course_finished">
-		<h2 style="margin-bottom:0px;"><img src="${static.url('images/termine.svg')}" class="svg gradient"/><span>${_("COMPLETED")}</span></h2>
+		<h2 style="margin-bottom:0px;"><img src="${static.url('images/termine.svg')}" class="svg gradient"/><span>${_("Completed")}</span></h2>
       <div id="ancre-finished"></div>
 		<p class="first_p" style="margin-top:35px;">${_("You have completed the following training modules. Click on")} &laquo; ${_("More information")} &raquo; ${_("to access your results and scores")}.</p>
 	<!-- course listing -->
@@ -602,6 +605,21 @@ function add_class() {
 <script>
 /* html and static templates */
 function template_course_card(atp_course_word,atp_course_link,img_src,course_id,categ_lower,categ,course_progression,picto_dure,duration,required,picto_obiligatoire,display_name_with_default,_end_add,_img_data) {
+  % if LANGUAGE_CODE == 'fr':
+    if(categ.toLowerCase()=="fundamental" || categ.toLowerCase()=="fundamentals"){
+      categ="fondamentaux";
+    }
+    else if(categ.toLowerCase()=="our solutions"){
+      categ="nos solutions";
+    }
+    else if(categ.toLowerCase()=="sales approach"){
+      categ="démarche commerciale";
+    }
+    else if(categ.toLowerCase()=="regulatory"){
+      categ="règlementaire";
+    }
+  %endif;
+
   var template = '<li class="atp_course_item" data-categ="'+categ_lower+'"><div class="atp_course_image"><span class="cateogry_text">'+categ+'</span><a href="/courses/'+course_id+'/courseware/"><img src="'+img_src+'" /><div class="img_'+categ_lower+'"></div></a></div><div class="progress_bar_status_up"><div class="progress_bar_status" style="width:'+course_progression+'%;"></div></div><div class="atp_course_info"><div class="atp_course_duration"><div class="inside_atp_left"><img src="'+picto_dure+'" class="svg"/><span>'+duration+'</span><div style="display:block;clear:left;height:0px;"></div></div></div><div class="atp_course_dificulties"><div class="inside_atp"><span>'+required+'</span><img src="'+picto_obiligatoire+'" class="svg"/><div style="display:block;clear:left;height:0px;"></div></div></div></div><div class="atp_course_title"><span>'+display_name_with_default+'</span></div>'+_end_add+'<div class="atp_course_picto">'+_img_data+'</div><div class="atp_course_link"><a href="'+atp_course_link+'">'+atp_course_word+'</a></div></li>';
   return template
 }

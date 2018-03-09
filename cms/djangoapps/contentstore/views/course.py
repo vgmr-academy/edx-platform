@@ -1764,9 +1764,9 @@ def invite_handler(request, course_key_string):
                         csv_infos.append(q)
 			log.info("session_manager_handler: "+str(email))
                 if course.language == "fr":
-                    msg = "La creation d'un compte est necessaire avant votre inscription au module "+course.display_name+". Une fois votre compte cree vous pourrez acceder au module via le lien disponible dans l'autre email qui vous a ete envoye."
+                    msg = "Vous êtes invités à participer au module "+course.display_name+". Une fois la création de votre compte finalisé, vous pourrez accéder à ce module pédagogique."
 		elif course.language == "en":
-                    msg = "The creation of an account is required before your registration module "+course.display_name+".Once your account is created you can access the module via the link disponibe in another email that was sent to you"
+                    msg = "You are invited to participate to the module "+course.display_name+".Once your account is activated, you will be able to access the training module."
                 list_return = list_email
                 email_send = []
                 try:
@@ -1863,12 +1863,11 @@ def invite_handler(request, course_key_string):
                         #try:
                         user_email = send_enroll_mail(obj,course,overview,course_details,body,_send_values,module_store)
                         log.info("invite_handler END sem user dict: "+pformat(_send_values))
-			log.info("invite_handler user_email result : "+pformat(user_email))
 		        """
                         except:
                             log.info("ERROR invite_handler END sem user dict: ")
 			"""
-			reponse['session_manager_return'] = session_manager
+			#reponse['session_manager_return'].append()
                     for n in list_email:
                         if not n in array:
                             q = {}
@@ -1882,6 +1881,7 @@ def invite_handler(request, course_key_string):
                         q={}
                         q['email']=n
                         retour.append(n);
+			log.info('except1 invite_handler {}'.format(n))
                     response = {'response':request_type,'message':retour}
 
 
@@ -1891,6 +1891,7 @@ def invite_handler(request, course_key_string):
                     q={}
                     q['email']=n
                     retour.append(n);
+	       	    log.info('except2 invite_handler {}'.format(n))
                 response = {'response':request_type,'message':retour}
 
             return JsonResponse(response)

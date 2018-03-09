@@ -135,18 +135,13 @@ def generate_html(user,score,course_img_path,template_path,course_title,categori
     draw.text((px_p1,py_p1),phrase,main_color,font=font_big)
     #Ecriture course title
     #course title use
-    course_title = "un chasseur sachant chasser se retrouvera sans doute plein de bolo a manger car il ne pourra pas les digerer"
     array_of_strings = wrap(course_title, 60)
-    log.info(draw.textsize('a'))
-    log.info(draw.textsize('b'))
-    log.info(draw.textsize('un chasseur sachant chasser se retrouvera sans doute plein'))
     final_title = ""
     for parts in array_of_strings:
         final_title = final_title+parts+'\n'
     course2_largeur, course2_hauteur = draw.textsize(array_of_strings[0])
-    px_course2=((672-course2_largeur)/2)-30
-    log.info('title length {}'.format(course2_largeur))
-    draw.text((0,py_p1+30),final_title,main_color,font=font_big)
+    px_course2=(595-course2_largeur)/2 - 40 
+    draw.text((px_course2,(py_p1+(30 * len(array_of_strings)))),final_title,main_color,font=font_big)
     #Ecriture phrase 2
     p2_largeur, p2_hauteur = draw.textsize(phrase2)
     px_p2=(background_largeur-p2_largeur-marge_laterale)/2

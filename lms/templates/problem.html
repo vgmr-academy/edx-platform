@@ -75,7 +75,7 @@ from openedx.core.djangolib.markup import HTML
   ${ HTML(problem_down) }
   <!-- end explication -->
   <!-- bouton submit et next -->
-  % if answer_available:
+  % if True:
   <div class="action">
     <input type="hidden" name="problem_id" value="${ problem['name'] }" />
     % if demand_hint_possible:
@@ -113,6 +113,8 @@ from openedx.core.djangolib.markup import HTML
         <button type="button" class="show problem-action-btn btn-default btn-small" aria-describedby="${ short_id }-problem-title"><span class="icon fa fa-info-circle" aria-hidden="true"></span><span class="show-label">${_('Show Answer')}</span></button>
     </span>
     % endif
+    </div>
+    <div class="final_solution">
     </div>
     <div class="submit-attempt-container">
       <button type="button" class="submit btn-brand" data-submitting="${ submit_button_submitting }" data-value="${ submit_button }" data-should-enable-submit-button="${ should_enable_submit_button }" aria-describedby="submission_feedback_${short_id}" ${'' if should_enable_submit_button else 'disabled'}>
@@ -203,7 +205,18 @@ $('#problem_${short_id}').find('.dropdown_atp').click(function(){
     This.addClass('is_overflow');
   }
 })
-
+var _cur_length = $('#problem_${short_id}').find('.show').length;
+console.log(_cur_length);
+if(_cur_length > 0) {
+ $('#problem_${short_id}').find('.show').show();
+ console.log(_cur_length);
+}
+//detailed solution
+var details = $('#problem_${short_id}').find('.detailed-solution').html();
+$('#problem_${short_id}').find('.detailed-solution').remove();
+if($('#problem_${short_id}').hasClass('finished')){
+ $('#problem_${short_id}').find('.final_solution').html(details);
+}
 </script>
 <style>
 .xmodule_display.xmodule_CapaModule div.problem .notification.error,.xmodule_display.xmodule_CapaModule div.problem .notification.success {
