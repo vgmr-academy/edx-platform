@@ -12,6 +12,8 @@ from edxmako.shortcuts import render_to_response,render_to_string
 from django.views.generic import TemplateView
 import datetime
 
+from textwrap import wrap
+
 import requests
 
 import logging
@@ -39,17 +41,23 @@ def generate_html(user,score,course_img_path,template_path,course_title,categori
     gold=(221, 157, 58)
     date = str(datetime.datetime.today().strftime('%d/%m/%Y'))
 
-    background = Image.new('RGBA', (595,842), (255, 255, 255, 255))
+    background = Image.new('RGBA', (595,865), (255, 255, 255, 255))
     background_largeur, background_hauteur=background.size
 
     logo=Image.open('/edx/var/edxapp'+logo_path).convert("RGBA")
-    logo=resizeimage.resize_height(logo, 80)
+    try:
+        logo=resizeimage.resize_height(logo, 70)
+    except:
+	pass
     logo_largeur, logo_hauteur=logo.size
 
     #Positionnement bloc logo
     if amundi_academy!='':
         amundi=Image.open('/edx/var/edxapp'+amundi_academy)
-        amundi=resizeimage.resize_height(amundi, 50)
+        try:
+            amundi=resizeimage.resize_height(amundi, 50)
+	except:
+            pass
         amundi_largeur, amundi_hauteur=amundi.size
         px_logo=(marge_laterale)
         py_logo=marge_haute
@@ -81,8 +89,10 @@ def generate_html(user,score,course_img_path,template_path,course_title,categori
     response_img.raw.decode_content = True
     log.info("atp_certificates.utils course_img get requests status code : ".format(response_img.status_code))
     image_cours=Image.open(response_img.raw)
-
-    image_cours=resizeimage.resize_width(image_cours, 300)
+    try:
+        image_cours=resizeimage.resize_width(image_cours, 300)
+    except:
+	pass
     imgc_largeur, imgc_hauteur= image_cours.size
     px_imgc=(background_largeur-imgc_largeur)/2
     py_imgc=(py_course1+course1_hauteur+marge_espacement)
@@ -124,15 +134,27 @@ def generate_html(user,score,course_img_path,template_path,course_title,categori
     py_p1=py_score+score_hauteur+30+marge_espacement_large
     draw.text((px_p1,py_p1),phrase,main_color,font=font_big)
     #Ecriture course title
-    draw.text((px_course1,py_p1+30),course_title,main_color,font=font_big)
+    #course title use
+    course_title = "un chasseur sachant chasser se retrouvera sans doute plein de bolo a manger car il ne pourra pas les digerer"
+    array_of_strings = wrap(course_title, 60)
+    log.info(draw.textsize('a'))
+    log.info(draw.textsize('b'))
+    log.info(draw.textsize('un chasseur sachant chasser se retrouvera sans doute plein'))
+    final_title = ""
+    for parts in array_of_strings:
+        final_title = final_title+parts+'\n'
+    course2_largeur, course2_hauteur = draw.textsize(array_of_strings[0])
+    px_course2=((672-course2_largeur)/2)-30
+    log.info('title length {}'.format(course2_largeur))
+    draw.text((0,py_p1+30),final_title,main_color,font=font_big)
     #Ecriture phrase 2
     p2_largeur, p2_hauteur = draw.textsize(phrase2)
-    px_p2=(background_largeur-p2_largeur)/2
-    py_p2=py_p1+30+course1_hauteur+30
+    px_p2=(background_largeur-p2_largeur-marge_laterale)/2
+    py_p2=py_p1+30+course1_hauteur+(30*len(array_of_strings))
     draw.text((px_p2,py_p2),phrase2,main_color,font=font_big)
     #Ecriture user name
     user_largeur, user_hauteur = draw.textsize(user)
-    px_user=(background_largeur-user_largeur)/2
+    px_user=(background_largeur-user_largeur - marge_laterale)/2
     py_user=py_p2+p2_hauteur+30
     draw.text((px_user,py_user),user,second_color,font=font_big)
 

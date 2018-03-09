@@ -13,6 +13,7 @@ from courseware.courses import (
 )
 import datetime
 _now = int(datetime.datetime.now().strftime('%s'))
+from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 %>
 
 <%inherit file="../main.html" />
@@ -38,6 +39,13 @@ course_about = static.get_value('css_overrides_course_about')
 % else:
   <link rel="stylesheet" type="text/css" href="${static.url(course_about)}" />
 % endif
+
+<%
+if configuration_helpers.get_value('primary_color') :
+  primary_color=configuration_helpers.get_value('primary_color')
+else:
+  primary_color='#05144d'
+%>
 <style>
 #course_about_details ul li:first-child {
   height: auto;
@@ -87,6 +95,13 @@ course_about = static.get_value('css_overrides_course_about')
  border-color: #c6c6c6 !important;
 }
 */
+/* Picto investissement */
+#picto_course_about .cls-1{
+  fill:${primary_color}!important;
+}
+.atp_course_picto .cls-1{
+  fill:#C5C5C5!important;
+}
 .course_about_atp_special .special_block .up_block h4 {
  margin-left: 5px !important;
  width: 95% !important;
@@ -97,6 +112,10 @@ course_about = static.get_value('css_overrides_course_about')
 #course_about_up_content {
   padding-top: 50px;
 }
+#course_about_details #course_about_ul {
+  min-width: auto !important;
+}
+
 </style>
 <script src="${static.url('js/course_about_atp.js')}"></script>
 
@@ -181,7 +200,7 @@ except:
  </ul>
 % if status >= 99:
 <ul id="course_about_ul" class="about_score">
- <li><span>${_("Score")} :</span> <span id="${course_details.language}">${str(percent_atp * 100)+'%'}</span></li>
+ <li><span>${_("Score")} :</span> <span id="${course_details.language}">${str(float(int(percent_atp * 1000)/10))+'%'}</span></li>
  % if pass_atp:
 <li><img src="${static.url('images/success.png')}" class="validate_img"/><span class="is_green validate">${_("Validated")}</span></li>
  %else:
@@ -254,6 +273,12 @@ except:
 <span>${_("serious game")}</span>
 </div>
 % endif
+% if content_data.get('simulation_investissement'):
+<div class="dashboard_picto_tuto_tma">
+<img src="${static.url('images/simulation_inv.svg')}" class="svg"/>
+<span>${_("investment game")}</span>
+</div>
+% endif
 % if content_data.get('text_image'):
 <div class="dashboard_picto_tuto_tma">
 <img src="${static.url('images/testes&images.svg')}" class="svg"/>
@@ -320,16 +345,7 @@ $('#certiticate').click(function(e){
     background-repeat: no-repeat;
     background-size: cover
 }
-@media(max-width:1686px) {
-  #course_about_details .over_campaign {
-    margin-left: 0 !important;
-  }
-}
-@media(max-width:1655px) {
-  #course_about_details .over_campaign {
-    margin-top: 20px;
-  }
-}
+
 @media(max-width:1362px) {
   .about_score {
     margin-left: 0 !important;

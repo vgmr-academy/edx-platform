@@ -129,6 +129,25 @@ else:
 #menu-categories{
   border-right: 1px solid rgba(255,255,255,0.5)!important;
 }
+#user-icone {
+    font-size: 22px;
+    border-radius: 100%;
+    width: 45px;
+    height: 45px!important;
+    margin: 11px;
+}
+@media (max-width: 1022px){
+#user-icone{
+  margin:0!important;
+}
+#profile_menu{
+  margin-right: 0;
+}
+}
+#profile_menu:hover #user-icone{
+  background-color: ${secondary_color};
+}
+
 
 /* responsive mon compte */
 
@@ -151,7 +170,7 @@ else:
     top: 55px!important;
   }
   #down_apt_nav #atp_menu_mobile{
-    right: 75px!important;
+    right: 80px!important;
     top:60%!important;
     height: 30px;
   }
@@ -183,7 +202,7 @@ nav = static.get_value('css_overrides_nav')
 % else:
   <link rel="stylesheet" type="text/css" href="${static.url(nav)}" />
 % endif
-<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
 
 
 
@@ -220,8 +239,9 @@ amundi_brand=configuration_helpers.get_value('amundi_brand')
     <img src="/media/logo-amundiacademy_blanc.png" alt="amundi_academy" class="logo-amundi-academy">
 </div>
 %endif
+% if "/dashboard" in request.path:
 <img id="atp_menu_mobile" src="${static.url('images/menu_mobile.png')}" class="sub_picto" id="sub_mobile_img"/>
-
+%endif
 
 
 

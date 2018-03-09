@@ -550,10 +550,10 @@ function generate_certif() {
 var picto_success = "${static.url('images/trophy.svg')}";
 var picto_failed = "${static.url('images/refresh.svg')}";
 var template_and_title = '<div id="final_score"><div id="title_result">${_("Results")}</div></div>';
-var congrats = "<div id='congrats_score'>${_('Congratulation')} !</div>";
+var congrats = "<div id='congrats_score'>${_('Congratulations')} !</div>";
 var picto = '<div id="score_picto"><img src="" class="svg"/></div>';
-var first_par = ['<div id="score_first_para">${_("You have acomplished the course ")}<br>« ${course.display_name_with_default} ».</div>','<div id="score_first_para">${_("You started the training module ")}<br>« ${course.display_name_with_default} ».</div>'];
-var second_par = ['<div id="second_par_score">${_("Sadly you have not achieved the minimum score wanted for this course")}</div>','<div id="second_par_score">${_("To end this training module, you have to access every chapters and finish the validation knowledge test.")}</div>'];
+var first_par = ['<div id="score_first_para">${_("You have completed the training module ")}<br>« ${course.display_name_with_default} »</div>','<div id="score_first_para">${_("You started the training module ")}<br>« ${course.display_name_with_default} ».</div>'];
+var second_par = ['<div id="second_par_score">${_("Unfortunately, you haven\'t achieved the minimum score required to validate the training module.")}</div>','<div id="second_par_score">${_("To end this training module, you have to access every chapters and finish the validation knowledge test.")}</div>'];
 var score_div = '<div id="score_div_info"><span>${_("Your total score :")}</span><span id="insert_score"></span></div>';
 var button = '<div id="score_button"><button>${_("Download the certificate")}</button></div>';
 // in progress
@@ -562,8 +562,7 @@ var template_and_title = '<div id="final_score"><div id="title_result">${_("Resu
 var picto = '<div id="score_picto"><img src="'+picto_url_inprogress+'" class="svg inprogress"/></div>';
 
 // Cours terminé
-var message_termine_fr="<div id='module-over'> La campagne est terminée. Vous pouvez continuer à accéder au contenu du module mais vous ne pouvez plus réaliser le quiz de validation des connaissances.</div>";
-var message_termine_en="<div id='module-over'>The training campaign is over. You can access the training module content. However, you can’t do the test to validate your knowledge.</div>";
+var message_termine='<div id="module-over">${_("The training campaign is over. You can access the training module content. However, you can\'t do the test to validate your knowledge.")}</div>';
 
 
 function insert_info_score(value) {
@@ -597,10 +596,14 @@ function returnScore() {
     success:function(data) {
       var passed = data.passed;
       var is_graded = data.is_graded;
-      var score = data.percent;
+      var score = parseFloat(data.percent);
+      if(score.toString().indexOf('.') == -1) {
+        score=score+'.0'
+      }
+      console.log(data);
+      console.log(score);
       var grade_cutoffs = data.grade_cutoffs;
       var overall_progress = data.overall_progress;
-      score = score * 100;
       insert_info_score();
       if(overall_progress >= 93) {
         if(passed && score >= grade_cutoffs) {
@@ -622,24 +625,14 @@ function returnScore() {
           $('#score_picto').find('img').attr('class','svg picto_add_failed');
         }
         if(course_over){
-          if (langue=="fr"){
-            $('#final_score').append(message_termine_fr);
-          }
-          else{
-            $('#final_score').append(message_termine_fr);
-          }
+            $('#final_score').append(message_termine);
         }
       }else{
         $('#final_score').append(first_par[1]);
         $('#final_score').append(second_par[1]);
         $('#score_div_info').hide();
         if(course_over){
-          if (langue=="fr"){
-            $('#final_score').append(message_termine_fr);
-          }
-          else{
-            $('#final_score').append(message_termine_fr);
-          }
+          $('#final_score').append(message_termine);
         }
       }
       $('#insert_score').text(score+'%');

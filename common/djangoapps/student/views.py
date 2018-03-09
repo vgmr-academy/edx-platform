@@ -801,7 +801,7 @@ def dashboard(request):
         if _end > 0 and _end < _now:
             _progress = False
 	q['passed'] = passed
-	q['percent'] = int(percent * 100)
+	q['percent'] = float(int(percent * 1000)/10)
         q['course_id'] = str(enrollment.course_id)
         q['duration'] = CourseDetails.fetch(enrollment.course_id).effort
         q['required'] = course_tma.is_required_atp
@@ -812,7 +812,7 @@ def dashboard(request):
         q['course_progression'] = course_progression
 	#list category
 	if not course_tma.categ in list_category:
-	    list_category.append(course_tma.categ)
+	    list_category.append(course_tma.categ) 
 	#end list category
         if course_progression > 0 and course_progression < 100 and passed == False and _progress == True:
           progress_courses.append(q)
@@ -2704,10 +2704,25 @@ class LogoutView(TemplateView):
 	for i in atp_access:
 	    n = n + 1
 
+        _microsite = configuration_helpers.get_value('domain_prefix')
+
 	if n > 0:
-	    self.target = "https://digital.amundi.com/training/amundiacademy/index.html#/fr/administrateur"
+            if _microsite is not None:
+                if _microsite == "amundi":
+	            self.target = "https://digital.amundi.com/training/amundiacademy/index.html#/fr/administrateur"
+		elif _microsite == "lcl":
+		    self.target = "https://interface.amundi.com/ret/landing/academy/index.html#/fr/lcl/administrateur"
+	    else:
+		self.target = "https://digital.amundi.com/training/amundiacademy/index.html#/fr/administrateurselon"
         else:
-	    self.target = "https://digital.amundi.com/training/amundiacademy/index.html#/fr/apprenant"
+            if _microsite is not None:
+                if _microsite == "amundi":
+                    self.target = "https://interface.amundi.com/ret/landing/academy/index.html#/fr/apprenant"
+                elif _microsite == "lcl":
+                    self.target = "https://interface.amundi.com/ret/landing/academy/index.html#/fr/lcl/apprenant"
+            else:
+                self.target = "https://interface.amundi.com/ret/landing/academy/index.html#/fr/apprenant"
+
 
         # If we don't need to deal with OIDC logouts, just redirect the user.
         if LogoutViewConfiguration.current().enabled and self.oauth_client_ids:

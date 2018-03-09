@@ -102,6 +102,9 @@ else:
      % if content_data.get('serious_game'):
      <img src="${static.url('images/seriousgame.svg')}" class="svg"/>
      % endif
+     % if content_data.get('simulation_investissement'):
+     <img src="${static.url('images/simulation_inv.svg')}" class="svg"/>
+     % endif
      % if content_data.get('text_image'):
      <img src="${static.url('images/testes&images.svg')}" class="svg"/>
      % endif
@@ -152,6 +155,9 @@ else:
      % if content_data.get('serious_game'):
      <img src="${static.url('images/seriousgame.svg')}" class="svg"/>
      % endif
+     % if content_data.get('simulation_investissement'):
+     <img src="${static.url('images/simulation_inv.svg')}" class="svg"/>
+     % endif
      % if content_data.get('text_image'):
      <img src="${static.url('images/testes&images.svg')}" class="svg"/>
      % endif
@@ -190,9 +196,9 @@ else:
    <!-- idicatif success -->
    <div class="atp_course_progress">
      % if passed:
-     <img src="${static.url('images/success.png')}" class="validate_img"/><span class="is_green validate">${_("Validated")} ${percent * 100}%</span>
+     <img src="${static.url('images/success.png')}" class="validate_img"/><span class="is_green validate">${_("Validated")} ${float(int(percent * 1000)/10)}%</span>
      % else:
-     <img src="${static.url('images/error.png')}" class="validate_img"/><span class="is_red validate">${_("Not validated")} ${percent * 100}%</span>
+     <img src="${static.url('images/error.png')}" class="validate_img"/><span class="is_red validate">${_("Not validated")} ${float(int(percent * 1000)/10)}%</span>
      % endif
    </div>
    <!-- idicatif success -->
@@ -213,6 +219,9 @@ else:
     % endif
     % if content_data.get('serious_game'):
     <img src="${static.url('images/seriousgame.svg')}" class="svg"/>
+    % endif
+    % if content_data.get('simulation_investissement'):
+    <img src="${static.url('images/simulation_inv.svg')}" class="svg"/>
     % endif
     % if content_data.get('text_image'):
     <img src="${static.url('images/testes&images.svg')}" class="svg"/>
@@ -264,6 +273,9 @@ else:
      % if content_data.get('serious_game'):
      <img src="${static.url('images/seriousgame.svg')}" class="svg"/>
      % endif
+     % if content_data.get('simulation_investissement'):
+     <img src="${static.url('images/simulation_inv.svg')}" class="svg"/>
+     % endif
      % if content_data.get('text_image'):
      <img src="${static.url('images/testes&images.svg')}" class="svg"/>
      % endif
@@ -313,6 +325,9 @@ else:
      % endif
      % if content_data.get('serious_game'):
      <img src="${static.url('images/seriousgame.svg')}" class="svg"/>
+     % endif
+     % if content_data.get('simulation_investissement'):
+     <img src="${static.url('images/simulation_inv.svg')}" class="svg"/>
      % endif
      % if content_data.get('text_image'):
      <img src="${static.url('images/testes&images.svg')}" class="svg"/>
@@ -370,6 +385,9 @@ else:
      % endif
      % if content_data.get('serious_game'):
      <img src="${static.url('images/seriousgame.svg')}" class="svg"/>
+     % endif
+     % if content_data.get('simulation_investissement'):
+     <img src="${static.url('images/simulation_inv.svg')}" class="svg"/>
      % endif
      % if content_data.get('text_image'):
      <img src="${static.url('images/testes&images.svg')}" class="svg"/>

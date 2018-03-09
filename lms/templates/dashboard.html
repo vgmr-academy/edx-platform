@@ -61,6 +61,7 @@ font-size:50px !important;
   color: #05144d;
   font-weight: 600;
   font-size: 16px;
+  cursor: pointer;
 }
 .bouton-more span{
   font-size: 14px;
@@ -87,6 +88,19 @@ font-size:50px !important;
   #dashboard_tma #dashboard_header_atp{
     background-image: none;
   }
+  #dashboard_tma #dashboard_header_atp{
+    display: block!important;
+  }
+}
+
+/* Fix header taille texte */
+#intro-phrase-header{
+  font-size: 24px!important;
+  margin-top: 25px!important;
+  margin-bottom: 25px!important;
+}
+span.bouton-more{
+  font-size:18px!important;
 }
 
 </style>
@@ -216,8 +230,11 @@ else:
   background-color: ${primary_color};
   font-size:15px;
 }
-#dashboard_tma #dashboard_tuto_atp .dashboard_picto_tuto_tma div svg .cls-1{
-  fill: ${primary_color};
+div.atp_course_picto svg .cls-1{
+  fill:#C5C5C5!important;
+}
+#dashboard_tuto_atp svg .cls-1{
+  fill: ${primary_color}!important;
 }
 
 #dashboard_header_atp {
@@ -280,7 +297,7 @@ else:
       <img src="${static.url('images/logo-amundiacademy.png')}" />
     </div>
     -->
-    <p>Accédez à vos modules pédagogiques</p>
+    <p id="intro-phrase-header">Accédez à vos modules pédagogiques</p>
     <span class="tuto_action bouton-more">En savoir plus ▶</span>
   </div>
 </section>
@@ -332,7 +349,7 @@ else:
       <div><img src="${static.url('images/video.svg')}" class="svg"/><span>video</span></div>
       <div><img src="${static.url('images/quiz.svg')}" class="svg"/><span>quiz</span></div>
       <div><img src="${static.url('images/seriousgame.svg')}" class="svg"/><span>serious game</span></div>
-      <div><img src="${static.url('images/simulationinv.svg')}" class="svg"/><span>simulation d'investissement</span></div>
+      <div><img src="${static.url('images/simulation_inv.svg')}" class="svg"/><span>simulation d'investissement</span></div>
       <div><img src="${static.url('images/pdf.svg')}" class="svg"/><span>documentation</span></div>
       <div><img src="${static.url('images/testes&images.svg')}" class="svg"/><span>infographie</span></div>
       <span style="display:block;clear:left;"></span>
@@ -353,7 +370,7 @@ else:
         <img src="${static.url('images/logo-amundiacademy.png')}" />
       </div>
       -->
-			<p>Access your training modules</p>
+			<p id="intro-phrase-header">Access your training modules</p>
 			<span class="tuto_action bouton-more">More <span>▶</span></span>
 		</div>
 	</section>
@@ -403,7 +420,7 @@ else:
 				<div><img src="${static.url('images/video.svg')}" class="svg"/><span>video</span></div>
 				<div><img src="${static.url('images/quiz.svg')}" class="svg"/><span>quiz</span></div>
         <div><img src="${static.url('images/seriousgame.svg')}" class="svg"/><span>serious game</span></div>
-        <div><img src="${static.url('images/simulationinv.svg')}" class="svg"/><span>investment game</span></div>
+        <div><img src="${static.url('images/simulation_inv.svg')}" class="svg"/><span>investment game</span></div>
         <div><img src="${static.url('images/pdf.svg')}" class="svg"/><span>documentation</span></div>
         <div><img src="${static.url('images/testes&images.svg')}" class="svg"/><span>infography</span></div>
 				<span style="display:block;clear:left;"></span>
@@ -439,7 +456,7 @@ else:
     <p>${_("No training modules available in this section.")}</p>
 </div>
 % endif
-		<a class="atp_dashboard_active_course" data-number="${compteur}" id="more_1" data-cible="progress_courses_atp" data-status="cours">+ ${_("More modules")}</a>
+		<a class="atp_dashboard_active_course is_none_more" data-number="${compteur}" id="more_1" data-cible="progress_courses_atp" data-status="cours">+ ${_("More modules")}</a>
 	</section>
 	<!-- module a realiser -->
 	<section id="dashboard_course_to_do">
@@ -457,7 +474,7 @@ else:
     <p>${_("No training modules available in this section.")}</p>
 </div>
 % endif
-<a class="atp_dashboard_active_course" data-number="${compteur}" id="more_2" data-cible="start_courses_atp" data-status="invite">+ ${_("More modules")}</a>
+<a class="atp_dashboard_active_course is_none_more" data-number="${compteur}" id="more_2" data-cible="start_courses_atp" data-status="invite">+ ${_("More modules")}</a>
 	</section>
 	<!-- module termine -->
 	<section id="dashboard_course_finished">
@@ -475,7 +492,7 @@ else:
     <p>${_("No training modules available in this section.")}</p>
 </div>
 % endif
-<a class="atp_dashboard_active_course" data-number="${compteur}" id="more_3" data-cible="end_courses_atp" data-status="finish">+ ${_("More modules")}</a>
+<a class="atp_dashboard_active_course is_none_more" data-number="${compteur}" id="more_3" data-cible="end_courses_atp" data-status="finish">+ ${_("More modules")}</a>
 	</section>
 
 
@@ -524,6 +541,7 @@ $('#close_pop_up').click(function(){
   margin-bottom: 3px;
   font-size: 38px;
   line-height: initial;
+  margin-top:0;
 }
 #logo-amundiacademy {
   margin-top: 10px;
@@ -537,6 +555,9 @@ $('#close_pop_up').click(function(){
   width: 100%!important;
   background-color: #C6EAFB;
   background-position: left;
+  display: flex;
+  align-items: center;
+  background-size: contain;
 }
 #dashboard_tuto_atp_1, #dashboard_tuto_atp_2,#dashboard_tuto_atp_3,#dashboard_tuto_atp_4{
   margin: 0!important;
@@ -622,7 +643,7 @@ var picto_serious_game = "${static.url('images/seriousgame.svg')}";
 var picto_teste_images = "${static.url('images/testes&images.svg')}";
 var picto_success = "${static.url('images/success.png')}";
 var picto_error = "${static.url('images/error.png')}";
-var picto_simulation_inv = "${static.url('images/simulationinv.svg')}";
+var picto_simulation_inv = "${static.url('images/simulation_inv.svg')}";
 /* end html and static templates */
 
 function course_card(categ,course_id,img_src,course_progression,duration,required,display_name_with_default,content_data,percent,passed,atp_rank,cible) {
@@ -656,6 +677,10 @@ function course_card(categ,course_id,img_src,course_progression,duration,require
     required = '${_("mandatory")}';
   }else{
     required = '${_("optional")}';
+  }
+
+  if(percent.toString().indexOf('.') == -1) {
+    percent=percent+'.0'
   }
 
   var categ_lower = categ.replace(/ /g,'').toLowerCase();

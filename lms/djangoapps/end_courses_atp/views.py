@@ -24,11 +24,11 @@ def ensure_certif(request,course_id):
     grade_cutoffs = modulestore().get_course(course_key, depth=0).grade_cutoffs['Pass'] * 100
     grading_note =  CourseGradeFactory().create(request.user, course_tma)
     passed = grading_note.passed
-    percent = grading_note.percent
+    percent = float(int(grading_note.percent * 1000)/10)
     overall_progress = get_overall_progress(request.user.id, course_key)
     context = {
         'passed':passed,
-        'percent':percent,
+        'percent':percent,  
         'is_graded':is_graded,
         'grade_cutoffs':grade_cutoffs,
         'overall_progress':overall_progress

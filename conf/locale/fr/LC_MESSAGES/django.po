@@ -13421,6 +13421,10 @@ msgid "You are enrolled in this course"
 msgstr ""
 
 #: lms/templates/courseware/course_about.html
+msgid "investment game"
+msgstr "simulation d'investissement"
+
+#: lms/templates/courseware/course_about.html
 #: lms/templates/dashboard/_dashboard_course_listing.html
 #: lms/templates/shoppingcart/registration_code_receipt.html
 msgid "View Course"
@@ -13583,6 +13587,18 @@ msgstr "Utilitaires du cours"
 #: lms/templates/courseware/courseware-error.html
 msgid "Courseware"
 msgstr "Cours"
+
+#: lms/templates/courseware/courseware.html
+msgid "Congratulations"
+msgstr "Félicitations"
+
+#: lms/templates/courseware/courseware.html
+msgid "You have completed the training module"
+msgstr "Vous avez complété le module"
+
+#: lms/templates/courseware/courseware.html
+msgid "Unfortunately, you haven't achieved the minimum score required to validate the training module."
+msgstr "Malheureusement, vous n'avez pas atteint le score minimum requis pour valider ce module."
 
 #: lms/templates/courseware/courseware.html
 msgid "Bookmarks"
@@ -22434,6 +22450,10 @@ msgstr "Télécharger le certificat"
 #: lms/templates/courseware/courseware.html
 msgid "Back to training module description"
 msgstr "RETOUR À LA FICHE DU MODULE"
+
+#: lms/templates/courseware/courseware.html
+msgid "The training campaign is over. You can access the training module content. However, you can't do the test to validate your knowledge."
+msgstr "La campagne est terminée. Vous pouvez continuer à accéder au contenu du module mais vous ne pouvez plus réaliser le quiz de validation des connaissances."
 
 #: lms/templates/courseware/courseware.html
 msgid "Go to studio"

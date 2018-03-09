@@ -66,7 +66,8 @@ def atp_generate_certificate(request,course_id):
     is_passed = course_factory.passed
     courseoverview = CourseOverview.get_from_id(course_key)
     course_title = courseoverview.display_name_with_default
-    score = str(course_factory.percent * 100)+'%'
+    _temp_score = int(course_factory.percent * 1000)
+    score = str(float(_temp_score / 10))+'%'
     url = 'https://'+settings.FEATURES['LMS_BASE']
 
     if configuration_helpers.get_value('logo_couleur') :
