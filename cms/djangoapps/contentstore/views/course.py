@@ -1366,7 +1366,10 @@ def session_manager_handler(msg,emails,org,language):
     log.info("url request_token")
     log.info(urls[0])
     log.info("request good credentials")
-    request_token = requests.post(urls[0], data=data,headers = {'content-type':'application/x-www-form-urlencoded'},verify=False)
+    try:
+        request_token = requests.post(urls[0], data=data,headers = {'content-type':'application/x-www-form-urlencoded'},verify=False)
+    except:
+        log.info('Exception was: ', exc_info=True)
     log.info("token request status {}".format(request_token.status_code))
     log.info("request token {}".format(request_token))
     log.info("request token dict {}".format(request_token.__dict__))

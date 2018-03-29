@@ -61,6 +61,7 @@ from util.query import use_read_replica_if_available
 #GEOFFREY
 from util.models import CompressedTextField
 
+
 UNENROLL_DONE = Signal(providing_args=["course_enrollment", "skip_refund"])
 ENROLL_STATUS_CHANGE = Signal(providing_args=["event", "user", "course_id", "mode", "cost", "currency"])
 log = logging.getLogger(__name__)
@@ -68,6 +69,9 @@ AUDIT_LOG = logging.getLogger("audit")
 SessionStore = import_module(settings.SESSION_ENGINE).SessionStore  # pylint: disable=invalid-name
 
 # enroll status changed events - signaled to email_marketing.  See email_marketing.tasks for more info
+
+
+
 
 
 # ENROLL signal used for free enrollment only
