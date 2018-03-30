@@ -1366,10 +1366,7 @@ def session_manager_handler(msg,emails,org,language):
     log.info("url request_token")
     log.info(urls[0])
     log.info("request good credentials")
-    try:
-        request_token = requests.post(urls[0], data=data,headers = {'content-type':'application/x-www-form-urlencoded'},verify=False)
-    except:
-        log.info('Exception was: ', exc_info=True)
+    request_token = requests.post(urls[0], data=data,headers = {'content-type':'application/x-www-form-urlencoded'},verify=False)
     log.info("token request status {}".format(request_token.status_code))
     log.info("request token {}".format(request_token))
     log.info("request token dict {}".format(request_token.__dict__))
@@ -1790,30 +1787,34 @@ def invite_handler(request, course_key_string):
                         last_name = ''
                         for get in csv_infos:
                             if get['email'] == email_session_manager:
+                                log.info("[User PreProfiles] Preparing by collecting data")
                                 level_1 = get['level_1']
                                 level_2 = get['level_2']
                                 level_3 = get['level_3']
                                 level_4 = get['level_4']
                                 first_name = get['first_name']
                                 last_name = get['last_name']
+                                log.info("[User PreProfiles] data collected for "+pformat(email_session_manager))
                         q = {}
                         q['email'] = email_session_manager
                         #try:
                         # ALL INSERT
                         # FIRST INSERT AT THE FIRST LINE
+                        log.info("[User PreProfiles] Beginning")
                         try:
-                            UserPreprofile.objects.get(email=email)
+                            UserPreprofile.objects.get(email=email_session_manager)
                         except:
-			    log.info("UserPreprofile saved values")
+			    log.info("[User PreProfiles] There was no user prepprofile.. Creating one. "+pformat(email_session_manager)+" "+pformat(uuid_session_manager))
                             s = UserPreprofile(email=email_session_manager,first_name=first_name,last_name=last_name,language=course_lang,level_1=level_1,level_2=level_2,level_3=level_3,level_4=level_4,uuid=uuid_session_manager)
                             s.save()
+                            log.info("[User PreProfiles] UserPreProfile Created. "+pformat(email_session_manager)+" "+pformat(uuid_session_manager))
                         # CREATE A REQUEST PARAM
 		        log.info("Create a request params")
                         request.POST['action'] = 'enroll'
                         request.POST['auto_enroll'] = True
                         request.POST['email_students'] = False
                         request.POST['identifiers'] = email
-			log.info("students_update_enrollment_cms")
+			log.info("students_update_enrollment_cms "+pformat(email_session_manager))
                         students_update_enrollment_cms(request,course_key_string)
                         q['status'] = True
                         # GET COURSE_KEY
@@ -1864,8 +1865,20 @@ def invite_handler(request, course_key_string):
                         elif course.language == "en":
                             obj = "Invitation to access {} training module".format(course.display_name)
                         #try:
-                        user_email = send_enroll_mail(obj,course,overview,course_details,body,_send_values,module_store)
-                        log.info("invite_handler END sem user dict: "+pformat(_send_values))
+			log.info("is n is n{}".format(n))
+                        log.info("is n is n{}".format(n))
+                        log.info("is n is n{}".format(n))
+                        log.info("is n is n{}".format(n))
+                        log.info("is n is n{}".format(n))
+                        log.info("is n is n{}".format(n))
+                        log.info("is n is n{}".format(n))
+                        log.info("is n is n{}".format(n))
+
+		        #if n.get('status') == "list":
+                        ### SEND EMAil from ATP only to existing accounts on SEM
+                        if n.get('status') == "list" or n.get('status') == "error":
+                            user_email = send_enroll_mail(obj,course,overview,course_details,body,_send_values,module_store)
+                            log.info("invite_handler END sem user dict: "+pformat(_send_values))
 		        """
                         except:
                             log.info("ERROR invite_handler END sem user dict: ")
