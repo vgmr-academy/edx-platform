@@ -280,6 +280,9 @@ msgstr "Exercice"
 msgid "Advanced"
 msgstr "Avancé"
 
+msgid "Back to"
+msgstr "Retour vers"
+
 #: cms/djangoapps/contentstore/views/entrance_exam.py
 #: lms/djangoapps/courseware/tabs.py cms/templates/settings.html
 msgid "Entrance Exam"
@@ -6330,6 +6333,8 @@ msgstr "Email"
 #: cms/templates/index.html
 msgid "Language"
 msgstr "Langue"
+msgid "Start"
+msgstr "Commencer"
 
 #: lms/djangoapps/instructor/views/api.py
 msgid "Location"
@@ -22281,7 +22286,7 @@ msgstr "Appréhender les décisions règlementaires"
 
 #: lms/templates/dashboard.html
 msgid "FORMATS"
-msgstr "FORMAT DES MODULES"
+msgstr "FORMAT DU MODULE"
 
 #: lms/templates/dashboard.html
 msgid "Each module is composed of different interactive formats:"
@@ -22290,6 +22295,8 @@ msgstr "Chaque module est composé de différents formats interactifs :"
 #: lms/templates/dashboard.html
 msgid "texts & images"
 msgstr "textes & images"
+msgid "Infography"
+msgstr "Infographie"
 
 #: lms/templates/dashboard.html
 msgid "pedagogical videos"

@@ -195,6 +195,16 @@ p.name-atp-user, p.email-atp-user{
   }
 }
 
+#user-icone img{
+  height: 24px!important;
+  margin-left: 0px!important;
+}
+
+#dashboard_tma section .atp_course_listing .atp_course_link a{
+  line-height: 45px !important;
+  font-size: 16px!important;
+}
+
 
 </style>
 <!-- import custom css script -->
@@ -206,9 +216,9 @@ nav = static.get_value('css_overrides_nav')
 % else:
   <link rel="stylesheet" type="text/css" href="${static.url(nav)}" />
 % endif
+
+
 <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
-
-
 
 <!-- import custom js script -->
 <!--
@@ -279,7 +289,7 @@ amundi_brand=configuration_helpers.get_value('amundi_brand')
 <div id="profile_menu" class="menu-item-atp">
   <!--<img class="vignette" src="${static.url('images/man-user.png')}" class="svg"/>-->
   <div id="user-icone">
-    <i class="far fa-user"></i>
+    <img src="/media/user.png" alt="">
   </div>
   <div id="profile-submenu">
     <div class="user-account-atp">
@@ -297,13 +307,13 @@ amundi_brand=configuration_helpers.get_value('amundi_brand')
       % endif
       % if _ensure_status:
       <div class="access-back-atp">
-        <a class="class-submenu" href="https://${settings.CMS_BASE}">${_("Access admin interface")}</a>
+        <a class="class-submenu" href="https://${settings.CMS_BASE}">${_("Access Admin interface")}</a>
       </div>
       % endif
     <div class="boutton-deconnexion">
       <a class="" href="/logout">
-        <i class="fas fa-power-off"></i>
-        ${_('logout')}
+        <img style="height:20px;"src="/media/poweroff.png" alt="">
+        <span style="margin-left:-25px;">${_('logout')}</span>
       </a>
     </div>
 

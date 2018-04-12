@@ -128,6 +128,8 @@ from microsite_configuration.models import (
 )
 from microsite_manager.models import MicrositeAdminManager
 
+from django.forms.models import model_to_dict
+
 #GEOFFREY
 from pprint import pformat
 from django.views.decorators.csrf import csrf_exempt
@@ -508,7 +510,6 @@ def course_listing(request):
     List all courses available to the logged in user
     """
 
-    log.info("timer 1 {}".format(datetime.datetime.now()))
 
     courses, in_process_course_actions = get_courses_accessible_to_user(request)
     libraries = _accessible_libraries_list(request.user) if LIBRARIES_ENABLED else []
@@ -1458,8 +1459,8 @@ def send_enroll_mail(obj,course,overview,course_details,body,list_email,module_s
     mode_required = course.is_required_atp
     log.info("send_enroll_mail start_sending")
     #static images
-    org_image = microsite_link+'/static/images/mail_logo.png'
-    platform_image = microsite_link+'/static/images/platform_logo.png'
+    #org_image = microsite_link+'/static/images/mail_logo.png'
+    platform_image = microsite_link+'/media/certificates/images/logo-amundi-academy.jpg'
     log.info("send_enroll_mail start_sending")
     #static images
     microsite = Microsite.objects.get(key=course_org)
@@ -1488,12 +1489,13 @@ def send_enroll_mail(obj,course,overview,course_details,body,list_email,module_s
     microsite = Microsite.objects.get(key=course_org)
     log.info("send_enroll_mail start_sending")
 
-    course_link_img = 'https://'+site_name+microsite_value.values()[logo_key]
+    microsite_logo = 'https://'+site_name+microsite_value.values()[logo_key]
     log.info("send_enroll_mail start_sending")
 
     log.info('send enroll email after microsites values')
 
     course_image = overview.image_urls['raw']
+    course_link_img = 'https://'+site_name+course_image
     end_date = ''
 
     try:
@@ -1512,6 +1514,16 @@ def send_enroll_mail(obj,course,overview,course_details,body,list_email,module_s
             mode = 'obligatoire'
         else:
             mode = 'facultatif'
+
+        if category == "fundamentals" or category =="fundamental" :
+            category = "fondamentaux"
+        elif category == "our solutions" :
+            category ="nos solutions"
+        elif category == "sales approach" :
+            category ="démarche commerciale"
+        elif category == "regulatory" :
+            category ="réglementaire"
+
     else:
         title_mail = [
             'Category','Duration','Mode','Ending date'
@@ -1524,7 +1536,7 @@ def send_enroll_mail(obj,course,overview,course_details,body,list_email,module_s
     html_content = render_to_string(
         template_name,
         {
-           'org_image':org_image,
+           'org_image':microsite_logo,
            'platform_image':platform_image,
            'course_title': course_title,
            'category': category,
@@ -1583,7 +1595,8 @@ def email_dashboard_handler(request, course_key_string):
             'course':course,
             'overview':overview,
             'details':details,
-            'module_store':module_store
+            'module_store':module_store,
+            'course_key':course_key_string
         }
         # CREATE THE RETURN
         retour = {'course-key_string':context}
@@ -1705,7 +1718,8 @@ def invite_handler(request, course_key_string):
             'course':course,
             'overview':overview,
             'details':course_details,
-            'module_store':module_store
+            'module_store':module_store,
+            'course_key':course_key_string,
         }
         # CREATE THE RETURN
         retour = {'course-key_string':context}
@@ -1764,9 +1778,9 @@ def invite_handler(request, course_key_string):
                         csv_infos.append(q)
 			log.info("session_manager_handler: "+str(email))
                 if course.language == "fr":
-                    msg = "Vous êtes invités à participer au module "+course.display_name+". Une fois la création de votre compte finalisé, vous pourrez accéder à ce module pédagogique."
+                    msg = "Une fois passée cette étape, vous pourrez accéder à votre module sur "+course.display_name+"."
 		elif course.language == "en":
-                    msg = "You are invited to participate to the module "+course.display_name+".Once your account is activated, you will be able to access the training module."
+                    msg = "Once you’ve passed this step, you will be able to access the training module "+course.display_name+"."
                 list_return = list_email
                 email_send = []
                 try:
@@ -2456,3 +2470,183 @@ def _get_course_creator_status(user):
         course_creator_status = 'granted'
 
     return course_creator_status
+
+def sorted_courses(course_info,current_date,_type):
+    q = {}
+    q['course_key_id'] = course_info['course_key']
+    q['course_url'] = course_info['url']
+    q['display_name'] = course_info['display_name']
+    q['org'] = course_info['org']
+    course_key_id = CourseKey.from_string(course_info['course_key'])
+    courses_overviews = CourseOverview.get_from_id(course_key_id)
+    q['course_img'] = courses_overviews.image_urls
+    q['course_start'] = courses_overviews.start.strftime('%Y-%m-%d')
+    q['course_end'] = ''
+    if courses_overviews.end:
+        q['course_end'] = courses_overviews.end.strftime('%Y-%m-%d')
+        q['course_end_compare'] = int(courses_overviews.end.strftime("%s"))
+    else:
+        q['course_end_compare'] = current_date
+    q['course_start_compare'] = int(courses_overviews.start.strftime("%s"))
+    q['duration'] = CourseDetails.fetch(course_key_id).effort
+    cur_course = get_course_by_id(course_key_id)
+    q['course_language'] = cur_course.language
+    q['categories'] = cur_course.categ
+    q['visibility'] = True
+    sorted_indices = {
+        "fundamentals":0,
+        "fundamental":0,
+        "oursolutions":1,
+        "regulatory":2,
+        "salesapproach":3,
+        "none":4
+    }
+
+    if q['categories'] is not None:
+        cur_indice = sorted_indices[q['categories'].lower().replace(' ','')]
+    else:
+        cur_indice = 4
+
+    context = {
+        "course":q,
+        "indice":cur_indice
+    }
+
+    if _type == "course_listing":
+        context['position'] = None
+        if current_date < q['course_start_compare']:
+            context['position'] = "course_scheduled"
+        elif current_date > q['course_start_compare'] and current_date <= q['course_end_compare']:
+            context['position'] = "course_in_progress"
+        elif current_date > q['course_end_compare']:
+            context['position'] = "course_completed"
+
+    return context
+#### GEOFFREY DEV
+@login_required
+@ensure_csrf_cookie
+def course_listing_template(request):
+    """
+    List all courses available to the logged in user
+    """
+
+
+    courses, in_process_course_actions = get_courses_accessible_to_user(request)
+    libraries = _accessible_libraries_list(request.user) if LIBRARIES_ENABLED else []
+
+    programs_config = ProgramsApiConfig.current()
+    raw_programs = get_programs(request.user) if programs_config.is_studio_tab_enabled else []
+
+    # Sort programs alphabetically by name.
+    # TODO: Support ordering in the Programs API itself.
+    programs = sorted(raw_programs, key=lambda p: p['name'].lower())
+
+    def format_in_process_course_view(uca):
+        """
+        Return a dict of the data which the view requires for each unsucceeded course
+        """
+        return {
+            'display_name': uca.display_name,
+            'course_key': unicode(uca.course_key),
+            'org': uca.course_key.org,
+            'number': uca.course_key.course,
+            'run': uca.course_key.run,
+            'is_failed': True if uca.state == CourseRerunUIStateManager.State.FAILED else False,
+            'is_in_progress': True if uca.state == CourseRerunUIStateManager.State.IN_PROGRESS else False,
+            'dismiss_link': reverse_course_url(
+                'course_notifications_handler',
+                uca.course_key,
+                kwargs={
+                    'action_state_id': uca.id,
+                },
+            ) if uca.state == CourseRerunUIStateManager.State.FAILED else ''
+        }
+
+    def format_library_for_view(library):
+        """
+        Return a dict of the data which the view requires for each library
+        """
+        return {
+            'display_name': library.display_name,
+            'library_key': unicode(library.location.library_key),
+            'url': reverse_library_url('library_handler', unicode(library.location.library_key)),
+            'org': library.display_org_with_default,
+            'number': library.display_number_with_default,
+            'can_edit': has_studio_write_access(request.user, library.location.library_key),
+        }
+
+    check_admin_microsite = False
+    try:
+        microsite_key = MicrositeAdminManager.objects.get(user=request.user).microsite_id
+        user_org = microsite = Microsite.objects.get(pk=microsite_key).key
+	check_admin_microsite = True
+    except:
+        pass
+
+    return render_to_response('template.html', {
+        'check_admin_microsite':check_admin_microsite,
+        'in_process_course_actions': in_process_course_actions,
+        'libraries_enabled': LIBRARIES_ENABLED,
+        'libraries': [format_library_for_view(lib) for lib in libraries],
+        'request':request
+    })
+
+@login_required
+@ensure_csrf_cookie
+def index_courses_listing(request,_type):
+
+
+    courses, in_process_course_actions = get_courses_accessible_to_user(request)
+
+    courses = _remove_in_process_courses(courses, in_process_course_actions)
+
+    in_process_course_actions = [format_in_process_course_view(uca) for uca in in_process_course_actions]
+
+    user_email = request.user.email
+
+    current_date = int(datetime.datetime.now().strftime("%s"))
+
+    if _type == "course_listing":
+
+        courses_lists = {
+            "course_scheduled" : [[],[],[],[],[]],
+            "course_in_progress" : [[],[],[],[],[]],
+            "course_completed" : [[],[],[],[],[]]
+        }
+
+    elif _type == "amundi_templates":
+        courses_lists = {
+            "amundi_templates" : [[],[],[],[],[]]
+        }
+
+    else:
+
+        return False
+
+    for course_info in sorted(courses, key=lambda s: s['display_name'].lower() if s['display_name'] is not None else ''):
+
+      # 1. type  course_listing/templates
+      if _type == "course_listing":
+          if not 'AMUNDI-GENERIC-TEMPLATE' in course_info['display_name']:
+             current_course = sorted_courses(course_info,current_date,_type)
+             courses_lists[current_course.get('position')][current_course.get('indice')].append(current_course.get('course'))
+      elif _type == "amundi_templates":
+          if 'AMUNDI-GENERIC-TEMPLATE' in course_info['display_name']:
+             current_course = sorted_courses(course_info,current_date,_type)
+             courses_lists[_type][current_course.get('indice')].append(current_course.get('course'))
+
+    return JsonResponse(courses_lists)
+
+@login_required
+@ensure_csrf_cookie
+def index_microsites_listing(request):
+
+    microsites = MicrositeDetail.objects.all()
+    serial = []
+    for n in microsites:
+        serial.append(model_to_dict( n ))
+    context = {
+        "microsites":serial
+    }
+
+    return JsonResponse(context)

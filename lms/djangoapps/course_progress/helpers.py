@@ -16,9 +16,11 @@ from opaque_keys.edx.locations import BlockUsageLocator
 from student.models import CourseEnrollment
 from course_progress.models import StudentCourseProgress
 
+import logging
 
+log = logging.getLogger()
 # Valid components for tracking
-VALID_COMPONENTS = ['video', 'problem', 'html', 'openassessment', 'lti']
+VALID_COMPONENTS = ['video', 'problem', 'html', 'openassessment', 'lti','piechart','pdf','flipbook']
 
 VALID_BLOCKS = [
     'course', 'chapter', 'sequential', 'vertical'
@@ -38,7 +40,7 @@ def inject_course_progress_into_context(context, request, course_key):
     """
     overall_progress = 0
     progress = {}
-
+    log.info('inject_course_progress_into_context')
     try:
         student_course_progress = StudentCourseProgress.objects.get(student=request.user.id, course_id=course_key)
         overall_progress = student_course_progress.overall_progress
@@ -57,6 +59,7 @@ def inject_course_progress_into_context(context, request, course_key):
         context['total_students'] = total_students
 
 def item_affects_course_progress(request, course_key, suffix, handler, instance):
+    log.info('item_affects_course_progress')
     suffix_list = [
         'problem_check',
         'hint_button',
@@ -79,10 +82,12 @@ def item_affects_course_progress(request, course_key, suffix, handler, instance)
     return False
 
 def is_played(request):
+    log.info('is_played')
     time_str = request.POST.get('saved_video_position', '00:00:00')
     return sum(map(int, time_str.split(':'))) > 0
 
 def is_assessed(student_id, course_key, instance):
+    log.info('is_assessed')
     state = get_component_state(student_id, course_key, instance)
     submission_uuid = state.get('submission_uuid')
 
@@ -99,6 +104,7 @@ def is_assessed(student_id, course_key, instance):
     return False
 
 def get_component_state(student_id, course_key, instance):
+    log.info('get_component_state')
     try:
         history = StudentModule.objects.get(module_state_key=instance.location,
             student_id=student_id, course_id=course_key, module_type=instance.category)
@@ -109,12 +115,14 @@ def get_component_state(student_id, course_key, instance):
 
 
 def get_default_course_progress(blocks, root):
+    log.info('get_default_course_progress')
     default_course_progress = {}
     if blocks:
         default_course_progress = fix_block_ids(root, blocks)
     return default_course_progress
 
 def traverse_tree(block, unordered_structure, ordered_blocks, parent=None):
+    log.info('traverse_tree')
     """
     Traverses the tree and fills in the ordered_blocks OrderedDict with the blocks in
     the order that they appear in the course.
@@ -192,6 +200,7 @@ def fix_block_ids(course_key, blocks):
     modified_course_block_children = []
 
     course_block = blocks[course_key]
+    log.info("type course_block {}".format(blocks))
     for chapter_id in course_block.get('children', []):
         modified_chapter_id = preserve_block_usage_id(chapter_id)
         modified_chapter_block = {}
@@ -211,6 +220,7 @@ def fix_block_ids(course_key, blocks):
 
                 vertical_block = blocks[vertical_id]
                 for component_id in vertical_block.get('children', []):
+
                     if blocks[component_id]['type'] in VALID_COMPONENTS:
                         modified_component_id = preserve_block_usage_id(component_id)
                         component_block = blocks[component_id]

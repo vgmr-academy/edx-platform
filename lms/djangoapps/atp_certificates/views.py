@@ -78,6 +78,15 @@ def atp_generate_certificate(request,course_id):
         amundi_academy = '/media/certificates/images/logo-amundi-academy.jpg'
     else:
         amundi_academy=''
+    if configuration_helpers.get_value('primary_color') :
+        primary_color = configuration_helpers.get_value('primary_color')
+    else:
+        primary_color=''
+    if configuration_helpers.get_value('secondary_color') :
+        secondary_color = configuration_helpers.get_value('secondary_color')
+    else:
+        secondary_color=''
+
     course_img_path = courseoverview.image_urls['raw']
     course_img_path = url+course_img_path
     template_path = '/certificates/template.html'
@@ -88,6 +97,6 @@ def atp_generate_certificate(request,course_id):
     return generate_html(
         username,score,course_img_path,template_path,
         course_title,categorie,certif_img_path,
-        logo_path,amundi_academy,course.language
+        logo_path,amundi_academy,course.language,user.first_name+' '+user.last_name, primary_color, secondary_color
     )
     #return response

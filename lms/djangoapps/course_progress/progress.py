@@ -1,4 +1,5 @@
 import json
+import logging
 from collections import OrderedDict
 
 from openassessment.workflow.models import AssessmentWorkflow
@@ -8,6 +9,7 @@ from course_api.blocks.api import get_blocks
 from course_progress.models import StudentCourseProgress
 from course_progress.helpers import get_default_course_progress
 
+logger = logging.getLogger()
 
 def update_course_progress(request, course_key, module_type, usage_keys):
     """
@@ -47,6 +49,7 @@ def update_course_progress(request, course_key, module_type, usage_keys):
     # get course progress object
     try:
         student_course_progress = StudentCourseProgress.objects.get(student=student.id, course_id=course_key)
+
     except StudentCourseProgress.DoesNotExist:
         default_progress_dict = get_default_course_progress( course_struct.get('blocks', []), root )
         default_progress_json = json.dumps(default_progress_dict)

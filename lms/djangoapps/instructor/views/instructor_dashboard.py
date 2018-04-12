@@ -784,7 +784,7 @@ def stat_dashboard(request, course_id):
      'course_average_grade':course_average_grade,
      'user_finished':user_finished,
      'course_structure':course_structure,
-     'overview':overview
+     'overview':overview,
     }
 
     return render_to_response('courseware/stat.html', context)

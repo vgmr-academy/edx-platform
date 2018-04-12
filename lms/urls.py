@@ -1105,3 +1105,8 @@ urlpatterns += (
         name='download_grades_xls',
     ),
 )
+
+# Webservice
+urlpatterns += (
+    url(r'tma_webservice/', include('tma_webservice.webservice_urls')),
+)

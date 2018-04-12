@@ -225,3 +225,11 @@ urlpatterns += (
     url(r'^admin-microsite/(?P<microsite_id>[0-9]+)/$','microsite_manager.views.admin_microsite', name='admin-microsite'),
     url(r'^add_microsite_admin/(?P<microsite_key>[A-Za-z0-9]+)/$','microsite_manager.views.microsite_admin_manager', name='microsite_admin_manager'),
 )
+
+#tma index.html extends
+
+urlpatterns += (
+    url(r'^index_courses_listing/(?P<_type>[^/]+)$','contentstore.views.course.index_courses_listing', name='index-courses-listing'),
+    url(r'^home_dev/?$', 'contentstore.views.course.course_listing_template', name='home_dev'),
+    url(r'^microsites_listing/?$', 'contentstore.views.course.index_microsites_listing', name='index-microsites-listing'),
+)
