@@ -9,6 +9,7 @@ from django.conf import settings
 from edxnotes.helpers import is_feature_enabled as is_edxnotes_enabled
 from openedx.core.djangolib.markup import HTML
 from openedx.core.djangolib.js_utils import js_escaped_string
+from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 
 #geoffrey
 from course_progress.helpers import get_overall_progress
@@ -17,6 +18,10 @@ from lms.djangoapps.grades.new.course_grade import CourseGradeFactory
 %>
 <%
   include_special_exams = settings.FEATURES.get('ENABLE_SPECIAL_EXAMS', False) and (course.enable_proctored_exams or course.enable_timed_exams)
+  try:
+    primary_color=configuration_helpers.get_value('primary_color')
+  except :
+    primary_color="#05144d"
 %>
 <%def name="course_name()">
  <% return _("{course_number} Courseware").format(course_number=course.display_number_with_default) %>
@@ -360,6 +365,7 @@ courseware = static.get_value('css_overrides_courseware')
   text-align: center;
   padding:20px;
 }
+
 </style>
 <div id="end-date" style="display:none;">${course.end}</div>
 <div id="tma_course_top">
@@ -417,6 +423,7 @@ courseware = static.get_value('css_overrides_courseware')
       </div>
 
     </div>
+
 % endif
     <section class="course-content" id="course-content">
         <div class="path"></div>

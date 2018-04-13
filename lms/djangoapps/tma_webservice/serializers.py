@@ -33,6 +33,10 @@ class StudentSerializer(serializers.Serializer):
         course_org_filter = ''
         course_enrollments = list(get_course_enrollments(student, course_org_filter, org_filter_out_set))
 
+        #last login data_email
+        last_login_brut = str(student.last_login)
+        last_login = last_login_brut.split('.')
+
         #Check if user is staff / microsite admin / student
         check_admin_microsite = False
         try:
@@ -123,7 +127,8 @@ class StudentSerializer(serializers.Serializer):
             #'start_courses':start_courses,
             'certified_courses': compteur_certified,
             #'certified_course' : certified_courses,
-            'user org' : user_org
+            'user org' : user_org,
+            'last login' : last_login[0]
 
         }
 

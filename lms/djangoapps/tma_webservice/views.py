@@ -13,7 +13,7 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from openedx.core.lib.api.view_utils import view_auth_classes, DeveloperErrorViewMixin
 
-@view_auth_classes(is_authenticated=False)
+@view_auth_classes(is_authenticated=True)
 class StudentInfo(APIView):
     def get_object(self, email):
         try :

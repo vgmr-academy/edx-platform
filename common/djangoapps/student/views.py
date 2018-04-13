@@ -812,7 +812,7 @@ def dashboard(request):
         q['course_progression'] = course_progression
 	#list category
 	if not course_tma.categ in list_category:
-	    list_category.append(course_tma.categ) 
+	    list_category.append(course_tma.categ)
 	#end list category
         if course_progression > 0 and course_progression < 100 and passed == False and _progress == True:
           progress_courses.append(q)
@@ -2697,32 +2697,51 @@ class LogoutView(TemplateView):
 
         logout(request)
 
-	#atp access role for logout redirection
-	atp_access = User.objects.raw("SELECT id FROM student_courseaccessrole WHERE user_id = %s",[request.user.id])
-	n = 0
+    	#atp access role for logout redirection
+    	atp_access = User.objects.raw("SELECT id FROM student_courseaccessrole WHERE user_id = %s",[request.user.id])
+    	n = 0
 
-	for i in atp_access:
-	    n = n + 1
+    	for i in atp_access:
+    	    n = n + 1
 
         _microsite = configuration_helpers.get_value('domain_prefix')
 
-	if n > 0:
-            if _microsite is not None:
-                if _microsite == "amundi":
-	            self.target = "https://digital.amundi.com/training/amundiacademy/index.html#/fr/administrateur"
-		elif _microsite == "lcl":
-		    self.target = "https://interface.amundi.com/ret/landing/academy/index.html#/fr/lcl/administrateur"
-	    else:
-		self.target = "https://digital.amundi.com/training/amundiacademy/index.html#/fr/administrateurselon"
-        else:
-            if _microsite is not None:
-                if _microsite == "amundi":
-                    self.target = "https://interface.amundi.com/ret/landing/academy/index.html#/fr/apprenant"
-                elif _microsite == "lcl":
-                    self.target = "https://interface.amundi.com/ret/landing/academy/index.html#/fr/lcl/apprenant"
+    	site_courant=request.META["HTTP_HOST"]
+        if settings.FEATURES.get('VM_STATUS') is not "prod":
+            if n > 0:
+                if _microsite is not None:
+                    if _microsite == "amundi":
+                        self.target = "https://preprod.interface.amundi.com/ret/landing/academy/index.html#/fr/administrateur"
+                    elif _microsite == "lcl":
+                        self.target = "https://preprod.interface.amundi.com/ret/landing/academy/index.html#/fr/lcl/administrateur"
+                else:
+                    self.target = "https://preprod.interface.amundi.com/ret/landing/academy/index.html#/fr/administrateur"
             else:
-                self.target = "https://interface.amundi.com/ret/landing/academy/index.html#/fr/apprenant"
-
+                if _microsite is not None:
+                    if _microsite == "amundi":
+                        self.target = "https://preprod.interface.amundi.com/ret/landing/academy/index.html#/fr/apprenant/"
+                    elif _microsite == "lcl":
+                        self.target = "https://preprod.interface.amundi.com/ret/landing/academy/index.html#/fr/lcl/apprenant"
+                else:
+                    self.target = "https://preprod.interface.amundi.com/ret/landing/academy/index.html#/fr/apprenant/"
+        #SUR PROD
+        else :
+            if n > 0:
+                if _microsite is not None:
+                    if _microsite == "amundi":
+                        self.target = "https://digital.amundi.com/training/amundiacademy/index.html#/fr/administrateur"
+                    elif _microsite == "lcl":
+                        self.target = "https://interface.amundi.com/ret/landing/academy/index.html#/fr/lcl/administrateur"
+                else:
+                    self.target = "https://digital.amundi.com/training/amundiacademy/index.html#/fr/administrateurselon"
+            else:
+                if _microsite is not None:
+                    if _microsite == "amundi":
+                        self.target = "https://interface.amundi.com/ret/landing/academy/index.html#/fr/apprenant"
+                    elif _microsite == "lcl":
+                        self.target = "https://interface.amundi.com/ret/landing/academy/index.html#/fr/lcl/apprenant"
+                else:
+                    self.target = "https://interface.amundi.com/ret/landing/academy/index.html#/fr/apprenant"
 
         # If we don't need to deal with OIDC logouts, just redirect the user.
         if LogoutViewConfiguration.current().enabled and self.oauth_client_ids:
