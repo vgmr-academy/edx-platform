@@ -235,10 +235,14 @@ class microsite_manager():
             self.contact_address=contact_address
         if amundi_brand!='':
             self.amundi_brand=amundi_brand
-        if disclaimer!='':
-            self.disclaimer=disclaimer
         if trademark!='':
             self.trademark=trademark
+        else :
+            self.trademark=''
+        if disclaimer!='':
+            self.disclaimer=disclaimer
+        else :
+            self.disclaimer=''
 
     #DISPLAY MICROSITE DATA AND MANAGE IT
     def manage_microsite_data(self, request, microsite_id=None):

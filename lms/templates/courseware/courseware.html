@@ -162,9 +162,9 @@ courseware = static.get_value('css_overrides_courseware')
 % endif
 <style>
   .course-wrapper .course-content{
-    margin-left: 0;
+    margin-left: 20px;
     margin-right: 0;
-    width:calc(100% - 315px);
+    width:calc(100% - 340px);
   }
   .course-index{
     margin-left: 0;
@@ -366,7 +366,100 @@ courseware = static.get_value('css_overrides_courseware')
   padding:20px;
 }
 
+/* Gestion replis de la nav*/
+@media(min-width:768px){
+  .course-wrapper .course-content{
+    transition: 0.5s;
+  }
+}
+  .container{
+      height: calc(100vh - 237px);
+      margin-bottom: 20px;
+  }
+  .course-wrapper{
+    margin-bottom: 0!important;
+    height: 100%;
+  }
+  .course-index{
+    position: relative;
+    transition: 0.5s;
+  }
+  .content-wrapper{
+    min-height: auto;
+    height: 100%;
+  }
+  .course-navigation{
+    width: 300px;
+  }
+  .accordion{
+    float: left;
+    min-width: 275px;
+    transition: 0.5s;
+  }
+  #bandeau-hide, #bandeau-show{
+    background-color: ${primary_color};
+    height: 100%;
+    width: 25px;
+    position: absolute;
+    left: 300px;
+    display: flex;
+    align-items: center;
+    color: white;
+    text-align: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  #bandeau-show{
+    display: none;
+    left:0px;
+    transition: 3s;
+  }
+  #holding-section-result{
+    margin-bottom: 0px;
+  }
+
+  .container{
+    height: auto;
+  }
+  .course-navigation{
+    overflow: hidden;
+    transition: 0.5s;
+  }
+}
+
+@media(max-width:768px){
+  #bandeau-hide span{
+    display: none;
+  }
+}
+
 </style>
+
+<script>
+  // Fermeture du menu latéral
+  $( document ).ready(function() {
+    $("#bandeau-hide").click(function(){
+      $(".course-navigation").css("width",'0px').css("white-space", "nowrap");
+      $("#bandeau-hide").hide();
+      $(".course-index").css("width","0");
+      $(".course-content").css("margin-left","30px!important");
+      setTimeout(function(){
+        $("#bandeau-show").css("display","flex");
+        $('.course-wrapper .course-content').css('width','calc(100% - 40px)');}, 300);
+    });
+    $("#bandeau-show").click(function(){
+      $(".course-navigation").css("width",'300px').css("white-space", "normal");
+      $("#bandeau-hide").css("display","flex");
+      $(".course-index").css("width","300px");
+      $("#bandeau-show").hide();
+      $(".course-content").css("margin-left","330px!important");
+      $('.course-wrapper .course-content').css('width','calc(100% - 340px)');
+    });
+});
+
+</script>
+
+
 <div id="end-date" style="display:none;">${course.end}</div>
 <div id="tma_course_top">
     <div id="tma_course_ariane">
@@ -421,6 +514,13 @@ courseware = static.get_value('css_overrides_courseware')
           % endif
         </nav>
       </div>
+      <div id="bandeau-hide">
+          <span>◀</span>
+      </div>
+      <div id="bandeau-show">
+          <span>▶</span>
+      </div>
+      <div style="clear:both;"></div>
 
     </div>
 
