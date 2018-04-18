@@ -107,6 +107,7 @@ urlpatterns += patterns(
     url(r'^settings/manage/{}$'.format(settings.COURSE_KEY_PATTERN), 'manage_handler'),
     url(r'^settings/create/{}$'.format(settings.COURSE_KEY_PATTERN), 'create_handler'),
     url(r'^settings/invite/{}$'.format(settings.COURSE_KEY_PATTERN), 'invite_handler'),
+    url(r'^settings/invite/{}/list$'.format(settings.COURSE_KEY_PATTERN), 'invitelist_handler'),
     url(r'^settings/email_dashboard/{}$'.format(settings.COURSE_KEY_PATTERN), 'email_dashboard_handler'),
     #GEOFFREY
     url(r'^settings/grading/{}(/)?(?P<grader_index>\d+)?$'.format(settings.COURSE_KEY_PATTERN), 'grading_handler'),

@@ -30,13 +30,18 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
 <%
 stat_dashboard = static.get_value('css_overrides_stat_dashboard')
 
-if configuration_helpers.get_value('logo_couleur'):
+if configuration_helpers.get_value('logo_couleur') and configuration_helpers.get_value('logo_couleur')!="":
   logo_url=configuration_helpers.get_value('logo_couleur')
 else:
   if configuration_helpers.get_value('logo'):
-    configuration_helpers.get_value('logo')
+    logo_url=configuration_helpers.get_value('logo')
   else:
     logo_url = '/static/images/logo.png'
+
+if configuration_helpers.get_value('primary_color'):
+  primary_color=configuration_helpers.get_value('primary_color')
+else :
+  primary_color = "#132149"
 
 target = course_id.split('+')
 %>
@@ -191,6 +196,32 @@ text-transform: lowercase;
 .language_paragraph{
   margin: 0;
 }
+.block-results{
+  width: 33%;
+  float: left;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.block-wrapper{
+  background-color: white;
+  min-height: 70px;
+  padding: 20px;
+  min-height: 140px;
+}
+.sub-titlefont, .result-font{
+  font-weight: bold;
+  font-family: "mywebfont";
+  color:${primary_color};
+}
+.result-font{
+  font-size: 50px;
+}
+.sub-titlefont{
+  padding-bottom: 20px;
+  font-size: 20px;
+  line-height: 24px;
+}
 </style>
 
 <%
@@ -319,13 +350,24 @@ text-transform: lowercase;
         <div id="result">
           <h2>${_('Results')}</h2>
           <div id="cell_result">
-            <div class="cell_result" id="cell_result_first">
-              <p>${_('Certified')}</p>
-              <p id="num_result_on">${num_passed}</p>
+
+            <div class="block-results" id="">
+              <div class="block-wrapper">
+                <p class="sub-titlefont">${_('Certified')}<br><br></p>
+                <p id="num_result_on" class="result-font">${num_passed}</p>
+              </div>
             </div>
-            <div class="cell_result" id="cell_result_last">
-              <p>${_('Average result')}</p>
-              <p>${course_average_grade} %</p>
+            <div class="block-results" id="">
+              <div class="block-wrapper">
+                <p class="sub-titlefont">${_('Average result')} - ${_('Amongst certified participants')}</p>
+                <p class="result-font">${course_average_grade} %</p>
+              </div>
+            </div>
+            <div class="block-results" id="">
+              <div class="block-wrapper">
+                <p class="sub-titlefont">${_('Average result')} - ${_('All participants included')}</p>
+                <p class="result-font">${course_average_grade_global} %</p>
+              </div>
             </div>
             <div style="clear:left;"></div>
           </div>

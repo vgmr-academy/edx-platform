@@ -773,6 +773,10 @@ def stat_dashboard(request, course_id):
     #return context
     if user_finished != 0:
         course_average_grade = course_average_grade / user_finished
+    if user_course_started !=0:
+        course_average_grade_global = round((course_average_grade / user_course_started), 1)
+    else :
+        course_average_grade_global=0
     context = {
      "course_id":course_id,
      "course":course,
@@ -782,6 +786,7 @@ def stat_dashboard(request, course_id):
      "num_passed":num_passed,
      "user_course_started":user_course_started,
      'course_average_grade':course_average_grade,
+     'course_average_grade_global': course_average_grade_global,
      'user_finished':user_finished,
      'course_structure':course_structure,
      'overview':overview,

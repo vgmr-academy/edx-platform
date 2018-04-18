@@ -9,12 +9,14 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
+from rest_framework.permissions import IsAuthenticated
 
 
 from openedx.core.lib.api.view_utils import view_auth_classes, DeveloperErrorViewMixin
 
 @view_auth_classes(is_authenticated=True)
 class StudentInfo(APIView):
+    #permission_classes = [IsAuthenticated]
     def get_object(self, email):
         try :
             return User.objects.get(email=email)

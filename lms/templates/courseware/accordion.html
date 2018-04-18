@@ -19,8 +19,8 @@ else:
 %>
 <a href="#${chapter['display_id']}-child" role="button" class="button-chapter chapter ${active_class}" id="${chapter['display_id']}-parent" aria-controls="${chapter['display_id']}-child" aria-expanded="false">
     <span class="group-heading ${active_class}" aria-label="${aria_label}">
-        <span class="icon fa fa-caret-right" aria-hidden="true"></span>
-        ${chapter['display_name']}
+        <i class="fas fa-angle-right"></i>
+        <span class="chap-name">${chapter['display_name']}</span>
         % if chapter['passed']:
           <img src="${static.url('images/termine.svg')}" class="svg picto_accordion"/>
         % else:

@@ -149,7 +149,7 @@ __all__ = ['course_info_handler', 'course_handler', 'course_listing',
            'advanced_settings_handler',
            'course_notifications_handler',
            'textbooks_list_handler', 'textbooks_detail_handler',
-           'group_configurations_list_handler', 'group_configurations_detail_handler']
+           'group_configurations_list_handler', 'group_configurations_detail_handler', 'invitelist_handler']
 
 
 class AccessListFallback(Exception):
@@ -1460,7 +1460,7 @@ def send_enroll_mail(obj,course,overview,course_details,body,list_email,module_s
     log.info("send_enroll_mail start_sending")
     #static images
     #org_image = microsite_link+'/static/images/mail_logo.png'
-    platform_image = microsite_link+'/media/certificates/images/logo-amundi-academy.jpg'
+    platform_image = 'https://'+site_name+'/media/certificates/images/logo-amundi-academy.jpg'
     log.info("send_enroll_mail start_sending")
     #static images
     microsite = Microsite.objects.get(key=course_org)
@@ -2650,3 +2650,40 @@ def index_microsites_listing(request):
     }
 
     return JsonResponse(context)
+
+@login_required
+@ensure_csrf_cookie
+@require_http_methods(("GET", "PUT", "POST"))
+@expect_json
+def invitelist_handler(request, course_key_string):
+    # GET COURSE_KEY
+    course_key = CourseKey.from_string(course_key_string)
+    # GET COURSE_PARAM
+    course = get_course_by_id(course_key)
+    #course details
+    course_details = CourseDetails.fetch(course_key)
+    #GET COURSE OVERVIEW
+    overview = CourseOverview.get_from_id(course_key)
+    #GET MODULE STORE
+    module_store = modulestore().get_course(course_key, depth=0)
+
+    #Get users in preprofile table
+    listetest=UserPreprofile.objects.get(email="testetudianttmalicorne@yopmail.com")
+
+    #Get all users enrolled
+    enrolled=CourseEnrollment.objects.all().filter(course_id=course_key)
+    if request.method == "GET":
+        # CREATE A CONTEXT
+        context = {
+            'course':course,
+            'overview':overview,
+            'details':course_details,
+            'module_store':module_store,
+            'course_key':course_key_string,
+            'list_test':listetest,
+            'student_enrolled':enrolled
+        }
+        # CREATE THE RETURN
+        retour = {'course-key_string':context}
+        #  RETURN VALUE AND RENDER INVITE PAGE
+        return render_to_response('invite_studentlist.html', context)

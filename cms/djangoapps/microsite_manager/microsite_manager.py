@@ -239,7 +239,7 @@ class microsite_manager():
             self.trademark=trademark
         else :
             self.trademark=''
-        if disclaimer!='':
+        if disclaimer!='' and disclaimer is not None:
             self.disclaimer=disclaimer
         else :
             self.disclaimer=''

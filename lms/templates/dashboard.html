@@ -560,7 +560,7 @@ $('#close_pop_up').click(function(){
   box-sizing: border-box!important;
   width: 100%!important;
   background-color: #C6EAFB;
-  background-position: left;
+  background-position: center;
   background-size: contain;
 
 }
@@ -719,7 +719,7 @@ function course_card(categ,course_id,img_src,course_progression,duration,require
      if(passed) {
       _end_add = '<div class="atp_course_progress"><img src="'+picto_success+'" class="validate_img"/><span class="is_green validate">${_("Validated")} '+percent+'%</span></div>';
      }else{
-      _end_add = '<div class="atp_course_progress"><img src="'+picto_error+'" class="validate_img"/><span class="is_red validate">${_("Not validated")} '+percent+'%</span></div>';
+      _end_add = '<div class="atp_course_progress"><img src="'+picto_error+'" class="validate_img"/><span class="validate" style="color:rgb(220,158,41);">${_("Not validated")} '+percent+'%</span></div>';
      }
   }
 
