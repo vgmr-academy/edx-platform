@@ -296,6 +296,9 @@ courseware = static.get_value('css_overrides_courseware')
   background-color: #05144d;
   border-color: #05144d !important;
 }
+.xmodule_display.xmodule_CapaModule div.problem .action .submit-attempt-container .submit{
+  float: none;
+}
 .sequence #seq_content .not_finished {
   height: 25px;
   overflow: hidden;
@@ -319,6 +322,7 @@ courseware = static.get_value('css_overrides_courseware')
 .finished .next_button {
   background-color: ${primary_color}!important;
   border-color: ${primary_color}!important;
+  display:inline-block;
 }
 .finished .field {
   position: relative;
@@ -343,6 +347,7 @@ courseware = static.get_value('css_overrides_courseware')
 .next {
   display: block;
   float: right;
+  text-align: center;
 }
 .picto_sf {
   width: 18px;
@@ -375,180 +380,9 @@ courseware = static.get_value('css_overrides_courseware')
   padding:20px;
 }
 
-/* Gestion replis de la nav*/
-@media(min-width:768px){
-  .course-wrapper .course-content{
-    transition: 0.5s;
-  }
 
-  .container{
-      height: calc(100vh - 237px);
-      margin-bottom: 20px;
-  }
-  .course-wrapper{
-    margin-bottom: 0!important;
-    height: 100%;
-  }
-  .course-index{
-    position: relative;
-    transition: 0.5s;
-  }
-  .content-wrapper{
-    min-height: auto;
-    height: 100%;
-  }
-  .course-navigation{
-    width: 300px;
-  }
-  .accordion{
-    float: left;
-    min-width: 275px;
-    transition: 0.5s;
-  }
-  #bandeau-hide, #bandeau-show{
-    background-color: ${primary_color};
-    height: 100%;
-    width: 15px;
-    position: absolute;
-    left: 300px;
-    display: flex;
-    align-items: center;
-    color: white;
-    text-align: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size:13px;
-  }
-  #bandeau-show{
-    display: none;
-    left:0px;
-    transition: 3s;
-  }
-  #holding-section-result{
-    margin-bottom: 0px;
-  }
-
-  .container{
-    height: auto;
-  }
-  .course-navigation{
-    overflow: hidden;
-    transition: 0.5s;
-  }
-}
-
-@media(max-width:768px){
-  #bandeau-hide{
-    display: none!important;
-  }
-  #bandeau-show{
-    display: none!important;
-  }
-  #course-content{
-    margin-left: 0!important;
-  }
-  .course-navigation{
-    width: 100%!important;
-    wrap:normal!important;
-  }
-  #course-content{
-    width: 100%!important;
-  }
-}
-
-/* Décloisonnement */
-.course-index .accordion .course-navigation .button-chapter{
-  background-image: none!important;
-}
-.course-index .accordion .course-navigation .chapter-content-container.is-open, .course-index .accordion .course-navigation .button-chapter{
-  border-top:0px!important;
-  border-left:0px!important;
-  border-right: 0px!important;
-}
-.is-open{
-  background-color:transparent!important;
-  background-image: none!important;
-}
-.group-heading .chap-name{
-  text-transform: lowercase!important;
-  display: inline-block;
-}
-.group-heading .chap-name::first-letter{
-  text-transform: uppercase;
-}
-.group-heading.active i{
-  transform: rotate(90deg);
-}
-.group-heading i{
-  transition: 0.5s;
-  vertical-align: top;
-}
-.chap-name{
-  width: 90%;
-}
-.group-heading{
-  padding-right: 30px!important;
-}
-.picto_accordion{
-  margin-right: 25px;
-}
-.course-index .accordion .course-navigation .chapter-content-container .chapter-menu .menu-item.graded .menu-icon{
-  right: 35px;
-}
-.course-index .accordion .course-navigation .button-chapter.is-open .group-heading .picto_accordion{
-  right:-5px;
-}
-.chap-name{
-  padding-left: 10px;
-  font-size: 14px;
-}
-.fa-angle-right{
-  margin-top: 3px;
-}
-.course-index .accordion .course-navigation .button-chapter .group-heading{
-  font-size: 14px;
-}
-.group-heading.active{
-  color:${secondary_color}!important;
-}
-.fa-pencil-square-o{
-  color:${primary_color}!important;
-}
-.submit-attempt-container .btn-brand{
-  background-color:${primary_color}!important;
-  border:0px!important;
-}
-.next_button.btn-brand{
-
-}
-.button-chapter .group-heading{
-  color:${primary_color}!important;
-}
 </style>
 
-<script>
-  // Fermeture du menu latéral
-  $( document ).ready(function() {
-    $("#bandeau-hide").click(function(){
-      $(".course-navigation").css("width",'0px').css("white-space", "nowrap");
-      $("#bandeau-hide").hide();
-      $(".course-index").css("width","0");
-      $(".course-content").css("margin-left","30px!important");
-      setTimeout(function(){
-        $("#bandeau-show").css("display","flex");
-        $('.course-wrapper .course-content').css('width','calc(100% - 40px)');}, 300);
-    });
-    $("#bandeau-show").click(function(){
-      $(".course-navigation").css("width",'300px').css("white-space", "normal");
-      $("#bandeau-hide").css("display","flex");
-      $(".course-index").css("width","300px");
-      $("#bandeau-show").hide();
-      $(".course-content").css("margin-left","330px!important");
-      $('.course-wrapper .course-content').css('width','calc(100% - 340px)');
-    });
-});
-
-</script>
 
 
 <div id="end-date" style="display:none;">${course.end}</div>
@@ -604,12 +438,6 @@ courseware = static.get_value('css_overrides_courseware')
             <div class="chapter">${_("No content has been added to this course")}</div>
           % endif
         </nav>
-      </div>
-      <div id="bandeau-hide">
-          <span>◀</span>
-      </div>
-      <div id="bandeau-show">
-          <span>▶</span>
       </div>
       <div style="clear:both;"></div>
 
@@ -901,7 +729,6 @@ $(window).resize(function(){
   bottom: 35px;
   display: inline-block;
   background-color: #0C1C49;
-  display: none;
 }
 #nav_button,#sub_context {
   display: inline-block;

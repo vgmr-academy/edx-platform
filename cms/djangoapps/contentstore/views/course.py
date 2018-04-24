@@ -9,6 +9,7 @@ import logging
 import random
 import re
 import string  # pylint: disable=deprecated-module
+import unicodedata
 #GEOFFREY TMA ATP
 import sys
 from django.core.mail import send_mail
@@ -117,7 +118,7 @@ from lms.djangoapps.instructor.enrollment import enroll_email,get_email_params
 from lms.djangoapps.instructor.views.api import students_update_enrollment_cms,students_update_enrollment
 from lms.djangoapps.courseware.courses import get_course_by_id
 from openedx.core.djangoapps.content.course_overviews.models import CourseOverview
-from student.models import UserPreprofile,CourseEnrollment,User
+from student.models import UserPreprofile,CourseEnrollment,User, CourseEnrollmentAllowed
 from opaque_keys.edx.locations import SlashSeparatedCourseKey
 import csv
 import io
@@ -1475,7 +1476,7 @@ def send_enroll_mail(obj,course,overview,course_details,body,list_email,module_s
     for n in microsite_value:
         if n == 'language_code':
             lang_key = i
-        if n == 'logo':
+        if n == 'logo_couleur':
             logo_key = i
         if n == 'primary_color':
             primary_color_key = i
@@ -1515,13 +1516,13 @@ def send_enroll_mail(obj,course,overview,course_details,body,list_email,module_s
         else:
             mode = 'facultatif'
 
-        if category == "fundamentals" or category =="fundamental" :
+        if category.lower() == "fundamentals" or category=="Fundamentals":
             category = "fondamentaux"
-        elif category == "our solutions" :
+        elif category.lower() == "our solutions" :
             category ="nos solutions"
-        elif category == "sales approach" :
+        elif category.lower() == "sales approach" :
             category ="démarche commerciale"
-        elif category == "regulatory" :
+        elif category.lower() == "regulatory" :
             category ="réglementaire"
 
     else:
@@ -1768,14 +1769,19 @@ def invite_handler(request, course_key_string):
                     _ensure_email = re.search(regex_email,email)
                     if email != 'email' and first_name != 'first_name' and last_name != 'last_name' and level_1 != 'level_1' and level_2 != 'level_2' and level_3 != 'level_3' and level_4 != 'level_4' and _ensure_email:
                         q['email'] = email
-                        q['first_name'] = first_name
-                        q['last_name'] = last_name
-                        q['level_1'] = level_1
-                        q['level_2'] = level_2
-                        q['level_3'] = level_3
-                        q['level_4'] = level_4
+                        #remove accents
+                        log.info("first_name"+pformat(type(first_name)))
+                        log.info("first_name"+pformat(first_name))
+                        q['first_name'] = strip_accents(first_name)
+                        q['last_name'] = strip_accents(last_name)
+                        q['level_1'] = strip_accents(level_1)
+                        q['level_2'] = strip_accents(level_2)
+                        q['level_3'] = strip_accents(level_3)
+                        q['level_4'] = strip_accents(level_4)
                         list_email.append(email)
                         csv_infos.append(q)
+                        log.info("first_name"+pformat(q['first_name']))
+                        log.info("first_name"+pformat(type(q['first_name'])))
 			log.info("session_manager_handler: "+str(email))
                 if course.language == "fr":
                     msg = "Une fois passée cette étape, vous pourrez accéder à votre module sur "+course.display_name+"."
@@ -2667,11 +2673,24 @@ def invitelist_handler(request, course_key_string):
     #GET MODULE STORE
     module_store = modulestore().get_course(course_key, depth=0)
 
-    #Get users in preprofile table
-    listetest=UserPreprofile.objects.get(email="testetudianttmalicorne@yopmail.com")
 
-    #Get all users enrolled
-    enrolled=CourseEnrollment.objects.all().filter(course_id=course_key)
+    #Get user registration ALLOWED
+    course_enr_allowed = CourseEnrollmentAllowed.objects.all().filter(course_id=course_key)
+    student_list=[]
+    for student in course_enr_allowed:
+        student_details={}
+        try:
+            student_preprofile=UserPreprofile.objects.get(email=student.email)
+            student_details['uuid']=student_preprofile.uuid
+        except:
+            student_details['uuid']=""
+        student_details['email']=student.email
+        if student_details['uuid']=='':
+            student_details['invited']=False
+        else :
+            student_details['invited']=True
+        student_list.append(student_details)
+
     if request.method == "GET":
         # CREATE A CONTEXT
         context = {
@@ -2680,10 +2699,17 @@ def invitelist_handler(request, course_key_string):
             'details':course_details,
             'module_store':module_store,
             'course_key':course_key_string,
-            'list_test':listetest,
-            'student_enrolled':enrolled
+            'student_list': student_list
         }
         # CREATE THE RETURN
         retour = {'course-key_string':context}
         #  RETURN VALUE AND RENDER INVITE PAGE
         return render_to_response('invite_studentlist.html', context)
+
+
+def strip_accents(unicode_string):
+    unicode_string=unicode_string.decode('utf-8')
+    ndf_string = unicodedata.normalize('NFD', unicode_string)
+    is_not_accent = lambda char: unicodedata.category(char) != 'Mn'
+    result=''.join(char for char in ndf_string if is_not_accent(char))
+    return str(result)

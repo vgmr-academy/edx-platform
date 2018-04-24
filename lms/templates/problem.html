@@ -216,6 +216,10 @@ var details = $('#problem_${short_id}').find('.detailed-solution').html();
 $('#problem_${short_id}').find('.detailed-solution').remove();
 if($('#problem_${short_id}').hasClass('finished')){
  $('#problem_${short_id}').find('.final_solution').html(details);
+ if(details){
+  //$('#problem_${short_id}').find('.final_solution').prepend('<div><img style="height:50px;" src="/media/information.png" alt="informations"></div>');
+  $('#problem_${short_id}').find('.final_solution').addClass('details-decoration');
+ }
 }
 </script>
 <style>

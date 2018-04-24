@@ -18289,6 +18289,9 @@ msgstr ""
 msgid "Learn more about managing files"
 msgstr "En savoir plus à propos de la gestion de fichiers"
 
+msgid "View participants invited"
+msgstr "Voir la liste des participants"
+
 #: cms/templates/asset_index.html
 msgid "close"
 msgstr "fermer"
