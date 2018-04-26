@@ -115,6 +115,9 @@ else:
 #course_about_details #course_about_ul {
   min-width: auto !important;
 }
+.validate{
+  color: #cf9c49;
+}
 
 </style>
 <script src="${static.url('js/course_about_atp.js')}"></script>
@@ -136,12 +139,16 @@ try:
 except:
     pass_atp = False
     percent_atp = 0
+try:
+    _end = int(course.end.strftime('%s'))
+except:
+    _end = 0
 %>
 % if status == 0:
     <% atp_rank = 'invite'  %>
-% elif status > 0 and not pass_atp:
+% elif status > 0 and status < 100 and _now < _end:
     <% atp_rank = 'cours' %>
-% elif status > 0 and pass_atp:
+% else:
     <% atp_rank = 'finish'  %>
 % endif
 <% course_about = 1 %>

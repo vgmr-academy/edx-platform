@@ -814,9 +814,9 @@ def dashboard(request):
 	if not course_tma.categ in list_category:
 	    list_category.append(course_tma.categ)
 	#end list category
-        if course_progression > 0 and course_progression < 100 and passed == False and _progress == True or course_progression == 100 and passed == False and _progress == True:
+        if course_progression > 0 and course_progression < 100 and passed == False and _progress == True:
           progress_courses.append(q)
-        elif (course_progression == 100 and passed or _progress == False):
+        elif course_progression == 100 or passed or _progress == False:
           finish_courses.append(q)
         elif course_progression == 0 and _progress == True:
           start_course.append(q)
