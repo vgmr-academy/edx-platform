@@ -2706,6 +2706,12 @@ class LogoutView(TemplateView):
 
         _microsite = configuration_helpers.get_value('domain_prefix')
 
+        if _microsite is None:
+            try:
+                _microsite = list(CourseEnrollment.enrollments_for_user(User.objects.get(id=request.user.id)))[0].course_id.org.lower()
+                log.info("Microsite: "+str(_microsite))
+            except:
+                pass
     	site_courant=request.META["HTTP_HOST"]
         user_language = request.LANGUAGE_CODE
         log.info(user_language)
