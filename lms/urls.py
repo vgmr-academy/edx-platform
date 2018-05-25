@@ -1109,4 +1109,12 @@ urlpatterns += (
 # Webservice
 urlpatterns += (
     url(r'tma_webservice/', include('tma_webservice.webservice_urls')),
+    url(r'^auth_tma/', include('oauth2_provider.urls', namespace='oauth2_provider')),
 )
+
+#Rosetta
+if 'rosetta' in settings.INSTALLED_APPS:
+    urlpatterns += [
+        url(r'^rosetta/', include('rosetta.urls'))
+    ]
+

@@ -115,7 +115,7 @@ FEATURES = {
     # with Shib.  Feature was requested by Stanford's office of general counsel
     'SHIB_DISABLE_TOS': False,
 
-    # Toggles OAuth2 authentication provider
+    # Toggles FalseOAuth2 authentication provider
     'ENABLE_OAUTH2_PROVIDER': True,
 
     # Allows to enable an API endpoint to serve XBlock view, used for example by external applications.
@@ -2161,8 +2161,7 @@ INSTALLED_APPS = (
     #tma
     'tma_grade_tracking',
     'end_courses_atp',
-    'atp_task',
-    'rosetta'
+    'atp_task'
 )
 
 # Migrations which are not in the standard module "migrations"
@@ -3048,6 +3047,3 @@ DOC_LINK_BASE_URL = None
 ############## Settings for the Enterprise App ######################
 
 ENTERPRISE_ENROLLMENT_API_URL = LMS_ROOT_URL + "/api/enrollment/v1/"
-
-############## CUSTOM ATP ######################
-SESSION_COOKIE_AGE = 14400  # auto-expire login sessions after 4 hours of inactivity

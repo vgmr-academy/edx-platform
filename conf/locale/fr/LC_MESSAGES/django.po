@@ -250,15 +250,16 @@ msgstr ""
 "Project-Id-Version: edx-platform\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
 "POT-Creation-Date: 2016-12-08 18:46+0000\n"
-"PO-Revision-Date: 2016-08-30 15:36+0000\n"
-"Last-Translator: Matthieu Falce <falce.matthieu@gmail.com>\n"
+"PO-Revision-Date: 2018-05-24 13:26-0456\n"
+"Last-Translator: Claire Creyssels <aurelien.croq@themoocagency.com>\n"
 "Language-Team: French (http://www.transifex.com/open-edx/edx-platform/language/fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 1.3\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 1.3\n"
+"X-Translated-Using: django-rosetta 0.8.1\n"
 
 #. #-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#
 #. Translators: 'Discussion' refers to the tab in the courseware that leads to
@@ -1713,7 +1714,9 @@ msgid "{programming_language} editor"
 msgstr ""
 
 #: common/lib/capa/capa/inputtypes.py
-msgid "Press ESC then TAB or click outside of the code editor to sudo /edx/bin/supervisorctl restart edxapp:exit"
+msgid ""
+"Press ESC then TAB or click outside of the code editor to sudo "
+"/edx/bin/supervisorctl restart edxapp:exit"
 msgstr ""
 
 #: common/lib/capa/capa/inputtypes.py
@@ -6329,10 +6332,10 @@ msgstr "Email"
 
 #: lms/djangoapps/instructor/views/api.py
 #: lms/djangoapps/instructor_task/tasks_helper.py
-#: lms/templates/courseware/course_about.html
-#: cms/templates/index.html
+#: lms/templates/courseware/course_about.html cms/templates/index.html
 msgid "Language"
 msgstr "Langue"
+
 msgid "Start"
 msgstr "Commencer"
 
@@ -13602,8 +13605,12 @@ msgid "You have completed the training module"
 msgstr "Vous avez complété le module"
 
 #: lms/templates/courseware/courseware.html
-msgid "Unfortunately, you haven't achieved the minimum score required to validate the training module."
-msgstr "Malheureusement, vous n'avez pas atteint le score minimum requis pour valider ce module."
+msgid ""
+"Unfortunately, you haven't achieved the minimum score required to validate "
+"the training module."
+msgstr ""
+"Malheureusement, vous n'avez pas atteint le score minimum requis pour "
+"valider ce module."
 
 #: lms/templates/courseware/courseware.html
 msgid "Bookmarks"
@@ -22156,7 +22163,8 @@ msgstr ""
 "Une nouvelle révision a été créée : Fusion entre la révision #%(r1)d et la "
 "révision #%(r2)d"
 
-#ATP TMA
+#: ATP TMA
+#, python-format
 msgid "MY ACCOUNT"
 msgstr "MON COMPTE"
 
@@ -22238,12 +22246,18 @@ msgstr "Règlementaire"
 msgid "regulatory"
 msgstr "règlementaire"
 
-msgid "Develop your knowledge and skills on asset management: financial culture and products and offers marketed"
-msgstr "Développer vos connaissances et vos compétences sur la gestion d'actifs: culture financière et produits & offres commercialisés"
+msgid ""
+"Develop your knowledge and skills on asset management: financial culture and"
+" products and offers marketed"
+msgstr ""
+"Développer vos connaissances et vos compétences sur la gestion d'actifs: "
+"culture financière et produits & offres commercialisés"
 
 #: lms/templates/dashboard.html
 msgid "To follow a training module, select the thumbnail of your choice!"
-msgstr "Pour suivre un module de formation, sélectionnez la vignette de votre choix !"
+msgstr ""
+"Pour suivre un module de formation, sélectionnez la vignette de votre choix "
+"!"
 
 #: lms/templates/dashboard.html
 msgid "Each training module belongs to a category and can take"
@@ -22255,14 +22269,19 @@ msgstr "différents formats"
 msgid "Training modules"
 msgstr "Les modules"
 
-msgid "Find all the information related to the training on the thumbnails below"
-msgstr "Retrouvez toutes les informations liées à la formation sur les vignettes ci-dessous"
+msgid ""
+"Find all the information related to the training on the thumbnails below"
+msgstr ""
+"Retrouvez toutes les informations liées à la formation sur les vignettes ci-"
+"dessous"
 
 msgid "timing of the module"
 msgstr "Vous pourrez ainsi voir le temps que le module vous prendra"
 
 msgid "if the module is mandatory or not and formats of the module"
-msgstr "s’il est obligatoire ou facultatif et les différents contenus qui le composent"
+msgstr ""
+"s’il est obligatoire ou facultatif et les différents contenus qui le "
+"composent"
 
 msgid "TRAINING MODULES CATEGORIES"
 msgstr "CATÉGORIES DES MODULES DE FORMATION"
@@ -22298,6 +22317,7 @@ msgstr "Chaque module est composé de différents formats interactifs :"
 #: lms/templates/dashboard.html
 msgid "texts & images"
 msgstr "textes & images"
+
 msgid "Infography"
 msgstr "Infographie"
 
@@ -22370,14 +22390,18 @@ msgstr "Date de fin"
 msgid "Disclaimer"
 msgstr "Mentions légales"
 
-msgid 	"Results"
+msgid "Results"
 msgstr "Résultats"
 
 msgid "Back to course about page"
 msgstr "Retour à la fiche du module"
 
-msgid "To end this training module, you have to access every chapters and finish the validation knowledge test."
-msgstr "Pour clore ce module et accéder à votre résultat, vous devez compléter chacune des parties du plan"
+msgid ""
+"To end this training module, you have to access every chapters and finish "
+"the validation knowledge test."
+msgstr ""
+"Pour clore ce module et accéder à votre résultat, vous devez compléter "
+"chacune des parties du plan"
 
 msgid "You started the training module "
 msgstr "Vous avez commencé le module"
@@ -22397,7 +22421,9 @@ msgstr "MODULES À RÉALISER"
 
 #: lms/templates/dashboard.html
 msgid "You haven't started yet the following training modules. Click on"
-msgstr "Vous n’avez pas encore commencé les modules de formation suivants. Cliquez sur"
+msgstr ""
+"Vous n’avez pas encore commencé les modules de formation suivants. Cliquez "
+"sur"
 
 #: lms/templates/dashboard.html
 #: lms/templates/dashboard/_dashboard_course_listing.html
@@ -22413,8 +22439,12 @@ msgid "IN PROGRESS TRAINING MODULES"
 msgstr "MODULES EN COURS"
 
 #: lms/templates/dashboard.html
-msgid "You have started but haven't completed yet the following training modules. To go on, please click on"
-msgstr "Vous avez commencé les modules de formations suivants. Pour compléter votre parcours, cliquez sur"
+msgid ""
+"You have started but haven't completed yet the following training modules. "
+"To go on, please click on"
+msgstr ""
+"Vous avez commencé les modules de formations suivants. Pour compléter votre "
+"parcours, cliquez sur"
 
 #: lms/templates/dashboard.html
 #: lms/templates/dashboard/_dashboard_course_listing.html
@@ -22442,8 +22472,12 @@ msgid "Welcome on"
 msgstr "Bienvenue sur"
 
 #: lms/templates/dashboard.html
-msgid "Develop your knowledge and skills on asset management: financial culture and offers."
-msgstr "Développer vos connaissances et vos compétences sur la gestion d’actifs : culture financière et offres commercialisées."
+msgid ""
+"Develop your knowledge and skills on asset management: financial culture and"
+" offers."
+msgstr ""
+"Développer vos connaissances et vos compétences sur la gestion d’actifs : "
+"culture financière et offres commercialisées."
 
 #: lms/templates/dashboard.html
 msgid "More"
@@ -22462,8 +22496,13 @@ msgid "Back to training module description"
 msgstr "RETOUR À LA FICHE DU MODULE"
 
 #: lms/templates/courseware/courseware.html
-msgid "The training campaign is over. You can access the training module content. However, you can't do the test to validate your knowledge."
-msgstr "La campagne est terminée. Vous pouvez continuer à accéder au contenu du module mais vous ne pouvez plus réaliser le quiz de validation des connaissances."
+msgid ""
+"The training campaign is over. You can access the training module content. "
+"However, you can't do the test to validate your knowledge."
+msgstr ""
+"La campagne est terminée. Vous pouvez continuer à accéder au contenu du "
+"module mais vous ne pouvez plus réaliser le quiz de validation des "
+"connaissances."
 
 #: lms/templates/courseware/courseware.html
 msgid "Go to studio"
@@ -22542,20 +22581,37 @@ msgid "COMPLETED TRAINING CAMPAIGNS"
 msgstr "CAMPAGNES TERMINÉES"
 
 #: cms/templates/index.html
-msgid "The following training campaigns have not been launched yet (starting date not exceeded).To modify starting/ending date, please click on"
-msgstr "Les campagnes de formation suivantes n’ont pas encore été lancées (date de début non dépassée). Pour modifier les dates de début/fin, veuillez cliquer sur"
+msgid ""
+"The following training campaigns have not been launched yet (starting date "
+"not exceeded).To modify starting/ending date, please click on"
+msgstr ""
+"Les campagnes de formation suivantes n’ont pas encore été lancées (date de "
+"début non dépassée). Pour modifier les dates de début/fin, veuillez cliquer "
+"sur"
 
 #: cms/templates/index.html
-msgid "The following training campaigns have not been launched yet (starting date not exceeded). To modify ending date, please click on"
-msgstr "Les campagnes de formation suivantes ont été lancées. Pour modifier la date de fin, veuillez cliquer sur"
+msgid ""
+"The following training campaigns have not been launched yet (starting date "
+"not exceeded). To modify ending date, please click on"
+msgstr ""
+"Les campagnes de formation suivantes ont été lancées. Pour modifier la date "
+"de fin, veuillez cliquer sur"
 
 #: cms/templates/index.html
-msgid "The following training campaigns are completed (ending date is exceeded).To access statistics, please click on"
-msgstr "Les campagnes de formation suivantes sont terminées. Pour accéder aux statistiques des campagnes de formation passées, cliquez sur"
+msgid ""
+"The following training campaigns are completed (ending date is exceeded).To "
+"access statistics, please click on"
+msgstr ""
+"Les campagnes de formation suivantes sont terminées. Pour accéder aux "
+"statistiques des campagnes de formation passées, cliquez sur"
 
 #: cms/templates/index.html
-msgid "The following training campaigns have not been launched yet (starting date not exceeded)."
-msgstr "Les campagnes de formation suivantes n’ont pas encore été lancées (date de début non dépassée)."
+msgid ""
+"The following training campaigns have not been launched yet (starting date "
+"not exceeded)."
+msgstr ""
+"Les campagnes de formation suivantes n’ont pas encore été lancées (date de "
+"début non dépassée)."
 
 #: cms/templates/index.html
 msgid "To launch your campaign, please click on "
@@ -22564,7 +22620,6 @@ msgstr "Pour lancer la campagne de formation, veuillez cliquer sur "
 #: cms/templates/index.html
 msgid "and set up starting date at today."
 msgstr " et configurer la date de début à ce jour."
-
 
 #: cms/templates/index.html
 msgid "To modify starting/ending date, please click on"
@@ -22576,14 +22631,16 @@ msgstr "Pour modifier la date de fin, veuillez cliquer sur"
 
 #: cms/templates/index.html
 msgid "To access statistics, please click on."
-msgstr "Pour accéder aux statistiques des campagnes de formation passées, cliquez sur"
+msgstr ""
+"Pour accéder aux statistiques des campagnes de formation passées, cliquez "
+"sur"
 
 #: cms/templates/index.html
-msgid "The following training campaigns are completed (ending date is exceeded)."
+msgid ""
+"The following training campaigns are completed (ending date is exceeded)."
 msgstr "Les campagnes de formation suivantes sont terminées."
 
-#: cms/templates/index.html
-#lms stat.html
+#: cms/templates/index.html lms stat.html
 msgid "Statistics"
 msgstr "Statistiques"
 
@@ -22596,12 +22653,24 @@ msgid "My campaigns"
 msgstr "Mes campagnes"
 
 #: cms/templates/index.html
-msgid "You have at your disposal a library of training modules made available by Amundi. Select the module of your choice and launch the associated training campaign."
-msgstr "Vous avez à votre disposition une bibliothèque de modules de formation mis a disposition par Amundi. Sélectionnez le module de votre choix et lancez la campagne de formation associée."
+msgid ""
+"You have at your disposal a library of training modules made available by "
+"Amundi. Select the module of your choice and launch the associated training "
+"campaign."
+msgstr ""
+"Vous avez à votre disposition une bibliothèque de modules de formation mis a"
+" disposition par Amundi. Sélectionnez le module de votre choix et lancez la "
+"campagne de formation associée."
 
 #: cms/templates/manage_course.html
-msgid "Provide all the information required to launch your training campaign: starting/ending date, minimum percentage of success required, and campaign type."
-msgstr "Indiquez toutes les informations nécessaires au lancement de votre campagne de formation : date de début/fin, pourcentage de réussite minimum requis et type de campagne."
+msgid ""
+"Provide all the information required to launch your training campaign: "
+"starting/ending date, minimum percentage of success required, and campaign "
+"type."
+msgstr ""
+"Indiquez toutes les informations nécessaires au lancement de votre campagne "
+"de formation : date de début/fin, pourcentage de réussite minimum requis et "
+"type de campagne."
 
 #: cms/templates/manage_course.html
 msgid "campaign id"
@@ -22625,7 +22694,9 @@ msgstr "Votre identifiant"
 
 #: cms/templates/manage_course.html
 msgid "Rules to create your campaign id: no space, no  punctuation mark"
-msgstr "Règles à respecter pour le choix de l’identifiant de la campagne : pas d’espace, pas de ponctuation"
+msgstr ""
+"Règles à respecter pour le choix de l’identifiant de la campagne : pas "
+"d’espace, pas de ponctuation"
 
 #: cms/templates/manage_course.html
 msgid "PERIOD OF THE TRAINING CAMPAIGN"
@@ -22640,8 +22711,12 @@ msgid "Time for email invitation dispatch UTC"
 msgstr "Heure d’envoi des invitations UTC"
 
 #: cms/templates/manage_course.html
-msgid "The day the first invitations are dispatched when launching the training campaign"
-msgstr "Le jour où les premières invitations sont lancée pour la campagne de formation"
+msgid ""
+"The day the first invitations are dispatched when launching the training "
+"campaign"
+msgstr ""
+"Le jour où les premières invitations sont lancée pour la campagne de "
+"formation"
 
 #: cms/templates/manage_course.html
 msgid "Ending time UTC"
@@ -22664,8 +22739,12 @@ msgid "Define the minimum score required to validate the training module"
 msgstr "Définissez le score minimum requis"
 
 #: cms/templates/manage_course.html
-msgid "Minimum score required to validate the training module and receive the certificate of achievement"
-msgstr "Score minimum requis pour valider le module de formation et recevoir le certificat de réussite"
+msgid ""
+"Minimum score required to validate the training module and receive the "
+"certificate of achievement"
+msgstr ""
+"Score minimum requis pour valider le module de formation et recevoir le "
+"certificat de réussite"
 
 #: cms/templates/manage_course.html
 msgid "CAMPAIGN TYPE"
@@ -22673,7 +22752,9 @@ msgstr "TYPE DE CAMPAGNE"
 
 #: cms/templates/manage_course.html
 msgid "Specify whether the training campaign is mandatory or optional"
-msgstr "Pour cette campagne, préciser à votre cible si le module de formation est obligatoire ou facultatif"
+msgstr ""
+"Pour cette campagne, préciser à votre cible si le module de formation est "
+"obligatoire ou facultatif"
 
 #: cms/templates/manage_course.html
 msgid "mandatory"
@@ -22684,8 +22765,12 @@ msgid "optional"
 msgstr "facultatif"
 
 #: cms/templates/manage_course.html
-msgid "Add participants to your training campaign and customize the invitation email"
-msgstr "Ajoutez des participants à votre campagne de formation et personnalisez le mail d’invitation"
+msgid ""
+"Add participants to your training campaign and customize the invitation "
+"email"
+msgstr ""
+"Ajoutez des participants à votre campagne de formation et personnalisez le "
+"mail d’invitation"
 
 #: cms/templates/manage_course.html
 msgid "PARTICIPANTS"
@@ -22705,7 +22790,9 @@ msgstr "EMAIL AUX PARTICIPANTS"
 
 #: cms/templates/manage_course.html
 msgid "Edit and send the invitation email to participants of your choice."
-msgstr "Editez et envoyez le mail d’invitation à la liste de destinataires de votre choix."
+msgstr ""
+"Editez et envoyez le mail d’invitation à la liste de destinataires de votre "
+"choix."
 
 #: cms/templates/manage_course.html
 msgid "Send the invitation email to :"
@@ -22724,8 +22811,18 @@ msgid "Customized list of participants"
 msgstr "Liste de destinataires personnalisée"
 
 #: cms/templates/manage_course.html
-msgid "If you want to send the invitation email to the training campaign to a customized list of participants, please copy/paste the email recipients above. Remember that invitation emails can be sent only to the participants who have been invited to participate to the training campaign in the section 1/2 PARTICIPANTS."
-msgstr "Si vous souhaitez envoyer le mail d’invitation à la campagne de formation à une liste de destinataires personnalisée, veuillez copier/coller les adresses emails des destinataires ci-dessus. A noter que les mails d’invitation sont envoyés uniquement aux participants ayant été invités dans la section 1/2 PARTICIPANTS"
+msgid ""
+"If you want to send the invitation email to the training campaign to a "
+"customized list of participants, please copy/paste the email recipients "
+"above. Remember that invitation emails can be sent only to the participants "
+"who have been invited to participate to the training campaign in the section"
+" 1/2 PARTICIPANTS."
+msgstr ""
+"Si vous souhaitez envoyer le mail d’invitation à la campagne de formation à "
+"une liste de destinataires personnalisée, veuillez copier/coller les "
+"adresses emails des destinataires ci-dessus. A noter que les mails "
+"d’invitation sont envoyés uniquement aux participants ayant été invités dans"
+" la section 1/2 PARTICIPANTS"
 
 #: cms/templates/manage_course.html
 msgid "Object"
@@ -22740,16 +22837,30 @@ msgid "Contenu du mail"
 msgstr "Body"
 
 #: cms/templates/manage_course.html
-msgid "WARNING : Don’t hesitate to validate the email invitation by sending a test invitation to yourself. It will allow you to validate content and links included in the email invitation."
-msgstr "ATTENTION : Avant de cliquer sur « Envoyer », relisez bien votre email et testez l’invitation en vous envoyant un mail à vous-même. Cela vous permettra de valider que le contenu et le lien contenus dans l’email d’invitation sont corrects."
+msgid ""
+"WARNING : Don’t hesitate to validate the email invitation by sending a test "
+"invitation to yourself. It will allow you to validate content and links "
+"included in the email invitation."
+msgstr ""
+"ATTENTION : Avant de cliquer sur « Envoyer », relisez bien votre email et "
+"testez l’invitation en vous envoyant un mail à vous-même. Cela vous "
+"permettra de valider que le contenu et le lien contenus dans l’email "
+"d’invitation sont corrects."
 
 #: cms/templates/manage_course.html
 msgid "CTA : Send"
 msgstr "CTA : Envoyer"
 
 #: cms/templates/manage_course.html
-msgid "Don't hesitate to validate the email invitation by sending a test invitation to yourself. It will allow you to validate content and links included in the email invitation."
-msgstr "Avant de cliquer sur « Envoyer », relisez bien votre email et testez l’invitation en vous envoyant un mail à vous-même. Cela vous permettra de valider que le contenu et le lien contenus dans l’email d’invitation sont corrects."
+msgid ""
+"Don't hesitate to validate the email invitation by sending a test invitation"
+" to yourself. It will allow you to validate content and links included in "
+"the email invitation."
+msgstr ""
+"Avant de cliquer sur « Envoyer », relisez bien votre email et testez "
+"l’invitation en vous envoyant un mail à vous-même. Cela vous permettra de "
+"valider que le contenu et le lien contenus dans l’email d’invitation sont "
+"corrects."
 
 #: cms/templates/index.html
 msgid "WHAT YOU CAN DO"
@@ -22760,8 +22871,11 @@ msgid "Schedules training campaigns:"
 msgstr "Dans mes campagnes programmées:"
 
 #: cms/templates/index.html
-msgid "Update your settings: starting/ending dates, minimum percentage of success"
-msgstr "Modifiez les paramétrages réalisés: les dates de début / fin, le pourcentage de réussite minimum requis"
+msgid ""
+"Update your settings: starting/ending dates, minimum percentage of success"
+msgstr ""
+"Modifiez les paramétrages réalisés: les dates de début / fin, le pourcentage"
+" de réussite minimum requis"
 
 #: cms/templates/index.html
 msgid "Add new participants"
@@ -22781,7 +22895,9 @@ msgstr "Modifiez la date de fin"
 
 #: cms/templates/index.html
 msgid "Access statistics: participation rate, success by participant, etc."
-msgstr "Accédez aux statistiques de la campagne : taux de participation, résultats par participant, etc."
+msgstr ""
+"Accédez aux statistiques de la campagne : taux de participation, résultats "
+"par participant, etc."
 
 #: cms/templates/index.html
 msgid "Completed training campaigns:"
@@ -22793,7 +22909,9 @@ msgstr "Campagnes terminées"
 
 #: cms/templates/index.html
 msgid "Access a training modules library provided by Amundi"
-msgstr "Accédez à la blibliothèque de modules de formation mise à disposition par Amundi"
+msgstr ""
+"Accédez à la blibliothèque de modules de formation mise à disposition par "
+"Amundi"
 
 #: cms/templates/index.html
 msgid "Launch a training campaign"
@@ -22803,258 +22921,296 @@ msgstr "Lancez une campagne de formation"
 msgid "My modules:"
 msgstr "Dans mes modules:"
 
-#log
+#: log
 msgid "logout"
 msgstr "déconnexion"
 
-#log
+#: log
 msgid "login"
 msgstr "connexion"
 
-#cms index.html
-
+#: cms index.html
 msgid "No training campaign has been launched yet."
 msgstr "Aucune campagne de formation n'a été lancée."
 
-# lms dashboard.html
-
+#: lms dashboard.html
 msgid "No training modules available in this section."
 msgstr "Aucun module de formation n'est disponible dans cette section."
 
-# lms dashboard.html
-
+#: lms dashboard.html
 msgid "Welcome on Amundi Academy platform"
 msgstr "Bienvenue sur la plateforme Amundi Academy "
 
-# lms dashboard.html
-
+#: lms dashboard.html
 msgid "You successfully registered"
 msgstr "Votre inscription est confirmée"
 
-# lms dashboard.html
-
+#: lms dashboard.html
 msgid "The training module"
 msgstr "Le module de formation"
 
-# lms dashboard.html
-
+#: lms dashboard.html
 msgid "is available in the section"
 msgstr "est accessible dans la partie"
 
-# cms index.html
-
+#: cms index.html
 msgid "Send email to participants"
 msgstr "Envoyer un email aux participants"
 
-#cms send email
-
+#: cms send email
 msgid "Send"
 msgstr "Envoyer"
 
 msgid "You can send a new email or go back to the page MY CAMPAIGNS"
-msgstr "Vous pouvez envoyer un nouvel email ou retourner sur la page MES CAMPAGNES"
+msgstr ""
+"Vous pouvez envoyer un nouvel email ou retourner sur la page MES CAMPAGNES"
 
 msgid "Your email was sent"
 msgstr "Votre email a bien été envoyé aux destinataires"
 
-#cms index.html
+#: cms index.html
 msgid "Access Trainee interface"
 msgstr "Accès Apprenant"
 
-#lms dashboard.html
+#: lms dashboard.html
 msgid "Access Admin interface"
 msgstr "Accès interface d'administration"
 
-#lms stat.html
+#: lms stat.html
 msgid "editor"
 msgstr "Editeur"
 
-#lms stat.html
+#: lms stat.html
 msgid "Results on "
 msgstr "Résultats au "
 
-#lms stat.html
+#: lms stat.html
 msgid "Statistical training campaign"
 msgstr "Statistiques"
 
-#lms stat.html
+#: lms stat.html
 msgid "training campaign info"
 msgstr "informations générales"
 
-#lms stat.html
+#: lms stat.html
 msgid "Download participants' list"
 msgstr "Télécharger la liste des invités"
 
-#lms stat.html
+#: lms stat.html
 msgid "starting date"
 msgstr "Date de début"
 
-#lms stat.html
+#: lms stat.html
 msgid "ending date"
 msgstr "Date de fin"
 
-#lms stat.html
+#: lms stat.html
 msgid "Number of questions"
 msgstr "Nombre de questions"
 
-#lms stat.html
+#: lms stat.html
 msgid "Percentage for success"
 msgstr "Pourcentage de réussite"
 
-
-#lms stat.html
+#: lms stat.html
 msgid "users stats"
 msgstr "à propos des participants"
 
-#lms stat.html
+#: lms stat.html
 msgid "Network"
 msgstr "Réseau"
 
-#lms stat.html
+#: lms stat.html
 msgid "Target"
 msgstr "Cible"
 
-#lms stat.html
+#: lms stat.html
 msgid "Guests"
 msgstr "Invités"
 
-#lms stat.html
+#: lms stat.html
 msgid "Certified"
 msgstr "Nombre de participants ayant obtenus leur certification"
 
-#lms stat.html
+#: lms stat.html
 msgid "Average result"
 msgstr "Résultat moyen par participant"
 
-#lms stat.html
+#: lms stat.html
 msgid "Average score"
 msgstr "score moyen"
 
-#lms stat.html
+#: lms stat.html
 msgid "per question"
 msgstr "par question"
 
-#lms stat.html
+#: lms stat.html
 msgid "per participant"
 msgstr "par participant"
 
-#lms stat.html
+#: lms stat.html
 msgid "Download all participants' detailled results"
 msgstr "Télécharger les résultats de tous les participants"
 
-#lms stat.html
+#: lms stat.html
 msgid "First name"
 msgstr "Prénom"
 
-#lms stat.html
+#: lms stat.html
 msgid "Last name"
 msgstr "Nom"
 
-
-#cms create_course.html
+#: cms create_course.html
 msgid "create my campaign"
 msgstr "créer ma campagne"
 
-#cms create_course.html
-msgid "To launch your training campaign, you have to specify an unique ID and the target of your training campaign. Please, note that the target wording will be indicated in the statistics of this training campaign."
-msgstr "Pour lancer votre campagne de formation, vous devez préciser un identifiant unique et la cible de cette campagne de formation. Veuillez noter que le libellé de la cible sera indiqué dans les statistiques de cette campagne."
+#: cms create_course.html
+msgid ""
+"To launch your training campaign, you have to specify an unique ID and the "
+"target of your training campaign. Please, note that the target wording will "
+"be indicated in the statistics of this training campaign."
+msgstr ""
+"Pour lancer votre campagne de formation, vous devez préciser un identifiant "
+"unique et la cible de cette campagne de formation. Veuillez noter que le "
+"libellé de la cible sera indiqué dans les statistiques de cette campagne."
 
-#cms create_course.html
+#: cms create_course.html
 msgid "Specify unique ID and target"
 msgstr "Préciser l’identifiant unique et la cible"
 
-#cms create_course.html
-msgid "Specify an unique campaign title as long as a target for your training campaign"
-msgstr "Indiquer un intitulé ainsi que la cible de cette campagne de formation"
+#: cms create_course.html
+msgid ""
+"Specify an unique campaign title as long as a target for your training "
+"campaign"
+msgstr ""
+"Indiquer un intitulé ainsi que la cible de cette campagne de formation"
 
-#cms create_course.html
+#: cms create_course.html
 msgid "Unique ID"
 msgstr "Identifiant unique"
 
-#cms create_course.html
+#: cms create_course.html
 msgid "Campaign title (unique id)"
 msgstr "Intitulé de la campagne (identifiant unique)"
 
-#cms create_course.html
-msgid "Rules for unique ID and target : no space, no punctuation, no special characters"
-msgstr "Règles de saisie de l’identifiant unique et de la cible : pas d’espace, pas de ponctuation, pas de caractère spécial"
+#: cms create_course.html
+msgid ""
+"Rules for unique ID and target : no space, no punctuation, no special "
+"characters"
+msgstr ""
+"Règles de saisie de l’identifiant unique et de la cible : pas d’espace, pas "
+"de ponctuation, pas de caractère spécial"
 
-#cms create_course.html
+#: cms create_course.html
 msgid "Create an identifier"
 msgstr ""
 
-#cms create_course.html
+#: cms create_course.html
 msgid "This identifier is reflected in the statistical dashboards"
 msgstr "cet identifiant est remonté dans les tableaux de bord statistiques"
 
-#cms create_course.html
+#: cms create_course.html
 msgid "This allows you to specify the target and / or training period"
 msgstr "Cela vous permet de préciser la cible et/ou la période de formation"
 
-#cms create_course.html
+#: cms create_course.html
 msgid "identifying your campaign"
 msgstr "identifiant de votre campagne"
 
-#cms create_course.html
+#: cms create_course.html
 msgid "Rules for unique ID and target"
 msgstr "Règles de saisie de l’identifiant unique et de la cible"
 
-#cms create_course.html
+#: cms create_course.html
 msgid "no space, no punctuation, no special characters"
 msgstr "pas d’espace, pas de ponctuation, pas de caractère spécial"
 
-#cms invite.html
+#: cms invite.html
 msgid "INVITE PARTICIPANTS"
 msgstr "INVITER DES PARTICIPANTS"
 
-#cms invite.html
-msgid "In order to invite participants to your training campaign, it is imperative that starting date of the training session is set before the current date."
-msgstr "Pour inviter des participants à votre campagne de formation, il faut impérativement que la date de début de la campagne de formation paramétrée soit antérieure à la date du jour."
+#: cms invite.html
+msgid ""
+"In order to invite participants to your training campaign, it is imperative "
+"that starting date of the training session is set before the current date."
+msgstr ""
+"Pour inviter des participants à votre campagne de formation, il faut "
+"impérativement que la date de début de la campagne de formation paramétrée "
+"soit antérieure à la date du jour."
 
-#cms mail.html
+#: cms mail.html
 msgid "SEND EMAIL TO PARTICIPANTS"
 msgstr "ENVOYER UN EMAIL AUX PARTICIPANTS"
 
-#cms mail.html
-msgid "During the training campaign, you can send a personalized e-mail to your participants or to targeted receivers."
-msgstr "A tout moment, lors de votre campagne de formation, vous pouvez envoyer un email personnalisé à vos participants ou à une liste de destinataires que vous aurez choisi."
+#: cms mail.html
+msgid ""
+"During the training campaign, you can send a personalized e-mail to your "
+"participants or to targeted receivers."
+msgstr ""
+"A tout moment, lors de votre campagne de formation, vous pouvez envoyer un "
+"email personnalisé à vos participants ou à une liste de destinataires que "
+"vous aurez choisi."
 
-#cms mail.html
-msgid "It can be an email to remind them the training campaign will end soon, the training campaign is mandatory, etc"
-msgstr "Ce peut être un email de relance pour rappeler à vos participants que la campagne de formation touche bientôt à sa fin, un email pour leur formuler que la campagne de formation est obligatoire, etc."
+#: cms mail.html
+msgid ""
+"It can be an email to remind them the training campaign will end soon, the "
+"training campaign is mandatory, etc"
+msgstr ""
+"Ce peut être un email de relance pour rappeler à vos participants que la "
+"campagne de formation touche bientôt à sa fin, un email pour leur formuler "
+"que la campagne de formation est obligatoire, etc."
 
-#cms mail.html
+#: cms mail.html
 msgid "Send email to:"
 msgstr "Envoyer l’email à :"
 
-#cms mail.html
+#: cms mail.html
 msgid "Team and administrator"
 msgstr "Equipe et administrateur"
 
-#cms mail.html
+#: cms mail.html
 msgid "All participants (invited and accepted)"
 msgstr "Tous les participants (invités et inscrits)"
 
-#cms mail.html
+#: cms mail.html
 msgid "Customized mailing list"
 msgstr "Liste de destinataires personnalisée"
 
-#cms mail.html
-msgid "If you want to send an email to a customized mailing list, please copy/paste email addresses above. Emails will only be sent to receivers that have been invited to participate to the training campaign in the section 'Invite participants'."
-msgstr "Si vous souhaitez envoyer un email à une liste de destinataires personnalisée, veuillez copier/coller les adresses emails des destinataires ci-dessus. A noter que ces emails sont envoyés uniquement aux destinataires qui ont été invités à participer à la campagne de formation dans la section « Inviter des participants »."
+#: cms mail.html
+msgid ""
+"If you want to send an email to a customized mailing list, please copy/paste"
+" email addresses above. Emails will only be sent to receivers that have been"
+" invited to participate to the training campaign in the section 'Invite "
+"participants'."
+msgstr ""
+"Si vous souhaitez envoyer un email à une liste de destinataires "
+"personnalisée, veuillez copier/coller les adresses emails des destinataires "
+"ci-dessus. A noter que ces emails sont envoyés uniquement aux destinataires "
+"qui ont été invités à participer à la campagne de formation dans la section "
+"« Inviter des participants »."
 
-#cms mail.html
+#: cms mail.html
 msgid "Object of the email"
 msgstr "Objet de l’email "
 
-#cms mail.html
-msgid "WARNING : Before clicking on 'Send', please read your text carefully and send an email to yourself. This will allow you to validate text and links are correct."
-msgstr "AVERTISSEMENT : Avant de cliquer sur « Envoyer », relisez bien votre email et testez le mail en vous l’envoyant à vous-même. Cela vous permettra de valider que le contenu et liens sont corrects."
+#: cms mail.html
+msgid ""
+"WARNING : Before clicking on 'Send', please read your text carefully and "
+"send an email to yourself. This will allow you to validate text and links "
+"are correct."
+msgstr ""
+"AVERTISSEMENT : Avant de cliquer sur « Envoyer », relisez bien votre email "
+"et testez le mail en vous l’envoyant à vous-même. Cela vous permettra de "
+"valider que le contenu et liens sont corrects."
 
 msgid "Body of the email"
 msgstr "Corps de l’email"
 
-msgid "We recommend sending only one message per week to learners. Before sending your e-mail, read your text carefully and send it to your email address. You will be able to verify that all the links work and that the content is good."
+msgid ""
+"We recommend sending only one message per week to learners. Before sending "
+"your e-mail, read your text carefully and send it to your email address. You"
+" will be able to verify that all the links work and that the content is "
+"good."
 msgstr ""
 
 msgid "legal notices"
@@ -23069,8 +23225,12 @@ msgstr "Accès interface apprenant"
 msgid "The participants' list is successfully uploaded."
 msgstr "La liste des participants est chargée avec succès."
 
-msgid "An email invitation to participate to the training module has been sent to the participants."
-msgstr "Une invitation par email pour participer au module de formation a bien été envoyée aux participants."
+msgid ""
+"An email invitation to participate to the training module has been sent to "
+"the participants."
+msgstr ""
+"Une invitation par email pour participer au module de formation a bien été "
+"envoyée aux participants."
 
 msgid "OUR SOLUTIONS"
 msgstr "NOS SOLUTIONS"
@@ -23090,14 +23250,28 @@ msgstr "Nos solution"
 msgid "our solution"
 msgstr "nos solution"
 
-msgid "To create your training campaign, you have to specify an unique ID and the target of your training campaign. Please, note that the target wording will be indicated in the statistics of this training campaign."
-msgstr "Pour créer votre campagne de formation, vous devez préciser un identifiant unique et la cible de cette campagne de formation. Veuillez noter que ces données seront indiquées  dans les statistiques de cette campagne"
+msgid ""
+"To create your training campaign, you have to specify an unique ID and the "
+"target of your training campaign. Please, note that the target wording will "
+"be indicated in the statistics of this training campaign."
+msgstr ""
+"Pour créer votre campagne de formation, vous devez préciser un identifiant "
+"unique et la cible de cette campagne de formation. Veuillez noter que ces "
+"données seront indiquées  dans les statistiques de cette campagne"
 
-msgid "To create your training campaign, you have to specify an unique campaign title as long as a target for your training campaign."
-msgstr "Pour créer votre campagne de formation, vous devez indiquer un intitulé de campagne unique ainsi que la cible de cette campagne de formation."
+msgid ""
+"To create your training campaign, you have to specify an unique campaign "
+"title as long as a target for your training campaign."
+msgstr ""
+"Pour créer votre campagne de formation, vous devez indiquer un intitulé de "
+"campagne unique ainsi que la cible de cette campagne de formation."
 
-msgid "Please, note that these will be indicated in the statistics dashboard of this training campaign."
-msgstr "Veuillez noter que ces données seront indiquées dans les statistiques de cette campagne."
+msgid ""
+"Please, note that these will be indicated in the statistics dashboard of "
+"this training campaign."
+msgstr ""
+"Veuillez noter que ces données seront indiquées dans les statistiques de "
+"cette campagne."
 
 msgid "Created training campaigns"
 msgstr "Campagnes créées"
@@ -23108,14 +23282,18 @@ msgstr "La campagne de formation est terminée."
 msgid "Starting time UTC"
 msgstr "Heure de début UTC"
 
-msgid "Define the minimum score required to validate the training module and receive the certificate of achievement"
-msgstr "Définissez le score minimum requis pour valider le module de formation et recevoir le certificat de réussite"
+msgid ""
+"Define the minimum score required to validate the training module and "
+"receive the certificate of achievement"
+msgstr ""
+"Définissez le score minimum requis pour valider le module de formation et "
+"recevoir le certificat de réussite"
 
-#cms:index.html
+#: cms:index.html
 msgid "To launch a training campaign"
 msgstr "Pour créer une campagne de formation"
 
-#validate translate
+#: validate translate
 msgid "Validated"
 msgstr "Validé"
 
@@ -23146,10 +23324,18 @@ msgstr "résultats trouvés parmi vos modules"
 msgid "results found in your campaigns"
 msgstr "résultats trouvés parmi vos campagnes"
 
-#fail cms invite.html
-msgid "The structure of the file loaded is incorrect. Please, modify your file and load it again"
-msgstr "Le format du fichier chargé est incorrect. Veuillez modifier votre fichier et le charger à nouveau"
+#: fail cms invite.html
+msgid ""
+"The structure of the file loaded is incorrect. Please, modify your file and "
+"load it again"
+msgstr ""
+"Le format du fichier chargé est incorrect. Veuillez modifier votre fichier "
+"et le charger à nouveau"
 
-#cms manage.html
-msgid "You already have invited participants to this training campaign. Starting date can no longer be edited."
-msgstr "Vous avez déjà invités des participants à cette campagne de formation. La date de début ne peut plus être modifiée."
+#: cms manage.html
+msgid ""
+"You already have invited participants to this training campaign. Starting "
+"date can no longer be edited."
+msgstr ""
+"Vous avez déjà invités des participants à cette campagne de formation. La "
+"date de début ne peut plus être modifiée."

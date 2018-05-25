@@ -2707,23 +2707,25 @@ class LogoutView(TemplateView):
         _microsite = configuration_helpers.get_value('domain_prefix')
 
     	site_courant=request.META["HTTP_HOST"]
+        user_language = request.LANGUAGE_CODE
+        log.info(user_language)
         if settings.FEATURES.get('VM_STATUS') is not "prod":
             if n > 0:
                 if _microsite is not None:
                     if _microsite == "amundi":
-                        self.target = "https://preprod.interface.amundi.com/ret/landing/academy/index.html#/fr/administrateur"
-                    elif _microsite == "lcl":
-                        self.target = "https://preprod.interface.amundi.com/ret/landing/academy/index.html#/fr/lcl/administrateur"
+                        self.target = "https://ppr-session-manager.amundi.com/v2/amundi-amundiacademy/"+user_language+"/user/logout"
+                    else:
+                        self.target = "https://ppr-session-manager.amundi.com/v2/"+_microsite+"/"+user_language+"/user/logout"
                 else:
-                    self.target = "https://preprod.interface.amundi.com/ret/landing/academy/index.html#/fr/administrateur"
+                    self.target = "https://ppr-session-manager.amundi.com/v2/amundi-amundiacademy/"+user_language+"/user/logout"
             else:
                 if _microsite is not None:
                     if _microsite == "amundi":
-                        self.target = "https://preprod.interface.amundi.com/ret/landing/academy/index.html#/fr/apprenant/"
+                        self.target = "https://ppr-session-manager.amundi.com/v2/amundi-amundiacademy/"+user_language+"/user/logout"
                     elif _microsite == "lcl":
-                        self.target = "https://preprod.interface.amundi.com/ret/landing/academy/index.html#/fr/lcl/apprenant"
+                        self.target = "https://ppr-session-manager.amundi.com/v2/"+_microsite+"/"+user_language+"/user/logout"
                 else:
-                    self.target = "https://preprod.interface.amundi.com/ret/landing/academy/index.html#/fr/apprenant/"
+                    self.target = "https://ppr-session-manager.amundi.com/v2/amundi-amundiacademy/"+user_language+"/user/logout"
         #SUR PROD
         else :
             if n > 0:

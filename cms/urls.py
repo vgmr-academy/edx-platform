@@ -234,3 +234,9 @@ urlpatterns += (
     url(r'^home_dev/?$', 'contentstore.views.course.course_listing_template', name='home_dev'),
     url(r'^microsites_listing/?$', 'contentstore.views.course.index_microsites_listing', name='index-microsites-listing'),
 )
+
+#Rosetta
+if 'rosetta' in settings.INSTALLED_APPS:
+    urlpatterns += [
+        url(r'^rosetta/', include('rosetta.urls'))
+    ]

@@ -444,7 +444,7 @@ courseware = static.get_value('css_overrides_courseware')
     </div>
 
 % endif
-        <section class="course-content" id="course-content">
+    <section class="course-content" id="course-content">
         <div class="path"></div>
         <main id="main" aria-label="Content" tabindex="-1">
         % if getattr(course, 'entrance_exam_enabled') and \
@@ -719,15 +719,6 @@ $(window).resize(function(){
 })
 </script>
 
-
-    <script>
-        $('.vert-mod').hide();
-        $('#seq-content h3.unit-title').on('click', function() {
-            $('.vert-mod').append('<button>Next</button>');
-            $('.vert-mod').show();
-        });
-    </script>
-
 <!-- bouton de nav -->
 <style>
 #sub_nav {
@@ -737,7 +728,7 @@ $(window).resize(function(){
   right: 10px;
   bottom: 35px;
   display: inline-block;
-  background-color: ${primary_color};
+  background-color: #0C1C49;
 }
 #nav_button,#sub_context {
   display: inline-block;
@@ -779,7 +770,7 @@ $(window).resize(function(){
   min-width: 80px;
 }
 #sub_nav button:hover {
-  color: ${secondary_color} !important;
+  color: rgb(49, 174, 238) !important;
 }
 .previous_title_nav span {
   margin-left: 15px;
@@ -795,7 +786,7 @@ $(window).resize(function(){
   margin-bottom: 7px;
   height: 23px !important;
   display: inline-block;
-  background-color: ${secondary_color} !important;
+  background-color: rgb(49, 174, 238) !important;
 }
 .svg-inline--fa.fa-w-16{
   height: 23px !important;
@@ -809,9 +800,6 @@ $(window).resize(function(){
 }
 .detailed-solution {
  display: none !important;
-}
-.group-heading.active{
-  color:${secondary_color}!important;
 }
 </style>
 <!-- feed back -->

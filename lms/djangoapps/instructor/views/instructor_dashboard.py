@@ -74,7 +74,7 @@ from xlwt import *
 import os
 #GEOFFREY
 log = logging.getLogger(__name__)
-#GEOFFREY BIS
+
 
 
 class InstructorDashboardTab(CourseTab):
@@ -790,6 +790,7 @@ def stat_dashboard(request, course_id):
      'user_finished':user_finished,
      'course_structure':course_structure,
      'overview':overview,
+     'language_course':get_course_langue(course.language)
     }
 
     return render_to_response('courseware/stat.html', context)
@@ -1214,3 +1215,15 @@ def download_grades(request,filename):
     response['Content-Disposition'] = "attachment; filename="+filename
     os.remove(full_path)
     return response
+
+def get_list_lang():
+    language_options_tulp=settings.ALL_LANGUAGES
+    language_options_dict={}
+    for lang, label in language_options_tulp:
+        language_options_dict[lang]=label
+    return language_options_dict
+
+def get_course_langue(lang_code):
+    language_options_dict=get_list_lang()
+    course_language=language_options_dict[lang_code]
+    return course_language

@@ -1009,6 +1009,10 @@ INSTALLED_APPS = (
 
     # Microsite manager
     'microsite_manager',
+
+    # Rosetta
+    'rosetta'
+
 )
 
 
@@ -1292,3 +1296,7 @@ RETRY_ACTIVATION_EMAIL_TIMEOUT = 0.5
 
 # How long until database records about the outcome of a task and its artifacts get deleted?
 USER_TASKS_MAX_AGE = timedelta(days=7)
+
+############## CUSTOM ATP ######################
+SESSION_COOKIE_AGE = 14400  # auto-expire login sessions after 4 hours of inactivity
+

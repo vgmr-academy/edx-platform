@@ -649,6 +649,7 @@ def course_listing(request):
         'programs': programs,
         'program_authoring_url': reverse('programs'),
         'microsites': microsites,
+        'language_options_dict':get_list_lang()
     })
 
 
@@ -1304,15 +1305,17 @@ def manage_handler(request, course_key_string):
             end_date = overview.end.strftime('%Y-%d-%m')
         else:
             end_date = ''
+
         context = {
             'course':course,
             'course_key':course_key_string,
-	    'enroll_start':_enroll_start,
+	        'enroll_start':_enroll_start,
             'overview':overview,
             'details':details,
             'module_store':module_store,
             'start_date':start_date,
-            'end_date':end_date
+            'end_date':end_date,
+            'language_course':get_course_langue(course.language)
         }
         retour = {'course-key_string':context}
         return render_to_response('manage_course.html', context)
@@ -1597,7 +1600,8 @@ def email_dashboard_handler(request, course_key_string):
             'overview':overview,
             'details':details,
             'module_store':module_store,
-            'course_key':course_key_string
+            'course_key':course_key_string,
+            'language_course':get_course_langue(course.language)
         }
         # CREATE THE RETURN
         retour = {'course-key_string':context}
@@ -1721,6 +1725,7 @@ def invite_handler(request, course_key_string):
             'details':course_details,
             'module_store':module_store,
             'course_key':course_key_string,
+            'language_course':get_course_langue(course.language)
         }
         # CREATE THE RETURN
         retour = {'course-key_string':context}
@@ -2699,7 +2704,8 @@ def invitelist_handler(request, course_key_string):
             'details':course_details,
             'module_store':module_store,
             'course_key':course_key_string,
-            'student_list': student_list
+            'student_list': student_list,
+            'language_course':get_course_langue(course.language)
         }
         # CREATE THE RETURN
         retour = {'course-key_string':context}
@@ -2713,3 +2719,16 @@ def strip_accents(unicode_string):
     is_not_accent = lambda char: unicodedata.category(char) != 'Mn'
     result=''.join(char for char in ndf_string if is_not_accent(char))
     return str(result)
+
+#List of available course languages to display on cms index.html
+def get_list_lang():
+    language_options_tulp=settings.ALL_LANGUAGES
+    language_options_dict={}
+    for lang, label in language_options_tulp:
+        language_options_dict[lang]=label
+    return language_options_dict
+
+def get_course_langue(lang_code):
+    language_options_dict=get_list_lang()
+    course_language=language_options_dict[lang_code]
+    return course_language
