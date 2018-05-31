@@ -49,7 +49,8 @@ $('#block_average').find('.section_box').find('h4').click(function(){
         var i = 0;
         cible.html('');
         for(i;i<length;i++) {
-          var dat = obj[keys[i]];
+          var dat = obj[i][1];
+          console.log("DAAAATT3 "+obj[i][1]['display_name']);
           var display_name = dat.display_name;
           var vertical_name = dat.vertical_name;
           var grade = dat.moyenne;

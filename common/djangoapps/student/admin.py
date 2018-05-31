@@ -10,7 +10,7 @@ from xmodule.modulestore.django import modulestore
 
 from config_models.admin import ConfigurationModelAdmin
 from student.models import (
-    UserProfile, UserTestGroup, CourseEnrollmentAllowed, DashboardConfiguration, CourseEnrollment, Registration,
+    UserProfile, UserPreprofile, UserTestGroup, CourseEnrollmentAllowed, DashboardConfiguration, CourseEnrollment, Registration,
     PendingNameChange, CourseAccessRole, LinkedInAddToProfileConfiguration, UserAttribute, LogoutViewConfiguration,
     RegistrationCookieConfiguration
 )
@@ -153,6 +153,14 @@ class CourseEnrollmentAdmin(admin.ModelAdmin):
 
     class Meta(object):
         model = CourseEnrollment
+
+@admin.register(UserPreprofile)
+class UserPreprofileAdmin(admin.ModelAdmin):
+    """ Admin interface for the CourseEnrollment model. """
+    list_display = ('email', 'last_name', 'first_name')
+
+    class Meta(object):
+        model = UserPreprofile
 
 
 class UserProfileInline(admin.StackedInline):

@@ -2681,7 +2681,10 @@ def invitelist_handler(request, course_key_string):
 
     #Get user registration ALLOWED
     course_enr_allowed = CourseEnrollmentAllowed.objects.all().filter(course_id=course_key)
+    course_enr=CourseEnrollment.objects.all().filter(course_id=course_key)
     student_list=[]
+
+    #search for student invited but not connected yet
     for student in course_enr_allowed:
         student_details={}
         try:
@@ -2695,6 +2698,23 @@ def invitelist_handler(request, course_key_string):
         else :
             student_details['invited']=True
         student_list.append(student_details)
+
+    #search for student who already have an account => registered directly to course
+    for student_enr in course_enr:
+        student_enr_details={}
+        student_enr_mail = student_enr.user.email
+        try:
+            student_enr_preprofile=UserPreprofile.objects.get(email=student_enr_mail)
+            student_enr_details['uuid']=student_enr_preprofile.uuid
+        except:
+            student_enr_details['uuid']=""
+        if student_enr_details['uuid']=='':
+            student_enr_details['invited']=False
+        else :
+            student_enr_details['invited']=True
+        student_enr_details['email']=student_enr_mail
+        student_list.append(student_enr_details)
+
 
     if request.method == "GET":
         # CREATE A CONTEXT

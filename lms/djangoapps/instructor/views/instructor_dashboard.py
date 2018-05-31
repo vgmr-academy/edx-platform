@@ -975,6 +975,8 @@ def get_course_blocks_grade(request,course_id):
 
         except:
             pass
+    #sort values alphabeticaly by cours display name
+    course_grade=sorted(course_grade.items(), key=lambda x: x[1]['display_name'])
     return JsonResponse({'course_grade':course_grade})
 
 def get_result_page_info(request,course_id):

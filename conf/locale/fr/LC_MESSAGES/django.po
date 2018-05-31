@@ -1574,6 +1574,13 @@ msgid ""
 "accordingly."
 msgstr ""
 
+#xblock pdfflipbook
+msgid "Download PDF file"
+msgstr "Télécharger le PDF"
+
+msgid "upload files on files & uploads section, copy here the web url"
+msgstr "ajoutez vos fichiers depuis la section fichiers et téléchargement, coller ici l'adresse web du document"
+
 #: common/djangoapps/xblock_django/admin.py
 msgid ""
 "Only XBlocks listed in a course's Advanced Module List can be flagged as "
@@ -13390,6 +13397,12 @@ msgid ""
 "track does not offer a certificate for learners who earn a passing "
 "grade.{b_end}"
 msgstr ""
+
+#: lms/templates/courseware/stat.html
+msgid "All participants included"
+msgstr "Tous les participants inclus"
+msgid "Amongst certified participants"
+msgstr "Certifiés inclus uniquement"
 
 #: lms/templates/courseware/accordion.html
 msgid "{chapter} current chapter"

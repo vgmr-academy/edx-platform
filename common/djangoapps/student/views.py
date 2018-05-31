@@ -2715,7 +2715,8 @@ class LogoutView(TemplateView):
     	site_courant=request.META["HTTP_HOST"]
         user_language = request.LANGUAGE_CODE
         log.info(user_language)
-        if settings.FEATURES.get('VM_STATUS') is not "prod":
+        log.info(request.user.id)
+        if str(settings.FEATURES.get('VM_STATUS')) != "prod":
             if n > 0:
                 if _microsite is not None:
                     if _microsite == "amundi":
