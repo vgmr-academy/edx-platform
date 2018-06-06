@@ -1348,7 +1348,9 @@ def session_manager_handler(msg,emails,org,language):
     except:
         urls = ["https://ppr-session-manager.amundi.com/v2/token","https://ppr-session-manager.amundi.com/v2/api/import","https://ppr-session-manager.amundi.com/v2/api/users/import"]
 
-    redirect_uri = 'https://'+str(org)+'.'+str(settings.LMS_BASE)+'/auth/login/amundi/?auth_entry=login&next=%2Fdashboard'
+    if language != 'en' and language !='fr':
+        language = en
+    redirect_uri = 'https://'+str(org)+'.'+str(settings.LMS_BASE)+'/auth/login/amundi/?auth_entry=login&next=%2Fdashboard&lang='+language
     msg = msg
     lang = language
     #test false credentials

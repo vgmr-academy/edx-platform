@@ -200,7 +200,7 @@ def fix_block_ids(course_key, blocks):
     modified_course_block_children = []
 
     course_block = blocks[course_key]
-    log.info("type course_block {}".format(blocks))
+    #log.info("type course_block {}".format(blocks))
     for chapter_id in course_block.get('children', []):
         modified_chapter_id = preserve_block_usage_id(chapter_id)
         modified_chapter_block = {}
