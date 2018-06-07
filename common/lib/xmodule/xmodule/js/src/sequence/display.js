@@ -220,9 +220,9 @@
                    next_tab_attr = next_tab.attr('disabled');
                    if (typeof next_tab_attr !== typeof undefined && next_tab_attr !== false) {
                      $('#seq_content_next_'+newPosition).attr('onclick','');
-                     $('#seq_content_next_'+newPosition+'>a').addClass('disabled_tma');
+                     $('#seq_content_next_'+newPosition).addClass('disabled_tma');
                    }else{
-                     $('#seq_content_next_'+newPosition+'>a').removeClass('disabled_tma');
+                     $('#seq_content_next_'+newPosition).removeClass('disabled_tma');
                      $('#seq_content_next_'+newPosition).attr('onclick','$("#tab_'+newPosition+'").click()');
                    }
                 }
