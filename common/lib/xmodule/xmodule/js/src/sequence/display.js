@@ -156,7 +156,7 @@
         };
 
         Sequence.prototype.render = function(newPosition) {
-            var bookmarked, currentTab, modxFullUrl, sequenceLinks, referenceNode,
+            var bookmarked, currentTab, modxFullUrl, sequenceLinks, referenceNode, next_button_tma, next_tab,next_tab_attr,
                 self = this;
             if (this.position !== newPosition) {
                 if (this.position) {
@@ -203,6 +203,8 @@
 
                 // For embedded circuit simulator exercises in 6.002x
                 window.update_schematics();
+                $('#seq_content_next_'+this.position).attr('onclick','');
+                $('#seq_content_next_'+this.position).css('display','none');
                 this.position = newPosition;
                 this.toggleArrows();
                 this.hookUpContentStateChangeEvent();
@@ -210,7 +212,20 @@
                 sequenceLinks = this.content_container.find('a.seqnav');
                 sequenceLinks.click(this.goto);
                 this.path.text(this.el.find('.nav-item.active').data('path'));
-                this.sr_container.find('#sr-is-focusable_'+newPosition).focus();
+                $(document).scrollTo($('#sr-is-focusable_'+newPosition),500,{onAfter:function(){$('#sr-is-focusable_'+newPosition).focus();}});
+                next_button_tma = $('#seq_content_next_'+newPosition);
+                next_button_tma.css('display','block');
+                next_tab = $('#tab_'+newPosition);
+                if (next_tab.length){
+                   next_tab_attr = next_tab.attr('disabled');
+                   if (typeof next_tab_attr !== typeof undefined && next_tab_attr !== false) {
+                     $('#seq_content_next_'+newPosition).attr('onclick','');
+                     $('#seq_content_next_'+newPosition+'>a').addClass('disabled_tma');
+                   }else{
+                     $('#seq_content_next_'+newPosition+'>a').removeClass('disabled_tma');
+                     $('#seq_content_next_'+newPosition).attr('onclick','$("#tab_'+newPosition+'").click()');
+                   }
+                }
                 /* TMA ATP COURSE SLIDE
                 var accordion = $('.course-index');
                 var course_content = $('#course-content');

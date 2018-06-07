@@ -40,11 +40,24 @@ getCompletionStatus = function(){
        var previous_completed=false;
        $(".sequence-nav .sequence-list-wrapper button.nav-item").each(function(){
          if(data['completion_status'][$(this).attr('data-id')]==100){
+              $(this).removeClass('disabled_unit_tma');
               $(this).removeAttr("disabled");
               previous_completed=true;
          }else{
               if(previous_completed){
+                  $(this).removeClass('disabled_unit_tma');
                   $(this).removeAttr("disabled");
+                  previous_completed=false;
+              }
+         }
+       });
+       $(".sequence .seq_content_next").each(function(){
+         if(data['completion_status'][$(this).attr('data-id')]==100){
+              $(this).removeClass('disabled_tma');
+              previous_completed=true;
+         }else{
+              if(previous_completed){
+                  $(this).removeClass('disabled_tma');
                   previous_completed=false;
               }
          }
