@@ -54,11 +54,11 @@ getCompletionStatus = function(){
        $(".sequence .seq_content_next").each(function(){
          if(data['completion_status'][$(this).attr('data-id')]==100){
               $(this).removeClass('disabled_tma');
-              $(this).attr('onclick','$("#"'+$(this).attr('id').replace('seq_content_next_','tab_')+'").click()');
+              $(this).attr('onclick','$("#'+$(this).attr('id').replace('seq_content_next_','tab_')+'").click()');
               previous_completed=true;
          }else{
               if(previous_completed){
-                  $(this).attr('onclick','$("#"'+$(this).attr('id').replace('seq_content_next_','tab_')+'").click()');
+                  $(this).attr('onclick','$("#'+$(this).attr('id').replace('seq_content_next_','tab_')+'").click()');
                   $(this).removeClass('disabled_tma');
                   previous_completed=false;
               }
