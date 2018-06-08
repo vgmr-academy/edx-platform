@@ -13619,6 +13619,18 @@ msgstr "Vous avez complété le module"
 
 #: lms/templates/courseware/courseware.html
 msgid ""
+"To validate this module, you have to re-take the quiz to vaildate your knowledge "
+"by clicking on the button below:"
+msgstr ""
+"Pour valider ce module, vous devez effectuer à nouveau le quiz de validation des connaissances "
+"en cliquant sur le bouton ci-dessous :"
+
+#: lms/templates/courseware/courseware.html
+msgid "Start again"
+msgstr "Recommencer"
+
+#: lms/templates/courseware/courseware.html
+msgid ""
 "Unfortunately, you haven't achieved the minimum score required to validate "
 "the training module."
 msgstr ""
@@ -22433,10 +22445,8 @@ msgid "TO DO TRAINING MODULES"
 msgstr "MODULES À RÉALISER"
 
 #: lms/templates/dashboard.html
-msgid "You haven't started yet the following training modules. Click on"
-msgstr ""
-"Vous n’avez pas encore commencé les modules de formation suivants. Cliquez "
-"sur"
+msgid "In this section, you access training modules you have to complete. Click on"
+msgstr "Dans cette section, vous accédez aux modules pédagogiques que vous devez réaliser. Cliquez sur"
 
 #: lms/templates/dashboard.html
 #: lms/templates/dashboard/_dashboard_course_listing.html
@@ -22445,7 +22455,7 @@ msgstr "En savoir +"
 
 #: lms/templates/dashboard.html
 msgid "to access the training module description"
-msgstr "pour découvrir le module"
+msgstr "pour accéder à la page de description du module"
 
 #: lms/templates/dashboard.html
 msgid "IN PROGRESS TRAINING MODULES"
@@ -22453,11 +22463,11 @@ msgstr "MODULES EN COURS"
 
 #: lms/templates/dashboard.html
 msgid ""
-"You have started but haven't completed yet the following training modules. "
+"In this section, you access training modules you started but haven't completed yet. "
 "To go on, please click on"
 msgstr ""
-"Vous avez commencé les modules de formations suivants. Pour compléter votre "
-"parcours, cliquez sur"
+"Dans cette section, vous accédez aux modules pédagogiques que vous avez commencés. "
+"Pour compléter votre parcours, cliquez sur"
 
 #: lms/templates/dashboard.html
 #: lms/templates/dashboard/_dashboard_course_listing.html
@@ -22469,12 +22479,12 @@ msgid "COMPLETED TRAINING MODULES"
 msgstr "MODULES TERMINÉS"
 
 #: lms/templates/dashboard.html
-msgid "You have completed the following training modules. Click on"
-msgstr "Vous avez complété les modules de formation suivants. Cliquez sur"
+msgid "In this section, you access training modules you validated (click on"
+msgstr "Dans cette section, vous accédez aux modules pédagogiques que vous avez validés (cliquez sur"
 
 #: lms/templates/dashboard.html
-msgid "to access your results and scores"
-msgstr "pour accéder à votre résultat"
+msgid "to access your result) as well as unvalidated training modules for which ending date has been exceeded"
+msgstr "pour accéder à votre résultat) ainsi qu’aux modules non validés dont la date de fin est dépassée"
 
 #: lms/templates/dashboard.html
 msgid "More modules"

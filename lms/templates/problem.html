@@ -161,7 +161,9 @@ $('.finished').find('.field').each(function(){
     $(this).append("<div class='finished_voile'></div>");
   }
 })
-
+$('.finished').find('.submit').each(function(){
+  //$(this).css('display','block');
+})
 $('#problem_${short_id}').find('.next_button').click(function(){
   var parent = $(this).parent().parent().parent();
   //fix checkboxes without feedback
@@ -217,7 +219,7 @@ $('#problem_${short_id}').find('.detailed-solution').remove();
 if($('#problem_${short_id}').hasClass('finished')){
  $('#problem_${short_id}').find('.final_solution').html(details);
  if(details){
-  //$('#problem_${short_id}').find('.final_solution').prepend('<div><img style="height:50px;" src="/media/information.png" alt="informations"></div>');
+  $('#problem_${short_id}').find('.final_solution').prepend('<div class="tag_container"><i class="fa fa-info-circle info_tag"></i></div>');
   $('#problem_${short_id}').find('.final_solution').addClass('details-decoration');
  }
 }
