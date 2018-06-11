@@ -449,7 +449,7 @@ div.atp_course_picto svg path, div.atp_course_picto svg polygon{
 	<section  id="dashboard_course_in_progress_atp">
         	<h2 style="margin-bottom:0px;"><img src="${static.url('images/encours.svg')}" class="svg"/><span>${_("IN PROGRESS")}</span></h2>
           <div id="ancre-in-progress"></div>
-		<p class="first_p">${_("In this section, you access training modules you started but haven't completed yet. To go on, please click on")} &laquo; ${_("Proceed")} &raquo;.</p>
+		<p class="first_p">${_("You have started but haven't completed yet the following training modules. To go on, please click on")} &laquo; ${_("Proceed")} &raquo;.</p>
         <!-- course listing -->
 <% compteur = 0 %>
 <% first_course_name = '' %>
@@ -468,7 +468,7 @@ div.atp_course_picto svg path, div.atp_course_picto svg polygon{
 	<section id="dashboard_course_to_do">
         	<h2 style="margin-bottom:0px;"><img src="${static.url('images/arealiser.svg')}" class="svg"/><span>${_("TO DO")}</span></h2>
           <div id="ancre-to-do"></div>
-		<p class="first_p" style="margin-top:35px;">${_("In this section, you access training modules you have to complete. Click on")} &laquo; ${_("More information")} &raquo; ${_("to access the training module description")}.</p>
+		<p class="first_p" style="margin-top:35px;">${_("You haven't started yet the following training modules. Click on")} &laquo; ${_("More information")} &raquo; ${_("to access the training module description")}.</p>
 	<!-- course listing -->
 <% compteur = 0 %>
 % if len(start_course) > 0:
@@ -486,7 +486,7 @@ div.atp_course_picto svg path, div.atp_course_picto svg polygon{
 	<section id="dashboard_course_finished">
 		<h2 style="margin-bottom:0px;"><img src="${static.url('images/termine.svg')}" class="svg gradient"/><span>${_("Completed")}</span></h2>
       <div id="ancre-finished"></div>
-		<p class="first_p" style="margin-top:35px;">${_("In this section, you access training modules you validated (click on")} &laquo; ${_("More information")} &raquo; ${_("to access your result) as well as unvalidated training modules for which ending date has been exceeded")}.</p>
+		<p class="first_p" style="margin-top:35px;">${_("You have completed the following training modules. Click on")} &laquo; ${_("More information")} &raquo; ${_("to access your results and scores")}.</p>
 	<!-- course listing -->
 <% compteur = 0 %>
 % if len(finish_courses) > 0:

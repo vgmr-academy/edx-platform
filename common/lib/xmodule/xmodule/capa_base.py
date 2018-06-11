@@ -757,8 +757,8 @@ class CapaMixin(CapaFields):
             if answer_notification_type == 'incorrect':
                 if progress is not None:
                     answer_notification_message = ungettext(
-                        "Incorrect",
-                        "Incorrect",
+                        "Incorrect ({progress} point)",
+                        "Incorrect ({progress} points)",
                         progress.frac()[1]
                     ).format(progress=str(progress))
                 else:
@@ -766,8 +766,8 @@ class CapaMixin(CapaFields):
             elif answer_notification_type == 'correct':
                 if progress is not None:
                     answer_notification_message = ungettext(
-                        "Correct",
-                        "Correct",
+                        "Correct ({progress} point)",
+                        "Correct ({progress} points)",
                         progress.frac()[1]
                     ).format(progress=str(progress))
                 else:
@@ -775,8 +775,8 @@ class CapaMixin(CapaFields):
             elif answer_notification_type == 'partially-correct':
                 if progress is not None:
                     answer_notification_message = ungettext(
-                        "Partially correct",
-                        "Partially correct",
+                        "Partially correct ({progress} point)",
+                        "Partially correct ({progress} points)",
                         progress.frac()[1]
                     ).format(progress=str(progress))
                 else:

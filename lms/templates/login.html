@@ -322,7 +322,7 @@ from third_party_auth import provider, pipeline
     }
   };
 
-    var redirect_base="/auth/login/amundi/?auth_entry=register&lang=fr&next="
+    var redirect_base="/auth/login/amundi/?auth_entry=register&next="
     var next_redirect = getUrlParameter('next');
     var redirect_final = redirect_base+next_redirect;
     $('#login-amundi').attr('href',redirect_final);

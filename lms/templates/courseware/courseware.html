@@ -592,29 +592,9 @@ var picto = '<div id="score_picto"><img src="'+picto_url_inprogress+'" class="sv
 var message_termine='<div id="module-over">${_("The training campaign is over. You can access the training module content. However, you can\'t do the test to validate your knowledge.")}</div>';
 
 
-var problem_xblock_list=['block-v1:canextbank+CANEXTBANK_003+2018+type@problem+block@bbb57df429aa417489c0d1238a81a1d0','block-v1:canextbank+CANEXTBANK_003+2018+type@problem+block@cf0e108321ab4038b4f4bab81454a96e','block-v1:canextbank+CANEXTBANK_003+2018+type@problem+block@1a6e59c92c394b6296f151003464c5ae'];
-
-function reset_all_problems() {
-  problem_xblock_list.forEach(function(xblock_id) {
-   $.ajax({
-    url:'/courses/'+course_id+'/xblock/'+xblock_id+'/handler/xmodule_handler/problem_reset',
-    type:'POST',
-    dataType:'json',
-    data: { 
-        'id': xblock_id
-    }
-   });
-  });
-};
-
-%if True:
-message_termine=message_termine+'<div class="seq_content_next" onclick="reset_all_problems()" style="display: block;margin-top: 20px;"><a style="width:85px;left:45%;">${_("Start again")}</a></div>';
-%endif
-
 function insert_info_score(value) {
-  //$('#course-content').html('');
-  //$('#course-content').append(template_and_title);
-  $('#result-content').append(template_and_title);
+  $('#course-content').html('');
+  $('#course-content').append(template_and_title);
   $('#final_score').append(picto);
   $('#final_score').append(score_div);
 }
@@ -647,6 +627,8 @@ function returnScore() {
       if(score.toString().indexOf('.') == -1) {
         score=score+'.0'
       }
+      console.log(data);
+      console.log(score);
       var grade_cutoffs = data.grade_cutoffs;
       var overall_progress = data.overall_progress;
       insert_info_score();
@@ -709,22 +691,16 @@ function returnScore() {
 
       });
       $('img.svg').show();
-      $('#result-content').show();
+      $('#course-content').show();
     }
   });
 };
 $('#holding-section-result').click(function(){
   $(this).find('span').css('color','#fff');
   //$(this).css('background-color','#dc9e29');
-  //$('.course-wrapper').find('.course-content').css('padding-top','0px');
-  //$('.course-wrapper').find('.course-content').css('padding-bottom','0px');
-  $("#result-content").html('');
-
-  if($("#result-content").is(":visible")){
-    $("#result-content").hide();
-  }else{
-     returnScore();
-  }
+  $('.course-wrapper').find('.course-content').css('padding-top','0px');
+  $('.course-wrapper').find('.course-content').css('padding-bottom','0px');
+  returnScore();
 })
 // other
 function ariane_height() {
