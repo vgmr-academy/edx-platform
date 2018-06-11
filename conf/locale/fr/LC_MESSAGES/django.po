@@ -1574,8 +1574,8 @@ msgid ""
 "accordingly."
 msgstr ""
 
-#: xblock pdfflipbook
-msgid "Download PDF"
+#xblock pdfflipbook
+msgid "Download PDF file"
 msgstr "Télécharger le PDF"
 
 msgid "upload files on files & uploads section, copy here the web url"

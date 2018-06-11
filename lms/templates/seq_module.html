@@ -15,82 +15,59 @@ from openedx.core.djangolib.js_utils import js_escaped_string, dump_js_escaped_j
       </div>
     </div>
   % endif
-  <%
-  current_suptitle = ""
-  item_iterator = 1
-  %>
+  <div class="sequence-nav">
+    <button class="sequence-nav-button button-previous">
+      <div class="previous_title">
+      </div>
+    </button>
+    <nav class="sequence-list-wrapper" aria-label="${_('Unit')}">
+      <ol id="sequence-list">
+        % for idx, item in enumerate(items):
+        <li>
+        <button class="seq_${item['type']} inactive nav-item"
+           data-id="${item['id']}"
+           data-element="${idx+1}"
+           data-page-title="${item['page_title']}"
+           data-path="${item['path']}"
+           id="tab_${idx}">
+            <span class="icon fa seq_${item['type']}" aria-hidden="true"></span>
+            <span class="fa fa-fw fa-bookmark bookmark-icon ${"is-hidden" if not item['bookmarked'] else "bookmarked"}" aria-hidden="true"></span>
+            <div class="sequence-tooltip sr"><span class="sr">${item['type']}&nbsp;</span>${item['page_title']}<span class="sr bookmark-icon-sr">&nbsp;${_("Bookmarked") if item['bookmarked'] else ""}</span></div>
+          </button>
+        </li>
+        % endfor
+      </ol>
+    </nav>
+    <button class="sequence-nav-button button-next">
+      <div class="next_title">
+      </div>
+    </button>
+  </div>
+
+  <div class="sr-is-focusable" tabindex="-1"></div>
+
   % for idx, item in enumerate(items):
-    % if ">" in item['page_title']: 
-      <%
-      unit_title = item['page_title'].split(" > ")[1]
-      %>
-      % if item['page_title'].split(" > ")[0] != current_suptitle:
-        <%
-        current_suptitle = item['page_title'].split(" > ")[0]
-        %>
-        <div class="sequence-suptitle">
-            <h3>${current_suptitle}</h3>
-        </div>
-      % endif
-    % else:
-      <%
-      unit_title = item['page_title']
-      %>
-    % endif
-  <div class="sr-is-focusable" tabindex="-1" id="sr-is-focusable_${item_iterator}"></div>
   <div id="seq_contents_${idx}"
     aria-labelledby="tab_${idx}"
     aria-hidden="true"
     class="seq_contents tex2jax_ignore asciimath2jax_ignore">
     ${item['content']}
   </div>
-    <div class="sequence-nav">
-      <nav class="sequence-list-wrapper" aria-label="${_('Unit')}">
-        <ol id="sequence-list">
-          <li>
-             <button class="seq_${item['type']} inactive nav-item"
-             data-id="${item['id']}"
-             data-element="${idx+1}"
-             data-page-title=""
-             data-path="${item['path']}"
-             id="tab_${idx}"
-             % if item_iterator > 1: 
-               disabled="disabled"
-             % endif
-             >
-               <h3>${unit_title}</h3>
-             </button>
-           </li>
-         </ol>
-       </nav>
-     </div>
-     <%
-     iitem_iterator = item_iterator + 1
-     %>
   % endfor
-  <div class="sequence-suptitle">
-     <h3>${_("Results")}</h3>
-  </div>
-  <div class="sequence-nav">
-    <nav class="sequence-list-wrapper" aria-label="${_('Unit')}">
-      <ol id="sequence-list">
-        <li>
-        <button class="result-score" id="holding-section-result">
-            <h3>${_("Final Score")}</h3>
-          </button>
-        </li>
-      </ol>
-    </nav>
-  </div>
-
   <div id="seq_content"></div>
+  <nav class="sequence-bottom" aria-label="${_('Section')}">
+    <button class="sequence-nav-button button-previous">
+    </button>
+    <button class="sequence-nav-button button-next">
+    </button>
+  </nav>
 </div>
 <script>
 var page_test = ${dump_js_escaped_json(items) | n, decode.utf8};
 function button_nav_title() {
   if($("#nav_button").length == 0) {
-    //var generate = '<div id="sub_nav" class="border_radius_left border_radius_right"><div id="nav_button"><button class="previous_title_nav" data-class="button-previous "><i class="fas fa-chevron-left"></i><span></span></button><button id="separator"></button><button class="next_title_nav" data-class="button-next"><span></span><i class="fas fa-chevron-right"></i></button></div><div id="sub_context"><button id="zoom">Zoom</div><button id="full" class="border_radius_right"><i class="fas fa-plus-circle"></i><i class="fas fa-minus-circle is_none_atp"></i></div></div></div>';
-    //$("body").append(generate);
+    var generate = '<div id="sub_nav" class="border_radius_left border_radius_right"><div id="nav_button"><button class="previous_title_nav" data-class="button-previous "><i class="fas fa-chevron-left"></i><span></span></button><button id="separator"></button><button class="next_title_nav" data-class="button-next"><span></span><i class="fas fa-chevron-right"></i></button></div><div id="sub_context"><button id="zoom">Zoom</div><button id="full" class="border_radius_right"><i class="fas fa-plus-circle"></i><i class="fas fa-minus-circle is_none_atp"></i></div></div></div>';
+    $("body").append(generate);
   }
   var xblock_id = $('.xblock').find('.xblock').data('usage-id');
   for(var i=0;i<page_test.length;i++) {

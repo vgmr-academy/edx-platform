@@ -156,7 +156,7 @@
         };
 
         Sequence.prototype.render = function(newPosition) {
-            var bookmarked, currentTab, modxFullUrl, sequenceLinks, referenceNode,
+            var bookmarked, currentTab, modxFullUrl, sequenceLinks,
                 self = this;
             if (this.position !== newPosition) {
                 if (this.position) {
@@ -194,11 +194,6 @@
                             .data('attempts-used', latestResponse.attempts_used);
                     });
                 }
-
-                // Put seq_content where it has to be
-                referenceNode=document.querySelector("#tab_"+(newPosition - 1)).closest(".sequence-nav");
-                referenceNode.parentNode.insertBefore(document.getElementById('seq_content'), referenceNode.nextSibling);
-
                 XBlock.initializeBlocks(this.content_container, this.requestToken);
 
                 // For embedded circuit simulator exercises in 6.002x
@@ -210,8 +205,8 @@
                 sequenceLinks = this.content_container.find('a.seqnav');
                 sequenceLinks.click(this.goto);
                 this.path.text(this.el.find('.nav-item.active').data('path'));
-                this.sr_container.find('#sr-is-focusable_'+newPosition).focus();
-                /* TMA ATP COURSE SLIDE
+                this.sr_container.focus();
+                // TMA ATP COURSE SLIDE
                 var accordion = $('.course-index');
                 var course_content = $('#course-content');
                 var wrapper = $('.course-wrapper');
@@ -229,7 +224,7 @@
               		 accordion.attr('style','');
               		 wrapper.attr('style','');
   	            });
-	        / TMA ATP COURSE SLIDE*/
+	        // TMA ATP COURSE SLIDE
             }
         };
 

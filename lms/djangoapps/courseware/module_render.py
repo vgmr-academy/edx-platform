@@ -988,10 +988,7 @@ def _invoke_xblock_handler(request, course_id, usage_id, handler, suffix, course
         instance, tracking_context = get_module_by_usage_id(request, course_id, usage_id, course=course)
 	#geoffrey
 	affects = item_affects_course_progress(request, course_key, suffix, handler, instance)
-	try:
-            update_course_progress(request, course_key, instance.category, [instance.location])
-        except:
-            pass
+	update_course_progress(request, course_key, instance.category, [instance.location])
 	#geoffrey
         # Name the transaction so that we can view XBlock handlers separately in
         # New Relic. The suffix is necessary for XModule handlers because the

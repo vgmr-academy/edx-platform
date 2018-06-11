@@ -15,8 +15,7 @@ from .models import (
     LTIProviderConfig,
     ProviderApiPermissions,
     _PSA_OAUTH2_BACKENDS,
-    _PSA_SAML_BACKENDS,
-    MicrositesCredentials
+    _PSA_SAML_BACKENDS
 )
 from .tasks import fetch_saml_metadata
 from third_party_auth.provider import Registry
@@ -168,13 +167,5 @@ class ApiPermissionsAdmin(admin.ModelAdmin):
     """ Django Admin class for ApiPermissions """
     list_display = ('client', 'provider_id')
     form = ApiPermissionsAdminForm
-
-@admin.register(MicrositesCredentials)
-class MicrositesCredentials(admin.ModelAdmin):
-    """ Admin interface for the  MicrositesCredentials """
-    list_display = ('VM_status', 'microsite', 'logout_uri')
-
-    class Meta(object):
-        model = MicrositesCredentials
 
 admin.site.register(ProviderApiPermissions, ApiPermissionsAdmin)

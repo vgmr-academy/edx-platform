@@ -171,9 +171,9 @@ courseware = static.get_value('css_overrides_courseware')
 % endif
 <style>
   .course-wrapper .course-content{
-    margin-left: 2%;
+    margin-left: 20px;
     margin-right: 0;
-    width:96%;
+    width:calc(100% - 340px);
   }
   .course-index{
     margin-left: 0;
@@ -231,10 +231,9 @@ courseware = static.get_value('css_overrides_courseware')
 .xblock .xblock h3.unit-title {
   text-align:center;
   font-weight:bold;
-  font-size: 24px;
+  font-size: 40px;
   margin-bottom: 15px;
   border-bottom: 1px solid #ddd;
-  display:none;
 }
 .problem-header {
   cursor: pointer;
@@ -402,8 +401,8 @@ courseware = static.get_value('css_overrides_courseware')
 </div>
 <div class="container">
   <div class="course-wrapper" role="presentation">
-<!--if disable_accordion is UNDEFINED or not disable_accordion:-->
-%if false:
+
+% if disable_accordion is UNDEFINED or not disable_accordion:
     <div class="course-index">
 
       <div class="wrapper-course-modes">
@@ -697,7 +696,7 @@ function returnScore() {
 };
 $('#holding-section-result').click(function(){
   $(this).find('span').css('color','#fff');
-  //$(this).css('background-color','#dc9e29');
+  $(this).css('background-color','#dc9e29');
   $('.course-wrapper').find('.course-content').css('padding-top','0px');
   $('.course-wrapper').find('.course-content').css('padding-bottom','0px');
   returnScore();
