@@ -158,11 +158,7 @@
         Sequence.prototype.render = function(newPosition) {
             var bookmarked, currentTab, modxFullUrl, sequenceLinks, referenceNode, next_button_tma, next_tab,next_tab_attr,
                 self = this;
-                var inactive=false;
-                if($("#tab_"+(newPosition-1)).hasClass('inactive') || $("#tab_"+(newPosition-1)).hasClass('visited')){
-                  inactive=true;
-                }
-            if ((this.position==newPosition && inactive) || this.position!=newPosition || this.position==null) {
+            if (this.position !== newPosition) {
                 if (this.position) {
                     this.mark_visited(this.position);
                     modxFullUrl = '' + this.ajaxUrl + '/goto_position';
@@ -216,8 +212,7 @@
                 sequenceLinks = this.content_container.find('a.seqnav');
                 sequenceLinks.click(this.goto);
                 this.path.text(this.el.find('.nav-item.active').data('path'));
-                console.log($('#sr-is-focusable_'+newPosition).offset().top);
-                $(document).scrollTo($('#sr-is-focusable_'+newPosition).offset().top-70+'px',500,{onAfter:function(){$('#sr-is-focusable_'+newPosition).focus();}});
+                $(document).scrollTo($('#sr-is-focusable_'+newPosition-1),500,{onAfter:function(){$('#sr-is-focusable_'+newPosition).focus();}});
 		next_button_tma = $('#seq_content_next_'+newPosition);
                 next_button_tma.css('display','block');
                 next_tab = $('#tab_'+newPosition);
@@ -250,12 +245,6 @@
               		 wrapper.attr('style','');
   	            });
 	        / TMA ATP COURSE SLIDE*/
-            }
-            else if(this.position==newPosition && !inactive){
-              //Gestion du replis de la séquence
-              $('#seq_content').html('');
-              $('#tab_'+(newPosition-1)).removeClass('active').addClass('inactive');
-              $("#seq_content_next_"+newPosition).hide();
             }
         };
 

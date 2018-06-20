@@ -84,6 +84,7 @@ def get_completion_status(request):
     # Prepare completion status dictionary
     sequential_id = request.GET.get('sequential_id')
     sequential_progress=progress.get(sequential_id,[])['progress']
+    log.info('sequential progress {}'.format(sequential_progress))
     for block_id in progress.get(sequential_id,[])['children']:
         completion_status.update({block_id:progress.get(block_id,[])['progress']})
 

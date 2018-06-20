@@ -162,9 +162,9 @@ def generate_html(user,score,course_img_path,template_path,course_title,categori
         elif categorie == "our solutions" :
             categorie ="nos solutions"
         elif categorie == "sales approach" :
-            categorie ="démarche commerciale"
+            categorie =u'démarche commerciale'
         elif categorie == "regulatory" :
-            categorie ="réglementaire"
+            categorie =u'réglementaire'
     category_largeur2, category_hauteur2 = draw.textsize(categorie, font=font_main)
     px_category2=px_category+((category_largeur-category_largeur2)/2)
     draw.text((px_category2,py_category+30),categorie,main_color,font=font_main)

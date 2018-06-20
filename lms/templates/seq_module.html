@@ -18,17 +18,19 @@ from openedx.core.djangolib.js_utils import js_escaped_string, dump_js_escaped_j
   <%
   current_suptitle = ""
   item_iterator = 1
+  i = 0
   %>
   % for idx, item in enumerate(items):
-    % if ">" in item['page_title']: 
+    % if ">" in item['page_title']:
       <%
+      i+=1
       unit_title = item['page_title'].split(" > ")[1]
       %>
       % if item['page_title'].split(" > ")[0] != current_suptitle:
         <%
         current_suptitle = item['page_title'].split(" > ")[0]
         %>
-        <div class="sequence-suptitle">
+        <div class="sequence-suptitle tma_chapters" id="chapter_tma_${i}">
             <h3>${current_suptitle}</h3>
         </div>
       % endif
@@ -53,8 +55,9 @@ from openedx.core.djangolib.js_utils import js_escaped_string, dump_js_escaped_j
              data-element="${idx+1}"
              data-page-title=""
              data-path="${item['path']}"
+             data-seq="chapter_tma_${i}"
              id="tab_${idx}"
-             % if item_iterator > 1: 
+             % if item_iterator > 1:
                disabled="disabled"
              % endif
              >
@@ -71,15 +74,15 @@ from openedx.core.djangolib.js_utils import js_escaped_string, dump_js_escaped_j
      item_iterator = item_iterator + 1
      %>
   % endfor
-  <div class="sequence-suptitle">
-     <h3>${_("Results")}</h3>
+  <div class="sequence-suptitle result-score-title">
+     <h3 class="">${_("Results")}</h3>
   </div>
   <div class="sequence-nav">
     <nav class="sequence-list-wrapper" aria-label="${_('Unit')}">
       <ol id="sequence-list">
         <li>
         <button class="result-score" id="holding-section-result">
-            <h3>${_("Score")}</h3>
+            <h3 class="disabled_score">${_("Score")}</h3>
           </button>
         </li>
       </ol>

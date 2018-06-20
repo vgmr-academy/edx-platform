@@ -108,7 +108,6 @@ else:
 }
 .access-back-atp a{
   text-align: left!important;
-  text-transform: initial!important;
 }
 #user-icone svg{
   background-color: ${primary_color} !important;
@@ -319,11 +318,11 @@ amundi_brand=configuration_helpers.get_value('amundi_brand')
       % endif
       % if _ensure_status:
       <div class="access-back-atp">
-        <a class="class-submenu" href="https://${settings.CMS_BASE}">${_("Access Admin interface")}</a>
+        <a class="class-submenu" href="https://${settings.CMS_BASE}">${_("Access admin interface")}</a>
       </div>
       % endif
     <div class="boutton-deconnexion">
-      <a class="" href="/logout">
+      <a class="" id="logout-btn" href="/logout">
         <img style="height:20px;"src="/media/poweroff.png" alt="">
         <span style="margin-left:-25px;">${_('logout')}</span>
       </a>

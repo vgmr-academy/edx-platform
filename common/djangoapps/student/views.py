@@ -2705,7 +2705,7 @@ class LogoutView(TemplateView):
 
     	#atp access role for logout redirection => renvoi nul car pb id non communique au logout
     	atp_access = User.objects.raw("SELECT id FROM student_courseaccessrole WHERE user_id = %s",[request.user.id])
-        log.info(request.user.id)
+        log.info("request user id {}".format(request.user))
     	n = 0
 
     	for i in atp_access:
@@ -2714,7 +2714,7 @@ class LogoutView(TemplateView):
         _microsite = configuration_helpers.get_value('domain_prefix')
         vm_status = settings.FEATURES.get('VM_STATUS')
         user_language = request.LANGUAGE_CODE
-        log.info(user_language)
+        log.info("user language{}".format(user_language))
 
         if _microsite is None:
             try:
@@ -2726,23 +2726,21 @@ class LogoutView(TemplateView):
         #Get Microsite Credentials adapted to VM status
         try :
             microsite_obj = Microsite.objects.get(key=_microsite.lower())
-            microsite_credentials=MicrositesCredentials.objects.get(VM_status=vm_status, microsite=microsite_obj)
-            log_bis.info("Microsite credentials OK: {}".format(microsite_obj.key))
+            logout_uri=MicrositesCredentials.objects.get(VM_status=vm_status, microsite=microsite_obj).logout_uri
+            log_bis.info("logout_uri OK: {}".format(logout_uri))
         except :
-            microsite_credentials={
-            'logout_uri':'https://ppr-session-manager.amundi.com/v2/amundi-amundiacademy/'
-            }
-            log_bis.info("Microsite credentials EXCEPT: ")
+            logout_uri='https://ppr-session-manager.amundi.com/v2/amundi-amundiacademy/'
+            log_bis.info("logout uri except EXCEPT: ")
 
     	site_courant=request.META["HTTP_HOST"]
 
         #Sur l'environnement de preprod et de dev
-        log_bis.info("Microsite credentials URI: {}".format(microsite_credentials.logout_uri))
+        log_bis.info("Microsite credentials URI: {}".format(logout_uri))
         if str(settings.FEATURES.get('VM_STATUS')) != "prod":
             if n > 0 :
-                self.target = microsite_credentials.logout_uri+user_language+"/user/logout"
+                self.target = logout_uri+user_language+"/user/logout"
             else :
-                self.target = microsite_credentials.logout_uri+user_language+"/user/logout"
+                self.target = logout_uri+user_language+"/user/logout"
         #Sur l'environnement de prod
         else :
             if n > 0:

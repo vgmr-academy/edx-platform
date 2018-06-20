@@ -170,6 +170,61 @@ courseware = static.get_value('css_overrides_courseware')
   <link rel="stylesheet" type="text/css" href="${static.url(courseware)}" />
 % endif
 <style>
+  /* Suppression des majuscules dans les titres*/
+  h3{
+    text-transform: initial!important;
+    font-size: 1.2em!important;
+  }
+  /*Modification du sens des chevrons*/
+  #sequence-list li button.nav-item h3::before, #sequence-list li button.result-score h3::before {
+    transform:rotate(45deg)!important;
+  }
+  #sequence-list li button.nav-item.active h3::before, #sequence-list li button.result-score.active h3::before{
+    transform:rotate(135deg)!important;
+  }
+  /*Modification couleur titre questions bloquées*/
+  .not_finished h3.problem-header{
+    color:rgb(128, 128, 128)!important;
+  }
+  /* Suppression bouton suivant question si non soumis*/
+  .problem .next_button{
+    display: none!important;
+  }
+  .finished .problem .next_button{
+    display: inline-block!important;
+  }
+  .problem .next{
+    float: none!important;
+  }
+  /* Modification couleur bouton soumettre */
+  .xmodule_display.xmodule_CapaModule div.problem .action .submit-attempt-container button:not(:disabled){
+    background-color:${primary_color}!important;
+    border-color:${primary_color}!important;
+  }
+  .xmodule_display.xmodule_CapaModule div.problem .notification.error{
+    color:red!important;
+  }
+  .xmodule_display.xmodule_CapaModule div.problem .notification.success{
+    color:green!important;
+  }
+
+  #final_score{
+    padding:10px;
+  }
+
+  .finished h3.problem-header{
+    border-bottom: 1px solid gray;
+    padding-bottom: 10px;
+  }
+
+  /* Couleur par defaut des titres des chapitres */
+  .xmodule_display.xmodule_SequenceModule .sequence-suptitle h3{
+    color:grey;
+  }
+  .primary_color{
+    color:${primary_color}!important;
+  }
+
   .course-wrapper .course-content{
     margin-left: 2%;
     margin-right: 0;
@@ -328,7 +383,7 @@ courseware = static.get_value('css_overrides_courseware')
 .finished .field {
   position: relative;
 }
-.finished_voile {
+.finished .finished_voile {
   position: absolute;
   top: -4px;
   left: -4px;
@@ -356,9 +411,11 @@ courseware = static.get_value('css_overrides_courseware')
   background-size: cover;
   background-position: center;
   display: inline-block;
-  background-color: #0064AE;
   border-radius: 50%;
   margin-left: 15px;
+}
+.problems-wrapper:not(.is_overflow) .picto_sf{
+    background-color: #0064AE;
 }
 .not_finished .picto_sf {
   background-color: transparent;
@@ -366,12 +423,12 @@ courseware = static.get_value('css_overrides_courseware')
 }
 .success_quiz_atp .picto_sf {
   background-image: url('/media/checked.png');
-  background-color: transparent;
+  background-color: transparent!important;
   border-radius: 0%;
 }
 .fail_quiz_atp .picto_sf {
   background-image: url('/media/cross-remove-sign.png');
-  background-color: transparent;
+  background-color: transparent!important;
   border-radius: 0%;
 }
 #module-over{
@@ -381,6 +438,36 @@ courseware = static.get_value('css_overrides_courseware')
   padding:20px;
 }
 
+.reset-btn{
+  background-color: ${primary_color};
+  border-radius:20px;
+  padding:10px 15px;
+  color:white;
+  font-family: mywebfont;
+  font-weight:bold;
+  font-size:0.8em;
+  cursor:pointer
+}
+.reset-btn:hover{
+  color:white;
+}
+
+/* Responsive title questions*/
+.sequence #seq_content .is_overflow .problem{
+  display: none;
+}
+.sequence #seq_content .is_overflow{
+  height: auto!important;
+}
+.xblock .xblock h3.problem-header{
+  width:95%;
+}
+
+/* Result score grisé si toutes questions non répondues*/
+.disabled_score, .disabled_score:before{
+  color:gray!important;
+  border-color: gray!important;
+}
 
 </style>
 
@@ -522,7 +609,118 @@ user_id = user.id
 username = user.username
 course_id = course.id
 %>
+
 <script>
+// Affichage des réponses dans les questions déjà répondues
+$(document).ajaxSuccess(function(event, xhr, settings){
+  if( settings.url.endsWith('problem_check') ) {
+    var url_check_pb=settings.url;
+    var url_base_problem=url_check_pb.replace('/problem_check','')
+    var url_show_pb=url_base_problem+'/problem_show';
+    ajax_problem_show(url_show_pb);
+  }
+});
+
+function ajax_problem_show(url_show_pb){
+  $.ajax({
+      url:url_show_pb,
+      type:'POST',
+      dataType:'json',
+      success:function(data){
+        //prepare answers
+        answers=data['answers'];
+         $.each(answers, function(key, value) {
+           if ($.isArray(value)) {
+             for (i = 0, len = value.length; i < len; i++) {
+               $('#'+key+'-'+value[i]+'-label').addClass('choicegroup_correct');
+             }
+           }
+           else{
+            $('#'+key+'-'+value[i]+'-label').addClass('choicegroup_correct');
+           }
+         });
+
+      }
+    });
+}
+
+
+// Gestion de la permanence de l'affichage fail / correct
+$(document).ready(function() {
+  $('.problems-wrapper').each(function(){
+    error_div='<div class="notification error notification-submit" tabindex="-1"><span class="icon fa fa-close" aria-hidden="true"></span><span class="notification-message">Incorrect</span><div class="notification-btn-wrapper"><button type="button" class="btn btn-default btn-small notification-btn review-btn sr">Review</button></div></div>';
+
+    success_div='<div class="notification success notification-submit " tabindex="-1"><span class="icon fa fa-check" aria-hidden="true"></span><span class="notification-message">Correct</span><div class="notification-btn-wrapper"><button type="button" class="btn btn-default btn-small notification-btn review-btn sr">Review</button></div></div>';
+
+    if($(this).hasClass('fail_quiz_atp') && $(this).find('div.notification.error').length<=0){
+      $(this).find('.action').before(error_div);
+      //afficher réponse si faux
+      url_show_pb=$(this).attr('data-url')+'/problem_show';
+      ajax_problem_show(url_show_pb);
+    }
+    else if($(this).hasClass('success_quiz_atp') && $(this).find('div.notification.success').length<=0){
+      $(this).find('.action').before(success_div);
+    }
+  });
+});
+
+
+// Gestion de l'ancrage des questions
+problem_ids_list=[]
+$( document ).ready(function() {
+  $('.problems-wrapper').each(function() {
+    problem_ids_list.push($(this).attr('id'));
+  });
+});
+
+$('.question_next').live("click",function () {
+  current_question_id=$(this).attr('id').replace('ques','problem');
+  current_question_pos=problem_ids_list.indexOf(current_question_id);
+  next_question_pos=current_question_pos+1;
+  if(next_question_pos<problem_ids_list.length){
+    $(document).scrollTo($('#'+problem_ids_list[next_question_pos]).offset().top-80+'px',500);
+  }
+});
+
+// Repli des volets unités
+/*
+$('button.nav-item.seq_other.active').live('click', function(){
+  console.log('hellllllllloooooooooooo');
+  $('#seq_content').html('');
+  $(this).removeClass('active').addClass('inactive');
+  //element_number=$(this).attr('data-element');
+  //$('#seq_content').html('');
+  //$('#seq_content_next_'+element_number).hide();
+  //$(this).toggleClass('active').toggleClass('inactive');
+});
+*/
+
+</script>
+
+<script>
+/* Clic bouton result */
+$('.result-score').live('click', function(){
+  $(this).toggleClass('active');
+})
+
+/* Go to score after last question */
+$(document).ready(function() {
+  url_last_question=$('.problems-wrapper').last().attr('data-url');
+});
+
+$(document).ajaxSuccess(function(event, xhr, settings) {
+    if (settings.url.indexOf(url_last_question+'/problem_show') > -1) {
+      $(".problems-wrapper").each(function(){
+        if($(this).attr('data-url')==url_last_question){
+          $(this).find('.next_button').attr('onclick','$(".result-score").click()');
+        }
+      })
+      //Change colors of result section to make it available
+      $('.result-score-title h3').addClass('primary_color');
+      $('.result-score h3.disabled_score').removeClass('disabled_score');
+    }
+});
+
 /* generate button result */
 var button_result = '<a href="#holding-section-child" role="button" class="button-chapter chapter" id="holding-section-result" aria-controls="holding-section-child" aria-expanded="false"><span class="group-heading" aria-label="holding section"><span class="icon fa fa-caret-right" aria-hidden="true"></span>${_("Results")}</span></a>';
 $('.course-navigation').append(button_result);
@@ -576,7 +774,7 @@ function generate_certif() {
 //finish
 var picto_success = "${static.url('images/trophy.svg')}";
 var picto_failed = "${static.url('images/refresh.svg')}";
-var template_and_title = '<div id="final_score"><div id="title_result">${_("Results")}</div></div>';
+var template_and_title = '<div id="final_score"></div>';
 var congrats = "<div id='congrats_score'>${_('Congratulations')} !</div>";
 var picto = '<div id="score_picto"><img src="" class="svg"/></div>';
 var first_par = ['<div id="score_first_para">${_("You have completed the training module")}<br>« ${course.display_name_with_default} »</div>','<div id="score_first_para">${_("You started the training module ")}<br>« ${course.display_name_with_default} ».</div>'];
@@ -585,31 +783,46 @@ var score_div = '<div id="score_div_info"><span>${_("Your total score :")}</span
 var button = '<div id="score_button"><button>${_("Download the certificate")}</button></div>';
 // in progress
 var picto_url_inprogress = "${static.url('images/encours.svg')}";
-var template_and_title = '<div id="final_score"><div id="title_result">${_("Results")}</div></div>';
+var template_and_title = '<div id="final_score"></div>';
 var picto = '<div id="score_picto"><img src="'+picto_url_inprogress+'" class="svg inprogress"/></div>';
 
 // Cours terminé
 var message_termine='<div id="module-over">${_("The training campaign is over. You can access the training module content. However, you can\'t do the test to validate your knowledge.")}</div>';
+message_termine=message_termine+'<div onclick="reset_all_problems()"><a class="reset-btn" >${_("Start again")}</a></div>';
 
 
-var problem_xblock_list=['block-v1:canextbank+CANEXTBANK_003+2018+type@problem+block@bbb57df429aa417489c0d1238a81a1d0','block-v1:canextbank+CANEXTBANK_003+2018+type@problem+block@cf0e108321ab4038b4f4bab81454a96e','block-v1:canextbank+CANEXTBANK_003+2018+type@problem+block@1a6e59c92c394b6296f151003464c5ae'];
+/*var problem_xblock_list=['block-v1:amundi+12457+2018_T1+type@problem+block@bbb57df429aa417489c0d1238a81a1d0','block-v1:amundi+12457+2018_T1+type@problem+block@1a6e59c92c394b6296f151003464c5ae'];*/
 
+$( document ).ready(function() {
+problem_xblock_list=[];
+$('div.vert').each(function(question){
+  problem_xblock_list.push($(this).attr('data-id'));
+})
+questions_number=problem_xblock_list.length;
+});
+
+var i=0;
 function reset_all_problems() {
   problem_xblock_list.forEach(function(xblock_id) {
    $.ajax({
     url:'/courses/'+course_id+'/xblock/'+xblock_id+'/handler/xmodule_handler/problem_reset',
     type:'POST',
     dataType:'json',
-    data: { 
+    data: {
         'id': xblock_id
+    },
+    success: function(result){
+      i+=1;
+      if(i>=questions_number){
+        window.location.reload(true);
+      }
     }
    });
   });
 };
 
-%if True:
-message_termine=message_termine+'<div class="seq_content_next" onclick="reset_all_problems()" style="display: block;margin-top: 20px;"><a style="width:110px;left:45%;">${_("Start again")}</a></div>';
-%endif
+
+
 
 function insert_info_score(value) {
   //$('#course-content').html('');
@@ -745,13 +958,14 @@ $(window).resize(function(){
 </script>
 
 
-    <script>
-        $('.vert-mod').hide();
-        $('#seq-content h3.unit-title').on('click', function() {
-            $('.vert-mod').append('<button>Next</button>');
-            $('.vert-mod').show();
-        });
-    </script>
+<script>
+/*
+    $('.vert-mod').hide();
+    $('#seq-content h3.unit-title').on('click', function() {
+        $('.vert-mod').append('<button>Next</button>');
+        $('.vert-mod').show();
+    });*/
+</script>
 
 <!-- bouton de nav -->
 <style>
@@ -839,4 +1053,5 @@ $(window).resize(function(){
   color:${secondary_color}!important;
 }
 </style>
+
 <!-- feed back -->
