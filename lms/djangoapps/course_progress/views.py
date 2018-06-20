@@ -78,11 +78,33 @@ def get_completion_status(request):
         pass
 
     # Prepare completion status dictionary
+<<<<<<< HEAD
+    chapters_completed = []
+    sections_completed = []
+
+    course_usage_key = modulestore().make_course_usage_key(course_key)
+    course_block = progress.get(str(course_usage_key), {})
+    for chapter_id in course_block.get('children', []):
+        if progress[chapter_id]['progress'] == 100:
+            chapters_completed.append(progress[chapter_id]['display_name'])
+        else:
+            chapter_progress = progress.get(chapter_id, {})
+            for section_id in chapter_progress.get('children', []):
+                if progress[section_id]['progress'] == 100:
+                    section_url_name = section_id.split('@')[-1]
+                    sections_completed.append(section_url_name)
+
+    completion_status.update({
+        'chapters_completed': chapters_completed,
+        'sections_completed': sections_completed
+    })
+=======
     sequential_id = request.GET.get('sequential_id')
     sequential_progress=progress.get(sequential_id,[])['progress']
     log.info('sequential progress {}'.format(sequential_progress))
     for block_id in progress.get(sequential_id,[])['children']:
         completion_status.update({block_id:progress.get(block_id,[])['progress']})
+>>>>>>> dev
 
     # Return the JSON resposne
     return JsonResponse({'completion_status': completion_status})

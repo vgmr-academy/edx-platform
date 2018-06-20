@@ -15,6 +15,8 @@ from openedx.core.djangolib.js_utils import js_escaped_string, dump_js_escaped_j
       </div>
     </div>
   % endif
+<<<<<<< HEAD
+=======
   <%
   current_suptitle = ""
   item_iterator = 1
@@ -77,6 +79,7 @@ from openedx.core.djangolib.js_utils import js_escaped_string, dump_js_escaped_j
   <div class="sequence-suptitle result-score-title">
      <h3 class="">${_("Results")}</h3>
   </div>
+>>>>>>> dev
   <div class="sequence-nav">
     <button class="sequence-nav-button button-previous">
       <div class="previous_title">
@@ -86,8 +89,20 @@ from openedx.core.djangolib.js_utils import js_escaped_string, dump_js_escaped_j
       <ol id="sequence-list">
         % for idx, item in enumerate(items):
         <li>
+<<<<<<< HEAD
+        <button class="seq_${item['type']} inactive nav-item"
+           data-id="${item['id']}"
+           data-element="${idx+1}"
+           data-page-title="${item['page_title']}"
+           data-path="${item['path']}"
+           id="tab_${idx}">
+            <span class="icon fa seq_${item['type']}" aria-hidden="true"></span>
+            <span class="fa fa-fw fa-bookmark bookmark-icon ${"is-hidden" if not item['bookmarked'] else "bookmarked"}" aria-hidden="true"></span>
+            <div class="sequence-tooltip sr"><span class="sr">${item['type']}&nbsp;</span>${item['page_title']}<span class="sr bookmark-icon-sr">&nbsp;${_("Bookmarked") if item['bookmarked'] else ""}</span></div>
+=======
         <button class="result-score" id="holding-section-result">
             <h3 class="disabled_score">${_("Score")}</h3>
+>>>>>>> dev
           </button>
         </li>
         % endfor

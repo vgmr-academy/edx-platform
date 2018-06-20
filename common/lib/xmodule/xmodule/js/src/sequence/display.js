@@ -209,6 +209,10 @@
                 sequenceLinks = this.content_container.find('a.seqnav');
                 sequenceLinks.click(this.goto);
                 this.path.text(this.el.find('.nav-item.active').data('path'));
+<<<<<<< HEAD
+                this.sr_container.focus();
+                // TMA ATP COURSE SLIDE
+=======
                 console.log($('#sr-is-focusable_'+newPosition).offset().top);
                 $(document).scrollTo($('#sr-is-focusable_'+newPosition).offset().top-70+'px',500,{onAfter:function(){$('#sr-is-focusable_'+newPosition).focus();}});
 		next_button_tma = $('#seq_content_next_'+newPosition);
@@ -224,7 +228,8 @@
                      $('#seq_content_next_'+newPosition).attr('onclick','$("#tab_'+newPosition+'").click()');
                    }
                 }
-                /* TMA ATP COURSE SLIDE*/
+                /* TMA ATP COURSE SLIDE
+>>>>>>> dev
                 var accordion = $('.course-index');
                 var course_content = $('#course-content');
                 var wrapper = $('.course-wrapper');
