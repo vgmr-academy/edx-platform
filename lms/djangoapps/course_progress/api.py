@@ -20,6 +20,9 @@ from opaque_keys import InvalidKeyError
 from course_progress.models import StudentCourseProgress
 from course_progress.helpers import make_usage_id
 
+import logging
+from pprint import pformat
+log = logging.getLogger()
 
 class APICompletionProgress(APIView):
     """
@@ -80,7 +83,6 @@ class APICompletionProgress(APIView):
             )
         except StudentCourseProgress.DoesNotExist:
             course_progress = None
-
         if course_progress:
             if unit:
                 # Request for the unit progress

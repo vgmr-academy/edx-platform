@@ -156,7 +156,7 @@ class CourseEnrollmentAdmin(admin.ModelAdmin):
 
 @admin.register(UserPreprofile)
 class UserPreprofileAdmin(admin.ModelAdmin):
-    """ Admin interface for the CourseEnrollment model. """
+    """ Admin interface for the UserPreprofile model. """
     list_display = ('email', 'last_name', 'first_name')
 
     class Meta(object):

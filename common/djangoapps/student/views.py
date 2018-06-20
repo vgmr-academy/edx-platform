@@ -138,7 +138,13 @@ from courseware.courses import (
 from course_progress.helpers import get_overall_progress
 from openedx.core.djangoapps.models.course_details import CourseDetails
 
+# Microsite Crendentials
+from third_party_auth.models import MicrositesCredentials
+from microsite_configuration.models import Microsite
+
+
 log = logging.getLogger("edx.student")
+log_bis=logging.getLogger()
 AUDIT_LOG = logging.getLogger("audit")
 ReverifyInfo = namedtuple('ReverifyInfo', 'course_id course_name course_number date status display')  # pylint: disable=invalid-name
 SETTING_CHANGE_INITIATED = 'edx.user.settings.change_initiated'
@@ -2697,24 +2703,18 @@ class LogoutView(TemplateView):
 
         logout(request)
 
-    	#atp access role for logout redirection
+    	#atp access role for logout redirection => renvoi nul car pb id non communique au logout
     	atp_access = User.objects.raw("SELECT id FROM student_courseaccessrole WHERE user_id = %s",[request.user.id])
-<<<<<<< HEAD
-=======
         log.info("request user id {}".format(request.user))
->>>>>>> dev
     	n = 0
 
     	for i in atp_access:
     	    n = n + 1
 
         _microsite = configuration_helpers.get_value('domain_prefix')
-<<<<<<< HEAD
-=======
         vm_status = settings.FEATURES.get('VM_STATUS')
         user_language = request.LANGUAGE_CODE
         log.info("user language{}".format(user_language))
->>>>>>> dev
 
         if _microsite is None:
             try:
@@ -2722,30 +2722,6 @@ class LogoutView(TemplateView):
                 log.info("Microsite: "+str(_microsite))
             except:
                 pass
-<<<<<<< HEAD
-    	site_courant=request.META["HTTP_HOST"]
-        user_language = request.LANGUAGE_CODE
-        log.info(user_language)
-        log.info(request.user.id)
-        if str(settings.FEATURES.get('VM_STATUS')) != "prod":
-            if n > 0:
-                if _microsite is not None:
-                    if _microsite == "amundi":
-                        self.target = "https://ppr-session-manager.amundi.com/v2/amundi-amundiacademy/"+user_language+"/user/logout"
-                    else:
-                        self.target = "https://ppr-session-manager.amundi.com/v2/"+_microsite+"/"+user_language+"/user/logout"
-                else:
-                    self.target = "https://ppr-session-manager.amundi.com/v2/amundi-amundiacademy/"+user_language+"/user/logout"
-            else:
-                if _microsite is not None:
-                    if _microsite == "amundi":
-                        self.target = "https://ppr-session-manager.amundi.com/v2/amundi-amundiacademy/"+user_language+"/user/logout"
-                    elif _microsite == "lcl":
-                        self.target = "https://ppr-session-manager.amundi.com/v2/"+_microsite+"/"+user_language+"/user/logout"
-                else:
-                    self.target = "https://ppr-session-manager.amundi.com/v2/amundi-amundiacademy/"+user_language+"/user/logout"
-        #SUR PROD
-=======
 
         #Get Microsite Credentials adapted to VM status
         try :
@@ -2766,7 +2742,6 @@ class LogoutView(TemplateView):
             else :
                 self.target = logout_uri+user_language+"/user/logout"
         #Sur l'environnement de prod
->>>>>>> dev
         else :
             if n > 0:
                 if _microsite is not None:

@@ -25,6 +25,9 @@ from social.utils import module_member
 from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 from openedx.core.djangoapps.theming.helpers import get_current_request
 
+#MicrositesCredentials
+from microsite_configuration.models import Microsite
+
 log = logging.getLogger(__name__)
 from pprint import pformat
 
@@ -716,3 +719,13 @@ class ProviderApiPermissions(models.Model):
         app_label = "third_party_auth"
         verbose_name = "Provider API Permission"
         verbose_name_plural = verbose_name + 's'
+
+
+class MicrositesCredentials(models.Model):
+    class Meta:
+        verbose_name_plural = "Microsites Credentials"
+    VM_status = models.CharField(max_length=255, db_index=True)
+    microsite = models.ForeignKey(Microsite, db_index=True)
+    logout_uri = models.CharField(max_length=3000, db_index=True)
+    client_id = models.CharField(max_length=255, db_index=True)
+    client_secret = models.CharField(max_length=255, db_index=True)

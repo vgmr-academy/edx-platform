@@ -156,7 +156,7 @@
         };
 
         Sequence.prototype.render = function(newPosition) {
-            var bookmarked, currentTab, modxFullUrl, sequenceLinks,
+            var bookmarked, currentTab, modxFullUrl, sequenceLinks, referenceNode, next_button_tma, next_tab,next_tab_attr,
                 self = this;
                 var inactive=false;
                 if($("#tab_"+(newPosition-1)).hasClass('inactive') || $("#tab_"+(newPosition-1)).hasClass('visited')){
@@ -198,10 +198,17 @@
                             .data('attempts-used', latestResponse.attempts_used);
                     });
                 }
+
+                // Put seq_content where it has to be
+                referenceNode=document.querySelector("#tab_"+(newPosition - 1)).closest(".sequence-nav");
+                referenceNode.parentNode.insertBefore(document.getElementById('seq_content'), referenceNode.nextSibling);
+
                 XBlock.initializeBlocks(this.content_container, this.requestToken);
 
                 // For embedded circuit simulator exercises in 6.002x
                 window.update_schematics();
+                $('#seq_content_next_'+this.position).attr('onclick','');
+                $('#seq_content_next_'+this.position).css('display','none');
                 this.position = newPosition;
                 this.toggleArrows();
                 this.hookUpContentStateChangeEvent();
@@ -209,10 +216,6 @@
                 sequenceLinks = this.content_container.find('a.seqnav');
                 sequenceLinks.click(this.goto);
                 this.path.text(this.el.find('.nav-item.active').data('path'));
-<<<<<<< HEAD
-                this.sr_container.focus();
-                // TMA ATP COURSE SLIDE
-=======
                 console.log($('#sr-is-focusable_'+newPosition).offset().top);
                 $(document).scrollTo($('#sr-is-focusable_'+newPosition).offset().top-70+'px',500,{onAfter:function(){$('#sr-is-focusable_'+newPosition).focus();}});
 		next_button_tma = $('#seq_content_next_'+newPosition);
@@ -229,7 +232,6 @@
                    }
                 }
                 /* TMA ATP COURSE SLIDE
->>>>>>> dev
                 var accordion = $('.course-index');
                 var course_content = $('#course-content');
                 var wrapper = $('.course-wrapper');
@@ -247,7 +249,7 @@
               		 accordion.attr('style','');
               		 wrapper.attr('style','');
   	            });
-	        // TMA ATP COURSE SLIDE
+	        / TMA ATP COURSE SLIDE*/
             }
             else if(this.position==newPosition && !inactive){
               //Gestion du replis de la séquence

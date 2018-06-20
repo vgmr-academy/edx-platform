@@ -9,7 +9,8 @@ from course_api.blocks.api import get_blocks
 from course_progress.models import StudentCourseProgress
 from course_progress.helpers import get_default_course_progress
 
-logger = logging.getLogger()
+from pprint import pformat
+log = logging.getLogger()
 
 def update_course_progress(request, course_key, module_type, usage_keys):
     """
@@ -62,7 +63,7 @@ def update_course_progress(request, course_key, module_type, usage_keys):
 
     # Get course progress dict
     progress = student_course_progress.progress
-
+    #log.info(pformat(progress))
     # To have proper sync with blocks and stored progress
     new_progress = {}
     default_progress_dict = get_default_course_progress( course_struct.get('blocks', []), root )
@@ -116,6 +117,7 @@ def update_sequential_progress(progress, sequential_ids):
                 total_units_completed += 1
         sequential_progress = round(total_units_completed * 100 / total_units)
         progress[sequential_id]['progress'] = sequential_progress
+        log.info("parent error  "+pformat(progress[sequential_id]))
         updated_chapters.append(progress[sequential_id]['parent'])
 
     # update chapter progress
