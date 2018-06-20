@@ -136,6 +136,8 @@ from pprint import pformat
 from django.views.decorators.csrf import csrf_exempt
 log = logging.getLogger(__name__)
 
+#LO automatisation credentials client
+from third_party_auth.models import MicrositesCredentials
 
 __all__ = ['course_info_handler', 'course_handler', 'course_listing',
            'course_info_update_handler', 'course_search_index_handler',
@@ -725,9 +727,13 @@ def course_index(request, course_key):
         deprecated_block_names = [block.name for block in deprecated_xblocks()]
         deprecated_blocks_info = _deprecated_blocks_info(course_module, deprecated_block_names)
 
+        #Get course org for lms link adapted to microsites
+        course_org = course_module.org
+
         return render_to_response('course_outline.html', {
             'context_course': course_module,
             'lms_link': lms_link,
+            'course_org': course_org,
             'sections': sections,
             'course_structure': course_structure,
             'initial_state': course_outline_initial_state(locator_to_show, course_structure) if locator_to_show else None,
@@ -1338,8 +1344,8 @@ def session_manager_handler(msg,emails,org,language):
     credentials = settings.FEATURES.get('SEM_CREDENTIALS')
     prod = settings.FEATURES.get('VM_STATUS')
     try:
-        client_id = credentials.get(prod).get(sem_org).get('client_id')
-        client_secret = credentials.get(prod).get(sem_org).get('secret')
+        client_id =MicrositesCredentials.objects.get(VM_status=prod, microsite=sem_org).client_id
+        client_secret = MicrositesCredentials.objects.get(VM_status=prod, microsite=sem_org).client_secret
     except:
         client_id = '76db53b7-e23e-40f5-9b75-d472d48dbc70'
         client_secret = '066cdb10-a092-4327-b9be-f2b4fb95ca1e'
@@ -1643,38 +1649,48 @@ def email_dashboard_handler(request, course_key_string):
                 obj = request.POST['object']
                 body = request.POST['body']
                 course_key = CourseKey.from_string(course_key_string)
+
                 if myself == 'true':
                     q = {}
-		    q['email'] = request.user.email
+                    q['email'] = request.user.email
                     q['first_name'] = request.user.first_name
                     q['last_name'] = request.user.last_name
                     list_email.append(q)
+
                 if staff == 'true':
                     staf_users = CourseInstructorRole(course_key).users_with_role()
                     for n in staf_users:
                         if not n.email in list_email:
-		            try:
-			        _staf_user = User.objects.get(email=n.email)
-			        q = {}
-			        q['email'] = n.email
+                            try:
+                                _staf_user = User.objects.get(email=n.email)
+                                q = {}
+                                q['email'] = n.email
                                 q['first_name'] = _staf_user.first_name
                                 q['last_name'] = _staf_user.last_name
                                 list_email.append(q)
-			    except:
-		                pass
+                            except:
+                                pass
+
                 if custom == 'true':
+                    log.info("custom true")
                     adress = adress.split(',')
+                    log.info("custom true adress {}".format(adress))
                     for n in adress:
                         if not n in list_email:
-			    try:
-				q = {}
-				_user_custom = User.objects.get(email=n)
-				q['email'] = n
-				q['first_name'] = _user_custom.first_name
-				q['last_name'] = _user_custom.last_name
+                            log.info("custom true ok n not in list_email")
+                            try :
+                                q = {}
+                                log.info("custom true ok first try")
+                                _user_custom = User.objects.get(email=n)
+                                log.info("custom true n {}".format(n))
+                                q['email'] = n
+                                q['first_name'] = _user_custom.first_name
+                                q['last_name'] = _user_custom.last_name
                                 list_email.append(q)
-			    except:
-				pass
+                                log.info("custom true append ok")
+                            except:
+                                pass
+
                 if all_users == 'true':
                     user_id = []
                     try:
@@ -1685,9 +1701,9 @@ def email_dashboard_handler(request, course_key_string):
                             for v in email:
                                 if not str(v.email) in str(list_email):
                                     q = {}
-				    q['email'] = v.email
-				    q['first_name'] = v.first_name
-				    q['last_name'] = v.last_name
+                                    q['email'] = v.email
+                                    q['first_name'] = v.first_name
+                                    q['last_name'] = v.last_name
                                     list_email.append(q)
                     except:
                         ALL = False

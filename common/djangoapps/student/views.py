@@ -2699,12 +2699,22 @@ class LogoutView(TemplateView):
 
     	#atp access role for logout redirection
     	atp_access = User.objects.raw("SELECT id FROM student_courseaccessrole WHERE user_id = %s",[request.user.id])
+<<<<<<< HEAD
+=======
+        log.info("request user id {}".format(request.user))
+>>>>>>> dev
     	n = 0
 
     	for i in atp_access:
     	    n = n + 1
 
         _microsite = configuration_helpers.get_value('domain_prefix')
+<<<<<<< HEAD
+=======
+        vm_status = settings.FEATURES.get('VM_STATUS')
+        user_language = request.LANGUAGE_CODE
+        log.info("user language{}".format(user_language))
+>>>>>>> dev
 
         if _microsite is None:
             try:
@@ -2712,6 +2722,7 @@ class LogoutView(TemplateView):
                 log.info("Microsite: "+str(_microsite))
             except:
                 pass
+<<<<<<< HEAD
     	site_courant=request.META["HTTP_HOST"]
         user_language = request.LANGUAGE_CODE
         log.info(user_language)
@@ -2734,6 +2745,28 @@ class LogoutView(TemplateView):
                 else:
                     self.target = "https://ppr-session-manager.amundi.com/v2/amundi-amundiacademy/"+user_language+"/user/logout"
         #SUR PROD
+=======
+
+        #Get Microsite Credentials adapted to VM status
+        try :
+            microsite_obj = Microsite.objects.get(key=_microsite.lower())
+            logout_uri=MicrositesCredentials.objects.get(VM_status=vm_status, microsite=microsite_obj).logout_uri
+            log_bis.info("logout_uri OK: {}".format(logout_uri))
+        except :
+            logout_uri='https://ppr-session-manager.amundi.com/v2/amundi-amundiacademy/'
+            log_bis.info("logout uri except EXCEPT: ")
+
+    	site_courant=request.META["HTTP_HOST"]
+
+        #Sur l'environnement de preprod et de dev
+        log_bis.info("Microsite credentials URI: {}".format(logout_uri))
+        if str(settings.FEATURES.get('VM_STATUS')) != "prod":
+            if n > 0 :
+                self.target = logout_uri+user_language+"/user/logout"
+            else :
+                self.target = logout_uri+user_language+"/user/logout"
+        #Sur l'environnement de prod
+>>>>>>> dev
         else :
             if n > 0:
                 if _microsite is not None:

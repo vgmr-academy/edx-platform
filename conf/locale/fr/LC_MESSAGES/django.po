@@ -22986,7 +22986,7 @@ msgid "Access Trainee interface"
 msgstr "Accès Apprenant"
 
 #: lms dashboard.html
-msgid "Access Admin interface"
+msgid "Access admin interface"
 msgstr "Accès interface d'administration"
 
 #: lms stat.html

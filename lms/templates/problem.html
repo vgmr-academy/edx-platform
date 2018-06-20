@@ -13,7 +13,6 @@ from openedx.core.djangolib.markup import HTML
   <div class="picto_sf"></div>
 </h3>
 <div class="problem-progress" id="${ id }-problem-progress"></div>
-
 <div class="problem">
   <%
   try:
@@ -24,6 +23,7 @@ from openedx.core.djangolib.markup import HTML
     problem_upper = problem['html']
     problem_down = ""
   %>
+
   <!-- quiz block -->
   ${ HTML( problem_upper ) }
   <!-- end quiz block -->
@@ -75,6 +75,9 @@ from openedx.core.djangolib.markup import HTML
   ${ HTML(problem_down) }
   <!-- end explication -->
   <!-- bouton submit et next -->
+
+
+
   % if True:
   <div class="action">
     <input type="hidden" name="problem_id" value="${ problem['name'] }" />
@@ -127,7 +130,7 @@ from openedx.core.djangolib.markup import HTML
       </div>
     </div>
     <div class="next">
-      <button class="next_button btn-brand">${_("next")}</button>
+      <button class="next_button btn-brand question_next" id="ques_${short_id}">${_("next")}</button>
     </div>
   </div>
   % endif

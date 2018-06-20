@@ -1,4 +1,4 @@
-<div id="problem_${element_id}" class="problems-wrapper position_atp ${'answered' if attempts_used >= 1 else ''} ${'finished' if attempts_used >= 1 else 'not_finished'} ${'success_quiz_atp' if current_score >= total_possible and attempts_used > 0 else ''} ${'fail_quiz_atp' if current_score < total_possible and attempts_used > 0 else ''}" role="group"
+<div id="problem_${element_id}" class="problems-wrapper position_atp ${'answered' if student_answsers else ''} ${'finished' if student_answsers else 'not_finished'}  ${'success_quiz_atp' if current_score >= total_possible and student_answsers else ''} ${'fail_quiz_atp' if current_score < total_possible and student_answsers else ''}" role="group"
      aria-labelledby="${element_id}-problem-title"
      data-problem-id="${id}" data-url="${ajax_url}"
      data-problem-score="${current_score}"
@@ -41,4 +41,3 @@ setInterval(function(){
   },300);
   </script>
 % endif
-

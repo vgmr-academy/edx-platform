@@ -78,6 +78,7 @@ def get_completion_status(request):
         pass
 
     # Prepare completion status dictionary
+<<<<<<< HEAD
     chapters_completed = []
     sections_completed = []
 
@@ -97,6 +98,13 @@ def get_completion_status(request):
         'chapters_completed': chapters_completed,
         'sections_completed': sections_completed
     })
+=======
+    sequential_id = request.GET.get('sequential_id')
+    sequential_progress=progress.get(sequential_id,[])['progress']
+    log.info('sequential progress {}'.format(sequential_progress))
+    for block_id in progress.get(sequential_id,[])['children']:
+        completion_status.update({block_id:progress.get(block_id,[])['progress']})
+>>>>>>> dev
 
     # Return the JSON resposne
     return JsonResponse({'completion_status': completion_status})
