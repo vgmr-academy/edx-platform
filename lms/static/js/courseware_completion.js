@@ -23,11 +23,8 @@ trackHTMLComponent = function(){
         }
       }); // post
 
-<<<<<<< HEAD
-    } // if
-=======
     }
->>>>>>> dev
+
 }
 
 // For completion dots on accordian
@@ -38,31 +35,6 @@ getCompletionStatus = function(){
   $.get({
     url: completionStatusUrl,
     success: function(data) {
-<<<<<<< HEAD
-      var chaptersCompleted = data['completion_status']['chapters_completed'];
-      for (var chapterIndex in chaptersCompleted) {
-        var chapterName = chaptersCompleted[chapterIndex];
-        var ChapterID = "#" + (chapterName.split(" ").join("-").toLowerCase() + "-parent");
-        $(ChapterID).children().find(".completed").remove();
-        $(ChapterID).children().append(circleGreen);
-        var childrenSectionsId = ChapterID.replace("parent", "child");
-        $(childrenSectionsId).children().children().each(function(){
-          $(this).children().children().find(".completed").remove();
-          $(this).children().children(".accordion-display-name").append(circleGreen);
-        });
-      } // for 1
-
-      var sectionsCompleted = data['completion_status']['sections_completed']
-      for (var sectionIndex in sectionsCompleted) {
-        var sectionName = sectionsCompleted[sectionIndex];
-        var parentChapter = $("a.accordion-nav[href*='"+sectionName+"']").parent().parent().parent().prev();
-        parentChapter.children().find(".completed").remove();
-        parentChapter.children().append(circleGray);
-        $("a.accordion-nav[href*='"+sectionName+"']").children().find(".completed").remove();
-        $("a.accordion-nav[href*='"+sectionName+"']").find(".accordion-display-name").append(circleGreen);
-      } // for 2
-
-=======
        //TODO : target all sequence_nav buttons
        var previous_completed=false;
 
@@ -121,7 +93,6 @@ getCompletionStatus = function(){
             }
           }
         });
->>>>>>> dev
     }
   }); // get
 
@@ -131,15 +102,8 @@ getCompletionStatus = function(){
 $(document).ready(function(){
   if(completionEnabled){
     trackHTMLComponent();
-<<<<<<< HEAD
-    if (accordianDotsEnabled){
-      getCompletionStatus();
-    }
-  }    
-=======
     getCompletionStatus();
   }
->>>>>>> dev
 });
 
 // Call the functions on specific events
