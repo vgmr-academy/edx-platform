@@ -1055,8 +1055,18 @@ if settings.FEATURES.get('TMA_SHOW_COMPLETION_ON_COURSEWARE_NAVIGATION'):
     )
 
 
-#changer la langue
+#Reset unit progress for quiz reset_bouton
+if settings.FEATURES.get('TMA_SHOW_COMPLETION_ON_COURSEWARE_NAVIGATION'):
+    urlpatterns += (
+        url(
+            r'^completion_status/reset_unit',
+            'course_progress.views.reset_unit_completion',
+            name='completion_status'
+        ),
+    )
 
+
+#changer la langue
 urlpatterns += (
     url(
         r'^api/atp/lang/(?P<langue>[^/]*)/$',
@@ -1117,4 +1127,3 @@ if 'rosetta' in settings.INSTALLED_APPS:
     urlpatterns += [
         url(r'^rosetta/', include('rosetta.urls'))
     ]
-

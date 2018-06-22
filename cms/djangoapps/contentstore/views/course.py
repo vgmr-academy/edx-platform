@@ -138,6 +138,7 @@ log = logging.getLogger(__name__)
 
 #LO automatisation credentials client
 from third_party_auth.models import MicrositesCredentials
+from microsite_configuration.models import Microsite
 
 __all__ = ['course_info_handler', 'course_handler', 'course_listing',
            'course_info_update_handler', 'course_search_index_handler',
@@ -1343,12 +1344,20 @@ def session_manager_handler(msg,emails,org,language):
     sem_org = org.lower()
     credentials = settings.FEATURES.get('SEM_CREDENTIALS')
     prod = settings.FEATURES.get('VM_STATUS')
+    microsite=Microsite.objects.get(key=sem_org)
+    log.info("session_manager_handler microsite {}: ".format(sem_org))
+    log.info("session_manager_handler prod {}: ".format(prod))
     try:
-        client_id =MicrositesCredentials.objects.get(VM_status=prod, microsite=sem_org).client_id
-        client_secret = MicrositesCredentials.objects.get(VM_status=prod, microsite=sem_org).client_secret
+        client_id =MicrositesCredentials.objects.get(VM_status=prod, microsite=microsite).client_id
+        client_secret = MicrositesCredentials.objects.get(VM_status=prod, microsite=microsite).client_secret
+        log.info("LO session_manager_handler client_secret :{}: ".format(client_secret))
+        log.info("LO session_manager_handler client_id : {}: ".format(client_id))
     except:
         client_id = '76db53b7-e23e-40f5-9b75-d472d48dbc70'
         client_secret = '066cdb10-a092-4327-b9be-f2b4fb95ca1e'
+        #client_id='adc1a487-086d-41a9-b8fc-13b7918dc0e2'
+        #client_secret='95bb895b-9917-4d67-a594-7b332129c394'
+        log.info('session manager handler except')
     try:
         urls = settings.FEATURES.get('SEM_ENDPOINTS')
     except:

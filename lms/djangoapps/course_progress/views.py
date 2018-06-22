@@ -109,3 +109,22 @@ def get_course_progress(student, course_key):
         pass
 
     return progress
+
+@login_required
+@ensure_csrf_cookie
+@require_http_methods(["POST"])
+def reset_unit_completion(request):
+    course_id = request.POST.get('course_id')
+    course_key = SlashSeparatedCourseKey.from_deprecated_string(course_id)
+    try:
+        student_course_progress = StudentCourseProgress.objects.get(student=request.user.id, course_id=course_key)
+    except StudentCourseProgress.DoesNotExist:
+        pass
+    sequential_id = request.POST.get('sequential_id')
+    block_ids=request.POST.get('block_ids')
+    for block_id in block_ids:
+        student_course_progress.progress[sequential_id]['children'][block_id]['progress']=0
+    if student_course_progress.save():
+        return JsonResponse({'units reset': 'success'})
+    else :
+        return JsonResponse({'units reset': 'failure'})

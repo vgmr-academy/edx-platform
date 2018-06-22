@@ -1,0 +1,99 @@
+Multiple translations found for single string.
+	String "None"
+	Present in files [u'cms/static/js/views/course_video_settings.js', u'common/lib/xmodule/xmodule/js/src/html/edit.js', u'cms/templates/js/timed-examination-preference-editor.underscore']
+Translations found were:
+	#-#-#-#-#  djangojs-partial.po (edx-platform)  #-#-#-#-#
+Kein Schulabschluss
+#-#-#-#-#  underscore-studio.po (edx-platform)  #-#-#-#-#
+kein
+
+Multiple translations found for single string.
+	String "Title"
+	Present in files [u'common/lib/xmodule/xmodule/js/src/html/edit.js', u'cms/templates/js/course-instructor-details.underscore', u'cms/templates/js/signatory-details.underscore', u'common/static/common/templates/discussion/new-post.underscore', u'common/static/common/templates/discussion/thread-edit.underscore']
+Translations found were:
+	#-#-#-#-#  djangojs-partial.po (edx-platform)  #-#-#-#-#
+Titel, Namenszusatz
+#-#-#-#-#  underscore.po (edx-platform)  #-#-#-#-#
+Titel
+
+Multiple translations found for single string.
+	String "View"
+	Present in files [u'common/lib/xmodule/xmodule/js/src/html/edit.js', u'openedx/features/course_bookmarks/static/course_bookmarks/templates/bookmarks-list.underscore', u'openedx/features/course_search/static/course_search/templates/course_search_item.underscore', u'openedx/features/course_search/static/course_search/templates/dashboard_search_item.underscore']
+Translations found were:
+	#-#-#-#-#  djangojs-partial.po (edx-platform)  #-#-#-#-#
+Anzeigen
+#-#-#-#-#  underscore.po (edx-platform)  #-#-#-#-#
+Ansicht
+
+Multiple translations found for single string.
+	String "Search"
+	Present in files [u'common/static/js/vendor/ova/catch/js/catch.js', u'common/static/common/templates/components/search-field.underscore', u'lms/djangoapps/discussion/static/discussion/templates/search.underscore', u'lms/djangoapps/support/static/support/templates/certificates.underscore', u'lms/djangoapps/support/static/support/templates/enrollment.underscore', u'lms/djangoapps/support/static/support/templates/manage_user.underscore']
+Translations found were:
+	#-#-#-#-#  djangojs-partial.po (edx-platform)  #-#-#-#-#
+Suche
+#-#-#-#-#  underscore.po (edx-platform)  #-#-#-#-#
+Suchen
+
+Multiple translations found for single string.
+	String "Sign in"
+	Present in files [u'lms/djangoapps/support/static/support/jsx/logged_out_user.jsx', u'lms/templates/student_account/hinted_login.underscore', u'lms/templates/student_account/login.underscore']
+Translations found were:
+	#-#-#-#-#  djangojs-partial.po (edx-platform)  #-#-#-#-#
+Anmelden
+#-#-#-#-#  underscore.po (edx-platform)  #-#-#-#-#
+Einloggen
+
+Multiple translations found for single string.
+	String "The country that team members primarily identify with."
+	Present in files [u'lms/djangoapps/teams/static/teams/js/views/edit_team.js', u'lms/djangoapps/teams/static/teams/templates/team-profile.underscore']
+Translations found were:
+	#-#-#-#-#  djangojs-partial.po (edx-platform)  #-#-#-#-#
+Das Land mit dem sich die Teammitglieder primär identifizieren
+#-#-#-#-#  underscore.po (edx-platform)  #-#-#-#-#
+Das Land mit dem sich die Teammitglieder primär identifizieren.
+
+Multiple translations found for single string.
+	String "Click to change"
+	Present in files [u'lms/static/js/ccx/schedule.js', u'lms/templates/ccx/schedule.underscore']
+Translations found were:
+	#-#-#-#-#  djangojs-partial.po (edx-platform)  #-#-#-#-#
+Zum Ändern klicken
+#-#-#-#-#  underscore.po (edx-platform)  #-#-#-#-#
+Klicke zum Ändern
+
+Multiple translations found for single string.
+	String "Selected tab"
+	Present in files [u'lms/static/js/groups/views/cohort_editor.js', u'lms/templates/instructor/instructor_dashboard_2/cohort-editor.underscore']
+Translations found were:
+	#-#-#-#-#  djangojs-partial.po (edx-platform)  #-#-#-#-#
+Ausgewählter Tab
+#-#-#-#-#  underscore.po (edx-platform)  #-#-#-#-#
+Ausgewähltes Tab
+
+Multiple translations found for single string.
+	String "Add Cohort"
+	Present in files [u'lms/static/js/groups/views/cohorts.js', u'lms/templates/instructor/instructor_dashboard_2/cohorts.underscore']
+Translations found were:
+	#-#-#-#-#  djangojs-partial.po (edx-platform)  #-#-#-#-#
+Kohorte hinzufügen
+#-#-#-#-#  underscore.po (edx-platform)  #-#-#-#-#
+Grossgruppe hinzufügen
+
+Multiple translations found for single string.
+	String "Username"
+	Present in files [u'lms/static/js/instructor_dashboard/membership.js', u'lms/static/js/student_account/views/account_settings_factory.js', u'openedx/features/learner_profile/static/learner_profile/js/learner_profile_factory.js', u'cms/templates/js/transcript-organization-credentials.underscore', u'lms/djangoapps/support/static/support/templates/manage_user.underscore', u'lms/templates/financial-assistance/financial_assessment_form.underscore']
+Translations found were:
+	#-#-#-#-#  djangojs-partial.po (edx-platform)  #-#-#-#-#
+Benutzername
+#-#-#-#-#  underscore.po (edx-platform)  #-#-#-#-#
+Nutzername
+
+Multiple translations found for single string.
+	String "Staff"
+	Present in files [u'cms/static/js/factories/manage_users.js', u'cms/static/js/factories/manage_users_lib.js', u'common/static/common/templates/discussion/thread-list-item.underscore']
+Translations found were:
+	#-#-#-#-#  djangojs-studio.po (edx-platform)  #-#-#-#-#
+Lehrender
+#-#-#-#-#  underscore.po (edx-platform)  #-#-#-#-#
+Mitarbeiter
+

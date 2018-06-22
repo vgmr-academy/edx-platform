@@ -1,0 +1,4321 @@
+# Translations template for PROJECT.
+# Copyright (C) 2018 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2018-06-22 12:01+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 1.3\n"
+
+#: cms/templates/js/access-editor.underscore:3
+msgid "Limit Access"
+msgstr ""
+
+#: cms/templates/js/access-editor.underscore:7
+msgid ""
+"Select a prerequisite subsection and enter a minimum score percentage to "
+"limit access to this subsection."
+msgstr ""
+
+#: cms/templates/js/access-editor.underscore:11
+msgid "Prerequisite:"
+msgstr ""
+
+#: cms/templates/js/access-editor.underscore:13
+msgid "No prerequisite"
+msgstr ""
+
+#: cms/templates/js/access-editor.underscore:22
+msgid "Minimum Score:"
+msgstr ""
+
+#: cms/templates/js/access-editor.underscore:27
+msgid "The minimum score percentage must be a whole number between 0 and 100."
+msgstr ""
+
+#: cms/templates/js/access-editor.underscore:32
+msgid "Use as a Prerequisite"
+msgstr ""
+
+#: cms/templates/js/access-editor.underscore:40
+msgid "Make this subsection available as a prerequisite to other content"
+msgstr ""
+
+#: cms/templates/js/active-video-upload-list.underscore:3
+msgid "Drag and drop or click here to upload video files."
+msgstr ""
+
+#: cms/templates/js/active-video-upload-list.underscore:8
+msgid "Active Uploads"
+msgstr ""
+
+#: cms/templates/js/active-video-upload.underscore:8
+msgid "Read More"
+msgstr ""
+
+#: cms/templates/js/active-video-upload.underscore:9
+msgid "details about the failure"
+msgstr ""
+
+#: cms/templates/js/add-xblock-component-button.underscore:7
+msgid "Add Component:"
+msgstr ""
+
+#: cms/templates/js/add-xblock-component-menu-problem.underscore:3
+#: cms/templates/js/add-xblock-component-menu.underscore:4
+#, python-format
+msgid "%(type)s Component Template Menu"
+msgstr ""
+
+#: cms/templates/js/add-xblock-component-menu-problem.underscore:10
+msgid "Common Problem Types"
+msgstr ""
+
+#: cms/templates/js/add-xblock-component-menu-problem.underscore:13
+msgid "Advanced"
+msgstr ""
+
+#: cms/templates/js/add-xblock-component-menu-problem.underscore:55
+#: cms/templates/js/add-xblock-component-menu.underscore:29
+#: cms/templates/js/certificate-editor.underscore:47
+#: cms/templates/js/content-group-editor.underscore:32
+#: cms/templates/js/course_info_handouts.underscore:20
+#: cms/templates/js/course_info_update.underscore:21
+#: cms/templates/js/edit-textbook.underscore:26
+#: cms/templates/js/group-configuration-editor.underscore:46
+#: cms/templates/js/section-name-edit.underscore:4
+#: cms/templates/js/signatory-actions.underscore:4
+#: cms/templates/js/xblock-string-field-editor.underscore:14
+#: cms/templates/js/programs/program_creator_form.underscore:64
+#: common/static/common/templates/discussion/new-post.underscore:5
+#: common/static/common/templates/discussion/new-post.underscore:68
+#: common/static/common/templates/discussion/response-comment-edit.underscore:8
+#: common/static/common/templates/discussion/thread-edit.underscore:18
+#: common/static/common/templates/discussion/thread-response-edit.underscore:8
+#: lms/djangoapps/support/static/support/templates/enrollment-modal.underscore:25
+#: lms/djangoapps/teams/static/teams/templates/edit-team.underscore:55
+#: lms/templates/instructor/instructor_dashboard_2/cohort-form.underscore:149
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-form.underscore:149
+msgid "Cancel"
+msgstr ""
+
+#: cms/templates/js/add-xblock-component-support-legend.underscore:9
+msgid "Supported"
+msgstr ""
+
+#: cms/templates/js/add-xblock-component-support-legend.underscore:13
+msgid "Provisional"
+msgstr ""
+
+#: cms/templates/js/add-xblock-component-support-legend.underscore:18
+#: cms/templates/js/add-xblock-component-support-level.underscore:9
+msgid "Not Supported"
+msgstr ""
+
+#: cms/templates/js/add-xblock-component-support-level.underscore:3
+msgid "Fully Supported"
+msgstr ""
+
+#: cms/templates/js/add-xblock-component-support-level.underscore:6
+msgid "Provisionally Supported"
+msgstr ""
+
+#: cms/templates/js/add-xblock-component.underscore:2
+msgid "Add New Component"
+msgstr ""
+
+#: cms/templates/js/advanced_entry.underscore:12
+msgid "Deprecated"
+msgstr ""
+
+#: cms/templates/js/asset-library.underscore:5
+msgid "List of uploaded files and assets in this course"
+msgstr ""
+
+#: cms/templates/js/asset-library.underscore:16
+msgid "Preview"
+msgstr ""
+
+#: cms/templates/js/asset-library.underscore:19
+#: cms/templates/js/course-instructor-details.underscore:3
+#: cms/templates/js/previous-video-upload-list.underscore:11
+#: cms/templates/js/signatory-details.underscore:13
+#: cms/templates/js/programs/program_creator_form.underscore:30
+#: cms/templates/js/programs/program_details.underscore:6
+#: lms/templates/instructor/instructor_dashboard_2/certificate-white-list.underscore:20
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-white-list.underscore:20
+msgid "Name"
+msgstr ""
+
+#: cms/templates/js/asset-library.underscore:20
+#: cms/templates/js/asset-library.underscore:53
+msgid "- Sortable"
+msgstr ""
+
+#: cms/templates/js/asset-library.underscore:26
+#: lms/djangoapps/support/static/support/templates/certificates_results.underscore:7
+msgid "Type"
+msgstr ""
+
+#: cms/templates/js/asset-library.underscore:35
+msgid "Show All"
+msgstr ""
+
+#: cms/templates/js/asset-library.underscore:43
+msgid "Other"
+msgstr ""
+
+#: cms/templates/js/asset-library.underscore:52
+#: cms/templates/js/previous-video-upload-list.underscore:13
+msgid "Date Added"
+msgstr ""
+
+#: cms/templates/js/asset-library.underscore:56
+msgid "URL"
+msgstr ""
+
+#: cms/templates/js/asset-library.underscore:57
+#: cms/templates/js/basic-modal.underscore:15
+#: cms/templates/js/programs/confirm_modal.underscore:14
+#: lms/templates/instructor/instructor_dashboard_2/enrollment-code-lookup-links.underscore:6
+#: lms/templates_sav/instructor/instructor_dashboard_2/enrollment-code-lookup-links.underscore:6
+msgid "Actions"
+msgstr ""
+
+#: cms/templates/js/asset-library.underscore:67
+msgid "You haven't added any assets to this course yet."
+msgstr ""
+
+#: cms/templates/js/asset-library.underscore:67
+msgid "Upload your first asset"
+msgstr ""
+
+#: cms/templates/js/asset-upload-modal.underscore:2
+msgid "close"
+msgstr ""
+
+#: cms/templates/js/asset-upload-modal.underscore:4
+msgid "Upload New File"
+msgstr ""
+
+#: cms/templates/js/asset-upload-modal.underscore:15
+msgid "Choose File"
+msgstr ""
+
+#: cms/templates/js/asset.underscore:4
+msgid "No description available"
+msgstr ""
+
+#: cms/templates/js/asset.underscore:9
+msgid "Open/download this file"
+msgstr ""
+
+#: cms/templates/js/asset.underscore:23
+msgid "Studio:"
+msgstr ""
+
+#: cms/templates/js/asset.underscore:29
+msgid "Web:"
+msgstr ""
+
+#: cms/templates/js/asset.underscore:39
+msgid "Delete this asset"
+msgstr ""
+
+#: cms/templates/js/asset.underscore:42
+msgid "Lock this asset"
+msgstr ""
+
+#: cms/templates/js/asset.underscore:43
+msgid "Lock/unlock file"
+msgstr ""
+
+#: cms/templates/js/certificate-details.underscore:11
+#: cms/templates/js/content-group-details.underscore:14
+#: cms/templates/js/group-configuration-details.underscore:14
+msgid "ID"
+msgstr ""
+
+#: cms/templates/js/certificate-details.underscore:18
+#: cms/templates/js/certificate-editor.underscore:23
+msgid "Certificate Details"
+msgstr ""
+
+#: cms/templates/js/certificate-details.underscore:23
+#: cms/templates/js/certificate-editor.underscore:26
+#: cms/templates/js/programs/course_details.underscore:36
+msgid "Course Title"
+msgstr ""
+
+#: cms/templates/js/certificate-details.underscore:28
+#: cms/templates/js/certificate-editor.underscore:30
+msgid "Course Title Override"
+msgstr ""
+
+#: cms/templates/js/certificate-details.underscore:36
+msgid "Course Number"
+msgstr ""
+
+#: cms/templates/js/certificate-details.underscore:42
+msgid "Course Number Override"
+msgstr ""
+
+#: cms/templates/js/certificate-details.underscore:53
+#: cms/templates/js/certificate-editor.underscore:36
+msgid "Certificate Signatories"
+msgstr ""
+
+#: cms/templates/js/certificate-details.underscore:55
+#: cms/templates/js/certificate-editor.underscore:38
+msgid ""
+"It is strongly recommended that you include four or fewer signatories. If"
+" you include additional signatories, preview the certificate in Print "
+"View to ensure the certificate will print correctly on one page."
+msgstr ""
+
+#: cms/templates/js/certificate-details.underscore:64
+#: cms/templates/js/content-group-details.underscore:27
+#: cms/templates/js/course_info_handouts.underscore:1
+#: cms/templates/js/course_info_update.underscore:26
+#: cms/templates/js/group-configuration-details.underscore:45
+#: cms/templates/js/show-textbook.underscore:40
+#: cms/templates/js/signatory-details.underscore:5
+#: cms/templates/js/xblock-string-field-editor.underscore:3
+#: common/static/common/templates/discussion/forum-action-edit.underscore:3
+msgid "Edit"
+msgstr ""
+
+#: cms/templates/js/certificate-details.underscore:66
+#: cms/templates/js/certificate-details.underscore:67
+#: cms/templates/js/certificate-editor.underscore:50
+#: cms/templates/js/content-group-details.underscore:30
+#: cms/templates/js/content-group-details.underscore:31
+#: cms/templates/js/content-group-details.underscore:35
+#: cms/templates/js/content-group-editor.underscore:36
+#: cms/templates/js/content-group-editor.underscore:37
+#: cms/templates/js/content-group-editor.underscore:41
+#: cms/templates/js/course-instructor-details.underscore:41
+#: cms/templates/js/course-outline.underscore:125
+#: cms/templates/js/course-outline.underscore:127
+#: cms/templates/js/course-settings-learning-fields.underscore:4
+#: cms/templates/js/course_grade_policy.underscore:33
+#: cms/templates/js/course_info_update.underscore:27
+#: cms/templates/js/group-configuration-details.underscore:49
+#: cms/templates/js/group-configuration-details.underscore:53
+#: cms/templates/js/group-configuration-editor.underscore:50
+#: cms/templates/js/group-configuration-editor.underscore:54
+#: cms/templates/js/show-textbook.underscore:43
+#: cms/templates/js/signatory-editor.underscore:5
+#: cms/templates/js/xblock-outline.underscore:31
+#: cms/templates/js/xblock-outline.underscore:33
+#: common/static/common/templates/discussion/forum-action-delete.underscore:3
+msgid "Delete"
+msgstr ""
+
+#: cms/templates/js/certificate-editor.underscore:11
+msgid "Certificate Information"
+msgstr ""
+
+#: cms/templates/js/certificate-editor.underscore:13
+msgid "Certificate Name"
+msgstr ""
+
+#: cms/templates/js/certificate-editor.underscore:14
+#: cms/templates/js/certificate-editor.underscore:15
+msgid "Name of the certificate"
+msgstr ""
+
+#: cms/templates/js/certificate-editor.underscore:18
+#: cms/templates/js/group-configuration-editor.underscore:23
+#: lms/templates/commerce/receipt.underscore:23
+#: lms/templates/verify_student/payment_confirmation_step.underscore:26
+#: lms/templates_sav/commerce/receipt.underscore:23
+#: lms/templates_sav/verify_student/payment_confirmation_step.underscore:26
+msgid "Description"
+msgstr ""
+
+#: cms/templates/js/certificate-editor.underscore:19
+#: cms/templates/js/certificate-editor.underscore:20
+msgid "Description of the certificate"
+msgstr ""
+
+#: cms/templates/js/certificate-editor.underscore:31
+msgid "Course title"
+msgstr ""
+
+#: cms/templates/js/certificate-editor.underscore:32
+msgid ""
+"Specify an alternative to the official course title to display on "
+"certificates. Leave blank to use the official course title."
+msgstr ""
+
+#: cms/templates/js/certificate-editor.underscore:41
+msgid "Add Additional Signatory"
+msgstr ""
+
+#: cms/templates/js/certificate-editor.underscore:42
+msgid "(Add signatories for a certificate)"
+msgstr ""
+
+#: cms/templates/js/certificate-editor.underscore:46
+#: cms/templates/js/content-group-editor.underscore:31
+#: cms/templates/js/group-configuration-editor.underscore:45
+#: cms/templates/js/programs/program_creator_form.underscore:63
+msgid "Create"
+msgstr ""
+
+#: cms/templates/js/certificate-editor.underscore:46
+#: cms/templates/js/content-group-editor.underscore:31
+#: cms/templates/js/course_info_handouts.underscore:19
+#: cms/templates/js/edit-textbook.underscore:25
+#: cms/templates/js/group-configuration-editor.underscore:45
+#: cms/templates/js/section-name-edit.underscore:3
+#: cms/templates/js/signatory-actions.underscore:3
+#: cms/templates/js/xblock-string-field-editor.underscore:13
+#: lms/templates/instructor/instructor_dashboard_2/cohort-discussions-course-wide.underscore:16
+#: lms/templates/instructor/instructor_dashboard_2/cohort-discussions-inline.underscore:35
+#: lms/templates/instructor/instructor_dashboard_2/cohort-form.underscore:147
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-discussions-course-wide.underscore:16
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-discussions-inline.underscore:35
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-form.underscore:147
+msgid "Save"
+msgstr ""
+
+#: cms/templates/js/certificate-web-preview.underscore:1
+msgid "Choose mode"
+msgstr ""
+
+#: cms/templates/js/certificate-web-preview.underscore:8
+msgid "Preview Certificate"
+msgstr ""
+
+#: cms/templates/js/certificate-web-preview.underscore:13
+msgid "Activate"
+msgstr ""
+
+#: cms/templates/js/certificate-web-preview.underscore:15
+msgid "Deactivate"
+msgstr ""
+
+#: cms/templates/js/container-message.underscore:5
+msgid ""
+"Caution: The last published version of this unit is live. By publishing "
+"changes you will change the student experience."
+msgstr ""
+
+#: cms/templates/js/content-group-details.underscore:34
+#: cms/templates/js/content-group-editor.underscore:40
+msgid "Cannot delete when in use by a unit"
+msgstr ""
+
+#: cms/templates/js/content-group-details.underscore:44
+msgid "This content group is used in:"
+msgstr ""
+
+#: cms/templates/js/content-group-details.underscore:55
+msgid ""
+"This content group is not in use. Add a content group to any unit from "
+"the {linkStart}Course Outline{linkEnd}."
+msgstr ""
+
+#: cms/templates/js/content-group-details.underscore:59
+#: cms/templates/js/group-configuration-details.underscore:88
+msgid "Course Outline"
+msgstr ""
+
+#: cms/templates/js/content-group-editor.underscore:10
+msgid "Content Group Name"
+msgstr ""
+
+#: cms/templates/js/content-group-editor.underscore:13
+msgid "Content Group ID"
+msgstr ""
+
+#: cms/templates/js/content-group-editor.underscore:18
+msgid "This is the name of the group"
+msgstr ""
+
+#: cms/templates/js/content-group-editor.underscore:25
+msgid "This content group is used in one or more units."
+msgstr ""
+
+#: cms/templates/js/content-visibility-editor.underscore:2
+msgid "Subsection Visibility"
+msgstr ""
+
+#: cms/templates/js/content-visibility-editor.underscore:8
+msgid "Show entire subsection"
+msgstr ""
+
+#: cms/templates/js/content-visibility-editor.underscore:10
+msgid "Learners see the published subsection and can access its content."
+msgstr ""
+
+#: cms/templates/js/content-visibility-editor.underscore:15
+msgid "Hide content after due date"
+msgstr ""
+
+#: cms/templates/js/content-visibility-editor.underscore:17
+msgid ""
+"After the subsection\\'s due date has passed, learners can no longer "
+"access its content. The subsection remains included in grade "
+"calculations."
+msgstr ""
+
+#: cms/templates/js/content-visibility-editor.underscore:22
+msgid "Hide entire subsection"
+msgstr ""
+
+#: cms/templates/js/content-visibility-editor.underscore:25
+msgid ""
+"Learners do not see the subsection in the course outline. The subsection "
+"is not included in grade calculations."
+msgstr ""
+
+#: cms/templates/js/content-visibility-editor.underscore:32
+#, python-format
+msgid ""
+"If you select an option other than \"%(hide_label)s\", after the "
+"subsection release date has passed, published units in this subsection "
+"will become available to learners unless units are explicitly hidden."
+msgstr ""
+
+#: cms/templates/js/course-instructor-details.underscore:4
+msgid "Instructor Name"
+msgstr ""
+
+#: cms/templates/js/course-instructor-details.underscore:5
+msgid "Please add the instructor's name"
+msgstr ""
+
+#: cms/templates/js/course-instructor-details.underscore:9
+#: cms/templates/js/signatory-details.underscore:17
+#: common/static/common/templates/discussion/new-post.underscore:34
+#: common/static/common/templates/discussion/thread-edit.underscore:6
+msgid "Title"
+msgstr ""
+
+#: cms/templates/js/course-instructor-details.underscore:10
+msgid "Instructor Title"
+msgstr ""
+
+#: cms/templates/js/course-instructor-details.underscore:11
+msgid "Please add the instructor's title"
+msgstr ""
+
+#: cms/templates/js/course-instructor-details.underscore:15
+#: cms/templates/js/signatory-details.underscore:21
+#: cms/templates/js/programs/program_creator_form.underscore:17
+msgid "Organization"
+msgstr ""
+
+#: cms/templates/js/course-instructor-details.underscore:16
+msgid "Organization Name"
+msgstr ""
+
+#: cms/templates/js/course-instructor-details.underscore:17
+msgid "Please add the institute where the instructor is associated"
+msgstr ""
+
+#: cms/templates/js/course-instructor-details.underscore:21
+msgid "Biography"
+msgstr ""
+
+#: cms/templates/js/course-instructor-details.underscore:22
+msgid "Instructor Biography"
+msgstr ""
+
+#: cms/templates/js/course-instructor-details.underscore:23
+msgid "Please add the instructor's biography"
+msgstr ""
+
+#: cms/templates/js/course-instructor-details.underscore:27
+msgid "Photo"
+msgstr ""
+
+#: cms/templates/js/course-instructor-details.underscore:29
+msgid "Instructor Photo"
+msgstr ""
+
+#: cms/templates/js/course-instructor-details.underscore:33
+msgid "Instructor Photo URL"
+msgstr ""
+
+#: cms/templates/js/course-instructor-details.underscore:34
+msgid ""
+"Please add a photo of the instructor (Note: only JPEG or PNG format "
+"supported)"
+msgstr ""
+
+#: cms/templates/js/course-instructor-details.underscore:36
+msgid "Upload Photo"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:19
+#, python-format
+msgid "Prerequisite: %(prereq_display_name)s"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:26
+msgid "Contains staff only content"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:31
+msgid "Unpublished changes to live content"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:33
+msgid "Unpublished units will not be released"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:35
+msgid "Unpublished changes to content that will release in the future"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:51
+msgid "Ungraded"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:60
+msgid "Practice proctored Exam"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:62
+msgid "Proctored Exam"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:66
+msgid "Timed Exam"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:79
+#: cms/templates/js/xblock-outline.underscore:11
+#, python-format
+msgid "Collapse/Expand this %(xblock_type)s"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:91
+msgid "Display Name"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:101
+#: cms/templates/js/course-outline.underscore:103
+#: cms/templates/js/publish-xblock.underscore:113
+#: cms/templates/js/programs/program_details.underscore:47
+msgid "Publish"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:109
+#: cms/templates/js/course-outline.underscore:111
+msgid "Configure"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:117
+#: cms/templates/js/course-outline.underscore:119
+msgid "Duplicate"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:133
+#: cms/templates/js/course-outline.underscore:135
+msgid "Drag to reorder"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:153
+msgid "Release Status:"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:158
+#: cms/templates/js/publish-xblock.underscore:15
+#: cms/templates/js/xblock-outline.underscore:43
+msgid "Released:"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:161
+#: cms/templates/js/publish-xblock.underscore:17
+msgid "Scheduled:"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:164
+#: cms/templates/js/publish-xblock.underscore:58
+#: lms/templates/ccx/schedule.underscore:93
+#: lms/templates/ccx/schedule.underscore:103
+#: lms/templates_sav/ccx/schedule.underscore:93
+#: lms/templates_sav/ccx/schedule.underscore:103
+msgid "Unscheduled"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:177
+#: cms/templates/js/course-outline.underscore:191
+msgid "Graded as:"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:184
+#: cms/templates/js/course-outline.underscore:195
+msgid "Due:"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:204
+msgid "Subsection is hidden after due date"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:221
+#: cms/templates/js/xblock-outline.underscore:57
+msgid "You haven't added any content to this course yet."
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore:225
+#: cms/templates/js/course-outline.underscore:246
+#: cms/templates/js/xblock-outline.underscore:61
+#: cms/templates/js/xblock-outline.underscore:77
+#, python-format
+msgid "Click to add a new %(xblock_type)s"
+msgstr ""
+
+#: cms/templates/js/course-settings-learning-fields.underscore:2
+msgid "Learning Outcome"
+msgstr ""
+
+#: cms/templates/js/course-settings-learning-fields.underscore:3
+msgid "Add a learning outcome here"
+msgstr ""
+
+#: cms/templates/js/course_grade_policy.underscore:3
+msgid "Assignment Type Name"
+msgstr ""
+
+#: cms/templates/js/course_grade_policy.underscore:5
+msgid ""
+"The general category for this type of assignment, for example, Homework "
+"or Midterm Exam. This name is visible to learners."
+msgstr ""
+
+#: cms/templates/js/course_grade_policy.underscore:9
+msgid "Abbreviation"
+msgstr ""
+
+#: cms/templates/js/course_grade_policy.underscore:11
+msgid ""
+"This short name for the assignment type (for example, HW or Midterm) "
+"appears next to assignments on a learner's Progress page."
+msgstr ""
+
+#: cms/templates/js/course_grade_policy.underscore:15
+msgid "Weight of Total Grade"
+msgstr ""
+
+#: cms/templates/js/course_grade_policy.underscore:17
+msgid ""
+"The weight of all assignments of this type as a percentage of the total "
+"grade, for example, 40. Do not include the percent symbol."
+msgstr ""
+
+#: cms/templates/js/course_grade_policy.underscore:21
+msgid "Total Number"
+msgstr ""
+
+#: cms/templates/js/course_grade_policy.underscore:23
+msgid ""
+"The number of subsections in the course that contain problems of this "
+"assignment type."
+msgstr ""
+
+#: cms/templates/js/course_grade_policy.underscore:27
+msgid "Number of Droppable"
+msgstr ""
+
+#: cms/templates/js/course_grade_policy.underscore:29
+msgid ""
+"The number of assignments of this type that will be dropped. The lowest "
+"scoring assignments are dropped first."
+msgstr ""
+
+#: cms/templates/js/course_info_handouts.underscore:3
+msgid "Course Handouts"
+msgstr ""
+
+#: cms/templates/js/course_info_handouts.underscore:9
+msgid "You have no handouts defined"
+msgstr ""
+
+#: cms/templates/js/course_info_handouts.underscore:13
+msgid ""
+"There is invalid code in your content. Please check to make sure it is "
+"valid HTML."
+msgstr ""
+
+#: cms/templates/js/course_info_update.underscore:5
+#: lms/templates/commerce/receipt.underscore:24
+#: lms/templates/verify_student/payment_confirmation_step.underscore:27
+#: lms/templates_sav/commerce/receipt.underscore:24
+#: lms/templates_sav/verify_student/payment_confirmation_step.underscore:27
+msgid "Date"
+msgstr ""
+
+#: cms/templates/js/course_info_update.underscore:14
+msgid "Send push notification to mobile apps"
+msgstr ""
+
+#: cms/templates/js/course_info_update.underscore:15
+msgid "Send notification to mobile apps"
+msgstr ""
+
+#: cms/templates/js/course_info_update.underscore:20
+msgid "Post"
+msgstr ""
+
+#: cms/templates/js/due-date-editor.underscore:3
+msgid "Due Date:"
+msgstr ""
+
+#: cms/templates/js/due-date-editor.underscore:9
+msgid "Due Time in UTC:"
+msgstr ""
+
+#: cms/templates/js/due-date-editor.underscore:17
+#: cms/templates/js/due-date-editor.underscore:19
+msgid "Clear Grading Due Date"
+msgstr ""
+
+#: cms/templates/js/edit-chapter.underscore:3
+msgid "Chapter Name"
+msgstr ""
+
+#: cms/templates/js/edit-chapter.underscore:4
+msgid "Chapter {order}"
+msgstr ""
+
+#: cms/templates/js/edit-chapter.underscore:5
+msgid "provide the title/name of the chapter that will be used in navigating"
+msgstr ""
+
+#: cms/templates/js/edit-chapter.underscore:9
+msgid "Chapter Asset"
+msgstr ""
+
+#: cms/templates/js/edit-chapter.underscore:10
+msgid "path/to/introductionToCookieBaking-CH{order}.pdf"
+msgstr ""
+
+#: cms/templates/js/edit-chapter.underscore:11
+msgid "upload a PDF file or provide the path to a Studio asset file"
+msgstr ""
+
+#: cms/templates/js/edit-chapter.underscore:12
+msgid "Upload PDF"
+msgstr ""
+
+#: cms/templates/js/edit-chapter.underscore:14
+msgid "delete chapter"
+msgstr ""
+
+#: cms/templates/js/edit-textbook.underscore:10
+msgid "Textbook information"
+msgstr ""
+
+#: cms/templates/js/edit-textbook.underscore:12
+msgid "Textbook Name"
+msgstr ""
+
+#: cms/templates/js/edit-textbook.underscore:13
+msgid "Introduction to Cookie Baking"
+msgstr ""
+
+#: cms/templates/js/edit-textbook.underscore:14
+msgid ""
+"provide the title/name of the text book as you would like your students "
+"to see it"
+msgstr ""
+
+#: cms/templates/js/edit-textbook.underscore:18
+msgid "Chapter information"
+msgstr ""
+
+#: cms/templates/js/edit-textbook.underscore:21
+msgid "Add a Chapter"
+msgstr ""
+
+#: cms/templates/js/grading-editor.underscore:1
+msgid "Grading"
+msgstr ""
+
+#: cms/templates/js/grading-editor.underscore:5
+msgid "Grade as:"
+msgstr ""
+
+#: cms/templates/js/grading-editor.underscore:7
+msgid "Not Graded"
+msgstr ""
+
+#: cms/templates/js/group-configuration-details.underscore:52
+#: cms/templates/js/group-configuration-editor.underscore:53
+msgid "Cannot delete when in use by an experiment"
+msgstr ""
+
+#: cms/templates/js/group-configuration-details.underscore:61
+msgid "This Group Configuration is used in:"
+msgstr ""
+
+#: cms/templates/js/group-configuration-details.underscore:84
+msgid ""
+"This Group Configuration is not in use. Start by adding a content "
+"experiment to any Unit via the {linkStart}Course Outline{linkEnd}."
+msgstr ""
+
+#: cms/templates/js/group-configuration-editor.underscore:9
+msgid "Group Configuration information"
+msgstr ""
+
+#: cms/templates/js/group-configuration-editor.underscore:11
+msgid "Group Configuration Name"
+msgstr ""
+
+#: cms/templates/js/group-configuration-editor.underscore:14
+msgid "Group Configuration ID"
+msgstr ""
+
+#: cms/templates/js/group-configuration-editor.underscore:19
+msgid "This is the Name of the Group Configuration"
+msgstr ""
+
+#: cms/templates/js/group-configuration-editor.underscore:20
+msgid "Name or short description of the configuration"
+msgstr ""
+
+#: cms/templates/js/group-configuration-editor.underscore:24
+msgid "This is the Description of the Group Configuration"
+msgstr ""
+
+#: cms/templates/js/group-configuration-editor.underscore:25
+msgid "Optional long description"
+msgstr ""
+
+#: cms/templates/js/group-configuration-editor.underscore:29
+msgid "Group information"
+msgstr ""
+
+#: cms/templates/js/group-configuration-editor.underscore:30
+msgid "Groups"
+msgstr ""
+
+#: cms/templates/js/group-configuration-editor.underscore:31
+msgid ""
+"Name of the groups that students will be assigned to, for example, "
+"Control, Video, Problems. You must have two or more groups."
+msgstr ""
+
+#: cms/templates/js/group-configuration-editor.underscore:33
+msgid "Add another group"
+msgstr ""
+
+#: cms/templates/js/group-configuration-editor.underscore:39
+msgid ""
+"This configuration is currently used in content experiments. If you make "
+"changes to the groups, you may need to edit those experiments."
+msgstr ""
+
+#: cms/templates/js/group-edit.underscore:4
+msgid "delete group"
+msgstr ""
+
+#: cms/templates/js/license-selector.underscore:3
+msgid "License Type"
+msgstr ""
+
+#: cms/templates/js/license-selector.underscore:18
+msgid "Learn more about {license_name}"
+msgstr ""
+
+#: cms/templates/js/license-selector.underscore:34
+msgid "Options for {license_name}"
+msgstr ""
+
+#: cms/templates/js/license-selector.underscore:37
+msgid "The following options are available for the {license_name} license."
+msgstr ""
+
+#: cms/templates/js/license-selector.underscore:74
+msgid "License Display"
+msgstr ""
+
+#: cms/templates/js/license-selector.underscore:77
+msgid ""
+"The following message will be displayed at the bottom of the courseware "
+"pages within your course:"
+msgstr ""
+
+#: cms/templates/js/license-selector.underscore:82
+#: cms/templates/js/license-selector.underscore:110
+msgid "All Rights Reserved"
+msgstr ""
+
+#: cms/templates/js/license-selector.underscore:101
+msgid "Creative Commons licensed content, with terms as follow:"
+msgstr ""
+
+#: cms/templates/js/license-selector.underscore:105
+msgid "Some Rights Reserved"
+msgstr ""
+
+#: cms/templates/js/list.underscore:7
+#, python-format
+msgid "%(new_item_message)s"
+msgstr ""
+
+#: cms/templates/js/list.underscore:17
+#, python-format
+msgid "New %(item_type)s"
+msgstr ""
+
+#: cms/templates/js/metadata-dict-entry.underscore:6
+#: cms/templates/js/metadata-list-entry.underscore:9
+#: cms/templates/js/video/metadata-translations-entry.underscore:6
+msgid "Add"
+msgstr ""
+
+#: cms/templates/js/metadata-dict-entry.underscore:9
+#: cms/templates/js/metadata-file-uploader-entry.underscore:5
+#: cms/templates/js/metadata-list-entry.underscore:12
+#: cms/templates/js/metadata-number-entry.underscore:4
+#: cms/templates/js/metadata-option-entry.underscore:12
+#: cms/templates/js/metadata-string-entry.underscore:4
+#: cms/templates/js/video/metadata-translations-entry.underscore:9
+msgid "Clear"
+msgstr ""
+
+#: cms/templates/js/metadata-dict-entry.underscore:11
+#: cms/templates/js/metadata-file-uploader-entry.underscore:6
+#: cms/templates/js/metadata-list-entry.underscore:14
+#: cms/templates/js/metadata-number-entry.underscore:5
+#: cms/templates/js/metadata-option-entry.underscore:13
+#: cms/templates/js/metadata-string-entry.underscore:5
+#: cms/templates/js/video/metadata-translations-entry.underscore:11
+msgid "Clear Value"
+msgstr ""
+
+#: cms/templates/js/metadata-editor.underscore:8
+msgid "Component Location ID"
+msgstr ""
+
+#: cms/templates/js/metadata-file-uploader-item.underscore:1
+#: cms/templates/js/video/metadata-translations-item.underscore:5
+msgid "Replace"
+msgstr ""
+
+#: cms/templates/js/metadata-file-uploader-item.underscore:1
+#: cms/templates/js/video/metadata-translations-item.underscore:5
+msgid "Upload"
+msgstr ""
+
+#: cms/templates/js/metadata-file-uploader-item.underscore:2
+#: cms/templates/js/video/metadata-translations-item.underscore:8
+msgid "Download"
+msgstr ""
+
+#: cms/templates/js/no-textbooks.underscore:2
+msgid "You haven't added any textbooks to this course yet."
+msgstr ""
+
+#: cms/templates/js/no-textbooks.underscore:2
+msgid "Add your first textbook"
+msgstr ""
+
+#: cms/templates/js/paging-header.underscore:7
+#: common/static/common/templates/components/paging-footer.underscore:2
+#: common/static/common/templates/discussion/pagination.underscore:4
+msgid "Previous"
+msgstr ""
+
+#: cms/templates/js/paging-header.underscore:8
+#: common/static/common/templates/components/paging-footer.underscore:19
+#: common/static/common/templates/discussion/pagination.underscore:28
+msgid "Next"
+msgstr ""
+
+#: cms/templates/js/previous-video-upload-list.underscore:2
+msgid "Previous Uploads"
+msgstr ""
+
+#: cms/templates/js/previous-video-upload-list.underscore:5
+msgid "Download available encodings (.csv)"
+msgstr ""
+
+#: cms/templates/js/previous-video-upload-list.underscore:12
+msgid "Duration"
+msgstr ""
+
+#: cms/templates/js/previous-video-upload-list.underscore:14
+msgid "Video ID"
+msgstr ""
+
+#: cms/templates/js/previous-video-upload-list.underscore:15
+#: lms/djangoapps/support/static/support/templates/certificates_results.underscore:8
+msgid "Status"
+msgstr ""
+
+#: cms/templates/js/previous-video-upload-list.underscore:16
+#: lms/templates/instructor/instructor_dashboard_2/certificate-invalidation.underscore:32
+#: lms/templates/instructor/instructor_dashboard_2/certificate-white-list.underscore:25
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-invalidation.underscore:32
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-white-list.underscore:25
+msgid "Action"
+msgstr ""
+
+#: cms/templates/js/previous-video-upload.underscore:9
+msgid "Remove this video"
+msgstr ""
+
+#: cms/templates/js/previous-video-upload.underscore:11
+msgid "Remove {video_name} video"
+msgstr ""
+
+#: cms/templates/js/publish-history.underscore:2
+msgid "Never published"
+msgstr ""
+
+#: cms/templates/js/publish-history.underscore:4
+#: cms/templates/js/publish-xblock.underscore:35
+#, python-format
+msgid "Last published %(last_published_date)s by %(publish_username)s"
+msgstr ""
+
+#: cms/templates/js/publish-history.underscore:10
+#: cms/templates/js/publish-xblock.underscore:40
+msgid "Previously published"
+msgstr ""
+
+#: cms/templates/js/publish-xblock.underscore:2
+msgid "Draft (Never published)"
+msgstr ""
+
+#: cms/templates/js/publish-xblock.underscore:4
+msgid "Visible to Staff Only"
+msgstr ""
+
+#: cms/templates/js/publish-xblock.underscore:6
+msgid "Published and Live"
+msgstr ""
+
+#: cms/templates/js/publish-xblock.underscore:8
+msgid "Published (not yet released)"
+msgstr ""
+
+#: cms/templates/js/publish-xblock.underscore:10
+msgid "Draft (Unpublished changes)"
+msgstr ""
+
+#: cms/templates/js/publish-xblock.underscore:13
+msgid "Release:"
+msgstr ""
+
+#: cms/templates/js/publish-xblock.underscore:23
+msgid "Publishing Status"
+msgstr ""
+
+#: cms/templates/js/publish-xblock.underscore:30
+#, python-format
+msgid "Draft saved on %(last_saved_date)s by %(edit_username)s"
+msgstr ""
+
+#: cms/templates/js/publish-xblock.underscore:53
+#, python-format
+msgid "with %(release_date_from)s"
+msgstr ""
+
+#: cms/templates/js/publish-xblock.underscore:67
+msgid "Is Visible To:"
+msgstr ""
+
+#: cms/templates/js/publish-xblock.underscore:69
+msgid "Will Be Visible To:"
+msgstr ""
+
+#: cms/templates/js/publish-xblock.underscore:74
+msgid "Staff Only"
+msgstr ""
+
+#: cms/templates/js/publish-xblock.underscore:78
+#, python-format
+msgid "with %(section_or_subsection)s"
+msgstr ""
+
+#: cms/templates/js/publish-xblock.underscore:84
+msgid "Staff and Learners"
+msgstr ""
+
+#: cms/templates/js/publish-xblock.underscore:89
+msgid "Some content in this unit is visible only to particular content groups"
+msgstr ""
+
+#: cms/templates/js/publish-xblock.underscore:100
+#: cms/templates/js/staff-lock-editor.underscore:16
+msgid "Hide from learners"
+msgstr ""
+
+#: cms/templates/js/publish-xblock.underscore:105
+msgid "Note: Do not hide graded assignments after they have been released."
+msgstr ""
+
+#: cms/templates/js/publish-xblock.underscore:118
+msgid "Discard Changes"
+msgstr ""
+
+#: cms/templates/js/release-date-editor.underscore:1
+msgid "Release Date and Time"
+msgstr ""
+
+#: cms/templates/js/release-date-editor.underscore:5
+msgid "Release Date:"
+msgstr ""
+
+#: cms/templates/js/release-date-editor.underscore:11
+msgid "Release Time in UTC:"
+msgstr ""
+
+#: cms/templates/js/release-date-editor.underscore:21
+#: cms/templates/js/release-date-editor.underscore:23
+msgid "Clear Release Date/Time"
+msgstr ""
+
+#: cms/templates/js/show-textbook.underscore:37
+msgid "View Live"
+msgstr ""
+
+#: cms/templates/js/signatory-details.underscore:9
+#: cms/templates/js/signatory-editor.underscore:8
+msgid "Signatory"
+msgstr ""
+
+#: cms/templates/js/signatory-details.underscore:28
+#: cms/templates/js/signatory-editor.underscore:37
+msgid "Signature Image"
+msgstr ""
+
+#: cms/templates/js/signatory-editor.underscore:11
+msgid "Certificate Signatory Configuration"
+msgstr ""
+
+#: cms/templates/js/signatory-editor.underscore:13
+msgid "Name "
+msgstr ""
+
+#: cms/templates/js/signatory-editor.underscore:14
+msgid "Name of the signatory"
+msgstr ""
+
+#: cms/templates/js/signatory-editor.underscore:15
+msgid "The name of this signatory as it should appear on certificates."
+msgstr ""
+
+#: cms/templates/js/signatory-editor.underscore:21
+msgid "Title "
+msgstr ""
+
+#: cms/templates/js/signatory-editor.underscore:22
+msgid "Title of the signatory"
+msgstr ""
+
+#: cms/templates/js/signatory-editor.underscore:23
+msgid ""
+"Titles more than 100 characters may prevent students from printing their "
+"certificate on a single page."
+msgstr ""
+
+#: cms/templates/js/signatory-editor.underscore:29
+msgid "Organization "
+msgstr ""
+
+#: cms/templates/js/signatory-editor.underscore:30
+msgid "Organization of the signatory"
+msgstr ""
+
+#: cms/templates/js/signatory-editor.underscore:31
+msgid ""
+"The organization that this signatory belongs to, as it should appear on "
+"certificates."
+msgstr ""
+
+#: cms/templates/js/signatory-editor.underscore:43
+msgid "Path to Signature Image"
+msgstr ""
+
+#: cms/templates/js/signatory-editor.underscore:44
+msgid "Image must be in PNG format"
+msgstr ""
+
+#: cms/templates/js/signatory-editor.underscore:46
+msgid "Upload Signature Image"
+msgstr ""
+
+#: cms/templates/js/staff-lock-editor.underscore:4
+msgid "Unit Visibility"
+msgstr ""
+
+#: cms/templates/js/staff-lock-editor.underscore:6
+msgid "Section Visibility"
+msgstr ""
+
+#: cms/templates/js/staff-lock-editor.underscore:22
+msgid ""
+"If the unit was previously published and released to learners, any "
+"changes you made to the unit when it was hidden will now be visible to "
+"learners."
+msgstr ""
+
+#: cms/templates/js/staff-lock-editor.underscore:24
+#, python-format
+msgid ""
+"If you make this %(xblockType)s visible to learners, learners will be "
+"able to see its content after the release date has passed and you have "
+"published the unit. Only units that are explicitly hidden from learners "
+"will remain hidden after you clear this option for the %(xblockType)s."
+msgstr ""
+
+#: cms/templates/js/team-member.underscore:4
+msgid "Current Role:"
+msgstr ""
+
+#: cms/templates/js/team-member.underscore:8
+msgid "You!"
+msgstr ""
+
+#: cms/templates/js/team-member.underscore:19
+msgid "send an email message to {email}"
+msgstr ""
+
+#: cms/templates/js/team-member.underscore:32
+msgid "Promote another member to Admin to remove your admin rights"
+msgstr ""
+
+#: cms/templates/js/team-member.underscore:35
+msgid "Add {role} Access"
+msgstr ""
+
+#: cms/templates/js/team-member.underscore:35
+msgid "Remove {role} Access"
+msgstr ""
+
+#: cms/templates/js/team-member.underscore:44
+msgid "Delete the user, {username}"
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:2
+msgid "Set as a Special Exam"
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:4
+msgid "Exam Types"
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:8
+msgid "None"
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:15
+msgid "Timed"
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:17
+msgid ""
+"Use a timed exam to limit the time learners can spend on problems in this"
+" subsection. Learners must submit answers before the time expires. You "
+"can allow additional time for individual learners through the Instructor "
+"Dashboard."
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:24
+msgid "Proctored"
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:26
+msgid ""
+"Proctored exams are timed and they record video of each learner taking "
+"the exam. The videos are then reviewed to ensure that learners follow all"
+" examination rules."
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:32
+msgid "Practice Proctored"
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:34
+msgid ""
+"Use a practice proctored exam to introduce learners to the proctoring "
+"tools and processes. Results of a practice exam do not affect a learner's"
+" grade."
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:41
+msgid "Time Allotted (HH:MM):"
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:45
+msgid ""
+"Select a time allotment for the exam. If it is over 24 hours, type in the"
+" amount of time. You can grant individual learners extra time to complete"
+" the exam through the Instructor Dashboard."
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:49
+msgid "Review Rules"
+msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore:53
+msgid ""
+"Specify any additional rules or rule exceptions that the proctoring "
+"review team should enforce when reviewing the videos. For example, you "
+"could specify that calculators are allowed."
+msgstr ""
+
+#: cms/templates/js/upload-dialog.underscore:25
+msgid "File upload succeeded"
+msgstr ""
+
+#: cms/templates/js/validation-error-modal.underscore:16
+msgid ""
+"Please check the following validation feedbacks and reflect them in your "
+"course settings:"
+msgstr ""
+
+#: cms/templates/js/verification-access-editor.underscore:3
+msgid "Verification Checkpoint"
+msgstr ""
+
+#: cms/templates/js/verification-access-editor.underscore:19
+msgid "Must complete verification checkpoint"
+msgstr ""
+
+#: cms/templates/js/verification-access-editor.underscore:23
+msgid "Verification checkpoint to be completed"
+msgstr ""
+
+#: cms/templates/js/verification-access-editor.underscore:38
+msgid ""
+"Learners who require verification must pass the selected checkpoint to "
+"see the content in this unit. Learners who do not require verification "
+"see this content by default."
+msgstr ""
+
+#: cms/templates/js/xblock-string-field-editor.underscore:2
+#: cms/templates/js/xblock-string-field-editor.underscore:11
+msgid "Edit the name"
+msgstr ""
+
+#: cms/templates/js/xblock-string-field-editor.underscore:9
+#, python-format
+msgid "Edit %(display_name)s (required)"
+msgstr ""
+
+#: cms/templates/js/maintenance/force-published-course-response.underscore:3
+msgid ""
+"You have done a dry run of force publishing the course. Nothing has "
+"changed. Had you run it, the following course versions would have been "
+"change."
+msgstr ""
+
+#: cms/templates/js/maintenance/force-published-course-response.underscore:7
+msgid ""
+"The published branch version, {published}, was reset to the draft branch "
+"version, {draft}."
+msgstr ""
+
+#: cms/templates/js/programs/course_details.underscore:5
+msgid "Delete course"
+msgstr ""
+
+#: cms/templates/js/programs/course_details.underscore:8
+#, python-format
+msgid "Remove %(name)s from the program"
+msgstr ""
+
+#: cms/templates/js/programs/course_details.underscore:19
+msgid "Add another run"
+msgstr ""
+
+#: cms/templates/js/programs/course_details.underscore:26
+msgid "Course Code"
+msgstr ""
+
+#: cms/templates/js/programs/course_details.underscore:32
+msgid ""
+"The unique number that identifies your course within your organization, "
+"e.g. CS101."
+msgstr ""
+
+#: cms/templates/js/programs/course_details.underscore:42
+msgid ""
+"The title entered here will override the title set for the individual run"
+" of the course. It will be displayed on the XSeries progress page and in "
+"marketing presentations."
+msgstr ""
+
+#: cms/templates/js/programs/course_details.underscore:45
+msgid "Save Course"
+msgstr ""
+
+#: cms/templates/js/programs/course_run.underscore:4
+#, python-format
+msgid "Run %(key)s"
+msgstr ""
+
+#: cms/templates/js/programs/course_run.underscore:9
+msgid "Delete course run"
+msgstr ""
+
+#: cms/templates/js/programs/course_run.underscore:12
+#, python-format
+msgid "Remove run %(key)s from the program"
+msgstr ""
+
+#: cms/templates/js/programs/course_run.underscore:19
+#, python-format
+msgid "Start Date: %(date)s"
+msgstr ""
+
+#: cms/templates/js/programs/course_run.underscore:24
+#, python-format
+msgid "Mode: %(mode)s"
+msgstr ""
+
+#: cms/templates/js/programs/course_run.underscore:30
+msgid "Please select a Course Run"
+msgstr ""
+
+#: cms/templates/js/programs/program_creator_form.underscore:1
+msgid "Create a New Program"
+msgstr ""
+
+#: cms/templates/js/programs/program_creator_form.underscore:5
+msgid "Program type"
+msgstr ""
+
+#: cms/templates/js/programs/program_creator_form.underscore:7
+msgid "Select a type"
+msgstr ""
+
+#: cms/templates/js/programs/program_creator_form.underscore:8
+msgid "XSeries"
+msgstr ""
+
+#: cms/templates/js/programs/program_creator_form.underscore:9
+msgid "MicroMasters"
+msgstr ""
+
+#: cms/templates/js/programs/program_creator_form.underscore:19
+msgid "Select an organization"
+msgstr ""
+
+#: cms/templates/js/programs/program_creator_form.underscore:36
+msgid "The public display name of the program."
+msgstr ""
+
+#: cms/templates/js/programs/program_creator_form.underscore:41
+#: cms/templates/js/programs/program_details.underscore:19
+msgid "Subtitle"
+msgstr ""
+
+#: cms/templates/js/programs/program_creator_form.underscore:47
+msgid ""
+"A short description of the program, including concepts covered and "
+"expected outcomes (255 character limit)."
+msgstr ""
+
+#: cms/templates/js/programs/program_creator_form.underscore:52
+#: cms/templates/js/programs/program_details.underscore:32
+msgid "Marketing Slug"
+msgstr ""
+
+#: cms/templates/js/programs/program_creator_form.underscore:58
+msgid "Slug used to generate links to the marketing site."
+msgstr ""
+
+#: cms/templates/js/programs/program_details.underscore:8
+msgid "Edit the program title"
+msgstr ""
+
+#: cms/templates/js/programs/program_details.underscore:10
+msgid "Edit the program\\'s name."
+msgstr ""
+
+#: cms/templates/js/programs/program_details.underscore:21
+msgid "Edit the program subtitle"
+msgstr ""
+
+#: cms/templates/js/programs/program_details.underscore:23
+msgid "Edit the program\\'s subtitle."
+msgstr ""
+
+#: cms/templates/js/programs/program_details.underscore:34
+msgid "Edit the program marketing slug"
+msgstr ""
+
+#: cms/templates/js/programs/program_details.underscore:36
+msgid "Edit the program\\'s marketing slug."
+msgstr ""
+
+#: cms/templates/js/programs/program_details.underscore:58
+msgid "Add a course"
+msgstr ""
+
+#: cms/templates/js/video/metadata-translations-item.underscore:2
+#: lms/djangoapps/teams/static/teams/templates/edit-team-member.underscore:14
+msgid "Remove"
+msgstr ""
+
+#: cms/templates/js/video/transcripts/metadata-videolist-entry.underscore:8
+msgid "Add URLs for additional versions"
+msgstr ""
+
+#: cms/templates/js/video/transcripts/metadata-videolist-entry.underscore:11
+msgid ""
+"To be sure all students can access the video, we recommend providing both"
+" an .mp4 and a .webm version of your video. Click below to add a URL for "
+"another version. These URLs cannot be YouTube URLs. The first listed "
+"video that's compatible with the student's computer will play."
+msgstr ""
+
+#: cms/templates/js/video/transcripts/metadata-videolist-entry.underscore:25
+msgid "Default Timed Transcript"
+msgstr ""
+
+#: cms/templates/js/video/transcripts/messages/transcripts-choose.underscore:3
+#: cms/templates/js/video/transcripts/messages/transcripts-replace.underscore:3
+msgid "Timed Transcript Conflict"
+msgstr ""
+
+#: cms/templates/js/video/transcripts/messages/transcripts-choose.underscore:7
+msgid ""
+"The timed transcript for the first video file does not appear to be the "
+"same as the timed transcript for the second video file."
+msgstr ""
+
+#: cms/templates/js/video/transcripts/messages/transcripts-choose.underscore:9
+msgid "Which timed transcript would you like to use?"
+msgstr ""
+
+#: cms/templates/js/video/transcripts/messages/transcripts-choose.underscore:14
+#: cms/templates/js/video/transcripts/messages/transcripts-found.underscore:7
+#: cms/templates/js/video/transcripts/messages/transcripts-import.underscore:7
+#: cms/templates/js/video/transcripts/messages/transcripts-not-found.underscore:7
+#: cms/templates/js/video/transcripts/messages/transcripts-replace.underscore:14
+#: cms/templates/js/video/transcripts/messages/transcripts-uploaded.underscore:7
+#: cms/templates/js/video/transcripts/messages/transcripts-use-existing.underscore:13
+msgid "Error."
+msgstr ""
+
+#: cms/templates/js/video/transcripts/messages/transcripts-choose.underscore:22
+#, python-format
+msgid "Timed Transcript from %(filename)s"
+msgstr ""
+
+#: cms/templates/js/video/transcripts/messages/transcripts-found.underscore:1
+msgid "Timed Transcript Found"
+msgstr ""
+
+#: cms/templates/js/video/transcripts/messages/transcripts-found.underscore:3
+msgid ""
+"EdX has a timed transcript for this video. If you want to edit this "
+"transcript, you can download, edit, and re-upload the existing "
+"transcript. If you want to replace this transcript, upload a new .srt "
+"transcript file."
+msgstr ""
+
+#: cms/templates/js/video/transcripts/messages/transcripts-found.underscore:10
+#: cms/templates/js/video/transcripts/messages/transcripts-found.underscore:11
+#: cms/templates/js/video/transcripts/messages/transcripts-import.underscore:13
+#: cms/templates/js/video/transcripts/messages/transcripts-import.underscore:14
+#: cms/templates/js/video/transcripts/messages/transcripts-not-found.underscore:10
+#: cms/templates/js/video/transcripts/messages/transcripts-not-found.underscore:11
+#: cms/templates/js/video/transcripts/messages/transcripts-uploaded.underscore:10
+#: cms/templates/js/video/transcripts/messages/transcripts-uploaded.underscore:11
+#: cms/templates/js/video/transcripts/messages/transcripts-use-existing.underscore:32
+#: cms/templates/js/video/transcripts/messages/transcripts-use-existing.underscore:33
+#: cms/templates/js/video/transcripts/messages/transcripts-use-existing.underscore:36
+msgid "Upload New Transcript"
+msgstr ""
+
+#: cms/templates/js/video/transcripts/messages/transcripts-found.underscore:10
+#: cms/templates/js/video/transcripts/messages/transcripts-import.underscore:13
+msgid "Upload New .srt Transcript"
+msgstr ""
+
+#: cms/templates/js/video/transcripts/messages/transcripts-found.underscore:13
+#: cms/templates/js/video/transcripts/messages/transcripts-found.underscore:14
+#: cms/templates/js/video/transcripts/messages/transcripts-not-found.underscore:13
+#: cms/templates/js/video/transcripts/messages/transcripts-not-found.underscore:14
+#: cms/templates/js/video/transcripts/messages/transcripts-uploaded.underscore:13
+#: cms/templates/js/video/transcripts/messages/transcripts-uploaded.underscore:14
+msgid "Download Transcript for Editing"
+msgstr ""
+
+#: cms/templates/js/video/transcripts/messages/transcripts-import.underscore:1
+msgid "No EdX Timed Transcript"
+msgstr ""
+
+#: cms/templates/js/video/transcripts/messages/transcripts-import.underscore:3
+msgid ""
+"EdX doesn't have a timed transcript for this video in Studio, but we "
+"found a transcript on YouTube. You can import the YouTube transcript or "
+"upload your own .srt transcript file."
+msgstr ""
+
+#: cms/templates/js/video/transcripts/messages/transcripts-import.underscore:10
+#: cms/templates/js/video/transcripts/messages/transcripts-import.underscore:11
+msgid "Import YouTube Transcript"
+msgstr ""
+
+#: cms/templates/js/video/transcripts/messages/transcripts-not-found.underscore:1
+msgid "No Timed Transcript"
+msgstr ""
+
+#: cms/templates/js/video/transcripts/messages/transcripts-not-found.underscore:3
+msgid ""
+"EdX doesn\\'t have a timed transcript for this video. Please upload an "
+".srt file."
+msgstr ""
+
+#: cms/templates/js/video/transcripts/messages/transcripts-replace.underscore:7
+msgid ""
+"The timed transcript for this video on edX is out of date, but YouTube "
+"has a current timed transcript for this video."
+msgstr ""
+
+#: cms/templates/js/video/transcripts/messages/transcripts-replace.underscore:9
+msgid "Do you want to replace the edX transcript with the YouTube transcript?"
+msgstr ""
+
+#: cms/templates/js/video/transcripts/messages/transcripts-replace.underscore:22
+#: cms/templates/js/video/transcripts/messages/transcripts-replace.underscore:23
+#: cms/templates/js/video/transcripts/messages/transcripts-replace.underscore:26
+msgid "Yes, replace the edX transcript with the YouTube transcript"
+msgstr ""
+
+#: cms/templates/js/video/transcripts/messages/transcripts-uploaded.underscore:1
+msgid "Timed Transcript Uploaded Successfully"
+msgstr ""
+
+#: cms/templates/js/video/transcripts/messages/transcripts-uploaded.underscore:3
+msgid ""
+"EdX has a timed transcript for this video. If you want to replace this "
+"transcript, upload a new .srt transcript file. If you want to edit this "
+"transcript, you can download, edit, and re-upload the existing "
+"transcript."
+msgstr ""
+
+#: cms/templates/js/video/transcripts/messages/transcripts-use-existing.underscore:3
+msgid "Confirm Timed Transcript"
+msgstr ""
+
+#: cms/templates/js/video/transcripts/messages/transcripts-use-existing.underscore:7
+msgid ""
+"You changed a video URL, but did not change the timed transcript file. Do"
+" you want to use the current timed transcript or upload a new .srt "
+"transcript file?"
+msgstr ""
+
+#: cms/templates/js/video/transcripts/messages/transcripts-use-existing.underscore:21
+#: cms/templates/js/video/transcripts/messages/transcripts-use-existing.underscore:22
+#: cms/templates/js/video/transcripts/messages/transcripts-use-existing.underscore:25
+msgid "Use Current Transcript"
+msgstr ""
+
+#: common/static/common/templates/image-modal.underscore:6
+msgid "Fullscreen"
+msgstr ""
+
+#: common/static/common/templates/image-modal.underscore:14
+msgid "Large"
+msgstr ""
+
+#: common/static/common/templates/image-modal.underscore:19
+#: common/static/common/templates/discussion/alert-popup.underscore:3
+#: common/static/common/templates/discussion/forum-action-close.underscore:3
+#: common/static/common/templates/discussion/forum-action-close.underscore:5
+#: common/static/common/templates/discussion/search-alert.underscore:7
+#: lms/templates/student_profile/share_modal.underscore:3
+#: lms/templates_sav/student_profile/share_modal.underscore:3
+msgid "Close"
+msgstr ""
+
+#: common/static/common/templates/image-modal.underscore:27
+msgid "Zoom In"
+msgstr ""
+
+#: common/static/common/templates/image-modal.underscore:35
+msgid "Zoom Out"
+msgstr ""
+
+#: common/static/common/templates/components/paging-footer.underscore:6
+#, python-format
+msgid "Page number out of %(total_pages)s"
+msgstr ""
+
+#: common/static/common/templates/components/paging-footer.underscore:11
+msgid "Enter the page number you'd like to quickly navigate to."
+msgstr ""
+
+#: common/static/common/templates/components/paging-header.underscore:11
+msgid "Sorted by"
+msgstr ""
+
+#: common/static/common/templates/components/search-field.underscore:6
+msgid "Clear search"
+msgstr ""
+
+#: common/static/common/templates/components/search-field.underscore:7
+#: common/static/common/templates/components/search-field.underscore:10
+#: lms/djangoapps/discussion/static/discussion/templates/search.underscore:9
+#: lms/djangoapps/support/static/support/templates/certificates.underscore:4
+#: lms/djangoapps/support/static/support/templates/certificates.underscore:19
+#: lms/djangoapps/support/static/support/templates/enrollment.underscore:3
+#: lms/djangoapps/support/static/support/templates/enrollment.underscore:11
+msgid "Search"
+msgstr ""
+
+#: common/static/common/templates/discussion/alert-popup.underscore:12
+msgid "OK"
+msgstr ""
+
+#: common/static/common/templates/discussion/forum-action-answer.underscore:3
+#: common/static/common/templates/discussion/forum-action-answer.underscore:5
+msgid "Mark as Answer"
+msgstr ""
+
+#: common/static/common/templates/discussion/forum-action-answer.underscore:6
+msgid "Unmark as Answer"
+msgstr ""
+
+#: common/static/common/templates/discussion/forum-action-close.underscore:6
+msgid "Open"
+msgstr ""
+
+#: common/static/common/templates/discussion/forum-action-endorse.underscore:3
+#: common/static/common/templates/discussion/forum-action-endorse.underscore:5
+msgid "Endorse"
+msgstr ""
+
+#: common/static/common/templates/discussion/forum-action-endorse.underscore:6
+msgid "Unendorse"
+msgstr ""
+
+#: common/static/common/templates/discussion/forum-action-follow.underscore:3
+#: common/static/common/templates/discussion/forum-action-follow.underscore:5
+msgid "Follow"
+msgstr ""
+
+#: common/static/common/templates/discussion/forum-action-follow.underscore:6
+msgid "Unfollow"
+msgstr ""
+
+#: common/static/common/templates/discussion/forum-action-pin.underscore:3
+#: common/static/common/templates/discussion/forum-action-pin.underscore:5
+msgid "Pin"
+msgstr ""
+
+#: common/static/common/templates/discussion/forum-action-pin.underscore:6
+msgid "Unpin"
+msgstr ""
+
+#: common/static/common/templates/discussion/forum-action-report.underscore:3
+msgid "Report abuse"
+msgstr ""
+
+#: common/static/common/templates/discussion/forum-action-report.underscore:5
+msgid "Report"
+msgstr ""
+
+#: common/static/common/templates/discussion/forum-action-report.underscore:6
+msgid "Unreport"
+msgstr ""
+
+#: common/static/common/templates/discussion/forum-action-vote.underscore:7
+msgid "Vote for this post,"
+msgstr ""
+
+#: common/static/common/templates/discussion/forum-actions.underscore:6
+#: common/static/common/templates/discussion/forum-actions.underscore:7
+#: lms/templates/discovery/facet.underscore:10
+#: lms/templates/edxnotes/note-item.underscore:9
+#: lms/templates_sav/discovery/facet.underscore:10
+#: lms/templates_sav/edxnotes/note-item.underscore:9
+msgid "More"
+msgstr ""
+
+#: common/static/common/templates/discussion/nav-load-more-link.underscore:3
+msgid "Load more"
+msgstr ""
+
+#: common/static/common/templates/discussion/new-post-alert.underscore:6
+msgid "Error posting your message."
+msgstr ""
+
+#: common/static/common/templates/discussion/new-post.underscore:2
+msgid "Add a Post"
+msgstr ""
+
+#: common/static/common/templates/discussion/new-post.underscore:16
+msgid "Visible to"
+msgstr ""
+
+#: common/static/common/templates/discussion/new-post.underscore:19
+msgid ""
+"Discussion admins, moderators, and TAs can make their posts visible to "
+"all students or specify a single cohort."
+msgstr ""
+
+#: common/static/common/templates/discussion/new-post.underscore:23
+msgid "All Groups"
+msgstr ""
+
+#: common/static/common/templates/discussion/new-post.underscore:36
+#: common/static/common/templates/discussion/thread-edit.underscore:8
+msgid "Add a clear and descriptive title to encourage participation."
+msgstr ""
+
+#: common/static/common/templates/discussion/new-post.underscore:45
+msgid "Your question or idea"
+msgstr ""
+
+#: common/static/common/templates/discussion/new-post.underscore:51
+msgid "follow this post"
+msgstr ""
+
+#: common/static/common/templates/discussion/new-post.underscore:56
+msgid "post anonymously"
+msgstr ""
+
+#: common/static/common/templates/discussion/new-post.underscore:62
+msgid "post anonymously to classmates"
+msgstr ""
+
+#: common/static/common/templates/discussion/new-post.underscore:67
+#: common/static/common/templates/discussion/thread-response.underscore:18
+#: common/static/common/templates/discussion/thread.underscore:31
+#: lms/templates/verify_student/incourse_reverify.underscore:47
+#: lms/templates_sav/verify_student/incourse_reverify.underscore:47
+msgid "Submit"
+msgstr ""
+
+#: common/static/common/templates/discussion/pagination.underscore:10
+#: common/static/common/templates/discussion/pagination.underscore:22
+msgid "…"
+msgstr ""
+
+#: common/static/common/templates/discussion/post-user-display.underscore:4
+#: common/static/common/templates/discussion/thread-list-item.underscore:55
+msgid "Community TA"
+msgstr ""
+
+#: common/static/common/templates/discussion/post-user-display.underscore:6
+#: common/static/common/templates/discussion/thread-list-item.underscore:48
+msgid "Staff"
+msgstr ""
+
+#: common/static/common/templates/discussion/post-user-display.underscore:9
+#: common/static/common/templates/discussion/profile-thread.underscore:9
+msgid "anonymous"
+msgstr ""
+
+#: common/static/common/templates/discussion/profile-thread.underscore:14
+#: common/static/common/templates/discussion/thread.underscore:23
+msgid "This thread is closed."
+msgstr ""
+
+#: common/static/common/templates/discussion/profile-thread.underscore:21
+msgid "View discussion"
+msgstr ""
+
+#: common/static/common/templates/discussion/response-comment-edit.underscore:2
+msgid "Editing comment"
+msgstr ""
+
+#: common/static/common/templates/discussion/response-comment-edit.underscore:7
+msgid "Update comment"
+msgstr ""
+
+#: common/static/common/templates/discussion/response-comment-show.underscore:25
+#, python-format
+msgid "posted %(time_ago)s by %(author)s"
+msgstr ""
+
+#: common/static/common/templates/discussion/response-comment-show.underscore:32
+#: common/static/common/templates/discussion/thread-response-show.underscore:42
+#: common/static/common/templates/discussion/thread-show.underscore:44
+msgid "Reported"
+msgstr ""
+
+#: common/static/common/templates/discussion/thread-edit.underscore:1
+msgid "Editing post"
+msgstr ""
+
+#: common/static/common/templates/discussion/thread-edit.underscore:14
+msgid "Edit your post below."
+msgstr ""
+
+#: common/static/common/templates/discussion/thread-edit.underscore:17
+msgid "Update post"
+msgstr ""
+
+#: common/static/common/templates/discussion/thread-list-item.underscore:9
+msgid "discussion"
+msgstr ""
+
+#: common/static/common/templates/discussion/thread-list-item.underscore:13
+msgid "answered question"
+msgstr ""
+
+#: common/static/common/templates/discussion/thread-list-item.underscore:17
+msgid "unanswered question"
+msgstr ""
+
+#: common/static/common/templates/discussion/thread-list-item.underscore:34
+#: common/static/common/templates/discussion/thread-show.underscore:41
+msgid "Pinned"
+msgstr ""
+
+#: common/static/common/templates/discussion/thread-list-item.underscore:41
+msgid "Following"
+msgstr ""
+
+#: common/static/common/templates/discussion/thread-list-item.underscore:82
+msgid "{unread_comments_count} new"
+msgstr ""
+
+#: common/static/common/templates/discussion/thread-list-item.underscore:101
+#, python-format
+msgid ""
+"%(comments_count)s %(span_sr_open)scomments (%(unread_comments_count)s "
+"unread comments)%(span_close)s"
+msgstr ""
+
+#: common/static/common/templates/discussion/thread-list-item.underscore:104
+#, python-format
+msgid "%(comments_count)s %(span_sr_open)scomments %(span_close)s"
+msgstr ""
+
+#: common/static/common/templates/discussion/thread-response-edit.underscore:2
+msgid "Editing response"
+msgstr ""
+
+#: common/static/common/templates/discussion/thread-response-edit.underscore:7
+msgid "Update response"
+msgstr ""
+
+#: common/static/common/templates/discussion/thread-response-show.underscore:14
+#, python-format
+msgid "marked as answer %(time_ago)s by %(user)s"
+msgstr ""
+
+#: common/static/common/templates/discussion/thread-response-show.underscore:18
+#, python-format
+msgid "marked as answer %(time_ago)s"
+msgstr ""
+
+#: common/static/common/templates/discussion/thread-response-show.underscore:24
+#, python-format
+msgid "endorsed %(time_ago)s by %(user)s"
+msgstr ""
+
+#: common/static/common/templates/discussion/thread-response-show.underscore:28
+#, python-format
+msgid "endorsed %(time_ago)s"
+msgstr ""
+
+#: common/static/common/templates/discussion/thread-response.underscore:4
+#, python-format
+msgid "Show Comment (%(num_comments)s)"
+msgid_plural "Show Comments (%(num_comments)s)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: common/static/common/templates/discussion/thread-response.underscore:14
+#: common/static/common/templates/discussion/thread-response.underscore:16
+msgid "Add a comment"
+msgstr ""
+
+#: common/static/common/templates/discussion/thread-show.underscore:33
+#, python-format
+msgid "%(post_type)s posted %(time_ago)s by %(author)s"
+msgstr ""
+
+#: common/static/common/templates/discussion/thread-show.underscore:47
+msgid "Closed"
+msgstr ""
+
+#: common/static/common/templates/discussion/thread-show.underscore:65
+#, python-format
+msgid "Related to: %(courseware_title_linked)s"
+msgstr ""
+
+#: common/static/common/templates/discussion/thread-show.underscore:75
+#, python-format
+msgid "This post is visible only to %(group_name)s."
+msgstr ""
+
+#: common/static/common/templates/discussion/thread-show.underscore:81
+msgid "This post is visible to everyone."
+msgstr ""
+
+#: common/static/common/templates/discussion/thread-type.underscore:5
+#: common/static/common/templates/discussion/thread-type.underscore:12
+msgid "Post type"
+msgstr ""
+
+#: common/static/common/templates/discussion/thread-type.underscore:8
+msgid ""
+"Questions raise issues that need answers. Discussions share ideas and "
+"start conversations."
+msgstr ""
+
+#: common/static/common/templates/discussion/thread-type.underscore:17
+msgid "Question"
+msgstr ""
+
+#: common/static/common/templates/discussion/thread-type.underscore:23
+msgid "Discussion"
+msgstr ""
+
+#: common/static/common/templates/discussion/thread.underscore:14
+msgid "Add a Response"
+msgstr ""
+
+#: common/static/common/templates/discussion/thread.underscore:27
+msgid "Add a response:"
+msgstr ""
+
+#: common/static/common/templates/discussion/topic.underscore:4
+msgid "Topic area"
+msgstr ""
+
+#: common/static/common/templates/discussion/topic.underscore:7
+msgid "Add your post to a relevant topic to help others find it."
+msgstr ""
+
+#: lms/djangoapps/discussion/static/discussion/templates/discussion-home.underscore:3
+msgid "Discussion Home"
+msgstr ""
+
+#: lms/djangoapps/discussion/static/discussion/templates/discussion-home.underscore:12
+#, python-format
+msgid "How to use %(platform_name)s discussions"
+msgstr ""
+
+#: lms/djangoapps/discussion/static/discussion/templates/discussion-home.underscore:18
+msgid "Find discussions"
+msgstr ""
+
+#: lms/djangoapps/discussion/static/discussion/templates/discussion-home.underscore:21
+msgid "Use the All Topics menu to find specific topics."
+msgstr ""
+
+#: lms/djangoapps/discussion/static/discussion/templates/discussion-home.underscore:25
+#: lms/djangoapps/discussion/static/discussion/templates/search.underscore:1
+#: lms/djangoapps/discussion/static/discussion/templates/search.underscore:7
+msgid "Search all posts"
+msgstr ""
+
+#: lms/djangoapps/discussion/static/discussion/templates/discussion-home.underscore:29
+msgid "Filter and sort topics"
+msgstr ""
+
+#: lms/djangoapps/discussion/static/discussion/templates/discussion-home.underscore:33
+msgid "Engage with posts"
+msgstr ""
+
+#: lms/djangoapps/discussion/static/discussion/templates/discussion-home.underscore:36
+msgid "Vote for good posts and responses"
+msgstr ""
+
+#: lms/djangoapps/discussion/static/discussion/templates/discussion-home.underscore:40
+msgid "Report abuse, topics, and responses"
+msgstr ""
+
+#: lms/djangoapps/discussion/static/discussion/templates/discussion-home.underscore:44
+msgid "Follow or unfollow posts"
+msgstr ""
+
+#: lms/djangoapps/discussion/static/discussion/templates/discussion-home.underscore:48
+msgid "Receive updates"
+msgstr ""
+
+#: lms/djangoapps/discussion/static/discussion/templates/discussion-home.underscore:51
+msgid "Toggle Notifications Setting"
+msgstr ""
+
+#: lms/djangoapps/discussion/static/discussion/templates/discussion-home.underscore:57
+msgid ""
+"Check this box to receive an email digest once a day notifying you about "
+"new, unread activity from posts you are following."
+msgstr ""
+
+#: lms/djangoapps/discussion/static/discussion/templates/fake-breadcrumbs.underscore:4
+msgid "All Topics"
+msgstr ""
+
+#: lms/djangoapps/discussion/static/discussion/templates/user-profile.underscore:6
+msgid "All Posts"
+msgstr ""
+
+#: lms/djangoapps/support/static/support/templates/certificates.underscore:10
+msgid "username or email"
+msgstr ""
+
+#: lms/djangoapps/support/static/support/templates/certificates.underscore:17
+msgid "course id"
+msgstr ""
+
+#: lms/djangoapps/support/static/support/templates/certificates_results.underscore:2
+#: lms/templates/instructor/instructor_dashboard_2/certificate-invalidation.underscore:23
+#: lms/templates/instructor/instructor_dashboard_2/certificate-white-list.underscore:16
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-invalidation.underscore:23
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-white-list.underscore:16
+msgid "No results"
+msgstr ""
+
+#: lms/djangoapps/support/static/support/templates/certificates_results.underscore:6
+msgid "Course Key"
+msgstr ""
+
+#: lms/djangoapps/support/static/support/templates/certificates_results.underscore:9
+msgid "Download URL"
+msgstr ""
+
+#: lms/djangoapps/support/static/support/templates/certificates_results.underscore:10
+msgid "Grade"
+msgstr ""
+
+#: lms/djangoapps/support/static/support/templates/certificates_results.underscore:11
+msgid "Last Updated"
+msgstr ""
+
+#: lms/djangoapps/support/static/support/templates/certificates_results.underscore:24
+msgid "Download the user's certificate"
+msgstr ""
+
+#: lms/djangoapps/support/static/support/templates/certificates_results.underscore:26
+msgid "Not available"
+msgstr ""
+
+#: lms/djangoapps/support/static/support/templates/certificates_results.underscore:37
+msgid "Regenerate"
+msgstr ""
+
+#: lms/djangoapps/support/static/support/templates/certificates_results.underscore:38
+msgid "Regenerate the user's certificate"
+msgstr ""
+
+#: lms/djangoapps/support/static/support/templates/certificates_results.underscore:44
+msgid "Generate"
+msgstr ""
+
+#: lms/djangoapps/support/static/support/templates/certificates_results.underscore:45
+msgid "Generate the user's certificate"
+msgstr ""
+
+#: lms/djangoapps/support/static/support/templates/enrollment-modal.underscore:4
+msgid "Current enrollment mode:"
+msgstr ""
+
+#: lms/djangoapps/support/static/support/templates/enrollment-modal.underscore:6
+msgid "New enrollment mode:"
+msgstr ""
+
+#: lms/djangoapps/support/static/support/templates/enrollment-modal.underscore:14
+msgid "Reason for change:"
+msgstr ""
+
+#: lms/djangoapps/support/static/support/templates/enrollment-modal.underscore:16
+msgid "Choose One"
+msgstr ""
+
+#: lms/djangoapps/support/static/support/templates/enrollment-modal.underscore:21
+#: lms/djangoapps/support/static/support/templates/enrollment-modal.underscore:22
+msgid "Explain if other."
+msgstr ""
+
+#: lms/djangoapps/support/static/support/templates/enrollment-modal.underscore:24
+msgid "Submit enrollment change"
+msgstr ""
+
+#: lms/djangoapps/support/static/support/templates/enrollment.underscore:9
+#: lms/templates/instructor/instructor_dashboard_2/certificate-invalidation.underscore:7
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-invalidation.underscore:7
+msgid "Username or email address"
+msgstr ""
+
+#: lms/djangoapps/support/static/support/templates/enrollment.underscore:20
+msgid "Course ID"
+msgstr ""
+
+#: lms/djangoapps/support/static/support/templates/enrollment.underscore:21
+msgid "Course Start"
+msgstr ""
+
+#: lms/djangoapps/support/static/support/templates/enrollment.underscore:22
+msgid "Course End"
+msgstr ""
+
+#: lms/djangoapps/support/static/support/templates/enrollment.underscore:23
+msgid "Upgrade Deadline"
+msgstr ""
+
+#: lms/djangoapps/support/static/support/templates/enrollment.underscore:24
+msgid "Verification Deadline"
+msgstr ""
+
+#: lms/djangoapps/support/static/support/templates/enrollment.underscore:25
+msgid "Enrollment Date"
+msgstr ""
+
+#: lms/djangoapps/support/static/support/templates/enrollment.underscore:26
+msgid "Enrollment Mode"
+msgstr ""
+
+#: lms/djangoapps/support/static/support/templates/enrollment.underscore:27
+msgid "Verified mode price"
+msgstr ""
+
+#: lms/djangoapps/support/static/support/templates/enrollment.underscore:28
+msgid "Reason"
+msgstr ""
+
+#: lms/djangoapps/support/static/support/templates/enrollment.underscore:29
+msgid "Last modified by"
+msgstr ""
+
+#: lms/djangoapps/support/static/support/templates/enrollment.underscore:44
+#: lms/djangoapps/support/static/support/templates/enrollment.underscore:45
+#: lms/templates/ccx/schedule.underscore:42
+#: lms/templates_sav/ccx/schedule.underscore:42
+msgid "N/A"
+msgstr ""
+
+#: lms/djangoapps/support/static/support/templates/enrollment.underscore:52
+msgid "Change Enrollment"
+msgstr ""
+
+#: lms/djangoapps/teams/static/teams/templates/edit-team.underscore:7
+msgid "Your team could not be created."
+msgstr ""
+
+#: lms/djangoapps/teams/static/teams/templates/edit-team.underscore:9
+msgid "Your team could not be updated."
+msgstr ""
+
+#: lms/djangoapps/teams/static/teams/templates/edit-team.underscore:23
+msgid ""
+"Enter information to describe your team. You cannot change these details "
+"after you create the team."
+msgstr ""
+
+#: lms/djangoapps/teams/static/teams/templates/edit-team.underscore:35
+msgid "Optional Characteristics"
+msgstr ""
+
+#: lms/djangoapps/teams/static/teams/templates/edit-team.underscore:38
+msgid ""
+"Help other learners decide whether to join your team by specifying some "
+"characteristics for your team. Choose carefully, because fewer people "
+"might be interested in joining your team if it seems too restrictive."
+msgstr ""
+
+#: lms/djangoapps/teams/static/teams/templates/edit-team.underscore:49
+msgid "Create team."
+msgstr ""
+
+#: lms/djangoapps/teams/static/teams/templates/edit-team.underscore:51
+msgid "Update team."
+msgstr ""
+
+#: lms/djangoapps/teams/static/teams/templates/edit-team.underscore:57
+msgid "Cancel team creating."
+msgstr ""
+
+#: lms/djangoapps/teams/static/teams/templates/edit-team.underscore:59
+msgid "Cancel team updating."
+msgstr ""
+
+#: lms/djangoapps/teams/static/teams/templates/instructor-tools.underscore:3
+msgid "Instructor tools"
+msgstr ""
+
+#: lms/djangoapps/teams/static/teams/templates/instructor-tools.underscore:7
+msgid "Delete Team"
+msgstr ""
+
+#: lms/djangoapps/teams/static/teams/templates/instructor-tools.underscore:10
+msgid "Edit Membership"
+msgstr ""
+
+#: lms/djangoapps/teams/static/teams/templates/team-actions.underscore:2
+msgid "Are you having trouble finding a team to join?"
+msgstr ""
+
+#: lms/djangoapps/teams/static/teams/templates/team-profile-header-actions.underscore:4
+msgid "Join Team"
+msgstr ""
+
+#: lms/djangoapps/teams/static/teams/templates/team-profile-header-actions.underscore:11
+msgid "Edit Team"
+msgstr ""
+
+#: lms/djangoapps/teams/static/teams/templates/team-profile.underscore:11
+msgid "Team Details"
+msgstr ""
+
+#: lms/djangoapps/teams/static/teams/templates/team-profile.underscore:14
+msgid "You are a member of this team."
+msgstr ""
+
+#: lms/djangoapps/teams/static/teams/templates/team-profile.underscore:19
+msgid "Team member profiles"
+msgstr ""
+
+#: lms/djangoapps/teams/static/teams/templates/team-profile.underscore:25
+msgid "Team capacity"
+msgstr ""
+
+#: lms/djangoapps/teams/static/teams/templates/team-profile.underscore:31
+msgid "The country that team members primarily identify with."
+msgstr ""
+
+#: lms/djangoapps/teams/static/teams/templates/team-profile.underscore:40
+msgid ""
+"The language that team members primarily use to communicate with each "
+"other."
+msgstr ""
+
+#: lms/djangoapps/teams/static/teams/templates/team-profile.underscore:50
+msgid "Leave Team"
+msgstr ""
+
+#: lms/static/js/fixtures/donation.underscore:5
+#: lms/static_sav/js/fixtures/donation.underscore:5
+#: lms/templates/dashboard/donation.underscore:5
+#: lms/templates_sav/dashboard/donation.underscore:5
+msgid "Donate"
+msgstr ""
+
+#: lms/templates/api_admin/catalog-error.underscore:2
+#: lms/templates_sav/api_admin/catalog-error.underscore:2
+msgid ""
+"There was an error retrieving preview results for this catalog. Please "
+"check that your query is correct and try again."
+msgstr ""
+
+#: lms/templates/api_admin/catalog-results.underscore:1
+#: lms/templates_sav/api_admin/catalog-results.underscore:1
+msgid "This catalog's courses:"
+msgstr ""
+
+#: lms/templates/bookmarks/bookmarks-list.underscore:2
+#: lms/templates_sav/bookmarks/bookmarks-list.underscore:2
+msgid "My Bookmarks"
+msgstr ""
+
+#: lms/templates/bookmarks/bookmarks-list.underscore:14
+#: lms/templates_sav/bookmarks/bookmarks-list.underscore:14
+msgid "Bookmarked on"
+msgstr ""
+
+#: lms/templates/bookmarks/bookmarks-list.underscore:18
+#: lms/templates/search/course_search_item.underscore:2
+#: lms/templates/search/dashboard_search_item.underscore:2
+#: lms/templates_sav/bookmarks/bookmarks-list.underscore:18
+#: lms/templates_sav/search/course_search_item.underscore:2
+#: lms/templates_sav/search/dashboard_search_item.underscore:2
+msgid "View"
+msgstr ""
+
+#: lms/templates/bookmarks/bookmarks-list.underscore:33
+#: lms/templates_sav/bookmarks/bookmarks-list.underscore:33
+msgid "You have not bookmarked any courseware pages yet."
+msgstr ""
+
+#: lms/templates/bookmarks/bookmarks-list.underscore:38
+#: lms/templates_sav/bookmarks/bookmarks-list.underscore:38
+msgid ""
+"Use bookmarks to help you easily return to courseware pages. To bookmark "
+"a page, select Bookmark in the upper right corner of that page. To see a "
+"list of all your bookmarks, select Bookmarks in the upper left corner of "
+"any courseware page."
+msgstr ""
+
+#: lms/templates/ccx/schedule.underscore:3
+#: lms/templates_sav/ccx/schedule.underscore:3
+msgid "Expand All"
+msgstr ""
+
+#: lms/templates/ccx/schedule.underscore:6
+#: lms/templates_sav/ccx/schedule.underscore:6
+msgid "Collapse All"
+msgstr ""
+
+#: lms/templates/ccx/schedule.underscore:13
+#: lms/templates/ccx/schedule.underscore:83
+#: lms/templates_sav/ccx/schedule.underscore:13
+#: lms/templates_sav/ccx/schedule.underscore:83
+msgid "Unit"
+msgstr ""
+
+#: lms/templates/ccx/schedule.underscore:14
+#: lms/templates_sav/ccx/schedule.underscore:14
+msgid "Start Date"
+msgstr ""
+
+#: lms/templates/ccx/schedule.underscore:15
+#: lms/templates_sav/ccx/schedule.underscore:15
+msgid "Due Date"
+msgstr ""
+
+#: lms/templates/ccx/schedule.underscore:17
+#: lms/templates_sav/ccx/schedule.underscore:17
+msgid "remove all"
+msgstr ""
+
+#: lms/templates/ccx/schedule.underscore:28
+#: lms/templates_sav/ccx/schedule.underscore:28
+#, python-format
+msgid "toggle chapter %(displayName)s"
+msgstr ""
+
+#: lms/templates/ccx/schedule.underscore:33
+#: lms/templates_sav/ccx/schedule.underscore:33
+msgid "Section"
+msgstr ""
+
+#: lms/templates/ccx/schedule.underscore:38
+#: lms/templates/ccx/schedule.underscore:65
+#: lms/templates/ccx/schedule.underscore:71
+#: lms/templates_sav/ccx/schedule.underscore:38
+#: lms/templates_sav/ccx/schedule.underscore:65
+#: lms/templates_sav/ccx/schedule.underscore:71
+msgid "Click to change"
+msgstr ""
+
+#: lms/templates/ccx/schedule.underscore:45
+#: lms/templates_sav/ccx/schedule.underscore:45
+#, python-format
+msgid "Remove chapter %(chapterDisplayName)s"
+msgstr ""
+
+#: lms/templates/ccx/schedule.underscore:46
+#: lms/templates/ccx/schedule.underscore:76
+#: lms/templates/ccx/schedule.underscore:109
+#: lms/templates_sav/ccx/schedule.underscore:46
+#: lms/templates_sav/ccx/schedule.underscore:76
+#: lms/templates_sav/ccx/schedule.underscore:109
+msgid "remove"
+msgstr ""
+
+#: lms/templates/ccx/schedule.underscore:56
+#: lms/templates_sav/ccx/schedule.underscore:56
+#, python-format
+msgid "toggle subsection %(displayName)s"
+msgstr ""
+
+#: lms/templates/ccx/schedule.underscore:60
+#: lms/templates_sav/ccx/schedule.underscore:60
+msgid "Subsection"
+msgstr ""
+
+#: lms/templates/ccx/schedule.underscore:75
+#: lms/templates_sav/ccx/schedule.underscore:75
+#, python-format
+msgid "Remove subsection %(subsectionDisplayName)s"
+msgstr ""
+
+#: lms/templates/ccx/schedule.underscore:108
+#: lms/templates_sav/ccx/schedule.underscore:108
+#, python-format
+msgid "Remove unit %(unitName)s"
+msgstr ""
+
+#: lms/templates/commerce/provider.underscore:4
+#: lms/templates_sav/commerce/provider.underscore:4
+#, python-format
+msgid ""
+"You still need to visit the %(display_name)s website to complete the "
+"credit process."
+msgstr ""
+
+#: lms/templates/commerce/provider.underscore:10
+#: lms/templates_sav/commerce/provider.underscore:10
+#, python-format
+msgid ""
+"To finalize course credit, %(display_name)s requires %(platform_name)s "
+"learners to submit a credit request."
+msgstr ""
+
+#: lms/templates/commerce/provider.underscore:25
+#: lms/templates_sav/commerce/provider.underscore:25
+msgid "Get Credit"
+msgstr ""
+
+#: lms/templates/commerce/receipt.underscore:5
+#: lms/templates_sav/commerce/receipt.underscore:5
+#, python-format
+msgid ""
+"Thank you %(full_name)s! We have received your payment for "
+"%(course_name)s."
+msgstr ""
+
+#: lms/templates/commerce/receipt.underscore:15
+#: lms/templates/verify_student/payment_confirmation_step.underscore:18
+#: lms/templates_sav/commerce/receipt.underscore:15
+#: lms/templates_sav/verify_student/payment_confirmation_step.underscore:18
+msgid ""
+"Please print this page for your records; it serves as your receipt. You "
+"will also receive an email with the same information."
+msgstr ""
+
+#: lms/templates/commerce/receipt.underscore:22
+#: lms/templates/verify_student/payment_confirmation_step.underscore:25
+#: lms/templates_sav/commerce/receipt.underscore:22
+#: lms/templates_sav/verify_student/payment_confirmation_step.underscore:25
+msgid "Order No."
+msgstr ""
+
+#: lms/templates/commerce/receipt.underscore:25
+#: lms/templates/verify_student/payment_confirmation_step.underscore:28
+#: lms/templates_sav/commerce/receipt.underscore:25
+#: lms/templates_sav/verify_student/payment_confirmation_step.underscore:28
+msgid "Amount"
+msgstr ""
+
+#: lms/templates/commerce/receipt.underscore:49
+#: lms/templates/verify_student/make_payment_step_ab_testing.underscore:40
+#: lms/templates/verify_student/payment_confirmation_step.underscore:52
+#: lms/templates_sav/commerce/receipt.underscore:49
+#: lms/templates_sav/verify_student/make_payment_step_ab_testing.underscore:40
+#: lms/templates_sav/verify_student/payment_confirmation_step.underscore:52
+msgid "Total"
+msgstr ""
+
+#: lms/templates/commerce/receipt.underscore:61
+#: lms/templates/verify_student/payment_confirmation_step.underscore:63
+#: lms/templates_sav/commerce/receipt.underscore:61
+#: lms/templates_sav/verify_student/payment_confirmation_step.underscore:63
+msgid "Please Note"
+msgstr ""
+
+#: lms/templates/commerce/receipt.underscore:63
+#: lms/templates/verify_student/payment_confirmation_step.underscore:65
+#: lms/templates_sav/commerce/receipt.underscore:63
+#: lms/templates_sav/verify_student/payment_confirmation_step.underscore:65
+msgid "Crossed out items have been refunded."
+msgstr ""
+
+#: lms/templates/commerce/receipt.underscore:71
+#: lms/templates/verify_student/payment_confirmation_step.underscore:72
+#: lms/templates_sav/commerce/receipt.underscore:71
+#: lms/templates_sav/verify_student/payment_confirmation_step.underscore:72
+msgid "Billed to"
+msgstr ""
+
+#: lms/templates/commerce/receipt.underscore:87
+#: lms/templates/verify_student/payment_confirmation_step.underscore:84
+#: lms/templates_sav/commerce/receipt.underscore:87
+#: lms/templates_sav/verify_student/payment_confirmation_step.underscore:84
+msgid "No receipt available"
+msgstr ""
+
+#: lms/templates/commerce/receipt.underscore:92
+#: lms/templates/financial-assistance/financial_assessment_submitted.underscore:7
+#: lms/templates_sav/commerce/receipt.underscore:92
+#: lms/templates_sav/financial-assistance/financial_assessment_submitted.underscore:7
+msgid "Go to Dashboard"
+msgstr ""
+
+#: lms/templates/commerce/receipt.underscore:94
+#: lms/templates_sav/commerce/receipt.underscore:94
+msgid ""
+"If you don't verify your identity now, you can still explore your course "
+"from your dashboard. You will receive periodic reminders from "
+"{platformName} to verify your identity."
+msgstr ""
+
+#: lms/templates/commerce/receipt.underscore:95
+#: lms/templates/verify_student/payment_confirmation_step.underscore:143
+#: lms/templates_sav/commerce/receipt.underscore:95
+#: lms/templates_sav/verify_student/payment_confirmation_step.underscore:143
+msgid "Want to confirm your identity later?"
+msgstr ""
+
+#: lms/templates/commerce/receipt.underscore:102
+#: lms/templates_sav/commerce/receipt.underscore:102
+msgid "Verify Now"
+msgstr ""
+
+#: lms/templates/courseware/proctored-exam-controls.underscore:3
+#: lms/templates_sav/courseware/proctored-exam-controls.underscore:3
+msgid "Mark Exam As Completed"
+msgstr ""
+
+#: lms/templates/courseware/proctored-exam-status.underscore:10
+#: lms/templates_sav/courseware/proctored-exam-status.underscore:10
+msgid "timed"
+msgstr ""
+
+#: lms/templates/courseware/proctored-exam-status.underscore:11
+#: lms/templates_sav/courseware/proctored-exam-status.underscore:11
+msgid ""
+"To receive credit for problems, you must select \"Submit\" for each "
+"problem before you select \"End My Exam\"."
+msgstr ""
+
+#: lms/templates/courseware/proctored-exam-status.underscore:17
+#: lms/templates_sav/courseware/proctored-exam-status.underscore:17
+msgid "End My Exam"
+msgstr ""
+
+#: lms/templates/discovery/course_card.underscore:6
+#: lms/templates_sav/discovery/course_card.underscore:6
+msgid "LEARN MORE"
+msgstr ""
+
+#: lms/templates/discovery/course_card.underscore:17
+#: lms/templates_sav/discovery/course_card.underscore:17
+#, python-format
+msgid "Starts: %(start_date)s"
+msgstr ""
+
+#: lms/templates/discovery/course_card.underscore:26
+#: lms/templates_sav/discovery/course_card.underscore:26
+msgid "Starts"
+msgstr ""
+
+#: lms/templates/discovery/facet.underscore:13
+#: lms/templates/edxnotes/note-item.underscore:7
+#: lms/templates_sav/discovery/facet.underscore:13
+#: lms/templates_sav/edxnotes/note-item.underscore:7
+msgid "Less"
+msgstr ""
+
+#: lms/templates/discovery/filter_bar.underscore:3
+#: lms/templates_sav/discovery/filter_bar.underscore:3
+msgid "Clear All"
+msgstr ""
+
+#: lms/templates/edxnotes/note-item.underscore:3
+#: lms/templates_sav/edxnotes/note-item.underscore:3
+msgid "Highlighted text"
+msgstr ""
+
+#: lms/templates/edxnotes/note-item.underscore:17
+#: lms/templates_sav/edxnotes/note-item.underscore:17
+msgid "Note"
+msgstr ""
+
+#: lms/templates/edxnotes/note-item.underscore:19
+#: lms/templates_sav/edxnotes/note-item.underscore:19
+msgid "You commented..."
+msgstr ""
+
+#: lms/templates/edxnotes/note-item.underscore:33
+#: lms/templates_sav/edxnotes/note-item.underscore:33
+msgid "Noted in:"
+msgstr ""
+
+#: lms/templates/edxnotes/note-item.underscore:40
+#: lms/templates_sav/edxnotes/note-item.underscore:40
+msgid "Last Edited:"
+msgstr ""
+
+#: lms/templates/edxnotes/note-item.underscore:44
+#: lms/templates_sav/edxnotes/note-item.underscore:44
+msgid "Tags:"
+msgstr ""
+
+#: lms/templates/edxnotes/tab-item.underscore:10
+#: lms/templates_sav/edxnotes/tab-item.underscore:10
+msgid "Clear search results"
+msgstr ""
+
+#: lms/templates/fields/field_dropdown.underscore:38
+#: lms/templates/fields/field_dropdown_account.underscore:43
+#: lms/templates/fields/field_textarea.underscore:33
+#: lms/templates_sav/fields/field_dropdown.underscore:38
+#: lms/templates_sav/fields/field_dropdown_account.underscore:43
+#: lms/templates_sav/fields/field_textarea.underscore:33
+msgid "Click to edit"
+msgstr ""
+
+#: lms/templates/fields/field_order_history.underscore:8
+#: lms/templates_sav/fields/field_order_history.underscore:8
+msgid "Order Details"
+msgstr ""
+
+#: lms/templates/financial-assistance/financial_assessment_form.underscore:1
+#: lms/templates/financial-assistance/financial_assessment_submitted.underscore:1
+#: lms/templates_sav/financial-assistance/financial_assessment_form.underscore:1
+#: lms/templates_sav/financial-assistance/financial_assessment_submitted.underscore:1
+msgid "Financial Assistance Application"
+msgstr ""
+
+#: lms/templates/financial-assistance/financial_assessment_form.underscore:14
+#: lms/templates_sav/financial-assistance/financial_assessment_form.underscore:14
+msgid "About You"
+msgstr ""
+
+#: lms/templates/financial-assistance/financial_assessment_form.underscore:16
+#: lms/templates_sav/financial-assistance/financial_assessment_form.underscore:16
+msgid ""
+"The following information is already a part of your {platform} profile. "
+"We\\'ve included it here for your application."
+msgstr ""
+
+#: lms/templates/financial-assistance/financial_assessment_form.underscore:20
+#: lms/templates_sav/financial-assistance/financial_assessment_form.underscore:20
+msgid "Username"
+msgstr ""
+
+#: lms/templates/financial-assistance/financial_assessment_form.underscore:24
+#: lms/templates_sav/financial-assistance/financial_assessment_form.underscore:24
+msgid "Email address"
+msgstr ""
+
+#: lms/templates/financial-assistance/financial_assessment_form.underscore:28
+#: lms/templates_sav/financial-assistance/financial_assessment_form.underscore:28
+msgid "Legal name"
+msgstr ""
+
+#: lms/templates/financial-assistance/financial_assessment_form.underscore:32
+#: lms/templates_sav/financial-assistance/financial_assessment_form.underscore:32
+msgid "Country of residence"
+msgstr ""
+
+#: lms/templates/financial-assistance/financial_assessment_form.underscore:41
+#: lms/templates_sav/financial-assistance/financial_assessment_form.underscore:41
+msgid "Back to {platform} FAQs"
+msgstr ""
+
+#: lms/templates/financial-assistance/financial_assessment_form.underscore:44
+#: lms/templates_sav/financial-assistance/financial_assessment_form.underscore:44
+msgid "Submit Application"
+msgstr ""
+
+#: lms/templates/financial-assistance/financial_assessment_submitted.underscore:3
+#: lms/templates_sav/financial-assistance/financial_assessment_submitted.underscore:3
+msgid ""
+"Thank you for submitting your financial assistance application for "
+"{course_name}! You can expect a response in 2-4 business days."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/certificate-bulk-white-list.underscore:1
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-bulk-white-list.underscore:1
+msgid "Bulk Exceptions"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/certificate-bulk-white-list.underscore:4
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-bulk-white-list.underscore:4
+msgid ""
+"Upload a comma separated values (.csv) file that contains the usernames "
+"or email addresses of learners who have been given exceptions. Include "
+"the username or email address in the first comma separated field. You can"
+" include an optional note describing the reason for the exception in the "
+"second comma separated field."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/certificate-bulk-white-list.underscore:8
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-bulk-white-list.underscore:8
+msgid "Upload a CSV file"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/certificate-bulk-white-list.underscore:11
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-bulk-white-list.underscore:11
+msgid "Browse"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/certificate-bulk-white-list.underscore:15
+#: lms/templates/instructor/instructor_dashboard_2/certificate-white-list-editor.underscore:12
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-bulk-white-list.underscore:15
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-white-list-editor.underscore:12
+msgid "Add to Exception List"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/certificate-invalidation.underscore:2
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-invalidation.underscore:2
+msgid ""
+"To invalidate a certificate for a particular learner, add the username or"
+" email address below."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/certificate-invalidation.underscore:11
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-invalidation.underscore:11
+msgid "Add notes about this learner"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/certificate-invalidation.underscore:16
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-invalidation.underscore:16
+msgid "Invalidate Certificate"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/certificate-invalidation.underscore:28
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-invalidation.underscore:28
+msgid "Student"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/certificate-invalidation.underscore:29
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-invalidation.underscore:29
+msgid "Invalidated By"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/certificate-invalidation.underscore:30
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-invalidation.underscore:30
+msgid "Invalidated"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/certificate-invalidation.underscore:31
+#: lms/templates/instructor/instructor_dashboard_2/certificate-white-list.underscore:24
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-invalidation.underscore:31
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-white-list.underscore:24
+msgid "Notes"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/certificate-invalidation.underscore:44
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-invalidation.underscore:44
+msgid "Remove from Invalidation Table"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/certificate-white-list-editor.underscore:1
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-white-list-editor.underscore:1
+msgid "Individual Exceptions"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/certificate-white-list-editor.underscore:2
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-white-list-editor.underscore:2
+msgid ""
+"Enter the username or email address of each learner that you want to add "
+"as an exception."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/certificate-white-list-editor.underscore:5
+#: lms/templates/instructor/instructor_dashboard_2/certificate-white-list-editor.underscore:6
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-white-list-editor.underscore:5
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-white-list-editor.underscore:6
+msgid "Student email or username"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/certificate-white-list-editor.underscore:8
+#: lms/templates/instructor/instructor_dashboard_2/certificate-white-list-editor.underscore:9
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-white-list-editor.underscore:8
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-white-list-editor.underscore:9
+msgid "Free text notes"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/certificate-white-list.underscore:1
+#: lms/templates/instructor/instructor_dashboard_2/certificate-white-list.underscore:13
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-white-list.underscore:1
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-white-list.underscore:13
+msgid "Generate Exception Certificates"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/certificate-white-list.underscore:6
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-white-list.underscore:6
+msgid "All users on the Exception list who do not yet have a certificate"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/certificate-white-list.underscore:10
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-white-list.underscore:10
+msgid "All users on the Exception list"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/certificate-white-list.underscore:21
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-white-list.underscore:21
+msgid "User Email"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/certificate-white-list.underscore:22
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-white-list.underscore:22
+msgid "Exception Granted"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/certificate-white-list.underscore:23
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-white-list.underscore:23
+msgid "Certificate Generated"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/certificate-white-list.underscore:37
+#: lms/templates_sav/instructor/instructor_dashboard_2/certificate-white-list.underscore:37
+msgid "Remove from List"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-discussions-course-wide.underscore:1
+#: lms/templates/instructor/instructor_dashboard_2/cohorts.underscore:56
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-discussions-course-wide.underscore:1
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohorts.underscore:56
+msgid "Specify whether discussion topics are divided by cohort"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-discussions-course-wide.underscore:7
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-discussions-course-wide.underscore:7
+msgid "Course-Wide Discussion Topics"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-discussions-course-wide.underscore:8
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-discussions-course-wide.underscore:8
+msgid ""
+"Select the course-wide discussion topics that you want to divide by "
+"cohort."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-discussions-inline.underscore:8
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-discussions-inline.underscore:8
+msgid "Content-Specific Discussion Topics"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-discussions-inline.underscore:9
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-discussions-inline.underscore:9
+msgid "Specify whether content-specific discussion topics are divided by cohort."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-discussions-inline.underscore:13
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-discussions-inline.underscore:13
+msgid "Always cohort content-specific discussion topics"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-discussions-inline.underscore:19
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-discussions-inline.underscore:19
+msgid "Cohort selected content-specific discussion topics"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-discussions-inline.underscore:27
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-discussions-inline.underscore:27
+msgid "No content-specific discussion topics exist."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-discussions-subcategory.underscore:6
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-discussions-subcategory.underscore:6
+msgid "Cohorted"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-editor.underscore:5
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-editor.underscore:5
+msgid "Selected tab"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-editor.underscore:5
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-editor.underscore:5
+msgid "Manage Students"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-editor.underscore:6
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-editor.underscore:6
+msgid "Settings"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-editor.underscore:12
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-editor.underscore:12
+msgid "Add students to this cohort"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-editor.underscore:15
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-editor.underscore:15
+msgid ""
+"Note: Students can be in only one cohort. Adding students to this group "
+"overrides any previous group assignment."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-editor.underscore:24
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-editor.underscore:24
+msgid ""
+"Enter email addresses and/or usernames, separated by new lines or commas,"
+" for the students you want to add. *"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-editor.underscore:25
+#: lms/templates/instructor/instructor_dashboard_2/cohort-form.underscore:25
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-editor.underscore:25
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-form.underscore:25
+msgid "(Required Field)"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-editor.underscore:29
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-editor.underscore:29
+msgid "e.g. johndoe@example.com, JaneDoe, joeydoe@example.com"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-editor.underscore:32
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-editor.underscore:32
+msgid ""
+"You will not receive notification for emails that bounce, so double-check"
+" your spelling."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-editor.underscore:38
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-editor.underscore:38
+msgid "Add Students"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-form.underscore:5
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-form.underscore:5
+msgid "Add a New Cohort"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-form.underscore:19
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-form.underscore:19
+msgid "Enter the name of the cohort"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-form.underscore:24
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-form.underscore:24
+msgid "Cohort Name"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-form.underscore:42
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-form.underscore:42
+msgid "Cohort Assignment Method"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-form.underscore:45
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-form.underscore:45
+msgid "Automatic"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-form.underscore:48
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-form.underscore:48
+msgid "Manual"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-form.underscore:54
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-form.underscore:54
+msgid "There must be one cohort to which students can automatically be assigned."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-form.underscore:60
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-form.underscore:60
+msgid "Associated Content Group"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-form.underscore:62
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-form.underscore:62
+msgid "No Content Group"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-form.underscore:64
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-form.underscore:64
+msgid "Select a Content Group"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-form.underscore:67
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-form.underscore:67
+msgid "Choose a content group to associate"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-form.underscore:69
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-form.underscore:69
+msgid "Not selected"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-form.underscore:91
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-form.underscore:91
+msgid "Deleted Content Group"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-form.underscore:102
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-form.underscore:102
+msgid ""
+"{screen_reader_start}Warning:{screen_reader_end} The previously selected "
+"content group was deleted. Select another content group."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-form.underscore:121
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-form.underscore:121
+msgid "{screen_reader_start}Warning:{screen_reader_end} No content groups exist."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-form.underscore:129
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-form.underscore:129
+msgid "Only the parent course staff of a CCX can create content groups."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-form.underscore:131
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-form.underscore:131
+msgid "Create a content group"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-group-header.underscore:5
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-group-header.underscore:5
+#, python-format
+msgid "(contains %(student_count)s student)"
+msgid_plural "(contains %(student_count)s students)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-group-header.underscore:14
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-group-header.underscore:14
+msgid ""
+"Learners are added to this cohort only when you provide their email "
+"addresses or usernames on this page."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-group-header.underscore:15
+#: lms/templates/instructor/instructor_dashboard_2/cohort-group-header.underscore:18
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-group-header.underscore:15
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-group-header.underscore:18
+msgid "What does this mean?"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-group-header.underscore:17
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-group-header.underscore:17
+msgid "Learners are added to this cohort automatically."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-selector.underscore:2
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-selector.underscore:2
+msgid "Select a cohort"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-selector.underscore:7
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohort-selector.underscore:7
+#, python-format
+msgid "%(cohort_name)s (%(user_count)s)"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohorts.underscore:2
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohorts.underscore:2
+msgid "Enable Cohorts"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohorts.underscore:11
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohorts.underscore:11
+msgid "Select a cohort to manage"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohorts.underscore:16
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohorts.underscore:16
+msgid "View Cohort"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohorts.underscore:22
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohorts.underscore:22
+msgid "Add Cohort"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohorts.underscore:37
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohorts.underscore:37
+msgid "Assign students to cohorts by uploading a CSV file"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/cohorts.underscore:44
+#: lms/templates_sav/instructor/instructor_dashboard_2/cohorts.underscore:44
+msgid ""
+"To review student cohort assignments or see the results of uploading a "
+"CSV file, download course profile information or cohort results on the "
+"{link_start}Data Download{link_end} page."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/enrollment-code-lookup-links.underscore:3
+#: lms/templates_sav/instructor/instructor_dashboard_2/enrollment-code-lookup-links.underscore:3
+msgid "Code"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/enrollment-code-lookup-links.underscore:4
+#: lms/templates_sav/instructor/instructor_dashboard_2/enrollment-code-lookup-links.underscore:4
+msgid "Used"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/enrollment-code-lookup-links.underscore:5
+#: lms/templates_sav/instructor/instructor_dashboard_2/enrollment-code-lookup-links.underscore:5
+msgid "Valid"
+msgstr ""
+
+#: lms/templates/learner_dashboard/certificate.underscore:2
+#: lms/templates_sav/learner_dashboard/certificate.underscore:2
+msgid "Program Certificates"
+msgstr ""
+
+#: lms/templates/learner_dashboard/certificate_status.underscore:4
+#: lms/templates_sav/learner_dashboard/certificate_status.underscore:4
+msgid "Congratulations! You have earned a certificate for this course."
+msgstr ""
+
+#: lms/templates/learner_dashboard/certificate_status.underscore:10
+#: lms/templates_sav/learner_dashboard/certificate_status.underscore:10
+msgid "View Certificate"
+msgstr ""
+
+#: lms/templates/learner_dashboard/course_card.underscore:10
+#: lms/templates_sav/learner_dashboard/course_card.underscore:10
+#, python-format
+msgid "%(courseName)s Home Page."
+msgstr ""
+
+#: lms/templates/learner_dashboard/course_enroll.underscore:2
+#: lms/templates_sav/learner_dashboard/course_enroll.underscore:2
+msgid "enrolled"
+msgstr ""
+
+#: lms/templates/learner_dashboard/course_enroll.underscore:6
+#: lms/templates_sav/learner_dashboard/course_enroll.underscore:6
+msgid "View Course"
+msgstr ""
+
+#: lms/templates/learner_dashboard/course_enroll.underscore:8
+#: lms/templates_sav/learner_dashboard/course_enroll.underscore:8
+msgid "View Archived Course"
+msgstr ""
+
+#: lms/templates/learner_dashboard/course_enroll.underscore:14
+#: lms/templates_sav/learner_dashboard/course_enroll.underscore:14
+msgid "not enrolled"
+msgstr ""
+
+#: lms/templates/learner_dashboard/course_enroll.underscore:18
+#: lms/templates_sav/learner_dashboard/course_enroll.underscore:18
+msgid "Please select a course date"
+msgstr ""
+
+#: lms/templates/learner_dashboard/course_enroll.underscore:21
+#: lms/templates_sav/learner_dashboard/course_enroll.underscore:21
+msgid "Select Course Run"
+msgstr ""
+
+#: lms/templates/learner_dashboard/course_enroll.underscore:25
+#: lms/templates_sav/learner_dashboard/course_enroll.underscore:25
+msgid "Choose Course Date"
+msgstr ""
+
+#: lms/templates/learner_dashboard/course_enroll.underscore:35
+#: lms/templates_sav/learner_dashboard/course_enroll.underscore:35
+#, python-format
+msgid "Starts %(start)s"
+msgstr ""
+
+#: lms/templates/learner_dashboard/course_enroll.underscore:45
+#: lms/templates_sav/learner_dashboard/course_enroll.underscore:45
+msgid "Enroll Now"
+msgstr ""
+
+#: lms/templates/learner_dashboard/course_enroll.underscore:49
+#: lms/templates_sav/learner_dashboard/course_enroll.underscore:49
+msgid "Coming Soon"
+msgstr ""
+
+#: lms/templates/learner_dashboard/course_enroll.underscore:52
+#: lms/templates_sav/learner_dashboard/course_enroll.underscore:52
+msgid "Enrollment Opens on"
+msgstr ""
+
+#: lms/templates/learner_dashboard/course_enroll.underscore:59
+#: lms/templates_sav/learner_dashboard/course_enroll.underscore:59
+msgid "Not Currently Available"
+msgstr ""
+
+#: lms/templates/learner_dashboard/empty_programs_list.underscore:2
+#: lms/templates_sav/learner_dashboard/empty_programs_list.underscore:2
+msgid "You are not enrolled in any programs yet."
+msgstr ""
+
+#: lms/templates/learner_dashboard/empty_programs_list.underscore:5
+#: lms/templates_sav/learner_dashboard/empty_programs_list.underscore:5
+msgid "Explore Programs"
+msgstr ""
+
+#: lms/templates/learner_dashboard/explore_new_programs.underscore:2
+#: lms/templates_sav/learner_dashboard/explore_new_programs.underscore:2
+msgid ""
+"Browse recently launched courses and see what\\'s new in your favorite "
+"subjects"
+msgstr ""
+
+#: lms/templates/learner_dashboard/explore_new_programs.underscore:7
+#: lms/templates_sav/learner_dashboard/explore_new_programs.underscore:7
+msgid "Explore New Programs"
+msgstr ""
+
+#: lms/templates/learner_dashboard/program_card.underscore:31
+#: lms/templates_sav/learner_dashboard/program_card.underscore:31
+#, python-format
+msgid ""
+"You have earned certificates in %(completed_courses)s of the "
+"%(total_courses)s courses so far."
+msgstr ""
+
+#: lms/templates/learner_dashboard/program_card.underscore:51
+#: lms/templates_sav/learner_dashboard/program_card.underscore:51
+#, python-format
+msgid "%(programName)s Home Page."
+msgstr ""
+
+#: lms/templates/learner_dashboard/program_header_view.underscore:15
+#: lms/templates_sav/learner_dashboard/program_header_view.underscore:15
+msgid "{organization}\\'s logo"
+msgstr ""
+
+#: lms/templates/learner_dashboard/program_header_view.underscore:25
+#: lms/templates_sav/learner_dashboard/program_header_view.underscore:25
+msgid "You are here"
+msgstr ""
+
+#: lms/templates/learner_dashboard/program_header_view.underscore:28
+#: lms/templates_sav/learner_dashboard/program_header_view.underscore:28
+msgid "Dashboard"
+msgstr ""
+
+#: lms/templates/learner_dashboard/program_header_view.underscore:32
+#: lms/templates_sav/learner_dashboard/program_header_view.underscore:32
+msgid "Programs"
+msgstr ""
+
+#: lms/templates/learner_dashboard/upgrade_message.underscore:4
+#: lms/templates_sav/learner_dashboard/upgrade_message.underscore:4
+msgid ""
+"You need a certificate in this course to be eligible for a program "
+"certificate."
+msgstr ""
+
+#: lms/templates/learner_dashboard/upgrade_message.underscore:10
+#: lms/templates_sav/learner_dashboard/upgrade_message.underscore:10
+msgid "Upgrade Now"
+msgstr ""
+
+#: lms/templates/search/course_search_results.underscore:2
+#: lms/templates/search/dashboard_search_results.underscore:3
+#: lms/templates_sav/search/course_search_results.underscore:2
+#: lms/templates_sav/search/dashboard_search_results.underscore:3
+msgid "Search Results"
+msgstr ""
+
+#: lms/templates/search/course_search_results.underscore:13
+#: lms/templates/search/dashboard_search_results.underscore:14
+#: lms/templates_sav/search/course_search_results.underscore:13
+#: lms/templates_sav/search/dashboard_search_results.underscore:14
+#, python-format
+msgid "Load next %(num_items)s result"
+msgid_plural "Load next %(num_items)s results"
+msgstr[0] ""
+msgstr[1] ""
+
+#: lms/templates/search/course_search_results.underscore:23
+#: lms/templates/search/dashboard_search_results.underscore:24
+#: lms/templates_sav/search/course_search_results.underscore:23
+#: lms/templates_sav/search/dashboard_search_results.underscore:24
+msgid "Sorry, no results were found."
+msgstr ""
+
+#: lms/templates/search/dashboard_search_results.underscore:2
+#: lms/templates_sav/search/dashboard_search_results.underscore:2
+msgid "Back to Dashboard"
+msgstr ""
+
+#: lms/templates/search/search_error.underscore:1
+#: lms/templates_sav/search/search_error.underscore:1
+msgid "There was an error, try searching again."
+msgstr ""
+
+#: lms/templates/search/search_loading.underscore:1
+#: lms/templates_sav/search/search_loading.underscore:1
+msgid "Loading"
+msgstr ""
+
+#: lms/templates/student_account/account.underscore:2
+#: lms/templates_sav/student_account/account.underscore:2
+msgid "New Address"
+msgstr ""
+
+#: lms/templates/student_account/account.underscore:6
+#: lms/templates_sav/student_account/account.underscore:6
+msgid "Password"
+msgstr ""
+
+#: lms/templates/student_account/account.underscore:11
+#: lms/templates_sav/student_account/account.underscore:11
+msgid "Change My Email Address"
+msgstr ""
+
+#: lms/templates/student_account/account.underscore:16
+#: lms/templates_sav/student_account/account.underscore:16
+msgid "Reset Password"
+msgstr ""
+
+#: lms/templates/student_account/account_settings.underscore:4
+#: lms/templates_sav/student_account/account_settings.underscore:4
+msgid "Account Settings"
+msgstr ""
+
+#: lms/templates/student_account/account_settings_section.underscore:13
+#: lms/templates_sav/student_account/account_settings_section.underscore:13
+msgid "An error occurred. Please reload the page."
+msgstr ""
+
+#: lms/templates/student_account/form_field.underscore:91
+#: lms/templates_sav/student_account/form_field.underscore:91
+msgid "Forgot password?"
+msgstr ""
+
+#: lms/templates/student_account/hinted_login.underscore:4
+#: lms/templates/student_account/login.underscore:8
+#: lms/templates/student_account/login.underscore:23
+#: lms/templates/student_account/register.underscore:60
+#: lms/templates_sav/student_account/hinted_login.underscore:4
+#: lms/templates_sav/student_account/login.underscore:8
+#: lms/templates_sav/student_account/login.underscore:23
+#: lms/templates_sav/student_account/register.underscore:60
+msgid "Sign in"
+msgstr ""
+
+#: lms/templates/student_account/hinted_login.underscore:8
+#: lms/templates_sav/student_account/hinted_login.underscore:8
+#, python-format
+msgid "Would you like to sign in using your %(providerName)s credentials?"
+msgstr ""
+
+#: lms/templates/student_account/hinted_login.underscore:16
+#: lms/templates_sav/student_account/hinted_login.underscore:16
+#, python-format
+msgid "Sign in using %(providerName)s"
+msgstr ""
+
+#: lms/templates/student_account/hinted_login.underscore:21
+#: lms/templates/student_account/institution_login.underscore:24
+#: lms/templates/student_account/institution_register.underscore:24
+#: lms/templates_sav/student_account/hinted_login.underscore:21
+#: lms/templates_sav/student_account/institution_login.underscore:24
+#: lms/templates_sav/student_account/institution_register.underscore:24
+msgid "or"
+msgstr ""
+
+#: lms/templates/student_account/hinted_login.underscore:26
+#: lms/templates_sav/student_account/hinted_login.underscore:26
+msgid "Show me other ways to sign in or register"
+msgstr ""
+
+#: lms/templates/student_account/institution_login.underscore:5
+#: lms/templates_sav/student_account/institution_login.underscore:5
+msgid "Sign in with Institution/Campus Credentials"
+msgstr ""
+
+#: lms/templates/student_account/institution_login.underscore:10
+#: lms/templates/student_account/institution_register.underscore:10
+#: lms/templates_sav/student_account/institution_login.underscore:10
+#: lms/templates_sav/student_account/institution_register.underscore:10
+msgid "Choose your institution from the list below:"
+msgstr ""
+
+#: lms/templates/student_account/institution_login.underscore:29
+#: lms/templates_sav/student_account/institution_login.underscore:29
+msgid "Back to sign in"
+msgstr ""
+
+#: lms/templates/student_account/institution_register.underscore:5
+#: lms/templates_sav/student_account/institution_register.underscore:5
+msgid "Register with Institution/Campus Credentials"
+msgstr ""
+
+#: lms/templates/student_account/institution_register.underscore:29
+#: lms/templates_sav/student_account/institution_register.underscore:29
+msgid "Register through edX"
+msgstr ""
+
+#: lms/templates/student_account/login.underscore:14
+#: lms/templates_sav/student_account/login.underscore:14
+msgid ""
+"Sign in here using your email address and password, or use one of the "
+"providers listed below."
+msgstr ""
+
+#: lms/templates/student_account/login.underscore:16
+#: lms/templates_sav/student_account/login.underscore:16
+msgid "Sign in here using your email address and password."
+msgstr ""
+
+#: lms/templates/student_account/login.underscore:18
+#: lms/templates_sav/student_account/login.underscore:18
+msgid "If you do not yet have an account, use the button below to register."
+msgstr ""
+
+#: lms/templates/student_account/login.underscore:29
+#: lms/templates_sav/student_account/login.underscore:29
+msgid "or sign in with"
+msgstr ""
+
+#: lms/templates/student_account/login.underscore:42
+#: lms/templates_sav/student_account/login.underscore:42
+#, python-format
+msgid "Sign in with %(providerName)s"
+msgstr ""
+
+#: lms/templates/student_account/login.underscore:49
+#: lms/templates/student_account/register.underscore:30
+#: lms/templates_sav/student_account/login.underscore:49
+#: lms/templates_sav/student_account/register.underscore:30
+msgid "Use my institution/campus credentials"
+msgstr ""
+
+#: lms/templates/student_account/login.underscore:59
+#: lms/templates_sav/student_account/login.underscore:59
+#, python-format
+msgid "New to %(platformName)s?"
+msgstr ""
+
+#: lms/templates/student_account/login.underscore:62
+#: lms/templates_sav/student_account/login.underscore:62
+msgid "Create an account"
+msgstr ""
+
+#: lms/templates/student_account/password_reset.underscore:8
+#: lms/templates_sav/student_account/password_reset.underscore:8
+msgid "Password assistance"
+msgstr ""
+
+#: lms/templates/student_account/password_reset.underscore:12
+#: lms/templates_sav/student_account/password_reset.underscore:12
+msgid ""
+"Please enter your email address below and we will send you instructions "
+"for setting a new password."
+msgstr ""
+
+#: lms/templates/student_account/password_reset.underscore:16
+#: lms/templates_sav/student_account/password_reset.underscore:16
+msgid "Reset my password"
+msgstr ""
+
+#: lms/templates/student_account/register.underscore:10
+#: lms/templates_sav/student_account/register.underscore:10
+msgid "Create an account using"
+msgstr ""
+
+#: lms/templates/student_account/register.underscore:23
+#: lms/templates_sav/student_account/register.underscore:23
+#, python-format
+msgid "Create account using %(providerName)s."
+msgstr ""
+
+#: lms/templates/student_account/register.underscore:36
+#: lms/templates_sav/student_account/register.underscore:36
+msgid "or create a new one here"
+msgstr ""
+
+#: lms/templates/student_account/register.underscore:42
+#: lms/templates_sav/student_account/register.underscore:42
+msgid "Create a new account"
+msgstr ""
+
+#: lms/templates/student_account/register.underscore:50
+#: lms/templates_sav/student_account/register.underscore:50
+msgid "Create your account"
+msgstr ""
+
+#: lms/templates/student_account/register.underscore:51
+#: lms/templates_sav/student_account/register.underscore:51
+msgid "Required field"
+msgstr ""
+
+#: lms/templates/student_account/register.underscore:57
+#: lms/templates_sav/student_account/register.underscore:57
+msgid "Already have an account?"
+msgstr ""
+
+#: lms/templates/student_profile/badge.underscore:13
+#: lms/templates_sav/student_profile/badge.underscore:13
+#, python-format
+msgid "Share your \"%(display_name)s\" award"
+msgstr ""
+
+#: lms/templates/student_profile/badge.underscore:18
+#: lms/templates_sav/student_profile/badge.underscore:18
+msgid "Share"
+msgstr ""
+
+#: lms/templates/student_profile/badge.underscore:25
+#: lms/templates_sav/student_profile/badge.underscore:25
+#, python-format
+msgid "Earned %(created)s."
+msgstr ""
+
+#: lms/templates/student_profile/badge_placeholder.underscore:6
+#: lms/templates_sav/student_profile/badge_placeholder.underscore:6
+msgid "What's Your Next Accomplishment?"
+msgstr ""
+
+#: lms/templates/student_profile/badge_placeholder.underscore:7
+#: lms/templates_sav/student_profile/badge_placeholder.underscore:7
+msgid "Start working toward your next learning goal."
+msgstr ""
+
+#: lms/templates/student_profile/badge_placeholder.underscore:8
+#: lms/templates_sav/student_profile/badge_placeholder.underscore:8
+msgid "Find a course"
+msgstr ""
+
+#: lms/templates/student_profile/learner_profile.underscore:12
+#: lms/templates_sav/student_profile/learner_profile.underscore:12
+msgid "An error occurred. Try loading the page again."
+msgstr ""
+
+#: lms/templates/student_profile/section_two.underscore:5
+#: lms/templates_sav/student_profile/section_two.underscore:5
+msgid "You are currently sharing a limited profile."
+msgstr ""
+
+#: lms/templates/student_profile/section_two.underscore:7
+#: lms/templates_sav/student_profile/section_two.underscore:7
+msgid "This learner is currently sharing a limited profile."
+msgstr ""
+
+#: lms/templates/student_profile/share_modal.underscore:4
+#: lms/templates_sav/student_profile/share_modal.underscore:4
+msgid "Share on Mozilla Backpack"
+msgstr ""
+
+#: lms/templates/student_profile/share_modal.underscore:5
+#: lms/templates_sav/student_profile/share_modal.underscore:5
+msgid ""
+"To share your certificate on Mozilla Backpack, you must first have a "
+"Backpack account. Complete the following steps to add your certificate to"
+" Backpack."
+msgstr ""
+
+#: lms/templates/student_profile/share_modal.underscore:12
+#: lms/templates_sav/student_profile/share_modal.underscore:12
+#, python-format
+msgid ""
+"Create a %(link_start)sMozilla Backpack%(link_end)s account, or log in to"
+" your existing account"
+msgstr ""
+
+#: lms/templates/student_profile/share_modal.underscore:19
+#: lms/templates_sav/student_profile/share_modal.underscore:19
+#, python-format
+msgid ""
+"%(download_link_start)sDownload this image (right-click or option-click, "
+"save as)%(link_end)s and then %(upload_link_start)supload%(link_end)s it "
+"to your backpack.</li>"
+msgstr ""
+
+#: lms/templates/verify_student/enrollment_confirmation_step.underscore:3
+#: lms/templates_sav/verify_student/enrollment_confirmation_step.underscore:3
+#, python-format
+msgid "Congratulations! You are now verified on %(platformName)s!"
+msgstr ""
+
+#: lms/templates/verify_student/enrollment_confirmation_step.underscore:5
+#: lms/templates_sav/verify_student/enrollment_confirmation_step.underscore:5
+msgid "You are now enrolled as a verified student for:"
+msgstr ""
+
+#: lms/templates/verify_student/enrollment_confirmation_step.underscore:12
+#: lms/templates_sav/verify_student/enrollment_confirmation_step.underscore:12
+msgid "A list of courses you have just enrolled in as a verified student"
+msgstr ""
+
+#: lms/templates/verify_student/enrollment_confirmation_step.underscore:15
+#: lms/templates_sav/verify_student/enrollment_confirmation_step.underscore:15
+msgid "Course"
+msgstr ""
+
+#: lms/templates/verify_student/enrollment_confirmation_step.underscore:31
+#: lms/templates_sav/verify_student/enrollment_confirmation_step.underscore:31
+msgid "Explore your course!"
+msgstr ""
+
+#: lms/templates/verify_student/enrollment_confirmation_step.underscore:35
+#: lms/templates_sav/verify_student/enrollment_confirmation_step.underscore:35
+msgid "Go to your Dashboard"
+msgstr ""
+
+#: lms/templates/verify_student/enrollment_confirmation_step.underscore:46
+#: lms/templates_sav/verify_student/enrollment_confirmation_step.underscore:46
+msgid "Verified Status"
+msgstr ""
+
+#: lms/templates/verify_student/enrollment_confirmation_step.underscore:48
+#: lms/templates_sav/verify_student/enrollment_confirmation_step.underscore:48
+#, python-format
+msgid ""
+"Thank you for submitting your photos. We will review them shortly. You "
+"can now sign up for any %(platformName)s course that offers verified "
+"certificates. Verification is good for one year. After one year, you must"
+" submit photos for verification again."
+msgstr ""
+
+#: lms/templates/verify_student/error.underscore:6
+#: lms/templates_sav/verify_student/error.underscore:6
+msgid "Error:"
+msgstr ""
+
+#: lms/templates/verify_student/face_photo_step.underscore:4
+#: lms/templates_sav/verify_student/face_photo_step.underscore:4
+msgid "What You Need for Verification"
+msgstr ""
+
+#: lms/templates/verify_student/face_photo_step.underscore:6
+#: lms/templates/verify_student/intro_step.underscore:61
+#: lms/templates/verify_student/make_payment_step.underscore:77
+#: lms/templates/verify_student/make_payment_step_ab_testing.underscore:105
+#: lms/templates/verify_student/payment_confirmation_step.underscore:128
+#: lms/templates_sav/verify_student/face_photo_step.underscore:6
+#: lms/templates_sav/verify_student/intro_step.underscore:61
+#: lms/templates_sav/verify_student/make_payment_step.underscore:77
+#: lms/templates_sav/verify_student/make_payment_step_ab_testing.underscore:105
+#: lms/templates_sav/verify_student/payment_confirmation_step.underscore:128
+msgid "Webcam"
+msgstr ""
+
+#: lms/templates/verify_student/face_photo_step.underscore:7
+#: lms/templates_sav/verify_student/face_photo_step.underscore:7
+msgid ""
+"You need a computer that has a webcam. When you receive a browser prompt,"
+" make sure that you allow access to the camera."
+msgstr ""
+
+#: lms/templates/verify_student/face_photo_step.underscore:10
+#: lms/templates_sav/verify_student/face_photo_step.underscore:10
+msgid "Photo Identification"
+msgstr ""
+
+#: lms/templates/verify_student/face_photo_step.underscore:11
+#: lms/templates_sav/verify_student/face_photo_step.underscore:11
+msgid ""
+"You need a driver's license, passport, or other government-issued ID that"
+" has your name and photo."
+msgstr ""
+
+#: lms/templates/verify_student/face_photo_step.underscore:17
+#: lms/templates/verify_student/incourse_reverify.underscore:3
+#: lms/templates_sav/verify_student/face_photo_step.underscore:17
+#: lms/templates_sav/verify_student/incourse_reverify.underscore:3
+msgid "Take Your Photo"
+msgstr ""
+
+#: lms/templates/verify_student/face_photo_step.underscore:19
+#: lms/templates_sav/verify_student/face_photo_step.underscore:19
+msgid ""
+"When your face is in position, use the camera button {icon} below to take"
+" your photo."
+msgstr ""
+
+#: lms/templates/verify_student/face_photo_step.underscore:25
+#: lms/templates_sav/verify_student/face_photo_step.underscore:25
+msgid "To take a successful photo, make sure that:"
+msgstr ""
+
+#: lms/templates/verify_student/face_photo_step.underscore:29
+#: lms/templates_sav/verify_student/face_photo_step.underscore:29
+msgid "Your face is well-lit."
+msgstr ""
+
+#: lms/templates/verify_student/face_photo_step.underscore:30
+#: lms/templates_sav/verify_student/face_photo_step.underscore:30
+msgid "Your entire face fits inside the frame."
+msgstr ""
+
+#: lms/templates/verify_student/face_photo_step.underscore:31
+#: lms/templates_sav/verify_student/face_photo_step.underscore:31
+msgid "The photo of your face matches the photo on your ID."
+msgstr ""
+
+#: lms/templates/verify_student/face_photo_step.underscore:34
+#: lms/templates_sav/verify_student/face_photo_step.underscore:34
+msgid ""
+"To use the current photo, select the camera button {icon}. To take "
+"another photo, select the retake button {icon}."
+msgstr ""
+
+#: lms/templates/verify_student/face_photo_step.underscore:39
+#: lms/templates/verify_student/id_photo_step.underscore:30
+#: lms/templates/verify_student/incourse_reverify.underscore:29
+#: lms/templates_sav/verify_student/face_photo_step.underscore:39
+#: lms/templates_sav/verify_student/id_photo_step.underscore:30
+#: lms/templates_sav/verify_student/incourse_reverify.underscore:29
+msgid "Frequently Asked Questions"
+msgstr ""
+
+#: lms/templates/verify_student/face_photo_step.underscore:43
+#: lms/templates/verify_student/id_photo_step.underscore:35
+#: lms/templates/verify_student/incourse_reverify.underscore:33
+#: lms/templates_sav/verify_student/face_photo_step.underscore:43
+#: lms/templates_sav/verify_student/id_photo_step.underscore:35
+#: lms/templates_sav/verify_student/incourse_reverify.underscore:33
+#, python-format
+msgid "Why does %(platformName)s need my photo?"
+msgstr ""
+
+#: lms/templates/verify_student/face_photo_step.underscore:45
+#: lms/templates/verify_student/id_photo_step.underscore:37
+#: lms/templates/verify_student/incourse_reverify.underscore:35
+#: lms/templates_sav/verify_student/face_photo_step.underscore:45
+#: lms/templates_sav/verify_student/id_photo_step.underscore:37
+#: lms/templates_sav/verify_student/incourse_reverify.underscore:35
+msgid ""
+"As part of the verification process, you take a photo of both your face "
+"and a government-issued photo ID. Our authorization service confirms your"
+" identity by comparing the photo you take with the photo on your ID."
+msgstr ""
+
+#: lms/templates/verify_student/face_photo_step.underscore:47
+#: lms/templates/verify_student/id_photo_step.underscore:40
+#: lms/templates/verify_student/incourse_reverify.underscore:37
+#: lms/templates_sav/verify_student/face_photo_step.underscore:47
+#: lms/templates_sav/verify_student/id_photo_step.underscore:40
+#: lms/templates_sav/verify_student/incourse_reverify.underscore:37
+#, python-format
+msgid "What does %(platformName)s do with this photo?"
+msgstr ""
+
+#: lms/templates/verify_student/face_photo_step.underscore:49
+#: lms/templates/verify_student/id_photo_step.underscore:42
+#: lms/templates/verify_student/incourse_reverify.underscore:39
+#: lms/templates_sav/verify_student/face_photo_step.underscore:49
+#: lms/templates_sav/verify_student/id_photo_step.underscore:42
+#: lms/templates_sav/verify_student/incourse_reverify.underscore:39
+#, python-format
+msgid ""
+"We use the highest levels of security available to encrypt your photo and"
+" send it to our authorization service for review. Your photo and "
+"information are not saved or visible anywhere on %(platformName)s after "
+"the verification process is complete."
+msgstr ""
+
+#: lms/templates/verify_student/face_photo_step.underscore:63
+#: lms/templates/verify_student/id_photo_step.underscore:53
+#: lms/templates/verify_student/intro_step.underscore:80
+#: lms/templates/verify_student/payment_confirmation_step.underscore:151
+#: lms/templates_sav/verify_student/face_photo_step.underscore:63
+#: lms/templates_sav/verify_student/id_photo_step.underscore:53
+#: lms/templates_sav/verify_student/intro_step.underscore:80
+#: lms/templates_sav/verify_student/payment_confirmation_step.underscore:151
+#, python-format
+msgid "Next: %(nextStepTitle)s"
+msgstr ""
+
+#: lms/templates/verify_student/id_photo_step.underscore:3
+#: lms/templates_sav/verify_student/id_photo_step.underscore:3
+msgid "Take a Photo of Your ID"
+msgstr ""
+
+#: lms/templates/verify_student/id_photo_step.underscore:5
+#: lms/templates_sav/verify_student/id_photo_step.underscore:5
+msgid ""
+"Use your webcam to take a photo of your ID. We will match this photo with"
+" the photo of your face and the name on your account."
+msgstr ""
+
+#: lms/templates/verify_student/id_photo_step.underscore:13
+#: lms/templates_sav/verify_student/id_photo_step.underscore:13
+msgid ""
+"You need an ID with your name and photo. A driver's license, passport, or"
+" other government-issued IDs are all acceptable."
+msgstr ""
+
+#: lms/templates/verify_student/id_photo_step.underscore:15
+#: lms/templates/verify_student/incourse_reverify.underscore:13
+#: lms/templates_sav/verify_student/id_photo_step.underscore:15
+#: lms/templates_sav/verify_student/incourse_reverify.underscore:13
+msgid "Tips on taking a successful photo"
+msgstr ""
+
+#: lms/templates/verify_student/id_photo_step.underscore:19
+#: lms/templates_sav/verify_student/id_photo_step.underscore:19
+msgid "Ensure that you can see your photo and read your name"
+msgstr ""
+
+#: lms/templates/verify_student/id_photo_step.underscore:20
+#: lms/templates_sav/verify_student/id_photo_step.underscore:20
+msgid "Make sure your ID is well-lit"
+msgstr ""
+
+#: lms/templates/verify_student/id_photo_step.underscore:22
+#: lms/templates_sav/verify_student/id_photo_step.underscore:22
+msgid "Once in position, use the camera button {icon} to capture your ID"
+msgstr ""
+
+#: lms/templates/verify_student/id_photo_step.underscore:24
+#: lms/templates/verify_student/incourse_reverify.underscore:23
+#: lms/templates_sav/verify_student/id_photo_step.underscore:24
+#: lms/templates_sav/verify_student/incourse_reverify.underscore:23
+msgid "Use the retake photo button if you are not pleased with your photo"
+msgstr ""
+
+#: lms/templates/verify_student/image_input.underscore:1
+#: lms/templates_sav/verify_student/image_input.underscore:1
+msgid "Preview of uploaded image"
+msgstr ""
+
+#: lms/templates/verify_student/image_input.underscore:3
+#: lms/templates_sav/verify_student/image_input.underscore:3
+msgid "Upload an image or capture one with your web or phone camera."
+msgstr ""
+
+#: lms/templates/verify_student/incourse_reverify.underscore:5
+#: lms/templates_sav/verify_student/incourse_reverify.underscore:5
+msgid ""
+"Use your webcam to take a photo of your face. We will match this photo "
+"with the photo on your ID."
+msgstr ""
+
+#: lms/templates/verify_student/incourse_reverify.underscore:17
+#: lms/templates_sav/verify_student/incourse_reverify.underscore:17
+msgid "Make sure your face is well-lit"
+msgstr ""
+
+#: lms/templates/verify_student/incourse_reverify.underscore:18
+#: lms/templates_sav/verify_student/incourse_reverify.underscore:18
+msgid "Be sure your entire face is inside the frame"
+msgstr ""
+
+#: lms/templates/verify_student/incourse_reverify.underscore:20
+#: lms/templates_sav/verify_student/incourse_reverify.underscore:20
+msgid "Once in position, use the camera button {icon} to capture your photo"
+msgstr ""
+
+#: lms/templates/verify_student/incourse_reverify.underscore:22
+#: lms/templates_sav/verify_student/incourse_reverify.underscore:22
+msgid "Can we match the photo you took with the one on your ID?"
+msgstr ""
+
+#: lms/templates/verify_student/intro_step.underscore:6
+#: lms/templates_sav/verify_student/intro_step.underscore:6
+msgid "Thanks for returning to verify your ID in: {courseName}"
+msgstr ""
+
+#: lms/templates/verify_student/intro_step.underscore:19
+#: lms/templates_sav/verify_student/intro_step.underscore:19
+msgid ""
+"You need to activate your account before you can enroll in courses. Check"
+" your inbox for an activation email. After you complete activation you "
+"can return and refresh this page."
+msgstr ""
+
+#: lms/templates/verify_student/intro_step.underscore:31
+#: lms/templates/verify_student/payment_confirmation_step.underscore:94
+#: lms/templates_sav/verify_student/intro_step.underscore:31
+#: lms/templates_sav/verify_student/payment_confirmation_step.underscore:94
+msgid "Activate Your Account"
+msgstr ""
+
+#: lms/templates/verify_student/intro_step.underscore:38
+#: lms/templates_sav/verify_student/intro_step.underscore:38
+msgid "Check Your Email"
+msgstr ""
+
+#: lms/templates/verify_student/intro_step.underscore:45
+#: lms/templates/verify_student/make_payment_step_ab_testing.underscore:93
+#: lms/templates/verify_student/payment_confirmation_step.underscore:112
+#: lms/templates_sav/verify_student/intro_step.underscore:45
+#: lms/templates_sav/verify_student/make_payment_step_ab_testing.underscore:93
+#: lms/templates_sav/verify_student/payment_confirmation_step.underscore:112
+msgid "Photo ID"
+msgstr ""
+
+#: lms/templates/verify_student/intro_step.underscore:53
+#: lms/templates_sav/verify_student/intro_step.underscore:53
+msgid ""
+"A driver's license, passport, or other government-issued ID with your "
+"name and photo"
+msgstr ""
+
+#: lms/templates/verify_student/make_payment_step.underscore:6
+#: lms/templates/verify_student/make_payment_step_ab_testing.underscore:10
+#: lms/templates_sav/verify_student/make_payment_step.underscore:6
+#: lms/templates_sav/verify_student/make_payment_step_ab_testing.underscore:10
+msgid "You are enrolling in: {courseName}"
+msgstr ""
+
+#: lms/templates/verify_student/make_payment_step.underscore:17
+#: lms/templates_sav/verify_student/make_payment_step.underscore:17
+msgid "You are upgrading your enrollment for: {courseName}"
+msgstr ""
+
+#: lms/templates/verify_student/make_payment_step.underscore:26
+#: lms/templates_sav/verify_student/make_payment_step.underscore:26
+msgid "You can now enter your payment information and complete your enrollment."
+msgstr ""
+
+#: lms/templates/verify_student/make_payment_step.underscore:37
+#: lms/templates_sav/verify_student/make_payment_step.underscore:37
+msgid ""
+"You can pay now even if you don't have the following items available, but"
+" you will need to have these by {date} to qualify to earn a Verified "
+"Certificate."
+msgstr ""
+
+#: lms/templates/verify_student/make_payment_step.underscore:44
+#: lms/templates_sav/verify_student/make_payment_step.underscore:44
+msgid ""
+"An email has been sent to {userEmail} with a link for you to activate "
+"your account."
+msgstr ""
+
+#: lms/templates/verify_student/make_payment_step.underscore:48
+#: lms/templates_sav/verify_student/make_payment_step.underscore:48
+msgid "Why activate?"
+msgstr ""
+
+#: lms/templates/verify_student/make_payment_step.underscore:50
+#: lms/templates_sav/verify_student/make_payment_step.underscore:50
+msgid ""
+"We ask you to activate your account to ensure it is really you creating "
+"the account and to prevent fraud."
+msgstr ""
+
+#: lms/templates/verify_student/make_payment_step.underscore:53
+#: lms/templates_sav/verify_student/make_payment_step.underscore:53
+msgid ""
+"You can pay now even if you don't have the following items available, but"
+" you will need to have these to qualify to earn a Verified Certificate."
+msgstr ""
+
+#: lms/templates/verify_student/make_payment_step.underscore:65
+#: lms/templates_sav/verify_student/make_payment_step.underscore:65
+msgid "Government-Issued Photo ID"
+msgstr ""
+
+#: lms/templates/verify_student/make_payment_step.underscore:92
+#: lms/templates_sav/verify_student/make_payment_step.underscore:92
+msgid "ID-Verification is not required for this Professional Education course."
+msgstr ""
+
+#: lms/templates/verify_student/make_payment_step.underscore:93
+#: lms/templates_sav/verify_student/make_payment_step.underscore:93
+msgid ""
+"All professional education courses are fee-based, and require payment to "
+"complete the enrollment process."
+msgstr ""
+
+#: lms/templates/verify_student/make_payment_step.underscore:97
+#: lms/templates_sav/verify_student/make_payment_step.underscore:97
+msgid "You have already verified your ID!"
+msgstr ""
+
+#: lms/templates/verify_student/make_payment_step.underscore:100
+#: lms/templates_sav/verify_student/make_payment_step.underscore:100
+msgid "Your verification status is good until {verificationGoodUntil}."
+msgstr ""
+
+#: lms/templates/verify_student/make_payment_step.underscore:112
+#: lms/templates_sav/verify_student/make_payment_step.underscore:112
+msgid "price"
+msgstr ""
+
+#: lms/templates/verify_student/make_payment_step_ab_testing.underscore:5
+#: lms/templates_sav/verify_student/make_payment_step_ab_testing.underscore:5
+msgid "Account Not Activated"
+msgstr ""
+
+#: lms/templates/verify_student/make_payment_step_ab_testing.underscore:21
+#: lms/templates_sav/verify_student/make_payment_step_ab_testing.underscore:21
+msgid "Upgrade to a Verified Certificate for {courseName}"
+msgstr ""
+
+#: lms/templates/verify_student/make_payment_step_ab_testing.underscore:33
+#: lms/templates_sav/verify_student/make_payment_step_ab_testing.underscore:33
+msgid "Before you upgrade to a certificate track, you must activate your account."
+msgstr ""
+
+#: lms/templates/verify_student/make_payment_step_ab_testing.underscore:34
+#: lms/templates_sav/verify_student/make_payment_step_ab_testing.underscore:34
+msgid "Check your email for an activation message."
+msgstr ""
+
+#: lms/templates/verify_student/make_payment_step_ab_testing.underscore:45
+#: lms/templates_sav/verify_student/make_payment_step_ab_testing.underscore:45
+msgid "Professional Certificate for {courseName}"
+msgstr ""
+
+#: lms/templates/verify_student/make_payment_step_ab_testing.underscore:49
+#: lms/templates_sav/verify_student/make_payment_step_ab_testing.underscore:49
+msgid "Verified Certificate for {courseName}"
+msgstr ""
+
+#: lms/templates/verify_student/make_payment_step_ab_testing.underscore:80
+#: lms/templates_sav/verify_student/make_payment_step_ab_testing.underscore:80
+msgid ""
+"To receive a certificate, you must also verify your identity before "
+"{date}."
+msgstr ""
+
+#: lms/templates/verify_student/make_payment_step_ab_testing.underscore:85
+#: lms/templates_sav/verify_student/make_payment_step_ab_testing.underscore:85
+msgid "To receive a certificate, you must also verify your identity."
+msgstr ""
+
+#: lms/templates/verify_student/make_payment_step_ab_testing.underscore:87
+#: lms/templates_sav/verify_student/make_payment_step_ab_testing.underscore:87
+msgid ""
+"To verify your identity, you need a webcam and a government-issued photo "
+"ID."
+msgstr ""
+
+#: lms/templates/verify_student/make_payment_step_ab_testing.underscore:96
+#: lms/templates_sav/verify_student/make_payment_step_ab_testing.underscore:96
+msgid "Your ID must be a government-issued photo ID that clearly shows your face."
+msgstr ""
+
+#: lms/templates/verify_student/make_payment_step_ab_testing.underscore:108
+#: lms/templates_sav/verify_student/make_payment_step_ab_testing.underscore:108
+msgid ""
+"You will use your webcam to take a picture of your face and of your "
+"government-issued photo ID."
+msgstr ""
+
+#: lms/templates/verify_student/payment_confirmation_step.underscore:5
+#: lms/templates_sav/verify_student/payment_confirmation_step.underscore:5
+msgid "Thank you! We have received your payment for {courseName}."
+msgstr ""
+
+#: lms/templates/verify_student/payment_confirmation_step.underscore:88
+#: lms/templates_sav/verify_student/payment_confirmation_step.underscore:88
+msgid "Next Step: Confirm your identity"
+msgstr ""
+
+#: lms/templates/verify_student/payment_confirmation_step.underscore:101
+#: lms/templates_sav/verify_student/payment_confirmation_step.underscore:101
+msgid "Check your email"
+msgstr ""
+
+#: lms/templates/verify_student/payment_confirmation_step.underscore:103
+#: lms/templates_sav/verify_student/payment_confirmation_step.underscore:103
+msgid ""
+"You need to activate your account before you can enroll in courses. Check"
+" your inbox for an activation email."
+msgstr ""
+
+#: lms/templates/verify_student/payment_confirmation_step.underscore:120
+#: lms/templates_sav/verify_student/payment_confirmation_step.underscore:120
+msgid ""
+"A driver's license, passport, or government-issued ID with your name and "
+"photo."
+msgstr ""
+
+#: lms/templates/verify_student/payment_confirmation_step.underscore:142
+#: lms/templates_sav/verify_student/payment_confirmation_step.underscore:142
+#, python-format
+msgid ""
+"If you don't verify your identity now, you can still explore your course "
+"from your dashboard. You will receive periodic reminders from "
+"%(platformName)s to verify your identity."
+msgstr ""
+
+#: lms/templates/verify_student/reverify_success_step.underscore:2
+#: lms/templates_sav/verify_student/reverify_success_step.underscore:2
+msgid "Identity Verification In Progress"
+msgstr ""
+
+#: lms/templates/verify_student/reverify_success_step.underscore:5
+#: lms/templates_sav/verify_student/reverify_success_step.underscore:5
+msgid ""
+"We have received your information and are verifying your identity. You "
+"will see a message on your dashboard when the verification process is "
+"complete (usually within 1-2 days). In the meantime, you can still access"
+" all available course content."
+msgstr ""
+
+#: lms/templates/verify_student/reverify_success_step.underscore:9
+#: lms/templates_sav/verify_student/reverify_success_step.underscore:9
+msgid "Return to Your Dashboard"
+msgstr ""
+
+#: lms/templates/verify_student/review_photos_step.underscore:3
+#: lms/templates_sav/verify_student/review_photos_step.underscore:3
+msgid "Review Your Photos"
+msgstr ""
+
+#: lms/templates/verify_student/review_photos_step.underscore:5
+#: lms/templates_sav/verify_student/review_photos_step.underscore:5
+msgid ""
+"Make sure we can verify your identity with the photos and information you"
+" have provided."
+msgstr ""
+
+#: lms/templates/verify_student/review_photos_step.underscore:13
+#: lms/templates_sav/verify_student/review_photos_step.underscore:13
+#, python-format
+msgid "Photo of %(fullName)s"
+msgstr ""
+
+#: lms/templates/verify_student/review_photos_step.underscore:18
+#: lms/templates_sav/verify_student/review_photos_step.underscore:18
+#, python-format
+msgid "Photo of %(fullName)s's ID"
+msgstr ""
+
+#: lms/templates/verify_student/review_photos_step.underscore:25
+#: lms/templates_sav/verify_student/review_photos_step.underscore:25
+msgid "Photo requirements:"
+msgstr ""
+
+#: lms/templates/verify_student/review_photos_step.underscore:27
+#: lms/templates_sav/verify_student/review_photos_step.underscore:27
+msgid "Does the photo of you show your whole face?"
+msgstr ""
+
+#: lms/templates/verify_student/review_photos_step.underscore:28
+#: lms/templates_sav/verify_student/review_photos_step.underscore:28
+msgid "Does the photo of you match your ID photo?"
+msgstr ""
+
+#: lms/templates/verify_student/review_photos_step.underscore:29
+#: lms/templates_sav/verify_student/review_photos_step.underscore:29
+msgid "Is your name on your ID readable?"
+msgstr ""
+
+#: lms/templates/verify_student/review_photos_step.underscore:30
+#: lms/templates_sav/verify_student/review_photos_step.underscore:30
+#, python-format
+msgid "Does the name on your ID match your account name: %(fullName)s?"
+msgstr ""
+
+#: lms/templates/verify_student/review_photos_step.underscore:34
+#: lms/templates_sav/verify_student/review_photos_step.underscore:34
+msgid "Edit Your Name"
+msgstr ""
+
+#: lms/templates/verify_student/review_photos_step.underscore:39
+#: lms/templates_sav/verify_student/review_photos_step.underscore:39
+msgid "Make sure that the full name on your account matches the name on your ID."
+msgstr ""
+
+#: lms/templates/verify_student/review_photos_step.underscore:51
+#: lms/templates_sav/verify_student/review_photos_step.underscore:51
+msgid "Photos don't meet the requirements?"
+msgstr ""
+
+#: lms/templates/verify_student/review_photos_step.underscore:53
+#: lms/templates_sav/verify_student/review_photos_step.underscore:53
+msgid "Retake Your Photos"
+msgstr ""
+
+#: lms/templates/verify_student/review_photos_step.underscore:64
+#: lms/templates_sav/verify_student/review_photos_step.underscore:64
+msgid "Before proceeding, please confirm that your details match"
+msgstr ""
+
+#: lms/templates/verify_student/review_photos_step.underscore:70
+#: lms/templates_sav/verify_student/review_photos_step.underscore:70
+msgid "Confirm"
+msgstr ""
+
+#: lms/templates/verify_student/webcam_photo.underscore:4
+#: lms/templates_sav/verify_student/webcam_photo.underscore:4
+msgid ""
+"Don't see your picture? Make sure to allow your browser to use your "
+"camera when it asks for permission."
+msgstr ""
+
+#: lms/templates/verify_student/webcam_photo.underscore:7
+#: lms/templates_sav/verify_student/webcam_photo.underscore:7
+msgid "Live view of webcam"
+msgstr ""
+
+#: lms/templates/verify_student/webcam_photo.underscore:24
+#: lms/templates_sav/verify_student/webcam_photo.underscore:24
+msgid "Retake Photo"
+msgstr ""
+
+#: lms/templates/verify_student/webcam_photo.underscore:28
+#: lms/templates_sav/verify_student/webcam_photo.underscore:28
+msgid "Take Photo"
+msgstr ""
+
