@@ -214,7 +214,7 @@ courseware = static.get_value('css_overrides_courseware')
   }
 
   .finished h3.problem-header{
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid lightgray;
     padding-bottom: 10px;
   }
 
@@ -557,8 +557,6 @@ courseware = static.get_value('css_overrides_courseware')
 </style>
 
 
-
-
 <div id="tma_course_top">
     <div id="tma_course_ariane">
       <a href="/courses/${course.id}/about">< ${_("Back to training module description")}</a>
@@ -705,6 +703,16 @@ $(document).ajaxSuccess(function(event, xhr, settings){
     var url_base_problem=url_check_pb.replace('/problem_check','')
     var url_show_pb=url_base_problem+'/problem_show';
     ajax_problem_show(url_show_pb);
+    // translate correct incorrect
+    if('${course.language}'=='de'){
+      console.log('hello');
+      setInterval(function(){
+        var message_faux=$('.notification.error.notification-submit span.notification-message');
+        var message_vrai=$('.notification.success.notification-submit span.notification-message');
+        message_vrai.html(message_vrai.html().replace('Correct','Korrekt'));
+        message_faux.html(message_faux.html().replace('Incorrect','Falsch'));
+      },300);
+    }
   }
 });
 function ajax_problem_show(url_show_pb){
@@ -733,8 +741,8 @@ function ajax_problem_show(url_show_pb){
 /* DISPLAY FAIL CORRECT EVEN ON RELOAD */
 $(document).ready(function() {
   $('.problems-wrapper').each(function(){
-    error_div='<div class="notification error notification-submit" tabindex="-1"><span class="icon fa fa-close" aria-hidden="true"></span><span class="notification-message">Incorrect</span><div class="notification-btn-wrapper"><button type="button" class="btn btn-default btn-small notification-btn review-btn sr">Review</button></div></div>';
-    success_div='<div class="notification success notification-submit " tabindex="-1"><span class="icon fa fa-check" aria-hidden="true"></span><span class="notification-message">Correct</span><div class="notification-btn-wrapper"><button type="button" class="btn btn-default btn-small notification-btn review-btn sr">Review</button></div></div>';
+    error_div='<div class="notification error notification-submit" tabindex="-1"><span class="icon fa fa-close" aria-hidden="true"></span><span class="notification-message">${_("Incorrect")}</span><div class="notification-btn-wrapper"><button type="button" class="btn btn-default btn-small notification-btn review-btn sr">Review</button></div></div>';
+    success_div='<div class="notification success notification-submit " tabindex="-1"><span class="icon fa fa-check" aria-hidden="true"></span><span class="notification-message">${_("Correct")}</span><div class="notification-btn-wrapper"><button type="button" class="btn btn-default btn-small notification-btn review-btn sr">Review</button></div></div>';
     if($(this).hasClass('fail_quiz_atp') && $(this).find('div.notification.error').length<=0){
       $(this).find('.action').before(error_div);
       //afficher réponse si faux
@@ -755,15 +763,24 @@ $( document ).ready(function() {
     problem_ids_list.push($(this).attr('id'));
   });
 });
+function scroll_to_ques(question_pos, problem_ids_list){
+  if(question_pos<problem_ids_list.length){
+    $(document).scrollTo($('#'+problem_ids_list[question_pos]).offset().top-80+'px',500);
+  }
+}
+// on next click
 $('.question_next').live("click",function () {
   current_question_id=$(this).attr('id').replace('ques','problem');
   current_question_pos=problem_ids_list.indexOf(current_question_id);
   next_question_pos=current_question_pos+1;
-  if(next_question_pos<problem_ids_list.length){
-    $(document).scrollTo($('#'+problem_ids_list[next_question_pos]).offset().top-80+'px',500);
-  }
+  scroll_to_ques(next_question_pos, problem_ids_list);
 });
-
+// on question title click
+$('.hd.hd-2.problem-header').live("click", function(){
+  question_id="problem_"+$(this).attr('id').replace('-problem-title','');
+  question_pos=problem_ids_list.indexOf(question_id);
+  scroll_to_ques(question_pos, problem_ids_list);
+})
 
 /* RESET QUIZ */
 function get_all_questions(){
@@ -878,17 +895,24 @@ function insert_info_score(value) {
   $('#final_score').append(score_div);
 }
 
-// Display score panel
+// Display/Hide score panel on title click
 $('.result-score').live('click', function(){
   $(this).toggleClass('active');
   if($(this).hasClass('active')){
     $("#result-content").html('');
+    console.log('result score active');
     returnScore();
   }
   else{
     $("#result-content").html('');
   }
 })
+//Display score Panel on next last question click
+function open_result_panel(){
+  if(!$('#holding-section-result').hasClass('active')){
+    $('.result-score').trigger( "click" );
+  }
+}
 
 
 function returnScore() {
@@ -897,24 +921,20 @@ function returnScore() {
     type:'GET',
     dataType:'json',
     success:function(data) {
-      console.log('returnScore')
       var passed = data.passed;
       var is_graded = data.is_graded;
       var score = parseFloat(data.percent);
       if(score.toString().indexOf('.') == -1) {
         score=score+'.0'
       }
-      console.log('score '+score);
       $('#insert_score').text(score+'%');
       var grade_cutoffs = data.grade_cutoffs;
       var overall_progress = data.overall_progress;
       insert_info_score();
-      if(overall_progress >= 93) {
-        if(passed && score >= grade_cutoffs) {
-            generate_result_success(score);
-        }else{
-            generate_result_fail(score);
-        }
+      if(passed && score >= grade_cutoffs) {
+          generate_result_success(score);
+      }else{
+          generate_result_fail(score);
       }
       $('img.svg').each(function(){
           var $img = $(this);
@@ -949,7 +969,7 @@ function returnScore() {
 function enable_score_panel(url_last_question){
   $(".problems-wrapper").each(function(){
     if($(this).attr('data-url')==url_last_question){
-      $(this).find('.next_button').attr('onclick','$(".result-score").click()');
+      $(this).find('.next_button').attr('onclick','open_result_panel()');
     }
   })
   //Change colors of result section to make it available
@@ -959,12 +979,11 @@ function enable_score_panel(url_last_question){
 };
 
 function all_questions_answered(){
-  var all_answered=true;
-  $('.problems-wrapper').each(function(){
-    if(!$(this).hasClass('finished')){
-      all_answered=false;
-    }
-  });
+  var all_answered=false;
+  // All questions answered only if all have class finished and quiz is accessible
+  if($('.problems-wrapper.finished').length==$('.problems-wrapper').length && $('.problems-wrapper').length!=0){
+    all_answered=true;
+  }
   return all_answered;
 }
 
@@ -973,6 +992,7 @@ $(document).ready(function() {
   result_enabled=false;
   // Last question has been answered
   $(document).ajaxSuccess(function(event, xhr, settings) {
+      url_last_question=$('.problems-wrapper').last().attr('data-url');
       if (settings.url.indexOf(url_last_question+'/problem_check') > -1) {
         enable_score_panel(url_last_question);
         result_enabled=true;

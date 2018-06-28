@@ -45,7 +45,6 @@ getCompletionStatus = function(){
          chapter_id=$(this).attr('id')
          chapter_list[chapter_id]={'completed':true,'available':false};
        })
-       console.log(chapter_list);
 
        //Change unit's title appearance if completed
        $(".sequence-nav .sequence-list-wrapper button.nav-item").each(function(){
@@ -56,11 +55,13 @@ getCompletionStatus = function(){
               // if at least one unit is completed then chapter is available
               chapter_list[$(this).attr('data-seq')]['available']=true;
          }else{
-              if(previous_completed){
+           // keep previous completion for quiz chapter only
+              if(previous_completed && $(this).hasClass('seq_problem')){
                   $(this).removeClass('disabled_unit_tma');
                   $(this).removeAttr("disabled");
-                  previous_completed=false;
+                  chapter_list[$(this).attr('data-seq')]['available']=true;
               }
+              previous_completed=false;
               //if a single unit is not completed then chapter cannot be completed
               chapter_list[$(this).attr('data-seq')]['completed']=false;
          }
@@ -71,13 +72,6 @@ getCompletionStatus = function(){
          if(data['completion_status'][$(this).attr('data-id')]==100){
               $(this).removeClass('disabled_tma');
               $(this).attr('onclick','$("#'+$(this).attr('id').replace('seq_content_next_','tab_')+'").click()');
-              previous_completed=true;
-         }else{
-              if(previous_completed){
-                  $(this).attr('onclick','$("#'+$(this).attr('id').replace('seq_content_next_','tab_')+'").click()');
-                  $(this).removeClass('disabled_tma');
-                  previous_completed=false;
-              }
          }
        });
 
@@ -86,6 +80,18 @@ getCompletionStatus = function(){
           // Change title color for available chapters
           if(chapter_list[$(this).attr('id')]['available']==true){
             $(this).find('h3').addClass('primary_color');
+            //CHANGE AMUNDI : All units under it must be available if chapter is available
+            var tma_chapter_identifier=$(this).attr('id')
+            $('button.seq_other').each(function(){
+              if($(this).attr('data-seq')==tma_chapter_identifier){
+                //ACTIVATE UNIT
+                $(this).removeClass('disabled_unit_tma');
+                $(this).removeAttr("disabled");
+                //ACTIVATE BUTTON NEXT
+                next_btn_identifier='seq_content_next_'+$(this).attr('data-element');
+                $('#'+next_btn_identifier).removeClass('disabled_tma').attr('onclick','$("#'+$('#'+next_btn_identifier).attr('id').replace('seq_content_next_','tab_')+'").click()');
+              }
+            })
             // Add check sign for completed chapters
             if(chapter_list[$(this).attr('id')]['completed']==true){
               if($(this).find('h3 i').length <=0){

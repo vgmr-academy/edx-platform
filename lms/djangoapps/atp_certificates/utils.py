@@ -131,11 +131,18 @@ def generate_html(user,score,course_img_path,template_path,course_title,categori
     #Date
     px_date=marge_laterale
     py_date=py_imgc+imgc_hauteur+marge_espacement
-    draw.text((px_date+10,py_date),'Date',gold,font=font_big)
+    if lang=="de":
+        date_title="Datum"
+    else:
+        score_title="Date"
+    draw.text((px_date+10,py_date),date_title,gold,font=font_big)
     draw.text((px_date,py_date+30),date,main_color,font=font_main)
 
     #score title
-    score_title="Score"
+    if lang=="de":
+        score_title="Ergebnis"
+    else:
+        score_title="Score"
     score_largeur, score_hauteur = draw.textsize(score_title, font_big)
     px_score=(background_largeur-score_largeur)/2
     py_score=py_date
@@ -152,19 +159,33 @@ def generate_html(user,score,course_img_path,template_path,course_title,categori
     py_category=py_date
     if lang=="fr":
         draw.text((px_category,py_category),u'Catégorie',gold,font=font_big)
+    if lang=="de":
+        draw.text((px_category,py_category),u'Kategorie',gold,font=font_big)
     else :
         draw.text((px_category,py_category),'Category',gold,font=font_big)
     #Traduction des catégories
     categorie = categorie.lower()
-    if lang=="fr":
-        if categorie == "fundamentals" or categorie =="fundamental" :
+
+    if categorie == "fundamentals" or categorie =="fundamental" :
+        if lang=="fr":
             categorie = "fondamentaux"
-        elif categorie == "our solutions" :
+        if lang=="de":
+            categorie = "grundlagen"
+    elif categorie == "our solutions" :
+        if lang=="fr":
             categorie ="nos solutions"
-        elif categorie == "sales approach" :
+        if lang=="de":
+            categorie ="unsere lösungen"
+    elif categorie == "sales approach" :
+        if lang=="fr":
             categorie =u'démarche commerciale'
-        elif categorie == "regulatory" :
+        if lang=="de":
+            categorie =u'vertriebsansatz'
+    elif categorie == "regulatory" :
+        if lang=="fr":
             categorie =u'réglementaire'
+        if lang=="de":
+            categorie =u'vorschriften'
     category_largeur2, category_hauteur2 = draw.textsize(categorie, font=font_main)
     px_category2=px_category+((category_largeur-category_largeur2)/2)
     draw.text((px_category2,py_category+30),categorie,main_color,font=font_main)
@@ -173,6 +194,9 @@ def generate_html(user,score,course_img_path,template_path,course_title,categori
     if lang=="fr":
         phrase=u'Le certificat de réussite du module de formation sur'
         phrase2=u"est décerné à"
+    if lang=="de":
+        phrase=u'Das Leistungszertifikat für'
+        phrase2=u"gehört zu"
     else:
         phrase=u'The certificate of achievement for'
         phrase2=u'is attributed to'

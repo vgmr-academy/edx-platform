@@ -1363,7 +1363,7 @@ def session_manager_handler(msg,emails,org,language):
     except:
         urls = ["https://ppr-session-manager.amundi.com/v2/token","https://ppr-session-manager.amundi.com/v2/api/import","https://ppr-session-manager.amundi.com/v2/api/users/import"]
 
-    if language != 'en' and language !='fr':
+    if language != 'en' and language !='fr' and language!='de':
         language = en
     redirect_uri = 'https://'+str(org)+'.'+str(settings.LMS_BASE)+'/auth/login/amundi/?auth_entry=login&next=%2Fdashboard&lang='+language
     msg = msg
@@ -1544,7 +1544,23 @@ def send_enroll_mail(obj,course,overview,course_details,body,list_email,module_s
             category ="démarche commerciale"
         elif category.lower() == "regulatory" :
             category ="réglementaire"
+    elif current_lang == 'de':
+        title_mail = [
+            'Kategorie','Dauer','Modus','Enddaten'
+        ]
+        if mode_required:
+            mode = 'verbindlich'
+        else:
+            mode = 'fakultativ'
 
+        if category.lower() == "fundamentals" or category=="Fundamentals":
+            category = "grundlagen"
+        elif category.lower() == "our solutions" :
+            category ="unsere lösungen"
+        elif category.lower() == "sales approach" :
+            category ="vertriebsansatz"
+        elif category.lower() == "regulatory" :
+            category ="vorschriften"
     else:
         title_mail = [
             'Category','Duration','Mode','Ending date'
@@ -1814,20 +1830,21 @@ def invite_handler(request, course_key_string):
                         csv_infos.append(q)
                         log.info("first_name"+pformat(q['first_name']))
                         log.info("first_name"+pformat(type(q['first_name'])))
-			log.info("session_manager_handler: "+str(email))
+                log.info("session_manager_handler: "+str(email))
                 if course.language == "fr":
                     msg = "Une fois passée cette étape, vous pourrez accéder à votre module sur "+course.display_name+"."
-		elif course.language == "en":
+                elif course.language == "de":
+                    msg = "Sobald Sie diesen Schritt bestanden haben, können Sie auf das Schulungsmodul zugreifen "+course.display_name+"."
+                elif course.language == "en":
                     msg = "Once you’ve passed this step, you will be able to access the training module "+course.display_name+"."
                 list_return = list_email
                 email_send = []
                 try:
-
                     course_lang = course.language
-		    log.info("session_manager_handler: call")
-		    log.info("session_manager_handler: emails : "+pformat(list_email))
+                    log.info("session_manager_handler: call")
+                    log.info("session_manager_handler: emails : "+pformat(list_email))
                     session_manager = session_manager_handler(msg,list_email,org,course_lang)
-		    log.info("session_manager_handler: return : "+pformat(session_manager))
+                    log.info("session_manager_handler: return : "+pformat(session_manager))
                     for n in session_manager:
                         email_session_manager = n['email']
                         uuid_session_manager = n['uuid']
@@ -1856,17 +1873,16 @@ def invite_handler(request, course_key_string):
                         try:
                             UserPreprofile.objects.get(email=email_session_manager)
                         except:
-			    log.info("[User PreProfiles] There was no user prepprofile.. Creating one. "+pformat(email_session_manager)+" "+pformat(uuid_session_manager))
+                            log.info("[User PreProfiles] There was no user prepprofile.. Creating one. "+pformat(email_session_manager)+" "+pformat(uuid_session_manager))
                             s = UserPreprofile(email=email_session_manager,first_name=first_name,last_name=last_name,language=course_lang,level_1=level_1,level_2=level_2,level_3=level_3,level_4=level_4,uuid=uuid_session_manager)
                             s.save()
                             log.info("[User PreProfiles] UserPreProfile Created. "+pformat(email_session_manager)+" "+pformat(uuid_session_manager))
-                        # CREATE A REQUEST PARAM
-		        log.info("Create a request params")
+                        log.info("Create a request params")
                         request.POST['action'] = 'enroll'
                         request.POST['auto_enroll'] = True
                         request.POST['email_students'] = False
                         request.POST['identifiers'] = email
-			log.info("students_update_enrollment_cms "+pformat(email_session_manager))
+                        log.info("students_update_enrollment_cms "+pformat(email_session_manager))
                         students_update_enrollment_cms(request,course_key_string)
                         q['status'] = True
                         # GET COURSE_KEY
@@ -1879,7 +1895,7 @@ def invite_handler(request, course_key_string):
                         overview = CourseOverview.get_from_id(course_key)
                         #GET MODULE STORE
                         module_store = modulestore().get_course(course_key, depth=0)
-			log.info("log_dict")
+                        log.info("log_dict")
 			"""
                         log_dict = {
                             "status": "enroll user to current course",
@@ -1889,7 +1905,7 @@ def invite_handler(request, course_key_string):
                         }
 		        """
                         #log.info(pformat('log_dict : '+log_dict))
-			log.info("enroll_email")
+                        log.info("enroll_email")
                         enroll_email(course_key, email_session_manager, auto_enroll=True, email_students=False, email_params=None, language=None)
 
                         array.append(q)
@@ -1914,10 +1930,12 @@ def invite_handler(request, course_key_string):
                         log.info("course_lang: "+course.language)
                         if course.language == "fr":
                             obj = "Invitation pour accéder au module {}".format(course.display_name)
+                        elif course.language == "de":
+                            obj = "Einladung zum Schulungsmodul {}".format(course.display_name)
                         elif course.language == "en":
                             obj = "Invitation to access {} training module".format(course.display_name)
                         #try:
-			log.info("is n is n{}".format(n))
+                        log.info("is n is n{}".format(n))
                         log.info("is n is n{}".format(n))
                         log.info("is n is n{}".format(n))
                         log.info("is n is n{}".format(n))
@@ -1926,16 +1944,13 @@ def invite_handler(request, course_key_string):
                         log.info("is n is n{}".format(n))
                         log.info("is n is n{}".format(n))
 
-		        #if n.get('status') == "list":
+		                #if n.get('status') == "list":
                         ### SEND EMAil from ATP only to existing accounts on SEM
                         if n.get('status') == "list" or n.get('status') == "error":
                             user_email = send_enroll_mail(obj,course,overview,course_details,body,_send_values,module_store)
                             log.info("invite_handler END sem user dict: "+pformat(_send_values))
-		        """
-                        except:
-                            log.info("ERROR invite_handler END sem user dict: ")
-			"""
-			#reponse['session_manager_return'].append()
+
+                    #reponse['session_manager_return'].append()
                     for n in list_email:
                         if not n in array:
                             q = {}
@@ -1949,9 +1964,8 @@ def invite_handler(request, course_key_string):
                         q={}
                         q['email']=n
                         retour.append(n);
-			log.info('except1 invite_handler {}'.format(n))
+                        log.info('except1 invite_handler {}'.format(n))
                     response = {'response':request_type,'message':retour}
-
 
             except:
                 retour = []

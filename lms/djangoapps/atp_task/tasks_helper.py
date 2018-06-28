@@ -193,7 +193,7 @@ def run_main_task(entry_id, task_fcn, action_name):
         fmt = u'{task_info}, Requested task did not match actual task "{actual_id}"'
         message = fmt.format(task_info=task_info_string, actual_id=request_task_id)
         TASK_LOG.error(message)
-        raise ValueError(message)   
+        raise ValueError(message)
 
     # Now do the work
     with dog_stats_api.timer('instructor_tasks.time.overall', tags=[u'action:{name}'.format(name=action_name)]):
@@ -215,4 +215,3 @@ def upload_grades_xls(_xmodule_instance_args, _entry_id, course_id, _task_input,
     log.warning("email : "+str(email))
     grade_path = course_grade(course_id).export(email)
     tracker.emit(REPORT_REQUESTED_EVENT_NAME, {"report_type": grade_path, })
-

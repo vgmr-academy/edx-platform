@@ -39,14 +39,14 @@ from openedx.core.djangolib.js_utils import js_escaped_string, dump_js_escaped_j
       unit_title = item['page_title']
       %>
     % endif
-  <div class="sr-is-focusable" tabindex="-1" id="sr-is-focusable_${item_iterator}"></div>
+  <div class="sr-is-focusable" tabindex="-1" id="sr-is-focusable_${item_iterator}" data-seq="chapter_tma_${i}"></div>
   <div id="seq_contents_${idx}"
     aria-labelledby="tab_${idx}"
     aria-hidden="true"
     class="seq_contents tex2jax_ignore asciimath2jax_ignore">
     ${item['content']}
   </div>
-    <div class="sequence-nav">
+    <div id="tma_tab_${i}" class="sequence-nav">
       <nav class="sequence-list-wrapper" aria-label="${_('Unit')}">
         <ol id="sequence-list">
           <li>

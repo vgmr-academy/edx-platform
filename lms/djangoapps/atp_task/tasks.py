@@ -9,7 +9,7 @@ from celery import task
 from atp_task.tasks_helper import (
     run_main_task,
     BaseInstructorTask,
-    upload_grades_xls  
+    upload_grades_xls
 )
 
 TASK_LOG = logging.getLogger('edx.celery.task')
@@ -28,5 +28,3 @@ def calculate_grades_xls(entry_id, xmodule_instance_args):
 
     task_fn = partial(upload_grades_xls, xmodule_instance_args)
     return run_main_task(entry_id, task_fn, action_name)
-
-

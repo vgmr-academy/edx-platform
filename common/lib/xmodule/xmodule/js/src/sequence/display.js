@@ -163,6 +163,7 @@
                   inactive=true;
                 }
             if ((this.position==newPosition && inactive) || this.position!=newPosition || this.position==null) {
+              $('#seq_content').show();
                 if (this.position) {
                     this.mark_visited(this.position);
                     modxFullUrl = '' + this.ajaxUrl + '/goto_position';
@@ -200,8 +201,8 @@
                 }
 
                 // Put seq_content where it has to be
-                referenceNode=document.querySelector("#tab_"+(newPosition - 1)).closest(".sequence-nav");
-                referenceNode.parentNode.insertBefore(document.getElementById('seq_content'), referenceNode.nextSibling);
+                referenceNode=$("#tab_"+(newPosition - 1)).closest(".sequence-nav").after($('#seq_content'));
+                //referenceNode.parent().insertBefore($('#seq_content'), referenceNode.nextSibling);
 
                 XBlock.initializeBlocks(this.content_container, this.requestToken);
 
@@ -216,8 +217,7 @@
                 sequenceLinks = this.content_container.find('a.seqnav');
                 sequenceLinks.click(this.goto);
                 this.path.text(this.el.find('.nav-item.active').data('path'));
-                console.log($('#sr-is-focusable_'+newPosition).offset().top);
-                $(document).scrollTo($('#sr-is-focusable_'+newPosition).offset().top-70+'px',500,{onAfter:function(){$('#sr-is-focusable_'+newPosition).focus();}});
+                $(document).scrollTo($("#"+$('#sr-is-focusable_'+newPosition).attr('data-seq')).offset().top-80+'px',500,{onAfter:function(){$('#sr-is-focusable_'+newPosition).focus();}});
 		next_button_tma = $('#seq_content_next_'+newPosition);
                 next_button_tma.css('display','block');
                 next_tab = $('#tab_'+newPosition);
@@ -253,7 +253,7 @@
             }
             else if(this.position==newPosition && !inactive){
               //Gestion du replis de la séquence
-              $('#seq_content').html('');
+              $('#seq_content').hide();
               $('#tab_'+(newPosition-1)).removeClass('active').addClass('inactive');
               $("#seq_content_next_"+newPosition).hide();
             }

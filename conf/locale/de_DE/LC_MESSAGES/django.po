@@ -25219,7 +25219,7 @@ msgid "TO DO TRAINING MODULES"
 msgstr "OFFENE SCHULUNGSMODULE"
 
 #: lms/templates/dashboard.html
-msgid "You haven't started yet the following training modules. Click on"
+msgid "In this section, you access training modules you have to complete. Click on"
 msgstr "Sie haben die folgenden Schulungsmodule noch nicht begonnen. Klicken Sie auf"
 
 #: lms/templates/dashboard.html
@@ -25236,7 +25236,7 @@ msgid "IN PROGRESS TRAINING MODULES"
 msgstr "LAUFENDE SCHULUNGSMODULE"
 
 #: lms/templates/dashboard.html
-msgid "You have started but haven't completed yet the following training modules. To go on, please click on"
+msgid "In this section, you access training modules you started but haven't completed yet. To go on, please click on"
 msgstr "Sie haben die folgenden Schulungsmodule begonnen, aber noch nicht abgeschlossen. Um diese fortzusetzen, klicken Sie auf"
 
 #: lms/templates/dashboard.html
@@ -25249,8 +25249,12 @@ msgid "COMPLETED TRAINING MODULES"
 msgstr "BEENDETE SCHULUNGSMODULE"
 
 #: lms/templates/dashboard.html
-msgid "You have completed the following training modules. Click on"
+msgid "In this section, you access training modules you validated (click on"
 msgstr "Sie haben die folgenden Schulungsmodule abgeschlossen. Klicken Sie auf"
+
+#: lms/templates/dashboard.html
+msgid "to access your result) as well as unvalidated training modules for which ending date has been exceeded"
+msgstr "um auf Ihr Ergebnis zuzugreifen) sowie nicht validierte Schulungsmodule, deren Enddatum abgelaufen wurde"
 
 #: lms/templates/dashboard.html
 msgid "to access your results and scores"
@@ -25283,7 +25287,7 @@ msgstr "Zurück zur Beschreibung des Schulungsmoduls"
 
 #: lms/templates/courseware/courseware.html
 msgid "The training campaign is over. You can access the training module content. However, you can't do the test to validate your knowledge."
-msgstr "Der Schulungsbereich ist beendet. Sie haben Zugriff auf den Inhalt des Schulungsmoduls, können aber den Test zur Überprüfung Ihrer Kenntnisse nicht absolvieren."
+msgstr "Der Schulungsmodul ist beendet. Sie haben Zugriff auf den Inhalt des Schulungsmoduls, können aber den Test zur überprüfung Ihrer Kenntnisse nicht absolvieren."
 
 #: lms/templates/courseware/courseware.html
 msgid "Go to studio"
@@ -25681,8 +25685,8 @@ msgid "Access Trainee interface"
 msgstr "Zugang Schulungsteilnehmer"
 
 #lms dashboard.html
-msgid "Access Admin interface"
-msgstr "Zugang Admin"
+msgid "Access admin interface"
+msgstr "Zugang admin"
 
 #lms stat.html
 msgid "editor"
@@ -25970,3 +25974,26 @@ msgstr "Das Format der geladenen Datei ist inkorrekt. Ändern Sie die Datei und 
 #cms manage.html
 msgid "You already have invited participants to this training campaign. Starting date can no longer be edited."
 msgstr "Sie haben bereits Teilnehmer in diesen Schulungsbereich eingeladen. Das Startdatum kann nicht mehr geändert werden."
+
+#lms/courseware
+msgid "Congratulations"
+msgstr "Glückwunsch"
+
+msgid "You have completed the training module"
+msgstr "Sie haben das Schulungsmodule abgeschlossen"
+
+msgid "Unfortunately, you haven't achieved the minimum score required to validate the training module."
+msgstr "Leider haben Sie nicht den Mindestwert erreicht, um das Trainingsmodul zu abgeschlossen."
+
+msgid "Start again"
+msgstr "Fang nochmal an"
+
+#lms/courseware/stat.html
+msgid "Amongst certified participants"
+msgstr "Unter zertifizierten Teilnehmern"
+
+msgid "All participants included"
+msgstr "Alle Teilnehmer enthalten"
+
+msgid "disclaimer"
+msgstr "Allgemeine Geschäftsbedingungen"

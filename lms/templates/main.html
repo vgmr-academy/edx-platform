@@ -133,39 +133,12 @@ try:
 except:
     atp_domain_prefix = ''
 %>
-<script type="text/javascript">
 
-<!--
-
-xtnv = document;        //parent.document or top.document or document
-
-xtsd = "https://logs1187.xiti.com/hit.xiti";
-
-xtsite = "588424";
-
-xtn2 = "${atp_domain_prefix}";        // level 2 site ID
-
-xtpage = "";        //page name (with the use of :: to create chapters)
-
-xtdi = "";        //implication degree
-
-xt_multc = "";                   //all the xi indicators (like "&x1=...&x2=....&x3=...")
-
-xt_an = "";        //user ID
-
-xt_ac = "";        //category ID
-
-//do not modify below
-
-if (window.xtparam!=null){window.xtparam+="&ac="+xt_ac+"&an="+xt_an+xt_multc;}
-
-else{window.xtparam="&ac="+xt_ac+"&an="+xt_an+xt_multc;};
-
-//-->
-
-</script>
-
-<script type="text/javascript" src="/media/js/xtcore.js"></script> <noscript> <img width="1" height="1" alt="" src="https://logs1187.xiti.com/hit.xiti?s=588424&s2=${atp_domain_prefix}&p=&di=&an=&ac=" > </noscript>
+% if settings.FEATURES['VM_STATUS'] != 'prod':
+<script src="//tag.aticdn.net/588423/smarttag.js"></script>
+% else:
+<script src="//tag.aticdn.net/588424/smarttag.js"></script>
+% endif
 <style>
 @font-face {
   font-family: 'mywebfont';
@@ -203,6 +176,40 @@ else{window.xtparam="&ac="+xt_ac+"&an="+xt_an+xt_multc;};
   <script type="text/javascript" src="${static.url('js/vendor/noreferrer.js')}" charset="utf-8"></script>
   <script type="text/javascript" src="${static.url('js/utils/navigation.js')}" charset="utf-8"></script>
   <%static:optional_include_mako file="body-extra.html" is_theming_enabled="True" />
+  <script type="text/javascript">            
+var Tag = new ATInternet.Tracker.Tag();
+var language_at="${LANGUAGE_CODE}";
+var subdomain=window.location.host.split('.')[0];
+var level2_at = 0;
+
+if(subdomain == 'amundi' && language_at == 'fr'){
+    level2_at=2;
+}
+else if(subdomain == 'amundi' && language_at == 'en'){
+    level2_at=3;
+}
+else if(subdomain == 'lcl' && language_at == 'fr'){
+    level2_at=4;
+}
+else if(subdomain == 'canextbank' && language_at == 'fr'){
+    level2_at=5;
+}
+else if(subdomain == 'canextbank' && language_at == 'de'){
+    level2_at=6;
+}
+else if(subdomain == 'crelan' && language_at == 'fr'){
+    level2_at=7;
+}
+
+Tag.page.set({
+    'name':'home_dashboard_apprenant',
+    'chapter1':subdomain,
+    'chapter2':'zone_authentifiee',
+    'chapter3':'espace_apprenant',
+    'level2':level2_at.toString()
+});
+Tag.dispatch();
+  </script>
 </body>
 </html>
 

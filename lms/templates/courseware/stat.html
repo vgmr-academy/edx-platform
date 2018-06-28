@@ -3,6 +3,7 @@
 <%namespace name='static' file='/static_content.html'/>
 <%def name="online_help_token()"><% return "courseware" %></%def>
 <%!
+import time
 from django.utils.translation import ugettext as _
 from django.conf import settings
 
@@ -20,6 +21,9 @@ from openedx.core.djangoapps.bookmarks.api import get_bookmark,get_bookmarks
 from opaque_keys.edx.locations import SlashSeparatedCourseKey
 from xmodule.modulestore.django import modulestore
 from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
+
+#LO task mgmt
+from atp_task.models import tmaTask
 
 %>
 <%block name="pagetitle">${_("Dashboard")}</%block>
@@ -258,9 +262,7 @@ course_key_id_cleared=str(course_id).replace('+','').replace(':','')
       <div id="cartouche_info">
         <h3>${course.display_name_with_default_escaped}</h3>
         <p><span>${_("Results on ")}</span>
-          % if course.end:
-            ${course.end.strftime('%Y-%m-%d')}
-          % endif
+            ${time.strftime('%Y-%m-%d')}
         </p>
         <p class="language_paragraph">
         <span class="language_display">${_('Language')} : ${_(language_course)} </span>
@@ -454,6 +456,22 @@ The report with all participants’ results is in progress. It will be sent to y
               <button id="generate_grades_task">${_("Download all participants' detailled results")}</button>
               <div id="table_participant">
               </div>
+            </div>
+            <div id="licorne" style="display:none">
+              <%
+              course_key = SlashSeparatedCourseKey.from_deprecated_string(course_id)
+              task_key=''
+              results=tmaTask.objects.filter(
+                    course_id=course_key,task_key=task_key
+                )
+              %>
+              ${course_key}
+              <br><br>
+              % for result in results :
+              ${result.task_output}<br><br><br>
+              % endfor
+
+
             </div>
             <div id="content_participant">
 <span id="inside_user_content">

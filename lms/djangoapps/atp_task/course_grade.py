@@ -84,29 +84,32 @@ class course_grade():
 		except:
 			pass
 
+		## GET ALL SCORED XBLOCKS FOR WHICH THERE EXISTS AT LEAST ONE ENTRY IN STUDENTMODULE
 		studentmodule = StudentModule.objects.raw("SELECT id,course_id,module_id FROM courseware_studentmodule WHERE course_id = %s AND max_grade IS NOT NULL AND grade <= max_grade GROUP BY module_id ORDER BY created", [self.course_id])
 
 		title = []
 
 		for n in studentmodule:
+			try:
+				usage_key = n.module_state_key
+				_current = get_blocks(self.request,usage_key,depth='all',requested_fields=['display_name'])
+				root = _current['root']
 
-			usage_key = n.module_state_key
-			_current = get_blocks(self.request,usage_key,depth='all',requested_fields=['display_name'])
-			root = _current['root']
+				unit_name = ''
 
-			unit_name = ''
-
-			for over in blocks_overviews:
-				if str(root) in over.get('children'):
-					unit_name = over.get('display_name')
+				for over in blocks_overviews:
+					if str(root) in over.get('children'):
+						unit_name = over.get('display_name')
 
 
-			q = {
-				"title":_current['blocks'][root]['display_name'],
-				"root":root,
-				'unit':unit_name
-			}
-			title.append(q)
+				q = {
+					"title":_current['blocks'][root]['display_name'],
+					"root":root,
+					'unit':unit_name
+				}
+				title.append(q)
+			except:
+				pass
 
 
 		return title
@@ -175,8 +178,8 @@ class course_grade():
 			first_name = user.first_name
 			last_name = user.last_name
 
+			pre = UserPreprofile.objects.get(email=email)
 			try:
-				pre = UserPreprofile.objects.get(email=email)
 				_lvl = [pre.level_1,pre.level_2,pre.level_3,pre.level_4]
 			except:
 				_lvl = ["","","",""]
@@ -219,7 +222,7 @@ class course_grade():
 
 		#sending mail
 		log.warning("send grade reports course_id : "+str(filename))
-		log.warning("email : "+str(sended_email))
+		log.warning("email5 : "+str(sended_email))
 
                 if course.language == "fr":
                     subject = "Résultats des participants du module {}".format(course.display_name_with_default_escaped)

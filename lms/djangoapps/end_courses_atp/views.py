@@ -12,6 +12,9 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 from xmodule.modulestore.django import modulestore
 from course_progress.helpers import get_overall_progress
 
+#TMA GRADE TRACKING LIB
+from lms.djangoapps.tma_grade_tracking.models import dashboardStats
+
 @ensure_csrf_cookie
 @require_GET
 @login_required
@@ -23,6 +26,20 @@ def ensure_certif(request,course_id):
     is_graded = course_tma.is_graded
     grade_cutoffs = modulestore().get_course(course_key, depth=0).grade_cutoffs['Pass'] * 100
     grading_note =  CourseGradeFactory().create(request.user, course_tma)
+
+    #TMA GRADE TRACKING UPDATE
+    mongo_persist = dashboardStats()
+    collection = mongo_persist.connect()
+    add_user = {}
+    add_user['user_id'] = request.user.id
+    add_user['username'] = request.user.username
+    add_user['passed'] = grading_note.passed
+    add_user['percent'] = grading_note.percent
+    add_user['summary'] = grading_note.summary
+    mongo_persist.add_user_grade_info(collection,str(course_id),add_user)
+    # END TMA GRADE TRACKING UPDATE
+
+
     passed = grading_note.passed
     percent = float(int(grading_note.percent * 1000)/10)
     overall_progress = get_overall_progress(request.user.id, course_key)

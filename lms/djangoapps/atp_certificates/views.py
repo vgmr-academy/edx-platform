@@ -62,7 +62,8 @@ def atp_generate_certificate(request,course_id):
     course_key = SlashSeparatedCourseKey.from_deprecated_string(course_id)
     course = get_course_by_id(course_key)
     categorie = course.categ
-    course_factory = CourseGradeFactory().get_persisted(user, course)
+    #course_factory = CourseGradeFactory().get_persisted(user, course)
+    course_factory = CourseGradeFactory().create(user, course)
     is_passed = course_factory.passed
     courseoverview = CourseOverview.get_from_id(course_key)
     course_title = courseoverview.display_name_with_default

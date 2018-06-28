@@ -366,6 +366,72 @@ div.atp_course_picto svg path, div.atp_course_picto svg polygon{
     <button class="tuto_action"><span>Fermer</span> <span class="arrow-top"></span></button>
               </div>
 </section>
+%elif LANGUAGE_CODE == 'de-de':
+<section id="dashboard_header_atp">
+  <img src="${static.url(url_image)}" alt="" class="header-mobile">
+  <div id="dashboard_header_content">
+    <p>Willkommen auf der Trainingsplattform von Amundi Academy</p>
+    <p id="intro-phrase-header">Zugang zu Ihren Trainingsmodulen </p>
+    <span class="tuto_action bouton-more">Mehr <span>▶</span></span>
+  </div>
+</section>
+      <!-- tuto  -->
+<section id="dashboard_tuto_atp">
+  <!-- module 1 -->
+  <div class="dashboard_tuto_atp" id="tuto_module_1">
+    <p>Um ein Trainingsmodul zu absolvieren, haben Sie folgende Auswahl:</p>
+    <p style="margin-top: 0;margin-bottom: 0;">Jedes Trainingsmodul ist in eine Kategorie eingeteilt und kann verschiedene Formate annehmen.</p>
+  </div>
+  <!-- module 2 -->
+              <div class="dashboard_tuto_atp">
+    <h3>Trainingsmodule</h3>
+    <p class="modules-subtext">Alle Informationen zu den Trainingsmodulen finden sie hier: Titel des Moduls, Kategorie, timing zur Erfülllung des Moduls, ob es Verbindlich ist oder nicht, seine digitalen Formate.</p>
+    <img src="${static.url('images/cartes.png')}" id="img_dashboard_tuto_cartes"/>
+              </div>
+  <!-- module 3 -->
+              <div class="dashboard_tuto_atp">
+    <h3>KATERGORIEN DER TRAININGSMODULE</h3>
+    <p>Ihre Trainingsmodule sind in 4 Kategorien unterteilt</p>
+    <ul>
+      <li id="dashboard_tuto_atp_1">
+        <h4>Grundlagen:</h4>
+        <p>Fokus auf Finanzmärkte, Wirtschaft und Investments</p>
+      </li>
+      <li id="dashboard_tuto_atp_3">
+        <h4>Unsere Lösungen:</h4>
+        <p>Fokus auf Expertise: Produkte und Angebote</p>
+      </li>
+      <span style="clear:left; display: block;width:100%;height:0;padding:0;margin:0;"></span>
+      <li id="dashboard_tuto_atp_2">
+        <h4>Strategie:</h4>
+        <p>Fokus auf Kundenbetreuung und verkaufstechniken </p>
+      </li>
+      <li id="dashboard_tuto_atp_4">
+        <h4>Regulatory:</h4>
+        <p>Fokus auf den rechtlichen und regulatorische Rahmenbedingungen</p>
+      </li>
+      <span style="clear:left; display: block;width:100%;height:0;padding:0;margin:0;"></span>
+    </ul>
+              </div>
+  <!-- module 4 -->
+              <div class="dashboard_tuto_atp last_tuto_atp" style="border-bottom: none;">
+    <h3>Formate der Trainingsmodule</h3>
+    <p class="modules-subtext">Jedes Trainingsmodul besteht aus einem oder mehreren digitalen Formaten Innerhalb des Moduls werden folgende Formate kombiniert: Video, Quiz, Spiele, Verkaufsdokumentation, Infographik etc.</p>
+    <div class="dashboard_picto_tuto_tma">
+      <div><img src="${static.url('images/video.svg')}" class="svg"/><span>video</span></div>
+      <div><img src="${static.url('images/quiz.svg')}" class="svg"/><span>quiz</span></div>
+      <div><img src="${static.url('images/seriousgame.svg')}" class="svg"/><span>serious game</span></div>
+      <div><img src="${static.url('images/simulation_inv.svg')}" class="svg"/><span>investment game</span></div>
+      <div><img src="${static.url('images/pdf.svg')}" class="svg"/><span>dokumentation</span></div>
+      <div><img src="${static.url('images/testes&images.svg')}" class="svg"/><span>infographik</span></div>
+      <span style="display:block;clear:left;"></span>
+    </div>
+              </div>
+  <!-- button close -->
+              <div class="dashboard_tuto_atp">
+    <button class="tuto_action"><span>schließen</span> <span class="arrow-top"></span></button>
+              </div>
+</section>
 %else:
 	<section id="dashboard_header_atp">
     <img src="${static.url(url_image)}" alt="" class="header-mobile">
@@ -607,20 +673,19 @@ function add_class() {
 <script>
 /* html and static templates */
 function template_course_card(atp_course_word,atp_course_link,img_src,course_id,categ_lower,categ,course_progression,picto_dure,duration,required,picto_obiligatoire,display_name_with_default,_end_add,_img_data) {
-  % if LANGUAGE_CODE == 'fr':
-    if(categ.toLowerCase()=="fundamental" || categ.toLowerCase()=="fundamentals"){
-      categ="fondamentaux";
-    }
-    else if(categ.toLowerCase()=="our solutions"){
-      categ="nos solutions";
-    }
-    else if(categ.toLowerCase()=="sales approach"){
-      categ="démarche commerciale";
-    }
-    else if(categ.toLowerCase()=="regulatory"){
-      categ="règlementaire";
-    }
-  %endif;
+  if(categ.toLowerCase()=="fundamental" ||categ.toLowerCase()=="fundamentals"){
+    categ="${_('fundamentals')}";
+  }
+  else if(categ.toLowerCase()=="our solutions"){
+    categ="${_('our solutions')}";
+  }
+  else if(categ.toLowerCase()=="sales approach"){
+    categ="${_('Business approach')}";
+  }
+  else if(categ.toLowerCase()=="regulatory"){
+    categ="${_('regulatory')}";
+  }
+
 
   var template = '<li class="atp_course_item" data-categ="'+categ_lower+'"><div class="atp_course_image"><span class="cateogry_text">'+categ+'</span><a href="/courses/'+course_id+'/courseware/"><img src="'+img_src+'" /><div class="img_'+categ_lower+'"></div></a></div><div class="progress_bar_status_up"><div class="progress_bar_status" style="width:'+course_progression+'%;"></div></div><div class="atp_course_info"><div class="atp_course_duration"><div class="inside_atp_left"><img src="'+picto_dure+'" class="svg"/><span>'+duration+'</span><div style="display:block;clear:left;height:0px;"></div></div></div><div class="atp_course_dificulties"><div class="inside_atp"><span>'+required+'</span><img src="'+picto_obiligatoire+'" class="svg"/><div style="display:block;clear:left;height:0px;"></div></div></div></div><div class="atp_course_title"><span>'+display_name_with_default+'</span></div>'+_end_add+'<div class="atp_course_picto">'+_img_data+'</div><div class="atp_course_link"><a href="'+atp_course_link+'">'+atp_course_word+'</a></div></li>';
   return template

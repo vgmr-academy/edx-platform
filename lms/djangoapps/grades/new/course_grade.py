@@ -437,7 +437,7 @@ class CourseGradeFactory(object):
         add_user['percent'] = course_grade.percent
         add_user['summary'] = course_grade.summary
         mongo_persist.add_user_grade_info(collection,str(course.id),add_user)
-        log.info('mongo_tracking_insert')
+        log.info('mongo_tracking_insert - user '+str(student.username)+" - grade - "+str(course_grade.percent))
         # END TMA GRADE TRACKING UPDATE
         return course_grade
 

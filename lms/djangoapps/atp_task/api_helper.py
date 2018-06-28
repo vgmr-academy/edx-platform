@@ -9,6 +9,7 @@ from celery.result import AsyncResult
 from celery.states import READY_STATES, SUCCESS, FAILURE, REVOKED
 from courseware.module_render import get_xqueue_callback_url_prefix
 from atp_task.models import tmaTask, PROGRESS
+from datetime import datetime, timedelta
 
 log = logging.getLogger(__name__)
 
@@ -26,6 +27,28 @@ def _task_is_running(course_id, task_type, task_key):
         running_tasks = running_tasks.exclude(task_state=state)
     return len(running_tasks) > 0
 
+def _task_is_outdated(course_id, task_type, task_key):
+    """Check if task is running for more than 15 minutes"""
+    nowtime=datetime.now() - timedelta(minutes=10)
+    task_outdated=False
+    try:
+        running_task = tmaTask.objects.get(
+            course_id=course_id, task_type=task_type, task_key=task_key, task_state="QUEUING", created__lte=nowtime
+        )
+        task_outdated=True
+    except:
+        pass
+    return task_outdated
+
+def set_task_to_failure(course_id, task_type, task_key):
+    """"Sets specific task status to failure"""
+    running_task = tmaTask.objects.get(
+        course_id=course_id, task_type=task_type, task_key=task_key, task_state="QUEUING"
+    )
+    running_task.task_state="FAILURE"
+    running_task.save()
+
+
 def _reserve_task(course_id, task_type, task_key, task_input, requester):
     """
     Creates a database entry to indicate that a task is in progress.
@@ -42,10 +65,15 @@ def _reserve_task(course_id, task_type, task_key, task_input, requester):
     put in further safeguards.
     """
 
+#    if _task_is_running(course_id, task_type, task_key):
+#        log.info("RESERVE TASK : Duplicate task found for task_type {} and task_key {}".format(task_type,task_key))
+#        if _task_is_outdated(course_id,task_type,task_key):
+#            set_task_to_failure(course_id,task_type,task_key)
+#        else :
+#            raise AlreadyRunningError("requested task is already running")
     if _task_is_running(course_id, task_type, task_key):
         log.warning("Duplicate task found for task_type %s and task_key %s", task_type, task_key)
         raise AlreadyRunningError("requested task is already running")
-
     try:
         most_recent_id = tmaTask.objects.latest('id').id
     except tmaTask.DoesNotExist:
@@ -117,7 +145,7 @@ def _update_instructor_task(instructor_task, task_result):
     task_id = task_result.task_id
     result_state = task_result.state
     returned_result = task_result.result
-    result_traceback = task_result.traceback    
+    result_traceback = task_result.traceback
 
     # Assume we don't always save the InstructorTask entry if we don't have to,
     # but that in most cases we will update the InstructorTask in-place with its
