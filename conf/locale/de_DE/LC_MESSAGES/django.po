@@ -24981,7 +24981,7 @@ msgstr ""
 "Eine neue Revision wurde erzeugt: Zusammenführung von Revision #%(r1)d und "
 "Revision #%(r2)d"
 
-#ATP TMA
+#: ATP TMA
 msgid "MY ACCOUNT"
 msgstr "MEIN KONTO"
 
@@ -25406,7 +25406,7 @@ msgid "The following training campaigns are completed (ending date is exceeded).
 msgstr "Die folgenden Schulungsbereiche wurden abgeschlossen (Enddatum abgelaufen)."
 
 #: cms/templates/index.html
-#lms stat.html
+#: lms stat.html
 msgid "Statistics"
 msgstr "Statistiken"
 
@@ -25626,51 +25626,43 @@ msgstr "Einen Schulungsbereich starten"
 msgid "My modules:"
 msgstr "Meine Module:"
 
-#log
+#: log
 msgid "logout"
 msgstr "Logout"
 
-#log
+#: log
 msgid "login"
 msgstr "Login"
 
-#cms index.html
-
+#: cms index.html
 msgid "No training campaign has been launched yet."
 msgstr "Es wurde noch kein Schulungsbereich gestartet."
 
-# lms dashboard.html
-
+#: lms dashboard.html
 msgid "No training modules available in this section."
 msgstr "In diesem Abschnitt steht kein Schulungsmodul zur Verfügung."
 
-# lms dashboard.html
-
+#: lms dashboard.html
 msgid "Welcome on Amundi Academy platform"
 msgstr "Willkommen auf der Amundi Academy Plattform"
 
-# lms dashboard.html
-
+#: lms dashboard.html
 msgid "You successfully registered"
 msgstr "Sie haben sich erfolgreich angemeldet"
 
-# lms dashboard.html
-
+#: lms dashboard.html
 msgid "The training module"
 msgstr "Das Schulungsmodul"
 
-# lms dashboard.html
-
+#: lms dashboard.html
 msgid "is available in the section"
 msgstr "ist zugänglich im Abschnitt"
 
-# cms index.html
-
+#: cms index.html
 msgid "Send email to participants"
 msgstr "E-Mail an Teilnehmer versenden"
 
-#cms send email
-
+#: cms send email
 msgid "Send"
 msgstr "Versenden"
 
@@ -25680,195 +25672,195 @@ msgstr "Sie können eine neue E-Mail versenden oder auf die Seite MEINE SCHULUNG
 msgid "Your email was sent"
 msgstr "Ihre E-Mail wurde versandt"
 
-#cms index.html
+#: cms index.html
 msgid "Access Trainee interface"
 msgstr "Zugang Schulungsteilnehmer"
 
-#lms dashboard.html
+#: lms dashboard.html
 msgid "Access admin interface"
 msgstr "Zugang admin"
 
-#lms stat.html
+#: lms stat.html
 msgid "editor"
 msgstr "Verfasser"
 
-#lms stat.html
+#: lms stat.html
 msgid "Results on "
 msgstr "Ergebnisse für"
 
-#lms stat.html
+#: lms stat.html
 msgid "Statistical training campaign"
 msgstr "Statistiken Schulungsbereich"
 
-#lms stat.html
+#: lms stat.html
 msgid "training campaign info"
 msgstr "Informationen Schulungsbereich"
 
-#lms stat.html
+#: lms stat.html
 msgid "Download participants' list"
 msgstr "Teilnehmerliste herunterladen"
 
-#lms stat.html
+#: lms stat.html
 msgid "starting date"
 msgstr "Startdatum"
 
-#lms stat.html
+#: lms stat.html
 msgid "ending date"
 msgstr "Enddatum"
 
-#lms stat.html
+#: lms stat.html
 msgid "Number of questions"
 msgstr "Anzahl der Fragen"
 
-#lms stat.html
+#: lms stat.html
 msgid "Percentage for success"
 msgstr "Erfolgsquote"
 
-#lms stat.html
+#: lms stat.html
 msgid "users stats"
 msgstr "Anmerkungen der Teilnehmer"
 
-#lms stat.html
+#: lms stat.html
 msgid "Network"
 msgstr "Netzwerk"
 
-#lms stat.html
+#: lms stat.html
 msgid "Target"
 msgstr "Ziel"
 
-#lms stat.html
+#: lms stat.html
 msgid "Guests"
 msgstr "Gäste"
 
-#lms stat.html
+#: lms stat.html
 msgid "Certified"
 msgstr "Anzahl der Teilnehmer, die ein Zertifikat erhalten"
 
-#lms stat.html
+#: lms stat.html
 msgid "Average result"
 msgstr "Durchschnittliches Ergebnis"
 
-#lms stat.html
+#: lms stat.html
 msgid "Average score"
 msgstr "Durchschnittswert"
 
-#lms stat.html
+#: lms stat.html
 msgid "per question"
 msgstr "pro Frage"
 
-#lms stat.html
+#: lms stat.html
 msgid "per participant"
 msgstr "pro Teilnehmer"
 
-#lms stat.html
+#: lms stat.html
 msgid "Download all participants' detailled results"
 msgstr "Detaillierte Ergebnisse der Teilnehmer herunterladen"
 
-#lms stat.html
+#: lms stat.html
 msgid "First name"
 msgstr "Vorname"
 
-#lms stat.html
+#: lms stat.html
 msgid "Last name"
 msgstr "Name"
 
-#cms create_course.html
+#: cms create_course.html
 msgid "create my campaign"
 msgstr "Meinen Schulungsbereich erstellen"
 
-#cms create_course.html
+#: cms create_course.html
 msgid "To launch your training campaign, you have to specify an unique ID and the target of your training campaign. Please, note that the target wording will be indicated in the statistics of this training campaign."
 msgstr "Um Ihren Schulungsbereich starten zu können, müssen Sie eine einmalige ID und das Ziel Ihres Schulungsbereichs festlegen. Bitte beachten Sie, dass die Zielbeschreibung in der Statistik des Schulungsbereichs angegeben wird."
 
-#cms create_course.html
+#: cms create_course.html
 msgid "Specify unique ID and target"
 msgstr "Einmalige ID und Ziel festlegen"
 
-#cms create_course.html
+#: cms create_course.html
 msgid "Specify an unique campaign title as long as a target for your training campaign"
 msgstr "Einmaligen Titel und das Ziel des Schulungsbereichs festlegen"
 
-#cms create_course.html
+#: cms create_course.html
 msgid "Unique ID"
 msgstr "Einmalige ID"
 
-#cms create_course.html
+#: cms create_course.html
 msgid "Campaign title (unique id)"
 msgstr "Name des Schulungsbereichs (einmalige ID)"
 
-#cms create_course.html
+#: cms create_course.html
 msgid "Rules for unique ID and target : no space, no punctuation, no special characters"
 msgstr "Vorgaben für die einmalige ID und das Ziel: keine Leerzeichen, keine Satzzeichen, keine Sonderzeichen"
 
-#cms create_course.html
+#: cms create_course.html
 msgid "Create an identifier"
 msgstr "ID erstellen"
 
-#cms create_course.html
+#: cms create_course.html
 msgid "This identifier is reflected in the statistical dashboards"
 msgstr "Die ID erscheint in den Statistiktabellen"
 
-#cms create_course.html
+#: cms create_course.html
 msgid "This allows you to specify the target and / or training period"
 msgstr "Sie können das Ziel und/oder die Dauer der Schulung festlegen"
 
-#cms create_course.html
+#: cms create_course.html
 msgid "identifying your campaign"
 msgstr "ID Ihres Schulungsbereichs"
 
-#cms create_course.html
+#: cms create_course.html
 msgid "Rules for unique ID and target"
 msgstr "Vorgaben für die einmalige ID und das Ziel"
 
-#cms create_course.html
+#: cms create_course.html
 msgid "no space, no punctuation, no special characters"
 msgstr "keine Leerzeichen, keine Satzzeichen, keine Sonderzeichen"
 
-#cms invite.html
+#: cms invite.html
 msgid "INVITE PARTICIPANTS"
 msgstr "TEILNEHMER EINLADEN"
 
-#cms invite.html
+#: cms invite.html
 msgid "In order to invite participants to your training campaign, it is imperative that starting date of the training session is set before the current date."
 msgstr "Damit Sie Teilnehmer in Ihren Schulungsbereich einladen können, muss das Startdatum Ihres Schulungsbereichs zwingend vor dem heutigen Tag liegen."
 
-#cms mail.html
+#: cms mail.html
 msgid "SEND EMAIL TO PARTICIPANTS"
 msgstr "E-MAIL AN TEILNEHMER SENDEN"
 
-#cms mail.html
+#: cms mail.html
 msgid "During the training campaign, you can send a personalized e-mail to your participants or to targeted receivers."
 msgstr "Während Ihres Schulungsbereichs können Sie jederzeit eine personalisierte E-Mail an alle Teilnehmer oder an eine von Ihnen bestimmte Liste von Teilnehmern senden."
 
-#cms mail.html
+#: cms mail.html
 msgid "It can be an email to remind them the training campaign will end soon, the training campaign is mandatory, etc"
 msgstr "Das kann eine E-Mail zur Erinnerung sein, dass der Schulungsbereich bald beendet wird, der Schulungsbereich obligatorisch ist usw."
 
-#cms mail.html
+#: cms mail.html
 msgid "Send email to:"
 msgstr "E-Mail senden an:"
 
-#cms mail.html
+#: cms mail.html
 msgid "Team and administrator"
 msgstr "Team und Admin"
 
-#cms mail.html
+#: cms mail.html
 msgid "All participants (invited and accepted)"
 msgstr "Alle Teilnehmer (eingeladen und eingetragen)"
 
-#cms mail.html
+#: cms mail.html
 msgid "Customized mailing list"
 msgstr "Individuelle Mailingliste"
 
-#cms mail.html
+#: cms mail.html
 msgid "If you want to send an email to a customized mailing list, please copy/paste email addresses above. Emails will only be sent to receivers that have been invited to participate to the training campaign in the section 'Invite participants'."
 msgstr "Sollten Sie eine E-Mail an eine individuelle Maillingliste senden wollen, fügen Sie die oben stehenden Adressen ein. E-Mails werden nur an Empfänger versandt, die im Abschnitt «Teilnehmer einladen» in den Schulungsbereich eingeladen wurden."
 
-#cms mail.html
+#: cms mail.html
 msgid "Object of the email"
 msgstr "Betreff der E-Mail"
 
-#cms mail.html
+#: cms mail.html
 msgid "WARNING : Before clicking on 'Send', please read your text carefully and send an email to yourself. This will allow you to validate text and links are correct."
 msgstr "ACHTUNG: Bevor Sie auf «Versenden» klicken, lesen Sie Ihre E-Mail noch einmal genau durch und versenden Sie sie testweise an sich selbst. So können Sie überprüfen, ob der Inhalt und die enthaltenen Links korrekt sind."
 
@@ -25932,11 +25924,11 @@ msgstr "Start UTC-Zeit"
 msgid "Define the minimum score required to validate the training module and receive the certificate of achievement"
 msgstr "Legen Sie einen Mindestwert für die Bestätigung des Schulungsmoduls und den Erhalt des Abschlusszertifikats fest"
 
-#cms:index.html
+#: cms:index.html
 msgid "To launch a training campaign"
 msgstr "Schulungsbereich starten"
 
-#validate translate
+#: validate translate
 msgid "Validated"
 msgstr "Bestätigt"
 
@@ -25967,15 +25959,15 @@ msgstr "Ergebnisse in Ihren Modulen"
 msgid "results found in your campaigns"
 msgstr "Ergebnisse in Ihren Schulungsbereichen"
 
-#fail cms invite.html
+#: fail cms invite.html
 msgid "The structure of the file loaded is incorrect. Please, modify your file and load it again"
 msgstr "Das Format der geladenen Datei ist inkorrekt. Ändern Sie die Datei und laden Sie sie erneut"
 
-#cms manage.html
+#: cms manage.html
 msgid "You already have invited participants to this training campaign. Starting date can no longer be edited."
 msgstr "Sie haben bereits Teilnehmer in diesen Schulungsbereich eingeladen. Das Startdatum kann nicht mehr geändert werden."
 
-#lms/courseware
+#: lms/courseware
 msgid "Congratulations"
 msgstr "Glückwunsch"
 
@@ -25988,7 +25980,7 @@ msgstr "Leider haben Sie nicht den Mindestwert erreicht, um das Trainingsmodul z
 msgid "Start again"
 msgstr "Fang nochmal an"
 
-#lms/courseware/stat.html
+#: lms/courseware/stat.html
 msgid "Amongst certified participants"
 msgstr "Unter zertifizierten Teilnehmern"
 
