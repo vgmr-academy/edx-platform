@@ -74,7 +74,7 @@ from xlwt import *
 import os
 #GEOFFREY
 log = logging.getLogger(__name__)
-
+from pprint import pformat
 
 
 class InstructorDashboardTab(CourseTab):
@@ -760,11 +760,12 @@ def stat_dashboard(request, course_id):
     try:
         users_info = find_mongo_persist_course['users_info']
         for key, value in users_info.iteritems():
+            #log.info("user_info key:"+pformat(key)+" value"+pformat(value))
             _passed = value['passed']
             _percent = value['percent']
             user_course_started = user_course_started + 1
+            course_average_grade = course_average_grade + (_percent * 100)
             if _passed:
-                course_average_grade = course_average_grade + (_percent * 100)
                 user_finished = user_finished + 1
                 if _percent > course_cutoff:
                     num_passed = num_passed + 1
@@ -772,9 +773,9 @@ def stat_dashboard(request, course_id):
         pass
     #return context
     if user_finished != 0:
-        course_average_grade = round((course_average_grade / user_finished),1)
+        final_course_average_grade = round((course_average_grade / user_finished),1)
     else :
-        course_average_grade=0.0
+        final_course_average_grade=0.0
     if user_course_started !=0:
         course_average_grade_global = round((course_average_grade / user_course_started), 1)
     else :
@@ -787,7 +788,7 @@ def stat_dashboard(request, course_id):
      "all_user":all_user,
      "num_passed":num_passed,
      "user_course_started":user_course_started,
-     'course_average_grade':course_average_grade,
+     'course_average_grade':final_course_average_grade,
      'course_average_grade_global': course_average_grade_global,
      'user_finished':user_finished,
      'course_structure':course_structure,
