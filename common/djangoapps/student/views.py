@@ -803,29 +803,35 @@ def dashboard(request):
         except:
             _end = 0
         q={}
-        _progress = True
+        course_open = True
         if _end > 0 and _end < _now:
-            _progress = False
-	q['passed'] = passed
-	q['percent'] = float(int(percent * 1000)/10)
+            course_open = False
+    	q['passed'] = passed
+    	q['percent'] = float(int(percent * 1000)/10)
         q['course_id'] = str(enrollment.course_id)
         q['duration'] = CourseDetails.fetch(enrollment.course_id).effort
         q['required'] = course_tma.is_required_atp
         q['content_data'] = course_tma.content_data
         q['category'] = course_tma.categ
-	q['course_img'] = enrollment.course_overview.image_urls['small']
-	q['display_name_with_default'] = enrollment.course_overview.display_name_with_default
+    	q['course_img'] = enrollment.course_overview.image_urls['small']
+    	q['display_name_with_default'] = enrollment.course_overview.display_name_with_default
         q['course_progression'] = course_progression
 	#list category
 	if not course_tma.categ in list_category:
 	    list_category.append(course_tma.categ)
-	#end list category
-        if course_progression > 0 and course_progression < 100 and passed == False and _progress == True:
-          progress_courses.append(q)
-        elif course_progression == 100 or passed or _progress == False:
-          finish_courses.append(q)
-        elif course_progression == 0 and _progress == True:
-          start_course.append(q)
+
+        #Add course to right category
+        if course_open :
+            if passed :
+                finish_courses.append(q)
+            else :
+                if course_progression ==0:
+                    start_course.append(q)
+                else:
+                    progress_courses.append(q)
+        else :
+            finish_courses.append(q)
+                       
     #new user popup
     is_new_user = False
     now_datetime = int(datetime.datetime.now(UTC).strftime("%s")) - int(request.user.date_joined.strftime("%s"))
