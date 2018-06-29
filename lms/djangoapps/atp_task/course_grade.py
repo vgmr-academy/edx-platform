@@ -121,16 +121,19 @@ class course_grade():
 		course_grade = []
 
 		for n in course_block:
-			q = {}
-			usage_key = n.module_state_key
-			block_name = get_blocks(self.request,usage_key,depth='all',requested_fields=['display_name'])
-			root = block_name['root']
-			display_name = block_name['blocks'][root]['display_name']
-			q['earned'] = n.grade
-			q['possible'] = n.max_grade
-			q['display_name'] = display_name
-			q['root'] = root
-			course_grade.append(q)
+			try:
+				q = {}
+				usage_key = n.module_state_key
+				block_name = get_blocks(self.request,usage_key,depth='all',requested_fields=['display_name'])
+				root = block_name['root']
+				display_name = block_name['blocks'][root]['display_name']
+				q['earned'] = n.grade
+				q['possible'] = n.max_grade
+				q['display_name'] = display_name
+				q['root'] = root
+				course_grade.append(q)
+			except:
+				pass	
 
 		return course_grade
 
@@ -178,8 +181,9 @@ class course_grade():
 			first_name = user.first_name
 			last_name = user.last_name
 
-			pre = UserPreprofile.objects.get(email=email)
+
 			try:
+				pre = UserPreprofile.objects.get(email=email)
 				_lvl = [pre.level_1,pre.level_2,pre.level_3,pre.level_4]
 			except:
 				_lvl = ["","","",""]

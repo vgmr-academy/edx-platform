@@ -209,9 +209,9 @@ def run_main_task(entry_id, task_fcn, action_name):
 def upload_grades_xls(_xmodule_instance_args, _entry_id, course_id, _task_input, action_name):
     course_id = str(course_id)
     email = _task_input.get('email')
-    log.warning("email : "+str(email))
-    log.warning("email : "+str(email))
-    log.warning("email : "+str(email))
-    log.warning("email : "+str(email))
+    log.warning("email1 : "+str(email))
+    log.warning("email2 : "+str(email))
+    log.warning("email3 : "+str(email))
+    log.warning("email4 : "+str(email))
     grade_path = course_grade(course_id).export(email)
     tracker.emit(REPORT_REQUESTED_EVENT_NAME, {"report_type": grade_path, })
