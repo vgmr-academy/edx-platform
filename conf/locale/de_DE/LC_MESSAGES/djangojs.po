@@ -235,16 +235,6 @@ msgstr "Datei auswählen"
 msgid "OK"
 msgstr "OK"
 
-#. #-#-#-#-#  djangojs-partial.po (edx-platform)  #-#-#-#-#
-#. Translators: this is a message from the raw HTML editor displayed in the
-#. browser when a user needs to edit HTML
-#. */
-#: cms/static/js/views/course_video_settings.js
-#: common/lib/xmodule/xmodule/js/src/html/edit.js
-#: cms/templates/js/timed-examination-preference-editor.underscore
-msgid "None"
-msgstr "Kein Schulabschluss"
-
 #: cms/static/js/views/course_video_settings.js
 #: cms/static/js/views/metadata.js
 #: cms/static/js/views/previous_video_upload.js
@@ -1766,18 +1756,6 @@ msgstr ""
 "Die URL, die du eingegeben hast scheint ein externer Link zu sein. Möchtest "
 "du das benötigte Prefix http:// hinzufügen?"
 
-#. #-#-#-#-#  djangojs-partial.po (edx-platform)  #-#-#-#-#
-#. Translators: this is a message from the raw HTML editor displayed in the
-#. browser when a user needs to edit HTML
-#. */
-#: common/lib/xmodule/xmodule/js/src/html/edit.js
-#: cms/templates/js/course-instructor-details.underscore
-#: cms/templates/js/signatory-details.underscore
-#: common/static/common/templates/discussion/new-post.underscore
-#: common/static/common/templates/discussion/thread-edit.underscore
-msgid "Title"
-msgstr "Titel, Namenszusatz"
-
 #. Translators: this is a message from the raw HTML editor displayed in the
 #. browser when a user needs to edit HTML
 #. */
@@ -1840,17 +1818,6 @@ msgstr "V Ausrichtung"
 #: common/lib/xmodule/xmodule/js/src/html/edit.js
 msgid "Vertical space"
 msgstr "Vertikaler Abstand"
-
-#. #-#-#-#-#  djangojs-partial.po (edx-platform)  #-#-#-#-#
-#. Translators: this is a message from the raw HTML editor displayed in the
-#. browser when a user needs to edit HTML
-#. */
-#: common/lib/xmodule/xmodule/js/src/html/edit.js
-#: openedx/features/course_bookmarks/static/course_bookmarks/templates/bookmarks-list.underscore
-#: openedx/features/course_search/static/course_search/templates/course_search_item.underscore
-#: openedx/features/course_search/static/course_search/templates/dashboard_search_item.underscore
-msgid "View"
-msgstr "Anzeigen"
 
 #. Translators: this is a message from the raw HTML editor displayed in the
 #. browser when a user needs to edit HTML
@@ -2585,15 +2552,6 @@ msgid "Public"
 msgstr "Öffentlich"
 
 #: common/static/js/vendor/ova/catch/js/catch.js
-#: common/static/common/templates/components/search-field.underscore
-#: lms/djangoapps/discussion/static/discussion/templates/search.underscore
-#: lms/djangoapps/support/static/support/templates/certificates.underscore
-#: lms/djangoapps/support/static/support/templates/enrollment.underscore
-#: lms/djangoapps/support/static/support/templates/manage_user.underscore
-msgid "Search"
-msgstr "Suche"
-
-#: common/static/js/vendor/ova/catch/js/catch.js
 msgid "Users"
 msgstr "Benutzer"
 
@@ -2750,12 +2708,6 @@ msgid "Sign in to {platform} so we can help you better."
 msgstr ""
 
 #: lms/djangoapps/support/static/support/jsx/logged_out_user.jsx
-#: lms/templates/student_account/hinted_login.underscore
-#: lms/templates/student_account/login.underscore
-msgid "Sign in"
-msgstr "Anmelden"
-
-#: lms/djangoapps/support/static/support/jsx/logged_out_user.jsx
 msgid "Create an {platform} account"
 msgstr ""
 
@@ -2857,11 +2809,6 @@ msgstr ""
 #: openedx/features/learner_profile/static/learner_profile/js/learner_profile_factory.js
 msgid "Country"
 msgstr "Land"
-
-#: lms/djangoapps/teams/static/teams/js/views/edit_team.js
-#: lms/djangoapps/teams/static/teams/templates/team-profile.underscore
-msgid "The country that team members primarily identify with."
-msgstr "Das Land mit dem sich die Teammitglieder primär identifizieren"
 
 #: lms/djangoapps/teams/static/teams/js/views/edit_team.js
 #: lms/static/js/views/fields.js
@@ -3286,10 +3233,6 @@ msgstr ""
 msgid "All units"
 msgstr ""
 
-#: lms/static/js/ccx/schedule.js lms/templates/ccx/schedule.underscore
-msgid "Click to change"
-msgstr "Zum Ändern klicken"
-
 #: lms/static/js/ccx/schedule.js
 msgid "Select a chapter"
 msgstr "Wähle ein Kapitel."
@@ -3637,11 +3580,6 @@ msgid "Choose one"
 msgstr ""
 
 #: lms/static/js/groups/views/cohort_editor.js
-#: lms/templates/instructor/instructor_dashboard_2/cohort-editor.underscore
-msgid "Selected tab"
-msgstr "Ausgewählter Tab"
-
-#: lms/static/js/groups/views/cohort_editor.js
 msgid "Saved cohort"
 msgstr ""
 
@@ -3726,11 +3664,6 @@ msgstr "Die Großgruppe kann nicht hinzugefügt werden"
 #: lms/static/js/groups/views/cohorts.js
 msgid "You currently have no cohorts configured"
 msgstr "Sie haben momentan keine Kohorten konfiguriert"
-
-#: lms/static/js/groups/views/cohorts.js
-#: lms/templates/instructor/instructor_dashboard_2/cohorts.underscore
-msgid "Add Cohort"
-msgstr "Kohorte hinzufügen"
 
 #: lms/static/js/groups/views/cohorts.js
 msgid ""
@@ -3888,15 +3821,6 @@ msgstr "Stelle den Einschreibungscode wieder her"
 #: lms/static/js/instructor_dashboard/ecommerce.js
 msgid "Mark enrollment code as unused"
 msgstr "Markiere Einschreibungscode als unbenutzt"
-
-#: lms/static/js/instructor_dashboard/membership.js
-#: lms/static/js/student_account/views/account_settings_factory.js
-#: openedx/features/learner_profile/static/learner_profile/js/learner_profile_factory.js
-#: cms/templates/js/transcript-organization-credentials.underscore
-#: lms/djangoapps/support/static/support/templates/manage_user.underscore
-#: lms/templates/financial-assistance/financial_assessment_form.underscore
-msgid "Username"
-msgstr "Benutzername"
 
 #: lms/static/js/instructor_dashboard/membership.js
 #: lms/djangoapps/support/static/support/templates/manage_user.underscore
@@ -5475,12 +5399,6 @@ msgstr ""
 
 #: cms/static/js/factories/manage_users.js
 #: cms/static/js/factories/manage_users_lib.js
-#: common/static/common/templates/discussion/thread-list-item.underscore
-msgid "Staff"
-msgstr "Lehrender"
-
-#: cms/static/js/factories/manage_users.js
-#: cms/static/js/factories/manage_users_lib.js
 msgid "Admin"
 msgstr "Administrator"
 
@@ -6795,6 +6713,13 @@ msgstr ""
 msgid "Actions"
 msgstr "Aktionen"
 
+#: cms/templates/js/course-instructor-details.underscore
+#: cms/templates/js/signatory-details.underscore
+#: common/static/common/templates/discussion/new-post.underscore
+#: common/static/common/templates/discussion/thread-edit.underscore
+msgid "Title"
+msgstr "Titel"
+
 #: cms/templates/js/course-outline.underscore
 #: cms/templates/js/publish-xblock.underscore
 #: lms/templates/ccx/schedule.underscore
@@ -6825,6 +6750,12 @@ msgstr "Status"
 msgid "Action"
 msgstr "Aktion"
 
+#: cms/templates/js/transcript-organization-credentials.underscore
+#: lms/djangoapps/support/static/support/templates/manage_user.underscore
+#: lms/templates/financial-assistance/financial_assessment_form.underscore
+msgid "Username"
+msgstr "Nutzername"
+
 #: common/static/common/templates/image-modal.underscore
 msgid "Large"
 msgstr "Groß"
@@ -6854,6 +6785,14 @@ msgstr "Sortiert nach"
 #: common/static/common/templates/components/search-field.underscore
 msgid "Clear search"
 msgstr "Suche löschen"
+
+#: common/static/common/templates/components/search-field.underscore
+#: lms/djangoapps/discussion/static/discussion/templates/search.underscore
+#: lms/djangoapps/support/static/support/templates/certificates.underscore
+#: lms/djangoapps/support/static/support/templates/enrollment.underscore
+#: lms/djangoapps/support/static/support/templates/manage_user.underscore
+msgid "Search"
+msgstr "Suchen"
 
 #: common/static/common/templates/discussion/forum-action-answer.underscore
 msgid "Mark as Answer"
@@ -7030,6 +6969,10 @@ msgstr "Festgeheftet"
 #: common/static/common/templates/discussion/thread-list-item.underscore
 msgid "Following"
 msgstr "Folge"
+
+#: common/static/common/templates/discussion/thread-list-item.underscore
+msgid "Staff"
+msgstr "Mitarbeiter"
 
 #: common/static/common/templates/discussion/thread-list-item.underscore
 msgid "Community TA"
@@ -7445,6 +7388,10 @@ msgid "Team capacity"
 msgstr "Team Kapazität"
 
 #: lms/djangoapps/teams/static/teams/templates/team-profile.underscore
+msgid "The country that team members primarily identify with."
+msgstr "Das Land mit dem sich die Teammitglieder primär identifizieren."
+
+#: lms/djangoapps/teams/static/teams/templates/team-profile.underscore
 msgid "Leave Team"
 msgstr "Verlasse Team"
 
@@ -7491,6 +7438,10 @@ msgstr ""
 #: lms/templates/ccx/schedule.underscore
 msgid "Section"
 msgstr "Abschnitt"
+
+#: lms/templates/ccx/schedule.underscore
+msgid "Click to change"
+msgstr "Klicke zum Ändern"
 
 #: lms/templates/ccx/schedule.underscore
 #, python-format
@@ -7858,6 +7809,10 @@ msgid "Divided"
 msgstr ""
 
 #: lms/templates/instructor/instructor_dashboard_2/cohort-editor.underscore
+msgid "Selected tab"
+msgstr "Ausgewähltes Tab"
+
+#: lms/templates/instructor/instructor_dashboard_2/cohort-editor.underscore
 msgid "Manage Learners"
 msgstr ""
 
@@ -8011,6 +7966,10 @@ msgstr "Zu verwaltende Grossgruppe wählen"
 #: lms/templates/instructor/instructor_dashboard_2/cohorts.underscore
 msgid "View Cohort"
 msgstr "Grossgruppe ansehen"
+
+#: lms/templates/instructor/instructor_dashboard_2/cohorts.underscore
+msgid "Add Cohort"
+msgstr "Grossgruppe hinzufügen"
 
 #: lms/templates/instructor/instructor_dashboard_2/cohorts.underscore
 msgid "Assign learners to cohorts by uploading a CSV file"
@@ -8289,6 +8248,11 @@ msgstr "Ein Fehler ist aufgetreten. Bitte lade die Seite erneut."
 #: lms/templates/student_account/form_field.underscore
 msgid "Forgot password?"
 msgstr "Passwort vergessen?"
+
+#: lms/templates/student_account/hinted_login.underscore
+#: lms/templates/student_account/login.underscore
+msgid "Sign in"
+msgstr "Einloggen"
 
 #: lms/templates/student_account/hinted_login.underscore
 #, python-format
@@ -8993,6 +8957,12 @@ msgstr "Bild aufnehmen"
 #: openedx/features/course_bookmarks/static/course_bookmarks/templates/bookmarks-list.underscore
 msgid "Bookmarked on"
 msgstr "Lesezeichen gesetzt"
+
+#: openedx/features/course_bookmarks/static/course_bookmarks/templates/bookmarks-list.underscore
+#: openedx/features/course_search/static/course_search/templates/course_search_item.underscore
+#: openedx/features/course_search/static/course_search/templates/dashboard_search_item.underscore
+msgid "View"
+msgstr "Ansicht"
 
 #: openedx/features/course_bookmarks/static/course_bookmarks/templates/bookmarks-list.underscore
 msgid "You have not bookmarked any courseware pages yet"
@@ -10377,6 +10347,10 @@ msgstr ""
 #: cms/templates/js/timed-examination-preference-editor.underscore
 msgid "Exam Types"
 msgstr ""
+
+#: cms/templates/js/timed-examination-preference-editor.underscore
+msgid "None"
+msgstr "kein"
 
 #: cms/templates/js/timed-examination-preference-editor.underscore
 msgid "Timed"

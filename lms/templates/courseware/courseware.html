@@ -169,9 +169,8 @@ courseware = static.get_value('css_overrides_courseware')
   <link rel="stylesheet" type="text/css" href="${static.url(courseware)}" />
 % endif
 <style>
-  /* Suppression des majuscules dans les titres*/
+  /* Taille des titres*/
   h3{
-    text-transform: initial!important;
     font-size: 1.2em!important;
   }
   /*Modification du sens des chevrons*/
@@ -554,6 +553,8 @@ courseware = static.get_value('css_overrides_courseware')
 .detailed-solution {
  display: none !important;
 }
+
+
 </style>
 
 
@@ -705,12 +706,15 @@ $(document).ajaxSuccess(function(event, xhr, settings){
     ajax_problem_show(url_show_pb);
     // translate correct incorrect
     if('${course.language}'=='de'){
-      console.log('hello');
       setInterval(function(){
         var message_faux=$('.notification.error.notification-submit span.notification-message');
         var message_vrai=$('.notification.success.notification-submit span.notification-message');
-        message_vrai.html(message_vrai.html().replace('Correct','Korrekt'));
-        message_faux.html(message_faux.html().replace('Incorrect','Falsch'));
+        if(message_vrai.lenght>0){
+          message_vrai.html(message_vrai.html().replace('Correct','Korrekt'));
+        }
+        if(message_faux.length>0){
+          message_faux.html(message_faux.html().replace('Incorrect','Falsch'));
+        }
       },300);
     }
   }
@@ -738,11 +742,28 @@ function ajax_problem_show(url_show_pb){
     });
 }
 
-/* DISPLAY FAIL CORRECT EVEN ON RELOAD */
+/* DISPLAY FAIL CORRECT EVEN ON RELOAD
 $(document).ready(function() {
   $('.problems-wrapper').each(function(){
     error_div='<div class="notification error notification-submit" tabindex="-1"><span class="icon fa fa-close" aria-hidden="true"></span><span class="notification-message">${_("Incorrect")}</span><div class="notification-btn-wrapper"><button type="button" class="btn btn-default btn-small notification-btn review-btn sr">Review</button></div></div>';
     success_div='<div class="notification success notification-submit " tabindex="-1"><span class="icon fa fa-check" aria-hidden="true"></span><span class="notification-message">${_("Correct")}</span><div class="notification-btn-wrapper"><button type="button" class="btn btn-default btn-small notification-btn review-btn sr">Review</button></div></div>';
+    if($(this).hasClass('fail_quiz_atp') && $(this).find('div.notification.error').length<=0){
+      //$(this).find('.action').before(error_div);
+      //afficher réponse si faux
+    }
+    else if($(this).hasClass('success_quiz_atp') && $(this).find('div.notification.success').length<=0){
+      //$(this).find('.action').before(success_div);
+    }
+  });
+});*/
+
+error_div='<div class="notification error notification-submit" tabindex="-1"><span class="icon fa fa-close" aria-hidden="true"></span><span class="notification-message">${_("Incorrect")}</span><div class="notification-btn-wrapper"><button type="button" class="btn btn-default btn-small notification-btn review-btn sr">Review</button></div></div>';
+success_div='<div class="notification success notification-submit " tabindex="-1"><span class="icon fa fa-check" aria-hidden="true"></span><span class="notification-message">${_("Correct")}</span><div class="notification-btn-wrapper"><button type="button" class="btn btn-default btn-small notification-btn review-btn sr">Review</button></div></div>';
+
+/* display answers on questions first attempt quiz */
+$('.problems-wrapper').live('click', function(){
+  if ($(this).hasClass('finished')){
+    console.log('ok finished');
     if($(this).hasClass('fail_quiz_atp') && $(this).find('div.notification.error').length<=0){
       $(this).find('.action').before(error_div);
       //afficher réponse si faux
@@ -752,9 +773,8 @@ $(document).ready(function() {
     else if($(this).hasClass('success_quiz_atp') && $(this).find('div.notification.success').length<=0){
       $(this).find('.action').before(success_div);
     }
-  });
-});
-
+  }
+})
 
 /* SCROLL TO NEXT QUES IN QUIZ*/
 problem_ids_list=[]
@@ -763,23 +783,25 @@ $( document ).ready(function() {
     problem_ids_list.push($(this).attr('id'));
   });
 });
-function scroll_to_ques(question_pos, problem_ids_list){
-  if(question_pos<problem_ids_list.length){
-    $(document).scrollTo($('#'+problem_ids_list[question_pos]).offset().top-80+'px',500);
-  }
+function scroll_to_ques(question_id){
+    console.log('scroll to question '+question_id);
+    $(document).scrollTo($('#'+question_id).offset().top-80+'px',500);
+    console.log('scroll to question');
 }
 // on next click
 $('.question_next').live("click",function () {
-  current_question_id=$(this).attr('id').replace('ques','problem');
-  current_question_pos=problem_ids_list.indexOf(current_question_id);
-  next_question_pos=current_question_pos+1;
-  scroll_to_ques(next_question_pos, problem_ids_list);
+  next_id=$(this).parents('.vert').next('.vert').find('.problems-wrapper').attr('id');
+  scroll_to_ques(next_id);
 });
 // on question title click
 $('.hd.hd-2.problem-header').live("click", function(){
   question_id="problem_"+$(this).attr('id').replace('-problem-title','');
-  question_pos=problem_ids_list.indexOf(question_id);
-  scroll_to_ques(question_pos, problem_ids_list);
+  console.log('ques id on click h2'+question_id);
+  scroll_to_ques(question_id);
+  if($(this).parent().hasClass('finished','fail_quiz_atp')){
+    url_show_pb=$(this).parent().attr('data-url')+'/problem_show';
+    ajax_problem_show(url_show_pb);
+  }
 })
 
 /* RESET QUIZ */
@@ -868,9 +890,6 @@ function generate_result_success(score){
   });
   if(is_course_over()){
     $('#final_score').append(message_termine);
-  }
-  else{
-    $('#final_score').append(reset_bouton);
   }
 };
 
@@ -1039,4 +1058,6 @@ ariane_height();
 $(window).resize(function(){
   ariane_height();
 })
+
+
 </script>

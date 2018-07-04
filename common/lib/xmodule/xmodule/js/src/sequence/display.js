@@ -200,6 +200,16 @@
                     });
                 }
 
+
+                // if we are in the same chapter : scroll to title then display content
+                if($('#sr-is-focusable_'+newPosition).attr('data-seq')==$('#sr-is-focusable_'+this.position).attr('data-seq')){
+                  $(document).scrollTo($("#"+$('#sr-is-focusable_'+newPosition).attr('data-seq')).offset().top-80+'px',500,{onAfter:function(){$('#sr-is-focusable_'+newPosition).focus();}});
+                }
+                // if we are not in the same chapter : hide seq_content build it then scroll to title and reveal seq_content
+                if($('#sr-is-focusable_'+newPosition).attr('data-seq')!=$('#sr-is-focusable_'+this.position).attr('data-seq')){
+                  $('#seq_content').hide();
+                }
+
                 // Put seq_content where it has to be
                 referenceNode=$("#tab_"+(newPosition - 1)).closest(".sequence-nav").after($('#seq_content'));
                 //referenceNode.parent().insertBefore($('#seq_content'), referenceNode.nextSibling);
@@ -210,6 +220,10 @@
                 window.update_schematics();
                 $('#seq_content_next_'+this.position).attr('onclick','');
                 $('#seq_content_next_'+this.position).css('display','none');
+                if($('#sr-is-focusable_'+newPosition).attr('data-seq')!=$('#sr-is-focusable_'+this.position).attr('data-seq')){
+                  $(document).scrollTo($("#"+$('#sr-is-focusable_'+newPosition).attr('data-seq')).offset().top-80+'px',500,{onAfter:function(){$('#sr-is-focusable_'+newPosition).focus();}});
+                  $('#seq_content').show();
+                }
                 this.position = newPosition;
                 this.toggleArrows();
                 this.hookUpContentStateChangeEvent();
@@ -217,8 +231,7 @@
                 sequenceLinks = this.content_container.find('a.seqnav');
                 sequenceLinks.click(this.goto);
                 this.path.text(this.el.find('.nav-item.active').data('path'));
-                $(document).scrollTo($("#"+$('#sr-is-focusable_'+newPosition).attr('data-seq')).offset().top-80+'px',500,{onAfter:function(){$('#sr-is-focusable_'+newPosition).focus();}});
-		next_button_tma = $('#seq_content_next_'+newPosition);
+		            next_button_tma = $('#seq_content_next_'+newPosition);
                 next_button_tma.css('display','block');
                 next_tab = $('#tab_'+newPosition);
                 if (next_tab.length){
@@ -231,6 +244,7 @@
                      $('#seq_content_next_'+newPosition).attr('onclick','$("#tab_'+newPosition+'").click()');
                    }
                 }
+
                 /* TMA ATP COURSE SLIDE
                 var accordion = $('.course-index');
                 var course_content = $('#course-content');

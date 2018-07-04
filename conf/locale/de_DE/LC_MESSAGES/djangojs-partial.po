@@ -123,14 +123,6 @@ msgstr "Datei auswählen"
 msgid "OK"
 msgstr "OK"
 
-#. Translators: this is a message from the raw HTML editor displayed in the
-#. browser when a user needs to edit HTML
-#. */
-#: cms/static/js/views/course_video_settings.js
-#: common/lib/xmodule/xmodule/js/src/html/edit.js
-msgid "None"
-msgstr "Kein Schulabschluss"
-
 #: cms/static/js/views/course_video_settings.js
 #: cms/static/js/views/metadata.js
 #: cms/static/js/views/previous_video_upload.js
@@ -1621,13 +1613,6 @@ msgstr ""
 #. browser when a user needs to edit HTML
 #. */
 #: common/lib/xmodule/xmodule/js/src/html/edit.js
-msgid "Title"
-msgstr "Titel, Namenszusatz"
-
-#. Translators: this is a message from the raw HTML editor displayed in the
-#. browser when a user needs to edit HTML
-#. */
-#: common/lib/xmodule/xmodule/js/src/html/edit.js
 msgid "Tools"
 msgstr "Werkzeuge"
 
@@ -1686,13 +1671,6 @@ msgstr "V Ausrichtung"
 #: common/lib/xmodule/xmodule/js/src/html/edit.js
 msgid "Vertical space"
 msgstr "Vertikaler Abstand"
-
-#. Translators: this is a message from the raw HTML editor displayed in the
-#. browser when a user needs to edit HTML
-#. */
-#: common/lib/xmodule/xmodule/js/src/html/edit.js
-msgid "View"
-msgstr "Anzeigen"
 
 #. Translators: this is a message from the raw HTML editor displayed in the
 #. browser when a user needs to edit HTML
@@ -2435,11 +2413,6 @@ msgstr "Öffentlich"
 
 #: common/static/js/vendor/ova/catch/js/catch.js
 #: common/static/js/vendor/ova/catch/js/catch.js
-msgid "Search"
-msgstr "Suche"
-
-#: common/static/js/vendor/ova/catch/js/catch.js
-#: common/static/js/vendor/ova/catch/js/catch.js
 msgid "Users"
 msgstr "Benutzer"
 
@@ -2591,10 +2564,6 @@ msgid "Sign in to {platform} so we can help you better."
 msgstr ""
 
 #: lms/djangoapps/support/static/support/jsx/logged_out_user.jsx
-msgid "Sign in"
-msgstr "Anmelden"
-
-#: lms/djangoapps/support/static/support/jsx/logged_out_user.jsx
 msgid "Create an {platform} account"
 msgstr ""
 
@@ -2692,10 +2661,6 @@ msgstr ""
 #: openedx/features/learner_profile/static/learner_profile/js/learner_profile_factory.js
 msgid "Country"
 msgstr "Land"
-
-#: lms/djangoapps/teams/static/teams/js/views/edit_team.js
-msgid "The country that team members primarily identify with."
-msgstr "Das Land mit dem sich die Teammitglieder primär identifizieren"
 
 #: lms/djangoapps/teams/static/teams/js/views/edit_team.js
 #: lms/static/js/views/fields.js
@@ -3116,10 +3081,6 @@ msgstr ""
 msgid "All units"
 msgstr ""
 
-#: lms/static/js/ccx/schedule.js lms/static/js/ccx/schedule.js
-msgid "Click to change"
-msgstr "Zum Ändern klicken"
-
 #: lms/static/js/ccx/schedule.js
 msgid "Select a chapter"
 msgstr "Wähle ein Kapitel."
@@ -3462,10 +3423,6 @@ msgid "Choose one"
 msgstr ""
 
 #: lms/static/js/groups/views/cohort_editor.js
-msgid "Selected tab"
-msgstr "Ausgewählter Tab"
-
-#: lms/static/js/groups/views/cohort_editor.js
 msgid "Saved cohort"
 msgstr ""
 
@@ -3550,10 +3507,6 @@ msgstr "Die Großgruppe kann nicht hinzugefügt werden"
 #: lms/static/js/groups/views/cohorts.js
 msgid "You currently have no cohorts configured"
 msgstr "Sie haben momentan keine Kohorten konfiguriert"
-
-#: lms/static/js/groups/views/cohorts.js
-msgid "Add Cohort"
-msgstr "Kohorte hinzufügen"
 
 #: lms/static/js/groups/views/cohorts.js
 msgid ""
@@ -3710,13 +3663,6 @@ msgstr "Stelle den Einschreibungscode wieder her"
 #: lms/static/js/instructor_dashboard/ecommerce.js
 msgid "Mark enrollment code as unused"
 msgstr "Markiere Einschreibungscode als unbenutzt"
-
-#: lms/static/js/instructor_dashboard/membership.js
-#: lms/static/js/instructor_dashboard/membership.js
-#: lms/static/js/student_account/views/account_settings_factory.js
-#: openedx/features/learner_profile/static/learner_profile/js/learner_profile_factory.js
-msgid "Username"
-msgstr "Benutzername"
 
 #: lms/static/js/instructor_dashboard/membership.js
 #: lms/static/js/instructor_dashboard/membership.js

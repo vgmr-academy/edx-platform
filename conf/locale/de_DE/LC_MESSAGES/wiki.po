@@ -1383,10 +1383,6 @@ msgstr "Änderungen"
 msgid "View Source"
 msgstr ""
 
-#: wiki/templates/wiki/includes/article_menu.html
-msgid "View"
-msgstr "Anzeigen"
-
 #: wiki/templates/wiki/includes/breadcrumbs.html
 #: wiki/templates/wiki/includes/breadcrumbs.html
 msgid "Sub-articles for"

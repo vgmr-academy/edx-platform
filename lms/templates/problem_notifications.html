@@ -6,7 +6,13 @@
       ${'' if not is_hidden else 'is-hidden' }"
      tabindex="-1">
     <span class="icon fa ${notification_icon}" aria-hidden="true"></span>
-    <span class="notification-message" aria-describedby="${ short_id }-problem-title">${notification_message}
+    <span class="notification-message" aria-describedby="${ short_id }-problem-title">
+      <!--${notification_message}-->
+      % if notification_type=='error':
+        ${_('Incorrect')}
+      % else :
+        ${_('Correct')}
+      %endif
     </span>
     <div class="notification-btn-wrapper">
         % if notification_name is 'hint':

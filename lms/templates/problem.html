@@ -148,15 +148,24 @@ $('#problem_${short_id}').find('.submit').click(function(){
   $('#problem_${short_id}').on('DOMNodeInserted', function(e) {
     if(typeof $(e.target).find('.notification-message').text() !== "undefined" ) {
         if($('#problem_${short_id}').find('.notification-message').text() != "None") {
-          if($('#problem_${short_id}').find('.notification-message').text().indexOf('Correct') != -1){
+          if($('#problem_${short_id}').find('.notification.notification-submit').hasClass('success')) {
             $('#problem_${short_id}').addClass('success_quiz_atp');
-          }else if($('#problem_${short_id}').find('.notification-message').text().indexOf('Incorrect') != -1) {
+        }else if($('#problem_${short_id}').find('.notification.notification-submit').hasClass('error')) {
             $('#problem_${short_id}').addClass('fail_quiz_atp');
           }
         }
     }
 });
 })
+
+if($('#problem_${short_id}').find('.notification-message').text() != "None") {
+  if($('#problem_${short_id}').find('.notification.notification-submit').hasClass('success')) {
+    $('#problem_${short_id}').addClass('success_quiz_atp').addClass('finished');
+  }else if($('#problem_${short_id}').find('.notification.notification-submit').hasClass('error')) {
+    $('#problem_${short_id}').addClass('fail_quiz_atp').addClass('finished');
+  }
+};
+
 $('.last_finished').addClass('finished');
 
 $('.finished').find('.field').each(function(){
@@ -225,6 +234,9 @@ if($('#problem_${short_id}').hasClass('finished')){
   $('#problem_${short_id}').find('.final_solution').prepend('<div class="tag_container"><i class="fa fa-info-circle info_tag"></i></div>');
   $('#problem_${short_id}').find('.final_solution').addClass('details-decoration');
  }
+ // if problem is finished replace its data-content attr with new content with answered questions in case click on other chapter and back on quiz (answers won't be erased)
+  new_problem_content=$('#problem_${short_id}').html();
+  $('#problem_${short_id}').attr('data-content',new_problem_content);
 }
 </script>
 <style>

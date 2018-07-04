@@ -134,7 +134,7 @@ def generate_html(user,score,course_img_path,template_path,course_title,categori
     if lang=="de":
         date_title="Datum"
     else:
-        score_title="Date"
+        date_title="Date"
     draw.text((px_date+10,py_date),date_title,gold,font=font_big)
     draw.text((px_date,py_date+30),date,main_color,font=font_main)
 
@@ -154,15 +154,17 @@ def generate_html(user,score,course_img_path,template_path,course_title,categori
     draw.text((px_score,py_score+30), score, main_color, font_big)
 
     #Category
-    category_largeur, category_hauteur = draw.textsize('Categorie', font=font_big)
+    if lang=="fr":
+        cat_word=u'Catégorie'
+    elif lang=="de":
+        cat_word=u'Kategorie'
+    else :
+        cat_word=u'Category'
+    category_largeur, category_hauteur = draw.textsize(cat_word, font=font_big)
     px_category=(background_largeur-category_largeur-marge_laterale)
     py_category=py_date
-    if lang=="fr":
-        draw.text((px_category,py_category),u'Catégorie',gold,font=font_big)
-    if lang=="de":
-        draw.text((px_category,py_category),u'Kategorie',gold,font=font_big)
-    else :
-        draw.text((px_category,py_category),'Category',gold,font=font_big)
+    draw.text((px_category,py_category),cat_word,gold,font=font_big)
+
     #Traduction des catégories
     categorie = categorie.lower()
 
@@ -194,7 +196,7 @@ def generate_html(user,score,course_img_path,template_path,course_title,categori
     if lang=="fr":
         phrase=u'Le certificat de réussite du module de formation sur'
         phrase2=u"est décerné à"
-    if lang=="de":
+    elif lang=="de":
         phrase=u'Das Leistungszertifikat für'
         phrase2=u"gehört zu"
     else:

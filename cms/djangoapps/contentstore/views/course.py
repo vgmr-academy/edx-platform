@@ -1369,16 +1369,16 @@ def session_manager_handler(msg,emails,org,language):
     msg = msg
     lang = language
     #test false credentials
-    try:
-	log.info("start bad credentials test")
-	log.info("bad credentials")
-	log.info("bad data")
-	false_data = {"grant_type" : grant_type, "client_id" : "76db78b7-e234-sdg2-95425-d4474d22dbc45", "client_secret" : "078cdb23-a093-1234-b9be-f3b5fb94ca0e"}
-	bad_request_token = requests.post(urls[0], data=false_data,headers = {'content-type':'application/x-www-form-urlencoded'},verify=False )
-	log.info("token bad request status {}".format(bad_request_token.status_code))
-    except:
-        log.info("exception on bad credentials")
-    log.info("end bad credential test")
+    #try:
+    #	log.info("start bad credentials test")
+    #	log.info("bad credentials")
+    #	log.info("bad data")
+    #	false_data = {"grant_type" : grant_type, "client_id" : "76db78b7-e234-sdg2-95425-d4474d22dbc45", "client_secret" : "078cdb23-a093-1234-b9be-f3b5fb94ca0e"}
+    #	bad_request_token = requests.post(urls[0], data=false_data,headers = {'content-type':'application/x-www-form-urlencoded'},verify=False )
+    #	log.info("token bad request status {}".format(bad_request_token.status_code))
+    #    except:
+    #        log.info("exception on bad credentials")
+    #    log.info("end bad credential test")
     log.info("start good credential request")
     #verbose request => http://docs.python-requests.org/en/v0.10.6/user/advanced/
     #my_config = {'verbose': sys.stderr}
@@ -1805,13 +1805,14 @@ def invite_handler(request, course_key_string):
                 list_email = []
                 for line in csv.reader(io_string, delimiter=','):
                     # GET ALL VALUES
-                    email = line[0]
+                    email = str(line[0]).lower()
                     first_name = line[1]
                     last_name = line[2]
                     level_1 = line[3]
                     level_2 = line[4]
                     level_3 = line[5]
                     level_4 = line[6]
+                    log.info("email:"+pformat(email)+" first_name:"+pformat(first_name)+" last_name:"+pformat(last_name)+" level_1:"+pformat(level_1)+" level_2:"+pformat(level_2)+" level_3:"+pformat(level_3))
                     q = {}
                     #cverifie que le mail est compatible avec le regex
                     _ensure_email = re.search(regex_email,email)
@@ -1874,7 +1875,11 @@ def invite_handler(request, course_key_string):
                             UserPreprofile.objects.get(email=email_session_manager)
                         except:
                             log.info("[User PreProfiles] There was no user prepprofile.. Creating one. "+pformat(email_session_manager)+" "+pformat(uuid_session_manager))
-                            s = UserPreprofile(email=email_session_manager,first_name=first_name,last_name=last_name,language=course_lang,level_1=level_1,level_2=level_2,level_3=level_3,level_4=level_4,uuid=uuid_session_manager)
+                            if course_lang=='de':
+                                platform_lang='de-de'
+                            else:
+                                platform_lang=course_lang
+                            s = UserPreprofile(email=email_session_manager,first_name=first_name,last_name=last_name,language=platform_lang,level_1=level_1,level_2=level_2,level_3=level_3,level_4=level_4,uuid=uuid_session_manager)
                             s.save()
                             log.info("[User PreProfiles] UserPreProfile Created. "+pformat(email_session_manager)+" "+pformat(uuid_session_manager))
                         log.info("Create a request params")
@@ -1906,7 +1911,7 @@ def invite_handler(request, course_key_string):
 		        """
                         #log.info(pformat('log_dict : '+log_dict))
                         log.info("enroll_email")
-                        enroll_email(course_key, email_session_manager, auto_enroll=True, email_students=False, email_params=None, language=None)
+                        enroll_email(course_key, email_session_manager, auto_enroll=True, email_students=False, email_params=None, language=course_lang)
 
                         array.append(q)
                         # send email to user already enroll:
