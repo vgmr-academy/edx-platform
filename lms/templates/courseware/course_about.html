@@ -52,7 +52,7 @@ else:
   min-height: 23px;
 }
 #certiticate {
-  display: inline-block;
+  display: inline;
   margin-top: -5px;
 }
 .course_about_atp_special p {
@@ -118,7 +118,33 @@ else:
 .validate{
   color: #cf9c49;
 }
-
+.course_detail_cartouche{
+  width: 33%;
+  float: left;
+  padding: 10px;
+  box-sizing: border-box;
+  min-height: 60px;
+  font-size: 0.9em;
+}
+.clear-left{
+  clear:left
+}
+.course_detail_cartouche .details_titles{
+  text-transform: uppercase;
+}
+.gold-maj-text{
+  color: #cf9c49;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.course_detail_cartouche a{
+  display: inline;
+}
+@media(max-width:980px){
+  .course_detail_cartouche{
+    width: 100%;
+  }
+}
 </style>
 <script src="${static.url('js/course_about_atp.js')}"></script>
 
@@ -180,60 +206,71 @@ except:
 
 <h1>${course.display_name_with_default_escaped}</h1>
 <p id="course_about_accroche">${get_course_about_section(request, course, 'short_description')}</p>
+
+<!-- COURSE ABOUT DETAILS ---------------------------------------->
 <div id="course_about_details">
- <ul>
-<% course_start_date = course.start %>
-  <li><span>${_("Starting date")} :</span> <span>${course_start_date.strftime('%Y-%m-%d')}</span></li>
-  <li><span>${_("Ending date")} :</span> <span>
-% if get_course_about_section(request, course, "end_date") or course.end:
-   % if get_course_about_section(request, course, "end_date"):
-      ${get_course_about_section(request, course, "end_date")}
-   % else:
-      ${course.end.strftime('%Y-%m-%d')}
-   % endif
-%endif
-  </span></li>
- </ul>
- <ul id="course_about_ul" class="infos">
-  <li><span>${_("Language")} :</span> <span id="${course_details.language}">${course_details.language}</span></li>
-  <li><span>${_("Status")} :</span> <span>
-% if atp_rank == 'invite':
-    ${_("To do")}
-% elif atp_rank == 'cours':
-    ${_("In progress")}
-% else:
-    ${_("Completed")}
-% endif
-</span></li>
- </ul>
-% if status >= 99:
-<ul id="course_about_ul" class="about_score">
- <li><span>${_("Score")} :</span> <span id="${course_details.language}">${str(float(int(percent_atp * 1000)/10))+'%'}</span></li>
- % if pass_atp:
-<li><img src="${static.url('images/success.png')}" class="validate_img"/><span class="is_green validate">${_("Validated")}</span></li>
- %else:
- <li><img src="${static.url('images/error.png')}" class="validate_img"/><span class="validate">${_("Not validated")}</span></li>
- % endif
-</ul>
-% endif
-<%
-try:
-  _end = int(course.end.strftime('%s'))
-except:
-  _end = 0
-%>
-<ul id="course_about_ul" class="over_campaign">
-% if pass_atp:
-  <li><a href="#" id="certiticate"><img src="${static.url('images/pdf.svg')}" class="svg"/> ${_("Download certificate")}</a></li>
-% else:
-  <li></li>
-% endif
-% if _now > _end:
-   <li><span></span> <span class="validate is_primary" id="gwb_the_game_is_over_19_03_2003">${_("The training campaign is over.")}</span></li>
-% endif
-</ul>
- <span style="clear:left;display:block;"></span>
+  <div class="course_detail_cartouche">
+   <% course_start_date = course.start %>
+     <span class="details_titles primary-color-text">${_("Starting date")} :</span> <span class="gold-maj-text">${course_start_date.strftime('%Y-%m-%d')}</span>
+  </div>
+  <div class="course_detail_cartouche">
+   <span class="details_titles primary-color-text" >${_("Ending date")} :</span>
+  <span class="gold-maj-text">
+     % if get_course_about_section(request, course, "end_date") or course.end:
+        % if get_course_about_section(request, course, "end_date"):
+           ${get_course_about_section(request, course, "end_date")}
+        % else:
+           ${course.end.strftime('%Y-%m-%d')}
+        % endif
+     %endif
+   </span>
+  </div>
+  <div class="course_detail_cartouche">
+    <span class="details_titles primary-color-text">${_("Language")} :</span> <span id="${course_details.language}" class="gold-maj-text">${course_details.language}</span>
+  </div>
+  <div class="course_detail_cartouche">
+    <span class="details_titles primary-color-text">${_("Status")} :</span>
+    <span class="gold-maj-text">
+      % if atp_rank == 'invite':
+          ${_("To do")}
+      % elif atp_rank == 'cours':
+          ${_("In progress")}
+      % else:
+          ${_("Completed")}
+      % endif
+    </span>
+  </div>
+  <div class="course_detail_cartouche">
+    % if pass_atp:
+      <a href="#" id="certiticate"><img src="${static.url('images/pdf.svg')}" class="svg"/> ${_("Download certificate")}</a>
+    %endif
+  </div>
+  <!--
+  <div class="course_detail_cartouche">
+     <span>${_("Score")} :</span> <span id="${course_details.language}">${str(float(int(percent_atp * 1000)/10))+'%'}</span>
+       % if pass_atp:
+      <img src="${static.url('images/success.png')}" class="validate_img"/><span class="is_green validate">${_("Validated")}</span>
+       %else:
+       <img src="${static.url('images/error.png')}" class="validate_img"/><span class="validate">${_("Not validated")}</span>
+       % endif
+  </div>-->
+  % if _now > _end:
+    <div class="course_detail_cartouche">
+      <%
+      try:
+        _end = int(course.end.strftime('%s'))
+      except:
+        _end = 0
+      %>
+        <span></span> <span class="validate is_primary" id="gwb_the_game_is_over_19_03_2003">${_("The training campaign is over.")}</span>
+    </div>
+  % endif
+  <div class="clear-left"></div>
 </div>
+
+
+
+<!-- COURSE DESCRIPTION ------------------------------------>
 <div class="details">
 % if staff_access and studio_url is not None:
  <div class="wrap-instructor-info studio-view">
