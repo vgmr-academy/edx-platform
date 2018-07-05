@@ -792,6 +792,7 @@ function scroll_to_ques(question_id){
 $('.question_next').live("click",function () {
   next_id=$(this).parents('.vert').next('.vert').find('.problems-wrapper').attr('id');
   scroll_to_ques(next_id);
+  $('#'+next_id).find('.hd.hd-2.problem-header').trigger( "click" );
 });
 // on question title click
 $('.hd.hd-2.problem-header').live("click", function(){

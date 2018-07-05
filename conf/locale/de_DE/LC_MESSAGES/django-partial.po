@@ -11294,7 +11294,7 @@ msgstr "BEENDETE SCHULUNGSMODULE"
 #: lms/templates/dashboard.html
 msgid "In this section, you access training modules you validated (click on"
 msgstr ""
-"Sie haben die folgenden Schulungsmodule abgeschlossen. Klicken Sie auf"
+"Sie haben die folgenden Schulungsmodule abgeschlossen (klicken Sie auf"
 
 #: lms/templates/dashboard.html
 msgid ""
