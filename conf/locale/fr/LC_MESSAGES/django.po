@@ -22386,7 +22386,7 @@ msgid "Course covers completed"
 msgstr "Modules terminés"
 
 msgid "Completed"
-msgstr "Terminés"
+msgstr "Terminé"
 
 msgid "You have completed the training course cover"
 msgstr "Vous avez complété le module de formation"

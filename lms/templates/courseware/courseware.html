@@ -1034,11 +1034,14 @@ $(document).ajaxSuccess(function(event, xhr, settings) {
         $(this).attr('disabled', 'disabled');
         $(this).addClass('inactive').removeClass('active');
         $(this).addClass('disabled_unit_tma');
-        $(this).find('h3').html($(this).find('h3').html()+' <span style="font-size:14px;">(Ce module est fermé vous ne pouvez plus passer le quiz)</span>');
         if($('#seq_content').attr('aria-labelledby')==$(this).attr('id')){
           $('#seq_content').html('');
         }
+        id_quiz_tab=$(this).attr('id').replace('tab_','');
       });
+      id_next_button="#seq_content_next_"+id_quiz_tab;
+      $(id_next_button).hide();
+      enable_score_panel(url_last_question);
     }
   }
 });

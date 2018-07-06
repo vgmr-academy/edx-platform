@@ -743,6 +743,7 @@ def stat_dashboard(request, course_id):
     num_passed = 0
     #add course average grade
     course_average_grade = 0
+    course_average_grade_global = 0
     #number of user who finished the course
     user_finished = 0
     #course_structure
@@ -764,8 +765,9 @@ def stat_dashboard(request, course_id):
             _passed = value['passed']
             _percent = value['percent']
             user_course_started = user_course_started + 1
-            course_average_grade = course_average_grade + (_percent * 100)
+            course_average_grade_global = course_average_grade_global + (_percent * 100)
             if _passed:
+                course_average_grade = course_average_grade + (_percent * 100)
                 user_finished = user_finished + 1
                 if _percent > course_cutoff:
                     num_passed = num_passed + 1
@@ -777,7 +779,7 @@ def stat_dashboard(request, course_id):
     else :
         final_course_average_grade=0.0
     if user_course_started !=0:
-        course_average_grade_global = round((course_average_grade / user_course_started), 1)
+        course_average_grade_global = round((course_average_grade_global / user_course_started), 1)
     else :
         course_average_grade_global=0.0
     context = {

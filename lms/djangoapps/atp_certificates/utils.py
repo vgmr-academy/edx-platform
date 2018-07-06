@@ -190,7 +190,7 @@ def generate_html(user,score,course_img_path,template_path,course_title,categori
             categorie =u'vorschriften'
     category_largeur2, category_hauteur2 = draw.textsize(categorie, font=font_main)
     px_category2=px_category+((category_largeur-category_largeur2)/2)
-    draw.text((px_category2,py_category+30),categorie,main_color,font=font_main)
+    draw.text((px_category2,py_category+30),categorie.capitalize(),main_color,font=font_main)
 
     #Declaration
     if lang=="fr":
