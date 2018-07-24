@@ -246,7 +246,7 @@ nav = static.get_value('css_overrides_nav')
 % endif
 </section>
 -->
-<section id="down_apt_nav">
+<section id="down_apt_nav" class="primary-color-bg">
 <%
 logo_url = static.get_value('logo')
 %>
@@ -270,9 +270,9 @@ amundi_brand=configuration_helpers.get_value('amundi_brand')
 
 
 
-<div id="right-menu">
+<div id="right-menu" class="primary-color-bg">
   % if "/dashboard" in request.path:
-  <div id="menu-categories" class="menu-item-atp" data-location="menu_cat_apt">${_("My Categories")} <span class="arrow_button"></span>
+  <div id="menu-categories" class="menu-item-atp primary-color-bg" data-location="menu_cat_apt">${_("My Categories")} <span class="arrow_button"></span>
     <div id="menu_cat_apt">
      <button id="cat_fond" data-location="fundamental">${_("Fundamentals")}</button>
      <button id="cat_solu" data-location="oursolutions">${_("Our solutions")}</button>
@@ -281,7 +281,7 @@ amundi_brand=configuration_helpers.get_value('amundi_brand')
      <button id="cat_all" data-location="all">${_("All")}</button>
     </div>
   </div>
-  <div id="menu-modules" class="menu-item-atp" data-location="menu_module_apt">${_("My modules")} <span class="arrow_button"></span>
+  <div id="menu-modules" class="menu-item-atp primary-color-bg" data-location="menu_module_apt">${_("My modules")} <span class="arrow_button"></span>
     <div id="menu_module_apt">
      <button data-location="ancre-in-progress">${_("In progress")}</button>
      <button data-location="ancre-to-do">${_("To do")}</button>
@@ -297,7 +297,7 @@ amundi_brand=configuration_helpers.get_value('amundi_brand')
 </div>
 
 % if user.is_authenticated():
-<div id="profile_menu" class="menu-item-atp">
+<div id="profile_menu" class="menu-item-atp primary-color-bg">
   <!--<img class="vignette" src="${static.url('images/man-user.png')}" class="svg"/>-->
   <div id="user-icone">
     <img src="/media/user.png" alt="">

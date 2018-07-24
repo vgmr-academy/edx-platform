@@ -39,6 +39,9 @@ from distutils.dir_util import copy_tree
 
 log = logging.getLogger(__name__)
 
+class Logobase(object):
+    name = ""
+
 class microsite_manager():
     def __init__(self):
         self.logo = None
@@ -330,22 +333,22 @@ class microsite_manager():
                 disclaimer=request.POST.get('disclaimer'),
                 trademark=request.POST.get('trademark')
             )
-            #SAVE NEW FILES (IMAGES LOGO)
-            _static = self.add_static_values(_cur_microsite=_cur_microsite)
+
+            #FILL BLANKS WITH OLD VALUES
+
+
+
+
+            #SAVE NEW STATIC FILES (IMAGES LOGO)
+            _static = self.add_static_values(_cur_microsite)
             log.info(u'microsite_manager.update_static _static : {}'.format(str(_static)))
 
             #UPDATE MICROSITEDETAILS TABLE WITH NEW INFOS
-            if self.logo_couleur is not None and self.logo_couleur!='':
-                microsite_details.logo=self.logo_couleur.name
-            if self.microsite_name is not None and self.microsite_name!='':
-                microsite_details.name=self.microsite_name.lower()
-            if self.language is not None and self.language !='':
-                microsite_details.language_code=self.language
-            if self.primary_color is not None and self.primary_color!='':
-                microsite_details.primary_color=self.primary_color
-            if self.secondary_color is not None and self.secondary_color!='':
-                microsite_details.secondary_color=self.secondary_color
-
+            microsite_details.logo=self.logo_couleur.name
+            microsite_details.name=self.microsite_name.lower()
+            microsite_details.language_code=self.language
+            microsite_details.primary_color=self.primary_color
+            microsite_details.secondary_color=self.secondary_color
             details_status = microsite_details.save()
 
 
@@ -364,51 +367,10 @@ class microsite_manager():
             return JsonResponse(_static)
 
     #SAVE IMAGES (logo etc...) / COPY TEMPLATE FILES / ADAPT CSS FILES
-    def add_static_values(self,_cur_microsite=None):
+    def add_static_values(self, _cur_microsite=None):
         log.info(u'microsite_manager.add_static_values start')
         if self.microsite_name is None:
             raise TypeError
-
-        logo_path = None
-        logo_couleur_path = None
-        primary_color = None
-        secondary_color = None
-
-        #if update => _cur_microsite
-        if _cur_microsite is not None:
-            #_cur_microsite = Microsite.objects.get(key=self.microsite_name)
-            microsite_value = _cur_microsite.values
-            i = 0
-            trademark=''
-            logo_couleur_path=''
-            amundi_brand=''
-            contact_address=''
-            disclaimer=''
-            trademark=''
-            for n in microsite_value:
-                if n == 'primary_color':
-                    primary_color =  microsite_value.values()[i]
-                elif n == 'secondary_color':
-                    secondary_key = i
-                    secondary_color = microsite_value.values()[i]
-                elif n == 'logo_image_url':
-                    logo_path = microsite_value.values()[i]
-                elif n == 'logo':
-                    logo_path = microsite_value.values()[i]
-                elif n == 'logo_couleur':
-                    logo_couleur_path = microsite_value.values()[i]
-                elif n == 'amundi_brand':
-                    amundi_brand = microsite_value.values()[i]
-                elif n == 'contact_address':
-                    contact_address = microsite_value.values()[i]
-                elif n == 'disclaimer':
-                    disclaimer = microsite_value.values()[i]
-                elif n == 'trademark':
-                    trademark = microsite_value.values()[i]
-                i = i + 1
-
-
-
 
         #where template css is stored
         microsite_path = "/edx/app/edxapp/themes/atp_theme/cms/templates/microsite_manager/"
@@ -449,13 +411,34 @@ class microsite_manager():
             except:
                 pass
 
+        #Replace missing values for colors replacement and final context        
+        if _cur_microsite is not None:
+            microsite_value = _cur_microsite.__dict__['values']
+            if self.logo is None:
+                logo=Logobase()
+                self.logo=logo
+                self.logo.name= microsite_value['logo'].encode('utf-8').split('/')[-1]
+            if self.logo_couleur is None:
+                logo_couleur=Logobase()
+                self.logo_couleur=logo_couleur
+                self.logo_couleur.name=microsite_value['logo_couleur'].encode('utf-8').split('/')[-1]
+            if self.primary_color is None :
+                self.primary_color = microsite_value['primary_color'].encode('utf-8')
+            if self.secondary_color is None :
+                self.secondary_color = microsite_value['secondary_color'].encode('utf-8')
+            if self.language is None :
+                self.language = microsite_value['language_code'].encode('utf-8')
+            if self.contact_address is None :
+                self.contact_address = microsite_value['contact_address'].encode('utf-8')
+            if self.amundi_brand is None :
+                self.amundi_brand = microsite_value['amundi_brand'].encode('utf-8')
+            if self.disclaimer is None :
+                self.disclaimer = microsite_value['disclaimer'].encode('utf-8')
+            if self.trademark is None :
+                self.trademark = microsite_value['trademark'].encode('utf-8')
 
         #REPLACE COLORS IN CSS FILES
-        if self.primary_color is None or self.primary_color=='':
-            self.primary_color=primary_color
-        if self.secondary_color is None or self.secondary_color=='':
-            self.secondary_color=secondary_color
-
+        if self.primary_color is not None and self.secondary_color is not None:
             dict_change = {
                 '!atp_primary_color': self.primary_color,
                 '!atp_secondary_color': self.secondary_color,
@@ -471,6 +454,7 @@ class microsite_manager():
             #for each css file
             for n in _css_files:
                 if '.css' in n:
+                    log.info(u'microsite_manager.css file : {}'.format(str(n)))
                     _file = open(css_path+'/'+n,'r')
                     _content = _file.read()
                     _file.close()
@@ -485,37 +469,16 @@ class microsite_manager():
                     _file.close()
             log.info(u'microsite_manager.add_static_values end')
 
-
-        #For current microsite return file will be used to update Microsite.value IF NEW VALUE THEN REPLACE CURRENT VALUE
-        if self.primary_color is not None and self.primary_color !='':
-            primary_color = self.primary_color
-        if self.secondary_color is not None and self.secondary_color!='':
-            secondary_color = self.secondary_color
-        if self.amundi_brand is not None and self.amundi_brand!='':
-            amundi_brand = self.amundi_brand
-        if self.contact_address is not None and self.contact_address!='':
-            contact_address = self.contact_address
-        if self.disclaimer is not None and self.disclaimer!='':
-            disclaimer = self.disclaimer
-        if self.trademark is not None and self.trademark!='':
-            trademark = self.trademark
-
-        if _cur_microsite is not None:
-            if logo_couleur_path is not None and logo_couleur_path !='':
-                logo_url=format(logo_couleur_path.replace("/edx/var/edxapp",""))
-            else:
-                logo_url=''
-
             context = {
                 'status':True,
-                'primary_color':primary_color,
-                'secondary_color':secondary_color,
+                'primary_color':self.primary_color,
+                'secondary_color':self.secondary_color,
                 'logo':format(logo_path.replace("/edx/var/edxapp","")),
-                'logo_couleur':logo_url,
-                'contact_address':contact_address,
-                'amundi_brand':amundi_brand,
-                'disclaimer':disclaimer,
-                'trademark':trademark
+                'logo_couleur':format(logo_couleur_path.replace("/edx/var/edxapp","")),
+                'contact_address':self.contact_address,
+                'amundi_brand':self.amundi_brand,
+                'disclaimer':self.disclaimer,
+                'trademark':self.trademark
             }
             return context
         else:

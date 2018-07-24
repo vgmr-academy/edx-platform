@@ -831,7 +831,7 @@ def dashboard(request):
                     progress_courses.append(q)
         else :
             finish_courses.append(q)
-                       
+
     #new user popup
     is_new_user = False
     now_datetime = int(datetime.datetime.now(UTC).strftime("%s")) - int(request.user.date_joined.strftime("%s"))
@@ -2720,6 +2720,8 @@ class LogoutView(TemplateView):
         _microsite = configuration_helpers.get_value('domain_prefix')
         vm_status = settings.FEATURES.get('VM_STATUS')
         user_language = request.LANGUAGE_CODE
+        if '-' in user_language:
+            user_language=user_language.split('-')[0]
         log.info("user language{}".format(user_language))
 
         if _microsite is None:
