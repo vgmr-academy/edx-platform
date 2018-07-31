@@ -39,8 +39,7 @@ from distutils.dir_util import copy_tree
 
 log = logging.getLogger(__name__)
 
-class Logobase(object):
-    name = ""
+
 
 class microsite_manager():
     def __init__(self):
@@ -333,11 +332,6 @@ class microsite_manager():
                 disclaimer=request.POST.get('disclaimer'),
                 trademark=request.POST.get('trademark')
             )
-
-            #FILL BLANKS WITH OLD VALUES
-
-
-
 
             #SAVE NEW STATIC FILES (IMAGES LOGO)
             _static = self.add_static_values(_cur_microsite)
