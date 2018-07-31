@@ -344,7 +344,8 @@ class microsite_manager():
             log.info(u'microsite_manager.update_static _static : {}'.format(str(_static)))
 
             #UPDATE MICROSITEDETAILS TABLE WITH NEW INFOS
-            microsite_details.logo=self.logo_couleur.name
+            if self.logo_couleur is not None:
+                microsite_details.logo=self.logo_couleur.name
             microsite_details.name=self.microsite_name.lower()
             microsite_details.language_code=self.language
             microsite_details.primary_color=self.primary_color
@@ -411,17 +412,9 @@ class microsite_manager():
             except:
                 pass
 
-        #Replace missing values for colors replacement and final context        
+        #Replace missing values for colors replacement and final context
         if _cur_microsite is not None:
             microsite_value = _cur_microsite.__dict__['values']
-            if self.logo is None:
-                logo=Logobase()
-                self.logo=logo
-                self.logo.name= microsite_value['logo'].encode('utf-8').split('/')[-1]
-            if self.logo_couleur is None:
-                logo_couleur=Logobase()
-                self.logo_couleur=logo_couleur
-                self.logo_couleur.name=microsite_value['logo_couleur'].encode('utf-8').split('/')[-1]
             if self.primary_color is None :
                 self.primary_color = microsite_value['primary_color'].encode('utf-8')
             if self.secondary_color is None :
@@ -473,13 +466,19 @@ class microsite_manager():
                 'status':True,
                 'primary_color':self.primary_color,
                 'secondary_color':self.secondary_color,
-                'logo':format(logo_path.replace("/edx/var/edxapp","")),
-                'logo_couleur':format(logo_couleur_path.replace("/edx/var/edxapp","")),
                 'contact_address':self.contact_address,
                 'amundi_brand':self.amundi_brand,
                 'disclaimer':self.disclaimer,
                 'trademark':self.trademark
             }
+            if self.logo is not None:
+                context['logo']=format(logo_path.replace("/edx/var/edxapp",""))
+            else:
+                context['logo']=microsite_value['logo'].encode('utf-8')
+            if self.logo_couleur is not None:
+                context['logo_couleur']=format(logo_couleur_path.replace("/edx/var/edxapp",""))
+            else:
+                context['logo_couleur']=microsite_value['logo_couleur'].encode('utf-8')
             return context
         else:
             return True
