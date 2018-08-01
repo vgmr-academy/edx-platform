@@ -2744,31 +2744,11 @@ class LogoutView(TemplateView):
 
         #Sur l'environnement de preprod et de dev
         log_bis.info("Microsite credentials URI: {}".format(logout_uri))
-        if str(settings.FEATURES.get('VM_STATUS')) != "prod":
-            if n > 0 :
+        if n > 0 :
                 self.target = logout_uri+user_language+"/user/logout"
-            else :
-                self.target = logout_uri+user_language+"/user/logout"
-        #Sur l'environnement de prod
         else :
-            if n > 0:
-                if _microsite is not None:
-                    if _microsite == "amundi":
-                        self.target = "https://digital.amundi.com/training/amundiacademy/index.html#/fr/administrateur"
-                    elif _microsite == "lcl":
-                        self.target = "https://interface.amundi.com/ret/landing/academy/index.html#/fr/lcl/administrateur"
-                else:
-                    self.target = "https://digital.amundi.com/training/amundiacademy/index.html#/fr/administrateurselon"
-            else:
-                if _microsite is not None:
-                    if _microsite == "amundi":
-                        self.target = "https://interface.amundi.com/ret/landing/academy/index.html#/fr/apprenant"
-                    elif _microsite == "lcl":
-                        self.target = "https://interface.amundi.com/ret/landing/academy/index.html#/fr/lcl/apprenant"
-                else:
-                    self.target = "https://interface.amundi.com/ret/landing/academy/index.html#/fr/apprenant"
+                self.target = logout_uri+user_language+"/user/logout"
 
-        # If we don't need to deal with OIDC logouts, just redirect the user.
         if LogoutViewConfiguration.current().enabled and self.oauth_client_ids:
             response = super(LogoutView, self).dispatch(request, *args, **kwargs)
         else:
