@@ -176,6 +176,10 @@ p.name-atp-user, p.email-atp-user{
 /* responsive mon compte */
 
 @media (max-width: 1022px){
+  #tma_nav{
+    position: fixed!important;
+    z-index:60000;
+  }
   .is_flex {
     display: flex !important;
     flex-direction: column !important;
@@ -225,6 +229,9 @@ p.name-atp-user, p.email-atp-user{
   font-size: 16px!important;
 }
 
+.access-back-atp .class-submenu{
+  text-transform: initial!important;
+}
 
 </style>
 <!-- import custom css script -->
@@ -260,9 +267,13 @@ nav = static.get_value('css_overrides_nav')
 logo_url = static.get_value('logo')
 %>
 % if not logo_url:
-<img id="logo_atp_redirect" src="${static.url('images/logo.png')}" />
+<a href="/dashboard" onclick="followClickEvents(this,'home','navigation')">
+  <img id="logo_atp_redirect" src="${static.url('images/logo.png')}" />
+</a>
 % else:
-<img id="logo_atp_redirect" src="${logo_url}" />
+<a href="/dashboard" onclick="followClickEvents(this,'home','navigation')">
+  <img id="logo_atp_redirect" src="${logo_url}" />
+</a>
 % endif
 <%
 amundi_brand=configuration_helpers.get_value('amundi_brand')
@@ -281,20 +292,20 @@ amundi_brand=configuration_helpers.get_value('amundi_brand')
 
 <div id="right-menu" class="primary-color-bg">
   % if "/dashboard" in request.path:
-  <div id="menu-categories" class="menu-item-atp primary-color-bg" data-location="menu_cat_apt">${_("My Categories")} <span class="arrow_button"></span>
+  <div id="menu-categories" class="menu-item-atp primary-color-bg" data-location="menu_cat_apt" onclick="followClickEvents(this,'my_categories','navigation')">${_("My Categories")} <span class="arrow_button"></span>
     <div id="menu_cat_apt">
-     <button id="cat_fond" data-location="fundamental">${_("Fundamentals")}</button>
-     <button id="cat_solu" data-location="oursolutions">${_("Our solutions")}</button>
-     <button id="cat_dem_com" data-location="salesapproach">${_("Business approach")}</button>
-     <button id="cat_reg" data-location="regulatory">${_("Regulatory")}</button>
-     <button id="cat_all" data-location="all">${_("All")}</button>
+     <button id="cat_fond" data-location="fundamental" onclick="followClickEvents(this,'my_categories-fundamentals','navigation')">${_("Fundamentals")}</button>
+     <button id="cat_solu" data-location="oursolutions" onclick="followClickEvents(this,my_categories-our_solutions,'navigation')">${_("Our solutions")}</button>
+     <button id="cat_dem_com" data-location="salesapproach" onclick="followClickEvents(this,'my_categories-sales_approach','navigation')">${_("Business approach")}</button>
+     <button id="cat_reg" data-location="regulatory" onclick="followClickEvents(this,'my_categories-regulatory','navigation')">${_("Regulatory")}</button>
+     <button id="cat_all" data-location="all" onclick="followClickEvents(this,'my_categories-all','navigation')">${_("All")}</button>
     </div>
   </div>
-  <div id="menu-modules" class="menu-item-atp primary-color-bg" data-location="menu_module_apt">${_("My modules")} <span class="arrow_button"></span>
+  <div id="menu-modules" class="menu-item-atp primary-color-bg" data-location="menu_module_apt" onclick="followClickEvents(this,'my_modules','navigation')">${_("My modules")} <span class="arrow_button"></span>
     <div id="menu_module_apt">
-     <button data-location="ancre-in-progress">${_("In progress")}</button>
-     <button data-location="ancre-to-do">${_("To do")}</button>
-     <button data-location="ancre-finished">${_("Completed")}</button>
+     <button data-location="ancre-in-progress" onclick="followClickEvents(this,'modules-in_progress','navigation')">${_("In progress")}</button>
+     <button data-location="ancre-to-do" onclick="followClickEvents(this,'modules-todo','navigation')">${_("To do")}</button>
+     <button data-location="ancre-finished" onclick="followClickEvents(this,'modules-completed','navigation')">${_("Completed")}</button>
      <!--
      <button id="cat_all" data-location="all">${_("All")}</button>
      -->
@@ -320,18 +331,18 @@ amundi_brand=configuration_helpers.get_value('amundi_brand')
     </div>
       % if not "/dashboard" in request.path:
       <div class="access-back-atp">
-        <a href="/dashboard" class="class-submenu" >
+        <a href="/dashboard" class="class-submenu" onclick="followClickEvents(this,'home','navigation')">
           <span>${_("Home")}</span>
         </a>
       </div>
       % endif
       % if _ensure_status:
       <div class="access-back-atp">
-        <a class="class-submenu" href="https://${settings.CMS_BASE}">${_("Access admin interface")}</a>
+        <a class="class-submenu" href="https://${settings.CMS_BASE}" onclick="followClickEvents(this,'management_interface','navigation')">${_("Access admin interface")}</a>
       </div>
       % endif
     <div class="boutton-deconnexion">
-      <a class="" id="logout-btn" href="/logout">
+      <a class="" id="logout-btn" href="/logout" onclick="followClickEvents(this,'logout','exit')">
         <img style="height:20px;"src="/media/poweroff.png" alt="">
         <span style="margin-left:-25px;">${_('logout')}</span>
       </a>

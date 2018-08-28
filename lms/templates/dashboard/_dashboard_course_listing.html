@@ -117,7 +117,7 @@ else:
      % endif
    </div>
    <div class="atp_course_link">
-          <a href="/courses/${course_overview.id}/courseware/">${_("Proceed")}</a>
+          <a href="/courses/${course_overview.id}/courseware/" class="proceed">${_("Proceed")}</a>
    </div>
   </li>
 
@@ -173,7 +173,7 @@ else:
      % endif
    </div>
    <div class="atp_course_link">
-          <a href="/courses/${course_overview.id}/about">${_("More information")}</a>
+          <a href="/courses/${course_overview.id}/about" class="more_info">${_("More information")}</a>
    </div>
   </li>
 
@@ -241,7 +241,7 @@ else:
     % endif
    </div>
    <div class="atp_course_link">
-          <a href="/courses/${course_overview.id}/about">${_("More information")}</a>
+          <a href="/courses/${course_overview.id}/about" class="more_info">${_("More information")}</a>
    </div>
   </li>
 % elif atp_rank == 'invite' and course_about == 1:
@@ -294,7 +294,7 @@ else:
      % endif
    </div>
    <div class="atp_course_link">
-          <a href="/courses/${course_about_id}/courseware/">${_("Start")}</a>
+          <a href="/courses/${course_about_id}/courseware/" class="start_module">${_("Start")}</a>
    </div>
   </li>
 
@@ -350,12 +350,12 @@ else:
      % endif
    </div>
    <div class="atp_course_link">
-          <a href="/courses/${course_about_id}/courseware/">${_("Proceed")}</a>
+          <a href="/courses/${course_about_id}/courseware/" class="proceed">${_("Proceed")}</a>
    </div>
   </li>
 
 
-  
+
 % elif atp_rank == 'finish' and course_about == 1:
   % if compteur < 5:
   <li class="atp_course_item" data-categ="${categ.lower().replace(' ','')}">
@@ -413,7 +413,7 @@ else:
      % endif
    </div>
    <div class="atp_course_link">
-          <a href="/courses/${course_about_id}/courseware/">${_("More information")}</a>
+          <a href="/courses/${course_about_id}/courseware/" class="more_info">${_("More information")}</a>
    </div>
   </li>
 % endif

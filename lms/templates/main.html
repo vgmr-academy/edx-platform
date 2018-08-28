@@ -176,8 +176,11 @@ except:
   <script type="text/javascript" src="${static.url('js/vendor/noreferrer.js')}" charset="utf-8"></script>
   <script type="text/javascript" src="${static.url('js/utils/navigation.js')}" charset="utf-8"></script>
   <%static:optional_include_mako file="body-extra.html" is_theming_enabled="True" />
-  <script type="text/javascript">
-var Tag = new ATInternet.Tracker.Tag();
+
+
+<script type="text/javascript">
+////////////////////////// XITI /////////////////////////////////////////
+var tag = new ATInternet.Tracker.Tag();
 var language_at="${LANGUAGE_CODE}";
 var subdomain=window.location.host.split('.')[0];
 var level2_at = 0;
@@ -194,21 +197,39 @@ else if(subdomain == 'lcl' && language_at == 'fr'){
 else if(subdomain == 'canextbank' && language_at == 'fr'){
     level2_at=5;
 }
-else if(subdomain == 'canextbank' && language_at == 'de'){
+else if(subdomain == 'canextbank' && language_at == 'de-de'){
     level2_at=6;
 }
 else if(subdomain == 'crelan' && language_at == 'fr'){
     level2_at=7;
 }
 
-Tag.page.set({
-    'name':'home_dashboard_apprenant',
+if(!page_name){
+  page_name="amundi_academy_page"
+}
+
+tag.page.set({
+    'name':page_name,
     'chapter1':subdomain,
     'chapter2':'zone_authentifiee',
     'chapter3':'espace_apprenant',
     'level2':level2_at.toString()
 });
-Tag.dispatch();
+tag.dispatch();
+
+// Follow click events
+function followClickEvents(element, element_tag, type_click){
+  return tag.click.send({
+    elem:element, // DOM element given
+    name:element_tag,
+    chapter1: subdomain,
+    chapter2:'zone_authentifiee',
+    chapter3:'espace_apprenant',
+    level2:level2_at.toString(),
+    type:type_click,
+  });
+}
+
   </script>
 </body>
 </html>

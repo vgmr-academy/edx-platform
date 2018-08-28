@@ -372,6 +372,24 @@ $('#certiticate').click(function(e){
 })
 % endif
 </script>
+
+
+<script>
+  ////////////////////////////////////// XITI ///////////////////
+  page_name = 'page_course_about';
+  $(document).ready(function(){
+    $('.more_info').each(function(){
+      $(this).attr('onclick','followClickEvents(this,\'courseware\',\'action\')');
+    });
+    $('.start_module').each(function(){
+      $(this).attr('onclick','followClickEvents(this,\'start\',\'action\')');
+    });
+    $('.proceed').each(function(){
+      $(this).attr('onclick','followClickEvents(this,\'courseware\',\'action\')');
+    });
+  })
+</script>
+
 <style>
 #dashboard_tma section a .img_fundamentals {
   position: absolute;

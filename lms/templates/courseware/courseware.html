@@ -849,7 +849,7 @@ var picto = '<div id="score_picto"><img src="" class="svg"/></div>';
 var first_par = ['<div id="score_first_para">${_("You have completed the training module")}<br>« ${course.display_name_with_default} »</div>','<div id="score_first_para">${_("You started the training module ")}<br>« ${course.display_name_with_default} ».</div>'];
 var second_par = ['<div id="second_par_score">${_("Unfortunately, you haven\'t achieved the minimum score required to validate the training module.")}</div>','<div id="second_par_score">${_("To end this training module, you have to access every chapters and finish the validation knowledge test.")}</div>'];
 var score_div = '<div id="score_div_info"><span>${_("Your total score :")}</span><span id="insert_score"></span></div>';
-var boutton_certificat = '<div id="score_button"><button>${_("Download the certificate")}</button></div>';
+var boutton_certificat = '<div id="score_button"><button onclick=\"followClickEvents(this,\'certificate\',\'download\')\">${_("Download the certificate")}</button></div>';
 // Messages for modules over
 var message_termine='<div id="module-over">${_("The training campaign is over. You can access the training module content. However, you can\'t do the test to validate your knowledge.")}</div>';
 var reset_bouton='<div onclick="reset_all_problems()"><a class="reset-btn" >${_("Start again")}</a></div>';
@@ -984,7 +984,10 @@ function returnScore() {
   });
 };
 
-
+/* XITI */
+$('.seq_content_next a').each(function(){
+  $(this).attr('onclick','followClickEvents(this,\'next\',\'navigation\')');
+});
 /* ENABLE SCORE PANEL AFTER QUIZ*/
 function enable_score_panel(url_last_question){
   $(".problems-wrapper").each(function(){
@@ -1064,4 +1067,9 @@ $(window).resize(function(){
 })
 
 
+</script>
+
+<script>
+  ////////////////////////////////////// XITI ///////////////////
+  page_name = 'page_courseware';
 </script>

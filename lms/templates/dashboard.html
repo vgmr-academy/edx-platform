@@ -304,7 +304,7 @@ div.atp_course_picto svg path, div.atp_course_picto svg polygon{
     </div>
     -->
     <p id="intro-phrase-header" class="primary-color-text">Accédez à vos modules pédagogiques</p>
-    <span class="tuto_action bouton-more">En savoir plus ▶</span>
+    <span class="tuto_action bouton-more" onclick="followClickEvents(this,'more','navigation')">En savoir plus ▶</span>
   </div>
 </section>
       <!-- tuto  -->
@@ -372,7 +372,7 @@ div.atp_course_picto svg path, div.atp_course_picto svg polygon{
   <div id="dashboard_header_content">
     <p class="primary-color-text">Willkommen auf der Trainingsplattform</p>
     <p id="intro-phrase-header" class="primary-color-text">Zugang zu Ihren Trainingsmodulen </p>
-    <span class="tuto_action bouton-more">Mehr <span>▶</span></span>
+    <span class="tuto_action bouton-more" onclick="followClickEvents(this,'more','navigation')">Mehr <span>▶</span></span>
   </div>
 </section>
       <!-- tuto  -->
@@ -443,7 +443,7 @@ div.atp_course_picto svg path, div.atp_course_picto svg polygon{
       </div>
       -->
 			<p id="intro-phrase-header" class="primary-color-text">Access your training modules</p>
-			<span class="tuto_action bouton-more primary-color-text">More <span>▶</span></span>
+			<span class="tuto_action bouton-more primary-color-text" onclick="followClickEvents(this,'more','navigation')">More <span>▶</span></span>
 		</div>
 	</section>
         <!-- tuto  -->
@@ -774,7 +774,7 @@ function course_card(categ,course_id,img_src,course_progression,duration,require
 
   if(atp_rank == "cours") {
      atp_course_link = '/courses/'+course_id+'/courseware/';
-     atp_course_word = '${_("Proceed")}';
+     atp_course_word = '<span class="proceed">${_("Proceed")}</span>';
      if(!passed && course_progression==100){
       _end_add = '<div class="atp_course_progress"><img src="'+picto_error+'" class="validate_img"/><span class="validate" style="color:rgb(220,158,41);">${_("Not validated")} '+percent+'%</span></div>';
      }
@@ -783,10 +783,10 @@ function course_card(categ,course_id,img_src,course_progression,duration,require
      }
   }else if(atp_rank == "invite") {
      atp_course_link = '/courses/'+course_id+'/about';
-     atp_course_word = '${_("More information")}';
+     atp_course_word = '<span class="more_info">${_("More information")}</span>';
   }else if(atp_rank == "finish") {
      atp_course_link = '/courses/'+course_id+'/about';
-     atp_course_word = '${_("More information")}';
+     atp_course_word = '<span class="more_info">${_("More information")}</span>';
      if(passed) {
       _end_add = '<div class="atp_course_progress"><img src="'+picto_success+'" class="validate_img"/><span class="is_green validate">${_("Validated")} '+percent+'%</span></div>';
      }else{
@@ -808,6 +808,13 @@ function course_card(categ,course_id,img_src,course_progression,duration,require
   );
 
   $(cible).append(course_card_template);
+  ////////////////////////////////////// XITI ///////////////////
+  $('.proceed').parent('a.primary-color-bg').each(function(){
+    $(this).attr('onclick','followClickEvents(this,\'courseware\',\'action\')');
+  });
+  $('.more_info').parent('a.primary-color-bg').each(function(){
+    $(this).attr('onclick','followClickEvents(this,\'course_about\',\'action\')');
+  });
 }
 
 </script>
@@ -824,3 +831,17 @@ function course_card(categ,course_id,img_src,course_progression,duration,require
   display: none !important;
 }
 </style>
+
+<script>
+  ////////////////////////////////////// XITI ///////////////////
+  page_name = 'home_dashboard_apprenant';
+  $(document).ready(function(){
+    $('.proceed').parent('a.primary-color-bg').each(function(){
+      $(this).attr('onclick','followClickEvents(this,\'courseware\',\'action\')');
+    });
+    $('.more_info').parent('a.primary-color-bg').each(function(){
+      $(this).attr('onclick','followClickEvents(this,\'course_about\',\'action\')');
+    });
+  })
+
+</script>

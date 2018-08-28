@@ -120,16 +120,15 @@ footer = static.get_value('css_overrides_footer')
      trademark="© Amundi 2018"
    %>
    <li class="trademark">${trademark}</li>
-  <li class="second-footer-group"><a href="" id="legal_notice" style="text-transform:capitalize">${_("disclaimer")}</a></li>
-  <li class="second-footer-group"><a href="${mailto}">${_("Contact")}</a></li>
+  <li class="second-footer-group"><span href="" id="legal_notice" style="text-transform:capitalize;cursor:pointer;" onclick="followClickEvents(this,'dislcaimer','action')">${_("disclaimer")}</span></li>
+  <li class="second-footer-group"><a href="${mailto}" onclick="followClickEvents(this,'contact','action')">${_("Contact")}</a></li>
   <span style="display:block;clear:both;"></span>
  </ul>
  <span style="display:block;clear:both;"></span>
 </section>
 <script>
 $('#legal_notice,#close_legal').click(function(e){
-  e.preventDefault();
   $('#pop_up_legal_notice').toggle();
-})
+});
 
 </script>
