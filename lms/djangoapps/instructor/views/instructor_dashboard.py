@@ -76,6 +76,10 @@ import os
 log = logging.getLogger(__name__)
 from pprint import pformat
 
+#AGATHE
+from course_progress.helpers import get_overall_progress
+from course_progress.models import StudentCourseProgress
+
 
 class InstructorDashboardTab(CourseTab):
     """
@@ -739,6 +743,8 @@ def stat_dashboard(request, course_id):
             all_user = all_user + 1
     #number of user who started the course
     user_course_started = 0
+    #number of users who completed the entire quiz
+    users_completed_quiz = 0
     #count passed
     num_passed = 0
     #add course average grade
@@ -746,10 +752,21 @@ def stat_dashboard(request, course_id):
     course_average_grade_global = 0
     #number of user who finished the course
     user_finished = 0
+    # Users who completed the quiz entirely
+    user_completed_quiz = 0
+    user_completed_quiz_list = []
     #course_structure
     course_structure = get_course_structure(request,course_id)
     course_usage_key = modulestore().make_course_usage_key(course_key)
     blocks = get_blocks(request,course_usage_key,depth='all',requested_fields=['display_name','children'])
+
+    # Users who completed the quiz (overall_progress equals 100.0 only if user completed the quiz)
+    for user in row:
+        overall_progress = get_overall_progress(user.id, course_key)
+        if overall_progress == 100.0:
+            users_completed_quiz = users_completed_quiz + 1
+            user_completed_quiz_list.append(user.username)
+
     # connect mongodb return values:
     mongo_persist = dashboardStats()
     collection = mongo_persist.connect()
@@ -765,7 +782,11 @@ def stat_dashboard(request, course_id):
             _passed = value['passed']
             _percent = value['percent']
             user_course_started = user_course_started + 1
-            course_average_grade_global = course_average_grade_global + (_percent * 100)
+            # Average grade of all users who completed the quiz
+            _username = value['username']
+            if _username in user_completed_quiz_list:
+                course_average_grade_global = course_average_grade_global + (_percent * 100)
+            # Average grade of users who passed the quiz
             if _passed:
                 course_average_grade = course_average_grade + (_percent * 100)
                 user_finished = user_finished + 1
@@ -773,15 +794,18 @@ def stat_dashboard(request, course_id):
                     num_passed = num_passed + 1
     except:
         pass
+
     #return context
     if user_finished != 0:
         final_course_average_grade = round((course_average_grade / user_finished),1)
     else :
         final_course_average_grade=0.0
-    if user_course_started !=0:
-        course_average_grade_global = round((course_average_grade_global / user_course_started), 1)
+
+    if users_completed_quiz !=0:
+        course_average_grade_global = round((course_average_grade_global / users_completed_quiz), 1)
     else :
         course_average_grade_global=0.0
+
     context = {
      "course_id":course_id,
      "course":course,

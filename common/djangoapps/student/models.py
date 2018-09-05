@@ -2393,3 +2393,4 @@ class UserPreprofile(models.Model):
     level_2 = models.CharField(blank=True, max_length=255, db_index=True)
     level_3 = models.CharField(blank=True, max_length=255, db_index=True)
     level_4 = models.CharField(blank=True, max_length=255, db_index=True)
+    last_invite = models.DateTimeField(null=True, blank=True)

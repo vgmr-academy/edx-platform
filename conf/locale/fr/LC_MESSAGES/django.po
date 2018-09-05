@@ -23053,11 +23053,19 @@ msgstr "Invités"
 
 #: lms stat.html
 msgid "Certified"
-msgstr "Nombre de participants ayant obtenus leur certification"
+msgstr "Nombre de participants ayant obtenu leur certification"
 
 #: lms stat.html
 msgid "Average result"
 msgstr "Résultat moyen par participant"
+
+#: lms stat.html
+msgid "Average result for certified participants"
+msgstr "Résultat moyen par participant certifié au quiz"
+
+#: lms stat.html
+msgid "Average result for participants"
+msgstr "Résultat moyen par participant au quiz"
 
 #: lms stat.html
 msgid "Average score"

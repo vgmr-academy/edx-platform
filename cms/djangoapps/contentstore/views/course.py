@@ -10,6 +10,9 @@ import random
 import re
 import string  # pylint: disable=deprecated-module
 import unicodedata
+from django.utils.timezone import localtime, now
+
+
 #GEOFFREY TMA ATP
 import sys
 from django.core.mail import send_mail
@@ -612,7 +615,7 @@ def course_listing(request):
         "salesapproach":3,
         "none":4
       }
-      if q['categories'] is not None:
+      if q['categories'] is not None and  q['categories'] in sorted_indices:
           cur_indice = sorted_indices[q['categories'].lower().replace(' ','')]
       else:
           cur_indice = 4
@@ -1328,10 +1331,25 @@ def manage_handler(request, course_key_string):
         return render_to_response('manage_course.html', context)
 
 
-def session_manager_handler(msg,emails,org,language):
+def session_manager_handler(emails,org,course):
     log.info("session_manager_handler: start")
+    #Gather all needed information
+    lang = course.language
+    if course.language in language_setup :
+        msg = language_setup[course.language]['msg'].format(course.display_name)
+        redirect_language = course.language
+    else :
+        msg = language_setup['en']['msg'].format(course.display_name)
+        redirect_language='en'
+    log.info("session_manager_handler: msg value {}".format(msg))
+    log.info("session_manager_handler: course display name {}".format(course.display_name))
     grant_type = 'client_credentials'
-    # TODO : Remove all hardcoded and try except when SEM is finalized
+    sem_org = org.lower()
+    credentials = settings.FEATURES.get('SEM_CREDENTIALS')
+    prod = settings.FEATURES.get('VM_STATUS')
+    microsite=Microsite.objects.get(key=sem_org)
+
+
     """
     credentials = {
         'dev':{
@@ -1340,18 +1358,10 @@ def session_manager_handler(msg,emails,org,language):
         }
     }
     """
-    #lower course org
-    sem_org = org.lower()
-    credentials = settings.FEATURES.get('SEM_CREDENTIALS')
-    prod = settings.FEATURES.get('VM_STATUS')
-    microsite=Microsite.objects.get(key=sem_org)
-    log.info("session_manager_handler microsite {}: ".format(sem_org))
-    log.info("session_manager_handler prod {}: ".format(prod))
+
     try:
         client_id =MicrositesCredentials.objects.get(VM_status=prod, microsite=microsite).client_id
         client_secret = MicrositesCredentials.objects.get(VM_status=prod, microsite=microsite).client_secret
-        log.info("LO session_manager_handler client_secret :{}: ".format(client_secret))
-        log.info("LO session_manager_handler client_id : {}: ".format(client_id))
     except:
         client_id = '76db53b7-e23e-40f5-9b75-d472d48dbc70'
         client_secret = '066cdb10-a092-4327-b9be-f2b4fb95ca1e'
@@ -1363,11 +1373,8 @@ def session_manager_handler(msg,emails,org,language):
     except:
         urls = ["https://ppr-session-manager.amundi.com/v2/token","https://ppr-session-manager.amundi.com/v2/api/import","https://ppr-session-manager.amundi.com/v2/api/users/import"]
 
-    if language != 'en' and language !='fr' and language!='de':
-        language = en
-    redirect_uri = 'https://'+str(org)+'.'+str(settings.LMS_BASE)+'/auth/login/amundi/?auth_entry=login&next=%2Fdashboard&lang='+language
-    msg = msg
-    lang = language
+    redirect_uri = 'https://'+str(org)+'.'+str(settings.LMS_BASE)+'/auth/login/amundi/?auth_entry=login&next=%2Fdashboard&lang='+redirect_language
+
     #test false credentials
     #try:
     #	log.info("start bad credentials test")
@@ -1447,9 +1454,11 @@ def session_manager_handler(msg,emails,org,language):
     return array_pull
 
 
-def send_enroll_mail(obj,course,overview,course_details,body,list_email,module_store):
+def send_enroll_mail(obj,course,overview,course_details,list_email,module_store):
     reload(sys)
     sys.setdefaultencoding('utf8')
+
+    body=''
 
     log.info("send_enroll_mail start_sending")
     #try:
@@ -1467,8 +1476,6 @@ def send_enroll_mail(obj,course,overview,course_details,body,list_email,module_s
     subject = obj
     subject = subject.replace('\n', '')
     log.info("send_enroll_mail start_sending")
-    # mail template
-    template_name = 'microsite_manager/invite_mail_template_'+course.language+'.txt'
     log.info("send_enroll_mail start_sending")
     # LIST OF VARS
     course_org = course.org.lower()
@@ -1525,51 +1532,28 @@ def send_enroll_mail(obj,course,overview,course_details,body,list_email,module_s
     except:
         pass
     from_email=configuration_helpers.get_value('email_from_address', settings.DEFAULT_FROM_EMAIL)
+
     #wording mail
-    current_lang = course.language
-    if current_lang == 'fr':
-        title_mail = [
-            'Catégorie','Durée','Mode','Date de fin'
-        ]
-        if mode_required:
-            mode = 'obligatoire'
-        else:
-            mode = 'facultatif'
+    if course.language in language_setup :
+        language_data=language_setup[course.language]
+        template_name = 'microsite_manager/invite_mail_template_'+course.language+'.txt'
+    else :
+        language_data=language_setup['en']
+        template_name = 'microsite_manager/invite_mail_template_en.txt'
 
-        if category.lower() == "fundamentals" or category=="Fundamentals":
-            category = "fondamentaux"
-        elif category.lower() == "our solutions" :
-            category ="nos solutions"
-        elif category.lower() == "sales approach" :
-            category ="démarche commerciale"
-        elif category.lower() == "regulatory" :
-            category ="réglementaire"
-    elif current_lang == 'de':
-        title_mail = [
-            'Kategorie','Dauer','Modus','Enddaten'
-        ]
-        if mode_required:
-            mode = 'verbindlich'
-        else:
-            mode = 'fakultativ'
+    log.info('send enroll email language data {}'.format(language_data))
 
-        if category.lower() == "fundamentals" or category=="Fundamentals":
-            category = "grundlagen"
-        elif category.lower() == "our solutions" :
-            category ="unsere lösungen"
-        elif category.lower() == "sales approach" :
-            category ="vertriebsansatz"
-        elif category.lower() == "regulatory" :
-            category ="vorschriften"
+    title_mail = language_data['title_mail']
+    if category.lower() in language_data['categories']:
+        category = language_data['categories'][category.lower()]
+    else :
+        category = 'None'
+    if mode_required:
+        mode = language_data['required']
     else:
-        title_mail = [
-            'Category','Duration','Mode','Ending date'
-        ]
-        if mode_required:
-            mode = 'mandatory'
-        else:
-            mode = 'facultative'
+        mode = language_data['optional']
 
+    log.info('send enroll email mode {} category {}'.format(mode,category))
     html_content = render_to_string(
         template_name,
         {
@@ -1588,6 +1572,8 @@ def send_enroll_mail(obj,course,overview,course_details,body,list_email,module_s
 	   'grade_cutoff':str(module_store.grade_cutoffs['Pass'] * 100)+' %'
         }
     )
+
+    log.info('send enroll ok render to string')
     for i in range(len(list_email)):
         if not domain_override:
             site_name = configuration_helpers.get_value(
@@ -1745,23 +1731,70 @@ def email_dashboard_handler(request, course_key_string):
             response = {'error':'no request_type'}
             return JsonResponse(response)
 
+
+
+language_setup={
+    "en":{
+        'platform_lang' :'en',
+        'msg':'Once you’ve passed this step, you will be able to access the training module {0}.',
+        'obj':'Invitation to access {0} training module',
+        'title_mail' : ['Category','Duration','Mode','Ending date'],
+        'required':'mandatory',
+        'optional':'facultative',
+        'categories':{
+            'fundamentals':'fundamentals',
+            'our solutions':'our solutions',
+            'sales approach' :'sales approach',
+            'regulatory' : 'regulatory'
+        }
+
+    },
+    'fr':{
+        'platform_lang':'fr',
+        'msg':'Une fois passée cette étape, vous pourrez accéder à votre module sur {0}.',
+        'obj':'Invitation pour accéder au module {0}',
+        'title_mail':['Catégorie','Durée','Mode','Date de fin'],
+        'required':'obligatoire',
+        'optional':'facultatif',
+        'categories':{
+            'fundamentals':'fondamentaux',
+            'our solutions':'nos solutions',
+            'sales approach' :'démarche commerciale',
+            'regulatory' : 'réglementaire'
+        }
+
+    },
+    'de':{
+        'platform_lang':'de-de',
+        'msg':'Sobald Sie diesen Schritt bestanden haben, können Sie auf das Schulungsmodul zugreifen {0}.',
+        'obj' : 'Einladung zum Schulungsmodul {0}',
+        'title_mail':['Kategorie','Dauer','Modus','Enddaten'],
+        'required':'verbindlich',
+        'optional':'fakultativ',
+        'categories':{
+            'fundamentals':'grundlagen',
+            'our solutions':'unsere lösungen',
+            'sales approach' :'vertriebsansatz',
+            'regulatory' : 'vorschriften'
+        }
+    }
+}
+
+
+
 @login_required
 @ensure_csrf_cookie
 @require_http_methods(("GET", "PUT", "POST"))
 @expect_json
 def invite_handler(request, course_key_string):
-    # GET COURSE_KEY
     course_key = CourseKey.from_string(course_key_string)
-    # GET COURSE_PARAM
     course = get_course_by_id(course_key)
-    #course details
     course_details = CourseDetails.fetch(course_key)
-    #GET COURSE OVERVIEW
     overview = CourseOverview.get_from_id(course_key)
-    #GET MODULE STORE
     module_store = modulestore().get_course(course_key, depth=0)
+
+    #  GET = RENDER INVITE PAGE
     if request.method == "GET":
-        # CREATE A CONTEXT
         context = {
             'course':course,
             'overview':overview,
@@ -1770,222 +1803,166 @@ def invite_handler(request, course_key_string):
             'course_key':course_key_string,
             'language_course':get_course_langue(course.language)
         }
-        # CREATE THE RETURN
-        retour = {'course-key_string':context}
-        #  RETURN VALUE AND RENDER INVITE PAGE
+        #retour = {'course-key_string':context}
         return render_to_response('invite_course.html', context)
-    # IF POST METHOD
+
+    # POST = SEND INVITATIONS
     if request.method == 'POST':
-        #fuck da unicode
         reload(sys)
         sys.setdefaultencoding('utf8')
-        # FILE VAR
+
         files = ''
-        # GET REQUEST_TYPE
-        request_type = ''
-        try:
-            request_type = request.POST['request_type']
-        except:
-            request_type = False
+        request_type = request.POST.get('request_type')
+        csv_file = request.FILES.get('file')
+        regex_email = r'[\w\.-]+@[\w\.-]+(\.[\w]+)+'
+
+        log.info("invite_handler: start")
+
         # IF NEED ONLY TO PRE REGISTER USERS FROM AN ADRESS MAIL
-        if request_type == 'register_only':
-            #get microsite prefix
+        if request_type == 'register_only' and csv_file :
             org = course.org
-	    list_return = []
+            atp_students_list = {}
+            list_email = []
+            students_treated=[]
+            student_errors=[]
+            students_atp_full_list=[]
+
+            if course.language in language_setup :
+                obj = language_setup[course.language]['obj'].format(course.display_name)
+                platform_lang = language_setup[course.language]['platform_lang']
+            else :
+                obj = language_setup['en']['obj'].format(course.display_name)
+                platform_lang = language_setup['en']['platform_lang']
+
+            #Try to read the csv file
             try:
-                csv_file = request.FILES['file']
-                saved_column = []
-                decoded_file = csv_file.read().decode('utf-8')
-                io_string = io.StringIO(decoded_file)
-                array = []
-                #regex email
-                regex_email = r'[\w\.-]+@[\w\.-]+(\.[\w]+)+'
-                # OPEN CSV FILE
-                csv_infos = []
-                list_email = []
-                for line in csv.reader(io_string, delimiter=','):
-                    # GET ALL VALUES
-                    email = str(line[0]).lower()
-                    first_name = line[1]
-                    last_name = line[2]
-                    level_1 = line[3]
-                    level_2 = line[4]
-                    level_3 = line[5]
-                    level_4 = line[6]
-                    log.info("email:"+pformat(email)+" first_name:"+pformat(first_name)+" last_name:"+pformat(last_name)+" level_1:"+pformat(level_1)+" level_2:"+pformat(level_2)+" level_3:"+pformat(level_3))
-                    q = {}
-                    #cverifie que le mail est compatible avec le regex
-                    _ensure_email = re.search(regex_email,email)
-                    if email != 'email' and first_name != 'first_name' and last_name != 'last_name' and level_1 != 'level_1' and level_2 != 'level_2' and level_3 != 'level_3' and level_4 != 'level_4' and _ensure_email:
-                        q['email'] = email
-                        #remove accents
-                        log.info("first_name"+pformat(type(first_name)))
-                        log.info("first_name"+pformat(first_name))
-                        q['first_name'] = strip_accents(first_name)
-                        q['last_name'] = strip_accents(last_name)
-                        q['level_1'] = strip_accents(level_1)
-                        q['level_2'] = strip_accents(level_2)
-                        q['level_3'] = strip_accents(level_3)
-                        q['level_4'] = strip_accents(level_4)
-                        list_email.append(email)
-                        csv_infos.append(q)
-                        log.info("first_name"+pformat(q['first_name']))
-                        log.info("first_name"+pformat(type(q['first_name'])))
-                log.info("session_manager_handler: "+str(email))
-                if course.language == "fr":
-                    msg = "Une fois passée cette étape, vous pourrez accéder à votre module sur "+course.display_name+"."
-                elif course.language == "de":
-                    msg = "Sobald Sie diesen Schritt bestanden haben, können Sie auf das Schulungsmodul zugreifen "+course.display_name+"."
-                elif course.language == "en":
-                    msg = "Once you’ve passed this step, you will be able to access the training module "+course.display_name+"."
-                list_return = list_email
-                email_send = []
-                try:
-                    course_lang = course.language
-                    log.info("session_manager_handler: call")
-                    log.info("session_manager_handler: emails : "+pformat(list_email))
-                    session_manager = session_manager_handler(msg,list_email,org,course_lang)
-                    log.info("session_manager_handler: return : "+pformat(session_manager))
-                    for n in session_manager:
-                        email_session_manager = n['email']
-                        uuid_session_manager = n['uuid']
-                        level_1 = ''
-                        level_2 = ''
-                        level_3 = ''
-                        level_4 = ''
-                        first_name = ''
-                        last_name = ''
-                        for get in csv_infos:
-                            if get['email'] == email_session_manager:
-                                log.info("[User PreProfiles] Preparing by collecting data")
-                                level_1 = get['level_1']
-                                level_2 = get['level_2']
-                                level_3 = get['level_3']
-                                level_4 = get['level_4']
-                                first_name = get['first_name']
-                                last_name = get['last_name']
-                                log.info("[User PreProfiles] data collected for "+pformat(email_session_manager))
-                        q = {}
-                        q['email'] = email_session_manager
-                        #try:
-                        # ALL INSERT
-                        # FIRST INSERT AT THE FIRST LINE
-                        log.info("[User PreProfiles] Beginning")
-                        try:
-                            UserPreprofile.objects.get(email=email_session_manager)
-                        except:
-                            log.info("[User PreProfiles] There was no user prepprofile.. Creating one. "+pformat(email_session_manager)+" "+pformat(uuid_session_manager))
-                            if course_lang=='de':
-                                platform_lang='de-de'
-                            else:
-                                platform_lang=course_lang
-                            s = UserPreprofile(email=email_session_manager,first_name=first_name,last_name=last_name,language=platform_lang,level_1=level_1,level_2=level_2,level_3=level_3,level_4=level_4,uuid=uuid_session_manager)
-                            s.save()
-                            log.info("[User PreProfiles] UserPreProfile Created. "+pformat(email_session_manager)+" "+pformat(uuid_session_manager))
-                        log.info("Create a request params")
+                decoded_csv_file = io.StringIO(csv_file.read().decode('utf-8'))
+                csv_dict= csv.DictReader(decoded_csv_file)
+                log.info("invite_handler: decode csv")
+
+                for atp_student in csv_dict :
+                    if re.search(regex_email,atp_student['email']) :
+                        final_atp_student = {key.lower(): strip_accents(value) for key, value in atp_student.items()}
+                        log.info("invite_handler: modify student values")
+                        #Check if student has already been invited less than 24h ago
+                        add_student=True
+                        if UserPreprofile.objects.filter(email=atp_student['email']).exists() :
+                            log.info("preprofile exists")
+                            try :
+                                last_invite = UserPreprofile.objects.get(email=atp_student['email']).last_invite
+                                log.info("last invite value = {}".format(last_invite))
+                            except:
+                                last_invite=''
+                            if last_invite and last_invite !='' and localtime(now())-datetime.timedelta(hours=24) <= last_invite:
+                                add_student = False
+
+                        log.info("ADD_STUDENT value = {}".format(add_student))
+                        if add_student :
+                            list_email.append(atp_student['email'])
+
+                        students_atp_full_list.append(atp_student['email'])
+                        atp_students_list[atp_student['email']] = final_atp_student
+
+            except :
+                log.info("invite_handler: except decode csv")
+                list_email=[]
+
+            #Treat the invitations
+            if list_email :
+                session_manager_results = session_manager_handler(list_email,org,course)
+                log.info("invite_handler: session manager handler ok")
+                for sem_register in session_manager_results :
+                    try:
+                        atp_student_infos = atp_students_list[sem_register['email']]
+                        #Create a preprofile for each student if doesn't exist
+                        if not UserPreprofile.objects.filter(email=sem_register['email']).exists():
+                            log.info("invite_handler: user preprofile doesnt exist {}".format(atp_student_infos))
+                            log.info(' info provided : email {}'.format(atp_student_infos['email']))
+                            log.info(' info provided : first_name {}'.format(atp_student_infos['first_name']))
+                            log.info('info provided : last_name {}'.format(atp_student_infos['last_name']))
+                            log.info('info provided : platform_lang {}'.format(platform_lang))
+                            log.info('info provided : level1 {}'.format(atp_student_infos['level_1']))
+                            log.info('info provided : level2 {}'.format(atp_student_infos['level_2']))
+                            log.info('info provided : level3 {}'.format(atp_student_infos['level_3']))
+                            log.info('info provided : level4 {}'.format(atp_student_infos['level_4']))
+                            log.info('info provided : uuid {}'.format(sem_register['uuid']))
+                            student_preprofile=UserPreprofile(
+                                email=atp_student_infos['email'],
+                                first_name=atp_student_infos['first_name'],
+                                last_name=atp_student_infos['last_name'],
+                                language=platform_lang,
+                                level_1=atp_student_infos['level_1'],
+                                level_2=atp_student_infos['level_2'],
+                                level_3=atp_student_infos['level_3'],
+                                level_4=atp_student_infos['level_4'],
+                                uuid=sem_register['uuid'],
+                                last_invite=localtime(now()).date()
+                                )
+                            student_preprofile.save()
+                            log.info("invite_handler: user preprofile has been saved")
+
+                        else :
+                            student_preprofile= UserPreprofile.objects.get(email=sem_register['email'])
+                            student_preprofile.last_invite = localtime(now()).date()
+                            student_preprofile.save()
+                    except :
+                        student_errors.append(sem_register['email'])
+                        log.info("invite_handler: ERROR WHILE REGISTERING STUDENT {}".format(atp_student_infos['email']))
+
+            if students_atp_full_list :
+                for student_atp in students_atp_full_list :
+                    try :
+                        atp_student_infos = atp_students_list[student_atp]
+                        #Register each student to course
                         request.POST['action'] = 'enroll'
                         request.POST['auto_enroll'] = True
                         request.POST['email_students'] = False
-                        request.POST['identifiers'] = email
-                        log.info("students_update_enrollment_cms "+pformat(email_session_manager))
+                        request.POST['identifiers'] = atp_student_infos['email']
                         students_update_enrollment_cms(request,course_key_string)
-                        q['status'] = True
-                        # GET COURSE_KEY
+                        log.info("invite_handler: user preprofile students_update_enrollment_cms ok")
+
                         course_key = CourseKey.from_string(course_key_string)
-                        # GET COURSE_PARAM
-                        course = get_course_by_id(course_key)
-                        #course details
-                        course_details = CourseDetails.fetch(course_key)
-                        #GET COURSE OVERVIEW
-                        overview = CourseOverview.get_from_id(course_key)
-                        #GET MODULE STORE
-                        module_store = modulestore().get_course(course_key, depth=0)
-                        log.info("log_dict")
-			"""
-                        log_dict = {
-                            "status": "enroll user to current course",
-                            "course_name": course.display_name,
-                            "microsite": str(course.org).lower(),
-                            "user_email": email_session_manager
-                        }
-		        """
-                        #log.info(pformat('log_dict : '+log_dict))
-                        log.info("enroll_email")
-                        enroll_email(course_key, email_session_manager, auto_enroll=True, email_students=False, email_params=None, language=course_lang)
+                        enroll_email(course_key, atp_student_infos['email'], auto_enroll=True, email_students=False, email_params=None, language=course.language)
+                        log.info("invite_handler: user preprofile enroll mail ok")
 
-                        array.append(q)
-                        # send email to user already enroll:
-                        #if n['status'] == 'error':
-                        _send_values = [
-                                {
-                                 "first_name":first_name,
-                                 "last_name":last_name,
-                                 "email":email_session_manager
-                                }
-                        ]
-                        obj = 'atp send mail'
-                        body = ''
-                        log.info("invite_handler START sem user dict: "+pformat(_send_values))
-                        log.info("course: "+pformat(course))
-                        log.info("overview: "+pformat(overview))
-                        log.info("course_details: "+pformat(course_details))
-                        log.info("body: "+pformat(body))
-                        log.info("_send_values: "+pformat(_send_values))
-                        log.info("module_store: "+pformat(module_store))
-                        log.info("course_lang: "+course.language)
-                        if course.language == "fr":
-                            obj = "Invitation pour accéder au module {}".format(course.display_name)
-                        elif course.language == "de":
-                            obj = "Einladung zum Schulungsmodul {}".format(course.display_name)
-                        elif course.language == "en":
-                            obj = "Invitation to access {} training module".format(course.display_name)
-                        #try:
-                        log.info("is n is n{}".format(n))
-                        log.info("is n is n{}".format(n))
-                        log.info("is n is n{}".format(n))
-                        log.info("is n is n{}".format(n))
-                        log.info("is n is n{}".format(n))
-                        log.info("is n is n{}".format(n))
-                        log.info("is n is n{}".format(n))
-                        log.info("is n is n{}".format(n))
+                        #Send enroll mail to students who already have SEM account
+                        if User.objects.filter(email=atp_student_infos['email']).exists():
+                            log.info("invite_handler: sem register is status or list")
+                            course = get_course_by_id(course_key)
+                            course_details = CourseDetails.fetch(course_key)
+                            overview = CourseOverview.get_from_id(course_key)
+                            module_store = modulestore().get_course(course_key, depth=0)
+                            send_values = [
+                                    {
+                                     "first_name":atp_student_infos['first_name'],
+                                     "last_name":atp_student_infos['last_name'],
+                                     "email":atp_student_infos['email']
+                                    }
+                            ]
+                            user_email = send_enroll_mail(obj,course,overview,course_details,send_values,module_store)
+                            log.info("invite_handler: senr enroll mail ok")
 
-		                #if n.get('status') == "list":
-                        ### SEND EMAil from ATP only to existing accounts on SEM
-                        if n.get('status') == "list" or n.get('status') == "error":
-                            user_email = send_enroll_mail(obj,course,overview,course_details,body,_send_values,module_store)
-                            log.info("invite_handler END sem user dict: "+pformat(_send_values))
+                        #Count students being treated
+                        students_treated.append(atp_student_infos['email'])
+                        log.info("invite_handler: student has been registered {}".format(atp_student_infos['email']))
 
-                    #reponse['session_manager_return'].append()
-                    for n in list_email:
-                        if not n in array:
-                            q = {}
-                            q['email'] = n
-                            array.append(q)
-                    response = {'message':array}
+                    except :
+                        student_errors.append(sem_register['email'])
+                        log.info("invite_handler: ERROR WHILE REGISTERING STUDENT {}".format(atp_student_infos['email']))
+            retour={
+                'errors':student_errors,
+                'success':students_treated
+            }
+            response = {'response':request_type,'message':retour}
 
-                except:
-                    retour = []
-                    for n in list_return:
-                        q={}
-                        q['email']=n
-                        retour.append(n);
-                        log.info('except1 invite_handler {}'.format(n))
-                    response = {'response':request_type,'message':retour}
-
-            except:
-                retour = []
-                for n in list_return:
-                    q={}
-                    q['email']=n
-                    retour.append(n);
-	       	    log.info('except2 invite_handler {}'.format(n))
-                response = {'response':request_type,'message':retour}
-
-            return JsonResponse(response)
-
-        else:
+        #Not the right request type
+        else :
             response = {'error':'no request_type'}
-            return JsonResponse(response)
+
+    return JsonResponse(response)
+
+
+
 @ensure_csrf_cookie
 @require_http_methods(("GET", "POST", "PUT", "DELETE"))
 @expect_json
