@@ -279,6 +279,10 @@ class DjangoXBlockUserStateClient(XBlockUserStateClient):
                     },
                 )
             except IntegrityError:
+                log.warning("set_many: IntegrityError for student {} - course_id {} - usage key {}".format(
+                    user, repr(unicode(usage_key.course_key)), usage_key
+                ))
+                return
              # PLAT-1109 - Until we switch to read committed, we cannot rely
              # on get_or_create to be able to see rows created in another
              # process. This seems to happen frequently, and ignoring it is the
