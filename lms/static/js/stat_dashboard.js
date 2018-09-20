@@ -16,6 +16,8 @@ $('.chapter_box').find('h3').click(function(){
     alignCells();
   })
 })
+
+
 /* get averages grades per problems */
 $('#block_average').find('.section_box').find('h4').click(function(){
   $('#voile').show();
@@ -43,22 +45,17 @@ $('#block_average').find('.section_box').find('h4').click(function(){
       dataType:'json',
       data:data,
       success:function(data) {
-        var obj = data.course_grade;
-        var keys = Object.keys(obj);
-        var length = keys.length;
-        var i = 0;
         cible.html('');
-        for(i;i<length;i++) {
-          var dat = obj[i][1];
-          console.log("DAAAATT3 "+obj[i][1]['display_name']);
-          var display_name = dat.display_name;
-          var vertical_name = dat.vertical_name;
-          var grade = dat.moyenne;
-          var num_grade = dat.max_grade;
-          var avg = (grade / num_grade) * 100;
-          avg = Math.round(avg);
-          var stat = 100 - avg;
-          var style=""
+        console.log(data.course_grade);
+        i=0;
+        for (i;i<question_orders.length;i++){
+          current_question = data.course_grade[question_orders[i]];
+          display_name = current_question.display_name;
+          vertical_name = current_question.vertical_name;
+          moyenne = current_question.moyenne;
+          max_grade = current_question.max_grade;
+          avg = Math.round((moyenne / max_grade) * 100);
+          stat = 100 - avg;
           if(stat == 100) {
             style = "background:#CB5744;";
           }

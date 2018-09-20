@@ -158,6 +158,7 @@ class CourseEnrollmentAdmin(admin.ModelAdmin):
 class UserPreprofileAdmin(admin.ModelAdmin):
     """ Admin interface for the UserPreprofile model. """
     list_display = ('email', 'last_name', 'first_name')
+    search_fields = ['email'] 
 
     class Meta(object):
         model = UserPreprofile

@@ -735,11 +735,13 @@ def stat_dashboard(request, course_id):
     #Get all course-enrollment
     row = User.objects.raw('SELECT a.id ,a.email FROM auth_user a,student_courseenrollment b WHERE a.id=b.user_id AND b.course_id=%s' ,[course_id])
     invite = CourseEnrollmentAllowed.objects.all().filter(course_id=course_key)
+    participant_list = []
     all_user = 0
     for _user in row:
+        participant_list.append(_user.email)
         all_user = all_user + 1
     for _u in invite:
-        if not str(_u.email) in str(row):
+        if not str(_u.email) in str(participant_list):
             all_user = all_user + 1
     #number of user who started the course
     user_course_started = 0
@@ -806,6 +808,15 @@ def stat_dashboard(request, course_id):
     else :
         course_average_grade_global=0.0
 
+    #store problems components order
+    problem_components=[]
+    for chapter in course_structure:
+      for section in chapter['children']:
+        for vertical in section['children']:
+          for component in vertical['children']:
+            if 'problem' in str(component):
+              problem_components.append(str(component))
+
     context = {
      "course_id":course_id,
      "course":course,
@@ -819,7 +830,8 @@ def stat_dashboard(request, course_id):
      'user_finished':user_finished,
      'course_structure':course_structure,
      'overview':overview,
-     'language_course':get_course_langue(course.language)
+     'language_course':get_course_langue(course.language),
+     'problem_components':problem_components
     }
 
     return render_to_response('courseware/stat.html', context)
@@ -1002,8 +1014,7 @@ def get_course_blocks_grade(request,course_id):
 
         except:
             pass
-    #sort values alphabeticaly by cours display name
-    course_grade=sorted(course_grade.items(), key=lambda x: x[1]['display_name'])
+
     return JsonResponse({'course_grade':course_grade})
 
 def get_result_page_info(request,course_id):

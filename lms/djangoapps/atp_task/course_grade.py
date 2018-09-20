@@ -137,16 +137,6 @@ class course_grade():
 
 		return course_grade
 
-	language_setup = {
-		"en":{
-			"subject": "Score report for {}",
-			"text_content": "Please, find attached the score report for {}.\n Remember that if your training campaign is still in progress, this file is an intermediate statistical status."
-		},
-		"fr": {
-			"subject": "Résultats des participants du module {}",
-			"text_content": "Veuillez trouver en pièce attachée les résultats des participants pour le module {}.\n A noter que si votre campagne de formation est toujours en cours, ce fichier constitue un état statistique intermédiaire."
-		}
-	}
 	
 	def export(self,sended_email):
                 reload(sys)
@@ -161,6 +151,18 @@ class course_grade():
 		header = [
 			"id","email","first name","last name","level 1","level 2","level 3","level 4"
 		]
+
+		# Email content
+		language_setup = {
+			"en":{
+				"subject": "Score report for {}",
+				"text_content": "Please, find attached the score report for {}.\nRemember that if your training campaign is still in progress, this file is an intermediate statistical status."
+			},
+			"fr": {
+				"subject": "Résultats des participants du module {}",
+				"text_content": "Veuillez trouver en pièce attachée les résultats des participants pour le module {}.\nA noter que si votre campagne de formation est toujours en cours, ce fichier constitue un état statistique intermédiaire."
+			}
+		}
 
 		title = self.get_titles()
 
@@ -237,15 +239,15 @@ class course_grade():
 		log.warning("send grade reports course_id : "+str(filename))
 		log.warning("email5 : "+str(sended_email))
 
-		# Email content according to course language (see line 40 to add new languages)
+		# Email content according to course language (look for #Email content to add new languages)
 		subject = ''
 		text_content = ''
 		if course.language in language_setup:
 			subject = language_setup[course.language]['subject'].format(course.display_name_with_default_escaped)
-			text_content = language_setup[course.language]['text_content']
+			text_content = language_setup[course.language]['text_content'].format(course.display_name_with_default_escaped)
 		else:
 			subject = language_setup['en']['subject'].format(course.display_name_with_default_escaped)
-			text_content = language_setup['en']['text_content']
+			text_content = language_setup['en']['text_content'].format(course.display_name_with_default_escaped)
 
 		from_email=configuration_helpers.get_value('email_from_address', settings.DEFAULT_FROM_EMAIL)
 		to = sended_email

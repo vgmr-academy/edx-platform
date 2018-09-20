@@ -1820,13 +1820,12 @@ def invite_handler(request, course_key_string):
 
         # IF NEED ONLY TO PRE REGISTER USERS FROM AN ADRESS MAIL
         if request_type == 'register_only' and csv_file :
-            org = course.org
             atp_students_list = {}
-            list_email = []
+            sem_mails = []
             students_treated=[]
             student_errors=[]
-            students_atp_full_list=[]
 
+            #Select email language
             if course.language in language_setup :
                 obj = language_setup[course.language]['obj'].format(course.display_name)
                 platform_lang = language_setup[course.language]['platform_lang']
@@ -1834,58 +1833,67 @@ def invite_handler(request, course_key_string):
                 obj = language_setup['en']['obj'].format(course.display_name)
                 platform_lang = language_setup['en']['platform_lang']
 
-            #Try to read the csv file
+            #Prepare course details
+            org = course.org
+            course_key = CourseKey.from_string(course_key_string)
+            course = get_course_by_id(course_key)
+            course_details = CourseDetails.fetch(course_key)
+            overview = CourseOverview.get_from_id(course_key)
+            module_store = modulestore().get_course(course_key, depth=0)
+
+            #Read CSV file
             try:
                 decoded_csv_file = io.StringIO(csv_file.read().decode('utf-8'))
                 csv_dict= csv.DictReader(decoded_csv_file)
                 log.info("invite_handler: decode csv")
-
-                for atp_student in csv_dict :
-                    if re.search(regex_email,atp_student['email']) :
-                        final_atp_student = {key.lower(): strip_accents(value) for key, value in atp_student.items()}
-                        log.info("invite_handler: modify student values")
-                        #Check if student has already been invited less than 24h ago
-                        add_student=True
-                        if UserPreprofile.objects.filter(email=atp_student['email']).exists() :
-                            log.info("preprofile exists")
-                            try :
-                                last_invite = UserPreprofile.objects.get(email=atp_student['email']).last_invite
-                                log.info("last invite value = {}".format(last_invite))
-                            except:
-                                last_invite=''
-                            if last_invite and last_invite !='' and localtime(now())-datetime.timedelta(hours=24) <= last_invite:
-                                add_student = False
-
-                        log.info("ADD_STUDENT value = {}".format(add_student))
-                        if add_student :
-                            list_email.append(atp_student['email'])
-
-                        students_atp_full_list.append(atp_student['email'])
-                        atp_students_list[atp_student['email']] = final_atp_student
-
             except :
-                log.info("invite_handler: except decode csv")
-                list_email=[]
+                csv_dict={}
 
-            #Treat the invitations
-            if list_email :
-                session_manager_results = session_manager_handler(list_email,org,course)
-                log.info("invite_handler: session manager handler ok")
+            for atp_student in csv_dict :
+                log.info("invite_handler: treating student {}".format(atp_student['email']))
+                atp_student = {key.lower(): strip_accents(value) for key, value in atp_student.items()}
+                atp_students_list[atp_student['email']] = atp_student
+
+                #Decide between SEM or ATP mail
+                if re.search(regex_email,atp_student['email']) :
+                    log.info("invite_handler: email is valid")
+                    if User.objects.filter(email=atp_student['email']).exists():
+                        send_values = [
+                                {
+                                 "first_name":atp_student['first_name'],
+                                 "last_name":atp_student['last_name'],
+                                 "email":atp_student['email']
+                                }
+                        ]
+                        try :
+                            send_enroll_mail(obj,course,overview,course_details,send_values,module_store)
+                            students_treated.append(atp_student['email'])
+                            log.info("invite_handler: user exists mail metier sent")
+                        except :
+                            student_errors.append(atp_student['email'])
+                            log.info("invite_handler: user exists error mail metier")
+                    else :
+                        if UserPreprofile.objects.filter(email=atp_student['email']).exists() :
+                            last_invite = UserPreprofile.objects.get(email=atp_student['email']).last_invite
+                            if last_invite and last_invite !='' and localtime(now())-datetime.timedelta(hours=24) >= last_invite:
+                                sem_mails.append(atp_student['email'])
+                                log.info("invite_handler: preprofile exist last invite sup than 24h")
+                        else :
+                            sem_mails.append(atp_student['email'])
+                            log.info("invite_handler: preprofile doesnt exist")
+
+                    #Register to course
+                    enroll_email(course_key, atp_student['email'], auto_enroll=True, email_students=False, email_params=None, language=course.language)
+                    log.info("invite_handler: user enrolled to course")
+
+            #Treat SEM invite
+            if sem_mails :
+                log.info("invite_handler: session manager starts with candidates {}".format(sem_mails))
+                session_manager_results = session_manager_handler(sem_mails,org,course)
                 for sem_register in session_manager_results :
-                    try:
+                    try :
                         atp_student_infos = atp_students_list[sem_register['email']]
-                        #Create a preprofile for each student if doesn't exist
                         if not UserPreprofile.objects.filter(email=sem_register['email']).exists():
-                            log.info("invite_handler: user preprofile doesnt exist {}".format(atp_student_infos))
-                            log.info(' info provided : email {}'.format(atp_student_infos['email']))
-                            log.info(' info provided : first_name {}'.format(atp_student_infos['first_name']))
-                            log.info('info provided : last_name {}'.format(atp_student_infos['last_name']))
-                            log.info('info provided : platform_lang {}'.format(platform_lang))
-                            log.info('info provided : level1 {}'.format(atp_student_infos['level_1']))
-                            log.info('info provided : level2 {}'.format(atp_student_infos['level_2']))
-                            log.info('info provided : level3 {}'.format(atp_student_infos['level_3']))
-                            log.info('info provided : level4 {}'.format(atp_student_infos['level_4']))
-                            log.info('info provided : uuid {}'.format(sem_register['uuid']))
                             student_preprofile=UserPreprofile(
                                 email=atp_student_infos['email'],
                                 first_name=atp_student_infos['first_name'],
@@ -1899,56 +1907,18 @@ def invite_handler(request, course_key_string):
                                 last_invite=localtime(now()).date()
                                 )
                             student_preprofile.save()
-                            log.info("invite_handler: user preprofile has been saved")
-
+                            log.info("invite_handler: user preprofile doesnt exist being created")
                         else :
                             student_preprofile= UserPreprofile.objects.get(email=sem_register['email'])
                             student_preprofile.last_invite = localtime(now()).date()
                             student_preprofile.save()
-                    except :
+                            log.info("invite_handler: user preprofile already exists date being updated to {}".format(localtime(now()).date()))
+
+                        students_treated.append(sem_register['email'])
+                    except:
                         student_errors.append(sem_register['email'])
-                        log.info("invite_handler: ERROR WHILE REGISTERING STUDENT {}".format(atp_student_infos['email']))
 
-            if students_atp_full_list :
-                for student_atp in students_atp_full_list :
-                    try :
-                        atp_student_infos = atp_students_list[student_atp]
-                        #Register each student to course
-                        request.POST['action'] = 'enroll'
-                        request.POST['auto_enroll'] = True
-                        request.POST['email_students'] = False
-                        request.POST['identifiers'] = atp_student_infos['email']
-                        students_update_enrollment_cms(request,course_key_string)
-                        log.info("invite_handler: user preprofile students_update_enrollment_cms ok")
 
-                        course_key = CourseKey.from_string(course_key_string)
-                        enroll_email(course_key, atp_student_infos['email'], auto_enroll=True, email_students=False, email_params=None, language=course.language)
-                        log.info("invite_handler: user preprofile enroll mail ok")
-
-                        #Send enroll mail to students who already have SEM account
-                        if User.objects.filter(email=atp_student_infos['email']).exists():
-                            log.info("invite_handler: sem register is status or list")
-                            course = get_course_by_id(course_key)
-                            course_details = CourseDetails.fetch(course_key)
-                            overview = CourseOverview.get_from_id(course_key)
-                            module_store = modulestore().get_course(course_key, depth=0)
-                            send_values = [
-                                    {
-                                     "first_name":atp_student_infos['first_name'],
-                                     "last_name":atp_student_infos['last_name'],
-                                     "email":atp_student_infos['email']
-                                    }
-                            ]
-                            user_email = send_enroll_mail(obj,course,overview,course_details,send_values,module_store)
-                            log.info("invite_handler: senr enroll mail ok")
-
-                        #Count students being treated
-                        students_treated.append(atp_student_infos['email'])
-                        log.info("invite_handler: student has been registered {}".format(atp_student_infos['email']))
-
-                    except :
-                        student_errors.append(sem_register['email'])
-                        log.info("invite_handler: ERROR WHILE REGISTERING STUDENT {}".format(atp_student_infos['email']))
             retour={
                 'errors':student_errors,
                 'success':students_treated
