@@ -198,5 +198,15 @@ edx-django-release-util==0.2.0
 # modulestore inspection
 py2neo==3.1.2
 
+#ATP Specific dependencies
+pyparsing==2.2.0
+weasyprint==0.40
+xhtml2pdf==0.0.6
+sanitizer==1.0.0
+certifi==2017.7.27.1
+bleach==1.4
+html5lib==0.9999999
+django-rosetta==0.8.1
+
 # for calculating coverage
 -r coverage.txt
