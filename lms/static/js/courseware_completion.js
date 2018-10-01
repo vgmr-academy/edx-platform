@@ -96,7 +96,7 @@ getCompletionStatus = function(){
             // Add check sign for completed chapters
             if(chapter_list[$(this).attr('id')]['completed']==true){
               if($(this).find('h3 i').length <=0){
-                $(this).find('h3').html($(this).find('h3').html()+" <i class='fas fa-check'></i>");
+                $(this).find('h3').html($(this).find('h3').html()+" <i class='fa fa-check'></i>");
               }
             }
           }
