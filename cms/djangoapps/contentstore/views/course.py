@@ -139,6 +139,8 @@ from pprint import pformat
 from django.views.decorators.csrf import csrf_exempt
 log = logging.getLogger(__name__)
 
+logger = logging.getLogger()
+
 #LO automatisation credentials client
 from third_party_auth.models import MicrositesCredentials
 from microsite_configuration.models import Microsite
@@ -2599,7 +2601,7 @@ def course_listing_template(request):
 @ensure_csrf_cookie
 def index_courses_listing(request,_type):
 
-
+    logger.info("timer A {}".format(datetime.datetime.now()))
     courses, in_process_course_actions = get_courses_accessible_to_user(request)
 
     courses = _remove_in_process_courses(courses, in_process_course_actions)
@@ -2630,6 +2632,7 @@ def index_courses_listing(request,_type):
     for course_info in sorted(courses, key=lambda s: s['display_name'].lower() if s['display_name'] is not None else ''):
 
       # 1. type  course_listing/templates
+      logger.info('helllooo {}'.format(course_info['display_name'].encode('utf-8')))
       if _type == "course_listing":
           if not 'AMUNDI-GENERIC-TEMPLATE' in course_info['display_name']:
              current_course = sorted_courses(course_info,current_date,_type)
@@ -2639,6 +2642,7 @@ def index_courses_listing(request,_type):
              current_course = sorted_courses(course_info,current_date,_type)
              courses_lists[_type][current_course.get('indice')].append(current_course.get('course'))
 
+    logger.info("timer B {}".format(datetime.datetime.now()))
     return JsonResponse(courses_lists)
 
 @login_required

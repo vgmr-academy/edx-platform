@@ -61,14 +61,16 @@ from openedx.core.djangolib.js_utils import js_escaped_string, dump_js_escaped_j
                disabled="disabled"
              % endif
              >
-               <h3>${unit_title}</h3>
+               <h3 class="inactive-color-text"><i class="fa fa-chevron-right "></i> ${unit_title}</h3>
              </button>
            </li>
          </ol>
        </nav>
      </div>
     % if item_iterator < len(items):
-      <div class='seq_content_next disabled_tma' id='seq_content_next_${item_iterator}' data-id="${item['id']}" onclick='$("#tab_${item_iterator}").click()'><a>${_('Next')}</a></div>
+      <div class='seq_content_next disabled_tma' id='seq_content_next_${item_iterator}' data-id="${item['id']}" onclick='$("#tab_${item_iterator}").click()'>
+        <a class="primary-color-bg">${_('Next')}</a>
+      </div>
     % endif
      <%
      item_iterator = item_iterator + 1
@@ -82,7 +84,7 @@ from openedx.core.djangolib.js_utils import js_escaped_string, dump_js_escaped_j
       <ol id="sequence-list">
         <li>
         <button class="result-score" id="holding-section-result" disabled="disabled">
-            <h3 class="disabled_score">${_("Score")}</h3>
+            <h3 class="disabled_score"><i class="fa fa-chevron-right" style='padding:5px;'></i>${_("Score")}</h3>
           </button>
         </li>
       </ol>

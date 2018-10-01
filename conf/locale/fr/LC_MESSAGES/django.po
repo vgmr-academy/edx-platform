@@ -23370,3 +23370,51 @@ msgid ""
 msgstr ""
 "Vous avez déjà invité des participants à cette campagne de formation. La "
 "date de début ne peut plus être modifiée."
+
+msgid "Primary color"
+msgstr "Couleur primaire"
+
+msgid "Secondary color"
+msgstr "Couleur secondaire"
+
+msgid "No text"
+msgstr "Pas de contenu"
+
+msgid "Contact address"
+msgstr "Adresse de contact"
+
+msgid "AmundiBrand is displayed"
+msgstr "La marque AmundiBrand est affichée"
+
+msgid "AmundiBrand is hidden"
+msgstr "La marque AmundiBrand est cachée"
+
+msgid "Display"
+msgstr "Afficher"
+
+msgid "Chose Language"
+msgstr "Choisir une langue"
+
+msgid "Please select AmundiBrand appearance"
+msgstr "Choisissez un affichage pour la marque AmundiBrand"
+
+msgid "No contact address defined for this site"
+msgstr "Aucune adresse de contact n'est définie pour ce site"
+
+msgid "No color logo defined for this site"
+msgstr "Aucun logo couleur n'est défini pour ce site"
+
+msgid "Color logo"
+msgstr "Logo couleur"
+
+msgid "White logo"
+msgstr "Logo blanc"
+
+msgid "Manage my microsite"
+msgstr "Modifier le microsite"
+
+msgid "Manage Microsite Admin"
+msgstr "Gérer les Admins"
+
+msgid "Manage Microsite"
+msgstr "Modifier le microsite"

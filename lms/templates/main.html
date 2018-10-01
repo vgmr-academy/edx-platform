@@ -20,7 +20,19 @@ from django.utils.translation import get_language_bidi
 from branding import api as branding_api
 from pipeline_mako import render_require_js_path_overrides
 from student.models import UserProfile
+
+from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
+
+if configuration_helpers.get_value('secondary_color') :
+  secondary_color = configuration_helpers.get_value('secondary_color')
+else:
+  secondary_color='#00B6ED'
+if configuration_helpers.get_value('primary_color') :
+  primary_color = configuration_helpers.get_value('primary_color')
+else:
+  primary_color='#05144d'
 %>
+
 <!DOCTYPE html>
 <!--[if lte IE 9]><html class="ie ie9 lte9" lang="${LANGUAGE_CODE}"><![endif]-->
 <!--[if !IE]><!--><html lang="${LANGUAGE_CODE}"><!--<![endif]-->
@@ -28,11 +40,8 @@ from student.models import UserProfile
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-img.svg {
-  display: none;
-}
-</style>
+
+
 ## Define a couple of helper functions to make life easier when
 ## embedding theme conditionals into templates. All inheriting
 ## templates have access to these functions, and we can import these
@@ -61,6 +70,11 @@ img.svg {
     jsi18n_path = "js/i18n/{language}/djangojs.js".format(language=LANGUAGE_CODE)
   %>
   <script type="text/javascript" src="${static.url(jsi18n_path)}"></script>
+  <style>
+    #sequence-list li button.nav-item h3:before, #sequence-list li button.result-score h3:before{
+      display: none!important;
+    }
+  </style>
 
 <!--<link rel="icon" type="image/x-icon" href="${static.url(static.get_value('favicon_path', settings.FAVICON_PATH))}" />-->
 <link rel="icon" type="image/x-icon" href="/media/favicon-amundi.png" />

@@ -113,7 +113,7 @@ function button_views(effective_rows,cible) {
       number = devices[i].number;
     }
   }
-  console.log(number+' '+cible+' '+effective_rows);
+  //console.log(number+' '+cible+' '+effective_rows);
   if(number < effective_rows) {
     $(cible).parent().find('.atp_dashboard_active_course').removeClass('is_none_more');
   }else{

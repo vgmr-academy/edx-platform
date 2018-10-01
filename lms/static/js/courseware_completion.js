@@ -51,6 +51,7 @@ getCompletionStatus = function(){
          if(data['completion_status'][$(this).attr('data-id')]==100){
               $(this).removeClass('disabled_unit_tma');
               $(this).removeAttr("disabled");
+              $(this).find('h3').addClass('secondary-color-text').removeClass('inactive-color-text').addClass('hover-primary-text');
               previous_completed=true;
               // if at least one unit is completed then chapter is available
               chapter_list[$(this).attr('data-seq')]['available']=true;
@@ -79,7 +80,7 @@ getCompletionStatus = function(){
         $(".tma_chapters").each(function(){
           // Change title color for available chapters
           if(chapter_list[$(this).attr('id')]['available']==true){
-            $(this).find('h3').addClass('primary_color');
+            $(this).find('h3').addClass('primary-color-text').removeClass('inactive-color-text');
             //CHANGE AMUNDI : All units under it must be available if chapter is available
             var tma_chapter_identifier=$(this).attr('id')
             $('button.seq_other').each(function(){

@@ -27,83 +27,65 @@ first_course_name = ''
 %>
 
 <%
-  cert_name_short = settings.CERT_NAME_SHORT
-  cert_name_long = settings.CERT_NAME_LONG
+cert_name_short = settings.CERT_NAME_SHORT
+cert_name_long = settings.CERT_NAME_LONG
+
+url_array = []
+url_array.append('images/1collaboration.jpg')
+url_array.append('images/2centrefinancier.jpg')
+url_array.append('images/3connaissance.jpg')
+url_array.append('images/4environement.jpg')
+url_image = random.choice(url_array)
+
+
+if configuration_helpers.get_value('primary_color') :
+  primary_color=configuration_helpers.get_value('primary_color')
+else:
+  primary_color='#05144d'
 %>
 
-<!--MODIF AURELIEN-->
+
 <style>
-/*
-#down_apt_nav {
-  display: none !important;
+#dashboard_header_atp {
+  background-image: url('${static.url(url_image)}');
 }
-*/
-#dashboard_header_content h1 span:last-child, #dashboard_header_content h1 span:first-child{
-font-size:50px !important;
-}
-
-#dashboard_tuto_atp_1,#sub_menu #cat_fond{
- border-left-color: rgb(69,114,150) !important;
-}
-
-#dashboard_tuto_atp_2,#sub_menu #cat_dem_com {
- border-left-color: rgb(230,50,94) !important;
-}
-
-#dashboard_tuto_atp_3,#sub_menu #cat_solu {
- border-left-color: rgb(193,145,53) !important;
-}
-
-#dashboard_tuto_atp_4,#sub_menu #cat_reg {
- border-left-color: rgb(57,178,192) !important;
-}
-/* Responsive mobile header */
-.header-mobile{
-  display: none;
-}
-#dashboard_header_content{
-  margin-top:25px!important;
-}
-@media(max-width:830px) {
-  .header-mobile{
-    display: block;
-    height: 300px;
-  }
-  #dashboard_tma #dashboard_header_atp{
-    padding: 0;
-  }
-  #dashboard_header_content{
-    padding: 20px;
-    margin: 0;
-    margin-left: 10%!important;
-    margin-right: 10%;
-    width: 80%!important;
-  }
-  #dashboard_tma #dashboard_header_atp{
-    background-image: none;
-  }
-  #dashboard_tma #dashboard_header_atp{
-    display: block!important;
-  }
-}
-
-/* Fix header taille texte */
-#intro-phrase-header{
-  font-size: 24px!important;
-  margin-top: 25px!important;
-  margin-bottom: 25px!important;
-}
-span.bouton-more{
-  font-size:18px!important;
-}
-
 </style>
 
-<!-- styles more modules -->
-<!-- styles more modules -->
-<!-- styles more modules -->
-<!-- styles more modules -->
-<!-- styles more modules -->
+<script>
+// load courses values
+var courses_atp = {
+   start_courses:${dump_js_escaped_json(start_course) | n, decode.utf8},
+   progress_courses:${dump_js_escaped_json(progress_courses) | n, decode.utf8},
+   end_courses:${dump_js_escaped_json(finish_courses) | n, decode.utf8}
+}
+
+//load pictos
+var picto_dure = "${static.url('images/duree.svg')}";
+var picto_obiligatoire = "${static.url('images/obligatoire.svg')}";
+var picto_pdf = "${static.url('images/pdf.svg')}";
+var picto_webzine = "${static.url('images/webzine.svg')}";
+var picto_quiz = "${static.url('images/quiz.svg')}";
+var picto_video = "${static.url('images/video.svg')}";
+var picto_serious_game = "${static.url('images/seriousgame.svg')}";
+var picto_teste_images = "${static.url('images/testes&images.svg')}";
+var picto_success = "${static.url('images/success.png')}";
+var picto_error = "${static.url('images/error.png')}";
+var picto_simulation_inv = "${static.url('images/simulation_inv.svg')}";
+
+//load wording
+var wording_fundamental = "${_('fundamentals')}";
+var wording_oursolutions = "${_('our solutions')}";
+var wording_businessapproach = "${_('Business approach')}";
+var wording_regulatory = "${_('regulatory')}";
+var wording_mandatory = '${_("mandatory")}';
+var wording_optional ='${_("optional")}';
+var wording_proceed = '${_("Proceed")}';
+var wording_morinfo='${_("More information")}';
+var wording_notvalidated='${_("Not validated")}';
+var wording_validated='${_("Validated")}';
+</script>
+
+
 <!-- styles more modules -->
 <%block name="pagetitle">${_("Dashboard")}</%block>
 <%block name="bodyclass">view-dashboard is-authenticated</%block>
@@ -159,25 +141,9 @@ dashboard = static.get_value('css_overrides_dashboard')
   <link rel="stylesheet" type="text/css" href="${static.url(dashboard)}" />
 % endif
 <!-- import custom js script -->
-<script>
-// load courses values
-var courses_atp = {
-   start_courses:${dump_js_escaped_json(start_course) | n, decode.utf8},
-   progress_courses:${dump_js_escaped_json(progress_courses) | n, decode.utf8},
-   end_courses:${dump_js_escaped_json(finish_courses) | n, decode.utf8}
-}
-// load course status
-var course_status = {
-  start_courses:false,
-  progress_courses:false,
-  end_courses:false
-}
 
-var course_category = '';
-</script>
-<!--
-<script src="/media/studio/dashboard_atp.js"></script>
--->
+
+<!--<script src="/media/jswork/dashboard_atp.js"></script>-->
 <script src="${static.url('js/dashboard_atp.js')}"></script>
 <!-- platform messages html script -->
 <div class="dashboard-notifications" tabindex="-1">
@@ -193,72 +159,9 @@ var course_category = '';
         </div>
     %endif
 </div>
-<!-- end -->
-<!-- custom html script -->
-<%
-url_array = []
-url_array.append('images/1collaboration.jpg')
-url_array.append('images/2centrefinancier.jpg')
-url_array.append('images/3connaissance.jpg')
-url_array.append('images/4environement.jpg')
-url_image = random.choice(url_array)
 
 
-if configuration_helpers.get_value('primary_color') :
-  primary_color=configuration_helpers.get_value('primary_color')
-else:
-  primary_color='#05144d'
-%>
-<style>
-.bouton-more{
-  color: ${primary_color};
-  font-weight: 600;
-  font-size: 16px;
-  cursor: pointer;
-}
-.bouton-more span{
-  font-size: 14px;
-}
 
-#dashboard_header_content button:hover, #dashboard_header_content button{
-  border: none;
-  text-shadow: none;
-  border-radius: 25px;
-  text-transform: uppercase;
-  transition: all .1s linear;
-  box-shadow: 0 0 10px rgba(13,28,76,.1);
-  font-weight: 600;
-  padding: 3px 30px;
-  min-width: 130px;
-  color:white;
-  background-color: ${primary_color};
-  font-size:15px;
-}
-div.atp_course_picto svg path, div.atp_course_picto svg polygon{
-  fill:#C5C5C5!important;
-  mask:none;
-}
-#dashboard_tuto_atp svg path, #dashboard_tuto_atp svg polygon{
-  fill: ${primary_color}!important;
-  mask:none;
-}
-
-#dashboard_header_atp {
-  background-image: url('${static.url(url_image)}');
-}
-@media(max-width:1022px) {
- #profile_menu {
-  margin-right: 0 !important;
- }
- #right-menu {
-  position: fixed !important;
-  width: 100%;
-  left: 0;
-  top: 70px;
- }
-}
-</style>
-<!-- course cards css -->
 <!--
 <link rel="stylesheet" type="text/css" href="/media/studio/course_cards.css" />
 -->
@@ -513,7 +416,7 @@ div.atp_course_picto svg path, div.atp_course_picto svg polygon{
 -->
 	<!-- module en cours -->
 	<section  id="dashboard_course_in_progress_atp">
-        	<h2 style="margin-bottom:0px;"><img src="${static.url('images/encours.svg')}" class="svg primary-color-fill"/><span class="primary-color-text">${_("IN PROGRESS")}</span></h2>
+        	<h2 style="margin-bottom:0px;"><img style="height:50px;width:50px;" src="${static.url('images/encours.svg')}" class="svg primary-color-fill"/><span class="primary-color-text">${_("IN PROGRESS")}</span></h2>
           <div id="ancre-in-progress"></div>
 		<p class="first_p primary-color-text">${_("In this section, you access training modules you started but haven't completed yet. To go on, please click on")} &laquo; ${_("Proceed")} &raquo;.</p>
         <!-- course listing -->
@@ -532,7 +435,7 @@ div.atp_course_picto svg path, div.atp_course_picto svg polygon{
 	</section>
 	<!-- module a realiser -->
 	<section id="dashboard_course_to_do">
-        	<h2 style="margin-bottom:0px;"><img src="${static.url('images/arealiser.svg')}" class="svg primary-color-fill"/><span class="primary-color-text">${_("TO DO")}</span></h2>
+        	<h2 style="margin-bottom:0px;"><img style="height:50px;width:50px;" src="${static.url('images/arealiser.svg')}" class="svg primary-color-fill"/><span class="primary-color-text">${_("TO DO")}</span></h2>
           <div id="ancre-to-do"></div>
 		<p class="first_p primary-color-text" style="margin-top:35px;">${_("In this section, you access training modules you have to complete. Click on")} &laquo; ${_("More information")} &raquo; ${_("to access the training module description")}.</p>
 	<!-- course listing -->
@@ -550,7 +453,7 @@ div.atp_course_picto svg path, div.atp_course_picto svg polygon{
 	</section>
 	<!-- module termine -->
 	<section id="dashboard_course_finished">
-		<h2 style="margin-bottom:0px;"><img src="${static.url('images/termine.svg')}" class="svg gradient primary-color-fill"/><span class="primary-color-text">${_("Completed")}</span></h2>
+		<h2 style="margin-bottom:0px;"><img style="height:50px;width:50px;" src="${static.url('images/termine.svg')}" class="svg gradient primary-color-fill"/><span class="primary-color-text">${_("Completed")}</span></h2>
       <div id="ancre-finished"></div>
 		<p class="first_p primary-color-text" style="margin-top:35px;">${_("In this section, you access training modules you validated (click on")} &laquo; ${_("More information")} &raquo; ${_("to access your result) as well as unvalidated training modules for which ending date has been exceeded")}.</p>
 	<!-- course listing -->
@@ -583,254 +486,10 @@ $('#close_pop_up').click(function(){
 })
 </script>
 % endif
-<style>
-#dashboard_tma section a .img_fundamentals {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 70%;
-  height: 191px;
-  z-index: 2;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.img_fundamentals {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 70%;
-    height: 191px;
-    z-index: 2;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover
-}
-#pop_up p {
-  text-align: justify !important;
-}
-#dashboard_header_content p:first-child {
-  margin-bottom: 3px;
-  font-size: 38px;
-  line-height: 38px;
-  margin-top:0;
-}
-#logo-amundiacademy {
-  margin-top: 10px;
-}
-.center-text{
-  text-align: center;
-}
-#dashboard_tma #dashboard_header_atp{
-  min-height: 256px!important;
-  box-sizing: border-box!important;
-  width: 100%!important;
-  background-color: #C6EAFB;
-  background-position: center;
-  background-size: contain;
-
-}
-#dashboard_tuto_atp_1, #dashboard_tuto_atp_2,#dashboard_tuto_atp_3,#dashboard_tuto_atp_4{
-  margin: 0!important;
-  width: 50%!important;
-  float: left!important;
-  box-sizing: border-box!important;
-  margin-bottom: 10px!important;
-}
-</style>
-<script>
-function add_class() {
-  var Width = window.screen.width;
-  if(Width <= 1600) {
-    $( ".atp_course_item:nth-child(4)" ).addClass('atp_hide_cards');
-  }else{
-    $( ".atp_course_item:nth-child(4)" ).removeClass('atp_hide_cards');
-  }
-  if(Width <= 1196) {
-    $( ".atp_course_item:nth-child(3)" ).addClass('atp_hide_cards');
-  }else{
-    $( ".atp_course_item:nth-child(3)" ).removeClass('atp_hide_cards');
-  }
-  if(Width <= 814) {
-    $( ".atp_course_item:nth-child(2)" ).addClass('atp_hide_cards');
-  }else{
-    $( ".atp_course_item:nth-child(2)" ).removeClass('atp_hide_cards');
-  }
-  $('.atp_dashboard_active_course').each(function(){
-      var _s = $(this).text().substring(0,1);
-      if(_s == '-') {
-        $(this).parent().find('.atp_hide_cards').show();
-      }else{
-        $(this).parent().find('.atp_hide_cards').attr('style','');
-      }
-  })
-}
 
 
-</script>
-
-<!-- generate courses cards -->
-<script>
-/* html and static templates */
-function template_course_card(atp_course_word,atp_course_link,img_src,course_id,categ_lower,categ,course_progression,picto_dure,duration,required,picto_obiligatoire,display_name_with_default,_end_add,_img_data) {
-  if(categ.toLowerCase()=="fundamental" ||categ.toLowerCase()=="fundamentals"){
-    categ="${_('fundamentals')}";
-  }
-  else if(categ.toLowerCase()=="our solutions"){
-    categ="${_('our solutions')}";
-  }
-  else if(categ.toLowerCase()=="sales approach"){
-    categ="${_('Business approach')}";
-  }
-  else if(categ.toLowerCase()=="regulatory"){
-    categ="${_('regulatory')}";
-  }
-
-
-  var template = '<li class="atp_course_item" data-categ="'+categ_lower+'"><div class="atp_course_image"><span class="cateogry_text">'+categ+'</span><a href="/courses/'+course_id+'/courseware/"><img src="'+img_src+'" /><div class="img_'+categ_lower+'"></div></a></div><div class="progress_bar_status_up"><div class="progress_bar_status primary-color-bg" style="width:'+course_progression+'%;"></div></div><div class="atp_course_info"><div class="atp_course_duration"><div class="inside_atp_left"><img src="'+picto_dure+'" class="svg"/><span>'+duration+'</span><div style="display:block;clear:left;height:0px;"></div></div></div><div class="atp_course_dificulties"><div class="inside_atp"><span>'+required+'</span><img src="'+picto_obiligatoire+'" class="svg"/><div style="display:block;clear:left;height:0px;"></div></div></div></div><div class="atp_course_title primary-color-text"><span>'+display_name_with_default+'</span></div>'+_end_add+'<div class="atp_course_picto">'+_img_data+'</div><div class="atp_course_link"><a href="'+atp_course_link+'"class="primary-color-bg">'+atp_course_word+'</a></div></li>';
-  return template
-}
-
-function svg_load() {
-jQuery('img.svg').each(function(){
-    var $img = jQuery(this);
-    var imgID = $img.attr('id');
-    var imgClass = $img.attr('class');
-    var imgURL = $img.attr('src');
-    jQuery.get(imgURL, function(data) {
-        // Get the SVG tag, ignore the rest
-        var $svg = jQuery(data).find('svg');
-        // Add replaced image's ID to the new SVG
-        if(typeof imgID !== 'undefined') {
-            $svg = $svg.attr('id', imgID);
-        }
-        // Add replaced image's classes to the new SVG
-        if(typeof imgClass !== 'undefined') {
-            $svg = $svg.attr('class', imgClass+' replaced-svg');
-        }
-        // Remove any invalid XML tags as per http://validator.w3.org
-        $svg = $svg.removeAttr('xmlns:a');
-        // Replace image with new SVG
-        $img.replaceWith($svg);
-
-    }, 'xml');
-});
-$('img.svg').show();
-}
-
-var picto_dure = "${static.url('images/duree.svg')}";
-var picto_obiligatoire = "${static.url('images/obligatoire.svg')}";
-var picto_pdf = "${static.url('images/pdf.svg')}";
-var picto_webzine = "${static.url('images/webzine.svg')}";
-var picto_quiz = "${static.url('images/quiz.svg')}";
-var picto_video = "${static.url('images/video.svg')}";
-var picto_serious_game = "${static.url('images/seriousgame.svg')}";
-var picto_teste_images = "${static.url('images/testes&images.svg')}";
-var picto_success = "${static.url('images/success.png')}";
-var picto_error = "${static.url('images/error.png')}";
-var picto_simulation_inv = "${static.url('images/simulation_inv.svg')}";
-/* end html and static templates */
-
-function course_card(categ,course_id,img_src,course_progression,duration,required,display_name_with_default,content_data,percent,passed,atp_rank,cible) {
-
-  var _img_data = "";
-  var _end_add = "";
-
-  if(content_data.document_pdf){
-    _img_data = _img_data+'<img src="'+picto_pdf+'" class="svg"/>'
-  }
-  if(content_data.webzine){
-    _img_data = _img_data+'<img src="'+picto_webzine+'" class="svg"/>'
-  }
-  if(content_data.quiz){
-    _img_data = _img_data+'<img src="'+picto_quiz+'" class="svg"/>'
-  }
-  if(content_data.video){
-    _img_data = _img_data+'<img src="'+picto_video+'" class="svg"/>'
-  }
-  if(content_data.serious_game){
-    _img_data = _img_data+'<img src="'+picto_serious_game+'" class="svg"/>'
-  }
-  if(content_data.text_image){
-    _img_data = _img_data+'<img src="'+picto_teste_images+'" class="svg"/>'
-  }
-  if(content_data.simulation_investissement){
-    _img_data = _img_data+'<img src="'+picto_simulation_inv+'" class="svg"/>'
-  }
-
-  if(required) {
-    required = '${_("mandatory")}';
-  }else{
-    required = '${_("optional")}';
-  }
-
-  if(percent.toString().indexOf('.') == -1) {
-    percent=percent+'.0'
-  }
-
-  var categ_lower = categ.replace(/ /g,'').toLowerCase();
-  var atp_course_link = '';
-  var atp_course_word = '';
-
-  if(atp_rank == "cours") {
-     atp_course_link = '/courses/'+course_id+'/courseware/';
-     atp_course_word = '<span class="proceed">${_("Proceed")}</span>';
-     if(!passed && course_progression==100){
-      _end_add = '<div class="atp_course_progress"><img src="'+picto_error+'" class="validate_img"/><span class="validate" style="color:rgb(220,158,41);">${_("Not validated")} '+percent+'%</span></div>';
-     }
-     else{
-       _end_add = '<div style="min-height:30px;" class="atp_course_progress"></div>';
-     }
-  }else if(atp_rank == "invite") {
-     atp_course_link = '/courses/'+course_id+'/about';
-     atp_course_word = '<span class="more_info">${_("More information")}</span>';
-  }else if(atp_rank == "finish") {
-     atp_course_link = '/courses/'+course_id+'/about';
-     atp_course_word = '<span class="more_info">${_("More information")}</span>';
-     if(passed) {
-      _end_add = '<div class="atp_course_progress"><img src="'+picto_success+'" class="validate_img"/><span class="is_green validate">${_("Validated")} '+percent+'%</span></div>';
-     }else{
-      _end_add = '<div class="atp_course_progress"><img src="'+picto_error+'" class="validate_img"/><span class="validate" style="color:rgb(220,158,41);">${_("Not validated")} '+percent+'%</span></div>';
-     }
-  }
-
-  var course_card_template = template_course_card(
-    atp_course_word,
-    atp_course_link,
-    img_src,
-    course_id,
-    categ_lower,
-    categ,course_progression,
-    picto_dure,duration,
-    required,picto_obiligatoire,
-    display_name_with_default,
-    _end_add,_img_data
-  );
-
-  $(cible).append(course_card_template);
-  ////////////////////////////////////// XITI ///////////////////
-  $('.proceed').parent('a.primary-color-bg').each(function(){
-    $(this).attr('onclick','followClickEvents(this,\'courseware\',\'action\')');
-  });
-  $('.more_info').parent('a.primary-color-bg').each(function(){
-    $(this).attr('onclick','followClickEvents(this,\'course_about\',\'action\')');
-  });
-}
-
-</script>
-<!--
-<script src="/media/studio/course_cards.js"></script>
--->
-
+<!--<script src="/media/jswork/course_cards.js"></script>-->
 <script src="${static.url('js/course_cards.js')}"></script>
-
-<!-- generate courses cards -->
-
-<style>
-.is_none_more {
-  display: none !important;
-}
-</style>
 
 <script>
   ////////////////////////////////////// XITI ///////////////////

@@ -91,7 +91,7 @@ else:
           </div>
    </div>
    <div class="atp_course_title">
-          <span>${course_overview.display_name_with_default}</span>
+          <span class="primary-color-text">${course_overview.display_name_with_default}</span>
    </div>
    <div class="atp_course_picto">
      % if content_data.get('document_pdf'):
@@ -117,7 +117,7 @@ else:
      % endif
    </div>
    <div class="atp_course_link">
-          <a href="/courses/${course_overview.id}/courseware/" class="proceed">${_("Proceed")}</a>
+          <a href="/courses/${course_overview.id}/courseware/" class="proceed primary-color-bg">${_("Proceed")}</a>
    </div>
   </li>
 
@@ -147,7 +147,7 @@ else:
           </div>
    </div>
    <div class="atp_course_title">
-          <span>${course_overview.display_name_with_default}</span>
+          <span class="primary-color-text">${course_overview.display_name_with_default}</span>
    </div>
    <div class="atp_course_picto">
      % if content_data.get('document_pdf'):
@@ -173,7 +173,7 @@ else:
      % endif
    </div>
    <div class="atp_course_link">
-          <a href="/courses/${course_overview.id}/about" class="more_info">${_("More information")}</a>
+          <a href="/courses/${course_overview.id}/about" class="more_info  primary-color-bg">${_("More information")}</a>
    </div>
   </li>
 
@@ -203,7 +203,7 @@ else:
 	  </div>
    </div>
    <div class="atp_course_title">
-          <span>${course_overview.display_name_with_default}</span>
+          <span class="primary-color-text">${course_overview.display_name_with_default}</span>
    </div>
    <!-- idicatif success -->
    <!-- idicatif success -->
@@ -241,7 +241,7 @@ else:
     % endif
    </div>
    <div class="atp_course_link">
-          <a href="/courses/${course_overview.id}/about" class="more_info">${_("More information")}</a>
+          <a href="/courses/${course_overview.id}/about" class="more_info  primary-color-bg">${_("More information")}</a>
    </div>
   </li>
 % elif atp_rank == 'invite' and course_about == 1:
@@ -268,7 +268,7 @@ else:
 	  </div>
    </div>
    <div class="atp_course_title">
-          <span>${course_about_name}</span>
+          <span class="primary-color-text">${course_about_name}</span>
    </div>
    <div class="atp_course_picto">
      % if content_data.get('document_pdf'):
@@ -294,7 +294,7 @@ else:
      % endif
    </div>
    <div class="atp_course_link">
-          <a href="/courses/${course_about_id}/courseware/" class="start_module">${_("Start")}</a>
+          <a href="/courses/${course_about_id}/courseware/" class="start_module  primary-color-bg">${_("Start")}</a>
    </div>
   </li>
 
@@ -324,7 +324,7 @@ else:
 	  </div>
    </div>
    <div class="atp_course_title">
-          <span>${course_about_name}</span>
+          <span class="primary-color-text">${course_about_name}</span>
    </div>
    <div class="atp_course_picto">
      % if content_data.get('document_pdf'):
@@ -350,7 +350,7 @@ else:
      % endif
    </div>
    <div class="atp_course_link">
-          <a href="/courses/${course_about_id}/courseware/" class="proceed">${_("Proceed")}</a>
+          <a href="/courses/${course_about_id}/courseware/" class="proceed  primary-color-bg">${_("Proceed")}</a>
    </div>
   </li>
 
@@ -380,7 +380,7 @@ else:
 	  </div>
    </div>
    <div class="atp_course_title">
-          <span>${course_about_name}</span>
+          <span class="primary-color-text">${course_about_name}</span>
    </div>
    <div class="atp_course_progress">
      % if passed:
@@ -413,7 +413,7 @@ else:
      % endif
    </div>
    <div class="atp_course_link">
-          <a href="/courses/${course_about_id}/courseware/" class="more_info">${_("More information")}</a>
+          <a href="/courses/${course_about_id}/courseware/" class="more_info primary-color-bg">${_("More information")}</a>
    </div>
   </li>
 % endif

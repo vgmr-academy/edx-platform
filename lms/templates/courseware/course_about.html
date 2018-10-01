@@ -46,113 +46,24 @@ if configuration_helpers.get_value('primary_color') :
 else:
   primary_color='#05144d'
 %>
-<style>
-#course_about_details ul li:first-child {
-  height: auto;
-  min-height: 23px;
-}
-#certiticate {
-  display: inline;
-  margin-top: -5px;
-}
-.course_about_atp_special p {
- width: calc(100% - 100px) !important;
- margin-left: 60px !important;
- margin-right: 40px !important;
-}
-.special_block {
- margin-left: 30px !important;
- margin-right: 70px !important;
-}
-.course_about_atp_special p {
- margin-left: 30px !important;
- margin-right: 70px !important;
 
-}
-.validate {
-  font-weight: normal !important;
-  font-size: 14px;
-}
-.is_red {
-  color: red !important;
-}
-.is_green {
-  color: green !important;
-}
-.is_primary {
-  /* primary */
-  color: #05144d !important;
-}
-.validate_img {
-  height: 18px;
-  margin-right: 4px;
-}
-/*
-.course_about_atp_special .special_block{
- border-color: transparent !important;
-}
-.course_about_atp_special .special_block .up_block .special_block {
- border-color: #c6c6c6 !important;
-}
-*/
+<style>
 /* Picto investissement */
 #picto_course_about svg path, #picto_course_about svg polygon{
   fill:${primary_color}!important;
 }
-.atp_course_picto svg path, .atp_course_picto svg polygon{
-  fill:#C5C5C5!important;
-}
-.course_about_atp_special .special_block .up_block h4 {
- margin-left: 5px !important;
- width: 95% !important;
-}
-#atp_ariane_about {
-  display: none;
-}
-#course_about_up_content {
-  padding-top: 50px;
-}
-#course_about_details #course_about_ul {
-  min-width: auto !important;
-}
-.validate{
-  color: #cf9c49;
-}
-.course_detail_cartouche{
-  width: 33%;
-  float: left;
-  padding: 10px;
-  box-sizing: border-box;
-  min-height: 60px;
-  font-size: 0.9em;
-}
 .clear-left{
   clear:left
 }
-.course_detail_cartouche .details_titles{
-  text-transform: uppercase;
-}
-.gold-maj-text{
-  color: #cf9c49;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-.course_detail_cartouche a{
-  display: inline;
-}
-@media(max-width:980px){
-  .course_detail_cartouche{
-    width: 100%;
-  }
-}
 </style>
+
 <script src="${static.url('js/course_about_atp.js')}"></script>
 
 <section id="course_about_contenair">
 <section id="course_about_up_content">
 <section id="atp_ariane_about">
 <!--MODIF AURELIEN-->
-	<span id="atp_ariane_about_dashboard" >${_("Home")}</span><span> > ${course.display_name_with_default_escaped}</span>
+	<span id="atp_ariane_about_dashboard" class="primary-color-text" >${_("Home")}</span><span> > ${course.display_name_with_default_escaped}</span>
 </section>
 <section id="atp_about_course_card">
 <ul class="atp_course_listing">
@@ -217,8 +128,8 @@ except:
 </section>
 <section id="atp_about_desc">
 
-<h1>${course.display_name_with_default_escaped}</h1>
-<p id="course_about_accroche">${get_course_about_section(request, course, 'short_description')}</p>
+<h1 class="primary-color-text">${course.display_name_with_default_escaped}</h1>
+<p id="course_about_accroche" class="secondary-color-text">${get_course_about_section(request, course, 'short_description')}</p>
 
 <!-- COURSE ABOUT DETAILS ---------------------------------------->
 <div id="course_about_details">
@@ -282,7 +193,7 @@ except:
   <!--<a class="instructor-info-action" href="https://${settings.CMS_BASE}/settings/manage/${course.id}">${_("View About Page in studio")}</a>-->
  </div>
 % endif
- <div class="inner-wrapper">
+ <div class="inner-wrapper primary-color-text">
    ${get_course_about_section(request, course, "overview")}
  </div>
 </section>
@@ -290,49 +201,49 @@ except:
 </section>
 <section id="course_about_atp_end">
  <img src="${static.url('images/pdf.svg')}" id="encoche_course_about"/>
- <h2>${_("FORMATS")}</h2>
+ <h2 class="primary-color-text">${_("FORMATS")}</h2>
  <div id="picto_course_about">
    <div class="atp_course_picto">
 % if content_data.get('document_pdf'):
 <div class="dashboard_picto_tuto_tma">
-<img src="${static.url('images/pdf.svg')}" class="svg"/>
-<span>${_("PDF")}</span>
+<img src="${static.url('images/pdf.svg')}" class="svg primary-color-fill"/>
+<span class="primary-color-text">${_("PDF")}</span>
 </div>
 % endif
 % if content_data.get('webzine'):
 <div class="dashboard_picto_tuto_tma">
-<img src="${static.url('images/webzine.svg')}" class="svg"/>
-<span>${_("webzine")}</span>
+<img src="${static.url('images/webzine.svg')}" class="svg primary-color-fill"/>
+<span class="primary-color-text">${_("webzine")}</span>
 </div>
 % endif
 % if content_data.get('quiz'):
 <div class="dashboard_picto_tuto_tma">
-<img src="${static.url('images/quiz.svg')}" class="svg"/>
-<span>${_("quiz")}</span>
+<img src="${static.url('images/quiz.svg')}" class="svg primary-color-fill"/>
+<span class="primary-color-text">${_("quiz")}</span>
 </div>
 % endif
 % if content_data.get('video'):
-<div class="dashboard_picto_tuto_tma">
-<img src="${static.url('images/video.svg')}" class="svg"/>
-<span>${_("video")}</span>
+<div class="dashboard_picto_tuto_tma ">
+<img src="${static.url('images/video.svg')}" class="svg primary-color-fill"/>
+<span class="primary-color-text">${_("video")}</span>
 </div>
 % endif
 % if content_data.get('serious_game'):
 <div class="dashboard_picto_tuto_tma">
-<img src="${static.url('images/seriousgame.svg')}" class="svg"/>
-<span>${_("serious game")}</span>
+<img src="${static.url('images/seriousgame.svg')}" class="svg primary-color-fill"/>
+<span class="primary-color-text">${_("serious game")}</span>
 </div>
 % endif
 % if content_data.get('simulation_investissement'):
 <div class="dashboard_picto_tuto_tma">
-<img src="${static.url('images/simulation_inv.svg')}" class="svg"/>
-<span>${_("investment game")}</span>
+<img src="${static.url('images/simulation_inv.svg')}" class="svg primary-color-fill"/>
+<span class="primary-color-text">${_("investment game")}</span>
 </div>
 % endif
 % if content_data.get('text_image'):
 <div class="dashboard_picto_tuto_tma">
-<img src="${static.url('images/testes&images.svg')}" class="svg"/>
-<span>${_("Infography")}</span>
+<img src="${static.url('images/testes&images.svg')}" class="svg primary-color-fill"/>
+<span class="primary-color-text">${_("Infography")}</span>
 </div>
 % endif
    </div>
@@ -391,89 +302,7 @@ $('#certiticate').click(function(e){
 </script>
 
 <style>
-#dashboard_tma section a .img_fundamentals {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 70%;
-  height: 191px;
-  z-index: 2;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.img_fundamentals {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 70%;
-    height: 191px;
-    z-index: 2;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover
-}
 
-@media(max-width:1362px) {
-  .about_score {
-    margin-left: 0 !important;
-    margin-top: 20px !important;
-  }
-  #course_about_details .over_campaign {
-    margin-left: 25px !important;
-  }
-}
-@media(max-width:951px) {
-  #course_about_details .over_campaign {
-    margin-left: 0 !important;
-  }
-}
-@media(max-width:859px) {
-  .infos {
-    margin-left: 0 !important;
-    margin-top: 20px !important;
-  }
-}
-@media(max-width:768px) {
-  .infos,.about_score {
-    margin-left: 25px !important;
-    margin-top: 0 !important;
-  }
-}
-@media(max-width:674px) {
-  .about_score {
-    margin-left: 0 !important;
-    margin-top: 20px !important;
-  }
-  #course_about_details .over_campaign {
-    margin-left: 25px !important;
-  }
-}
-@media(max-width:504px) {
-  #course_about_details .over_campaign {
-    margin-left: 0 !important;
-  }
-}
-@media(max-width:432px) {
-  .about_score,.infos {
-    margin-left: 0 !important;
-    margin-top: 20px !important;
-  }
-}
-.atp_course_progress {
- text-align: center;
- margin-top: 10px;
-}
-.over_campaign {
-
-}
-#gwb_the_game_is_over_19_03_2003 {
-   color: #cf9c49 !important;
-   font-size: 14px;
-   line-height: 12px;
-   font-weight: bold !important;
-   text-transform: uppercase;
-}
 % if status <= 99:
 @media(max-width: 1655px) {
  #course_about_details .over_campaign {

@@ -149,16 +149,6 @@ ${HTML(fragment.foot_html())}
 <div class="message-banner" aria-live="polite"></div>
 
 
-<!-- HIDE COURSE TABS GEOFFREY -->
-
-
-<!--
-% if default_tab:
-  <%include file="/courseware/course_navigation.html" />
-% else:
-  <%include file="/courseware/course_navigation.html" args="active_page='courseware'" />
-% endif
--->
 
 <%
 courseware = static.get_value('css_overrides_courseware')
@@ -169,396 +159,27 @@ courseware = static.get_value('css_overrides_courseware')
   <link rel="stylesheet" type="text/css" href="${static.url(courseware)}" />
 % endif
 <style>
-  /* Taille des titres*/
-  h3{
-    font-size: 1.2em!important;
-  }
-  /*Modification du sens des chevrons*/
-  #sequence-list li button.nav-item h3::before, #sequence-list li button.result-score h3::before {
-    transform:rotate(45deg)!important;
-  }
-  #sequence-list li button.nav-item.active h3::before, #sequence-list li button.result-score.active h3::before{
-    transform:rotate(135deg)!important;
-  }
-  /*Modification couleur titre questions bloquées*/
-  .not_finished h3.problem-header{
-    color:rgb(128, 128, 128)!important;
-  }
-  /* Suppression bouton suivant question si non soumis*/
-  .problem .next_button{
-    display: none!important;
-  }
-  .finished .problem .next_button{
-    display: inline-block!important;
-  }
-  .problem .next{
-    float: none!important;
-  }
+
   /* Modification couleur bouton soumettre */
   .xmodule_display.xmodule_CapaModule div.problem .action .submit-attempt-container button:not(:disabled), .xmodule_display.xmodule_CapaModule div.problem .action .submit-attempt-container button:not(:disabled):hover{
     background-color:${primary_color}!important;
     border-color:${primary_color}!important;
   }
-
-  /* Couleur affichage erreurs */
-  .xmodule_display.xmodule_CapaModule div.problem .notification.error{
-    color:red!important;
+  .finished .next_button {
+    background-color: ${primary_color}!important;
+    border-color: ${primary_color}!important;
+    display:inline-block;
   }
-  .xmodule_display.xmodule_CapaModule div.problem .notification.success{
-    color:green!important;
+  .group-heading.active{
+    color:${secondary_color}!important;
   }
-
-  #final_score{
-    padding:10px;
+  i.fa-chevron-right,i.fa-chevron-up{
+    transition: transform 0.3s;
   }
-
-  .finished h3.problem-header{
-    border-bottom: 1px solid lightgray;
-    padding-bottom: 10px;
-  }
-
-  /* Couleur par defaut des titres des chapitres */
-  .xmodule_display.xmodule_SequenceModule .sequence-suptitle h3{
-    color:grey;
-  }
-  .primary_color{
-    color:${primary_color}!important;
-  }
-
-  .course-wrapper .course-content{
-    margin-left: 2%;
-    margin-right: 0;
-    width:96%;
-  }
-  .course-index{
-    margin-left: 0;
-  }
-  body.view-in-course .container{
-    margin-top: 20px;
-  }
-  #tma_course_top{
-    display: flex;
-    align-items: center;
-    height: auto!important;
-  }
-  #tma_title_wrapper{
-    width: 70%
-  }
-  #tma_title_wrapper h1{
-    margin-bottom: 0;
-    position: static;
-    top: auto;
-    left: auto;
-    margin-top: 0!important;
-    width: 100%;
-    margin-left: 0;
-  }
-  #tma_course_ariane{
-    width: 30%;
-  }
-  .content-wrapper{
-    min-height: calc(100vh - 100px)!important;
-  }
-  @media (max-width: 768px){
-    .course-wrapper .course-content{
-      width: 100%;
-    }
-    .course-index{
-      width: 100%!important;
-    }
-    #tma_course_ariane{
-      width: 100%;
-    }
-    #tma_title_wrapper{
-      width: 100%
-    }
-    #tma_course_top{
-      display: block;
-    }
-    #tma_title_wrapper h1{
-      text-align: left;
-    }
-  }
-/* quiz customisation */
-.wrap-instructor-info {
-  display: none;
-}
-.xblock .xblock h3.unit-title {
-  text-align:center;
-  font-weight:bold;
-  font-size: 24px;
-  margin-bottom: 15px;
-  border-bottom: 1px solid #ddd;
-  display:none;
-}
-.problem-header {
-  cursor: pointer;
-}
-.sequence #seq_content .is_overflow {
-  height: 25px;
-  overflow: hidden;
-  padding-bottom: 0;
-}
-.problem-action-buttons-wrapper,.problem-progress {
-  display: none !important;
-}
-.position_atp {
-  position: relative;
-}
-.dropdown_atp {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  z-index: 10;
-  color: ${primary_color};
-  text-align: right;
-  width: 20px;
-  cursor:pointer;
-}
-.arrow-bottom,.arrow-up {
-  display: inline-block;
-}
-.arrow-bottom:before, .arrow_atp:before {
-    position: relative;
-    content: "";
-    display: inline-block;
-    width: 0.4em;
-    height: 0.4em;
-    border-right: 0.2em solid ${primary_color};
-    border-top: 0.2em solid ${primary_color};
-    margin-right: 0.5em;
-    margin-bottom: 5px;
-    transform: rotate(135deg);
-}
-.is_overflow .arrow_atp:before {
-    transform: rotate(315deg) !important;
-}
-.not_finished .arrow_atp:before {
-  border-right: 0.2em solid rgb(128, 128, 128) !important;
-  border-top: 0.2em solid rgb(128, 128, 128) !important;
-}
-.xblock .xblock h3{
-  text-transform: capitalize;
-  font-size: 18px;
-}
-.indicator-container,.explanation-title {
-  display: none !important;
-}
-.xmodule_display.xmodule_CapaModule div.problem .action .submit-attempt-container .submit,.xmodule_display.xmodule_CapaModule div.problem .action .submit-attempt-container .submit:hover,.xmodule_display.xmodule_CapaModule div.problem .action .submit-attempt-container .submit:focus {
-  padding-top: 2px;
-  padding-bottom:2px;
-  border-radius: 11px;
-  color: #fff;
-  background-color: gray;
-  border-color: gray !important;
-}
-.xmodule_display.xmodule_CapaModule div.problem .action .submit-attempt-container .submit{
-  float: none;
-}
-.sequence #seq_content .not_finished {
-  height: 25px;
-  overflow: hidden;
-  padding-bottom: 0;
-}
-.finished .submit {
-  display: none;
-}
-.next_button {
-  padding-top: 2px;
-  padding-bottom:2px;
-  border-radius: 11px;
-  color: #fff !important;
-  outline: none;
-  cursor: inherit;
-}
-.not_finished .next_button,.next_button {
-  background-color: grey !important;
-  border-color: grey !important;
-}
-.finished .next_button {
-  background-color: ${primary_color}!important;
-  border-color: ${primary_color}!important;
-  display:inline-block;
-}
-.finished .field {
-  position: relative;
-}
-.finished .finished_voile {
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  background-color: transparent;
-  height: calc(100% + 2px);
-  width: calc(100% + 2px);
-  z-index: 2;
-}
-.position_atp button {
-  min-width: 115px !important;
-}
-/* modif cours */
-.xmodule_display.xmodule_CapaModule div.problem .action .submit-attempt-container {
-  display: block;
-  float: left;
-}
-.next {
-  display: block;
-  float: right;
-  text-align: center;
-}
-.picto_sf {
-  width: 18px;
-  height: 18px;
-  background-size: cover;
-  background-position: center;
-  display: inline-block;
-  border-radius: 50%;
-  margin-left: 15px;
-}
-.problems-wrapper:not(.is_overflow) .picto_sf{
-    background-color: #0064AE;
-}
-.not_finished .picto_sf {
-  background-color: transparent;
-  border-radius: 0%;
-}
-.success_quiz_atp .picto_sf {
-  background-image: url('/media/checked.png');
-  background-color: transparent!important;
-  border-radius: 0%;
-}
-.fail_quiz_atp .picto_sf {
-  background-image: url('/media/cross-remove-sign.png');
-  background-color: transparent!important;
-  border-radius: 0%;
-}
-#module-over{
-  color:#c6c6c6;
-  font-style:italic;
-  text-align: center;
-  padding:20px;
-}
-
-.reset-btn{
-  background-color: ${primary_color};
-  border-radius:20px;
-  padding:10px 15px;
-  color:white;
-  font-family: mywebfont;
-  font-weight:bold;
-  font-size:0.8em;
-  cursor:pointer
-}
-.reset-btn:hover{
-  color:white;
-}
-
-/* Responsive title questions*/
-.sequence #seq_content .is_overflow .problem{
-  display: none;
-}
-.sequence #seq_content .is_overflow{
-  height: auto!important;
-}
-.xblock .xblock h3.problem-header{
-  width:95%;
-}
-
-/* Result score grisé si toutes questions non répondues*/
-.disabled_score, .disabled_score:before{
-  color:gray!important;
-  border-color: gray!important;
-}
-
-/* Boutons de nav */
-#sub_nav {
-  width: auto;
-  height: auto;
-  position: fixed;
-  right: 10px;
-  bottom: 35px;
-  display: inline-block;
-  background-color: ${primary_color};
-}
-#nav_button,#sub_context {
-  display: inline-block;
-}
-.full_width {
-  width: 100% !important;
-}
-.is_none_atp {
-  display: none !important;
-}
-.is_hidden {
-  visibility: hidden;
-}
-.border_radius_left {
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-}
-.border_radius_right {
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-}
-.sequence-bottom {
-  visibility: hidden;
-}
-#sub_nav button,#sub_nav button:hover,#sub_nav button:focus {
-  color: #fff !important;
-  background-color: transparent;
-  border: none;
-  border-radius: 0px;
-  text-shadow: none !important;
-  box-shadow: none;
-  font-size: 18px;
-  height: 37px;
-  line-height: 23px;
-  vertical-align: middle;
-  outline: none !important;
-}
-#nav_button button,#zoom {
-  min-width: 80px;
-}
-#sub_nav button:hover {
-  color: ${secondary_color} !important;
-}
-.previous_title_nav span {
-  margin-left: 15px;
-}
-.next_title_nav span {
-  margin-right: 15px;
-}
-#separator {
-  min-width: 2px !important;
-  width: 2px !important;
-  padding: 0;
-  margin-top: 7px;
-  margin-bottom: 7px;
-  height: 23px !important;
-  display: inline-block;
-  background-color: ${secondary_color} !important;
-}
-.svg-inline--fa.fa-w-16{
-  height: 23px !important;
-}
-#full {
-  padding-left: 10px !important;
-  padding-right: 10px !important;
-}
-.submission-feedback {
- display: none !important;
-}
-.group-heading.active{
-  color:${secondary_color}!important;
-}
-.detailed-solution {
- display: none !important;
-}
-
-
 </style>
 
 
-<div id="tma_course_top">
+<div id="tma_course_top" class="secondary-color-bg">
     <div id="tma_course_ariane">
       <a href="/courses/${course.id}/about">< ${_("Back to training module description")}</a>
       % if staff_access and studio_url is not None:
@@ -689,387 +310,56 @@ courseware = static.get_value('css_overrides_courseware')
 </nav>
 
 <%include file="../modal/accessible_confirm.html" />
+<script>
+  // definition des variables utiles
+  var incorrect_wording = '${_("Incorrect")}';
+  var correct_wording = '${_("Correct")}';
+  var results_wording = '${_("Results")}';
+  var completed_wording='${_("You have completed the training module")}';
+  var course_end='${course.end}';
+  var course_id='${course.id}';
+  var course_language='${course.language}';
+  var trophy_img="${static.url('images/trophy.svg')}";
+  var failed_img="${static.url('images/refresh.svg')}";
+  var congratulation_wording ="${_('Congratulations')}";
+  var course_default_name="${course.display_name_with_default}";
+  var started_wording='${_("You started the training module ")}';
+  var training_over_wording='${_("The training campaign is over. You can access the training module content. However, you can\'t do the test to validate your knowledge.")}';
+  var start_again_wording='${_("Start again")}';
+  var certificate_wording='${_("Download the certificate")}';
+  var unfortunately_wording = '${_("Unfortunately, you haven\'t achieved the minimum score required to validate the training module.")}';
+  var score_wording = '${_("Your total score :")}';
+  var to_end_wording = '${_("To end this training module, you have to access every chapters and finish the validation knowledge test.")}';
+
+
+</script>
 <script src="${static.url('js/courseware_completion.js')}"></script>
+<!--<script src="/media/js/courseware_completion.js"></script>-->
+<!--<script src="${static.url('js/tma_custom_quiz_display.js')}"></script>-->
+<script src="/media/js/tma_custom_quiz_display.js"></script>
 <%
 user_id = user.id
 username = user.username
 course_id = course.id
 %>
 
+
 <script>
-/* DISPLAY ANSWERS ON QUIZ */
-$(document).ajaxSuccess(function(event, xhr, settings){
-  if( settings.url.endsWith('problem_check') ) {
-    var url_check_pb=settings.url;
-    var url_base_problem=url_check_pb.replace('/problem_check','')
-    var url_show_pb=url_base_problem+'/problem_show';
-    ajax_problem_show(url_show_pb);
-    // translate correct incorrect
-    if('${course.language}'=='de'){
-      setInterval(function(){
-        var message_faux=$('.notification.error.notification-submit span.notification-message');
-        var message_vrai=$('.notification.success.notification-submit span.notification-message');
-        if(message_vrai.lenght>0){
-          message_vrai.html(message_vrai.html().replace('Correct','Korrekt'));
-        }
-        if(message_faux.length>0){
-          message_faux.html(message_faux.html().replace('Incorrect','Falsch'));
-        }
-      },300);
+  function ariane_height() {
+    var width = $(window).width();
+    if(width > 899) {
+      var h1_h = $('#tma_course_top').find('h1').height();
+      $('#tma_course_top').css('height',h1_h+'px');
+      $('#tma_course_top').find('h1').css('margin-top','-'+(h1_h/2)+'px');
+    }else{
+      $('#tma_course_top').attr('style','');
+      $('#tma_course_top').find('h1').attr('style','');
     }
   }
-});
-function ajax_problem_show(url_show_pb){
-  $.ajax({
-      url:url_show_pb,
-      type:'POST',
-      dataType:'json',
-      success:function(data){
-        //prepare answers
-        answers=data['answers'];
-         $.each(answers, function(key, value) {
-           if ($.isArray(value)) {
-             for (i = 0, len = value.length; i < len; i++) {
-               $('#'+key+'-'+value[i]+'-label').addClass('choicegroup_correct');
-             }
-           }
-           else{
-            $('#'+key+'-'+value[i]+'-label').addClass('choicegroup_correct');
-           }
-         });
-
-      }
-    });
-}
-
-/* DISPLAY FAIL CORRECT EVEN ON RELOAD
-$(document).ready(function() {
-  $('.problems-wrapper').each(function(){
-    error_div='<div class="notification error notification-submit" tabindex="-1"><span class="icon fa fa-close" aria-hidden="true"></span><span class="notification-message">${_("Incorrect")}</span><div class="notification-btn-wrapper"><button type="button" class="btn btn-default btn-small notification-btn review-btn sr">Review</button></div></div>';
-    success_div='<div class="notification success notification-submit " tabindex="-1"><span class="icon fa fa-check" aria-hidden="true"></span><span class="notification-message">${_("Correct")}</span><div class="notification-btn-wrapper"><button type="button" class="btn btn-default btn-small notification-btn review-btn sr">Review</button></div></div>';
-    if($(this).hasClass('fail_quiz_atp') && $(this).find('div.notification.error').length<=0){
-      //$(this).find('.action').before(error_div);
-      //afficher réponse si faux
-    }
-    else if($(this).hasClass('success_quiz_atp') && $(this).find('div.notification.success').length<=0){
-      //$(this).find('.action').before(success_div);
-    }
-  });
-});*/
-
-error_div='<div class="notification error notification-submit" tabindex="-1"><span class="icon fa fa-close" aria-hidden="true"></span><span class="notification-message">${_("Incorrect")}</span><div class="notification-btn-wrapper"><button type="button" class="btn btn-default btn-small notification-btn review-btn sr">Review</button></div></div>';
-success_div='<div class="notification success notification-submit " tabindex="-1"><span class="icon fa fa-check" aria-hidden="true"></span><span class="notification-message">${_("Correct")}</span><div class="notification-btn-wrapper"><button type="button" class="btn btn-default btn-small notification-btn review-btn sr">Review</button></div></div>';
-
-/* display answers on questions first attempt quiz */
-$('.problems-wrapper').live('click', function(){
-  if ($(this).hasClass('finished')){
-    console.log('ok finished');
-    if($(this).hasClass('fail_quiz_atp') && $(this).find('div.notification.error').length<=0){
-      $(this).find('.action').before(error_div);
-      //afficher réponse si faux
-      url_show_pb=$(this).attr('data-url')+'/problem_show';
-      ajax_problem_show(url_show_pb);
-    }
-    else if($(this).hasClass('success_quiz_atp') && $(this).find('div.notification.success').length<=0){
-      $(this).find('.action').before(success_div);
-    }
-  }
-})
-
-/* SCROLL TO NEXT QUES IN QUIZ*/
-problem_ids_list=[]
-$( document ).ready(function() {
-  $('.problems-wrapper').each(function() {
-    problem_ids_list.push($(this).attr('id'));
-  });
-});
-function scroll_to_ques(question_id){
-    console.log('scroll to question '+question_id);
-    $(document).scrollTo($('#'+question_id).offset().top-80+'px',500);
-    console.log('scroll to question');
-}
-// on next click
-$('.question_next').live("click",function () {
-  next_id=$(this).parents('.vert').next('.vert').find('.problems-wrapper').attr('id');
-  scroll_to_ques(next_id);
-  $('#'+next_id).find('.hd.hd-2.problem-header').trigger( "click" );
-});
-// on question title click
-$('.hd.hd-2.problem-header').live("click", function(){
-  question_id="problem_"+$(this).attr('id').replace('-problem-title','');
-  console.log('ques id on click h2'+question_id);
-  scroll_to_ques(question_id);
-  if($(this).parent().hasClass('finished','fail_quiz_atp')){
-    url_show_pb=$(this).parent().attr('data-url')+'/problem_show';
-    ajax_problem_show(url_show_pb);
-  }
-})
-
-/* RESET QUIZ */
-function get_all_questions(){
-  problem_xblock_list=[];
-  $('div.vert').each(function(){
-    problem_xblock_list.push($(this).attr('data-id'));
-  })
-  return problem_xblock_list;
-};
-
-function reset_all_problems() {
-  var i=0;
-  problem_xblock_list=get_all_questions();
-  problem_xblock_list.forEach(function(xblock_id) {
-   $.ajax({
-    url:'/courses/'+course_id+'/xblock/'+xblock_id+'/handler/xmodule_handler/problem_reset',
-    type:'POST',
-    dataType:'json',
-    data: {
-        'id': xblock_id
-    },
-    success: function(result){
-      i+=1;
-      if(i>=problem_xblock_list.length){
-        window.location.reload(true);
-      }
-    }
-   });
-  });
-};
-
-
-/* RESULT PANEL GENERATION */
-// Add a result panel title
-var result_panel_title = '<a href="#holding-section-child" role="button" class="button-chapter chapter" id="holding-section-result" aria-controls="holding-section-child" aria-expanded="false"><span class="group-heading" aria-label="holding section"><span class="icon fa fa-caret-right" aria-hidden="true"></span>${_("Results")}</span></a>';
-$('.course-navigation').append(result_panel_title);
-//Messages for finished modules
-var picto_success = "${static.url('images/trophy.svg')}";
-var picto_failed = "${static.url('images/refresh.svg')}";
-var template_and_title = '<div id="final_score"></div>';
-var congrats = "<div id='congrats_score'>${_('Congratulations')} !</div>";
-var picto = '<div id="score_picto"><img src="" class="svg"/></div>';
-var first_par = ['<div id="score_first_para">${_("You have completed the training module")}<br>« ${course.display_name_with_default} »</div>','<div id="score_first_para">${_("You started the training module ")}<br>« ${course.display_name_with_default} ».</div>'];
-var second_par = ['<div id="second_par_score">${_("Unfortunately, you haven\'t achieved the minimum score required to validate the training module.")}</div>','<div id="second_par_score">${_("To end this training module, you have to access every chapters and finish the validation knowledge test.")}</div>'];
-var score_div = '<div id="score_div_info"><span>${_("Your total score :")}</span><span id="insert_score"></span></div>';
-var boutton_certificat = '<div id="score_button"><button onclick=\"followClickEvents(this,\'certificate\',\'download\')\">${_("Download the certificate")}</button></div>';
-// Messages for modules over
-var message_termine='<div id="module-over">${_("The training campaign is over. You can access the training module content. However, you can\'t do the test to validate your knowledge.")}</div>';
-var reset_bouton='<div onclick="reset_all_problems()"><a class="reset-btn" >${_("Start again")}</a></div>';
-
-function generate_certif() {
-  var course_id = '${course_id}';
-  var url_certif = '/api/atp/check/certificate/${course_id}/';
-  $.ajax({
-    url:url_certif,
-    type:'GET',
-    dataType:'json',
-    success:function(data){
-      window.open(data.certificate_url,'_self');
-    }
-  })
-}
-
-function is_course_over(){
-  var end_date=new Date("${course.end}");
-  var today = new Date();
-  course_over=false;
-  if (today>end_date){
-    course_over=true;
-  }
-  return course_over;
-}
-
-function generate_result_success(score){
-  $('#second_par_score').hide();
-  $('#final_score').append(congrats);
-  $('#insert_score').css('color','#dc9e29');
-  $('#score_picto').find('img').attr('src',picto_success);
-  $('#score_picto').find('img').attr('class','svg picto_add_success');
-  $('#insert_score').html(score+'%');
-  $('#final_score').append(first_par[0]);
-  $('#final_score').append(boutton_certificat);
-  $('#score_button').find('button').click(function(){
-    generate_certif();
-  });
-  if(is_course_over()){
-    $('#final_score').append(message_termine);
-  }
-};
-
-function generate_result_fail(score){
-  $('#final_score').append(first_par[0]);
-  $('#final_score').append(second_par[0]);
-  $('#insert_score').html(score+'%');
-  $('#insert_score').css('color','red');
-  $('#score_picto').find('img').attr('src',picto_failed);
-  $('#score_picto').find('img').attr('class','svg picto_add_failed');
-  if(is_course_over()){
-    $('#final_score').append(message_termine);
-  }
-  else{
-    $('#final_score').append(reset_bouton);
-  }
-};
-
-function insert_info_score(value) {
-  $('#result-content').append(template_and_title);
-  $('#final_score').append(picto);
-  $('#final_score').append(score_div);
-}
-
-// Display/Hide score panel on title click
-$('.result-score').live('click', function(){
-  $(this).toggleClass('active');
-  if($(this).hasClass('active')){
-    $("#result-content").html('');
-    console.log('result score active');
-    returnScore();
-  }
-  else{
-    $("#result-content").html('');
-  }
-})
-//Display score Panel on next last question click
-function open_result_panel(){
-  if(!$('#holding-section-result').hasClass('active')){
-    $('.result-score').trigger( "click" );
-  }
-}
-
-
-function returnScore() {
-  $.ajax({
-    url:'/api/atp/couseware_certif/${course.id}/',
-    type:'GET',
-    dataType:'json',
-    success:function(data) {
-      var passed = data.passed;
-      var is_graded = data.is_graded;
-      var score = parseFloat(data.percent);
-      if(score.toString().indexOf('.') == -1) {
-        score=score+'.0'
-      }
-      $('#insert_score').text(score+'%');
-      var grade_cutoffs = data.grade_cutoffs;
-      var overall_progress = data.overall_progress;
-      insert_info_score();
-      if(passed && score >= grade_cutoffs) {
-          generate_result_success(score);
-      }else{
-          generate_result_fail(score);
-      }
-      $('img.svg').each(function(){
-          var $img = $(this);
-          var imgID = $img.attr('id');
-          var imgClass = $img.attr('class');
-          var imgURL = $img.attr('src');
-          $.get(imgURL, function(data) {
-              // Get the SVG tag, ignore the rest
-              var $svg = $(data).find('svg');
-              // Add replaced image's ID to the new SVG
-              if(typeof imgID !== 'undefined') {
-                  $svg = $svg.attr('id', imgID);
-              }
-              // Add replaced image's classes to the new SVG
-              if(typeof imgClass !== 'undefined') {
-                  $svg = $svg.attr('class', imgClass+' replaced-svg');
-              }
-              // Remove any invalid XML tags as per http://validator.w3.org
-              $svg = $svg.removeAttr('xmlns:a');
-              // Replace image with new SVG
-              $img.replaceWith($svg);
-          }, 'xml');
-      });
-      $('img.svg').show();
-      $('#result-content').show();
-    }
-  });
-};
-
-/* XITI */
-$('.seq_content_next a').each(function(){
-  $(this).attr('onclick','followClickEvents(this,\'next\',\'navigation\')');
-});
-/* ENABLE SCORE PANEL AFTER QUIZ*/
-function enable_score_panel(url_last_question){
-  $(".problems-wrapper").each(function(){
-    if($(this).attr('data-url')==url_last_question){
-      $(this).find('.next_button').attr('onclick','open_result_panel()');
-    }
-  })
-  //Change colors of result section to make it available
-  $('.result-score-title h3').addClass('primary_color');
-  $('.result-score h3.disabled_score').removeClass('disabled_score');
-  $('.result-score').removeAttr("disabled");
-};
-
-function all_questions_answered(){
-  var all_answered=false;
-  // All questions answered only if all have class finished and quiz is accessible
-  if($('.problems-wrapper.finished').length==$('.problems-wrapper').length && $('.problems-wrapper').length!=0){
-    all_answered=true;
-  }
-  return all_answered;
-}
-
-$(document).ready(function() {
-  url_last_question=$('.problems-wrapper').last().attr('data-url');
-  result_enabled=false;
-  // Last question has been answered
-  $(document).ajaxSuccess(function(event, xhr, settings) {
-      url_last_question=$('.problems-wrapper').last().attr('data-url');
-      if (settings.url.indexOf(url_last_question+'/problem_check') > -1) {
-        enable_score_panel(url_last_question);
-        result_enabled=true;
-        }
-  });
-  //or all questions are answered
-  if(all_questions_answered()){
-    enable_score_panel(url_last_question);
-    result_enabled=true;
-  }
-});
-
-
-/* DISABLE QUIZ IF COURSE IS OVER */
-$(document).ajaxSuccess(function(event, xhr, settings) {
-  if (settings.url.indexOf('/completion_status') > -1) {
-    if(is_course_over()){
-      $('.seq_problem').each(function(){
-        $(this).attr('disabled', 'disabled');
-        $(this).addClass('inactive').removeClass('active');
-        $(this).addClass('disabled_unit_tma');
-        if($('#seq_content').attr('aria-labelledby')==$(this).attr('id')){
-          $('#seq_content').html('');
-        }
-        id_quiz_tab=$(this).attr('id').replace('tab_','');
-      });
-      id_next_button="#seq_content_next_"+id_quiz_tab;
-      $(id_next_button).hide();
-      enable_score_panel(url_last_question);
-    }
-  }
-});
-
-/* OTHER */
-function ariane_height() {
-  var width = $(window).width();
-  if(width > 899) {
-    var h1_h = $('#tma_course_top').find('h1').height();
-    $('#tma_course_top').css('height',h1_h+'px');
-    $('#tma_course_top').find('h1').css('margin-top','-'+(h1_h/2)+'px');
-  }else{
-    $('#tma_course_top').attr('style','');
-    $('#tma_course_top').find('h1').attr('style','');
-  }
-}
-ariane_height();
-$(window).resize(function(){
   ariane_height();
-})
-
-
-</script>
-
-<script>
+  $(window).resize(function(){
+    ariane_height();
+  })
   ////////////////////////////////////// XITI ///////////////////
   page_name = 'page_courseware';
 </script>
