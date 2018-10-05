@@ -5,7 +5,15 @@
     from django.utils.translation import ugettext as _
     from courseware.courses import get_course_about_section
 %>
-
+<style>
+  #main{
+    margin-top: 70px;
+  }
+  .course-profile{
+    min-height: calc(100vh - 96px);
+    box-sizing: border-box;
+  }
+</style>
 <%block name="headextra">
     <meta property="og:title" content="${course.display_name_with_default}"/>
     <meta property="og:description" content="${get_course_about_section(request, course, 'short_description')}"/>
@@ -19,20 +27,20 @@
                 <div class="table">
                     <div class="intro">
                         <div class="heading-group">
-                            <h3> ${_("You should Register before trying to access the Unit")}</h3>
+                            <h4> ${_("You should Register before trying to access the Unit")}</h4>
                         </div>
                         <div class="heading-group">
-                            <p>
+                            <h4>
                                 ${course.display_name_with_default}
-                            </p>
+                            </h4>
                         </div>
                         <form role="form" id="enroll_staff_form" method="post" action="">
                             <input type="hidden" name="csrfmiddlewaretoken" value="${ csrftoken }"/>
                             <div class="main-cta">
-                                <button class="register" name="enroll" type="submit"
+                                <button class="register primary-color-border primary-color-text text-uppercase" name="enroll" type="submit"
                                         value="${_('Enroll')}">${_('Enroll')}<span
                                         class="sr">${course.display_name_with_default}</span></button>
-                                <button class="register" name="dont_enroll" type="submit"
+                                <button class="register primary-color-border primary-color-text text-uppercase" name="dont_enroll" type="submit"
                                         value="${_('Don\'t enroll')}">${_('Don\'t enroll')}<span
                                         class="sr">${course.display_name_with_default}</span></button>
                             </div>

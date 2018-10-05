@@ -241,6 +241,21 @@ text-transform: lowercase;
 .campaign-back-link a:hover{
   text-decoration: none;
 }
+#header{
+  background-color:#F8F8F8;
+}
+.w-100{
+  width: 100%!important;
+}
+.duration_course{
+  position: static!important;
+}
+.mt-0{
+  margin-top: 0px!important;
+}
+.mb-0{
+  margin-bottom: 0px!important;
+}
 </style>
 <%
 course_key_id_cleared=str(course_id).replace('+','').replace(':','')
@@ -261,12 +276,12 @@ course_key_id_cleared=str(course_id).replace('+','').replace(':','')
         <div class="img_${course.categ.lower().replace(' ','')}"></div>
       </div>
       <div id="cartouche_info">
-        <h3>${course.display_name_with_default_escaped}</h3>
-        <p><span>${_("Results on ")}</span>
+        <h3 class="primary-color-text mt-0 mb-0">${course.display_name_with_default_escaped}</h3>
+        <p class="primary-color-text mt-0 mb-0"><span class="primary-color-text">${_("Results on ")}</span>
             ${time.strftime('%Y-%m-%d')}
         </p>
         <p class="language_paragraph">
-        <span class="language_display">${_('Language')} : ${_(language_course)} </span>
+        <span class="language_display primary-color-text">${_('Language')} : ${_(language_course)} </span>
         </p>
         <div class="duration_course">
           <object oa-reusable-svg
@@ -290,8 +305,8 @@ course_key_id_cleared=str(course_id).replace('+','').replace(':','')
   <!-- dashboard -->
   <section class="section_block">
     <div id="dashboard">
-      <div id="table_info" class="dashboard">
-        <h2>${_('training campaign info')}</h2>
+      <div id="table_info" class="dashboard primary-color-text">
+        <h2 class="primary-color-bg">${_('training campaign info')}</h2>
       <!--
         <p>${_('launching date')} : <span></span></p>
       -->
@@ -325,8 +340,8 @@ course_key_id_cleared=str(course_id).replace('+','').replace(':','')
         </span></p>
       </div>
       <div id="table_stat" class="dashboard">
-        <h2>${_('users stats')}</h2>
-        <div id="cellule_stat">
+        <h2 class="primary-color-bg">${_('users stats')}</h2>
+        <div id="cellule_stat" class="primary-color-text">
           <div class="cellule_stat" id="cellule_stat_first">
             <p>${_('Network')}</p>
             <div id="logo-container-stat">
@@ -348,7 +363,7 @@ course_key_id_cleared=str(course_id).replace('+','').replace(':','')
           <div style="clear:left;"></div>
         </div>
         <div id="result">
-          <h2>${_('Results')}</h2>
+          <h2 class="primary-color-bg">${_('Results')}</h2>
           <div id="cell_result">
 
             <div class="block-results" id="">
@@ -376,14 +391,14 @@ course_key_id_cleared=str(course_id).replace('+','').replace(':','')
       <div style="clear:left;"></div>
     </section>
     <section class="section_block">
-      <div id="score_title">
-        <h2>${_('Average score')}</h2>
+      <div id="score_title" class="w-100">
+        <h2 class="primary-color-bg w-100">${_('Average score')}</h2>
       </div>
       <div id="block_stat_question">
       <div id="voile"><div id="loader"></div></div>
         <div id="nav_block_stat_question">
-          <button data-position="average">${_('per question')}</button>
-          <button data-position="participant">${_('per participant')}</button>
+          <button data-position="average" class="secondary-color-text">${_('per question')}</button>
+          <button data-position="participant" class="secondary-color-text">${_('per participant')}</button>
           <span style="display:block;clear:left;"></span>
           <div id="pop_up_grades">
             <span>
@@ -395,7 +410,7 @@ The report with all participants’ results is in progress. It will be sent to y
             </span>
           </div>
         </div>
-        <div id="body_block_stat_question">
+        <div id="body_block_stat_question" class="primary-color-text">
           <div id="block_average" class="block_question">
 % for chapter in course_structure:
   % if 'problem' in str(chapter):
