@@ -44,8 +44,8 @@ function ajax_problem_show(url_show_pb){
 }
 
 
-error_div='<div class="notification error notification-submit" tabindex="-1"><span class="icon fa fa-close" aria-hidden="true"></span><span class="notification-message">incorrect_wording</span><div class="notification-btn-wrapper"><button type="button" class="btn btn-default btn-small notification-btn review-btn sr">Review</button></div></div>';
-success_div='<div class="notification success notification-submit " tabindex="-1"><span class="icon fa fa-check" aria-hidden="true"></span><span class="notification-message">correct_wording</span><div class="notification-btn-wrapper"><button type="button" class="btn btn-default btn-small notification-btn review-btn sr">Review</button></div></div>';
+error_div='<div class="notification error notification-submit" tabindex="-1"><span class="icon fa fa-close" aria-hidden="true"></span><span class="notification-message">'+incorrect_wording+'</span><div class="notification-btn-wrapper"><button type="button" class="btn btn-default btn-small notification-btn review-btn sr">Review</button></div></div>';
+success_div='<div class="notification success notification-submit " tabindex="-1"><span class="icon fa fa-check" aria-hidden="true"></span><span class="notification-message">'+correct_wording+'</span><div class="notification-btn-wrapper"><button type="button" class="btn btn-default btn-small notification-btn review-btn sr">Review</button></div></div>';
 
 /* display answers on questions first attempt quiz */
 $('.problems-wrapper').live('click', function(){
@@ -131,12 +131,12 @@ $('.course-navigation').append(result_panel_title);
 var picto_success = trophy_img;
 var picto_failed = failed_img;
 var template_and_title = '<div id="final_score"></div>';
-var congrats = "<div id='congrats_score'>"+congratulation_wording+" !</div>";
+var congrats = "<div id='congrats_score' class='primary-color-text'>"+congratulation_wording+" !</div>";
 var picto = '<div id="score_picto"><img src="" class="svg"/></div>';
-var first_par = ['<div id="score_first_para" class="primary-color-text">completed_wording<br>« '+course_default_name+' »</div>','<div id="score_first_para">'+started_wording+'<br>« '+course_fault_name+' ».</div>'];
+var first_par = ['<div id="score_first_para" class="primary-color-text">'+completed_wording+'<br>« '+course_default_name+' »</div>','<div id="score_first_para">'+started_wording+'<br>« '+course_default_name+' ».</div>'];
 var second_par = ['<div id="second_par_score" class="primary-color-text">'+unfortunately_wording+'</div>','<div id="second_par_score">'+to_end_wording+'</div>'];
 var score_div = '<div id="score_div_info"><span class="primary-color-text">'+score_wording+'</span><span id="insert_score"></span></div>';
-var boutton_certificat = '<div id="score_button"><button onclick=\"followClickEvents(this,\'certificate\',\'download\')\">'+certificate_wording+'</button></div>';
+var boutton_certificat = '<div id="score_button"><button class="primary-color-bg" onclick=\"followClickEvents(this,\'certificate\',\'download\')\">'+certificate_wording+'</button></div>';
 // Messages for modules over
 var message_termine='<div id="module-over" class="primary-color-text">'+training_over_wording+'</div>';
 var reset_bouton='<div onclick="reset_all_problems()"><a class="reset-btn primary-color-bg" >'+start_again_wording+'</a></div>';
@@ -223,7 +223,7 @@ function open_result_panel(){
 
 function returnScore() {
   $.ajax({
-    url:'/api/atp/couseware_certif/'.course_id.'/',
+    url:'/api/atp/couseware_certif/'+course_id+'/',
     type:'GET',
     dataType:'json',
     success:function(data) {
