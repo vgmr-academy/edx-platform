@@ -36,7 +36,11 @@ from lms.djangoapps.grades.new.course_grade import CourseGradeFactory
 </%def>
 
 <%block name="bodyclass">view-in-course view-courseware courseware ${course.css_class or ''}</%block>
-
+<style>
+.seq_content_next a{
+width:auto!important;
+}
+</style>
 <%block name="title"><title>
     % if section_title:
 ${static.get_page_title_breadcrumbs(section_title, course_name())}
