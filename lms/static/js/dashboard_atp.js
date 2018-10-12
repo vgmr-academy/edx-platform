@@ -225,7 +225,7 @@ function course_card(categ,course_id,img_src,course_progression,duration,require
      }
   }else if(atp_rank == "invite") {
      atp_course_link = '/courses/'+course_id+'/about';
-     atp_course_word = '<span class="more_info">'+wording_moreinfo+'</span>';
+     atp_course_word = '<span class="more_info">'+wording_morinfo+'</span>';
   }else if(atp_rank == "finish") {
      atp_course_link = '/courses/'+course_id+'/about';
      atp_course_word = '<span class="more_info">'+wording_morinfo+'</span>';
