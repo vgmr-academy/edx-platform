@@ -23418,3 +23418,15 @@ msgstr "Gérer les Admins"
 
 msgid "Manage Microsite"
 msgstr "Modifier le microsite"
+
+msgid "Your request has been taken into account. Invitations have been sent to participants."
+msgstr "Votre demande a bien été prise en compte. Les invitations ont été envoyées aux participants."
+
+msgid "Some participants' required data is missing please complete your file"
+msgstr "Certaines données obligatoires à l'inscription des participants manquent, merci de compléter votre fichier"
+
+msgid "Some participants' data is incorrect please modify your file"
+msgstr "Certaines données obligatoires à l'inscription des participants sont incorrectes, merci de modifier votre fichier"
+
+msgid "Your file header is incorrect, please include required information"
+msgstr "L'entête de votre fichier ne respecte pas le format demandé, merci d'ajouter les colonnes suivantes"
