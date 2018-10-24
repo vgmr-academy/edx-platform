@@ -52,8 +52,6 @@
             'jquery.immediateDescendents': 'coffee/src/jquery.immediateDescendents',
             'datepair': 'js/vendor/timepicker/datepair',
             'date': 'js/vendor/date',
-            'dynatable':'common/js/vendor/utilitaires/dynatable/jquery.dynatable',
-            'papaparse':'common/js/vendor/utilitaires/papaparse/papaparse.min',
             moment: 'common/js/vendor/moment-with-locales',
             'moment-timezone': 'common/js/vendor/moment-timezone-with-data',
             'text': 'js/vendor/requirejs/text',

@@ -17678,14 +17678,8 @@ msgid "Confirmation"
 msgstr "Confirmation"
 
 #: lms/templates/static_templates/404.html
-msgid ""
-"The page that you were looking for was not found. Go back to the "
-"{link_start}homepage{link_end} or let us know about any pages that may have "
-"been moved at {email}."
-msgstr ""
-"La page que vous cherchez n'a pas été trouvée. Retournez sur la "
-"{link_start}page d'accueil{link_end} ou faites-nous part des pages déplacées"
-" à l'adresse {email}."
+msgid "The page that you were looking for was not found. Go back to the {link_start}homepage{link_end} or share your issue with {email}."
+msgstr "La page que vous cherchez n'a pas été trouvée. Accédez à la {link_start}page d'accueil{link_end} ou faites-nous part de vos problèmes de connexion à {email}."
 
 #: lms/templates/static_templates/about.html
 #: lms/templates/static_templates/blog.html
@@ -23429,4 +23423,7 @@ msgid "Some participants' data is incorrect please modify your file"
 msgstr "Certaines données obligatoires à l'inscription des participants sont incorrectes, merci de modifier votre fichier"
 
 msgid "Your file header is incorrect, please include required information"
-msgstr "L'entête de votre fichier ne respecte pas le format demandé, merci d'ajouter les colonnes suivantes"
+msgstr "L'en-tête de votre fichier ne respecte pas le format demandé, merci d'ajouter les colonnes suivantes"
+
+msgid "Add your csv file to invite participants to your course. CSV must have the following header"
+msgstr "Chargez votre fichier csv pour inviter des participants à votre cours. Le CSV doit comporter l'en-tête suivant:"

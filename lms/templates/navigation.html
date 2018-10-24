@@ -130,6 +130,9 @@ img.svg {
 .submenu-item-atp:hover{
   border-top: 1px solid ${primary_color};
 }
+.separation-logos{
+  height: 70px!important;
+}
 </style>
 
 <!-- import custom css script -->
@@ -193,7 +196,7 @@ else :
         % if "/dashboard" in request.path:
         <li class="nav-item dropdown" id="module_btn">
           <div class="nav-link dropdown-toggle" id="modules_title" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            MY MODULES
+            ${_('MY MODULES')}
           </div>
           <div id="menu_module_apt" class="dropdown-menu" aria-labelledby="navbarDropdown">
             <div id="scroll-progress" class="submenu-item-atp" onclick="followClickEvents(this,'modules-in_progress','navigation')">${_("In progress")}</div>
@@ -203,7 +206,7 @@ else :
         </li>
         <li id="categories_btn" class="nav-item dropdown">
           <div class="nav-link dropdown-toggle" id="categories_title" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            MY CATEGORIES
+            ${_('MY CATEGORIES')}
           </div>
           <div id="categories_menu" class="dropdown-menu" aria-labelledby="navbarDropdown2">
             <div id="cat_fond" class="submenu-item-atp" data-location="fundamental" onclick="followClickEvents(this,'my_categories-fundamentals','navigation')">${_("Fundamentals")}</div>

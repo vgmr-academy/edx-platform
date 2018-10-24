@@ -265,7 +265,7 @@ course_key_id_cleared=str(course_id).replace('+','').replace(':','')
   <div id="header">
     <div id="fil_ariane"></div>
     <div id="title">
-      <h1><a href="https://${settings.CMS_BASE}/home/?campaign=${course_key_id_cleared}" class="primary-color-text">< ${_('My campaigns')}</a> | ${_('Statistics')}</h1>
+      <h1 class="primary-color-text"><a href="https://${settings.CMS_BASE}/home/?campaign=${course_key_id_cleared}" class="primary-color-text">< ${_('My campaigns')}</a> | ${_('Statistics')}</h1>
     </div>
     <div id="cartouche">
       <div id="course_img">
@@ -462,7 +462,7 @@ The report with all participants’ results is in progress. It will be sent to y
               <!-- search block -->
               <div id="form_participant">
                 <input type="text" name="name_participant" id="name_participant" value="" />
-                <button id="participant_search" data-courseid="${course_id}"></button>
+                <button id="participant_search" class="secondary-color-bg" data-courseid="${course_id}"></button>
                 <div style="clear:left;"></div>
                 <div id="list_participant"></div>
               </div>

@@ -207,7 +207,7 @@ dashboard = static.get_value('css_overrides_dashboard')
     </div>
     -->
     <p id="intro-phrase-header" class="primary-color-text">Accédez à vos modules pédagogiques</p>
-    <span class="tuto_action bouton-more" onclick="followClickEvents(this,'more','navigation')">En savoir plus ▶</span>
+    <span class="tuto_action bouton-more primary-color-text" onclick="followClickEvents(this,'more','navigation')">En savoir plus ▶</span>
   </div>
 </section>
       <!-- tuto  -->
@@ -275,7 +275,7 @@ dashboard = static.get_value('css_overrides_dashboard')
   <div id="dashboard_header_content">
     <p class="primary-color-text">Willkommen auf der Trainingsplattform</p>
     <p id="intro-phrase-header" class="primary-color-text">Zugang zu Ihren Trainingsmodulen </p>
-    <span class="tuto_action bouton-more" onclick="followClickEvents(this,'more','navigation')">Mehr <span>▶</span></span>
+    <span class="tuto_action bouton-more primary-color-text" onclick="followClickEvents(this,'more','navigation')">Mehr <span>▶</span></span>
   </div>
 </section>
       <!-- tuto  -->
@@ -346,7 +346,7 @@ dashboard = static.get_value('css_overrides_dashboard')
       </div>
       -->
 			<p id="intro-phrase-header" class="primary-color-text">Access your training modules</p>
-			<span class="tuto_action bouton-more primary-color-text" onclick="followClickEvents(this,'more','navigation')">More <span>▶</span></span>
+			<span class="tuto_action bouton-more primary-color-text primary-color-text" onclick="followClickEvents(this,'more','navigation')">More <span>▶</span></span>
 		</div>
 	</section>
         <!-- tuto  -->
@@ -474,11 +474,11 @@ dashboard = static.get_value('css_overrides_dashboard')
 </section>
 % if is_new_user:
 <div id="pop_up">
-  <p>${_("Welcome on Amundi Academy platform")}!
+  <p class="primary-color-text">${_("Welcome on Amundi Academy platform")}!
   ${_("You successfully registered")}.
   ${_("The training module")} ${first_course_name} ${_("is available in the section")}
   ${_("TO DO")}.</p>
-  <button id="close_pop_up">${_("Close")}</button>
+  <button id="close_pop_up" class="primary-color-bg primary-color-border">${_("Close")}</button>
 </div>
 <script>
 $('#close_pop_up').click(function(){

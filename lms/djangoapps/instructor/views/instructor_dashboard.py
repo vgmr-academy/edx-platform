@@ -792,7 +792,7 @@ def stat_dashboard(request, course_id):
             if _passed:
                 course_average_grade = course_average_grade + (_percent * 100)
                 user_finished = user_finished + 1
-                if _percent > course_cutoff:
+                if _percent >= course_cutoff:
                     num_passed = num_passed + 1
     except:
         pass
@@ -845,9 +845,9 @@ def get_dashboard_username(request,course_id,email):
     email = str(email).lower()
     for n in row:
         low = [
-            str(n.email).lower(),
-            str(n.first_name).lower(),
-            str(n.last_name).lower()
+            n.email.lower(),
+            n.first_name.lower(),
+            n.last_name.lower()
         ]
         if email in str(low).lower():
             q = {
@@ -886,6 +886,12 @@ def stat_dashboard_username(request, course_id, email):
             lvl_4 = preprofile.level_4
         except:
             pass
+
+        #ordered course
+        course_grade = []
+        ordered_course_grade=[]
+        quiz_order=get_quiz_structure(request, course_id)
+
         # get user id
         user_id= users.id
         # get course_key from url's param
@@ -921,12 +927,20 @@ def stat_dashboard_username(request, course_id, email):
             q['display_name'] = display_name
             q['root'] = root
             course_grade.append(q)
+
+        #Order blocks
+        for id in quiz_order:
+            for block in course_grade :
+                if block['root']==str(id):
+                    ordered_course_grade.append(block)
+
         return JsonResponse({
                 "course_id":course_id,
         		"email":email,
                 "user_id":user_id,
-                "course_grade": course_grade,
+                "course_grade": ordered_course_grade,
                 "user_info": user_info,
+                "quiz_order":quiz_order
             })
     except:
         return JsonResponse({
@@ -1269,3 +1283,16 @@ def get_course_langue(lang_code):
     language_options_dict=get_list_lang()
     course_language=language_options_dict[lang_code]
     return course_language
+
+def get_quiz_structure(request, course_id):
+  course_key = CourseKey.from_string(course_id)
+  course_usage_key = modulestore().make_course_usage_key(course_key)
+  course_blocks = get_blocks(request,course_usage_key,depth='all',requested_fields=['display_name','children'])
+  blocks_overviews = []
+  quiz_elements=[]
+  blocks_list=[]
+
+  for block in course_blocks['blocks'] :
+    if "quiz" in course_blocks['blocks'][block]['display_name'].lower():
+      blocks_list=course_blocks['blocks'][block]['children']
+  return blocks_list
