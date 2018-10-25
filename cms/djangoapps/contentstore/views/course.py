@@ -1456,11 +1456,11 @@ def session_manager_handler(emails,org,course):
     return array_pull
 
 
-def send_enroll_mail(obj,course,overview,course_details,list_email,module_store):
+def send_enroll_mail(obj,course,overview,course_details, list_email,module_store, body=None):
     reload(sys)
     sys.setdefaultencoding('utf8')
-
-    body=''
+    if not body :
+        body=''
 
     log.info("send_enroll_mail start_sending")
     #try:
@@ -1571,7 +1571,7 @@ def send_enroll_mail(obj,course,overview,course_details,list_email,module_store)
            'atp_secondary_color': atp_secondary_color,
            'course_link_img': course_link_img,
            'end_date': end_date,
-	   'grade_cutoff':str(module_store.grade_cutoffs['Pass'] * 100)+' %'
+           'grade_cutoff':str(module_store.grade_cutoffs['Pass'] * 100)+' %'
         }
     )
 
@@ -1602,7 +1602,7 @@ def send_enroll_mail(obj,course,overview,course_details,list_email,module_store)
 @csrf_exempt
 @expect_json
 def email_dashboard_handler(request, course_key_string):
-
+    list_sem=[]
     if request.method == "GET":
         #GET COURSE KEY
         course_key = CourseKey.from_string(course_key_string)
@@ -1709,23 +1709,24 @@ def email_dashboard_handler(request, course_key_string):
                 if all_users == 'true':
                     user_id = []
                     try:
-                        course_key = SlashSeparatedCourseKey.from_deprecated_string(course_key_string)
-                        row = CourseEnrollment.objects.all().filter(course_id=course_key)
-                        for n in row:
-                            email = User.objects.all().filter(pk=n.user_id)
-                            for v in email:
-                                if not str(v.email) in str(list_email):
-                                    q = {}
-                                    q['email'] = v.email
-                                    q['first_name'] = v.first_name
-                                    q['last_name'] = v.last_name
-                                    list_email.append(q)
+                        full_list=get_full_course_users_list(course_key)
+                        for user in full_list :
+                            if User.objects.filter(email=user['email']).exists() :
+                                list_email.append(user)
+                            else :
+                                list_sem.append(user['email'])
                     except:
                         ALL = False
             except:
                 list_email = False
 
-            mail_send = send_enroll_mail(obj,course,overview,course_details,body,list_email,module_store)
+            mail_send = send_enroll_mail(obj,course,overview,course_details,list_email,module_store,body)
+
+            #Send sem mails if any
+            if list_sem :
+                course_concerned = get_course_by_id(course_key)
+                org_concerned = course_concerned.org
+                session_manager_handler(list_sem,org_concerned,course_concerned)
 
             return JsonResponse({'mail_send':mail_send})
         # if not request_type in POST request body
@@ -2749,3 +2750,62 @@ def get_course_langue(lang_code):
     language_options_dict=get_list_lang()
     course_language=language_options_dict[lang_code]
     return course_language
+
+def get_full_course_users_list(course_key):
+
+    #Get all course-enrollment invited and participants
+    """
+    UserPreprofile
+    CourseEnrollment
+    CourseEnrollmentAllowed
+    """
+    users = []
+    #Check for invited users
+    invited_users = CourseEnrollmentAllowed.objects.all().filter(course_id=course_key)
+    for invited_user in invited_users:
+        email = invited_user.email
+        if not str(email) in str(users):
+            user_profile={
+            'email':email
+            }
+            users.append(user_profile)
+
+    #check for enrolled users
+    users_enrolled = CourseEnrollment.objects.all().filter(course_id=course_key)
+    for user_enrolled in users_enrolled:
+        try:
+            email = User.objects.get(pk=user_enrolled.user_id).email
+            if not str(email) in str(users):
+                user_profile={
+                'email':email
+                }
+                users.append(user_profile)
+        except:
+            pass
+    #Get all users infos
+    for user in users:
+        try:
+            email = user['email']
+            profile = UserPreprofile.objects.get(email=email)
+            if profile.first_name is not None and profile.first_name is not '' :
+                user['first_name'] = profile.last_name
+            else :
+                user['first_name'] = "unknown"
+            if  profile.last_name is not None and profile.last_name is not '' :
+                user['last_name'] = profile.first_name
+            else :
+                user['last_name'] = "unknown"
+
+            user['level_1']=profile.level_1
+            user['level_2']=profile.level_2
+            user['level_3']=profile.level_3
+            user['level_4']=profile.level_4
+
+        except:
+            user['first_name']="unknown"
+            user['last_name']="unknown"
+            user['level_1']="unknown"
+            user['level_2']="unknown"
+            user['level_3']="unknown"
+            user['level_4']="unknown"
+    return users
