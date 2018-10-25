@@ -1085,7 +1085,7 @@ def get_course_users(request,course_id):
             else:
                 for user in users:
                     if user['email'] == email:
-                        user['status'] = 'accepted'
+                        user['statut'] = 'accepted'
         except:
             pass
 
@@ -1102,7 +1102,7 @@ def get_course_users(request,course_id):
         except:
             pass
 
-    filename = '{}_registred_users.xls'.format(course_id).replace('+','_')
+    filename = '{}_registered_users.xls'.format(course_id).replace('+','_')
     filepath = '/edx/var/edxapp/'+filename
     HEADERS = (u"Nom",u"Prenom",u"Adresse email",u"Niveau 1",u"Niveau 2",u"Niveau 3",u"Niveau 4",u"Statut")
     wb = Workbook(encoding='utf-8')

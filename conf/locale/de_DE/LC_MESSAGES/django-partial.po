@@ -12203,3 +12203,15 @@ msgstr "Allgemeine Geschäftsbedingungen"
 
 msgid "Start"
 msgstr "Anfang"
+
+#: lms stat.html
+msgid "Average result for certified participants"
+msgstr "Durchschnittliches Ergebnis der zertifizierten Teilnehmer"
+
+#: lms stat.html
+msgid "Average result for participants"
+msgstr "Durchschnittliches Ergebnis der Teilnehmer"
+
+#: lms stat.html
+msgid "Participants"
+msgstr "Teilnehmer"

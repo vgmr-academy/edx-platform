@@ -431,16 +431,16 @@ course_key_id_cleared=str(course_id).replace('+','').replace(':','')
         <div class="mt-20">
           <div class="row mt-20 figures-wrap">
             <div class="col-sm-4 text-center pad-20 primary-color-text bold-text figure-element primary-color-border">
-              <p class="key-figure-title">${_('Certified')}</p>
+              <p class="key-figure-title">${_('Certified')}<br/>&nbsp;</p>
               <p id="" class="gold-text key-figure">${num_passed}</p>
             </div>
             <div class="col-sm-4 text-center pad-20 primary-color-text bold-text figure-element primary-color-border">
               <p class="key-figure-title">${_('Average result for certified participants')}</p>
-              <p id="" class="key-figure">${course_average_grade}</p>
+              <p id="" class="key-figure">${course_average_grade} %</p>
             </div>
             <div class="col-sm-4 text-center pad-20 primary-color-text bold-text figure-element primary-color-border">
               <p class="key-figure-title">${_('Average result for participants')}</p>
-              <p id="" class="key-figure">${course_average_grade_global}</p>
+              <p id="" class="key-figure">${course_average_grade_global} %</p>
             </div>
           </div>
         </div>
@@ -466,6 +466,8 @@ course_key_id_cleared=str(course_id).replace('+','').replace(':','')
                 Le rapport avec les résultats de tous les participants est en cours d’exécution. Il vous sera envoyé par mail. Cette tâche peut prendre jusqu’à 15 minutes.
                 % elif LANGUAGE_CODE == "en":
                 The report with all participants’ results is in progress. It will be sent to you by email. This task may last maximum 15 minutes.
+                % elif LANGUAGE_CODE == "de-de":
+                Der Bericht mit den Ergebnissen aller Teilnehmer ist in Bearbeitung. Es wird Ihnen per E-Mail gesendet werden. Diese Aufgabe kann maximal 15 Minuten dauern.
                 % endif
               </span>
             </div>
