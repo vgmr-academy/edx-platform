@@ -145,6 +145,11 @@ logger = logging.getLogger()
 from third_party_auth.models import MicrositesCredentials
 from microsite_configuration.models import Microsite
 
+#to convert to text
+import html2text
+import HTMLParser
+import chardet
+
 __all__ = ['course_info_handler', 'course_handler', 'course_listing',
            'course_info_update_handler', 'course_search_index_handler',
            'course_rerun_handler',
@@ -1333,7 +1338,9 @@ def manage_handler(request, course_key_string):
         return render_to_response('manage_course.html', context)
 
 
-def session_manager_handler(emails,org,course):
+def session_manager_handler(emails,org,course,specific_msg=None):
+    reload(sys)
+    sys.setdefaultencoding('utf8')
     log.info("session_manager_handler: start")
     #Gather all needed information
     lang = course.language
@@ -1343,7 +1350,13 @@ def session_manager_handler(emails,org,course):
     else :
         msg = language_setup['en']['msg'].format(course.display_name)
         redirect_language='en'
-    log.info("session_manager_handler: msg value {}".format(msg))
+    # Override msg if specific msg was provided
+    if specific_msg:
+        log.info("specific msg before html unescape: "+pformat(specific_msg))
+        msg = HTMLParser.HTMLParser().unescape(specific_msg)
+        log.info("specific msg after html unescape: "+pformat(msg))
+        msg = html2text.html2text(msg)
+        log.info("specific msg after html2text: "+pformat(msg))
     log.info("session_manager_handler: course display name {}".format(course.display_name))
     grant_type = 'client_credentials'
     sem_org = org.lower()
@@ -1478,7 +1491,6 @@ def send_enroll_mail(obj,course,overview,course_details, list_email,module_store
     subject = obj
     subject = subject.replace('\n', '')
     log.info("send_enroll_mail start_sending")
-    log.info("send_enroll_mail start_sending")
     # LIST OF VARS
     course_org = course.org.lower()
     site_name = settings.SITE_NAME
@@ -1487,21 +1499,16 @@ def send_enroll_mail(obj,course,overview,course_details, list_email,module_store
     category = course.categ
     duration = course_details.effort
     mode_required = course.is_required_atp
-    log.info("send_enroll_mail start_sending")
     #static images
     #org_image = microsite_link+'/static/images/mail_logo.png'
     platform_image = 'https://'+site_name+'/media/certificates/images/logo-amundi-academy.jpg'
-    log.info("send_enroll_mail start_sending")
     #static images
     microsite = Microsite.objects.get(key=course_org)
-    log.info("send_enroll_mail start_sending")
     microsite_value = microsite.values
     primary_color_key = 0
     secondary_color_key = 0
     logo_key = 0
     i = 0
-    log.info("send_enroll_mail start_sending")
-    log.info("send_enroll_mail list_email: "+pformat(list_email))
     for n in microsite_value:
         if n == 'language_code':
             lang_key = i
@@ -1512,16 +1519,11 @@ def send_enroll_mail(obj,course,overview,course_details, list_email,module_store
         if n == "secondary_color":
             secondary_color_key = i
         i = i + 1
-    log.info("send_enroll_mail start_sending")
     link = microsite_link+'/courses/'+str(course.id)+'/about'
     atp_primary_color = microsite_value.values()[primary_color_key]
     atp_secondary_color = microsite_value.values()[secondary_color_key]
     microsite = Microsite.objects.get(key=course_org)
-    log.info("send_enroll_mail start_sending")
-
     microsite_logo = 'https://'+site_name+microsite_value.values()[logo_key]
-    log.info("send_enroll_mail start_sending")
-
     log.info('send enroll email after microsites values')
 
     course_image = overview.image_urls['raw']
@@ -1584,12 +1586,14 @@ def send_enroll_mail(obj,course,overview,course_details, list_email,module_store
             )
         else:
             site_name = domain_override
+        log.info("replacing content of email for: "+pformat(list_email[i]['email']))
         email = html_content.replace('$first_name',list_email[i]['first_name']).replace('$last_name',list_email[i]['last_name'])
         info_email = {
             'email':list_email[i]
         }
-        log.info("send_enroll_mail: "+pformat(info_email))
+        log.info("before send_mail: "+pformat(list_email[i]['email']))
         send_mail(subject, email, from_email, [list_email[i]['email']],html_message=email)
+        log.info("email sent to: "+pformat(list_email[i]))
         #END %MAIL SEND
     return True
     """
@@ -1602,7 +1606,10 @@ def send_enroll_mail(obj,course,overview,course_details, list_email,module_store
 @csrf_exempt
 @expect_json
 def email_dashboard_handler(request, course_key_string):
+    reload(sys)
+    sys.setdefaultencoding('utf8')
     list_sem=[]
+    mail_send= False
     if request.method == "GET":
         #GET COURSE KEY
         course_key = CourseKey.from_string(course_key_string)
@@ -1652,8 +1659,8 @@ def email_dashboard_handler(request, course_key_string):
             request_type = False
         # IF NEED ONLY TO PRE REGISTER USERS FROM AN ADRESS MAIL
         if request_type == 'send_mail':
-            response = '';
-            list_email = [];
+            response = ''
+            list_email = []
             try:
                 #GET POST PARAMS
                 myself = request.POST['myself']
@@ -1695,38 +1702,47 @@ def email_dashboard_handler(request, course_key_string):
                             log.info("custom true ok n not in list_email")
                             try :
                                 q = {}
-                                log.info("custom true ok first try")
-                                _user_custom = User.objects.get(email=n)
-                                log.info("custom true n {}".format(n))
-                                q['email'] = n
-                                q['first_name'] = _user_custom.first_name
-                                q['last_name'] = _user_custom.last_name
-                                list_email.append(q)
-                                log.info("custom true append ok")
+                                if User.objects.filter(email=n).exists() :
+                                    log.info("custom true ok first try")
+                                    _user_custom = User.objects.get(email=n)
+                                    log.info("custom true n {}".format(n))
+                                    q['email'] = n
+                                    q['first_name'] = _user_custom.first_name
+                                    q['last_name'] = _user_custom.last_name
+                                    list_email.append(q)
+                                    log.info("custom true append ok to atp mail")
                             except:
                                 pass
-
+                            if (n not in list_sem) and (n not in list_email):
+                                list_sem.append(n)
+                                log.info("custom true append ok to sem mail")
                 if all_users == 'true':
                     user_id = []
                     try:
                         full_list=get_full_course_users_list(course_key)
                         for user in full_list :
                             if User.objects.filter(email=user['email']).exists() :
-                                list_email.append(user)
+                                if (user['email'] not in list_email):
+                                    list_email.append(user['email'])
                             else :
-                                list_sem.append(user['email'])
+                                if (user['email'] not in list_sem):
+                                    list_sem.append(user['email'])
                     except:
                         ALL = False
             except:
                 list_email = False
 
-            mail_send = send_enroll_mail(obj,course,overview,course_details,list_email,module_store,body)
+            if list_email:
+                log.info("end of email_dashboard_handler before mail_send"+pformat(list_email))
+                mail_send = send_enroll_mail(obj,course,overview,course_details,list_email,module_store,body)
 
             #Send sem mails if any
             if list_sem :
+                log.info("end of email_dashboard_handler before session_manager_handler"+pformat(list_sem))
                 course_concerned = get_course_by_id(course_key)
                 org_concerned = course_concerned.org
-                session_manager_handler(list_sem,org_concerned,course_concerned)
+                session_manager_handler(list_sem,org_concerned,course_concerned,body)
+                mail_send = True
 
             return JsonResponse({'mail_send':mail_send})
         # if not request_type in POST request body
@@ -1846,13 +1862,19 @@ def invite_handler(request, course_key_string):
 
             #Read CSV file
             try:
-                decoded_csv_file = io.StringIO(csv_file.read().decode('utf-8'))
+                log.info("invite_handler: finding out encoding...")
+                csv_file_for_detection = copy.deepcopy(csv_file)
+                source_encoding = chardet.detect(csv_file_for_detection.read())['encoding'].lower()
+                log.info("invite_handler: encoding is "+pformat(source_encoding))
+                decoded_csv_file = io.StringIO(unicode(csv_file.read(),source_encoding).decode('utf-8'))
+                log.info("invite_handler: csv decoded")
                 csv_dict= csv.DictReader(decoded_csv_file)
-                log.info("invite_handler: decode csv")
-            except :
+                #log.info("invite_handler: csv is in dict now : "+pformat(csv_dict))
+            except:
                 csv_dict={}
 
             for atp_student in csv_dict :
+                #log.info("invite_handler: "+pformat(atp_student))
                 log.info("invite_handler: treating student {}".format(atp_student['email']))
                 atp_student = {key.lower(): strip_accents(value) for key, value in atp_student.items()}
                 atp_students_list[atp_student['email']] = atp_student

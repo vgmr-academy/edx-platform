@@ -33,6 +33,8 @@ from xlwt import *
 
 from django.conf import settings
 
+from pprint import pformat
+
 import sys
 
 log = logging.getLogger(__name__)
@@ -46,7 +48,7 @@ class course_grade():
 		self.request = request
 
 	def get_titles(self):
-
+                log.info("get_titles: Starting to get titles")
 		if self.course_key is None:
 			self.course_key = SlashSeparatedCourseKey.from_deprecated_string(self.course_id)
 
@@ -56,6 +58,7 @@ class course_grade():
 		blocks = get_blocks(self.request,course_usage_key,depth='all',requested_fields=['display_name','children'])
 		_root = blocks['root']
 		blocks_overviews = []
+                log.info("get_titles: Got course structure")
 		#return unit title and component root
 		try:
 			children = blocks['blocks'][_root]['children']
@@ -83,7 +86,7 @@ class course_grade():
 					pass
 		except:
 			pass
-
+                log.info("get_titles: Got unit titles and component root")
 		## GET ALL SCORED XBLOCKS FOR WHICH THERE EXISTS AT LEAST ONE ENTRY IN STUDENTMODULE
 		studentmodule = StudentModule.objects.raw("SELECT id,course_id,module_id FROM courseware_studentmodule WHERE course_id = %s AND max_grade IS NOT NULL AND grade <= max_grade GROUP BY module_id ORDER BY created", [self.course_id])
 
@@ -111,11 +114,12 @@ class course_grade():
 			except:
 				pass
 
-
+                log.info("get_titles: All titles fetched")
 		return title
 
 
 	def _user(self,user_id):
+                log.info("_user: starting for userid "+pformat(user_id))
 		course_key = SlashSeparatedCourseKey.from_deprecated_string(self.course_id)
 		course_block = StudentModule.objects.all().filter(student_id=user_id,course_id=course_key,max_grade__isnull=False)
 		course_grade = []
@@ -142,7 +146,7 @@ class course_grade():
                 reload(sys)
                 sys.setdefaultencoding('utf8')
 
-		log.warning("Start Task grade reports course_id : "+str(self.course_id) )
+		log.warning("export: Start Task grade reports course_id : "+str(self.course_id) )
 		course_key = CourseKey.from_string(self.course_id)
 		course = get_course_by_id(course_key)
 		course_enrollement = CourseEnrollment.objects.filter(course_id=course_key)
@@ -192,7 +196,7 @@ class course_grade():
 			email = user.email
 			first_name = user.first_name
 			last_name = user.last_name
-
+                        log.info("export: getting grade for user: "+pformat(user.email))
 
 			try:
 				pre = UserPreprofile.objects.get(email=email)
@@ -255,7 +259,7 @@ class course_grade():
 		fail_silently=False
 		_data = _files_values
 		#_encoded = base64.b64encode(wb)
-
+                log.warning("end send grade : right before email is sent out")
 		_email = EmailMessage(subject, text_content, from_email, [to])
 		_email.attach(filename, _data, mimetype=mimetype)
 		_email.send(fail_silently=fail_silently)
@@ -271,7 +275,7 @@ class course_grade():
 
 
 	def get_xls(self):
-
+                log.info("get_xls: starting")
 		context = {
 			"status": False,
 			'filepath': None
@@ -280,20 +284,20 @@ class course_grade():
 		folder_path = '/edx/var/edxapp/grades/'
 		filename = '{}_grades_reports.xls'.format(self.course_id).replace('+','_')
 		filepath = folder_path+filename
-
 		if os.path.isfile(filepath):
 			context['status'] = True,
 			context['filepath'] = filepath
 			context['time'] = time.ctime(os.path.getmtime(filepath))
-
+                log.info("get_xls: done")
 		return context
 
 	def download_xls(self,filename):
-
+                log.info("download_xls: starting")
 		full_path = '/edx/var/edxapp/grades/'+filename
 		_file = open(full_path,'r')
 		_content = _file.read()
 		response = HttpResponse(_content, content_type="application/vnd.ms-excel")
 		response['Content-Disposition'] = "attachment; filename="+filename
 		os.remove(full_path)
+                log.info("download_xls: done")
 		return response
