@@ -236,7 +236,10 @@ class microsite_manager():
         if contact_address!='':
             self.contact_address=contact_address
         if amundi_brand!='':
-            self.amundi_brand=amundi_brand
+            if amundi_brand=="false" :
+                self.amundi_brand=False
+            if amundi_brand =="true":
+                self.amundi_brand=True
         if trademark!='':
             self.trademark=trademark
         else :

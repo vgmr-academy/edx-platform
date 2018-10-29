@@ -169,6 +169,9 @@ img.svg {
 .separation-logos{
   height: 70px!important;
 }
+#barre-nav-atp{
+  min-height: 70px;
+}
 </style>
 
 <!-- import custom css script -->
@@ -186,7 +189,7 @@ else :
 
 
 <%
-  if configuration_helpers.get_value('amundi_brand'):
+  if configuration_helpers.get_value('amundi_brand')=="true" or configuration_helpers.get_value('amundi_brand')==True:
     amundi_brand=True
     amundi_brand_url='/media/logo-amundiacademy_blanc.png'
     separation_logos='separation-logos'
