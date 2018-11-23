@@ -1501,13 +1501,13 @@ def send_enroll_mail(obj,course,overview,course_details, list_email,module_store
     mode_required = course.is_required_atp
     #static images
     #org_image = microsite_link+'/static/images/mail_logo.png'
-    platform_image = 'https://'+site_name+'/media/certificates/images/logo-amundi-academy.jpg'
     #static images
     microsite = Microsite.objects.get(key=course_org)
     microsite_value = microsite.values
     primary_color_key = 0
     secondary_color_key = 0
     logo_key = 0
+    amundi_brand=0
     i = 0
     for n in microsite_value:
         if n == 'language_code':
@@ -1518,12 +1518,19 @@ def send_enroll_mail(obj,course,overview,course_details, list_email,module_store
             primary_color_key = i
         if n == "secondary_color":
             secondary_color_key = i
+        if n == "amundi_brand":
+            amundi_brand = i
         i = i + 1
     link = microsite_link+'/courses/'+str(course.id)+'/about'
     atp_primary_color = microsite_value.values()[primary_color_key]
     atp_secondary_color = microsite_value.values()[secondary_color_key]
     microsite = Microsite.objects.get(key=course_org)
     microsite_logo = 'https://'+site_name+microsite_value.values()[logo_key]
+    log.info('AMUNDI BRAND {}'.format(str(microsite_value.values()[amundi_brand])))
+    if str(microsite_value.values()[amundi_brand]) =="true" or str(microsite_value.values()[amundi_brand])=="True":
+        platform_image = '<img src="https://'+site_name+'/media/certificates/images/logo-amundi-academy.jpg" alt="Amundi Academy" width="300" height="68" style="display:block;">'
+    else :
+        platform_image=''
     log.info('send enroll email after microsites values')
 
     course_image = overview.image_urls['raw']

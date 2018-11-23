@@ -23427,3 +23427,12 @@ msgstr "L'en-tête de votre fichier ne respecte pas le format demandé, merci d'
 
 msgid "Add your csv file to invite participants to your course. CSV must have the following header"
 msgstr "Chargez votre fichier csv pour inviter des participants à votre cours. Le CSV doit comporter l'en-tête suivant:"
+
+msgid "Number of certified partipants"
+msgstr "Nombre de participants ayant obtenu le certificat"
+
+msgid "Average result for all certified participants"
+msgstr "Résultat moyen par participant certifié au quiz"
+
+msgid "Average result for all quiz participants"
+msgstr "Résultat moyen par participant au quiz"

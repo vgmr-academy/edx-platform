@@ -1293,6 +1293,6 @@ def get_quiz_structure(request, course_id):
   blocks_list=[]
 
   for block in course_blocks['blocks'] :
-    if "quiz" in course_blocks['blocks'][block]['display_name'].lower():
+    if course_blocks['blocks'][block].get('children') and "problem" in course_blocks['blocks'][block].get('children')[0]:
       blocks_list=course_blocks['blocks'][block]['children']
   return blocks_list

@@ -12215,3 +12215,12 @@ msgstr "Durchschnittliches Ergebnis der Teilnehmer"
 #: lms stat.html
 msgid "Participants"
 msgstr "Teilnehmer"
+
+msgid "Number of certified partipants"
+msgstr "Anzahl der zertifizierten Teilnehmer"
+
+msgid "Average result for all certified participants"
+msgstr "Durchschnittsergebnis für alle zertifizierten Teilnehmer"
+
+msgid "Average result for all quiz participants"
+msgstr "Durchschnittliches Ergebnis für alle Quizteilnehmer"

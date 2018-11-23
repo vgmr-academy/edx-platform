@@ -49,214 +49,57 @@ else :
   primary_color = "#132149"
 
 target = course_id.split('+')
+
+
 %>
 
 <style>
-.img_fundamentals {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 70%;
-  height: 120px;
-  z-index: 2;
-  background-position: center;
-  background-repeat: no-repeat;
+.course-bg-img{
+  background-image:url('${overview.image_urls['small']}');
   background-size: cover;
-}
-#nav_block_stat_question {
-  position: relative;
-}
-#pop_up_grades {
-  position: absolute;
-  display: none;
-  right: 0;
-  top: -6px;
-  height: auto;
-  line-height: 20px;
-  z-index: 10;
-  width: calc(100% - 500px);
-  padding-left: 10px;
-  padding-right: 10px;
-  display: none;
-  margin-left: 8px;
-  margin-right: 8px;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  margin-top: 8px;
-  margin-bottom: 8px;
-  border: 2px solid #39B2B6;
-}
-@media(max-width:1206px) {
-  #pop_up_grades {
-    width: calc(100% - 40px);
-    top: -57px;
-  }
-}
-@media(max-width: 730px) {
-   #pop_up_grades {
-    top: -130px;
-  }
-  #nav_block_stat_question {
-      width: calc(100% - 40px);
-      margin-top: 130px;
-  }
-}
-.pop_up_show {
-  display: block !important;
-}
-
-#generate_grades_task,#generate_grades_task:visited,#generate_grades_task:hover {
-  border: none;
-  box-shadow: none;
-  border-radius: 0;
-  text-shadow: none;
-  color: #00A0E3;
-  position: absolute;
-  top: 55px;
-  text-decoration: underline;
-  right: 20px;
-  text-transform: lowercase;
-  background-color: transparent !important;
-}
-
-#list_participant {width: auto !important;}
-#categorie_info {
-  position: absolute;
-  bottom:0;
-  left: 0;
-  width: 100%;
-  text-align: right;
-  z-index: 20;
-}
-#course_img {
-  position: relative;
-}
-#cartouche_info h3 {
-  font-size: 22px;
-}
-.img_regulatory, .img_fundamental, .img_oursolutions, .img_salesapproach {
- position: absolute;
- bottom: 0;
- right: 0;
- width: 70%;
- height: 120px;
- z-index: 2;
- background-position: center;
- background-repeat: no-repeat;
- background-size: cover;
-}
-.img_fundamental {
- background-image: url('/static/images/fondamentaux.png');
-}
-.img_fundamentals {
- background-image: url('/static/images/fondamentaux.png');
-}
-.img_oursolutions {
- background-image: url('/static/images/nos_solutions.png');
-}
-.img_salesapproach {
- background-image: url('/static/images/zdemarche_comm.png');
-}
-.img_regulatory {
- background-image: url('/static/images/reglementaire.png');
-}
-.cell_result {
- width: calc((100%/2) - 32px);
-}
-@media(max-width:1266px){
- .cell_result{
-  width: 90%;
-  margin-left: 5% !important;
-  margin-right: 5% !important;
-  float: none;
- }
-}
-#logo-container-stat{
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  height: 100px;
+  align-items: flex-end;
+  justify-content: flex-end;
+  flex-direction: column;
 }
-#logo-container-stat img{
-  max-width: 100%!important;
-  max-height: 100%!important;
-  margin: 0px!important;
-  height: auto!important;
-  width: auto!important;
+
+/*Colors */
+.white-bg{
+  background-color: white!important;
 }
-#title h1{
-  text-transform: initial!important;
+.content-wrapper{
+  background-color: #F8F8F8!important;
 }
-#generate_xls{
-text-transform: lowercase;
+.container{
+  min-width: auto!important;
 }
-.language_display{
-  font-size: 13px;
-  font-style: italic;
-  font-family: "mywebfont";
-  font-weight: 600;
+.lg-border{
+  border:1px solid lightgray;
 }
-.language_paragraph{
-  margin: 0;
-}
-.block-results{
-  width: 33%;
-  float: left;
-  text-align: center;
-  padding: 10px;
-  box-sizing: border-box;
-}
-.block-wrapper{
-  background-color: white;
-  min-height: 70px;
-  padding: 20px;
-  min-height: 140px;
-}
-.sub-titlefont, .result-font{
-  font-weight: bold;
-  font-family: "mywebfont";
-  color:${primary_color};
-}
-.result-font{
-  font-size: 50px;
-}
-.sub-titlefont{
-  padding-bottom: 20px;
-  font-size: 20px;
-  line-height: 24px;
-}
-#fil_ariane{
-  font-weight: bold;
-  font-size: 13px;
-}
-.campaign-back-link{
-  text-align: center!important;
-  padding: 5px 20px 40px 20px!important;
-}
-.campaign-back-link a{
-  font-size: 1.4em;
-  font-weight: 700;
-}
-.campaign-back-link a:hover{
-  text-decoration: none;
-}
-#header{
-  background-color:#F8F8F8;
-}
-.w-100{
-  width: 100%!important;
-}
-.duration_course{
-  position: static!important;
-}
+
+/*Margins Paddings */
 .mt-0{
   margin-top: 0px!important;
 }
 .mb-0{
   margin-bottom: 0px!important;
 }
+.pl-0{
+  padding-left: 0;
+}
+.pr-0{
+  padding-right: 0;
+}
+.pr-15{
+  padding-right: 15px;
+}
 
+/*Width */
+.w-100{
+  width: 100%!important;
+}
+
+/* Fonts */
 h1,h2,h3,h4{
   font-family: "mywebfont"!important;
 }
@@ -267,34 +110,80 @@ h2{
 p{
   font-size: 18px;
 }
-.container{
-  min-width: auto!important;
+
+/*Display */
+.absolute{
+  position: absolute;
 }
-.content-wrapper{
-  background-color: #F8F8F8!important;
-}
+
+/* Other */
 .key-figure{
   font-size: 45px;
 }
 .key-figure-title{
   font-size:22px;
 }
-.figures-wrap{
-  display: flex;
-  margin-left: 0px;
-  margin-right: 0px;
+.logo-reseau img{
+  max-width: 100%;
 }
-.figure-element{
-  margin: 10px;
-  border-radius: 4px;
-  background-color: white;
-  padding: 50px 10px;
+.user_grade_cell{
+  margin: 15px!important;
+  padding: 15px!important;
+  width:100%!important;
+}
+@media only screen and (min-width: 1100px)  {
+  .display-flex{
+    display: flex;
+    width: 100%;
+  }
+  .same-height-colums{
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .user_grade_cell{
+    width: 30%!important;
+  }
+
+}
+#body_block_stat_question{
+  padding: 0!important;
+  margin: 0!important;
+  width: 100%!important;
+}
+#block_stat_question{
+  margin: 0!important;
+  width: 100%!important;
+  margin-top: 20px!important;
+}
+.chapter_box h3{
+  background-color: transparent!important;
+}
+#nav_block_stat_question{
+  margin: 0!important;
+}
+#table_participant table{
+  margin: 0 auto!important;
 }
 
-@media only screen and (max-width: 600px) {
-  .figures-wrap{
-    display: block;
-  }
+#nav_block_stat_question button:nth-child(2){
+  margin-left: 0;
+  background-color: #fff;
+  opacity: 0.5;
+  padding-left: 0;
+  padding-right: 0;
+}
+#name_participant{
+  font:inherit!important;
+}
+.user_grade_cell .vertical_name{
+  display: none!important;
+}
+#generate_grades_task, #generate_grades_task:visited, #generate_grades_task:hover{
+  text-transform: inherit!important;
 }
 
 </style>
@@ -303,43 +192,35 @@ course_key_id_cleared=str(course_id).replace('+','').replace(':','')
 %>
 
 <div class="container">
+
 <!-- FIL ARIANE ET CARTOUCHE -------------------------------------------------->
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-md-12">
       <div id="fil_ariane"></div>
       <div id="title">
         <h1 class="primary-color-text"><a href="https://${settings.CMS_BASE}/home/?campaign=${course_key_id_cleared}" class="primary-color-text">< ${_('My campaigns')}</a> | ${_('Statistics')}</h1>
       </div>
 
       <div class="mt-20">
-        <div id="cartouche">
-          <div id="course_img">
-            <img src="${overview.image_urls['small']}" />
-            <div id="categorie_info">
-              ${_(course.categ.replace(" ",""))}
-            </div>
-            <div class="img_${course.categ.lower().replace(' ','')}"></div>
+        <div class="row display-flex m-0 lg-border">
+          <div class="col-md-3 pr-0 course-bg-img">
+            <img id="course_categ_bandeau" src="" alt="" style="max-width:100%;">
+            <p class="white-text bold-text text-right absolute pr-15">${_(course.categ)}</p>
           </div>
-          <div id="cartouche_info">
-            <h3 class="primary-color-text mt-0 mb-0">${course.display_name_with_default_escaped}</h3>
-            <p class="primary-color-text mt-0 mb-0"><span class="primary-color-text">${_("Results on ")}</span>
-                ${time.strftime('%Y-%m-%d')}
-            </p>
-            <p class="language_paragraph">
-            <span class="language_display primary-color-text">${_('Language')} : ${_(language_course)} </span>
-            </p>
-            <div class="duration_course">
-              <object oa-reusable-svg
-              data="${static.url('images/duree.svg')}"
-              type="image/svg+xml"
-              class="svg-class"
-              data-class="timer_svg_color"
-              >
-              </object>
-              <span>${overview.effort}</span>
+          <div class="col-md-9 white-bg pl-0">
+            <div class="pad-30">
+              <h3 class="primary-color-text bold-text">${course.display_name_with_default_escaped}</h3>
+              <p class="primary-color-text"><span class="primary-color-text">${_("Results on ")}</span>
+                  ${time.strftime('%Y-%m-%d')}
+              </p>
+              <p class="language_paragraph">
+              <span class="language_display primary-color-text">${_('Language')} : ${_(language_course)} </span>
+              </p>
+              <p class="mt-0 mb-0">
+                <span class="gold-text"><i class="fa fa-clock-o" aria-hidden="true"></i> ${overview.effort}</span>
+              </p>
             </div>
           </div>
-        <span style="display:block;clear:left;"></span>
         </div>
       </div>
     </div>
@@ -348,8 +229,8 @@ course_key_id_cleared=str(course_id).replace('+','').replace(':','')
 
   <div class="row mt-20">
 <!-- INFOS GENERALES -------------------------------------------------->
-    <div class="col-sm-4">
-      <div class="white-bg  pad-30">
+    <div class="col-md-4">
+      <div class="white-bg pad-30">
         <div class="primary-color-bg">
           <h2 class="primary-color-bg white-text bold-text pad-20 m-0 text-center">${_('training campaign info')}</h2>
         </div>
@@ -384,7 +265,7 @@ course_key_id_cleared=str(course_id).replace('+','').replace(':','')
           </p>
           <p class="primary-color-text">
             ${_('Network')} :
-            <div id="logo-container-stat">
+            <div class="logo-reseau">
               <img src="${logo_url}" />
             </div>
           </p>
@@ -393,24 +274,30 @@ course_key_id_cleared=str(course_id).replace('+','').replace(':','')
     </div>
 
 <!-- A PROPOS DES PARTICIPANTS -------------------------------------------------->
-    <div class="col-sm-8">
-      <div class="pad-30">
+    <div class="col-md-8">
+      <div class="">
         <div class="primary-color-bg">
-          <h2 class="primary-color-bg white-text bold-text pad-20 m-0 text-center">${_('users stats')}</h2>
+          <h2 class="primary-color-bg white-text bold-text pad-20 text-center">${_('users stats')}</h2>
         </div>
         <div class="mt-20">
-          <div class="row mt-20 figures-wrap">
-            <div class="col-sm-4 text-center pad-20 primary-color-text bold-text figure-element primary-color-border">
-              <p class="key-figure-title">${_('Target')}</p>
-              <p id="" class="">${target[1]}<br>${target[2]}</p>
+          <div class="row  m-0 figures-wrap display-flex">
+            <div class="col-md-4 text-center pad-20 primary-color-text bold-text figure-element primary-color-border pl-0">
+              <div class="white-bg same-height-colums">
+                <p class="key-figure-title">${_('Target')}</p>
+                <p id="" class="">${target[1]}<br>${target[2]}</p>
+              </div>
             </div>
-            <div class="col-sm-4 text-center pad-20 primary-color-text bold-text figure-element primary-color-border">
-              <p class="key-figure-title">${_('Guests')}</p>
-              <p id="" class="key-figure">${all_user}</p>
+            <div class="col-md-4 text-center pad-20 primary-color-text bold-text figure-element primary-color-border">
+              <div class="white-bg same-height-colums">
+                <p class="key-figure-title">${_('Guests')}</p>
+                <p id="" class="key-figure">${all_user}</p>
+              </div>
             </div>
-            <div class="col-sm-4 text-center pad-20 primary-color-text bold-text figure-element primary-color-border">
-              <p class="key-figure-title">${_('Participants')}</p>
-              <p id="" class="key-figure">${user_course_started}</p>
+            <div class="col-md-4 text-center pad-20 primary-color-text bold-text figure-element primary-color-border pr-0">
+              <div class="white-bg same-height-colums">
+                <p class="key-figure-title">${_('Participants')}</p>
+                <p id="" class="key-figure">${user_course_started}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -418,24 +305,32 @@ course_key_id_cleared=str(course_id).replace('+','').replace(':','')
     </div>
 
 <!-- RESULTATS -------------------------------------------------->
-    <div class="col-sm-8">
-      <div class="pad-30">
+
+
+    <div class="col-md-8">
+      <div class="">
         <div class="primary-color-bg">
           <h2 class="primary-color-bg white-text bold-text pad-20 m-0 text-center">${_('Results')}</h2>
         </div>
         <div class="mt-20">
-          <div class="row mt-20 figures-wrap">
-            <div class="col-sm-4 text-center pad-20 primary-color-text bold-text figure-element primary-color-border">
-              <p class="key-figure-title">${_('Certified')}<br/>&nbsp;</p>
-              <p id="" class="gold-text key-figure">${num_passed}</p>
+          <div class="row m-0 figures-wrap  display-flex">
+            <div class="col-md-4 text-center pad-20 primary-color-text bold-text figure-element primary-color-border pl-0">
+              <div class="white-bg same-height-colums">
+                <p class="key-figure-title">${_('Number of certified partipants')}</p>
+                <p id="" class="gold-text key-figure">${num_passed}</p>
+              </div>
             </div>
-            <div class="col-sm-4 text-center pad-20 primary-color-text bold-text figure-element primary-color-border">
-              <p class="key-figure-title">${_('Average result for certified participants')}</p>
-              <p id="" class="key-figure">${course_average_grade} %</p>
+            <div class="col-md-4 text-center pad-20 primary-color-text bold-text figure-element primary-color-border">
+              <div class="white-bg same-height-colums">
+                <p class="key-figure-title">${_('Average result for all certified participants')}</p>
+                <p id="" class="key-figure">${course_average_grade} %</p>
+              </div>
             </div>
-            <div class="col-sm-4 text-center pad-20 primary-color-text bold-text figure-element primary-color-border">
-              <p class="key-figure-title">${_('Average result for participants')}</p>
-              <p id="" class="key-figure">${course_average_grade_global} %</p>
+            <div class="col-md-4 text-center pad-20 primary-color-text bold-text figure-element primary-color-border pr-0">
+              <div class="white-bg same-height-colums">
+                <p class="key-figure-title">${_('Average result for all quiz participants')}</p>
+                <p id="" class="key-figure">${course_average_grade_global} %</p>
+              </div>
             </div>
           </div>
         </div>
@@ -444,15 +339,15 @@ course_key_id_cleared=str(course_id).replace('+','').replace(':','')
   </div>
 
   <div class="row mt-20">
-    <div class="col-sm-12">
+    <div class="col-md-12">
       <section class="section_block">
-        <div id="score_title" class="w-100">
-          <h2 class="primary-color-bg w-100">${_('Average score')}</h2>
+        <div id="" class="w-100">
+          <h2 class="primary-color-bg white-text bold-text pad-20 m-0">${_('Average score')}</h2>
         </div>
         <div id="block_stat_question">
         <div id="voile"><div id="loader"></div></div>
           <div id="nav_block_stat_question">
-            <button data-position="average" class="secondary-color-text">${_('per question')}</button>
+            <button data-position="average" class="secondary-color-text" style="opacity:1">${_('per question')}</button>
             <button data-position="participant" class="secondary-color-text">${_('per participant')}</button>
             <span style="display:block;clear:left;"></span>
             <div id="pop_up_grades">
@@ -593,12 +488,12 @@ course_key_id_cleared=str(course_id).replace('+','').replace(':','')
       </section>
     </div>
   </div>
-  <div class="campaign-back-link mt-20">
-    <a class="primary-color-text" href="https://${settings.CMS_BASE}/home/?campaign=${course_key_id_cleared}"><  ${_('Back to')}  ${_('My campaigns')}</a>
+  <div class="campaign-back-link mt-20 text-center">
+    <a class="primary-color-text bold-text" href="https://${settings.CMS_BASE}/home/?campaign=${course_key_id_cleared}" style="font-size:20px;"><  ${_('Back to')}  ${_('My campaigns')}</a>
   </div>
 </div>
 
-
+</div><!-- container -->
 
 
 
@@ -767,4 +662,26 @@ $(window).resize(function(){
 })
 var info = $("#categorie_info").text();
 console.log(info);
+</script>
+
+<!--- CATEGORIES IMG --->
+<script>
+course_category="${course.categ.lower().replace(' ','')}";
+img_url='';
+if(course_category=="fundamental" || course_category=="fundamentals"){
+  img_url='/static/images/fondamentaux.png';
+}
+else if (course_category=="oursolutions") {
+  img_url='/static/images/nos_solutions.png';
+}
+else if (course_category=="salesapproach") {
+  img_url='/static/images/zdemarche_comm.png';
+}
+else if(course_category=="regulatory"){
+  img_url='/static/images/reglementaire.png';
+}
+
+if(img_url!=''){
+  $('#course_categ_bandeau').attr('src', img_url);
+}
 </script>

@@ -69,10 +69,22 @@ footer = static.get_value('css_overrides_footer')
   padding-top: 8px;
   padding-bottom: 8px;
 }
+#pop_up_legal_notice{
+  font-size: 14px;
+  overflow: scroll;
+  max-height: 650px;
+}
+#close_cross{
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+#close_cross span{
+  cursor: pointer;
+}
 </style>
 <!-- import custom js script -->
 <div id="pop_up_legal_notice" class="pop_up_atp">
-
+  <div class="text-right" id="close_cross"><span>X</span></div>
   <%
   if configuration_helpers.get_value('disclaimer') :
     disclaimer = configuration_helpers.get_value('disclaimer')
@@ -82,11 +94,7 @@ footer = static.get_value('css_overrides_footer')
   ${disclaimer|n}
   <div class="modal-close">
     <a  class="btn btn-success btn-no-green" id="close_legal">
-      % if LANGUAGE_CODE == "en" or LANGUAGE_CODE == "de-de":
-        Close
-      % elif LANGUAGE_CODE == "fr":
-        Fermer
-      % endif
+      ${_('Close')}
     </a>
   </div>
 </div>
@@ -130,7 +138,7 @@ footer = static.get_value('css_overrides_footer')
  <span style="display:block;clear:both;"></span>
 </section>
 <script>
-$('#legal_notice,#close_legal').click(function(e){
+$('#legal_notice,#close_legal,#close_cross span').click(function(e){
   $('#pop_up_legal_notice').toggle();
 });
 
