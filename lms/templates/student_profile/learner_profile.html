@@ -16,6 +16,9 @@ from openedx.core.djangolib.js_utils import dump_js_escaped_json
 .wrapper-profile-field-account-privacy, .ariane, .view-profile .profile-section-two-fields .u-field.mode-placeholder, .view-profile .profile-section-one-fields .u-field-username .u-field-value,.view-profile .profile-section-one-fields{
   display: none;
 }
+.wrapper-profile-section-two{
+  display: none !important;
+}
 #content{
   height: calc(100vh - 25px);
 }
@@ -65,16 +68,26 @@ h3{
 .content-wrapper{
   padding-top: 150px;
 }
-@media only screen and (min-width: 600px) {
+.container>div{
+  display: block;
+  width: auto;
+}
+.container{
+  min-width: auto;
+}
+
+@media only screen and (min-width: 992px) {
+  .left-border-gray{
+    border-left: 1px solid #3c3c3c;
+  }
+}
+
+@media only screen and (min-width: 769px) {
   .flex{
     display: flex!important;
   }
-  .flex-center{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
 }
+
 </style>
 <div class="message-banner" aria-live="polite"></div>
 
@@ -96,14 +109,22 @@ h3{
       </div>
     </div>
     <div class="col-sm-9">
-      <div class="gray-border h-100 flex-center">
+      <div class="gray-border h-100">
         <h3>${request.user.first_name} ${request.user.last_name}</h3>
         <h4>${request.user.email}</h4>
         <div class="row">
+          <% i = 0 %>
           % for n in data['level']:
+          %if i==0:
           <div class="col-md-2">
             ${n}
           </div>
+          %else :
+          <div class="col-md-2 left-border-gray">
+            ${n}
+          </div>
+          %endif
+          <% i +=1%>
           % endfor
         </div>
       </div>
