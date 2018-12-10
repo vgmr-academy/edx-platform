@@ -82,12 +82,13 @@ getCompletionStatus = function(){
           if(chapter_list[$(this).attr('id')]['available']==true){
             $(this).find('h3').addClass('primary-color-text').removeClass('inactive-color-text');
             //CHANGE AMUNDI : All units under it must be available if chapter is available
+            //NEW CHANGE 07/12 : Candidate must click next to get to next unit / Do not unlock all units if chapter is available
             var tma_chapter_identifier=$(this).attr('id')
             $('button.seq_other').each(function(){
               if($(this).attr('data-seq')==tma_chapter_identifier){
                 //ACTIVATE UNIT
-                $(this).removeClass('disabled_unit_tma');
-                $(this).removeAttr("disabled");
+                //$(this).removeClass('disabled_unit_tma');
+                //$(this).removeAttr("disabled");
                 //ACTIVATE BUTTON NEXT
                 next_btn_identifier='seq_content_next_'+$(this).attr('data-element');
                 $('#'+next_btn_identifier).removeClass('disabled_tma').attr('onclick','$("#'+$('#'+next_btn_identifier).attr('id').replace('seq_content_next_','tab_')+'").click()');

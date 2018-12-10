@@ -20,13 +20,7 @@ from oauth2_provider.ext.rest_framework import TokenHasReadWriteScope, TokenHasS
 class StudentInfo(APIView):
     authentication_classes = [OAuth2Authentication]
     permission_classes = [TokenHasReadWriteScope]
-    def get_object(self, email):
-        try :
-            return User.objects.get(email=email)
-        except ObjectDoesNotExist:
-            raise Http404
 
     def get(self, request, email, format=None):
-        student = self.get_object(email)
-        serializer = StudentSerializer(student)
+        serializer = StudentSerializer(email)
         return Response(serializer.data)
