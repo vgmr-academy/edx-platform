@@ -42,7 +42,7 @@ locales:
     # - hu  # Hungarian
     # - hy_AM  # Armenian (Armenia)
     # - id  # Indonesian
-    # - it_IT  # Italian (Italy)
+    - it_IT  # Italian (Italy)
     # - ja_JP  # Japanese (Japan)
     # - kk_KZ  # Kazakh (Kazakhstan)
     # - km_KH  # Khmer (Cambodia)

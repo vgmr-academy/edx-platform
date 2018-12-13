@@ -1803,8 +1803,23 @@ language_setup={
             'sales approach' :'vertriebsansatz',
             'regulatory' : 'vorschriften'
         }
+    },
+    'it':{
+        'platform_lang':'it-it',
+        'msg':'Una volta superato questo passaggio, sarai in grado di accedere al modulo di formazione {0}.',
+        'obj' : ' Invito per accedere al {0} modulo di formazione	',
+        'title_mail':['Categoria','Durata','Modo','Data di fine'],
+        'required':'obbligatorio',
+        'optional':'facoltativo',
+        'categories':{
+            'fundamentals':'grundlagen',
+            'our solutions':'unsere lösungen',
+            'sales approach' :'vertriebsansatz',
+            'regulatory' : 'vorschriften'
+        }
     }
 }
+
 
 
 
