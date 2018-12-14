@@ -11292,9 +11292,6 @@ msgstr "Avvia una campagna di formazione"
 msgid "My modules:"
 msgstr "I miei moduli:"
 
-msgid "logout"
-msgstr "logout"
-
 msgid "login"
 msgstr "login"
 
@@ -11331,7 +11328,7 @@ msgstr "La tua email è stata inviata"
 msgid "Access Trainee interface"
 msgstr "Accesso all'interfaccia Trainee"
 
-msgid "Access Admin interface"
+msgid "Access admin interface"
 msgstr "Accesso all'interfaccia Admin"
 
 msgid "editor"
@@ -11614,6 +11611,12 @@ msgstr "Convalidato"
 
 msgid "Not validated"
 msgstr "Non validato"
+
+msgid "Start"
+msgstr "Iniziare"
+
+msgid "logout"
+msgstr "Disconnettersi"
 
 msgid "SEARCH IN MY MODULES"
 msgstr "CERCA NEI MIEI MODULI"

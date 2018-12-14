@@ -1401,22 +1401,20 @@ def session_manager_handler(emails,org,course,specific_msg=None):
     #    except:
     #        log.info("exception on bad credentials")
     #    log.info("end bad credential test")
-    log.info("start good credential request")
+    log.info("START SEM TOKEN REQUEST")
     #verbose request => http://docs.python-requests.org/en/v0.10.6/user/advanced/
     #my_config = {'verbose': sys.stderr}
     data = {"grant_type" : grant_type, "client_id" : client_id, "client_secret" : client_secret}
-    log.info("data request_token")
-    log.info(str(data))
-    log.info("url request_token")
-    log.info(urls[0])
-    log.info("request good credentials")
+    log.info("SEM TOKEN REQUEST - DATA : {}".format(str(data)))
+    log.info("SEM TOKEN REQUEST - URL : {}".format(str(urls[0])))
     request_token = requests.post(urls[0], data=data,headers = {'content-type':'application/x-www-form-urlencoded'},verify=False)
-    log.info("token request status {}".format(request_token.status_code))
-    log.info("request token {}".format(request_token))
-    log.info("request token dict {}".format(request_token.__dict__))
+    log.info("SEM TOKEN REQUEST - STATUS : {}".format(request_token.status_code))
+    log.info("SEM TOKEN REQUEST - RESPONSE DETAIL : {}".format(request_token.__dict__))
     request_token = request_token.json()
-    log.info("json {}".format(request_token))
+    log.info("SEM TOKEN REQUEST - RESPONSE JSON : {}".format(request_token))
     token = request_token.get('access_token')
+    log.info("SEM TOKEN REQUEST - TOKEN VALUE : {}".format(token))
+    log.info("END SEM TOKEN REQUEST")
 
     q = {}
     i = 1
@@ -1425,11 +1423,15 @@ def session_manager_handler(emails,org,course,specific_msg=None):
     for n in emails:
         array_push.append(n)
         if i%200 == 0 or i == len(emails):
+            log.info("START SEM USER IMPORT REQUEST")
             data_email = {"referer":redirect_uri, "msg":msg, "lang":lang,"users":array_push}
+            log.info("SEM USER IMPORT REQUEST - DATA : {}".format(data_email))
+            log.info("SEM USER IMPORT REQUEST - URL : {}".format(urls[2]))
             request_email = requests.post(urls[2], json=data_email , headers = {'content-type':'application/json','Authorization':'Bearer '+token},verify=False)
-            log.info("Donnee retour session_manager: "+str(request_email.text))
+            log.info("SEM USER IMPORT REQUEST - STATUS : {}".format(request_email.status_code))
+            log.info("SEM USER IMPORT REQUEST - RESPONSE DETAIL : {}".format(request_email.__dict__))
             json_parse = json.loads(request_email.text)
-            log.info("session_manager_handler return: "+pformat(json_parse))
+            log.info("SEM USER IMPORT REQUEST - RESPONSE JSON : {}".format(json_parse))
             try:
                 json_parse_success = json_parse.get(u'success')
                 for n in json_parse_success:
@@ -1438,7 +1440,7 @@ def session_manager_handler(emails,org,course,specific_msg=None):
                     q['email'] = n.get(u'email')
                     q['status'] = 'success'
                     array_pull.append(q)
-                    log.info("session_manager_handler success: "+pformat(q))
+                    log.info("SEM USER IMPORT REQUEST - RESPONSE SUCCESS : {} "+pformat(q))
             except:
                 pass
             try:
@@ -1449,7 +1451,7 @@ def session_manager_handler(emails,org,course,specific_msg=None):
                     q['email'] = n.get(u'user')
                     q['status'] = 'error'
                     array_pull.append(q)
-                    log.info("session_manager_handler error: "+pformat(q))
+                    log.info("SEM USER IMPORT REQUEST - RESPONSE ERRORS : {} "+pformat(q))
             except:
                 pass
             try:
@@ -1460,12 +1462,12 @@ def session_manager_handler(emails,org,course,specific_msg=None):
                     q['email'] = n.get(u'user')
                     q['status'] = 'list'
                     array_pull.append(q)
-                    log.info("session_manager_handler list: "+pformat(q))
+                    log.info("SEM USER IMPORT REQUEST - RESPONSE LIST : {} "+pformat(q))
             except:
                 pass
             array_push = []
         i = i + 1
-    log.info("session_manager_handler: end")
+    log.info("END SEM USER IMPORT REQUEST")
     return array_pull
 
 
