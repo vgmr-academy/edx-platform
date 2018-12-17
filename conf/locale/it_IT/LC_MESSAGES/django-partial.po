@@ -10657,44 +10657,17 @@ msgid ""
 msgstr ""
 
 #: ATP
-msgid "MY ACCOUNT"
-msgstr "IL MIO ACCOUNT"
-
 msgid "My account"
 msgstr "il mio account"
-
-msgid "my account"
-msgstr "il mio account"
-
-msgid "my modules"
-msgstr "I miei moduli"
 
 msgid "My modules"
 msgstr "I miei moduli"
 
-msgid "MY MODULES"
-msgstr "I MIEI MODULI"
-
-msgid "IN PROGRESS"
-msgstr "IN CORSO"
-
-msgid "in progress"
-msgstr "in corso"
-
 msgid "In progress"
 msgstr "In corso"
 
-msgid "TO DO"
-msgstr "DA FARE"
-
-msgid "to do"
-msgstr "da fare"
-
 msgid "To do"
 msgstr "da fare"
-
-msgid "MY CATEGORIES"
-msgstr "LE MIE CATEGORIE"
 
 msgid "My Categories"
 msgstr "Le mie categorie"
@@ -10702,44 +10675,17 @@ msgstr "Le mie categorie"
 msgid "categories"
 msgstr "categorie"
 
-msgid "FUNDAMENTALS"
-msgstr "LE BASI"
-
 msgid "Fundamentals"
 msgstr "Le basi"
-
-msgid "fundamentals"
-msgstr "le basi"
-
-msgid "FUNDAMENTAL"
-msgstr "LE BASI"
-
-msgid "Fundamental"
-msgstr "Le basi"
-
-msgid "fundamental"
-msgstr "le basi"
-
-msgid "BUSINESS APPROACH"
-msgstr "APPROCCIO COMMERCIALE"
 
 msgid "Business approach"
 msgstr "Approccio commerciale"
 
-msgid "SALES APPROACH"
-msgstr "APPROCCIO COMMERCIALE"
-
 msgid "Sales approach"
 msgstr "Approccio commerciale"
 
-msgid "REGULATORY"
-msgstr "NORMATIVO"
-
 msgid "Regulatory"
 msgstr "Normativo"
-
-msgid "regulatory"
-msgstr "normativo"
 
 msgid ""
 "Develop your knowledge and skills on asset management: financial culture and"
@@ -10993,17 +10939,11 @@ msgstr "quindi fare clic su"
 msgid "Create my campaign"
 msgstr "Crea la mia campagna"
 
-msgid "My Modules"
-msgstr "I miei moduli"
-
 msgid "Welcome to your training modules management interface"
 msgstr "Benvenuto nella tua piattaforma di gestione dei moduli di formazione"
 
 msgid "You can browse within two separate universes"
 msgstr "Puoi navigare all'interno di due universi separati"
-
-msgid "MY CAMPAIGNS"
-msgstr "LE MIE CAMPAGNE"
 
 msgid "MICRO SITES"
 msgstr "MICRO SITI"
@@ -11325,9 +11265,6 @@ msgstr "Puoi inviare una nuova email o tornare alla pagina LE MIE CAMPAGNE"
 msgid "Your email was sent"
 msgstr "La tua email è stata inviata"
 
-msgid "Access Trainee interface"
-msgstr "Accesso all'interfaccia Trainee"
-
 msgid "Access admin interface"
 msgstr "Accesso all'interfaccia Admin"
 
@@ -11545,23 +11482,8 @@ msgstr ""
 "Una e-mail di invito a partecipare al modulo di formazione è stata inviata "
 "ai partecipanti."
 
-msgid "OUR SOLUTIONS"
-msgstr "LE NOSTRE SOLUZIONI"
-
 msgid "Our solutions"
 msgstr "Le nostre soluzioni"
-
-msgid "our solutions"
-msgstr "le nostre soluzioni"
-
-msgid "OUR SOLUTION"
-msgstr "LA NOSTRA SOLUZIONE"
-
-msgid "Our solution"
-msgstr "La nostra soluzione"
-
-msgid "our solution"
-msgstr "la nostra soluzione"
 
 msgid ""
 "To create your training campaign, you have to specify an unique ID and the "
@@ -11680,3 +11602,19 @@ msgid ""
 msgstr ""
 "per accedere ai risultati) e moduli di formazione non convalidati per i "
 "quali è stata superata la data di fine"
+
+msgid "Start again"
+msgstr "Ricomincia"
+
+msgid ""
+"Unfortunately, you haven't achieved the minimum score required to validate "
+"the training module."
+msgstr ""
+"Sfortunatamente, non è stato raggiunto il punteggio minimo richiesto per "
+"convalidare il modulo di formazione."
+
+msgid "You have completed the training module"
+msgstr "Hai completato il modulo di formazione"
+
+msgid "Congratulations"
+msgstr "Congratulazioni"

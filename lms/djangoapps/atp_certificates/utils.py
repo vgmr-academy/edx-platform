@@ -46,6 +46,70 @@ def generate_html(user,score,course_img_path,template_path,course_title,categori
     gold=(221, 157, 58)
     date = str(datetime.datetime.today().strftime('%d/%m/%Y'))
 
+    #Traduction
+    traductions={
+    "fr":{
+        "date_title":u"Date",
+        "score_title":u"Score",
+        "category_label":u"Catégorie",
+        "fundamentals":u"fondamentaux",
+        "fundamental":u"fondamentaux",
+        "sales approach":u"démarche commerciale",
+        "our solutions":u"nos solutions",
+        "regulatory":u"réglementaire",
+        "phrase":u"Le certificat de réussite du module de formation sur",
+        "phrase2":u"est décerné à"
+        },
+    "de":{
+        "date_title":u"Datum",
+        "score_title":u"Ergebnis",
+        "category_label":u"Kategorie",
+        "fundamentals":u"grundlagen",
+        "fundamental":u"grundlagen",
+        "sales approach":u"vertriebsansatz",
+        "our solutions":u"unsere lösungen",
+        "regulatory":u"vorschriften",
+        "phrase":u"Das Leistungszertifikat für",
+        "phrase2":u"gehört zu"
+        },
+    "it":{
+        "date_title":"Data",
+        "score_title":"Punteggio",
+        "category_label":"Categoria",
+        "fundamentals":"Le basi",
+        "fundamental":"Le basi",
+        "sales approach":"Approccio commerciale",
+        "our solutions":"Le nostre soluzioni",
+        "regulatory":"Normativo",
+        "phrase":u"il certificato di conseguimento per",
+        "phrase2":u"è attribuito a"
+        },
+    "en":{
+        "date_title":"Date",
+        "score_title":"Score",
+        "category_label":"Category",
+        "fundamentals":"fundamentals",
+        "fundamental":"fundamental",
+        "sales approach":"sales approach",
+        "our solutions":"our solutions",
+        "regulatory":"regulatory",
+        "phrase":"The certificate of achievement for",
+        "phrase2":"is attributed to"
+    }
+    }
+
+    if not lang in traductions :
+        lang="en"
+    date_title=traductions[lang]['date_title']
+    score_title=traductions[lang]['score_title']
+    category_label=traductions[lang]['category_label']
+    category_type = traductions[lang][categorie.lower()]
+    phrase=traductions[lang]['phrase']
+    phrase2=traductions[lang]['phrase2']
+
+
+
+
     #Couleurs
     if primary_color :
         if "#" in primary_color:
@@ -131,22 +195,16 @@ def generate_html(user,score,course_img_path,template_path,course_title,categori
     #Date
     px_date=marge_laterale
     py_date=py_imgc+imgc_hauteur+marge_espacement
-    if lang=="de":
-        date_title="Datum"
-    else:
-        date_title="Date"
+
     draw.text((px_date+10,py_date),date_title,gold,font=font_big)
     draw.text((px_date,py_date+30),date,main_color,font=font_main)
 
     #score title
-    if lang=="de":
-        score_title="Ergebnis"
-    else:
-        score_title="Score"
     score_largeur, score_hauteur = draw.textsize(score_title, font_big)
     px_score=(background_largeur-score_largeur)/2
     py_score=py_date
     draw.text((px_score,py_score), score_title, gold, font_big)
+
     # score result
     score_largeur, score_hauteur = draw.textsize(score, font_big)
     px_score=(background_largeur-score_largeur)/2
@@ -154,55 +212,17 @@ def generate_html(user,score,course_img_path,template_path,course_title,categori
     draw.text((px_score,py_score+30), score, main_color, font_big)
 
     #Category
-    if lang=="fr":
-        cat_word=u'Catégorie'
-    elif lang=="de":
-        cat_word=u'Kategorie'
-    else :
-        cat_word=u'Category'
-    category_largeur, category_hauteur = draw.textsize(cat_word, font=font_big)
+    category_largeur, category_hauteur = draw.textsize(category_label, font=font_big)
     px_category=(background_largeur-category_largeur-marge_laterale)
     py_category=py_date
-    draw.text((px_category,py_category),cat_word,gold,font=font_big)
+    draw.text((px_category,py_category),category_label,gold,font=font_big)
 
-    #Traduction des catégories
-    categorie = categorie.lower()
-
-    if categorie == "fundamentals" or categorie =="fundamental" :
-        if lang=="fr":
-            categorie = "fondamentaux"
-        if lang=="de":
-            categorie = "grundlagen"
-    elif categorie == "our solutions" :
-        if lang=="fr":
-            categorie ="nos solutions"
-        if lang=="de":
-            categorie ="unsere lösungen"
-    elif categorie == "sales approach" :
-        if lang=="fr":
-            categorie =u'démarche commerciale'
-        if lang=="de":
-            categorie =u'vertriebsansatz'
-    elif categorie == "regulatory" :
-        if lang=="fr":
-            categorie =u'réglementaire'
-        if lang=="de":
-            categorie =u'vorschriften'
-    category_largeur2, category_hauteur2 = draw.textsize(categorie, font=font_main)
+    #Category label
+    category_largeur2, category_hauteur2 = draw.textsize(category_type, font=font_main)
     px_category2=px_category+((category_largeur-category_largeur2)/2)
-    draw.text((px_category2,py_category+30),categorie.capitalize(),main_color,font=font_main)
+    draw.text((px_category2,py_category+30),category_type.capitalize(),main_color,font=font_main)
 
     #Declaration
-    if lang=="fr":
-        phrase=u'Le certificat de réussite du module de formation sur'
-        phrase2=u"est décerné à"
-    elif lang=="de":
-        phrase=u'Das Leistungszertifikat für'
-        phrase2=u"gehört zu"
-    else:
-        phrase=u'The certificate of achievement for'
-        phrase2=u'is attributed to'
-    #Ecriture le certificat de réussite
     p1_largeur, p1_hauteur = draw.textsize(phrase, font=font_big)
     px_p1=(background_largeur-p1_largeur)/2
     py_p1=py_score+score_hauteur+30+marge_espacement_large
