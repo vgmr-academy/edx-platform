@@ -2741,14 +2741,7 @@ class LogoutView(TemplateView):
             log_bis.info("logout uri except EXCEPT: ")
 
     	site_courant=request.META["HTTP_HOST"]
-
-        #Sur l'environnement de preprod et de dev
-
-        if vm_status=="prod":
-            log_bis.info("Microsite credentials URI: {}".format(logout_uri))
-            self.target = logout_uri+user_language+"/user/logout"
-        else:
-            self.target = logout_uri.replace("[LANG]",user_language)
+        self.target = logout_uri.replace("[LANG]",user_language)
 
         # If we don't need to deal with OIDC logouts, just redirect the user.
         if LogoutViewConfiguration.current().enabled and self.oauth_client_ids:
