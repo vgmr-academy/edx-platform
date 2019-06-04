@@ -1424,7 +1424,7 @@ def session_manager_handler(emails,org,course,specific_msg=None):
         array_push.append(n)
         if i%200 == 0 or i == len(emails):
             log.info("START SEM USER IMPORT REQUEST")
-            data_email = {"referer":redirect_uri, "msg":msg, "lang":lang,"users":array_push}
+            data_email = {"referer":redirect_uri, "msg":msg, "lang":redirect_language,"users":array_push}
             log.info("SEM USER IMPORT REQUEST - DATA : {}".format(data_email))
             log.info("SEM USER IMPORT REQUEST - URL : {}".format(urls[2]))
             request_email = requests.post(urls[2], json=data_email , headers = {'content-type':'application/json','Authorization':'Bearer '+token},verify=False)
