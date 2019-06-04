@@ -34,8 +34,8 @@ def hex_to_rgb (hex) :
     return couleur_rgb
 
 def generate_html(user,score,course_img_path,template_path,course_title,categorie,certif_img_path,logo_path,amundi_academy,lang,user_name, primary_color, secondary_color):
-    font_main = ImageFont.truetype("/edx/app/edxapp/edx-platform/lms/static/fonts/arial.ttf",12)
-    font_big = ImageFont.truetype("/edx/var/edxapp/media/certificates/arialbld.ttf",15)
+    font_main = ImageFont.truetype("/edx/var/edxapp/media/certificates/OpenSans-Regular.ttf",12,  encoding="utf-8")
+    font_big = ImageFont.truetype("/edx/var/edxapp/media/certificates/OpenSans-Bold.ttf",15,  encoding="utf-8")
 
     marge_haute=30
     marge_laterale=40
@@ -52,11 +52,11 @@ def generate_html(user,score,course_img_path,template_path,course_title,categori
         "date_title":u"Date",
         "score_title":u"Score",
         "category_label":u"Catégorie",
-        "fundamentals":u"Fondamentaux",
-        "fundamental":u"Fondamentaux",
-        "sales approach":u"Démarche commerciale",
-        "our solutions":u"Nos solutions",
-        "regulatory":u"Réglementaire",
+        "fundamentals":u"fondamentaux",
+        "fundamental":u"fondamentaux",
+        "sales approach":u"démarche commerciale",
+        "our solutions":u"nos solutions",
+        "regulatory":u"réglementaire",
         "phrase":u"Le certificat de réussite du module de formation sur",
         "phrase2":u"est décerné à"
         },
@@ -64,11 +64,11 @@ def generate_html(user,score,course_img_path,template_path,course_title,categori
         "date_title":u"Datum",
         "score_title":u"Ergebnis",
         "category_label":u"Kategorie",
-        "fundamentals":u"Grundlagen",
-        "fundamental":u"Grundlagen",
-        "sales approach":u"Vertriebsansatz",
-        "our solutions":u"Unsere lösungen",
-        "regulatory":u"Vorschriften",
+        "fundamentals":u"grundlagen",
+        "fundamental":u"grundlagen",
+        "sales approach":u"vertriebsansatz",
+        "our solutions":u"unsere lösungen",
+        "regulatory":u"vorschriften",
         "phrase":u"Das Leistungszertifikat für",
         "phrase2":u"gehört zu"
         },
@@ -88,25 +88,37 @@ def generate_html(user,score,course_img_path,template_path,course_title,categori
         "date_title":"Date",
         "score_title":"Score",
         "category_label":"Category",
-        "fundamentals":"Fundamentals",
-        "fundamental":"Fundamental",
-        "sales approach":"Sales approach",
-        "our solutions":"Our solutions",
-        "regulatory":"Regulatory",
+        "fundamentals":"fundamentals",
+        "fundamental":"fundamental",
+        "sales approach":"sales approach",
+        "our solutions":"our solutions",
+        "regulatory":"regulatory",
         "phrase":"The certificate of achievement for",
         "phrase2":"is attributed to"
     },
     "cs":{
-        "date_title":"Datum",
-        "score_title":"Skóre",
-        "category_label":"Kategorie",
-        "fundamentals":"Obecné základy",
-        "fundamental":"Obecné základy",
-        "sales approach":"Obchodní dovednosti",
-        "our solutions":"Naše řešení",
-        "regulatory":"Regulace",
-        "phrase":"Certfikát potvrzující",
-        "phrase2":"úspěšně složený"
+        "date_title":u"Datum",
+        "score_title":u"Skóre",
+        "category_label":u"Kategorie",
+        "fundamentals":u"Obecné základy",
+        "fundamental":u"Obecné základy",
+        "sales approach":u"Obchodní dovednosti",
+        "our solutions":u"Naše řešení",
+        "regulatory":u"Regulace",
+        "phrase":u"Certfikát potvrzující",
+        "phrase2":u"úspěšně složený "
+    },
+    "nl":{
+        "date_title":u"Datum",
+        "score_title":u"Score",
+        "category_label":u"Categorie",
+        "fundamentals":u"Basiskennis",
+        "fundamental":u"Basiskennis",
+        "sales approach":u"Zakelijke aanpak",
+        "our solutions":u"Onze oplossingen",
+        "regulatory":u"Regelgeving",
+        "phrase":u"Het certificaat van voltooiing wordt",
+        "phrase2":u"toegekend aan"
     }
     }
 
