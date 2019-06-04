@@ -2720,9 +2720,12 @@ class LogoutView(TemplateView):
         _microsite = configuration_helpers.get_value('domain_prefix')
         vm_status = settings.FEATURES.get('VM_STATUS')
         user_language = request.LANGUAGE_CODE
+        log.info("user language in request".format(user_language))
         if '-' in user_language:
             user_language=user_language.split('-')[0]
-        log.info("user language{}".format(user_language))
+        if user_language == 'cs':
+            user_language = 'cz'
+        log.info("user language for SEM{}".format(user_language))
 
         if _microsite is None:
             try:

@@ -1346,7 +1346,7 @@ def session_manager_handler(emails,org,course,specific_msg=None):
     lang = course.language
     if course.language in language_setup :
         msg = language_setup[course.language]['msg'].format(course.display_name)
-        redirect_language = course.language
+        redirect_language = language_setup[course.language]['sem_lang']
     else :
         msg = language_setup['en']['msg'].format(course.display_name)
         redirect_language='en'
@@ -1764,6 +1764,7 @@ def email_dashboard_handler(request, course_key_string):
 language_setup={
     "en":{
         'platform_lang' :'en',
+        'sem_lang' :'en',
         'msg':'Once you’ve passed this step, you will be able to access the training module {0}.',
         'obj':'Invitation to access {0} training module',
         'title_mail' : ['Category','Duration','Mode','Ending date'],
@@ -1778,6 +1779,7 @@ language_setup={
     },
     "nl":{
         'platform_lang' :'nl-nl',
+        'sem_lang' :'nl',
         'msg':'Na deze stap hebt u toegang tot de opleidingsmodule {0}.',
         'obj':'Uitnodiging om opleidingsmodule {0} te volgen',
         'title_mail' : [' Categorie','Duur','Wijze','Einddatum'],
@@ -1792,6 +1794,7 @@ language_setup={
     },
     'fr':{
         'platform_lang':'fr',
+        'sem_lang' :'fr',
         'msg':'Une fois passée cette étape, vous pourrez accéder à votre module sur {0}.',
         'obj':'Invitation pour accéder au module {0}',
         'title_mail':['Catégorie','Durée','Mode','Date de fin'],
@@ -1807,6 +1810,7 @@ language_setup={
     },
     'de':{
         'platform_lang':'de-de',
+        'sem_lang' :'de',
         'msg':'Sobald Sie diesen Schritt bestanden haben, können Sie auf das Schulungsmodul zugreifen {0}.',
         'obj' : 'Einladung zum Schulungsmodul {0}',
         'title_mail':['Kategorie','Dauer','Modus','Enddaten'],
@@ -1821,6 +1825,7 @@ language_setup={
     },
     'it':{
         'platform_lang':'it-it',
+        'sem_lang' :'it',
         'msg':'Una volta superato questo passaggio, sarai in grado di accedere al modulo di formazione {0}.',
         'obj' : ' Invito per accedere al {0} modulo di formazione	',
         'title_mail':['Categoria','Durata','Modo','Data di fine'],
@@ -1835,6 +1840,7 @@ language_setup={
     },
     'cs':{
         'platform_lang':'cs',
+        'sem_lang' :'cz',
         'msg':'Po tomto kroku budete mít přístup k vzdělávacímu kurzu {0}.',
         'obj' : ' Pozvánka k zahájení vzdělávacího kurzu  {0}',
         'title_mail':['Kategorie','Trvání','Režim','Datum ukončení'],
