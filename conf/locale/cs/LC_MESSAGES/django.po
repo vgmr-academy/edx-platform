@@ -7971,10 +7971,6 @@ msgid "Billing Address"
 msgstr "Fakturační adresa"
 
 #: lms/djangoapps/shoppingcart/pdf.py
-msgid "Disclaimer"
-msgstr ""
-
-#: lms/djangoapps/shoppingcart/pdf.py
 msgid "TERMS AND CONDITIONS"
 msgstr ""
 
@@ -10339,10 +10335,6 @@ msgstr ""
 
 #: openedx/core/djangoapps/schedules/admin.py
 msgid "Schedule start < course start"
-msgstr ""
-
-#: openedx/core/djangoapps/schedules/admin.py
-msgid "All"
 msgstr ""
 
 #: openedx/core/djangoapps/schedules/admin.py
@@ -24637,10 +24629,10 @@ msgid "my account"
 msgstr "můj účet"
 
 msgid "my modules"
-msgstr "můj modul"
+msgstr "můj kurzy"
 
 msgid "My modules"
-msgstr "Můj modul"
+msgstr "Můj kurzy"
 
 msgid "IN PROGRESS"
 msgstr "NEDOKONČENÉ"
@@ -24713,33 +24705,33 @@ msgstr "Rozvíjejte své znalosti a dovednosti v oblasti investic a správy maje
 
 #: lms/templates/dashboard.html
 msgid "To follow a training module, select the thumbnail of your choice!"
-msgstr "Pro výběr vzdělávacího modulu, prosím klikněte na vybraný náhled!"
+msgstr "Pro výběr vzdělávacího kurzu, prosím klikněte na vybraný náhled!"
 
 #: lms/templates/dashboard.html
 msgid "Each training module belongs to a category and can take"
-msgstr "Každý vzdělávací modul patří do určité kategorie a může obsahovat"
+msgstr "Každý vzdělávací kurz patří do určité kategorie a může obsahovat"
 
 msgid "different formats"
 msgstr "různorodé formáty"
 
 msgid "Training modules"
-msgstr "Vzdělávací moduly"
+msgstr "Vzdělávací kurzy"
 
 msgid "Find all the information related to the training on the thumbnails below"
-msgstr "Všechny informace o vzdělávacím modulu najdete na náhledech níže"
+msgstr "Všechny informace o vzdělávacím kurzu najdete na náhledech níže"
 
 msgid "timing of the module"
-msgstr "načasování modulu"
+msgstr "načasování kurzu"
 
 msgid "if the module is mandatory or not and formats of the module"
-msgstr "pokud je tento modul povinný a jeho formáty"
+msgstr "pokud je tento kurz povinný a jeho formáty"
 
 msgid "TRAINING MODULES CATEGORIES"
-msgstr "KATEGORIE VZDĚLÁVACÍCH MODULŮ"
+msgstr "KATEGORIE VZDĚLÁVACÍCH KURZŮ"
 
 #: lms/templates/dashboard.html
 msgid "Your training modules are classified into 4 categories"
-msgstr "Vaše vzdělávací moduly jsou zařazeny do 4 kategorií"
+msgstr "Vaše vzdělávací kurzy jsou zařazeny do 4 kategorií"
 
 #: lms/templates/dashboard.html
 msgid "Know the essentials of financial markets"
@@ -24763,11 +24755,12 @@ msgstr "FORMÁTY"
 
 #: lms/templates/dashboard.html
 msgid "Each module is composed of different interactive formats:"
-msgstr "Každý modul je složen z několika interaktivních formátů:"
+msgstr "Každý kurz je složen z několika interaktivních formátů:"
 
 #: lms/templates/dashboard.html
 msgid "texts & images"
 msgstr "text a obrázky"
+
 msgid "Infography"
 msgstr "Infografika"
 
@@ -24784,7 +24777,7 @@ msgid "pdf"
 msgstr "pdf"
 
 msgid "You have started the training module"
-msgstr "Právě jste spustili vzdělávací modul"
+msgstr "Právě jste spustili vzdělávací kurz"
 
 msgid "To complete your course"
 msgstr "K dokončení vašeho kurzu"
@@ -24837,17 +24830,20 @@ msgstr "Datum začátku"
 msgid "Ending date"
 msgstr "Datum ukončení"
 
-msgid  "Results"
+msgid "Disclaimer"
+msgstr "Právní upozornění"
+
+msgid "Results"
 msgstr "Výsledky"
 
 msgid "Back to course about page"
 msgstr "Zpět na stránku s výběrem kurzů"
 
 msgid "To end this training module, you have to access every chapters and finish the validation knowledge test."
-msgstr "Pro splnění tohoto vzdělávacího modulu projděte prosím všechny kapitoly a odpovězte na otázky v kvízu."
+msgstr "Pro splnění tohoto vzdělávacího kurzu projděte prosím všechny kapitoly a odpovězte na otázky v kvízu."
 
 msgid "You started the training module "
-msgstr "Právě jste spustili vzdělávací modul"
+msgstr "Právě jste spustili vzdělávací kurz"
 
 msgid "Congratulation"
 msgstr "Blahopřejeme"
@@ -24860,11 +24856,11 @@ msgstr "Vaše celkové skóre:"
 
 #: lms/templates/dashboard.html
 msgid "TO DO TRAINING MODULES"
-msgstr "NEDOKONČENÉ VZDĚLÁVACÍ MODULY"
+msgstr "NEDOKONČENÉ VZDĚLÁVACÍ KURZY"
 
 #: lms/templates/dashboard.html
 msgid "You haven't started yet the following training modules. Click on"
-msgstr "Ještě jste nezačali následující vzdělávací modul. Klikněte prosím na"
+msgstr "Ještě jste nezačali následující vzdělávací kurz. Klikněte prosím na"
 
 #: lms/templates/dashboard.html
 #: lms/templates/dashboard/_dashboard_course_listing.html
@@ -24873,15 +24869,15 @@ msgstr "Více informací"
 
 #: lms/templates/dashboard.html
 msgid "to access the training module description"
-msgstr "pro zobrazení popisu vzdělávacích modulů"
+msgstr "pro zobrazení popisu vzdělávacích kurzů"
 
 #: lms/templates/dashboard.html
 msgid "IN PROGRESS TRAINING MODULES"
-msgstr "PROBÍHAJÍCÍ VZDĚLÁVACÍ MODULY"
+msgstr "PROBÍHAJÍCÍ VZDĚLÁVACÍ KURZY"
 
 #: lms/templates/dashboard.html
 msgid "You have started but haven't completed yet the following training modules. To go on, please click on"
-msgstr "Máte rozpracované následující vzdělávací moduly. Pro pokračování klikněte na"
+msgstr "Máte rozpracované následující vzdělávací kurzy. Pro pokračování klikněte na"
 
 #: lms/templates/dashboard.html
 #: lms/templates/dashboard/_dashboard_course_listing.html
@@ -24890,11 +24886,11 @@ msgstr "Pokračovat"
 
 #: lms/templates/dashboard.html
 msgid "COMPLETED TRAINING MODULES"
-msgstr "Dokončené vzdělávací moduly"
+msgstr "Dokončené vzdělávací kurzy"
 
 #: lms/templates/dashboard.html
 msgid "You have completed the following training modules. Click on"
-msgstr "Dokončili jste následující vzdělávací moduly. Klikněte na"
+msgstr "Dokončili jste následující vzdělávací kurzy. Klikněte na"
 
 #: lms/templates/dashboard.html
 msgid "to access your results and scores"
@@ -24902,7 +24898,7 @@ msgstr "pro zobrazení vašich výsledků"
 
 #: lms/templates/dashboard.html
 msgid "More modules"
-msgstr "Více modulů"
+msgstr "Více kurzů"
 
 #: lms/templates/dashboard.html
 msgid "Welcome on"
@@ -24916,6 +24912,9 @@ msgstr "Rozvíjejte své znalosti a dovednosti v oblasti investic a správy maje
 msgid "More"
 msgstr "Více"
 
+#: lms/templates/navigation.html
+msgid "All"
+msgstr "Všechny"
 
 #: lms/templates/courseware/course_about.html
 msgid "Download certificate"
@@ -24923,11 +24922,11 @@ msgstr "Stáhnout certifikát"
 
 #: lms/templates/courseware/courseware.html
 msgid "Back to training module description"
-msgstr "Zpět na popis modulu"
+msgstr "Zpět na popis kurzu"
 
 #: lms/templates/courseware/courseware.html
 msgid "The training campaign is over. You can access the training module content. However, you can't do the test to validate your knowledge."
-msgstr "Vzdělávací kampaň již skončila. Můžete si zobrazit obsah vzdělávacího modulu, ale již nelze projít kvíz pro ověření vašich znalostí."
+msgstr "Vzdělávací kampaň již skončila. Můžete si zobrazit obsah vzdělávacího kurzu, ale již nelze projít kvíz pro ověření vašich znalostí."
 
 #: lms/templates/courseware/courseware.html
 msgid "Go to studio"
@@ -24943,7 +24942,7 @@ msgstr "Pro vytvoření vzdělávací kampaně"
 
 #: cms/templates/index.html
 msgid "select a training module in"
-msgstr "Vyberte vzdělávací modul v"
+msgstr "Vyberte vzdělávací kurz v"
 
 #: cms/templates/index.html
 msgid "then click on"
@@ -24955,11 +24954,11 @@ msgstr "Vytvořit vlastní kampaň"
 
 #: cms/templates/index.html
 msgid "My Modules"
-msgstr "Moje moduly"
+msgstr "Moje kurzy"
 
 #: cms/templates/index.html
 msgid "Welcome to your training modules management interface"
-msgstr "Vítejte ve svém rozhraní pro správu vzdělávacích modulů"
+msgstr "Vítejte ve svém rozhraní pro správu vzdělávacích kurzů"
 
 #: cms/templates/index.html
 msgid "You can browse within two separate universes"
@@ -24971,7 +24970,7 @@ msgstr "MÉ KAMPANĚ"
 
 #: cms/templates/index.html
 msgid "MY MODULES"
-msgstr "MÉ MODULY"
+msgstr "MÉ KURZY"
 
 #: cms/templates/index.html
 msgid "MICRO SITES"
@@ -25052,7 +25051,7 @@ msgstr "Statistiky"
 
 #: cms/templates/index.html
 msgid "About the training module"
-msgstr "Informace o vzdělávacím modulu"
+msgstr "Informace o vzdělávacím kurzu"
 
 #: cms/templates/index.html
 msgid "My campaigns"
@@ -25060,7 +25059,7 @@ msgstr "Mé kampaně"
 
 #: cms/templates/index.html
 msgid "You have at your disposal a library of training modules made available by Amundi. Select the module of your choice and launch the associated training campaign."
-msgstr "Máte k dispozici knihovnu vzdělávacích modulů od Amundi. Vyberte si modul a spusťte příslušnou vzdělávací kampaň."
+msgstr "Máte k dispozici knihovnu vzdělávacích kurzů od Amundi. Vyberte si kurz a spusťte příslušnou vzdělávací kampaň."
 
 #: cms/templates/manage_course.html
 msgid "Provide all the information required to launch your training campaign: starting/ending date, minimum percentage of success required, and campaign type."
@@ -25124,11 +25123,11 @@ msgstr "MINIMÁLNÍ POŽADOVANÁ MÍRA ÚSPĚŠNOSTI"
 
 #: cms/templates/manage_course.html
 msgid "Define the minimum score required to validate the training module"
-msgstr "Zadejte minimální hranici úspěšnosti pro úspěšné absolvování vzdělávacího modulu"
+msgstr "Zadejte minimální hranici úspěšnosti pro úspěšné absolvování vzdělávacího kurzu"
 
 #: cms/templates/manage_course.html
 msgid "Minimum score required to validate the training module and receive the certificate of achievement"
-msgstr "Minimální skóre požadované pro úspěšné absolvování vzdělávací modulu a jeho následné získání"
+msgstr "Minimální skóre požadované pro úspěšné absolvování vzdělávací kurzu a jeho následné získání"
 
 #: cms/templates/manage_course.html
 msgid "CAMPAIGN TYPE"
@@ -25256,7 +25255,7 @@ msgstr "Dokončené vzdělávací kampaně"
 
 #: cms/templates/index.html
 msgid "Access a training modules library provided by Amundi"
-msgstr "Přejděte do knihovny vzdělávacích modulů od Amundi"
+msgstr "Přejděte do knihovny vzdělávacích kurzů od Amundi"
 
 #: cms/templates/index.html
 msgid "Launch a training campaign"
@@ -25264,7 +25263,7 @@ msgstr "Spustit vzdělávací kampaň"
 
 #: cms/templates/index.html
 msgid "My modules:"
-msgstr "Moje moduly:"
+msgstr "Moje kurzy:"
 
 #log
 msgid "logout"
@@ -25282,12 +25281,12 @@ msgstr "Dosud nemáte žádné zahájené kampaně."
 # lms dashboard.html
 
 msgid "No training modules available in this section."
-msgstr "V této sekci nejsou dostupné žádné vzdělávací moduly."
+msgstr "V této sekci nejsou dostupné žádné vzdělávací kurzy."
 
 # lms dashboard.html
 
-msgid "Welcome on Academy platform"
-msgstr "Vítejte v platformě Academy"
+msgid "Welcome on Amundi Academy platform"
+msgstr "Vítejte v platformě Amundi Academy"
 
 # lms dashboard.html
 
@@ -25297,7 +25296,7 @@ msgstr "Registrace proběhla úspěšně"
 # lms dashboard.html
 
 msgid "The training module"
-msgstr "vzdělávací modul"
+msgstr "vzdělávací kurz"
 
 # lms dashboard.html
 
@@ -25325,7 +25324,7 @@ msgid "Access Trainee interface"
 msgstr "Přejít na Uživatelské rozhraní "
 
 #lms dashboard.html
-msgid "Access admin interface"
+msgid "Access Admin interface"
 msgstr "Přejít na Administrátorské rozhraní"
 
 #lms stat.html
@@ -25437,7 +25436,7 @@ msgid "Campaign title (unique id)"
 msgstr "Název kampaně (unikátní ID)"
 
 #cms create_course.html
-msgid "Rules for unique ID and target : no space, no punctuation, no special characters"
+msgid "Rules for unique ID and target : no space, no punctuation, no special characters"
 msgstr "Pravidla pro unikátní ID a cíl: žádné mezery, interpunkce a speciální znaky"
 
 #cms create_course.html
@@ -25531,7 +25530,7 @@ msgid "The participants' list is successfully uploaded."
 msgstr "Seznam účastníků byl úspěšně nahrán."
 
 msgid "An email invitation to participate to the training module has been sent to the participants."
-msgstr "Emailová pozvánka k vzdělávacímu modulu byla odeslána ,účastníkům."
+msgstr "Emailová pozvánka k vzdělávacímu kurzu byla odeslána ,účastníkům."
 
 msgid "OUR SOLUTIONS"
 msgstr "NAŠE ŘEŠENÍ"
@@ -25584,10 +25583,10 @@ msgid "Not validated"
 msgstr "Neschálenoo"
 
 msgid "SEARCH IN MY MODULES"
-msgstr "HLEDAT V MÉ MODULY"
+msgstr "HLEDAT V MÉ KURZY"
 
 msgid "Search in a module"
-msgstr "Hledat v modulu"
+msgstr "Hledat v kurzu"
 
 msgid "SEARCH IN MY CAMPAIGNS"
 msgstr "HLEDAT V MÉ KAMPANĚ"
@@ -25602,19 +25601,10 @@ msgid "New search"
 msgstr "Nové hledání"
 
 msgid "results found in your modules"
-msgstr "výsledky nalezeny ve vašich modulech"
+msgstr "výsledky nalezeny ve vašich kurzech"
 
 msgid "results found in your campaigns"
 msgstr "výsledky nalezeny ve vašich kampaních"
-
-#fail cms invite.html
-msgid "The structure of the file loaded is incorrect. Please, modify your file and load it again"
-msgstr "Struktura vámi nahraného souboru je chybná. Prosím upravte ji a nahrajte soubor znovu"
-
-#cms manage.html
-msgid "You already have invited participants to this training campaign. Starting date can no longer be edited."
-msgstr "Již jste pozval účastníky k této vzdělávací kampani. počáteční datum tak již nemůže být změněno."
-
 
 #DASHBOARD.HTML
 msgid "In this section, you access training modules you started but haven't completed yet. To go on, please click on"
