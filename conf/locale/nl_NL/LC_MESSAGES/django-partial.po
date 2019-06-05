@@ -12250,3 +12250,22 @@ msgid ""
 msgstr ""
 "Upload uw csv-bestand om deelnemers uit te nodigen voor uw "
 "opleidingscampagne. Het bestand moet als volgt zijn opgemaakt:"
+
+msgid "You have completed the training module"
+msgstr "Je hebt de opleidingsmodule voltooid"
+
+msgid ""
+"Unfortunately, you haven't achieved the minimum score required to validate "
+"the training module."
+msgstr ""
+"Helaas hebt u niet de minimumscore bereikt die vereist is om de "
+"opleidingsmodule te valideren."
+
+msgid "Start again"
+msgstr "Opnieuw beginnen"
+
+msgid "Start"
+msgstr "Beginnen"
+
+msgid "Congratulations"
+msgstr "Gefeliciteerd"

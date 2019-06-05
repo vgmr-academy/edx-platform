@@ -1931,6 +1931,8 @@ def invite_handler(request, course_key_string):
                 csv_dict={}
 
             for atp_student in csv_dict :
+                #force lower case on emails
+                atp_student['email'] = atp_student['email'].lower()
                 #log.info("invite_handler: "+pformat(atp_student))
                 log.info("invite_handler: treating student {}".format(atp_student['email']))
                 atp_student = {key.lower(): strip_accents(value) for key, value in atp_student.items()}
