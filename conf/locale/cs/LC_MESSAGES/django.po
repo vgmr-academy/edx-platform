@@ -25285,8 +25285,8 @@ msgstr "V této sekci nejsou dostupné žádné vzdělávací kurzy."
 
 # lms dashboard.html
 
-msgid "Welcome on Amundi Academy platform"
-msgstr "Vítejte v platformě Amundi Academy"
+msgid "Welcome on Academy platform"
+msgstr "Vítejte v platformě Academy"
 
 # lms dashboard.html
 
