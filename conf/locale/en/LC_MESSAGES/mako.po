@@ -3961,7 +3961,7 @@ msgid ""
 msgstr ""
 
 #: lms/templates/dashboard.html:508
-msgid "Welcome on Amundi Academy platform"
+msgid "Welcome on Academy platform"
 msgstr ""
 
 #: lms/templates/dashboard.html:509
