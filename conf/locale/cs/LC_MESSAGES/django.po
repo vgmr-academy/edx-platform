@@ -25640,3 +25640,7 @@ msgstr "Bohužel jste nedosáhli minimálního skóre potřebného pro ověřen�
 
 msgid "Start again"
 msgstr "Začít znovu"
+
+msgid "Start"
+msgstr "Začít"
+
