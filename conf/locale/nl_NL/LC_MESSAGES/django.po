@@ -7844,10 +7844,6 @@ msgid "Billing Address"
 msgstr ""
 
 #: lms/djangoapps/shoppingcart/pdf.py
-msgid "Disclaimer"
-msgstr ""
-
-#: lms/djangoapps/shoppingcart/pdf.py
 msgid "TERMS AND CONDITIONS"
 msgstr ""
 
@@ -10204,10 +10200,6 @@ msgid "Schedule start < course start"
 msgstr ""
 
 #: openedx/core/djangoapps/schedules/admin.py
-msgid "All"
-msgstr ""
-
-#: openedx/core/djangoapps/schedules/admin.py
 msgid "Experience"
 msgstr ""
 
@@ -11290,6 +11282,1250 @@ msgid ""
 "Remember when you enrolled in %(course_name)s on edX.org? We do, and we’re "
 "glad to have you! Come see what everyone is learning."
 msgstr ""
+
+#: ATP TMA
+#, python-format
+msgid "MY ACCOUNT"
+msgstr "MIJN ACCOUNT"
+
+msgid "My account"
+msgstr "Mijn account"
+
+msgid "my account"
+msgstr "mijn account"
+
+msgid "my modules"
+msgstr "mijn modules"
+
+msgid "My modules"
+msgstr "Mijn modules"
+
+msgid "IN PROGRESS"
+msgstr "LOPEND"
+
+msgid "in progress"
+msgstr "lopend"
+
+msgid "In progress"
+msgstr "Lopend"
+
+msgid "TO DO"
+msgstr "NOG TE VOLGEN"
+
+msgid "to do"
+msgstr "nog te volgen"
+
+msgid "To do"
+msgstr "Nog te volgen"
+
+msgid "MY CATEGORIES"
+msgstr "MIJN CATEGORIEËN"
+
+msgid "My Categories"
+msgstr "Mijn Categorieën"
+
+msgid "categories"
+msgstr "categorieën"
+
+msgid "FUNDAMENTALS"
+msgstr "BASISKENNIS"
+
+msgid "Fundamentals"
+msgstr "Basiskennis"
+
+msgid "fundamentals"
+msgstr "basiskennis"
+
+msgid "FUNDAMENTAL"
+msgstr "BASISKENNIS"
+
+msgid "Fundamental"
+msgstr "Basiskennis"
+
+msgid "fundamental"
+msgstr "basiskennis"
+
+msgid "BUSINESS APPROACH"
+msgstr "ZAKELIJKE AANPAK"
+
+msgid "Business approach"
+msgstr "Zakelijke aanpak"
+
+msgid "SALES APPROACH"
+msgstr "ZAKELIJKE AANPAK"
+
+msgid "Sales approach"
+msgstr "Zakelijke aanpak"
+
+msgid "REGULATORY"
+msgstr "REGELGEVING"
+
+msgid "Regulatory"
+msgstr "Regelgeving"
+
+msgid "regulatory"
+msgstr "regelgeving"
+
+msgid ""
+"Develop your knowledge and skills on asset management: financial culture and"
+" products and offers marketed"
+msgstr ""
+"Ontwikkel uw kennis en vaardigheden op het vlak van vermogensbeheer: "
+"financiële cultuur en ons aanbod van producten en diensten"
+
+#: lms/templates/dashboard.html
+msgid "To follow a training module, select the thumbnail of your choice!"
+msgstr "Klik op de kaart van uw keuze om een opleidingsmodule te volgen."
+
+#: lms/templates/dashboard.html
+msgid "Each training module belongs to a category and can take"
+msgstr "Elke opleidingsmodule behoort tot een categorie en kan"
+
+msgid "different formats"
+msgstr "verschillende leermiddelen gebruiken"
+
+msgid "Training modules"
+msgstr "De modules"
+
+msgid ""
+"Find all the information related to the training on the thumbnails below"
+msgstr "Op onderstaande kaarten vindt u alle informatie over de opleidingen."
+
+msgid "timing of the module"
+msgstr "Zo kunt u zien hoelang het duurt om de module te doorlopen,"
+
+msgid "if the module is mandatory or not and formats of the module"
+msgstr "of ze verplicht is of niet en waaruit ze bestaat."
+
+msgid "TRAINING MODULES CATEGORIES"
+msgstr "CATEGORIEËN VAN DE OPLEIDINGSMODULES"
+
+#: lms/templates/dashboard.html
+msgid "Your training modules are classified into 4 categories"
+msgstr "Uw opleidingsmodules zijn ingedeeld in vier categorieën"
+
+#: lms/templates/dashboard.html
+msgid "Know the essentials of financial markets"
+msgstr "Basiskennis van de financiële markten"
+
+#: lms/templates/dashboard.html
+msgid "Improve your soft skills"
+msgstr "Uw persoonlijke vaardigheden"
+
+#: lms/templates/dashboard.html
+msgid "Learn about products and offers that are sold"
+msgstr "Onze producten en ons aanbod"
+
+#: lms/templates/dashboard.html
+msgid "Understanding regulatory decisions"
+msgstr "De regelgeving"
+
+#: lms/templates/dashboard.html
+msgid "FORMATS"
+msgstr "LEERMIDDELEN VAN DE MODULE"
+
+#: lms/templates/dashboard.html
+msgid "Each module is composed of different interactive formats:"
+msgstr "Elke module gebruikt verschillende interactieve leermiddelen:"
+
+#: lms/templates/dashboard.html
+msgid "texts & images"
+msgstr "tekst en afbeeldingen"
+
+msgid "Infography"
+msgstr "infografieken"
+
+#: lms/templates/dashboard.html
+msgid "pedagogical videos"
+msgstr "leerrijke filmpjes"
+
+#: lms/templates/dashboard.html
+msgid "quizzes"
+msgstr "quizzen"
+
+#: lms/templates/dashboard.html
+msgid "pdf"
+msgstr "pdf-documenten"
+
+msgid "You have started the training module"
+msgstr "U bent met de opleidingsmodule gestart"
+
+msgid "To complete your course"
+msgstr "Om ze af te werken"
+
+msgid "you can click on"
+msgstr "klikt u op"
+
+msgid "More course covers"
+msgstr "Meer modules"
+
+msgid "You have not yet started the training course cover"
+msgstr "U bent nog niet met de opleidingsmodule gestart"
+
+msgid "Click on"
+msgstr "Klik op"
+
+msgid "Show more"
+msgstr "Meer informatie"
+
+msgid "to discover the course cover"
+msgstr "om er meer over te weten te komen"
+
+msgid "Course covers completed"
+msgstr "Voltooide modules"
+
+msgid "Completed"
+msgstr "Voltooid"
+
+msgid "You have completed the training course cover"
+msgstr "U hebt de opleidingsmodule voltooid"
+
+msgid "to access your result"
+msgstr "u kunt uw resultaat bekijken"
+
+msgid "welcome to"
+msgstr "op uw"
+
+msgid "Restart"
+msgstr "Meer informatie ..."
+
+msgid "Download the certificate"
+msgstr "Het certificaat downloaden"
+
+msgid "To start"
+msgstr "Starten"
+
+msgid "Starting date"
+msgstr "Begindatum"
+
+msgid "Ending date"
+msgstr "Einddatum"
+
+msgid "Disclaimer"
+msgstr "Wettelijke vermeldingen"
+
+msgid "Results"
+msgstr "Resultaten"
+
+msgid "Back to course about page"
+msgstr "Terug naar het overzicht van de module"
+
+msgid ""
+"To end this training module, you have to access every chapters and finish "
+"the validation knowledge test."
+msgstr ""
+"Om deze module te sluiten en uw resultaat te bekijken, moet u alle "
+"onderdelen afwerken."
+
+msgid "You started the training module "
+msgstr "U bent met de module gestart"
+
+msgid "Congratulation"
+msgstr "Proficiat"
+
+msgid "You have acomplished the course "
+msgstr "U hebt de opleidingsmodule voltooid"
+
+msgid "Your total score :"
+msgstr "Uw score is:"
+
+#: lms/templates/dashboard.html
+msgid "TO DO TRAINING MODULES"
+msgstr "TE VOLGEN MODULES"
+
+#: lms/templates/dashboard.html
+msgid ""
+"In this section, you access training modules you have to complete. Click on"
+msgstr "Hier vindt u de leermodules die u moet volgen. Klik op"
+
+#: lms/templates/dashboard.html
+#: lms/templates/dashboard/_dashboard_course_listing.html
+msgid "More information"
+msgstr "Meer informatie ..."
+
+#: lms/templates/dashboard.html
+msgid "to access the training module description"
+msgstr "om naar de beschrijving van de module te gaan"
+
+#: lms/templates/dashboard.html
+msgid "IN PROGRESS TRAINING MODULES"
+msgstr "LOPENDE MODULES"
+
+#: lms/templates/dashboard.html
+msgid ""
+"In this section, you access training modules you started but haven't "
+"completed yet. To go on, please click on"
+msgstr ""
+"Hier vindt u de leermodules die u bent gestart. Om ze af te werken klikt u "
+"op"
+
+#: lms/templates/dashboard.html
+#: lms/templates/dashboard/_dashboard_course_listing.html
+msgid "Proceed"
+msgstr "Doorgaan"
+
+#: lms/templates/dashboard.html
+msgid "COMPLETED TRAINING MODULES"
+msgstr "VOLTOOIDE MODULES"
+
+#: lms/templates/dashboard.html
+msgid "In this section, you access training modules you validated (click on"
+msgstr "Hier vindt u de leermodules die u hebt afgewerkt (klik op"
+
+#: lms/templates/dashboard.html
+msgid ""
+"to access your result) as well as unvalidated training modules for which "
+"ending date has been exceeded"
+msgstr ""
+"om uw resultaat te bekijken) en de modules die u niet hebt afgewerkt, maar "
+"waarvan de einddatum is verstreken"
+
+#: lms/templates/dashboard.html
+msgid "More modules"
+msgstr "modules"
+
+#: lms/templates/dashboard.html
+msgid "Welcome on"
+msgstr "Welkom op"
+
+#: lms/templates/dashboard.html
+msgid ""
+"Develop your knowledge and skills on asset management: financial culture and"
+" offers."
+msgstr ""
+"Ontwikkel uw kennis en vaardigheden op het vlak van vermogensbeheer: "
+"financiële cultuur en ons aanbod."
+
+#: lms/templates/dashboard.html
+msgid "More"
+msgstr "Meer informatie"
+
+#: lms/templates/navigation.html
+msgid "All"
+msgstr "Alles"
+
+#: lms/templates/courseware/course_about.html
+msgid "Download certificate"
+msgstr "Het certificaat downloaden"
+
+#: lms/templates/courseware/courseware.html
+msgid "Back to training module description"
+msgstr "TERUG NAAR HET OVERZICHT VAN DE MODULE"
+
+#: lms/templates/courseware/courseware.html
+msgid ""
+"The training campaign is over. You can access the training module content. "
+"However, you can't do the test to validate your knowledge."
+msgstr ""
+"De campagne is voorbij. U kunt de module nog volgen, maar de quiz om uw "
+"kennis te toetsen kunt u niet meer afleggen."
+
+#: lms/templates/courseware/courseware.html
+msgid "Go to studio"
+msgstr "Toegang beheerinterface"
+
+#: cms/templates/index.html
+msgid "No training campaign has been set"
+msgstr "Er is nog geen opleidingscampagne ingesteld"
+
+#: cms/templates/index.html
+msgid "To create a training campaign"
+msgstr "Om een opleidingscampagne aan te maken"
+
+#: cms/templates/index.html
+msgid "select a training module in"
+msgstr "kiest u een opleidingsmodule in de tab"
+
+#: cms/templates/index.html
+msgid "then click on"
+msgstr "en klikt u op"
+
+#: cms/templates/index.html
+msgid "Create my campaign"
+msgstr "Mijn campagne aanmaken"
+
+#: cms/templates/index.html
+msgid "My Modules"
+msgstr "Mijn modules"
+
+#: cms/templates/index.html
+msgid "Welcome to your training modules management interface"
+msgstr "Welkom in de interface voor het beheer van uw opleidingsmodules"
+
+#: cms/templates/index.html
+msgid "You can browse within two separate universes"
+msgstr "U hebt toegang tot twee aparte rubrieken"
+
+#: cms/templates/index.html
+msgid "MY CAMPAIGNS"
+msgstr "MIJN CAMPAGNES"
+
+#: cms/templates/index.html
+msgid "MY MODULES"
+msgstr "MIJN MODULES"
+
+#: cms/templates/index.html
+msgid "MICRO SITES"
+msgstr "MINISITES"
+
+#: cms/templates/index.html
+msgid "SCHEDULED TRAINING CAMPAIGNS"
+msgstr "GEPLANDE CAMPAGNES"
+
+#: cms/templates/index.html
+msgid "Manage my campaign"
+msgstr "Mijn campagne beheren"
+
+#: cms/templates/index.html
+msgid "To add new participants, please click on"
+msgstr "Om nieuwe deelnemers toe te voegen klikt u op"
+
+#: cms/templates/index.html
+msgid "Invite participants"
+msgstr "Deelnemers uitnodigen"
+
+#: cms/templates/index.html
+msgid "In progress training campaigns"
+msgstr "Lopende campagnes"
+
+#: cms/templates/index.html
+msgid "To access statistics, please click on"
+msgstr "Om de statistieken te bekijken klikt u op"
+
+#: cms/templates/index.html
+msgid "COMPLETED TRAINING CAMPAIGNS"
+msgstr "AFGELOPEN CAMPAGNES"
+
+#: cms/templates/index.html
+msgid ""
+"The following training campaigns have not been launched yet (starting date "
+"not exceeded).To modify starting/ending date, please click on"
+msgstr ""
+"De volgende opleidingscampagnes zijn nog niet gestart (begindatum nog niet "
+"verstreken). Om de begin- of einddatum te wijzigen klikt u op"
+
+#: cms/templates/index.html
+msgid ""
+"The following training campaigns have not been launched yet (starting date "
+"not exceeded). To modify ending date, please click on"
+msgstr ""
+"De volgende opleidingscampagnes zijn gestart. Om de einddatum te wijzigen "
+"klikt u op"
+
+#: cms/templates/index.html
+msgid ""
+"The following training campaigns are completed (ending date is exceeded).To "
+"access statistics, please click on"
+msgstr ""
+"De volgende opleidingscampagnes zijn afgelopen. Om de statistieken van "
+"afgelopen opleidingscampagnes te bekijken klikt u op"
+
+#: cms/templates/index.html
+msgid ""
+"The following training campaigns have not been launched yet (starting date "
+"not exceeded)."
+msgstr ""
+"De volgende opleidingscampagnes zijn nog niet gestart (begindatum nog niet "
+"verstreken)."
+
+#: cms/templates/index.html
+msgid "To launch your campaign, please click on "
+msgstr "Om de opleidingscampagne te starten klikt u op "
+
+#: cms/templates/index.html
+msgid "and set up starting date at today."
+msgstr "en stelt u de begindatum op vandaag in."
+
+#: cms/templates/index.html
+msgid "To modify starting/ending date, please click on"
+msgstr "Om de begin- of einddatum te wijzigen klikt u op"
+
+#: cms/templates/index.html
+msgid "To modify ending date, please click on"
+msgstr "Om de einddatum te wijzigen klikt u op"
+
+#: cms/templates/index.html
+msgid "To access statistics, please click on."
+msgstr ""
+"Om de statistieken van afgelopen opleidingscampagnes te bekijken klikt u op"
+
+#: cms/templates/index.html
+msgid ""
+"The following training campaigns are completed (ending date is exceeded)."
+msgstr "De volgende opleidingscampagnes zijn afgelopen."
+
+#: cms/templates/index.html lms stat.html
+msgid "Statistics"
+msgstr "Statistieken"
+
+#: cms/templates/index.html
+msgid "About the training module"
+msgstr "Over de module"
+
+#: cms/templates/index.html
+msgid "My campaigns"
+msgstr "Mijn campagnes"
+
+#: cms/templates/index.html
+msgid ""
+"You have at your disposal a library of training modules made available by "
+"Amundi. Select the module of your choice and launch the associated training "
+"campaign."
+msgstr ""
+"U beschikt over een bibliotheek van door Amundi verstrekte "
+"opleidingsmodules. Kies de module van uw keuze en start de bijbehorende "
+"opleidingscampagne."
+
+#: cms/templates/manage_course.html
+msgid ""
+"Provide all the information required to launch your training campaign: "
+"starting/ending date, minimum percentage of success required, and campaign "
+"type."
+msgstr ""
+"Voer alle gegevens in die nodig zijn om uw opleidingscampagne te starten: "
+"begin- en einddatum, vereist percentage om te slagen en type campagne."
+
+#: cms/templates/manage_course.html
+msgid "campaign id"
+msgstr "naam van uw campagne"
+
+#: cms/templates/manage_course.html
+msgid "Create your campagne id"
+msgstr "Maak een naam aan"
+
+#: cms/templates/manage_course.html
+msgid "This id is indicated in statistic reports."
+msgstr "Deze naam wordt vermeld in de statistiekoverzichten."
+
+#: cms/templates/manage_course.html
+msgid "Precise your target and/or campaign period."
+msgstr "U kunt er de doelgroep en/of de opleidingsperiode in vermelden."
+
+#: cms/templates/manage_course.html
+msgid "Your id"
+msgstr "Gekozen naam"
+
+#: cms/templates/manage_course.html
+msgid "Rules to create your campaign id: no space, no  punctuation mark"
+msgstr "Regels voor de naam van uw campagne: geen spaties, geen leestekens"
+
+#: cms/templates/manage_course.html
+msgid "PERIOD OF THE TRAINING CAMPAIGN"
+msgstr "DUUR VAN DE CAMPAGNE"
+
+#: cms/templates/manage_course.html
+msgid "Schedule your training campaign"
+msgstr "Plan uw campagne"
+
+#: cms/templates/manage_course.html
+msgid "Time for email invitation dispatch UTC"
+msgstr "Tijdstip van verzending van de uitnodigingen (UTC)"
+
+#: cms/templates/manage_course.html
+msgid ""
+"The day the first invitations are dispatched when launching the training "
+"campaign"
+msgstr ""
+"De dag waarop de eerste uitnodigingen voor de opleidingscampagne worden "
+"verstuurd"
+
+#: cms/templates/manage_course.html
+msgid "Ending time UTC"
+msgstr "Einduur (UTC)"
+
+#: cms/templates/manage_course.html
+msgid "Starting and ending dates of the training campaign"
+msgstr "Begin- en einddatum van de opleidingscampagne"
+
+#: cms/templates/manage_course.html
+msgid "Closing day of the training campaign"
+msgstr "De dag waarop de opleidingscampagne wordt afgesloten."
+
+#: cms/templates/manage_course.html
+msgid "MINIMUM PERCENTAGE OF SUCCESS REQUIRED"
+msgstr "VEREIST PERCENTAGE OM TE SLAGEN"
+
+#: cms/templates/manage_course.html
+msgid "Define the minimum score required to validate the training module"
+msgstr "Stel de minimaal te behalen score in"
+
+#: cms/templates/manage_course.html
+msgid ""
+"Minimum score required to validate the training module and receive the "
+"certificate of achievement"
+msgstr ""
+"Minimaal te behalen score om de opleidingsmodule met succes te hebben "
+"doorlopen en het certificaat te krijgen"
+
+#: cms/templates/manage_course.html
+msgid "CAMPAIGN TYPE"
+msgstr "TYPE CAMPAGNE"
+
+#: cms/templates/manage_course.html
+msgid "Specify whether the training campaign is mandatory or optional"
+msgstr ""
+"Maak de doelgroep duidelijk of de opleidingsmodule verplicht is of niet"
+
+#: cms/templates/manage_course.html
+msgid "mandatory"
+msgstr "verplicht"
+
+#: cms/templates/manage_course.html
+msgid "optional"
+msgstr "optioneel"
+
+#: cms/templates/manage_course.html
+msgid ""
+"Add participants to your training campaign and customize the invitation "
+"email"
+msgstr ""
+"Voeg deelnemers aan uw opleidingscampagne toe en personaliseer de "
+"uitnodigingsmail"
+
+#: cms/templates/manage_course.html
+msgid "PARTICIPANTS"
+msgstr "DEELNEMERS"
+
+#: cms/templates/manage_course.html
+msgid "Invite participants to your training campaign"
+msgstr "Nodig deelnemers uit voor uw opleidingscampagne"
+
+#: cms/templates/manage_course.html
+msgid "Upload participants list"
+msgstr "Lijst met deelnemers uploaden"
+
+#: cms/templates/manage_course.html
+msgid "EMAIL TO PARTICIPANTS"
+msgstr "E-MAIL AAN DE DEELNEMERS"
+
+#: cms/templates/manage_course.html
+msgid "Edit and send the invitation email to participants of your choice."
+msgstr ""
+"Bewerk de uitnodigingsmail en verstuur hem naar de bestemmelingen van uw "
+"keuze."
+
+#: cms/templates/manage_course.html
+msgid "Send the invitation email to :"
+msgstr "De uitnodigingsmail verzenden naar:"
+
+#: cms/templates/manage_course.html
+msgid "Admin Team"
+msgstr "Team en beheerder"
+
+#: cms/templates/manage_course.html
+msgid "Every participants"
+msgstr "Alle deelnemers"
+
+#: cms/templates/manage_course.html
+msgid "Customized list of participants"
+msgstr "Gepersonaliseerde lijst van ontvangers"
+
+#: cms/templates/manage_course.html
+msgid ""
+"If you want to send the invitation email to the training campaign to a "
+"customized list of participants, please copy/paste the email recipients "
+"above. Remember that invitation emails can be sent only to the participants "
+"who have been invited to participate to the training campaign in the section"
+" 1/2 PARTICIPANTS."
+msgstr ""
+"Als u de uitnodigingsmail voor de opleidingscampagne naar een "
+"gepersonaliseerde lijst van ontvangers wilt sturen, kopieert en plakt u hier"
+" hun e-mailadressen. Merk op dat de uitnodigingsmails alleen worden "
+"verzonden naar de deelnemers die in rubriek 1/2 DEELNEMERS werden "
+"uitgenodigd."
+
+#: cms/templates/manage_course.html
+msgid "Object"
+msgstr "Onderwerp"
+
+#: cms/templates/manage_course.html
+msgid "128 characters maximum"
+msgstr "maximaal 128 tekens"
+
+#: cms/templates/manage_course.html
+msgid "Contenu du mail"
+msgstr "Tekst"
+
+#: cms/templates/manage_course.html
+msgid ""
+"WARNING : Don’t hesitate to validate the email invitation by sending a test "
+"invitation to yourself. It will allow you to validate content and links "
+"included in the email invitation."
+msgstr ""
+"OPGELET: Lees uw e-mail aandachtig na en test de uitnodiging door ze naar "
+"uzelf te sturen alvorens op ‘Verzenden’ te klikken. Zo kunt u nagaan of de "
+"inhoud en de links in de uitnodigingsmail correct zijn."
+
+#: cms/templates/manage_course.html
+msgid "CTA : Send"
+msgstr "CTA: Verzenden"
+
+#: cms/templates/manage_course.html
+msgid ""
+"Don't hesitate to validate the email invitation by sending a test invitation"
+" to yourself. It will allow you to validate content and links included in "
+"the email invitation."
+msgstr ""
+"Lees uw e-mail aandachtig na en test de uitnodiging door ze naar uzelf te "
+"sturen alvorens op ‘Verzenden’ te klikken. Zo kunt u nagaan of de inhoud en "
+"de links in de uitnodigingsmail correct zijn."
+
+#: cms/templates/index.html
+msgid "WHAT YOU CAN DO"
+msgstr "WAT U KUNT DOEN"
+
+#: cms/templates/index.html
+msgid "Schedules training campaigns:"
+msgstr "In uw geplande campagnes:"
+
+#: cms/templates/index.html
+msgid ""
+"Update your settings: starting/ending dates, minimum percentage of success"
+msgstr ""
+"De ingevoerde instellingen wijzigen: begin- en einddatum en het vereiste "
+"percentage om te slagen"
+
+#: cms/templates/index.html
+msgid "Add new participants"
+msgstr "Nieuwe deelnemers toevoegen"
+
+#: cms/templates/index.html
+msgid "Update the text of the email invitation and test your email invitation"
+msgstr "De tekst van de uitnodigingsmail aanpassen en een testmail verzenden"
+
+#: cms/templates/index.html
+msgid "In progress training campaigns:"
+msgstr "In uw lopende campagnes:"
+
+#: cms/templates/index.html
+msgid "Update ending date"
+msgstr "De einddatum wijzigen"
+
+#: cms/templates/index.html
+msgid "Access statistics: participation rate, success by participant, etc."
+msgstr ""
+"De statistieken van de campagne bekijken: deelnamepercentage, resultaten per"
+" deelnemer enz."
+
+#: cms/templates/index.html
+msgid "Completed training campaigns:"
+msgstr "In uw afgelopen campagnes:"
+
+#: cms/templates/index.html
+msgid "Completed training campaigns"
+msgstr "Afgelopen campagnes"
+
+#: cms/templates/index.html
+msgid "Access a training modules library provided by Amundi"
+msgstr "De bibliotheek met door Amundi verstrekte opleidingsmodules bekijken"
+
+#: cms/templates/index.html
+msgid "Launch a training campaign"
+msgstr "Een opleidingscampagne starten"
+
+#: cms/templates/index.html
+msgid "My modules:"
+msgstr "In uw modules:"
+
+#: log
+msgid "logout"
+msgstr "afmelden"
+
+#: log
+msgid "login"
+msgstr "aanmelden"
+
+#: cms index.html
+msgid "No training campaign has been launched yet."
+msgstr "Er is nog geen opleidingscampagne gestart."
+
+#: lms dashboard.html
+msgid "No training modules available in this section."
+msgstr "In deze rubriek zijn geen opleidingsmodules beschikbaar."
+
+#: lms dashboard.html
+msgid "Welcome on Amundi Academy platform"
+msgstr "Welkom op het platform Amundi Academy "
+
+#: lms dashboard.html
+msgid "You successfully registered"
+msgstr "Uw inschrijving is bevestigd"
+
+#: lms dashboard.html
+msgid "The training module"
+msgstr "De opleidingsmodule"
+
+#: lms dashboard.html
+msgid "is available in the section"
+msgstr "is beschikbaar in de rubriek"
+
+#: cms index.html
+msgid "Send email to participants"
+msgstr "De deelnemers een e-mail sturen"
+
+#: cms send email
+msgid "Send"
+msgstr "Verzenden"
+
+msgid "You can send a new email or go back to the page MY CAMPAIGNS"
+msgstr ""
+"U kunt een nieuwe e-mail verzenden of terugkeren naar de pagina MIJN "
+"CAMPAGNES"
+
+msgid "Your email was sent"
+msgstr "Uw e-mail is naar de bestemmelingen verzonden"
+
+#: cms index.html
+msgid "Access Trainee interface"
+msgstr "Toegang cursist"
+
+#: lms dashboard.html
+msgid "Access admin interface"
+msgstr "Toegang beheerinterface"
+
+#: lms stat.html
+msgid "editor"
+msgstr "Uitgever"
+
+#: lms stat.html
+msgid "Results on "
+msgstr "Resultaten op "
+
+#: lms stat.html
+msgid "Statistical training campaign"
+msgstr "Statistieken"
+
+#: lms stat.html
+msgid "training campaign info"
+msgstr "algemene informatie"
+
+#: lms stat.html
+msgid "Download participants' list"
+msgstr "De lijst met uitgenodigde deelnemers downloaden"
+
+#: lms stat.html
+msgid "starting date"
+msgstr "Begindatum"
+
+#: lms stat.html
+msgid "ending date"
+msgstr "Einddatum"
+
+#: lms stat.html
+msgid "Number of questions"
+msgstr "Aantal vragen"
+
+#: lms stat.html
+msgid "Percentage for success"
+msgstr "Slaagpercentage"
+
+#: lms stat.html
+msgid "users stats"
+msgstr "over de deelnemers"
+
+#: lms stat.html
+msgid "Network"
+msgstr "Netwerk"
+
+#: lms stat.html
+msgid "Target"
+msgstr "Doelgroep"
+
+#: lms stat.html
+msgid "Guests"
+msgstr "Uitgenodigde deelnemers"
+
+#: lms stat.html
+msgid "Certified"
+msgstr "Aantal deelnemers die hun certificaat hebben behaald"
+
+#: lms stat.html
+msgid "Average result"
+msgstr "Gemiddeld resultaat per deelnemer"
+
+#: lms stat.html
+msgid "Average result for certified participants"
+msgstr ""
+"Gemiddeld resultaat per deelnemer die in de quiz het certificaat heeft "
+"behaald"
+
+#: lms stat.html
+msgid "Average result for participants"
+msgstr "Gemiddeld resultaat per deelnemer aan de quiz"
+
+#: lms stat.html
+msgid "Average score"
+msgstr "gemiddelde score"
+
+#: lms stat.html
+msgid "per question"
+msgstr "per vraag"
+
+#: lms stat.html
+msgid "per participant"
+msgstr "per deelnemer"
+
+#: lms stat.html
+msgid "Download all participants' detailled results"
+msgstr "De resultaten van alle deelnemers downloaden"
+
+#: lms stat.html
+msgid "First name"
+msgstr "Voornaam"
+
+#: lms stat.html
+msgid "Last name"
+msgstr "Naam"
+
+#: cms create_course.html
+msgid "create my campaign"
+msgstr "mijn campagne aanmaken"
+
+#: cms create_course.html
+msgid ""
+"To launch your training campaign, you have to specify an unique ID and the "
+"target of your training campaign. Please, note that the target wording will "
+"be indicated in the statistics of this training campaign."
+msgstr ""
+"Om een opleidingscampagne te starten, moet u een unieke naam en de doelgroep"
+" van uw campagne invoeren. De doelgroep wordt vermeld in de statistieken van"
+" de campagne."
+
+#: cms create_course.html
+msgid "Specify unique ID and target"
+msgstr "Voer een unieke naam en de doelgroep in"
+
+#: cms create_course.html
+msgid ""
+"Specify an unique campaign title as long as a target for your training "
+"campaign"
+msgstr "Geef uw campagne een naam en vermeld de doelgroep"
+
+#: cms create_course.html
+msgid "Unique ID"
+msgstr "Unieke naam"
+
+#: cms create_course.html
+msgid "Campaign title (unique id)"
+msgstr "Titel van de campagne (unieke naam)"
+
+#: cms create_course.html
+msgid ""
+"Rules for unique ID and target : no space, no punctuation, no special "
+"characters"
+msgstr ""
+"Regels voor de invoer van de unieke naam en de doelgroep: geen spaties, geen"
+" leestekens, geen speciale tekens"
+
+#: cms create_course.html
+msgid "Create an identifier"
+msgstr ""
+
+#: cms create_course.html
+msgid "This identifier is reflected in the statistical dashboards"
+msgstr "deze naam wordt vermeld in de statistiekoverzichten"
+
+#: cms create_course.html
+msgid "This allows you to specify the target and / or training period"
+msgstr "U kunt er de doelgroep en/of de opleidingsperiode in vermelden"
+
+#: cms create_course.html
+msgid "identifying your campaign"
+msgstr "naam van uw campagne"
+
+#: cms create_course.html
+msgid "Rules for unique ID and target"
+msgstr "Regels voor de invoer van de unieke naam en de doelgroep"
+
+#: cms create_course.html
+msgid "no space, no punctuation, no special characters"
+msgstr "geen spaties, geen leestekens, geen speciale tekens"
+
+#: cms invite.html
+msgid "INVITE PARTICIPANTS"
+msgstr "DEELNEMERS UITNODIGEN"
+
+#: cms invite.html
+msgid ""
+"In order to invite participants to your training campaign, it is imperative "
+"that starting date of the training session is set before the current date."
+msgstr ""
+"Om deelnemers voor uw opleidingscampagne uit te nodigen, moet de ingevoerde "
+"begindatum van de campagne vóór de datum van vandaag vallen."
+
+#: cms mail.html
+msgid "SEND EMAIL TO PARTICIPANTS"
+msgstr "DE DEELNEMERS EEN E-MAIL STUREN"
+
+#: cms mail.html
+msgid ""
+"During the training campaign, you can send a personalized e-mail to your "
+"participants or to targeted receivers."
+msgstr ""
+"Tijdens uw opleidingscampagne kunt u op elk moment de deelnemers of een "
+"lijst van zelf gekozen bestemmelingen een gepersonaliseerde e-mail sturen."
+
+#: cms mail.html
+msgid ""
+"It can be an email to remind them the training campaign will end soon, the "
+"training campaign is mandatory, etc"
+msgstr ""
+"Zo kunt u de deelnemers eraan herinneren dat de opleidingscampagne "
+"binnenkort afloopt, hen laten weten dat de opleidingscampagne verplicht is "
+"enz."
+
+#: cms mail.html
+msgid "Send email to:"
+msgstr "E-mail versturen naar:"
+
+#: cms mail.html
+msgid "Team and administrator"
+msgstr "Team en beheerder"
+
+#: cms mail.html
+msgid "All participants (invited and accepted)"
+msgstr "Alle deelnemers (uitgenodigd en ingeschreven)"
+
+#: cms mail.html
+msgid "Customized mailing list"
+msgstr "Gepersonaliseerde lijst van ontvangers"
+
+#: cms mail.html
+msgid ""
+"If you want to send an email to a customized mailing list, please copy/paste"
+" email addresses above. Emails will only be sent to receivers that have been"
+" invited to participate to the training campaign in the section 'Invite "
+"participants'."
+msgstr ""
+"Als u uw e-mail naar een gepersonaliseerde lijst van ontvangers wilt sturen,"
+" kopieert en plakt u hier hun e-mailadressen. Merk op dat de e-mail alleen "
+"wordt verzonden naar de ontvangers die in de rubriek ‘Deelnemers uitnodigen’"
+" werden uitgenodigd om deel te nemen aan de opleidingscampagne."
+
+#: cms mail.html
+msgid "Object of the email"
+msgstr "Onderwerp van de e-mail "
+
+#: cms mail.html
+msgid ""
+"WARNING : Before clicking on 'Send', please read your text carefully and "
+"send an email to yourself. This will allow you to validate text and links "
+"are correct."
+msgstr ""
+"OPGELET: Lees uw e-mail aandachtig na en test de verzending door uzelf een "
+"e-mail te sturen alvorens op ‘Verzenden’ te klikken. Zo kunt u nagaan of de "
+"inhoud en de links correct zijn."
+
+msgid "Body of the email"
+msgstr "Tekst van de e-mail"
+
+msgid ""
+"We recommend sending only one message per week to learners. Before sending "
+"your e-mail, read your text carefully and send it to your email address. You"
+" will be able to verify that all the links work and that the content is "
+"good."
+msgstr ""
+
+msgid "legal notices"
+msgstr "wettelijke vermeldingen"
+
+msgid "File preview"
+msgstr "Voorbeeldweergave van het bestand"
+
+msgid "Access Trainee Interface"
+msgstr "Toegang interface cursist"
+
+msgid "The participants' list is successfully uploaded."
+msgstr "De lijst met deelnemers is geüpload."
+
+msgid ""
+"An email invitation to participate to the training module has been sent to "
+"the participants."
+msgstr ""
+"De deelnemers hebben per e-mail een uitnodiging ontvangen om aan de "
+"opleidingsmodule deel te nemen."
+
+msgid "OUR SOLUTIONS"
+msgstr "ONZE OPLOSSINGEN"
+
+msgid "Our solutions"
+msgstr "Onze oplossingen"
+
+msgid "our solutions"
+msgstr "onze oplossingen"
+
+msgid "OUR SOLUTION"
+msgstr "ONZE OPLOSSINGEN"
+
+msgid "Our solution"
+msgstr "Onze oplossingen"
+
+msgid "our solution"
+msgstr "onze oplossingen"
+
+msgid ""
+"To create your training campaign, you have to specify an unique ID and the "
+"target of your training campaign. Please, note that the target wording will "
+"be indicated in the statistics of this training campaign."
+msgstr ""
+"Om een opleidingscampagne aan te maken, moet u een unieke naam en de "
+"doelgroep van uw campagne invoeren. Deze informatie wordt vermeld in de "
+"statistieken van de campagne."
+
+msgid ""
+"To create your training campaign, you have to specify an unique campaign "
+"title as long as a target for your training campaign."
+msgstr ""
+"Om een opleidingscampagne aan te maken, moet u een unieke naam en de "
+"doelgroep van uw campagne invoeren."
+
+msgid ""
+"Please, note that these will be indicated in the statistics dashboard of "
+"this training campaign."
+msgstr "Deze informatie wordt vermeld in de statistieken van de campagne."
+
+msgid "Created training campaigns"
+msgstr "Aangemaakte campagnes"
+
+msgid "The training campaign is over."
+msgstr "De opleidingscampagne is afgelopen."
+
+msgid "Starting time UTC"
+msgstr "Beginuur (UTC)"
+
+msgid ""
+"Define the minimum score required to validate the training module and "
+"receive the certificate of achievement"
+msgstr ""
+"Bepaal de minimaal te behalen score om de opleidingsmodule met succes te "
+"hebben doorlopen en het certificaat te krijgen"
+
+#: cms:index.html
+msgid "To launch a training campaign"
+msgstr "Om een opleidingscampagne aan te maken"
+
+#: validate translate
+msgid "Validated"
+msgstr "Geslaagd"
+
+msgid "Not validated"
+msgstr "Niet geslaagd"
+
+msgid "SEARCH IN MY MODULES"
+msgstr "ZOEKEN IN MIJN MODULES"
+
+msgid "Search in a module"
+msgstr "Een module zoeken"
+
+msgid "SEARCH IN MY CAMPAIGNS"
+msgstr "ZOEKEN IN MIJN CAMPAGNES"
+
+msgid "Search for a campaign"
+msgstr "Een campagne zoeken"
+
+msgid "No match! Please, try a new search"
+msgstr "Geen resultaten gevonden. Voer een nieuwe zoekopdracht uit"
+
+msgid "New search"
+msgstr "Nieuwe zoekopdracht"
+
+msgid "results found in your modules"
+msgstr "in uw modules gevonden resultaten"
+
+msgid "results found in your campaigns"
+msgstr "in uw campagnes gevonden resultaten"
+
+#: fail cms invite.html
+msgid ""
+"The structure of the file loaded is incorrect. Please, modify your file and "
+"load it again"
+msgstr ""
+"Het geüploade bestand heeft niet de juiste indeling. Pas uw bestand aan en "
+"upload het opnieuw"
+
+#: cms manage.html
+msgid ""
+"You already have invited participants to this training campaign. Starting "
+"date can no longer be edited."
+msgstr ""
+"U hebt voor deze opleidingscampagne al deelnemers uitgenodigd. De begindatum"
+" kan niet meer worden gewijzigd."
+
+msgid "Primary color"
+msgstr "Primaire kleur"
+
+msgid "Secondary color"
+msgstr "Secundaire kleur"
+
+msgid "No text"
+msgstr "Geen inhoud"
+
+msgid "Contact address"
+msgstr "Contactadres"
+
+msgid "AmundiBrand is displayed"
+msgstr "Het merk AmundiBrand is zichtbaar"
+
+msgid "AmundiBrand is hidden"
+msgstr "Het merk AmundiBrand is verborgen"
+
+msgid "Display"
+msgstr "Weergeven"
+
+msgid "Chose Language"
+msgstr "Een taal kiezen"
+
+msgid "Please select AmundiBrand appearance"
+msgstr "Kies een weergave voor het merk AmundiBrand"
+
+msgid "No contact address defined for this site"
+msgstr "Voor deze website is geen contactadres ingesteld"
+
+msgid "No color logo defined for this site"
+msgstr "Voor deze website is geen logokleur ingesteld"
+
+msgid "Color logo"
+msgstr "Logo kleur"
+
+msgid "White logo"
+msgstr "Logo wit"
+
+msgid "Manage my microsite"
+msgstr "De microsite wijzigen"
+
+msgid "Manage Microsite Admin"
+msgstr "De beheerders beheren"
+
+msgid "Manage Microsite"
+msgstr "De microsite wijzigen"
+
+msgid ""
+"Your request has been taken into account. Invitations have been sent to "
+"participants."
+msgstr ""
+"Uw verzoek is verwerkt. De uitnodigingen zijn naar de deelnemers verzonden."
+
+msgid "Some participants' required data is missing please complete your file"
+msgstr ""
+"Enkele verplichte gegevens voor de inschrijving van de deelnemers ontbreken."
+" Vul uw bestand aan"
+
+msgid "Some participants' data is incorrect please modify your file"
+msgstr ""
+"Enkele verplichte gegevens voor de inschrijving van de deelnemers zijn "
+"onjuist. Corrigeer uw bestand."
+
+msgid "Your file header is incorrect, please include required information"
+msgstr ""
+"De opmaak van uw bestand strookt niet met de gevraagde indeling. Voeg de "
+"volgende kolommen toe:"
+
+msgid ""
+"Add your csv file to invite participants to your course. CSV must have the "
+"following header"
+msgstr ""
+"Upload uw csv-bestand om deelnemers uit te nodigen voor uw "
+"opleidingscampagne. Het bestand moet als volgt zijn opgemaakt:"
 
 #: cms/djangoapps/api/v1/serializers/course_runs.py
 msgid "Course team user does not exist"
