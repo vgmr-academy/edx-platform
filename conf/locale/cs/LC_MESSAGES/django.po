@@ -18531,9 +18531,6 @@ msgstr ""
 msgid "Send to:"
 msgstr "Odeslat komu:"
 
-#: lms/templates/instructor/instructor_dashboard_2/send_email.html
-msgid "Myself"
-msgstr ""
 
 #: lms/templates/instructor/instructor_dashboard_2/send_email.html
 msgid "Staff and Administrators"
@@ -24629,10 +24626,10 @@ msgid "my account"
 msgstr "můj účet"
 
 msgid "my modules"
-msgstr "můj kurzy"
+msgstr "moje kurzy"
 
 msgid "My modules"
-msgstr "Můj kurzy"
+msgstr "Moje kurzy"
 
 msgid "IN PROGRESS"
 msgstr "NEDOKONČENÉ"
@@ -24970,7 +24967,7 @@ msgstr "MÉ KAMPANĚ"
 
 #: cms/templates/index.html
 msgid "MY MODULES"
-msgstr "MÉ KURZY"
+msgstr "MOJE KURZY"
 
 #: cms/templates/index.html
 msgid "MICRO SITES"
@@ -25139,11 +25136,11 @@ msgstr "Zadejte zda-li je kampaň povinná nebo volitelná"
 
 #: cms/templates/manage_course.html
 msgid "mandatory"
-msgstr "povinná"
+msgstr "povinné"
 
 #: cms/templates/manage_course.html
 msgid "optional"
-msgstr "volitelná"
+msgstr "volitelné"
 
 #: cms/templates/manage_course.html
 msgid "Add participants to your training campaign and customize the invitation email"
@@ -25377,7 +25374,7 @@ msgstr "Cíl"
 
 #lms stat.html
 msgid "Guests"
-msgstr "Hosté"
+msgstr "Pozvaní"
 
 #lms stat.html
 msgid "Certified"
@@ -25436,7 +25433,7 @@ msgid "Campaign title (unique id)"
 msgstr "Název kampaně (unikátní ID)"
 
 #cms create_course.html
-msgid "Rules for unique ID and target : no space, no punctuation, no special characters"
+msgid "Rules for unique ID and target : no space, no punctuation, no special characters"
 msgstr "Pravidla pro unikátní ID a cíl: žádné mezery, interpunkce a speciální znaky"
 
 #cms create_course.html
@@ -25493,7 +25490,7 @@ msgstr "Tým a administrátor"
 
 #cms mail.html
 msgid "All participants (invited and accepted)"
-msgstr "Všichni účastnícic (pozvaní a schválení)"
+msgstr "Všichni účastnící (pozvaní a registrovaní)"
 
 #cms mail.html
 msgid "Customized mailing list"
@@ -25512,7 +25509,7 @@ msgid "WARNING : Before clicking on 'Send', please read your text carefully and 
 msgstr "UPOZORNĚNÍ: Před odesláním si pečlivě zkontrolujte text a odešlete email sám sobě. Díky tomu si ověříte, že je vše správně."
 
 msgid "Body of the email"
-msgstr "Tělo email"
+msgstr "Tělo emailu"
 
 msgid "We recommend sending only one message per week to learners. Before sending your e-mail, read your text carefully and send it to your email address. You will be able to verify that all the links work and that the content is good."
 msgstr "Doporučujeme odeslat pouze jednu zprávu týdně. Před odesláním si pečlivě zkontrolujte text a odešlete email sám sobě. Díky tomu si ověříte, že je vše správně."
@@ -25577,10 +25574,10 @@ msgstr "Zahájení vzdělávací kampaně"
 
 #validate translate
 msgid "Validated"
-msgstr "Schváleno"
+msgstr "Splněno"
 
 msgid "Not validated"
-msgstr "Neschálenoo"
+msgstr "Nesplněno"
 
 msgid "SEARCH IN MY MODULES"
 msgstr "HLEDAT V MÉ KURZY"
@@ -25611,13 +25608,13 @@ msgid "In this section, you access training modules you started but haven't comp
 msgstr "V této sekci máte přístup ke kurzům, které jste začali, ale ještě jste nedokončili. Chcete-li pokračovat, klikněte na tlačítko"
 
 msgid "In this section, you access training modules you have to complete. Click on"
-msgstr "V této sekci získáte přístup k kurzům, které musíte dokončit. Kliknutím na"
+msgstr "V této sekci získáte přístup ke kurzům, které máte dokončit. Klikněte na"
 
 msgid "In this section, you access training modules you validated (click on"
-msgstr "V této sekci jste si ověřili své kurzy (klikněte na"
+msgstr "V této sekci najdete úspěšně dokončené kurzy (klikněte na"
 
 msgid "to access your result) as well as unvalidated training modules for which ending date has been exceeded"
-msgstr "abyste získali přístup k výsledkům), stejně jako kurzy, u kterých byl překročen termín ukončení."
+msgstr "abyste získali přístup k výsledkům). Dále zde najdete i ty kurzy, u kterých vypršela doba pro splnění."
 
 msgid "Congratulations"
 msgstr "Gratulujeme"
@@ -25634,3 +25631,26 @@ msgstr "Začít znovu"
 msgid "Start"
 msgstr "Začít"
 
+msgid "Back to"
+msgstr "Zpět"
+
+msgid "Participants"
+msgstr "Účastníci"
+
+msgid "Number of certified partipants"
+msgstr "Počet úspěšných - certfikovaných účastníků"
+
+msgid "Average result for all certified participants"
+msgstr "Průměrné skóre - všichni úspěšní účastníci"
+
+msgid "Average result for all quiz participants"
+msgstr "Průměrné skóre - všichni účastníci"
+
+msgid "Add your csv file to invite participants to your course. CSV must have the following header"
+msgstr "Nahrajte soubor csv, tedy soubor s hodnoty oddělenými čárkou. CSV musí mít následující strukturu včetně nadpisu. Všechny údaje musí být ve sloupci A odděleny čárkou."
+
+msgid "View participants invited"
+msgstr "Seznam pozvaných účastníků"
+
+msgid "Myself"
+msgstr "jen mně (TEST)"

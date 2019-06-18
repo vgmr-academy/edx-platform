@@ -11118,1006 +11118,1006 @@ msgid ""
 "glad to have you! Come see what everyone is learning."
 msgstr ""
 
-#ATP TMA	
-msgid "MY ACCOUNT"	
-msgstr "MŮJ ÚČET"	
-	
-msgid "My account"	
-msgstr "Můj účet"	
-	
-msgid "my account"	
-msgstr "můj účet"	
-	
-msgid "my modules"	
-msgstr "můj kurzy"	
-	
-msgid "My modules"	
-msgstr "Můj kurzy"	
-	
-msgid "IN PROGRESS"	
-msgstr "NEDOKONČENÉ"	
-	
-msgid "in progress"	
-msgstr "nedokončené"	
-	
-msgid "In progress"	
-msgstr "Nedokončené"	
-	
-msgid "TO DO"	
-msgstr "DOSTUPNÉ"	
-	
-msgid "to do"	
-msgstr "dostupné"	
-	
-msgid "To do"	
-msgstr "dostupné"	
-	
-msgid "MY CATEGORIES"	
-msgstr "MOJE KATEGORIE"	
-	
-msgid "My Categories"	
-msgstr "Moje kategorie"	
-	
-msgid "categories"	
-msgstr "kategorie"	
-	
-msgid "FUNDAMENTALS"	
-msgstr "OBECNĚ K TRHŮM"	
-	
-msgid "Fundamentals"	
-msgstr "Obecně k trhům"	
-	
-msgid "fundamentals"	
-msgstr "obecně k trhům"	
-	
-msgid "FUNDAMENTAL"	
-msgstr "OBECNĚ K TRHŮM"	
-	
-msgid "Fundamental"	
-msgstr "Obecně k trhům"	
-	
-msgid "fundamental"	
-msgstr "obecně k trhům"	
-	
-msgid "BUSINESS APPROACH"	
-msgstr "OBCHODNÍ PŘÍSTUP"	
-	
-msgid "Business approach"	
-msgstr "Obchodní přístup"	
-	
-msgid "SALES APPROACH"	
-msgstr "PRODEJNÍ DOVEDNOSTI"	
-	
-msgid "Sales approach"	
-msgstr "Prodejní dovednosti"	
-	
-msgid "REGULATORY"	
-msgstr "REGULACE"	
-	
-msgid "Regulatory"	
-msgstr "Regulace"	
-	
-msgid "regulatory"	
-msgstr "regulace"	
-	
-msgid "Develop your knowledge and skills on asset management: financial culture and products and offers marketed"	
-msgstr "Rozvíjejte své znalosti a dovednosti v oblasti investic a správy majetku: obecné základy, produkty a další řešení"	
-	
-#: lms/templates/dashboard.html	
-msgid "To follow a training module, select the thumbnail of your choice!"	
-msgstr "Pro výběr vzdělávacího kurzu, prosím klikněte na vybraný náhled!"	
-	
-#: lms/templates/dashboard.html	
-msgid "Each training module belongs to a category and can take"	
-msgstr "Každý vzdělávací kurz patří do určité kategorie a může obsahovat"	
-	
-msgid "different formats"	
-msgstr "různorodé formáty"	
-	
-msgid "Training modules"	
-msgstr "Vzdělávací kurzy"	
-	
-msgid "Find all the information related to the training on the thumbnails below"	
-msgstr "Všechny informace o vzdělávacím kurzu najdete na náhledech níže"	
-	
-msgid "timing of the module"	
-msgstr "načasování kurzu"	
-	
-msgid "if the module is mandatory or not and formats of the module"	
-msgstr "pokud je tento kurz povinný a jeho formáty"	
-	
-msgid "TRAINING MODULES CATEGORIES"	
-msgstr "KATEGORIE VZDĚLÁVACÍCH KURZŮ"	
-	
-#: lms/templates/dashboard.html	
-msgid "Your training modules are classified into 4 categories"	
-msgstr "Vaše vzdělávací kurzy jsou zařazeny do 4 kategorií"	
-	
-#: lms/templates/dashboard.html	
-msgid "Know the essentials of financial markets"	
-msgstr "Poznejte základy finančních trhů"	
-	
-#: lms/templates/dashboard.html	
-msgid "Improve your soft skills"	
-msgstr "Zlepšete své prodejní dovednosti"	
-	
-#: lms/templates/dashboard.html	
-msgid "Learn about products and offers that are sold"	
-msgstr "Poznejte produkty a další naše řešení"	
-	
-#: lms/templates/dashboard.html	
-msgid "Understanding regulatory decisions"	
-msgstr "Porozumějte více regulacím "	
-	
-#: lms/templates/dashboard.html	
-msgid "FORMATS"	
-msgstr "FORMÁTY"	
-	
-#: lms/templates/dashboard.html	
-msgid "Each module is composed of different interactive formats:"	
-msgstr "Každý kurz je složen z několika interaktivních formátů:"	
-	
-#: lms/templates/dashboard.html	
-msgid "texts & images"	
-msgstr "text a obrázky"	
+#ATP TMA
+msgid "MY ACCOUNT"
+msgstr "MŮJ ÚČET"
 
-msgid "Infography"	
-msgstr "Infografika"	
-	
-#: lms/templates/dashboard.html	
-msgid "pedagogical videos"	
-msgstr "edukační videa"	
-	
-#: lms/templates/dashboard.html	
-msgid "quizzes"	
-msgstr "kvíz"	
-	
-#: lms/templates/dashboard.html	
-msgid "pdf"	
-msgstr "pdf"	
-	
-msgid "You have started the training module"	
-msgstr "Právě jste spustili vzdělávací kurz"	
-	
-msgid "To complete your course"	
-msgstr "K dokončení vašeho kurzu"	
-	
-msgid "you can click on"	
-msgstr "můžete kliknout na"	
-	
-msgid "More course covers"	
-msgstr "Více kurzů pokrývá"	
-	
-msgid "You have not yet started the training course cover"	
-msgstr "Ještě jste nespustili vzdělávací kurz"	
-	
-msgid "Click on"	
-msgstr "Klikněte na"	
-	
-msgid "Show more"	
-msgstr "Zobrazit více"	
-	
-msgid "to discover the course cover"	
-msgstr "objevit kurz"	
-	
-msgid "Course covers completed"	
-msgstr "Dokončení kurzu"	
-	
-msgid "Completed"	
-msgstr "Dokončeno"	
-	
-msgid "You have completed the training course cover"	
-msgstr "Právě jste dokončili vzdělávací kurz"	
-	
-msgid "to access your result"	
-msgstr "pro zobrazení výsledků"	
-	
-msgid "welcome to"	
-msgstr "vítejte v"	
-	
-msgid "Restart"	
-msgstr "Znovu"	
-	
-msgid "Download the certificate"	
-msgstr "Stáhněte si certifikát"	
-	
-msgid "To start"	
-msgstr "Začít"	
-	
-msgid "Starting date"	
-msgstr "Datum začátku"	
-	
-msgid "Ending date"	
-msgstr "Datum ukončení"	
-	
-msgid "Disclaimer"	
-msgstr "Právní upozornění"	
-	
+msgid "My account"
+msgstr "Můj účet"
+
+msgid "my account"
+msgstr "můj účet"
+
+msgid "my modules"
+msgstr "moje kurzy"
+
+msgid "My modules"
+msgstr "Moje kurzy"
+
+msgid "IN PROGRESS"
+msgstr "NEDOKONČENÉ"
+
+msgid "in progress"
+msgstr "nedokončené"
+
+msgid "In progress"
+msgstr "Nedokončené"
+
+msgid "TO DO"
+msgstr "DOSTUPNÉ"
+
+msgid "to do"
+msgstr "dostupné"
+
+msgid "To do"
+msgstr "dostupné"
+
+msgid "MY CATEGORIES"
+msgstr "MOJE KATEGORIE"
+
+msgid "My Categories"
+msgstr "Moje kategorie"
+
+msgid "categories"
+msgstr "kategorie"
+
+msgid "FUNDAMENTALS"
+msgstr "OBECNĚ K TRHŮM"
+
+msgid "Fundamentals"
+msgstr "Obecně k trhům"
+
+msgid "fundamentals"
+msgstr "obecně k trhům"
+
+msgid "FUNDAMENTAL"
+msgstr "OBECNĚ K TRHŮM"
+
+msgid "Fundamental"
+msgstr "Obecně k trhům"
+
+msgid "fundamental"
+msgstr "obecně k trhům"
+
+msgid "BUSINESS APPROACH"
+msgstr "OBCHODNÍ PŘÍSTUP"
+
+msgid "Business approach"
+msgstr "Obchodní přístup"
+
+msgid "SALES APPROACH"
+msgstr "PRODEJNÍ DOVEDNOSTI"
+
+msgid "Sales approach"
+msgstr "Prodejní dovednosti"
+
+msgid "REGULATORY"
+msgstr "REGULACE"
+
+msgid "Regulatory"
+msgstr "Regulace"
+
+msgid "regulatory"
+msgstr "regulace"
+
+msgid "Develop your knowledge and skills on asset management: financial culture and products and offers marketed"
+msgstr "Rozvíjejte své znalosti a dovednosti v oblasti investic a správy majetku: obecné základy, produkty a další řešení"
+
+#: lms/templates/dashboard.html
+msgid "To follow a training module, select the thumbnail of your choice!"
+msgstr "Pro výběr vzdělávacího kurzu, prosím klikněte na vybraný náhled!"
+
+#: lms/templates/dashboard.html
+msgid "Each training module belongs to a category and can take"
+msgstr "Každý vzdělávací kurz patří do určité kategorie a může obsahovat"
+
+msgid "different formats"
+msgstr "různorodé formáty"
+
+msgid "Training modules"
+msgstr "Vzdělávací kurzy"
+
+msgid "Find all the information related to the training on the thumbnails below"
+msgstr "Všechny informace o vzdělávacím kurzu najdete na náhledech níže"
+
+msgid "timing of the module"
+msgstr "načasování kurzu"
+
+msgid "if the module is mandatory or not and formats of the module"
+msgstr "pokud je tento kurz povinný a jeho formáty"
+
+msgid "TRAINING MODULES CATEGORIES"
+msgstr "KATEGORIE VZDĚLÁVACÍCH KURZŮ"
+
+#: lms/templates/dashboard.html
+msgid "Your training modules are classified into 4 categories"
+msgstr "Vaše vzdělávací kurzy jsou zařazeny do 4 kategorií"
+
+#: lms/templates/dashboard.html
+msgid "Know the essentials of financial markets"
+msgstr "Poznejte základy finančních trhů"
+
+#: lms/templates/dashboard.html
+msgid "Improve your soft skills"
+msgstr "Zlepšete své prodejní dovednosti"
+
+#: lms/templates/dashboard.html
+msgid "Learn about products and offers that are sold"
+msgstr "Poznejte produkty a další naše řešení"
+
+#: lms/templates/dashboard.html
+msgid "Understanding regulatory decisions"
+msgstr "Porozumějte více regulacím "
+
+#: lms/templates/dashboard.html
+msgid "FORMATS"
+msgstr "FORMÁTY"
+
+#: lms/templates/dashboard.html
+msgid "Each module is composed of different interactive formats:"
+msgstr "Každý kurz je složen z několika interaktivních formátů:"
+
+#: lms/templates/dashboard.html
+msgid "texts & images"
+msgstr "text a obrázky"
+
+msgid "Infography"
+msgstr "Infografika"
+
+#: lms/templates/dashboard.html
+msgid "pedagogical videos"
+msgstr "edukační videa"
+
+#: lms/templates/dashboard.html
+msgid "quizzes"
+msgstr "kvíz"
+
+#: lms/templates/dashboard.html
+msgid "pdf"
+msgstr "pdf"
+
+msgid "You have started the training module"
+msgstr "Právě jste spustili vzdělávací kurz"
+
+msgid "To complete your course"
+msgstr "K dokončení vašeho kurzu"
+
+msgid "you can click on"
+msgstr "můžete kliknout na"
+
+msgid "More course covers"
+msgstr "Více kurzů pokrývá"
+
+msgid "You have not yet started the training course cover"
+msgstr "Ještě jste nespustili vzdělávací kurz"
+
+msgid "Click on"
+msgstr "Klikněte na"
+
+msgid "Show more"
+msgstr "Zobrazit více"
+
+msgid "to discover the course cover"
+msgstr "objevit kurz"
+
+msgid "Course covers completed"
+msgstr "Dokončení kurzu"
+
+msgid "Completed"
+msgstr "Dokončeno"
+
+msgid "You have completed the training course cover"
+msgstr "Právě jste dokončili vzdělávací kurz"
+
+msgid "to access your result"
+msgstr "pro zobrazení výsledků"
+
+msgid "welcome to"
+msgstr "vítejte v"
+
+msgid "Restart"
+msgstr "Znovu"
+
+msgid "Download the certificate"
+msgstr "Stáhněte si certifikát"
+
+msgid "To start"
+msgstr "Začít"
+
+msgid "Starting date"
+msgstr "Datum začátku"
+
+msgid "Ending date"
+msgstr "Datum ukončení"
+
+msgid "Disclaimer"
+msgstr "Právní upozornění"
+
 msgid "Results"
 msgstr "Výsledky"
-	
-msgid "Back to course about page"	
-msgstr "Zpět na stránku s výběrem kurzů"	
-	
-msgid "To end this training module, you have to access every chapters and finish the validation knowledge test."	
-msgstr "Pro splnění tohoto vzdělávacího kurzu projděte prosím všechny kapitoly a odpovězte na otázky v kvízu."	
-	
-msgid "You started the training module "	
-msgstr "Právě jste spustili vzdělávací kurz"	
-	
-msgid "Congratulation"	
-msgstr "Blahopřejeme"	
-	
-msgid "You have acomplished the course "	
-msgstr "Dokončili jste kurz"	
-	
-msgid "Your total score :"	
-msgstr "Vaše celkové skóre:"	
-	
-#: lms/templates/dashboard.html	
-msgid "TO DO TRAINING MODULES"	
-msgstr "NEDOKONČENÉ VZDĚLÁVACÍ KURZY"	
-	
-#: lms/templates/dashboard.html	
-msgid "You haven't started yet the following training modules. Click on"	
-msgstr "Ještě jste nezačali následující vzdělávací kurz. Klikněte prosím na"	
-	
-#: lms/templates/dashboard.html	
-#: lms/templates/dashboard/_dashboard_course_listing.html	
-msgid "More information"	
-msgstr "Více informací"	
-	
-#: lms/templates/dashboard.html	
-msgid "to access the training module description"	
-msgstr "pro zobrazení popisu vzdělávacích kurzů"	
-	
-#: lms/templates/dashboard.html	
-msgid "IN PROGRESS TRAINING MODULES"	
-msgstr "PROBÍHAJÍCÍ VZDĚLÁVACÍ KURZY"	
-	
-#: lms/templates/dashboard.html	
-msgid "You have started but haven't completed yet the following training modules. To go on, please click on"	
-msgstr "Máte rozpracované následující vzdělávací kurzy. Pro pokračování klikněte na"	
-	
-#: lms/templates/dashboard.html	
-#: lms/templates/dashboard/_dashboard_course_listing.html	
-msgid "Proceed"	
-msgstr "Pokračovat"	
-	
-#: lms/templates/dashboard.html	
-msgid "COMPLETED TRAINING MODULES"	
-msgstr "Dokončené vzdělávací kurzy"	
-	
-#: lms/templates/dashboard.html	
-msgid "You have completed the following training modules. Click on"	
-msgstr "Dokončili jste následující vzdělávací kurzy. Klikněte na"	
-	
-#: lms/templates/dashboard.html	
-msgid "to access your results and scores"	
-msgstr "pro zobrazení vašich výsledků"	
-	
-#: lms/templates/dashboard.html	
-msgid "More modules"	
-msgstr "Více kurzů"	
-	
-#: lms/templates/dashboard.html	
-msgid "Welcome on"	
-msgstr "Vítejte v"	
-	
-#: lms/templates/dashboard.html	
-msgid "Develop your knowledge and skills on asset management: financial culture and offers."	
-msgstr "Rozvíjejte své znalosti a dovednosti v oblasti investic a správy majetku: obecné základy, produkty a další řešení."	
-	
-#: lms/templates/dashboard.html	
-msgid "More"	
-msgstr "Více"	
-	
-#: lms/templates/navigation.html	
-msgid "All"	
-msgstr "Všechny"	
-	
-#: lms/templates/courseware/course_about.html	
-msgid "Download certificate"	
-msgstr "Stáhnout certifikát"	
-	
-#: lms/templates/courseware/courseware.html	
-msgid "Back to training module description"	
-msgstr "Zpět na popis kurzu"	
-	
-#: lms/templates/courseware/courseware.html	
-msgid "The training campaign is over. You can access the training module content. However, you can't do the test to validate your knowledge."	
-msgstr "Vzdělávací kampaň již skončila. Můžete si zobrazit obsah vzdělávacího kurzu, ale již nelze projít kvíz pro ověření vašich znalostí."	
-	
-#: lms/templates/courseware/courseware.html	
-msgid "Go to studio"	
-msgstr "Přejít do administrativní sekce"	
-	
-#: cms/templates/index.html	
-msgid "No training campaign has been set"	
-msgstr "Nebyla vybrána žádná vzdělávací kampaň"	
-	
-#: cms/templates/index.html	
-msgid "To create a training campaign"	
-msgstr "Pro vytvoření vzdělávací kampaně"	
-	
-#: cms/templates/index.html	
-msgid "select a training module in"	
-msgstr "Vyberte vzdělávací kurz v"	
-	
-#: cms/templates/index.html	
-msgid "then click on"	
-msgstr "poté klikněte na"	
-	
-#: cms/templates/index.html	
-msgid "Create my campaign"	
-msgstr "Vytvořit vlastní kampaň"	
-	
-#: cms/templates/index.html	
-msgid "My Modules"	
-msgstr "Moje kurzy"	
-	
-#: cms/templates/index.html	
-msgid "Welcome to your training modules management interface"	
-msgstr "Vítejte ve svém rozhraní pro správu vzdělávacích kurzů"	
-	
-#: cms/templates/index.html	
-msgid "You can browse within two separate universes"	
-msgstr "Můžete procházet dvěmi odlišnými oblastmi"	
-	
-#: cms/templates/index.html	
-msgid "MY CAMPAIGNS"	
-msgstr "MÉ KAMPANĚ"	
-	
-#: cms/templates/index.html	
-msgid "MY MODULES"	
-msgstr "MÉ KURZY"	
-	
-#: cms/templates/index.html	
-msgid "MICRO SITES"	
-msgstr "MIKRO STRÁNKY"	
-	
-#: cms/templates/index.html	
-msgid "SCHEDULED TRAINING CAMPAIGNS"	
-msgstr "NAPLÁNOVANÉ VZDĚLÁVACÍ KAMPANĚ"	
-	
-#: cms/templates/index.html	
-msgid "Manage my campaign"	
-msgstr "Spravovat mou kampaň"	
-	
-#: cms/templates/index.html	
-msgid "To add new participants, please click on"	
-msgstr "Pro přidání dalších účastníků klikněte na"	
-	
-#: cms/templates/index.html	
-msgid "Invite participants"	
-msgstr "Přizvat účastníky"	
-	
-#: cms/templates/index.html	
-msgid "In progress training campaigns"	
-msgstr "Probíhající vzdělávací kampaně"	
-	
-#: cms/templates/index.html	
-msgid "To access statistics, please click on"	
-msgstr "Pro zobrazení statistik klikněte na"	
-	
-#: cms/templates/index.html	
-msgid "COMPLETED TRAINING CAMPAIGNS"	
-msgstr "DOKONČENÉ VZDĚLÁVACÍ KAMPANĚ"	
-	
-#: cms/templates/index.html	
-msgid "The following training campaigns have not been launched yet (starting date not exceeded).To modify starting/ending date, please click on"	
-msgstr "Následující vzdělávací kampaně zatím nebyly spuštěny. Pro změnu počátečního/koncového data klikněte na"	
-	
-#: cms/templates/index.html	
-msgid "The following training campaigns have not been launched yet (starting date not exceeded). To modify ending date, please click on"	
-msgstr "Následující vzdělávací kampaně zatím nebyly spuštěny. Pro změnu koncového data klikněte na"	
-	
-#: cms/templates/index.html	
-msgid "The following training campaigns are completed (ending date is exceeded).To access statistics, please click on"	
-msgstr "Následující vzdělávací kampaně již skončily. Pro zobrazení statistik klikněte na"	
-	
-#: cms/templates/index.html	
-msgid "The following training campaigns have not been launched yet (starting date not exceeded)."	
-msgstr "Následující vzdělávací kampaně zatím nebyly spuštěny."	
-	
-#: cms/templates/index.html	
-msgid "To launch your campaign, please click on "	
-msgstr "Pro zahájení vaší kampaně klikněte na"	
-	
-#: cms/templates/index.html	
-msgid "and set up starting date at today."	
-msgstr "a nastavte dnešní datum jako počáteční."	
-	
-#: cms/templates/index.html	
-msgid "To modify starting/ending date, please click on"	
-msgstr "Pro změnu počátečního/koncového data klikněte na"	
-	
-#: cms/templates/index.html	
-msgid "To modify ending date, please click on"	
-msgstr "Pro změnu koncového data klikněte na"	
-	
-#: cms/templates/index.html	
-msgid "To access statistics, please click on."	
-msgstr "Pro zobrazení statistik klikněte na."	
-	
-#: cms/templates/index.html	
-msgid "The following training campaigns are completed (ending date is exceeded)."	
-msgstr "Následující vzdělávací kampaně již skončily."	
-	
-#: cms/templates/index.html	
-#lms stat.html	
-msgid "Statistics"	
-msgstr "Statistiky"	
-	
-#: cms/templates/index.html	
-msgid "About the training module"	
-msgstr "Informace o vzdělávacím kurzu"	
-	
-#: cms/templates/index.html	
-msgid "My campaigns"	
-msgstr "Mé kampaně"	
-	
-#: cms/templates/index.html	
-msgid "You have at your disposal a library of training modules made available by Amundi. Select the module of your choice and launch the associated training campaign."	
-msgstr "Máte k dispozici knihovnu vzdělávacích kurzů od Amundi. Vyberte si kurz a spusťte příslušnou vzdělávací kampaň."	
-	
-#: cms/templates/manage_course.html	
-msgid "Provide all the information required to launch your training campaign: starting/ending date, minimum percentage of success required, and campaign type."	
-msgstr "Vyplňte požadované informace pro zahájení vzdělávací kampaně: počáteční/koncové datum, minimální hranice úspěšnosti a typ kampaně."	
-	
-#: cms/templates/manage_course.html	
-msgid "campaign id"	
-msgstr "ID kampaně"	
-	
-#: cms/templates/manage_course.html	
-msgid "Create your campagne id"	
-msgstr "vytvořte vlastní ID kampaně"	
-	
-#: cms/templates/manage_course.html	
-msgid "This id is indicated in statistic reports."	
-msgstr "Toto ID je součástí statistických reportů."	
-	
-#: cms/templates/manage_course.html	
-msgid "Precise your target and/or campaign period."	
-msgstr "Upřesněte svůj cíl a/nebo načasování kampaně."	
-	
-#: cms/templates/manage_course.html	
-msgid "Your id"	
-msgstr "Vaše ID"	
-	
-#: cms/templates/manage_course.html	
-msgid "Rules to create your campaign id: no space, no  punctuation mark"	
-msgstr "Pravidla pro vytvoření ID: žádné mezery, žádná interpunkce"	
-	
-#: cms/templates/manage_course.html	
-msgid "PERIOD OF THE TRAINING CAMPAIGN"	
-msgstr "ČASOVÁNÍ VZDĚLÁVACÍ KAMPANĚ"	
-	
-#: cms/templates/manage_course.html	
-msgid "Schedule your training campaign"	
-msgstr "Naplánujte si svou vzdělávací kampaň"	
-	
-#: cms/templates/manage_course.html	
-msgid "Time for email invitation dispatch UTC"	
-msgstr "Čas e-mailových pozvánek (UTC)"	
-	
-#: cms/templates/manage_course.html	
-msgid "The day the first invitations are dispatched when launching the training campaign"	
-msgstr "Den rozeslání prvních pozvánek při zahájení kampaně"	
-	
-#: cms/templates/manage_course.html	
-msgid "Ending time UTC"	
-msgstr "Čas ukončení (UTC)"	
-	
-#: cms/templates/manage_course.html	
-msgid "Starting and ending dates of the training campaign"	
-msgstr "Počáteční a koncové datum vzdělávací kampaně"	
-	
-#: cms/templates/manage_course.html	
-msgid "Closing day of the training campaign"	
-msgstr "Poslední den vzdělávací kampaně"	
-	
-#: cms/templates/manage_course.html	
-msgid "MINIMUM PERCENTAGE OF SUCCESS REQUIRED"	
-msgstr "MINIMÁLNÍ POŽADOVANÁ MÍRA ÚSPĚŠNOSTI"	
-	
-#: cms/templates/manage_course.html	
-msgid "Define the minimum score required to validate the training module"	
-msgstr "Zadejte minimální hranici úspěšnosti pro úspěšné absolvování vzdělávacího kurzu"	
-	
-#: cms/templates/manage_course.html	
-msgid "Minimum score required to validate the training module and receive the certificate of achievement"	
-msgstr "Minimální skóre požadované pro úspěšné absolvování vzdělávací kurzu a jeho následné získání"	
-	
-#: cms/templates/manage_course.html	
-msgid "CAMPAIGN TYPE"	
-msgstr "TYP KAMPANĚ"	
-	
-#: cms/templates/manage_course.html	
-msgid "Specify whether the training campaign is mandatory or optional"	
-msgstr "Zadejte zda-li je kampaň povinná nebo volitelná"	
-	
-#: cms/templates/manage_course.html	
-msgid "mandatory"	
-msgstr "povinná"	
-	
-#: cms/templates/manage_course.html	
-msgid "optional"	
-msgstr "volitelná"	
-	
-#: cms/templates/manage_course.html	
-msgid "Add participants to your training campaign and customize the invitation email"	
-msgstr "Přidat účastníky do vzdělávací kampaně a upravit emailovou pozvánku"	
-	
-#: cms/templates/manage_course.html	
-msgid "PARTICIPANTS"	
-msgstr "ÚČASTNÍCI"	
-	
-#: cms/templates/manage_course.html	
-msgid "Invite participants to your training campaign"	
-msgstr "Pozvat účastníky do své vzdělávací kampaně"	
-	
-#: cms/templates/manage_course.html	
-msgid "Upload participants list"	
-msgstr "Nahrát seznam účastníků"	
-	
-#: cms/templates/manage_course.html	
-msgid "EMAIL TO PARTICIPANTS"	
-msgstr "EMAIL PRO ÚČASTNÍKY"	
-	
-#: cms/templates/manage_course.html	
-msgid "Edit and send the invitation email to participants of your choice."	
-msgstr "Upravit a rozeslat emailovou pozvánku účastníkům dle vlastního výběru."	
-	
-#: cms/templates/manage_course.html	
-msgid "Send the invitation email to :"	
-msgstr "Poslat emailovou pozvánku:"	
-	
-#: cms/templates/manage_course.html	
-msgid "Admin Team"	
-msgstr "Administrátorský Tým"	
-	
-#: cms/templates/manage_course.html	
-msgid "Every participants"	
-msgstr "Všichni účastníci"	
-	
-#: cms/templates/manage_course.html	
-msgid "Customized list of participants"	
-msgstr "Upravený seznam účastníků"	
-	
-#: cms/templates/manage_course.html	
-msgid "If you want to send the invitation email to the training campaign to a customized list of participants, please copy/paste the email recipients above. Remember that invitation emails can be sent only to the participants who have been invited to participate to the training campaign in the section 1/2 PARTICIPANTS."	
-msgstr "Pokud chcete rozeslat emailem pozvánku k vzdělávací kampani upravenému seznamu účastníků, prosím zkopírujte a vložte příjemce nahoru. Nezapomeňte, že pozvánku můžete odeslat pouze těm, kteří byli pozvaní k vzdělávací kampani v sekci 1/2 ÚČASTNÍCI."	
-	
-#: cms/templates/manage_course.html	
-msgid "Object"	
-msgstr "Předmět"	
-	
-#: cms/templates/manage_course.html	
-msgid "128 characters maximum"	
-msgstr "Maximum 128 znaků"	
-	
-#: cms/templates/manage_course.html	
-msgid "Contenu du mail"	
-msgstr "Obsah emailu"	
-	
-#: cms/templates/manage_course.html	
-msgid "WARNING : Don’t hesitate to validate the email invitation by sending a test invitation to yourself. It will allow you to validate content and links included in the email invitation."	
-msgstr "UPOZORNĚNÍ: doporučujeme nejdříve rozesílání pozvánky otestovat na vlastním emailu. Ověříte si tak, že obsah i linky jsou správné."	
-	
-#: cms/templates/manage_course.html	
-msgid "CTA : Send"	
-msgstr "CTA: Odeslat"	
-	
-#: cms/templates/manage_course.html	
-msgid "Don't hesitate to validate the email invitation by sending a test invitation to yourself. It will allow you to validate content and links included in the email invitation."	
-msgstr "Doporučujeme nejdříve rozesílání pozvánky otestovat na vlastním emailu. Ověříte si tak, že obsah i linky jsou správné."	
-	
-#: cms/templates/index.html	
-msgid "WHAT YOU CAN DO"	
-msgstr "CO MŮŽETE UDĚLAT"	
-	
-#: cms/templates/index.html	
-msgid "Schedules training campaigns:"	
-msgstr "Rozvrh vzdělávacích kampaní:"	
-	
-#: cms/templates/index.html	
-msgid "Update your settings: starting/ending dates, minimum percentage of success"	
-msgstr "Upravte vaše nastavení: počáteční/koncové datum, minimální hranice úspěšnosti"	
-	
-#: cms/templates/index.html	
-msgid "Add new participants"	
-msgstr "Přidat nové účastníky"	
-	
-#: cms/templates/index.html	
-msgid "Update the text of the email invitation and test your email invitation"	
-msgstr "Upravte text pozvánky a vyzkoušejte ji na svém emailu"	
-	
-#: cms/templates/index.html	
-msgid "In progress training campaigns:"	
-msgstr "Probíhající vzdělávací kampaně:"	
-	
-#: cms/templates/index.html	
-msgid "Update ending date"	
-msgstr "Upravit koncové datum"	
-	
-#: cms/templates/index.html	
-msgid "Access statistics: participation rate, success by participant, etc."	
-msgstr "Zobrazit statistiky: míra účasti, úspěšnost účastníků, a další."	
-	
-#: cms/templates/index.html	
-msgid "Completed training campaigns:"	
-msgstr "Dokončené vzdělávací kampaně:"	
-	
-#: cms/templates/index.html	
-msgid "Completed training campaigns"	
-msgstr "Dokončené vzdělávací kampaně"	
-	
-#: cms/templates/index.html	
-msgid "Access a training modules library provided by Amundi"	
-msgstr "Přejděte do knihovny vzdělávacích kurzů od Amundi"	
-	
-#: cms/templates/index.html	
-msgid "Launch a training campaign"	
-msgstr "Spustit vzdělávací kampaň"	
-	
-#: cms/templates/index.html	
-msgid "My modules:"	
-msgstr "Moje kurzy:"	
-	
-#log	
-msgid "logout"	
-msgstr "Odhlásit se"	
-	
-#log	
-msgid "login"	
-msgstr "Přihlásit se"	
-	
-#cms index.html	
-	
-msgid "No training campaign has been launched yet."	
-msgstr "Dosud nemáte žádné zahájené kampaně."	
-	
-# lms dashboard.html	
-	
-msgid "No training modules available in this section."	
-msgstr "V této sekci nejsou dostupné žádné vzdělávací kurzy."	
-	
-# lms dashboard.html	
-	
-msgid "Welcome on Academy platform"	
-msgstr "Vítejte v platformě Academy"	
-	
-# lms dashboard.html	
-	
-msgid "You successfully registered"	
-msgstr "Registrace proběhla úspěšně"	
-	
-# lms dashboard.html	
-	
-msgid "The training module"	
-msgstr "vzdělávací kurz"	
-	
-# lms dashboard.html	
-	
-msgid "is available in the section"	
-msgstr "je dostupný v této sekci"	
-	
-# cms index.html	
-	
-msgid "Send email to participants"	
-msgstr "Odeslat email účastníkům"	
-	
-#cms send email	
-	
-msgid "Send"	
-msgstr "Odeslat"	
-	
-msgid "You can send a new email or go back to the page MY CAMPAIGNS"	
-msgstr "Můžete poslat nový email nebo přejít zpět na stránku MÉ KAMPANĚ"	
-	
-msgid "Your email was sent"	
-msgstr "Email byl odeslán"	
-	
-#cms index.html	
-msgid "Access Trainee interface"	
-msgstr "Přejít na Uživatelské rozhraní "	
-	
-#lms dashboard.html	
-msgid "Access Admin interface"	
-msgstr "Přejít na Administrátorské rozhraní"	
-	
-#lms stat.html	
-msgid "editor"	
-msgstr "editor"	
-	
-#lms stat.html	
-msgid "Results on "	
-msgstr "Výsledky na"	
-	
-#lms stat.html	
-msgid "Statistical training campaign"	
-msgstr "Statistiky - vzdělávací kampaň"	
-	
-#lms stat.html	
-msgid "training campaign info"	
-msgstr "Informace o vzdělávací kampani"	
-	
-#lms stat.html	
-msgid "Download participants' list"	
-msgstr "Stáhnout seznam účastníků"	
-	
-#lms stat.html	
-msgid "starting date"	
-msgstr "počáteční datum"	
-	
-#lms stat.html	
-msgid "ending date"	
-msgstr "koncové datum"	
-	
-#lms stat.html	
-msgid "Number of questions"	
-msgstr "Počet otázek"	
-	
-#lms stat.html	
-msgid "Percentage for success"	
-msgstr "Hranice úspěšnosti"	
-	
-#lms stat.html	
-msgid "users stats"	
-msgstr "uživatelské statistiky"	
-	
-#lms stat.html	
-msgid "Network"	
-msgstr "Síť"	
-	
-#lms stat.html	
-msgid "Target"	
-msgstr "Cíl"	
-	
-#lms stat.html	
-msgid "Guests"	
-msgstr "Hosté"	
-	
-#lms stat.html	
-msgid "Certified"	
-msgstr "Certifikovaný"	
-	
-#lms stat.html	
-msgid "Average result"	
-msgstr "Průměrný výsledek"	
-	
-#lms stat.html	
-msgid "Average score"	
-msgstr "Průměrné skóre"	
-	
-#lms stat.html	
-msgid "per question"	
-msgstr "dle otázky"	
-	
-#lms stat.html	
-msgid "per participant"	
-msgstr "dle účastníka"	
-	
-#lms stat.html	
-msgid "Download all participants' detailled results"	
-msgstr "Stáhnout detailní výsledky všech účastníků"	
-	
-#lms stat.html	
-msgid "First name"	
-msgstr "Jméno"	
-	
-#lms stat.html	
-msgid "Last name"	
-msgstr "Příjmení"	
-	
-#cms create_course.html	
-msgid "create my campaign"	
-msgstr "Vytvořit vlastní kampaň"	
-	
-#cms create_course.html	
-msgid "To launch your training campaign, you have to specify an unique ID and the target of your training campaign. Please, note that the target wording will be indicated in the statistics of this training campaign."	
-msgstr "Pro vytvoření vlastní vzdělávací kampaně je nutné zadat unikátní ID a cíl vzdělávací kampaně. Vámi zadaný cíl bude uvedený ve statistikách této vzdělávací kampaně."	
-	
-#cms create_course.html	
-msgid "Specify unique ID and target"	
-msgstr "Zadejte unikátní ID a cíl"	
-	
-#cms create_course.html	
-msgid "Specify an unique campaign title as long as a target for your training campaign"	
-msgstr "Zadejte unikátní název kampaně a cíl kampaně"	
-	
-#cms create_course.html	
-msgid "Unique ID"	
-msgstr "Unikátní ID"	
-	
-#cms create_course.html	
-msgid "Campaign title (unique id)"	
-msgstr "Název kampaně (unikátní ID)"	
-	
-#cms create_course.html	
-msgid "Rules for unique ID and target : no space, no punctuation, no special characters"	
-msgstr "Pravidla pro unikátní ID a cíl: žádné mezery, interpunkce a speciální znaky"	
-	
-#cms create_course.html	
-msgid "Create an identifier"	
-msgstr "Vytvořte identifikátor"	
-	
-#cms create_course.html	
-msgid "This identifier is reflected in the statistical dashboards"	
-msgstr "tento identifikátor je zohledňen ve statistických dashboardech"	
-	
-#cms create_course.html	
-msgid "This allows you to specify the target and / or training period"	
-msgstr "Toto vám umožňuje zadat cíl a/nebo vzdělávací období"	
-	
-#cms create_course.html	
-msgid "identifying your campaign"	
-msgstr "identifikující vaši kampaň"	
-	
-#cms create_course.html	
-msgid "Rules for unique ID and target"	
-msgstr "Pravidla pro unikátní ID a cíl"	
-	
-#cms create_course.html	
-msgid "no space, no punctuation, no special characters"	
-msgstr "bez mezer, interpunkce a speciálních znaků"	
-	
-#cms invite.html	
-msgid "INVITE PARTICIPANTS"	
-msgstr "POZVAT ÚČASTNÍKY"	
-	
-#cms invite.html	
-msgid "In order to invite participants to your training campaign, it is imperative that starting date of the training session is set before the current date."	
-msgstr "Pro pozvání účastníku je nezbytné, aby počáteční datum kampaně předcházelo dnešnímu datu."	
-	
-#cms mail.html	
-msgid "SEND EMAIL TO PARTICIPANTS"	
-msgstr "ODESLAT EMAIL ÚČASTNÍKŮM"	
-	
-#cms mail.html	
-msgid "During the training campaign, you can send a personalized e-mail to your participants or to targeted receivers."	
-msgstr "v  průběhu vzdělávací kampaně můžete rozesílat personalizované emaily účastníkům nebo cíleným příjemcům."	
-	
-#cms mail.html	
-msgid "It can be an email to remind them the training campaign will end soon, the training campaign is mandatory, etc"	
-msgstr "Můžete je emailem upozornit na blížící se konec kampaně, připomenout jim, že jsou povinni se zúčastnit, atd."	
-	
-#cms mail.html	
-msgid "Send email to:"	
-msgstr "Poslat email:"	
-	
-#cms mail.html	
-msgid "Team and administrator"	
-msgstr "Tým a administrátor"	
-	
-#cms mail.html	
-msgid "All participants (invited and accepted)"	
-msgstr "Všichni účastnícic (pozvaní a schválení)"	
-	
-#cms mail.html	
-msgid "Customized mailing list"	
-msgstr "Upravený seznam příjemců"	
-	
-#cms mail.html	
-msgid "If you want to send an email to a customized mailing list, please copy/paste email addresses above. Emails will only be sent to receivers that have been invited to participate to the training campaign in the section 'Invite participants'."	
+
+msgid "Back to course about page"
+msgstr "Zpět na stránku s výběrem kurzů"
+
+msgid "To end this training module, you have to access every chapters and finish the validation knowledge test."
+msgstr "Pro splnění tohoto vzdělávacího kurzu projděte prosím všechny kapitoly a odpovězte na otázky v kvízu."
+
+msgid "You started the training module "
+msgstr "Právě jste spustili vzdělávací kurz"
+
+msgid "Congratulation"
+msgstr "Blahopřejeme"
+
+msgid "You have acomplished the course "
+msgstr "Dokončili jste kurz"
+
+msgid "Your total score :"
+msgstr "Vaše celkové skóre:"
+
+#: lms/templates/dashboard.html
+msgid "TO DO TRAINING MODULES"
+msgstr "NEDOKONČENÉ VZDĚLÁVACÍ KURZY"
+
+#: lms/templates/dashboard.html
+msgid "You haven't started yet the following training modules. Click on"
+msgstr "Ještě jste nezačali následující vzdělávací kurz. Klikněte prosím na"
+
+#: lms/templates/dashboard.html
+#: lms/templates/dashboard/_dashboard_course_listing.html
+msgid "More information"
+msgstr "Více informací"
+
+#: lms/templates/dashboard.html
+msgid "to access the training module description"
+msgstr "pro zobrazení popisu vzdělávacích kurzů"
+
+#: lms/templates/dashboard.html
+msgid "IN PROGRESS TRAINING MODULES"
+msgstr "PROBÍHAJÍCÍ VZDĚLÁVACÍ KURZY"
+
+#: lms/templates/dashboard.html
+msgid "You have started but haven't completed yet the following training modules. To go on, please click on"
+msgstr "Máte rozpracované následující vzdělávací kurzy. Pro pokračování klikněte na"
+
+#: lms/templates/dashboard.html
+#: lms/templates/dashboard/_dashboard_course_listing.html
+msgid "Proceed"
+msgstr "Pokračovat"
+
+#: lms/templates/dashboard.html
+msgid "COMPLETED TRAINING MODULES"
+msgstr "Dokončené vzdělávací kurzy"
+
+#: lms/templates/dashboard.html
+msgid "You have completed the following training modules. Click on"
+msgstr "Dokončili jste následující vzdělávací kurzy. Klikněte na"
+
+#: lms/templates/dashboard.html
+msgid "to access your results and scores"
+msgstr "pro zobrazení vašich výsledků"
+
+#: lms/templates/dashboard.html
+msgid "More modules"
+msgstr "Více kurzů"
+
+#: lms/templates/dashboard.html
+msgid "Welcome on"
+msgstr "Vítejte v"
+
+#: lms/templates/dashboard.html
+msgid "Develop your knowledge and skills on asset management: financial culture and offers."
+msgstr "Rozvíjejte své znalosti a dovednosti v oblasti investic a správy majetku: obecné základy, produkty a další řešení."
+
+#: lms/templates/dashboard.html
+msgid "More"
+msgstr "Více"
+
+#: lms/templates/navigation.html
+msgid "All"
+msgstr "Všechny"
+
+#: lms/templates/courseware/course_about.html
+msgid "Download certificate"
+msgstr "Stáhnout certifikát"
+
+#: lms/templates/courseware/courseware.html
+msgid "Back to training module description"
+msgstr "Zpět na popis kurzu"
+
+#: lms/templates/courseware/courseware.html
+msgid "The training campaign is over. You can access the training module content. However, you can't do the test to validate your knowledge."
+msgstr "Vzdělávací kampaň již skončila. Můžete si zobrazit obsah vzdělávacího kurzu, ale již nelze projít kvíz pro ověření vašich znalostí."
+
+#: lms/templates/courseware/courseware.html
+msgid "Go to studio"
+msgstr "Přejít do administrativní sekce"
+
+#: cms/templates/index.html
+msgid "No training campaign has been set"
+msgstr "Nebyla vybrána žádná vzdělávací kampaň"
+
+#: cms/templates/index.html
+msgid "To create a training campaign"
+msgstr "Pro vytvoření vzdělávací kampaně"
+
+#: cms/templates/index.html
+msgid "select a training module in"
+msgstr "Vyberte vzdělávací kurz v"
+
+#: cms/templates/index.html
+msgid "then click on"
+msgstr "poté klikněte na"
+
+#: cms/templates/index.html
+msgid "Create my campaign"
+msgstr "Vytvořit vlastní kampaň"
+
+#: cms/templates/index.html
+msgid "My Modules"
+msgstr "Moje kurzy"
+
+#: cms/templates/index.html
+msgid "Welcome to your training modules management interface"
+msgstr "Vítejte ve svém rozhraní pro správu vzdělávacích kurzů"
+
+#: cms/templates/index.html
+msgid "You can browse within two separate universes"
+msgstr "Můžete procházet dvěmi odlišnými oblastmi"
+
+#: cms/templates/index.html
+msgid "MY CAMPAIGNS"
+msgstr "MÉ KAMPANĚ"
+
+#: cms/templates/index.html
+msgid "MY MODULES"
+msgstr "MOJE KURZY"
+
+#: cms/templates/index.html
+msgid "MICRO SITES"
+msgstr "MIKRO STRÁNKY"
+
+#: cms/templates/index.html
+msgid "SCHEDULED TRAINING CAMPAIGNS"
+msgstr "NAPLÁNOVANÉ VZDĚLÁVACÍ KAMPANĚ"
+
+#: cms/templates/index.html
+msgid "Manage my campaign"
+msgstr "Spravovat mou kampaň"
+
+#: cms/templates/index.html
+msgid "To add new participants, please click on"
+msgstr "Pro přidání dalších účastníků klikněte na"
+
+#: cms/templates/index.html
+msgid "Invite participants"
+msgstr "Přizvat účastníky"
+
+#: cms/templates/index.html
+msgid "In progress training campaigns"
+msgstr "Probíhající vzdělávací kampaně"
+
+#: cms/templates/index.html
+msgid "To access statistics, please click on"
+msgstr "Pro zobrazení statistik klikněte na"
+
+#: cms/templates/index.html
+msgid "COMPLETED TRAINING CAMPAIGNS"
+msgstr "DOKONČENÉ VZDĚLÁVACÍ KAMPANĚ"
+
+#: cms/templates/index.html
+msgid "The following training campaigns have not been launched yet (starting date not exceeded).To modify starting/ending date, please click on"
+msgstr "Následující vzdělávací kampaně zatím nebyly spuštěny. Pro změnu počátečního/koncového data klikněte na"
+
+#: cms/templates/index.html
+msgid "The following training campaigns have not been launched yet (starting date not exceeded). To modify ending date, please click on"
+msgstr "Následující vzdělávací kampaně zatím nebyly spuštěny. Pro změnu koncového data klikněte na"
+
+#: cms/templates/index.html
+msgid "The following training campaigns are completed (ending date is exceeded).To access statistics, please click on"
+msgstr "Následující vzdělávací kampaně již skončily. Pro zobrazení statistik klikněte na"
+
+#: cms/templates/index.html
+msgid "The following training campaigns have not been launched yet (starting date not exceeded)."
+msgstr "Následující vzdělávací kampaně zatím nebyly spuštěny."
+
+#: cms/templates/index.html
+msgid "To launch your campaign, please click on "
+msgstr "Pro zahájení vaší kampaně klikněte na"
+
+#: cms/templates/index.html
+msgid "and set up starting date at today."
+msgstr "a nastavte dnešní datum jako počáteční."
+
+#: cms/templates/index.html
+msgid "To modify starting/ending date, please click on"
+msgstr "Pro změnu počátečního/koncového data klikněte na"
+
+#: cms/templates/index.html
+msgid "To modify ending date, please click on"
+msgstr "Pro změnu koncového data klikněte na"
+
+#: cms/templates/index.html
+msgid "To access statistics, please click on."
+msgstr "Pro zobrazení statistik klikněte na."
+
+#: cms/templates/index.html
+msgid "The following training campaigns are completed (ending date is exceeded)."
+msgstr "Následující vzdělávací kampaně již skončily."
+
+#: cms/templates/index.html
+#lms stat.html
+msgid "Statistics"
+msgstr "Statistiky"
+
+#: cms/templates/index.html
+msgid "About the training module"
+msgstr "Informace o vzdělávacím kurzu"
+
+#: cms/templates/index.html
+msgid "My campaigns"
+msgstr "Mé kampaně"
+
+#: cms/templates/index.html
+msgid "You have at your disposal a library of training modules made available by Amundi. Select the module of your choice and launch the associated training campaign."
+msgstr "Máte k dispozici knihovnu vzdělávacích kurzů od Amundi. Vyberte si kurz a spusťte příslušnou vzdělávací kampaň."
+
+#: cms/templates/manage_course.html
+msgid "Provide all the information required to launch your training campaign: starting/ending date, minimum percentage of success required, and campaign type."
+msgstr "Vyplňte požadované informace pro zahájení vzdělávací kampaně: počáteční/koncové datum, minimální hranice úspěšnosti a typ kampaně."
+
+#: cms/templates/manage_course.html
+msgid "campaign id"
+msgstr "ID kampaně"
+
+#: cms/templates/manage_course.html
+msgid "Create your campagne id"
+msgstr "vytvořte vlastní ID kampaně"
+
+#: cms/templates/manage_course.html
+msgid "This id is indicated in statistic reports."
+msgstr "Toto ID je součástí statistických reportů."
+
+#: cms/templates/manage_course.html
+msgid "Precise your target and/or campaign period."
+msgstr "Upřesněte svůj cíl a/nebo načasování kampaně."
+
+#: cms/templates/manage_course.html
+msgid "Your id"
+msgstr "Vaše ID"
+
+#: cms/templates/manage_course.html
+msgid "Rules to create your campaign id: no space, no  punctuation mark"
+msgstr "Pravidla pro vytvoření ID: žádné mezery, žádná interpunkce"
+
+#: cms/templates/manage_course.html
+msgid "PERIOD OF THE TRAINING CAMPAIGN"
+msgstr "ČASOVÁNÍ VZDĚLÁVACÍ KAMPANĚ"
+
+#: cms/templates/manage_course.html
+msgid "Schedule your training campaign"
+msgstr "Naplánujte si svou vzdělávací kampaň"
+
+#: cms/templates/manage_course.html
+msgid "Time for email invitation dispatch UTC"
+msgstr "Čas e-mailových pozvánek (UTC)"
+
+#: cms/templates/manage_course.html
+msgid "The day the first invitations are dispatched when launching the training campaign"
+msgstr "Den rozeslání prvních pozvánek při zahájení kampaně"
+
+#: cms/templates/manage_course.html
+msgid "Ending time UTC"
+msgstr "Čas ukončení (UTC)"
+
+#: cms/templates/manage_course.html
+msgid "Starting and ending dates of the training campaign"
+msgstr "Počáteční a koncové datum vzdělávací kampaně"
+
+#: cms/templates/manage_course.html
+msgid "Closing day of the training campaign"
+msgstr "Poslední den vzdělávací kampaně"
+
+#: cms/templates/manage_course.html
+msgid "MINIMUM PERCENTAGE OF SUCCESS REQUIRED"
+msgstr "MINIMÁLNÍ POŽADOVANÁ MÍRA ÚSPĚŠNOSTI"
+
+#: cms/templates/manage_course.html
+msgid "Define the minimum score required to validate the training module"
+msgstr "Zadejte minimální hranici úspěšnosti pro úspěšné absolvování vzdělávacího kurzu"
+
+#: cms/templates/manage_course.html
+msgid "Minimum score required to validate the training module and receive the certificate of achievement"
+msgstr "Minimální skóre požadované pro úspěšné absolvování vzdělávací kurzu a jeho následné získání"
+
+#: cms/templates/manage_course.html
+msgid "CAMPAIGN TYPE"
+msgstr "TYP KAMPANĚ"
+
+#: cms/templates/manage_course.html
+msgid "Specify whether the training campaign is mandatory or optional"
+msgstr "Zadejte zda-li je kampaň povinná nebo volitelná"
+
+#: cms/templates/manage_course.html
+msgid "mandatory"
+msgstr "povinné"
+
+#: cms/templates/manage_course.html
+msgid "optional"
+msgstr "volitelné"
+
+#: cms/templates/manage_course.html
+msgid "Add participants to your training campaign and customize the invitation email"
+msgstr "Přidat účastníky do vzdělávací kampaně a upravit emailovou pozvánku"
+
+#: cms/templates/manage_course.html
+msgid "PARTICIPANTS"
+msgstr "ÚČASTNÍCI"
+
+#: cms/templates/manage_course.html
+msgid "Invite participants to your training campaign"
+msgstr "Pozvat účastníky do své vzdělávací kampaně"
+
+#: cms/templates/manage_course.html
+msgid "Upload participants list"
+msgstr "Nahrát seznam účastníků"
+
+#: cms/templates/manage_course.html
+msgid "EMAIL TO PARTICIPANTS"
+msgstr "EMAIL PRO ÚČASTNÍKY"
+
+#: cms/templates/manage_course.html
+msgid "Edit and send the invitation email to participants of your choice."
+msgstr "Upravit a rozeslat emailovou pozvánku účastníkům dle vlastního výběru."
+
+#: cms/templates/manage_course.html
+msgid "Send the invitation email to :"
+msgstr "Poslat emailovou pozvánku:"
+
+#: cms/templates/manage_course.html
+msgid "Admin Team"
+msgstr "Administrátorský Tým"
+
+#: cms/templates/manage_course.html
+msgid "Every participants"
+msgstr "Všichni účastníci"
+
+#: cms/templates/manage_course.html
+msgid "Customized list of participants"
+msgstr "Upravený seznam účastníků"
+
+#: cms/templates/manage_course.html
+msgid "If you want to send the invitation email to the training campaign to a customized list of participants, please copy/paste the email recipients above. Remember that invitation emails can be sent only to the participants who have been invited to participate to the training campaign in the section 1/2 PARTICIPANTS."
+msgstr "Pokud chcete rozeslat emailem pozvánku k vzdělávací kampani upravenému seznamu účastníků, prosím zkopírujte a vložte příjemce nahoru. Nezapomeňte, že pozvánku můžete odeslat pouze těm, kteří byli pozvaní k vzdělávací kampani v sekci 1/2 ÚČASTNÍCI."
+
+#: cms/templates/manage_course.html
+msgid "Object"
+msgstr "Předmět"
+
+#: cms/templates/manage_course.html
+msgid "128 characters maximum"
+msgstr "Maximum 128 znaků"
+
+#: cms/templates/manage_course.html
+msgid "Contenu du mail"
+msgstr "Obsah emailu"
+
+#: cms/templates/manage_course.html
+msgid "WARNING : Don’t hesitate to validate the email invitation by sending a test invitation to yourself. It will allow you to validate content and links included in the email invitation."
+msgstr "UPOZORNĚNÍ: doporučujeme nejdříve rozesílání pozvánky otestovat na vlastním emailu. Ověříte si tak, že obsah i linky jsou správné."
+
+#: cms/templates/manage_course.html
+msgid "CTA : Send"
+msgstr "CTA: Odeslat"
+
+#: cms/templates/manage_course.html
+msgid "Don't hesitate to validate the email invitation by sending a test invitation to yourself. It will allow you to validate content and links included in the email invitation."
+msgstr "Doporučujeme nejdříve rozesílání pozvánky otestovat na vlastním emailu. Ověříte si tak, že obsah i linky jsou správné."
+
+#: cms/templates/index.html
+msgid "WHAT YOU CAN DO"
+msgstr "CO MŮŽETE UDĚLAT"
+
+#: cms/templates/index.html
+msgid "Schedules training campaigns:"
+msgstr "Rozvrh vzdělávacích kampaní:"
+
+#: cms/templates/index.html
+msgid "Update your settings: starting/ending dates, minimum percentage of success"
+msgstr "Upravte vaše nastavení: počáteční/koncové datum, minimální hranice úspěšnosti"
+
+#: cms/templates/index.html
+msgid "Add new participants"
+msgstr "Přidat nové účastníky"
+
+#: cms/templates/index.html
+msgid "Update the text of the email invitation and test your email invitation"
+msgstr "Upravte text pozvánky a vyzkoušejte ji na svém emailu"
+
+#: cms/templates/index.html
+msgid "In progress training campaigns:"
+msgstr "Probíhající vzdělávací kampaně:"
+
+#: cms/templates/index.html
+msgid "Update ending date"
+msgstr "Upravit koncové datum"
+
+#: cms/templates/index.html
+msgid "Access statistics: participation rate, success by participant, etc."
+msgstr "Zobrazit statistiky: míra účasti, úspěšnost účastníků, a další."
+
+#: cms/templates/index.html
+msgid "Completed training campaigns:"
+msgstr "Dokončené vzdělávací kampaně:"
+
+#: cms/templates/index.html
+msgid "Completed training campaigns"
+msgstr "Dokončené vzdělávací kampaně"
+
+#: cms/templates/index.html
+msgid "Access a training modules library provided by Amundi"
+msgstr "Přejděte do knihovny vzdělávacích kurzů od Amundi"
+
+#: cms/templates/index.html
+msgid "Launch a training campaign"
+msgstr "Spustit vzdělávací kampaň"
+
+#: cms/templates/index.html
+msgid "My modules:"
+msgstr "Moje kurzy:"
+
+#log
+msgid "logout"
+msgstr "Odhlásit se"
+
+#log
+msgid "login"
+msgstr "Přihlásit se"
+
+#cms index.html
+
+msgid "No training campaign has been launched yet."
+msgstr "Dosud nemáte žádné zahájené kampaně."
+
+# lms dashboard.html
+
+msgid "No training modules available in this section."
+msgstr "V této sekci nejsou dostupné žádné vzdělávací kurzy."
+
+# lms dashboard.html
+
+msgid "Welcome on Academy platform"
+msgstr "Vítejte v platformě Academy"
+
+# lms dashboard.html
+
+msgid "You successfully registered"
+msgstr "Registrace proběhla úspěšně"
+
+# lms dashboard.html
+
+msgid "The training module"
+msgstr "vzdělávací kurz"
+
+# lms dashboard.html
+
+msgid "is available in the section"
+msgstr "je dostupný v této sekci"
+
+# cms index.html
+
+msgid "Send email to participants"
+msgstr "Odeslat email účastníkům"
+
+#cms send email
+
+msgid "Send"
+msgstr "Odeslat"
+
+msgid "You can send a new email or go back to the page MY CAMPAIGNS"
+msgstr "Můžete poslat nový email nebo přejít zpět na stránku MÉ KAMPANĚ"
+
+msgid "Your email was sent"
+msgstr "Email byl odeslán"
+
+#cms index.html
+msgid "Access Trainee interface"
+msgstr "Přejít na Uživatelské rozhraní "
+
+#lms dashboard.html
+msgid "Access Admin interface"
+msgstr "Přejít na Administrátorské rozhraní"
+
+#lms stat.html
+msgid "editor"
+msgstr "editor"
+
+#lms stat.html
+msgid "Results on "
+msgstr "Výsledky na"
+
+#lms stat.html
+msgid "Statistical training campaign"
+msgstr "Statistiky - vzdělávací kampaň"
+
+#lms stat.html
+msgid "training campaign info"
+msgstr "Informace o vzdělávací kampani"
+
+#lms stat.html
+msgid "Download participants' list"
+msgstr "Stáhnout seznam účastníků"
+
+#lms stat.html
+msgid "starting date"
+msgstr "počáteční datum"
+
+#lms stat.html
+msgid "ending date"
+msgstr "koncové datum"
+
+#lms stat.html
+msgid "Number of questions"
+msgstr "Počet otázek"
+
+#lms stat.html
+msgid "Percentage for success"
+msgstr "Hranice úspěšnosti"
+
+#lms stat.html
+msgid "users stats"
+msgstr "uživatelské statistiky"
+
+#lms stat.html
+msgid "Network"
+msgstr "Síť"
+
+#lms stat.html
+msgid "Target"
+msgstr "Cíl"
+
+#lms stat.html
+msgid "Guests"
+msgstr "Pozvaní"
+
+#lms stat.html
+msgid "Certified"
+msgstr "Certifikovaný"
+
+#lms stat.html
+msgid "Average result"
+msgstr "Průměrný výsledek"
+
+#lms stat.html
+msgid "Average score"
+msgstr "Průměrné skóre"
+
+#lms stat.html
+msgid "per question"
+msgstr "dle otázky"
+
+#lms stat.html
+msgid "per participant"
+msgstr "dle účastníka"
+
+#lms stat.html
+msgid "Download all participants' detailled results"
+msgstr "Stáhnout detailní výsledky všech účastníků"
+
+#lms stat.html
+msgid "First name"
+msgstr "Jméno"
+
+#lms stat.html
+msgid "Last name"
+msgstr "Příjmení"
+
+#cms create_course.html
+msgid "create my campaign"
+msgstr "Vytvořit vlastní kampaň"
+
+#cms create_course.html
+msgid "To launch your training campaign, you have to specify an unique ID and the target of your training campaign. Please, note that the target wording will be indicated in the statistics of this training campaign."
+msgstr "Pro vytvoření vlastní vzdělávací kampaně je nutné zadat unikátní ID a cíl vzdělávací kampaně. Vámi zadaný cíl bude uvedený ve statistikách této vzdělávací kampaně."
+
+#cms create_course.html
+msgid "Specify unique ID and target"
+msgstr "Zadejte unikátní ID a cíl"
+
+#cms create_course.html
+msgid "Specify an unique campaign title as long as a target for your training campaign"
+msgstr "Zadejte unikátní název kampaně a cíl kampaně"
+
+#cms create_course.html
+msgid "Unique ID"
+msgstr "Unikátní ID"
+
+#cms create_course.html
+msgid "Campaign title (unique id)"
+msgstr "Název kampaně (unikátní ID)"
+
+#cms create_course.html
+msgid "Rules for unique ID and target : no space, no punctuation, no special characters"
+msgstr "Pravidla pro unikátní ID a cíl: žádné mezery, interpunkce a speciální znaky"
+
+#cms create_course.html
+msgid "Create an identifier"
+msgstr "Vytvořte identifikátor"
+
+#cms create_course.html
+msgid "This identifier is reflected in the statistical dashboards"
+msgstr "tento identifikátor je zohledňen ve statistických dashboardech"
+
+#cms create_course.html
+msgid "This allows you to specify the target and / or training period"
+msgstr "Toto vám umožňuje zadat cíl a/nebo vzdělávací období"
+
+#cms create_course.html
+msgid "identifying your campaign"
+msgstr "identifikující vaši kampaň"
+
+#cms create_course.html
+msgid "Rules for unique ID and target"
+msgstr "Pravidla pro unikátní ID a cíl"
+
+#cms create_course.html
+msgid "no space, no punctuation, no special characters"
+msgstr "bez mezer, interpunkce a speciálních znaků"
+
+#cms invite.html
+msgid "INVITE PARTICIPANTS"
+msgstr "POZVAT ÚČASTNÍKY"
+
+#cms invite.html
+msgid "In order to invite participants to your training campaign, it is imperative that starting date of the training session is set before the current date."
+msgstr "Pro pozvání účastníku je nezbytné, aby počáteční datum kampaně předcházelo dnešnímu datu."
+
+#cms mail.html
+msgid "SEND EMAIL TO PARTICIPANTS"
+msgstr "ODESLAT EMAIL ÚČASTNÍKŮM"
+
+#cms mail.html
+msgid "During the training campaign, you can send a personalized e-mail to your participants or to targeted receivers."
+msgstr "v  průběhu vzdělávací kampaně můžete rozesílat personalizované emaily účastníkům nebo cíleným příjemcům."
+
+#cms mail.html
+msgid "It can be an email to remind them the training campaign will end soon, the training campaign is mandatory, etc"
+msgstr "Můžete je emailem upozornit na blížící se konec kampaně, připomenout jim, že jsou povinni se zúčastnit, atd."
+
+#cms mail.html
+msgid "Send email to:"
+msgstr "Poslat email:"
+
+#cms mail.html
+msgid "Team and administrator"
+msgstr "Tým a administrátor"
+
+#cms mail.html
+msgid "All participants (invited and accepted)"
+msgstr "Všichni účastnící (pozvaní a registrovaní)"
+
+#cms mail.html
+msgid "Customized mailing list"
+msgstr "Upravený seznam příjemců"
+
+#cms mail.html
+msgid "If you want to send an email to a customized mailing list, please copy/paste email addresses above. Emails will only be sent to receivers that have been invited to participate to the training campaign in the section 'Invite participants'."
 msgstr "Pokud chcete odelsat email upravenému seznamu příjemců, zkopírujte a vložte emailové adresy nahoru. Emaily budou odeslané pouze těm, kteří byli přizvání k vzdělávací kampani v sekci 'Pozvat účastníky'."
-	
-#cms mail.html	
-msgid "Object of the email"	
-msgstr "Předmět emailu"	
-	
-#cms mail.html	
-msgid "WARNING : Before clicking on 'Send', please read your text carefully and send an email to yourself. This will allow you to validate text and links are correct."	
-msgstr "UPOZORNĚNÍ: Před odesláním si pečlivě zkontrolujte text a odešlete email sám sobě. Díky tomu si ověříte, že je vše správně."	
-	
-msgid "Body of the email"	
-msgstr "Tělo email"	
-	
-msgid "We recommend sending only one message per week to learners. Before sending your e-mail, read your text carefully and send it to your email address. You will be able to verify that all the links work and that the content is good."	
-msgstr "Doporučujeme odeslat pouze jednu zprávu týdně. Před odesláním si pečlivě zkontrolujte text a odešlete email sám sobě. Díky tomu si ověříte, že je vše správně."	
-	
-msgid "legal notices"	
-msgstr "Právní upozornění"	
-	
-msgid "File preview"	
-msgstr "Náhled souboru"	
-	
-msgid "Access Trainee Interface"	
-msgstr "Přejít do vzdělávacího rozhraní"	
-	
-msgid "The participants' list is successfully uploaded."	
-msgstr "Seznam účastníků byl úspěšně nahrán."	
-	
-msgid "An email invitation to participate to the training module has been sent to the participants."	
-msgstr "Emailová pozvánka k vzdělávacímu kurzu byla odeslána ,účastníkům."	
-	
-msgid "OUR SOLUTIONS"	
-msgstr "NAŠE ŘEŠENÍ"	
-	
-msgid "Our solutions"	
-msgstr "Naše řešení"	
-	
-msgid "our solutions"	
-msgstr "Naše řešení"	
-	
-msgid "OUR SOLUTION"	
-msgstr "NAŠE ŘEŠENÍ"	
-	
-msgid "Our solution"	
-msgstr "Naše řešení"	
-	
-msgid "our solution"	
-msgstr "Naše řešení"	
-	
-msgid "To create your training campaign, you have to specify an unique ID and the target of your training campaign. Please, note that the target wording will be indicated in the statistics of this training campaign."	
-msgstr "pro vytvoření kampaně je nutné zadat unikátní ID a cíl kampaně. Uvedený cíl bude zobrazen ve statistikách této vzdělávací kampaně."	
-	
-msgid "To create your training campaign, you have to specify an unique campaign title as long as a target for your training campaign."	
-msgstr "Pro vytvoření kampaně je nutné zadat unikátní název stejně jako cíl kampaně."	
-	
-msgid "Please, note that these will be indicated in the statistics dashboard of this training campaign."	
-msgstr "mějte na paměti, že tyto údaje budou uvedené ve statistikách této vzdělávací kampaně."	
-	
-msgid "Created training campaigns"	
-msgstr "Vytvořené vzdělávací kampaně"	
-	
-msgid "The training campaign is over."	
-msgstr "vzdělávací kampaň již skončila."	
-	
-msgid "Starting time UTC"	
-msgstr "Čas zahájení UTC"	
-	
-msgid "Define the minimum score required to validate the training module and receive the certificate of achievement"	
-msgstr "Zadejte minimální hranici úspěšnosti pro absolvování kurzu a obdržení certifikátu"	
-	
-#cms:index.html	
-msgid "To launch a training campaign"	
-msgstr "Zahájení vzdělávací kampaně"	
-	
-#validate translate	
-msgid "Validated"	
-msgstr "Schváleno"	
-	
-msgid "Not validated"	
-msgstr "Neschálenoo"	
-	
-msgid "SEARCH IN MY MODULES"	
-msgstr "HLEDAT V MÉ KURZY"	
-	
-msgid "Search in a module"	
-msgstr "Hledat v kurzu"	
-	
-msgid "SEARCH IN MY CAMPAIGNS"	
-msgstr "HLEDAT V MÉ KAMPANĚ"	
-	
-msgid "Search for a campaign"	
-msgstr "Vyhledat kampaň"	
-	
-msgid "No match! Please, try a new search"	
-msgstr "Žádný výsledek. Zkuste to znovu"	
-	
-msgid "New search"	
-msgstr "Nové hledání"	
-	
-msgid "results found in your modules"	
-msgstr "výsledky nalezeny ve vašich kurzech"	
-	
-msgid "results found in your campaigns"	
-msgstr "výsledky nalezeny ve vašich kampaních"	
+
+#cms mail.html
+msgid "Object of the email"
+msgstr "Předmět emailu"
+
+#cms mail.html
+msgid "WARNING : Before clicking on 'Send', please read your text carefully and send an email to yourself. This will allow you to validate text and links are correct."
+msgstr "UPOZORNĚNÍ: Před odesláním si pečlivě zkontrolujte text a odešlete email sám sobě. Díky tomu si ověříte, že je vše správně."
+
+msgid "Body of the email"
+msgstr "Tělo emailu"
+
+msgid "We recommend sending only one message per week to learners. Before sending your e-mail, read your text carefully and send it to your email address. You will be able to verify that all the links work and that the content is good."
+msgstr "Doporučujeme odeslat pouze jednu zprávu týdně. Před odesláním si pečlivě zkontrolujte text a odešlete email sám sobě. Díky tomu si ověříte, že je vše správně."
+
+msgid "legal notices"
+msgstr "Právní upozornění"
+
+msgid "File preview"
+msgstr "Náhled souboru"
+
+msgid "Access Trainee Interface"
+msgstr "Přejít do vzdělávacího rozhraní"
+
+msgid "The participants' list is successfully uploaded."
+msgstr "Seznam účastníků byl úspěšně nahrán."
+
+msgid "An email invitation to participate to the training module has been sent to the participants."
+msgstr "Emailová pozvánka k vzdělávacímu kurzu byla odeslána ,účastníkům."
+
+msgid "OUR SOLUTIONS"
+msgstr "NAŠE ŘEŠENÍ"
+
+msgid "Our solutions"
+msgstr "Naše řešení"
+
+msgid "our solutions"
+msgstr "Naše řešení"
+
+msgid "OUR SOLUTION"
+msgstr "NAŠE ŘEŠENÍ"
+
+msgid "Our solution"
+msgstr "Naše řešení"
+
+msgid "our solution"
+msgstr "Naše řešení"
+
+msgid "To create your training campaign, you have to specify an unique ID and the target of your training campaign. Please, note that the target wording will be indicated in the statistics of this training campaign."
+msgstr "pro vytvoření kampaně je nutné zadat unikátní ID a cíl kampaně. Uvedený cíl bude zobrazen ve statistikách této vzdělávací kampaně."
+
+msgid "To create your training campaign, you have to specify an unique campaign title as long as a target for your training campaign."
+msgstr "Pro vytvoření kampaně je nutné zadat unikátní název stejně jako cíl kampaně."
+
+msgid "Please, note that these will be indicated in the statistics dashboard of this training campaign."
+msgstr "mějte na paměti, že tyto údaje budou uvedené ve statistikách této vzdělávací kampaně."
+
+msgid "Created training campaigns"
+msgstr "Vytvořené vzdělávací kampaně"
+
+msgid "The training campaign is over."
+msgstr "vzdělávací kampaň již skončila."
+
+msgid "Starting time UTC"
+msgstr "Čas zahájení UTC"
+
+msgid "Define the minimum score required to validate the training module and receive the certificate of achievement"
+msgstr "Zadejte minimální hranici úspěšnosti pro absolvování kurzu a obdržení certifikátu"
+
+#cms:index.html
+msgid "To launch a training campaign"
+msgstr "Zahájení vzdělávací kampaně"
+
+#validate translate
+msgid "Validated"
+msgstr "Splněno"
+
+msgid "Not validated"
+msgstr "Nesplněno"
+
+msgid "SEARCH IN MY MODULES"
+msgstr "HLEDAT V MÉ KURZY"
+
+msgid "Search in a module"
+msgstr "Hledat v kurzu"
+
+msgid "SEARCH IN MY CAMPAIGNS"
+msgstr "HLEDAT V MÉ KAMPANĚ"
+
+msgid "Search for a campaign"
+msgstr "Vyhledat kampaň"
+
+msgid "No match! Please, try a new search"
+msgstr "Žádný výsledek. Zkuste to znovu"
+
+msgid "New search"
+msgstr "Nové hledání"
+
+msgid "results found in your modules"
+msgstr "výsledky nalezeny ve vašich kurzech"
+
+msgid "results found in your campaigns"
+msgstr "výsledky nalezeny ve vašich kampaních"
 
 #DASHBOARD.HTML
 msgid "In this section, you access training modules you started but haven't completed yet. To go on, please click on"
 msgstr "V této sekci máte přístup ke kurzům, které jste začali, ale ještě jste nedokončili. Chcete-li pokračovat, klikněte na tlačítko"
 
 msgid "In this section, you access training modules you have to complete. Click on"
-msgstr "V této sekci získáte přístup k kurzům, které musíte dokončit. Kliknutím na"
+msgstr "V této sekci získáte přístup ke kurzům, které máte dokončit. Klikněte na"
 
 msgid "In this section, you access training modules you validated (click on"
-msgstr "V této sekci jste si ověřili své kurzy (klikněte na"
+msgstr "V této sekci najdete úspěšně dokončené kurzy (klikněte na"
 
 msgid "to access your result) as well as unvalidated training modules for which ending date has been exceeded"
-msgstr "abyste získali přístup k výsledkům), stejně jako kurzy, u kterých byl překročen termín ukončení."
+msgstr "abyste získali přístup k výsledkům). Dále zde najdete i ty kurzy, u kterých vypršela doba pro splnění."
 
 msgid "Congratulations"
 msgstr "Gratulujeme"
@@ -12133,3 +12133,27 @@ msgstr "Začít znovu"
 
 msgid "Start"
 msgstr "Začít"
+
+msgid "Back to"
+msgstr "Zpět"
+
+msgid "Participants"
+msgstr "Účastníci"
+
+msgid "Number of certified partipants"
+msgstr "Počet úspěšných - certfikovaných účastníků"
+
+msgid "Average result for all certified participants"
+msgstr "Průměrné skóre - všichni úspěšní účastníci"
+
+msgid "Average result for all quiz participants"
+msgstr "Průměrné skóre - všichni účastníci"
+
+msgid "Add your csv file to invite participants to your course. CSV must have the following header"
+msgstr "Nahrajte soubor csv, tedy soubor s hodnoty oddělenými čárkou. CSV musí mít následující strukturu včetně nadpisu. Všechny údaje musí být ve sloupci A odděleny čárkou."
+
+msgid "View participants invited"
+msgstr "Seznam pozvaných účastníků"
+
+msgid "Myself"
+msgstr "jen mně (TEST)"
