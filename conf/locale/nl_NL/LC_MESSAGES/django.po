@@ -11432,9 +11432,6 @@ msgstr "Elke module gebruikt verschillende interactieve leermiddelen:"
 msgid "texts & images"
 msgstr "tekst en afbeeldingen"
 
-msgid "Infography"
-msgstr "infografieken"
-
 #: lms/templates/dashboard.html
 msgid "pedagogical videos"
 msgstr "leerrijke filmpjes"
@@ -11442,10 +11439,6 @@ msgstr "leerrijke filmpjes"
 #: lms/templates/dashboard.html
 msgid "quizzes"
 msgstr "quizzen"
-
-#: lms/templates/dashboard.html
-msgid "pdf"
-msgstr "pdf-documenten"
 
 msgid "You have started the training module"
 msgstr "U bent met de opleidingsmodule gestart"
@@ -11503,6 +11496,9 @@ msgstr "Einddatum"
 
 msgid "Disclaimer"
 msgstr "Wettelijke vermeldingen"
+
+msgid "disclaimer"
+msgstr "wettelijke vermeldingen"
 
 msgid "Results"
 msgstr "Resultaten"
@@ -12545,6 +12541,30 @@ msgstr "Beginnen"
 
 msgid "Congratulations"
 msgstr "Gefeliciteerd"
+
+msgid "soft skills"
+msgstr "Soft skills"
+
+msgid "expert"
+msgstr "Expert"
+
+msgid "video"
+msgstr "Filmpje"
+
+msgid "serious game"
+msgstr "Leerrijk Spel"
+
+msgid "pdf"
+msgstr "Documentatie"
+
+msgid "investment game"
+msgstr "Beleggingsspel"
+
+msgid "Infography"
+msgstr "Infografiek"
+
+msgid "quiz"
+msgstr "Quiz"
 
 #: cms/djangoapps/api/v1/serializers/course_runs.py
 msgid "Course team user does not exist"

@@ -58,7 +58,9 @@ def generate_html(user,score,course_img_path,template_path,course_title,categori
         "our solutions":u"nos solutions",
         "regulatory":u"réglementaire",
         "phrase":u"Le certificat de réussite du module de formation sur",
-        "phrase2":u"est décerné à"
+        "phrase2":u"est décerné à",
+        "soft skills":"démarche commerciale",
+        "expert":"experts",
         },
     "de":{
         "date_title":u"Datum",
@@ -70,7 +72,9 @@ def generate_html(user,score,course_img_path,template_path,course_title,categori
         "our solutions":u"unsere lösungen",
         "regulatory":u"vorschriften",
         "phrase":u"Das Leistungszertifikat für",
-        "phrase2":u"gehört zu"
+        "phrase2":u"gehört zu",
+        "soft skills":"Kommerzieller Ansatz",
+        "expert":"experten",
         },
     "it":{
         "date_title":"Data",
@@ -82,7 +86,9 @@ def generate_html(user,score,course_img_path,template_path,course_title,categori
         "our solutions":"Le nostre soluzioni",
         "regulatory":"Normativo",
         "phrase":u"il certificato di conseguimento per",
-        "phrase2":u"è attribuito a"
+        "phrase2":u"è attribuito a",
+        "soft skills":"Approccio commerciale",
+        "expert":"esperti",
         },
     "en":{
         "date_title":"Date",
@@ -94,7 +100,9 @@ def generate_html(user,score,course_img_path,template_path,course_title,categori
         "our solutions":"our solutions",
         "regulatory":"regulatory",
         "phrase":"The certificate of achievement for",
-        "phrase2":"is attributed to"
+        "phrase2":"is attributed to",
+        "soft skills":"soft skills",
+        "expert":"expert",
     },
     "cs":{
         "date_title":u"Datum",
@@ -106,7 +114,9 @@ def generate_html(user,score,course_img_path,template_path,course_title,categori
         "our solutions":u"Naše řešení",
         "regulatory":u"Regulace",
         "phrase":u"Certfikát potvrzující",
-        "phrase2":u"úspěšně složený "
+        "phrase2":u"úspěšně složený ",
+        "soft skills":"prodejní dovednosti",
+        "expert":"expertýza",
     },
     "nl":{
         "date_title":u"Datum",
@@ -118,7 +128,9 @@ def generate_html(user,score,course_img_path,template_path,course_title,categori
         "our solutions":u"Onze oplossingen",
         "regulatory":u"Regelgeving",
         "phrase":u"Het certificaat van voltooiing wordt",
-        "phrase2":u"toegekend aan"
+        "phrase2":u"toegekend aan",
+        "soft skills":"soft skills",
+        "expert":"expert",
     }
     }
 

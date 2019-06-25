@@ -22409,6 +22409,9 @@ msgstr "Date de fin"
 msgid "Disclaimer"
 msgstr "Mentions légales"
 
+msgid "disclaimer"
+msgstr "mentions légales"
+
 msgid "Results"
 msgstr "Résultats"
 
@@ -23436,3 +23439,10 @@ msgstr "Résultat moyen par participant certifié au quiz"
 
 msgid "Average result for all quiz participants"
 msgstr "Résultat moyen par participant au quiz"
+
+msgid "soft skills"
+msgstr "Démarche commerciale"
+
+msgid "expert"
+msgstr "Experts"
+
