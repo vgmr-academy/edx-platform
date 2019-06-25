@@ -10754,9 +10754,6 @@ msgstr "Ogni modulo è composto da diversi formati interattivi:"
 msgid "texts & images"
 msgstr "testi e immagini"
 
-msgid "Infography"
-msgstr "Infografica"
-
 #: lms/templates/dashboard.html
 msgid "pedagogical videos"
 msgstr "video pedagogici"
@@ -10764,10 +10761,6 @@ msgstr "video pedagogici"
 #: lms/templates/dashboard.html
 msgid "quizzes"
 msgstr "quiz"
-
-#: lms/templates/dashboard.html
-msgid "pdf"
-msgstr "PDF"
 
 msgid "You have started the training module"
 msgstr "Hai iniziato il modulo di formazione"
@@ -10825,6 +10818,9 @@ msgstr "Data di fine"
 
 msgid "Disclaimer"
 msgstr "Disclaimer"
+
+msgid "disclaimer"
+msgstr "disclaimer"
 
 msgid "Results"
 msgstr "Risultati"
@@ -11618,3 +11614,27 @@ msgstr "Hai completato il modulo di formazione"
 
 msgid "Congratulations"
 msgstr "Congratulazioni"
+
+msgid "soft skills"
+msgstr "Approccio commerciale"
+
+msgid "expert"
+msgstr "Esperti"
+
+msgid "video"
+msgstr "Video"
+
+msgid "serious game"
+msgstr "Gioco Serio"
+
+msgid "pdf"
+msgstr "Documentazione"
+
+msgid "investment game"
+msgstr "Gioco d'investimento"
+
+msgid "Infography"
+msgstr "Infografia"
+
+msgid "quiz"
+msgstr "Quiz"

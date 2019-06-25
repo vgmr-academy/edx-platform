@@ -76,8 +76,6 @@ var picto_simulation_inv = "${static.url('images/simulation_inv.svg')}";
 var wording_fundamental = "${_('Fundamentals')}";
 var wording_oursolutions = "${_('Our solutions')}";
 var wording_businessapproach = "${_('Business approach')}";
-var wording_expert = "${_('expert')}";
-var wording_softskills = "${_('soft skills')}";
 var wording_regulatory = "${_('Regulatory')}";
 var wording_mandatory = '${_("mandatory")}';
 var wording_optional ='${_("optional")}';
@@ -288,10 +286,9 @@ dashboard = static.get_value('css_overrides_dashboard')
 
 
 </section>
-
 % if is_new_user:
 <div id="pop_up">
-  <p class="primary-color-text">${_("Welcome on Academy platform")}!
+  <p class="primary-color-text">${_("Welcome on Academy latform")}!
   ${_("You successfully registered")}.
   ${_("The training module")} ${first_course_name} ${_("is available in the section")}
   ${_("To do")}.</p>
@@ -303,8 +300,6 @@ $('#close_pop_up').click(function(){
 })
 </script>
 % endif
-
-
 
 
 <!--<script src="/media/jswork/course_cards.js"></script>-->

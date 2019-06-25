@@ -11261,9 +11261,6 @@ msgstr "Každý kurz je složen z několika interaktivních formátů:"
 msgid "texts & images"
 msgstr "text a obrázky"
 
-msgid "Infography"
-msgstr "Infografika"
-
 #: lms/templates/dashboard.html
 msgid "pedagogical videos"
 msgstr "edukační videa"
@@ -11271,10 +11268,6 @@ msgstr "edukační videa"
 #: lms/templates/dashboard.html
 msgid "quizzes"
 msgstr "kvíz"
-
-#: lms/templates/dashboard.html
-msgid "pdf"
-msgstr "pdf"
 
 msgid "You have started the training module"
 msgstr "Právě jste spustili vzdělávací kurz"
@@ -11332,6 +11325,9 @@ msgstr "Datum ukončení"
 
 msgid "Disclaimer"
 msgstr "Právní upozornění"
+
+msgid "disclaimer"
+msgstr "právní upozornění"
 
 msgid "Results"
 msgstr "Výsledky"
@@ -12157,3 +12153,27 @@ msgstr "Seznam pozvaných účastníků"
 
 msgid "Myself"
 msgstr "jen mně (TEST)"
+
+msgid "soft skills"
+msgstr "Prodejní dovednosti"
+
+msgid "expert"
+msgstr "Expertýza"
+
+msgid "video"
+msgstr "Video"
+
+msgid "serious game"
+msgstr "Videohra"
+
+msgid "pdf"
+msgstr "Dokumentace"
+
+msgid "investment game"
+msgstr "Investiční Hra"
+
+msgid "Infography"
+msgstr "Infografika"
+
+msgid "quiz"
+msgstr "kvíz"

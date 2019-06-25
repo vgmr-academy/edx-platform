@@ -12487,8 +12487,11 @@ msgstr "Unter zertifizierten Teilnehmern"
 msgid "All participants included"
 msgstr "Alle Teilnehmer enthalten"
 
-msgid "disclaimer"
+msgid "Disclaimer"
 msgstr "Allgemeine Geschäftsbedingungen"
+
+msgid "disclaimer"
+msgstr "allgemeine Geschäftsbedingungen"
 
 msgid "Start"
 msgstr "Anfang"
@@ -12513,6 +12516,12 @@ msgstr "Durchschnittsergebnis für alle zertifizierten Teilnehmer"
 
 msgid "Average result for all quiz participants"
 msgstr "Durchschnittliches Ergebnis für alle Quizteilnehmer"
+
+msgid "soft skills"
+msgstr "Kommerzieller Ansatz"
+
+msgid "expert"
+msgstr "Experten"
 
 #: cms/djangoapps/api/v1/serializers/course_runs.py
 msgid "Course team user does not exist"

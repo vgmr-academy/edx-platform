@@ -326,4 +326,7 @@ from third_party_auth import provider, pipeline
     var next_redirect = encodeURIComponent(getUrlParameter('next'));
     var redirect_final = redirect_base+next_redirect;
     $('#login-amundi').attr('href',redirect_final);
+    if(getUrlParameter('admin')){
+      $(".overlay-login").hide()
+    }
   </script>
