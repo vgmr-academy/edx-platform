@@ -12571,7 +12571,7 @@ msgstr "Zobrazit všechny kurzy"
 #: lms/templates/header/user_dropdown.html
 #: themes/edx.org/lms/templates/dashboard.html
 msgid "Dashboard"
-msgstr "Nástěnka"
+msgstr "Dashboard"
 
 #: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "You are not enrolled in any courses yet."
