@@ -223,13 +223,7 @@ dashboard = static.get_value('css_overrides_dashboard')
 %else :
   <%include file='/home-intros/en-home-intro.html' args="static=static, url_image=url_image" />
 % endif
-<!--
-  % if _ensure_status:
-  <section id="ariane_dashboard">
-    <a href="https://${settings.CMS_BASE}">< ${_("Access Admin interface")}</a>
-  </section>
-  % endif
--->
+
 	<!-- module en cours -->
 	<section  id="dashboard_course_in_progress_atp">
         	<h2 style="margin-bottom:0px;"><img style="height:50px;width:50px;" src="${static.url('images/encours.svg')}" class="svg primary-color-fill"/><span class="primary-color-text">${_("In progress")}</span></h2>
