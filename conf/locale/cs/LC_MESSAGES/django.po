@@ -25317,7 +25317,7 @@ msgid "Access Trainee interface"
 msgstr "Přejít na Uživatelské rozhraní "
 
 #lms dashboard.html
-msgid "Access Admin interface"
+msgid "Access admin interface"
 msgstr "Přejít na Administrátorské rozhraní"
 
 #lms stat.html
