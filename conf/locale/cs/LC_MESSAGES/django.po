@@ -25616,10 +25616,10 @@ msgid "Congratulations"
 msgstr "Gratulujeme"
 
 msgid "You have completed the training module"
-msgstr "Dokončili jste výcvikový modul"
+msgstr "Dokončili jste vzdělávací kurz"
 
 msgid "Unfortunately, you haven't achieved the minimum score required to validate the training module."
-msgstr "Bohužel jste nedosáhli minimálního skóre potřebného pro ověření výcvikového modulu."
+msgstr "Bohužel jste nedosáhli minimálního skóre potřebného pro ověření výcvikového kurzu."
 
 msgid "Start again"
 msgstr "Začít znovu"
