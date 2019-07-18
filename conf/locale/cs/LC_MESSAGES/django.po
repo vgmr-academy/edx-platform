@@ -25649,7 +25649,7 @@ msgid "View participants invited"
 msgstr "Seznam pozvaných účastníků"
 
 msgid "Myself"
-msgstr "jen mně (TEST)"
+msgstr "Jen mně (TEST)"
 
 msgid "soft skills"
 msgstr "Prodejní dovednosti"
