@@ -1495,7 +1495,7 @@ def send_enroll_mail(obj,course,overview,course_details, list_email,module_store
     log.info("send_enroll_mail start_sending")
     # LIST OF VARS
     course_org = course.org.lower()
-    site_name = settings.SITE_NAME
+    site_name = settings.LMS_BASE
     microsite_link = 'https://'+course_org+'.'+site_name
     course_title = course.display_name
     category = course.categ
@@ -1707,7 +1707,12 @@ def email_dashboard_handler(request, course_key_string):
                     adress = adress.split(',')
                     log.info("custom true adress {}".format(adress))
                     for n in adress:
-                        if not n in list_email:
+                        email_is_in_list_email = False
+                        for email_in_list_email in list_email:
+                            if n in email_in_list_email.email:
+                                email_is_in_list_email = True
+                                break
+                        if not email_is_in_list_email:
                             log.info("custom true ok n not in list_email")
                             try :
                                 q = {}
@@ -1731,8 +1736,17 @@ def email_dashboard_handler(request, course_key_string):
                         full_list=get_full_course_users_list(course_key)
                         for user in full_list :
                             if User.objects.filter(email=user['email']).exists() :
-                                if (user['email'] not in list_email):
-                                    list_email.append(user['email'])
+                                email_is_in_list_email = False
+                                for email_in_list_email in list_email:
+                                    if user['email'] in email_in_list_email.email:
+                                        email_is_in_list_email = True
+                                        break
+                                if not email_is_in_list_email:                                    
+                                    q = {}
+                                    q['email'] = user['email']
+                                    q['first_name'] = user['first_name']
+                                    q['last_name'] = user['last_name']
+                                    list_email.append(q)
                             else :
                                 if (user['email'] not in list_sem):
                                     list_sem.append(user['email'])
