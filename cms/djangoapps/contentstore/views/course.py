@@ -1734,14 +1734,15 @@ def email_dashboard_handler(request, course_key_string):
                     user_id = []
                     try:
                         full_list=get_full_course_users_list(course_key)
+                        log.info("all users get_full_course_users_list: "+pformat(full_list))
                         for user in full_list :
                             if User.objects.filter(email=user['email']).exists() :
                                 email_is_in_list_email = False
                                 for email_in_list_email in list_email:
-                                    if user['email'] in email_in_list_email.email:
+                                    if user['email'] in email_in_list_email['email']:
                                         email_is_in_list_email = True
                                         break
-                                if not email_is_in_list_email:                                    
+                                if not email_is_in_list_email:
                                     q = {}
                                     q['email'] = user['email']
                                     q['first_name'] = user['first_name']
@@ -1756,7 +1757,7 @@ def email_dashboard_handler(request, course_key_string):
                 list_email = False
 
             if list_email:
-                log.info("end of email_dashboard_handler before mail_send"+pformat(list_email))
+                log.info("end of email_dashboard_handler before mail_send "+pformat(len(list_email))+"users, list:"+pformat(list_email))
                 mail_send = send_enroll_mail(obj,course,overview,course_details,list_email,module_store,body)
 
             #Send sem mails if any
@@ -2859,18 +2860,33 @@ def get_full_course_users_list(course_key):
     invited_users = CourseEnrollmentAllowed.objects.all().filter(course_id=course_key)
     for invited_user in invited_users:
         email = invited_user.email
-        if not str(email) in str(users):
+        email_is_in_users = False
+        log.info("invited: "+pformat(email))
+        log.info("inviteds: "+pformat(len(users)))
+        for email_in_users in users:
+            log.info(pformat(email_in_users['email']))
+            if email in email_in_users['email']:
+                email_is_in_users = True
+                break
+        if not email_is_in_users:
             user_profile={
             'email':email
             }
             users.append(user_profile)
+    log.info("invited users: "+pformat(users))
 
     #check for enrolled users
     users_enrolled = CourseEnrollment.objects.all().filter(course_id=course_key)
     for user_enrolled in users_enrolled:
         try:
             email = User.objects.get(pk=user_enrolled.user_id).email
-            if not str(email) in str(users):
+            log.info("enrolled: "+pformat(email))
+            email_is_in_users = False
+            for email_in_users in users:
+                if email in email_in_users['email']:
+                    email_is_in_users = True
+                    break
+            if not email_is_in_users:
                 user_profile={
                 'email':email
                 }
