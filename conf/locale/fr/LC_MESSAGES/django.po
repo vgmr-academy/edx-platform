@@ -22958,11 +22958,11 @@ msgid "No training modules available in this section."
 msgstr "Aucun module de formation n'est disponible dans cette section."
 
 #: lms dashboard.html
-msgid "Welcome on Academy platform"
+msgid "Welcome to the Academy platform"
 msgstr "Bienvenue sur la plateforme Academy "
 
 #: lms dashboard.html
-msgid "You successfully registered"
+msgid "Your registration has been successful"
 msgstr "Votre inscription est confirmée"
 
 #: lms dashboard.html

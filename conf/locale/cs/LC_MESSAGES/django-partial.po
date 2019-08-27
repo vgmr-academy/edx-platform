@@ -11781,12 +11781,12 @@ msgstr "V této sekci nejsou dostupné žádné vzdělávací kurzy."
 
 # lms dashboard.html
 
-msgid "Welcome on Academy platform"
+msgid "Welcome to the Academy platform"
 msgstr "Vítejte v platformě Academy"
 
 # lms dashboard.html
 
-msgid "You successfully registered"
+msgid "Your registration has been successful"
 msgstr "Registrace proběhla úspěšně"
 
 # lms dashboard.html

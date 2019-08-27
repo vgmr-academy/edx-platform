@@ -3961,11 +3961,11 @@ msgid ""
 msgstr ""
 
 #: lms/templates/dashboard.html:508
-msgid "Welcome on Academy platform"
+msgid "Welcome to the Academy platform"
 msgstr ""
 
 #: lms/templates/dashboard.html:509
-msgid "You successfully registered"
+msgid "Your registration has been successful"
 msgstr ""
 
 #: lms/templates/dashboard.html:510

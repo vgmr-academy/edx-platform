@@ -289,7 +289,7 @@ dashboard = static.get_value('css_overrides_dashboard')
 % if is_new_user:
 <div id="pop_up">
   <p class="primary-color-text">${_("Welcome on Academy latform")}!
-  ${_("You successfully registered")}.
+  ${_("Your registration has been success")}.
   ${_("The training module")} ${first_course_name} ${_("is available in the section")}
   ${_("To do")}.</p>
   <button id="close_pop_up" class="primary-color-bg primary-color-border">${_("Close")}</button>
