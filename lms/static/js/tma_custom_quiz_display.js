@@ -139,7 +139,7 @@ var score_div = '<div id="score_div_info"><span class="primary-color-text">'+sco
 var boutton_certificat = '<div id="score_button"><button class="primary-color-bg" onclick=\"followClickEvents(this,\'certificate\',\'download\')\">'+certificate_wording+'</button></div>';
 // Messages for modules over
 var message_termine='<div id="module-over" class="primary-color-text">'+training_over_wording+'</div>';
-var reset_bouton='<div onclick="reset_all_problems()"><a class="reset-btn primary-color-bg" >'+start_again_wording+'</a></div>';
+var reset_bouton='<div onclick="reset_all_problems()"><a id="reset_bouton" class="reset-btn primary-color-bg" >'+start_again_wording+'</a></div>';
 
 function generate_certif() {
   var url_certif = '/api/atp/check/certificate/'+course_id+'/';

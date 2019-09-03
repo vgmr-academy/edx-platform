@@ -12102,10 +12102,6 @@ msgstr "výsledky nalezeny ve vašich kurzech"
 msgid "results found in your campaigns"
 msgstr "výsledky nalezeny ve vašich kampaních"
 
-#DASHBOARD.HTML
-msgid "In this section, you access training modules you started but haven't completed yet. To go on, please click on"
-msgstr "V této sekci máte přístup ke kurzům, které jste začali, ale ještě jste nedokončili. Chcete-li pokračovat, klikněte na tlačítko"
-
 msgid "In this section, you access training modules you have to complete. Click on"
 msgstr "V této sekci získáte přístup ke kurzům, které máte dokončit. Klikněte na"
 
@@ -12177,3 +12173,7 @@ msgstr "Infografika"
 
 msgid "quiz"
 msgstr "kvíz"
+
+#DASHBOARD.HTML
+msgid "Below are training modules you have started but not yet completed. Click \"Proceed\" to continue."
+msgstr "Hier vindt u de leermodules die u bent gestart. Om ze af te werken klikt \"Doorgaan\""

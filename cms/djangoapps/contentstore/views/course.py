@@ -1782,9 +1782,9 @@ language_setup={
         'sem_lang' :'en',
         'msg':'Once you’ve passed this step, you will be able to access the training module {0}.',
         'obj':'Invitation to access {0} training module',
-        'title_mail' : ['Category','Duration','Mode','Ending date'],
+        'title_mail' : ['Category','Duration','Mode','End date'],
         'required':'mandatory',
-        'optional':'facultative',
+        'optional':'optional',
         'categories':{
             'fundamentals':'fundamentals',
             'our solutions':'our solutions',
@@ -1941,14 +1941,18 @@ def invite_handler(request, course_key_string):
                 decoded_csv_file = io.StringIO(unicode(csv_file.read(),source_encoding).decode('utf-8'))
                 log.info("invite_handler: csv decoded")
                 csv_dict= csv.DictReader(decoded_csv_file)
-                #log.info("invite_handler: csv is in dict now : "+pformat(csv_dict))
+                log.info(list(csv_dict))
+                log.info("invite_handler: csv is in dict now : "+pformat(csv_dict))
             except:
                 csv_dict={}
 
-            for atp_student in csv_dict :
+            log.info("invite_handler: csv is in dict now : "+pformat(csv_dict))
+
+            for atp_student in csv_dict:
                 #force lower case on emails
+                log.info("invite_handler: inside")
                 atp_student['email'] = atp_student['email'].lower()
-                #log.info("invite_handler: "+pformat(atp_student))
+                log.info("invite_handler: "+pformat(atp_student))
                 log.info("invite_handler: treating student {}".format(atp_student['email']))
                 atp_student = {key.lower(): strip_accents(value) for key, value in atp_student.items()}
                 atp_students_list[atp_student['email']] = atp_student
@@ -1972,19 +1976,23 @@ def invite_handler(request, course_key_string):
                             student_errors.append(atp_student['email'])
                             log.info("invite_handler: user exists error mail metier")
                     else :
+                        log.info("USER OBJECT DOESNT EXIST")
                         if UserPreprofile.objects.filter(email=atp_student['email']).exists() :
+                            log.info('USER PREPROFILE EXIST')
                             last_invite = UserPreprofile.objects.get(email=atp_student['email']).last_invite
                             if last_invite and last_invite !='' and localtime(now())-datetime.timedelta(hours=24) >= last_invite:
                                 sem_mails.append(atp_student['email'])
                                 log.info("invite_handler: preprofile exist last invite sup than 24h")
                         else :
+                            log.info('USER PREPROFILE DOESNT')
                             sem_mails.append(atp_student['email'])
                             log.info("invite_handler: preprofile doesnt exist")
 
                     #Register to course
                     enroll_email(course_key, atp_student['email'], auto_enroll=True, email_students=False, email_params=None, language=course.language)
                     log.info("invite_handler: user enrolled to course")
-
+            log.info('SEM MAILLSSSSS')
+            log.info(sem_mails)
             #Treat SEM invite
             if sem_mails :
                 log.info("invite_handler: session manager starts with candidates {}".format(sem_mails))

@@ -22442,7 +22442,7 @@ msgid "TO DO TRAINING MODULES"
 msgstr "MODULES À RÉALISER"
 
 #: lms/templates/dashboard.html
-msgid "In this section, you access training modules you have to complete. Click on"
+msgid "Below, access training modules you have yet to complete. Click"
 msgstr "Dans cette section, vous accédez aux modules pédagogiques que vous devez réaliser. Cliquez sur"
 
 #: lms/templates/dashboard.html
@@ -22451,20 +22451,17 @@ msgid "More information"
 msgstr "En savoir +"
 
 #: lms/templates/dashboard.html
-msgid "to access the training module description"
-msgstr "pour accéder à la page de description du module"
+msgid "to continue"
+msgstr "pour continuer"
 
 #: lms/templates/dashboard.html
 msgid "IN PROGRESS TRAINING MODULES"
 msgstr "MODULES EN COURS"
 
 #: lms/templates/dashboard.html
-msgid ""
-"In this section, you access training modules you started but haven't completed yet. "
-"To go on, please click on"
-msgstr ""
-"Dans cette section, vous accédez aux modules pédagogiques que vous avez commencés. "
-"Pour compléter votre parcours, cliquez sur"
+msgid "Below are training modules you have started but not yet completed. Click \"Proceed\" to continue."
+msgstr "Dans cette section, vous accédez aux modules pédagogiques que vous avez commencés. "
+"Pour compléter votre parcours, cliquez sur Continuer"
 
 #: lms/templates/dashboard.html
 #: lms/templates/dashboard/_dashboard_course_listing.html
@@ -22476,11 +22473,11 @@ msgid "COMPLETED TRAINING MODULES"
 msgstr "MODULES TERMINÉS"
 
 #: lms/templates/dashboard.html
-msgid "In this section, you access training modules you validated (click on"
+msgid "Click"
 msgstr "Dans cette section, vous accédez aux modules pédagogiques que vous avez validés (cliquez sur"
 
 #: lms/templates/dashboard.html
-msgid "to access your result) as well as unvalidated training modules for which ending date has been exceeded"
+msgid "to access the result of modules you passed. Below you can also find training modules you have not passed, and are no longer accessible"
 msgstr "pour accéder à votre résultat) ainsi qu’aux modules non validés dont la date de fin est dépassée"
 
 #: lms/templates/dashboard.html

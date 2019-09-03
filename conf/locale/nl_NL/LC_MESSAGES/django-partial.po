@@ -11254,8 +11254,7 @@ msgid "TO DO TRAINING MODULES"
 msgstr "TE VOLGEN MODULES"
 
 #: lms/templates/dashboard.html
-msgid ""
-"In this section, you access training modules you have to complete. Click on"
+msgid "Below, access training modules you have yet to complete. Click"
 msgstr "Hier vindt u de leermodules die u moet volgen. Klik op"
 
 #: lms/templates/dashboard.html
@@ -11264,7 +11263,7 @@ msgid "More information"
 msgstr "Meer informatie ..."
 
 #: lms/templates/dashboard.html
-msgid "to access the training module description"
+msgid "to continue"
 msgstr "om naar de beschrijving van de module te gaan"
 
 #: lms/templates/dashboard.html
@@ -11273,11 +11272,11 @@ msgstr "LOPENDE MODULES"
 
 #: lms/templates/dashboard.html
 msgid ""
-"In this section, you access training modules you started but haven't "
-"completed yet. To go on, please click on"
+"Below are training modules you have started but not yet completed. Click "
+"\"Proceed\" to continue."
 msgstr ""
 "Hier vindt u de leermodules die u bent gestart. Om ze af te werken klikt u "
-"op"
+"\"Doorgaan\""
 
 #: lms/templates/dashboard.html
 #: lms/templates/dashboard/_dashboard_course_listing.html
@@ -11289,13 +11288,13 @@ msgid "COMPLETED TRAINING MODULES"
 msgstr "VOLTOOIDE MODULES"
 
 #: lms/templates/dashboard.html
-msgid "In this section, you access training modules you validated (click on"
+msgid "Click"
 msgstr "Hier vindt u de leermodules die u hebt afgewerkt (klik op"
 
 #: lms/templates/dashboard.html
 msgid ""
-"to access your result) as well as unvalidated training modules for which "
-"ending date has been exceeded"
+"to access the result of modules you passed. Below you can also find training"
+" modules you have not passed, and are no longer accessible"
 msgstr ""
 "om uw resultaat te bekijken) en de modules die u niet hebt afgewerkt, maar "
 "waarvan de einddatum is verstreken"

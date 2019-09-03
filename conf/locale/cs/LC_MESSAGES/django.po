@@ -24861,7 +24861,7 @@ msgid "More information"
 msgstr "Více informací"
 
 #: lms/templates/dashboard.html
-msgid "to access the training module description"
+msgid "to continue"
 msgstr "pro zobrazení popisu vzdělávacích kurzů"
 
 #: lms/templates/dashboard.html
@@ -25603,13 +25603,13 @@ msgstr "výsledky nalezeny ve vašich kampaních"
 msgid "In this section, you access training modules you started but haven't completed yet. To go on, please click on"
 msgstr "V této sekci máte přístup ke kurzům, které jste začali, ale ještě jste nedokončili. Chcete-li pokračovat, klikněte na tlačítko"
 
-msgid "In this section, you access training modules you have to complete. Click on"
+msgid "Below, access training modules you have yet to complete. Click"
 msgstr "V této sekci získáte přístup ke kurzům, které máte dokončit. Klikněte na"
 
-msgid "In this section, you access training modules you validated (click on"
+msgid "Click"
 msgstr "V této sekci najdete úspěšně dokončené kurzy (klikněte na"
 
-msgid "to access your result) as well as unvalidated training modules for which ending date has been exceeded"
+msgid "to access the result of modules you passed. Below you can also find training modules you have not passed, and are no longer accessible"
 msgstr "abyste získali přístup k výsledkům). Dále zde najdete i ty kurzy, u kterých vypršela doba pro splnění."
 
 msgid "Congratulations"
@@ -25674,3 +25674,7 @@ msgstr "Infografika"
 
 msgid "quiz"
 msgstr "kvíz"
+
+#DASHBOARD.HTML
+msgid "Below are training modules you have started but not yet completed. Click \"Proceed\" to continue."
+msgstr "V této sekci máte přístup ke kurzům, které jste začali, ale ještě jste nedokončili. Chcete-li pokračovat, klikněte na tlačítko \"Pokračovat\""

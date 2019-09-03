@@ -228,7 +228,7 @@ dashboard = static.get_value('css_overrides_dashboard')
 	<section  id="dashboard_course_in_progress_atp">
         	<h2 style="margin-bottom:0px;"><img style="height:50px;width:50px;" src="${static.url('images/encours.svg')}" class="svg primary-color-fill"/><span class="primary-color-text">${_("In progress")}</span></h2>
           <div id="ancre-in-progress"></div>
-		<p class="first_p primary-color-text">${_("In this section, you access training modules you started but haven't completed yet. To go on, please click on")} &laquo; ${_("Proceed")} &raquo;.</p>
+		<p class="first_p primary-color-text">${_('Below are training modules you have started but not yet completed. Click \"Proceed\" to continue.')}</p>
         <!-- course listing -->
 <% compteur = 0 %>
 <% first_course_name = '' %>
@@ -247,7 +247,7 @@ dashboard = static.get_value('css_overrides_dashboard')
 	<section id="dashboard_course_to_do">
         	<h2 style="margin-bottom:0px;"><img style="height:50px;width:50px;" src="${static.url('images/arealiser.svg')}" class="svg primary-color-fill"/><span class="primary-color-text">${_("To do")}</span></h2>
           <div id="ancre-to-do"></div>
-		<p class="first_p primary-color-text" style="margin-top:35px;">${_("In this section, you access training modules you have to complete. Click on")} &laquo; ${_("More information")} &raquo; ${_("to access the training module description")}.</p>
+		<p class="first_p primary-color-text" style="margin-top:35px;">${_("Below, access training modules you have yet to complete. Click")} &laquo; ${_("More information")} &raquo; ${_("to continue")}.</p>
 	<!-- course listing -->
 <% compteur = 0 %>
 % if len(start_course) > 0:
@@ -265,7 +265,7 @@ dashboard = static.get_value('css_overrides_dashboard')
 	<section id="dashboard_course_finished">
 		<h2 style="margin-bottom:0px;"><img style="height:50px;width:50px;" src="${static.url('images/termine.svg')}" class="svg gradient primary-color-fill"/><span class="primary-color-text">${_("Completed")}</span></h2>
       <div id="ancre-finished"></div>
-		<p class="first_p primary-color-text" style="margin-top:35px;">${_("In this section, you access training modules you validated (click on")} &laquo; ${_("More information")} &raquo; ${_("to access your result) as well as unvalidated training modules for which ending date has been exceeded")}.</p>
+		<p class="first_p primary-color-text" style="margin-top:35px;">${_("Click")} &laquo; ${_("More information")} &raquo; ${_("to access the result of modules you passed. Below you can also find training modules you have not passed, and are no longer accessible")}.</p>
 	<!-- course listing -->
 <% compteur = 0 %>
 % if len(finish_courses) > 0:
@@ -285,10 +285,17 @@ dashboard = static.get_value('css_overrides_dashboard')
 
 % if is_new_user:
 <div id="pop_up">
+  %if request.LANGUAGE_CODE=="en":
+    <p>
+      Welcome to the Academy platform! Your registration has been successful. The training modules are available in the "To Do" section.
+    </p>
+  %else:
   <p class="primary-color-text">${_("Welcome to the Academy platform")}!
-  ${_("Your registration has been success")}.
-  ${_("The training module")} ${first_course_name} ${_("is available in the section")}
-  ${_("To do")}.</p>
+    ${_("Your registration has been successful")}.
+    ${_("The training module")} ${first_course_name} ${_("is available in the section")}
+    ${_("To do")}.
+  </p>
+  %endif
   <button id="close_pop_up" class="primary-color-bg primary-color-border">${_("Close")}</button>
 </div>
 <script>

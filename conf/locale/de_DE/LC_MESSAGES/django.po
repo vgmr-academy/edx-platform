@@ -11545,8 +11545,7 @@ msgid "TO DO TRAINING MODULES"
 msgstr "OFFENE SCHULUNGSMODULE"
 
 #: lms/templates/dashboard.html
-msgid ""
-"In this section, you access training modules you have to complete. Click on"
+msgid "Below, access training modules you have yet to complete. Click"
 msgstr ""
 "Sie haben die folgenden Schulungsmodule noch nicht begonnen. Klicken Sie auf"
 
@@ -11556,7 +11555,7 @@ msgid "More information"
 msgstr "Mehr anzeigen"
 
 #: lms/templates/dashboard.html
-msgid "to access the training module description"
+msgid "to continue"
 msgstr "um mehr über das Schulungsmodul zu erfahren"
 
 #: lms/templates/dashboard.html
@@ -11565,11 +11564,11 @@ msgstr "LAUFENDE SCHULUNGSMODULE"
 
 #: lms/templates/dashboard.html
 msgid ""
-"In this section, you access training modules you started but haven't "
-"completed yet. To go on, please click on"
+"Below are training modules you have started but not yet completed. Click "
+"\"Proceed\" to continue."
 msgstr ""
 "Sie haben die folgenden Schulungsmodule begonnen, aber noch nicht "
-"abgeschlossen. Um diese fortzusetzen, klicken Sie auf"
+"abgeschlossen. Um diese fortzusetzen, klicken Sie auf \"Fortsetzen\""
 
 #: lms/templates/dashboard.html
 #: lms/templates/dashboard/_dashboard_course_listing.html
@@ -11581,14 +11580,14 @@ msgid "COMPLETED TRAINING MODULES"
 msgstr "BEENDETE SCHULUNGSMODULE"
 
 #: lms/templates/dashboard.html
-msgid "In this section, you access training modules you validated (click on"
+msgid "Click"
 msgstr ""
 "Sie haben die folgenden Schulungsmodule abgeschlossen (klicken Sie auf"
 
 #: lms/templates/dashboard.html
 msgid ""
-"to access your result) as well as unvalidated training modules for which "
-"ending date has been exceeded"
+"to access the result of modules you passed. Below you can also find training"
+" modules you have not passed, and are no longer accessible"
 msgstr ""
 "um auf Ihr Ergebnis zuzugreifen) sowie nicht validierte Schulungsmodule, "
 "deren Enddatum abgelaufen wurde"
