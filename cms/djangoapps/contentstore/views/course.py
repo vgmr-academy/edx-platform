@@ -149,6 +149,8 @@ from microsite_configuration.models import Microsite
 import html2text
 import HTMLParser
 import chardet
+import codecs
+import io
 
 __all__ = ['course_info_handler', 'course_handler', 'course_listing',
            'course_info_update_handler', 'course_search_index_handler',
@@ -1934,15 +1936,14 @@ def invite_handler(request, course_key_string):
 
             #Read CSV file
             try:
-                log.info("invite_handler: finding out encoding...")
+                #log.info("invite_handler: finding out encoding...")
                 csv_file_for_detection = copy.deepcopy(csv_file)
                 source_encoding = chardet.detect(csv_file_for_detection.read())['encoding'].lower()
                 log.info("invite_handler: encoding is "+pformat(source_encoding))
                 decoded_csv_file = io.StringIO(unicode(csv_file.read(),source_encoding).decode('utf-8'))
-                log.info("invite_handler: csv decoded")
+                #log.info("invite_handler: csv decoded")
                 csv_dict= csv.DictReader(decoded_csv_file)
-                log.info(list(csv_dict))
-                log.info("invite_handler: csv is in dict now : "+pformat(csv_dict))
+                #log.info("invite_handler: csv is in dict now : "+pformat(csv_dict))
             except:
                 csv_dict={}
 
@@ -1952,9 +1953,10 @@ def invite_handler(request, course_key_string):
                 #force lower case on emails
                 log.info("invite_handler: inside")
                 atp_student['email'] = atp_student['email'].lower()
+                log.info(atp_student['last_name'].encode('utf-8'))
                 log.info("invite_handler: "+pformat(atp_student))
                 log.info("invite_handler: treating student {}".format(atp_student['email']))
-                atp_student = {key.lower(): strip_accents(value) for key, value in atp_student.items()}
+                atp_student = {key.lower(): value for key, value in atp_student.items()}
                 atp_students_list[atp_student['email']] = atp_student
 
                 #Decide between SEM or ATP mail
@@ -1991,8 +1993,7 @@ def invite_handler(request, course_key_string):
                     #Register to course
                     enroll_email(course_key, atp_student['email'], auto_enroll=True, email_students=False, email_params=None, language=course.language)
                     log.info("invite_handler: user enrolled to course")
-            log.info('SEM MAILLSSSSS')
-            log.info(sem_mails)
+
             #Treat SEM invite
             if sem_mails :
                 log.info("invite_handler: session manager starts with candidates {}".format(sem_mails))
