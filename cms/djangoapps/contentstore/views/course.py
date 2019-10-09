@@ -613,7 +613,7 @@ def course_listing(request):
       else:
         q['course_end_compare'] = current_date
       q['course_start_compare'] = int(q['courses_overviews'].start.strftime("%s"))
-      q['duration'] = CourseDetails.fetch(q['course_key_id']).effort
+      q['duration'] = q['courses_overviews'].effort
 
       #indice
       sorted_indices = {
@@ -2600,7 +2600,7 @@ def sorted_courses(course_info,current_date,_type):
     else:
         q['course_end_compare'] = current_date
     q['course_start_compare'] = int(courses_overviews.start.strftime("%s"))
-    q['duration'] = CourseDetails.fetch(course_key_id).effort
+    q['duration'] = courses_overviews.effort
     cur_course = get_course_by_id(course_key_id)
     q['course_language'] = cur_course.language
     q['categories'] = cur_course.categ
