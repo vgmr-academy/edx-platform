@@ -12286,3 +12286,9 @@ msgstr "Infografiek"
 
 msgid "quiz"
 msgstr "Quiz"
+
+msgid ""
+"Unfortunately, you haven't achieved the minimum score ({score}%) required to"
+" validate the training module."
+msgstr ""
+"Je behaalde niet de minimumscore ({score}%) om deze module te voltooien."

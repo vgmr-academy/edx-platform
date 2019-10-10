@@ -11637,3 +11637,10 @@ msgstr "Infografia"
 
 msgid "quiz"
 msgstr "Quiz"
+
+msgid ""
+"Unfortunately, you haven't achieved the minimum score ({score}%) required to"
+" validate the training module."
+msgstr ""
+"Sfortunatamente, non è stato raggiunto il punteggio minimo ({score}%) "
+"richiesto per convalidare il modulo di formazione."

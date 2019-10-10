@@ -346,12 +346,13 @@ courseware = static.get_value('css_overrides_courseware')
   var training_over_wording='${_("The training campaign is over. You can access the training module content. However, you can\'t do the test to validate your knowledge.")}';
   var start_again_wording='${_("Start again")}';
   var certificate_wording='${_("Download the certificate")}';
-  var unfortunately_wording = '${_("Unfortunately, you haven\'t achieved the minimum score required to validate the training module.")}';
+  var unfortunately_wording = '${_("Unfortunately, you haven\'t achieved the minimum score ({score}%) required to validate the training module.").format(score=int(course.grading_policy.get('GRADE_CUTOFFS').get('Pass')*100))}';
   var score_wording = '${_("Your total score :")}';
   var to_end_wording = '${_("To end this training module, you have to access every chapters and finish the validation knowledge test.")}';
 
 
 </script>
+
 <script src="${static.url('js/courseware_completion.js')}"></script>
 <!--<script src="/media/jswork/courseware/courseware_completion.js"></script>-->
 <script src="${static.url('js/tma_custom_quiz_display.js')}"></script>

@@ -12232,3 +12232,10 @@ msgstr "Kommerzieller Ansatz"
 
 msgid "expert"
 msgstr "Experten"
+
+msgid ""
+"Unfortunately, you haven't achieved the minimum score ({score}%) required to"
+" validate the training module."
+msgstr ""
+"Leider haben Sie nicht den Mindestwert erreicht ({score}%) um das "
+"Trainingsmodul zu abgeschlossen."

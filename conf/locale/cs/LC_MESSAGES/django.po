@@ -25678,3 +25678,6 @@ msgstr "kvíz"
 #DASHBOARD.HTML
 msgid "Below are training modules you have started but not yet completed. Click \"Proceed\" to continue."
 msgstr "V této sekci máte přístup ke kurzům, které jste začali, ale ještě jste nedokončili. Chcete-li pokračovat, klikněte na tlačítko \"Pokračovat\""
+
+msgid "Unfortunately, you haven't achieved the minimum score ({score}%) required to validate the training module."
+msgstr "Bohužel jste nedosáhli minimálního skóre ({score}%) potřebného pro ověření výcvikového kurzu."
