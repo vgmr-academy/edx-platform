@@ -1369,10 +1369,6 @@ def session_manager_handler(emails,org,course,specific_msg=None):
 
     """
     credentials = {
-        'dev':{
-            'amundi':{'client_id':'adc1a487-086d-41a9-b8fc-13b7918dc0e2','secret':'95bb895b-9917-4d67-a594-7b332129c394'},
-            'crelan':{'client_id':'4b911d1c-73a9-4a1e-8893-231592e8c770','secret':'a7a8514a-9518-450f-ba95-2030c1f76d2a'}
-        }
     }
     """
 
@@ -1380,10 +1376,6 @@ def session_manager_handler(emails,org,course,specific_msg=None):
         client_id =MicrositesCredentials.objects.get(VM_status=prod, microsite=microsite).client_id
         client_secret = MicrositesCredentials.objects.get(VM_status=prod, microsite=microsite).client_secret
     except:
-        client_id = '76db53b7-e23e-40f5-9b75-d472d48dbc70'
-        client_secret = '066cdb10-a092-4327-b9be-f2b4fb95ca1e'
-        #client_id='adc1a487-086d-41a9-b8fc-13b7918dc0e2'
-        #client_secret='95bb895b-9917-4d67-a594-7b332129c394'
         log.info('session manager handler except')
     try:
         urls = settings.FEATURES.get('SEM_ENDPOINTS')
@@ -1392,20 +1384,7 @@ def session_manager_handler(emails,org,course,specific_msg=None):
 
     redirect_uri = 'https://'+str(org)+'.'+str(settings.LMS_BASE)+'/auth/login/amundi/?auth_entry=login&next=%2Fdashboard&lang='+redirect_language
 
-    #test false credentials
-    #try:
-    #	log.info("start bad credentials test")
-    #	log.info("bad credentials")
-    #	log.info("bad data")
-    #	false_data = {"grant_type" : grant_type, "client_id" : "76db78b7-e234-sdg2-95425-d4474d22dbc45", "client_secret" : "078cdb23-a093-1234-b9be-f3b5fb94ca0e"}
-    #	bad_request_token = requests.post(urls[0], data=false_data,headers = {'content-type':'application/x-www-form-urlencoded'},verify=False )
-    #	log.info("token bad request status {}".format(bad_request_token.status_code))
-    #    except:
-    #        log.info("exception on bad credentials")
-    #    log.info("end bad credential test")
     log.info("START SEM TOKEN REQUEST")
-    #verbose request => http://docs.python-requests.org/en/v0.10.6/user/advanced/
-    #my_config = {'verbose': sys.stderr}
     data = {"grant_type" : grant_type, "client_id" : client_id, "client_secret" : client_secret}
     log.info("SEM TOKEN REQUEST - DATA : {}".format(str(data)))
     log.info("SEM TOKEN REQUEST - URL : {}".format(str(urls[0])))
@@ -1439,7 +1418,7 @@ def session_manager_handler(emails,org,course,specific_msg=None):
                 for n in json_parse_success:
                     q = {}
                     q['uuid'] = n.get(u'uuid')
-                    q['email'] = n.get(u'email')
+                    q['email'] = str(n.get(u'email')).lower()
                     q['status'] = 'success'
                     array_pull.append(q)
                     log.info("SEM USER IMPORT REQUEST - RESPONSE SUCCESS : {} "+pformat(q))
@@ -1450,7 +1429,7 @@ def session_manager_handler(emails,org,course,specific_msg=None):
                 for n in json_parse_error:
                     q = {}
                     q['uuid'] = n.get(u'uuid')
-                    q['email'] = n.get(u'user')
+                    q['email'] = str(n.get(u'user')).lower()
                     q['status'] = 'error'
                     array_pull.append(q)
                     log.info("SEM USER IMPORT REQUEST - RESPONSE ERRORS : {} "+pformat(q))
@@ -1461,7 +1440,7 @@ def session_manager_handler(emails,org,course,specific_msg=None):
                 for n in json_parse_list:
                     q = {}
                     q['uuid'] = n.get(u'uuid')
-                    q['email'] = n.get(u'user')
+                    q['email'] = str(n.get(u'user')).lower()
                     q['status'] = 'list'
                     array_pull.append(q)
                     log.info("SEM USER IMPORT REQUEST - RESPONSE LIST : {} "+pformat(q))
@@ -1503,9 +1482,7 @@ def send_enroll_mail(obj,course,overview,course_details, list_email,module_store
     category = course.categ
     duration = course_details.effort
     mode_required = course.is_required_atp
-    #static images
-    #org_image = microsite_link+'/static/images/mail_logo.png'
-    #static images
+
     microsite = Microsite.objects.get(key=course_org)
     microsite_value = microsite.values
     primary_color_key = 0
